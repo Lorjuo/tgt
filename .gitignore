@@ -9,6 +9,7 @@
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
+/db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
@@ -28,3 +29,13 @@
 # Ignore sublime Project Settings
 *.sublime-project
 *.sublime-workspace
+
+# Ignore other unneeded files.
+database.yml
+doc/
+*.swp
+*~
+.project
+.DS_Store
+.idea
+.secret
