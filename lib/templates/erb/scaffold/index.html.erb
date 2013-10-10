@@ -1,0 +1,47 @@
+<div class="page-header">
+  <%% if can? :create, <%= class_name %> %>
+    <%%= link_to new_<%= singular_table_name %>_path, :class => 'btn btn-primary' do %>
+      <span class="glyphicon glyphicon-plus"></span>
+      New <%= human_name %>
+    <%% end %>
+  <%% end %>
+  <h1>Listing <%= plural_table_name %></h1>
+</div>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+<% attributes.each do |attribute| -%>
+      <th><%= attribute.human_name %></th>
+<% end -%>
+      <th></th>
+      <%% if can? :update, <%= class_name %> %>
+      <th></th>
+      <%% end %>
+      <%% if can? :destroy, <%= class_name %> %>
+      <th></th>
+      <%% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+<%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
+    <tr>
+<% attributes.each do |attribute| -%>
+      <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
+<% end -%>
+      <td><%%= link_to 'Show', <%= singular_table_name %> %></td>
+      <%% if can? :update, <%= singular_table_name %> %>
+      <td><%%= link_to 'Edit', edit_<%= singular_table_name %>_path(<%= singular_table_name %>) %></td>
+      <%% end %>
+      <%% if can? :destroy, <%= singular_table_name %> %>
+      <td>
+        <%%= link_to 'Destroy', <%= singular_table_name %>, method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <span class="glyphicon glyphicon-trash"></span> Destroy
+        <%% end %>
+      </td>
+      <%% end %>
+    </tr>
+<%% end %>
+  </tbody>
+</table>

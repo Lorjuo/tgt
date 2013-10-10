@@ -1,3 +1,5 @@
+@import 'bootstrap';
+//@import 'bootstrap/theme';
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -9,5 +11,14 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *
+ *
+ *# JQuery
+ *= require jquery.ui.all
+ *
+ *# Sortable Tree
+ *= require sortable_tree
+ *= require nested_options
+ * 
  *= require_tree .
  */

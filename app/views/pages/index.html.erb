@@ -1,0 +1,43 @@
+<div class="page-header">
+  <% if can? :create, Page %>
+    <%= link_to new_page_path, :class => 'btn btn-primary' do %>
+      <span class="glyphicon glyphicon-plus"></span>
+      New Page
+    <% end %>
+  <% end %>
+  <h1>Listing pages</h1>
+</div>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th></th>
+      <% if can? :update, Page %>
+      <th></th>
+      <% end %>
+      <% if can? :destroy, Page %>
+      <th></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+<% @pages.each do |page| %>
+    <tr>
+      <td><%= page.title %></td>
+      <td><%= link_to 'Show', page %></td>
+      <% if can? :update, page %>
+      <td><%= link_to 'Edit', edit_page_path(page) %></td>
+      <% end %>
+      <% if can? :destroy, page %>
+      <td>
+        <%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <span class="glyphicon glyphicon-trash"></span> Destroy
+        <% end %>
+      </td>
+      <% end %>
+    </tr>
+<% end %>
+  </tbody>
+</table>

@@ -27,6 +27,41 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# Custom
+
+# Assets
+gem 'quiet_assets' # Disable some warnings
+
+# CSS
+# Bootstrap
+gem 'bootstrap-sass'
+  # Generator
+  gem 'bootstrap-generators'
+
+# Database
+gem 'mysql2'
+  # Population
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'populator'
+
+# Error Handling
+gem 'better_errors'
+gem 'binding_of_caller'
+
+# Forms
+gem 'simple_form'
+
+# HTML Abstraction
+gem "haml-rails"
+
+# JQuery
+gem 'jquery-ui-rails'
+
+# Tree Structures
+gem 'awesome_nested_set', github: 'huoxito/awesome_nested_set', branch: 'rails4'
+gem 'the_sortable_tree', '~> 2.3.0'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

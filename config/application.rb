@@ -19,5 +19,15 @@ module TgtRefurbished
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    
+    # Custom
+
+    # Set the default template engine
+    config.generators do |g| 
+      g.template_engine :erb 
+    end
+
+    # Only for debugging
+    #config.action_controller.permit_all_parameters = true
   end
 end

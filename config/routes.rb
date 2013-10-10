@@ -1,4 +1,13 @@
 TgtRefurbished::Application.routes.draw do
+  resources :pages do
+    collection do
+      get :manage
+
+      # required for Sortable GUI server side actions
+      post :rebuild
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
