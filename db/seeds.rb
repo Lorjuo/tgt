@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+puts "Create generic users:"
+puts "user: user | admin: admin"
+FactoryGirl.create(:admin, first_name: "admin", last_name: "generic")
+FactoryGirl.create(:user, first_name: "user", last_name: "generic")

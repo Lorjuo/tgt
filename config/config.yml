@@ -1,0 +1,7 @@
+development:
+  debug:
+    miniprofiler_enabled: false
+
+production:
+  debug:
+    miniprofiler_enabled: true

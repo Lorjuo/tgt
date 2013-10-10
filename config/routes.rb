@@ -1,4 +1,11 @@
 TgtRefurbished::Application.routes.draw do
+
+  devise_for :users
+  # Set scope admin to differentiate between devise and custom user administration
+  scope "/admin" do
+    resources :users
+  end
+
   resources :pages do
     collection do
       get :manage
@@ -13,6 +20,7 @@ TgtRefurbished::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
+  root :to => "static_pages#home"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

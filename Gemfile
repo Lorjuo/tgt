@@ -58,6 +58,17 @@ gem "haml-rails"
 # JQuery
 gem 'jquery-ui-rails'
 
+# Placeholder
+gem 'holder_rails'
+
+# Profiler
+gem 'rack-mini-profiler'
+
+# Security
+gem 'cancan'
+gem 'devise'
+gem 'rolify'
+
 # Tree Structures
 gem 'awesome_nested_set', github: 'huoxito/awesome_nested_set', branch: 'rails4'
 gem 'the_sortable_tree', '~> 2.3.0'
