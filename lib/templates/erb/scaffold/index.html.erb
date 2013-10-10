@@ -1,10 +1,8 @@
 <div class="page-header">
-  <%% if can? :create, <%= class_name %> %>
-    <%%= link_to new_<%= singular_table_name %>_path, :class => 'btn btn-primary' do %>
-      <span class="glyphicon glyphicon-plus"></span>
-      New <%= human_name %>
-    <%% end %>
-  <%% end %>
+  <%%= link_to new_<%= singular_table_name %>_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New <%= human_name %>
+  <%% end if can? :create, <%= class_name %> %>
   <h1>Listing <%= plural_table_name %></h1>
 </div>
 

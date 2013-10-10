@@ -11,6 +11,8 @@ class Page < ActiveRecord::Base
   # see: https://github.com/collectiveidea/awesome_nested_set/blob/master/lib/awesome_nested_set/awesome_nested_set.rb, line 66
   #before_save :invoke_touch
   #before_destroy :invoke_touch
+  
+  validates :title, presence: true
 
   def invoke_touch
     self.touch

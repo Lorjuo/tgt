@@ -1,10 +1,12 @@
 <div class="page-header">
-  <% if can? :create, Page %>
-    <%= link_to new_page_path, :class => 'btn btn-primary' do %>
-      <span class="glyphicon glyphicon-plus"></span>
-      New Page
-    <% end %>
-  <% end %>
+  <%= link_to new_page_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Page
+  <% end if can? :create, Page%>
+  <%= link_to sort_pages_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-th-list"></span>
+    Manage
+  <% end if can? :sort, Page%>
   <h1>Listing pages</h1>
 </div>
 
@@ -32,7 +34,7 @@
       <% end %>
       <% if can? :destroy, page %>
       <td>
-        <%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <%= link_to page, method: :delete, data: { confirm: 'Are you sure?' } do %>
           <span class="glyphicon glyphicon-trash"></span> Destroy
         <% end %>
       </td>
