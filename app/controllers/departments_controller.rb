@@ -1,13 +1,15 @@
 class DepartmentsController < ApplicationController
+  include TheSortableTreeController::Rebuild
+  
   #before_action :set_department, only: [:show, :edit, :update, :destroy, :training_groups]
-  before_action :set_department, only: [:show, :edit, :update, :destroy]
+  before_action :set_department, only: [:show, :edit, :update, :destroy, :sort]
 
   load_and_authorize_resource
 
   # GET /departments
   # GET /departments.json
   def index
-    @departments = Department.all
+    @departments = Department.specific.load
   end
 
   # GET /departments/1
@@ -79,6 +81,10 @@ class DepartmentsController < ApplicationController
   #     format.json { render json: @training_groups }
   #   end
   # end
+  
+  def sort
+    @pages = @department.pages.nested_set.select('id, title, parent_id').load
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -1,9 +1,12 @@
 class Page < ActiveRecord::Base
   include TheSortableTree::Scopes
 
+  scope :department, -> (id) { where(:department_id => id)}
+  scope :top_level, -> { where(:department_id => nil)}
+
   # Columns in the categories table: lft, rgt and parent_id
-  #acts_as_nested_set :scope => :navigation_id
-  acts_as_nested_set  :after_add      => :invoke_touch, # these callbacks seem not to be triggered
+  acts_as_nested_set  :scope => :department_id,
+                      :after_add      => :invoke_touch, # these callbacks seem not to be triggered
                       :after_remove   => :invoke_touch
 
   # Invoke touch on parent, to update timestamp for fragment caching
@@ -12,6 +15,10 @@ class Page < ActiveRecord::Base
   #before_save :invoke_touch
   #before_destroy :invoke_touch
   
+  # Associations
+  belongs_to :page
+
+  # Validation  
   validates :title, presence: true
 
   def invoke_touch

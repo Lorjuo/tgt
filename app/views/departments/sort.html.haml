@@ -1,0 +1,12 @@
+%div.page-header
+  - if can? :create, Page
+    = link_to new_page_path, :class => 'btn btn-primary' do
+      %span.glyphicon.glyphicon-plus
+      New Page
+  = link_to pages_path, :class => 'btn btn-primary' do
+    %span.glyphicon.glyphicon-th-list
+    Index
+  %h1 Manage Pages
+
+%ol.sortable_tree{ data: { max_levels: 5, rebuild_url: rebuild_pages_url } }
+  = sortable_tree @pages

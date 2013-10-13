@@ -10,7 +10,7 @@
     <%= f.association :roles, :as => :check_boxes %>
     <%= f.association :departments,
       :as => :select,
-      :collection => Department.all(:order => 'name'),
+      :collection => Department.specific.load(:order => 'name'),
       :label_method => :name,
       :value_method => :id,
       :include_blank => false,

@@ -20,4 +20,14 @@
   <dd><%= mail_to @user.email, encode: "hex", :class => "email" do %>
     <span class="glyphicon glyphicon-envelope"></span> Email
   <% end %></dd>
+
+  <dt>Roles:</dt>
+  <dd><% @user.roles.each do |role| %>
+    <div><%= role.name %></div>
+  <% end %></dd>
+
+  <dt>Departments:</dt>
+  <dd><% @user.departments.each do |department| %>
+    <div><%= link_to department.name, department %></div>
+  <% end %></dd>
 </dl>

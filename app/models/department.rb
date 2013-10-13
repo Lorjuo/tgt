@@ -5,7 +5,11 @@ class Department < ActiveRecord::Base
   has_many :training_groups
   has_many :messages
   has_and_belongs_to_many :users#, through: :department_editor
+  has_many :pages
 
   # Validations
   validates :name, :presence => true
+
+  # Scopes
+  scope :specific, -> { where.not(name: 'generic') }
 end

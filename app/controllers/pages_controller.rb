@@ -66,6 +66,8 @@ class PagesController < ApplicationController
   end
 
   def sort
+    #@pages = Page.department(1).nested_set.select('id, title, parent_id').load
+    #@pages = Page.top_level.nested_set.select('id, title, parent_id').load
     @pages = Page.nested_set.select('id, title, parent_id').load
   end
 

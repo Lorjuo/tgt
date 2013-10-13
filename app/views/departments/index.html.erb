@@ -11,12 +11,8 @@
     <tr>
       <th>Name</th>
       <th></th>
-      <% if can? :update, Department %>
       <th></th>
-      <% end %>
-      <% if can? :destroy, Department %>
       <th></th>
-      <% end %>
     </tr>
   </thead>
 
@@ -25,16 +21,11 @@
     <tr>
       <td><%= department.name %></td>
       <td><%= link_to 'Show', department %></td>
-      <% if can? :update, department %>
-      <td><%= link_to 'Edit', edit_department_path(department) %></td>
-      <% end %>
-      <% if can? :destroy, department %>
-      <td>
-        <%= link_to department, method: :delete, data: { confirm: 'Are you sure?' } do %>
-          <span class="glyphicon glyphicon-trash"></span> Destroy
-        <% end %>
-      </td>
-      <% end %>
+      <%  %>
+      <td><%= link_to 'Edit', edit_department_path(department) if can? :update, department %></td>
+      <td><%= link_to department, method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <span class="glyphicon glyphicon-trash"></span> Destroy
+      <% end if can? :destroy, department %></td>
     </tr>
 <% end %>
   </tbody>
