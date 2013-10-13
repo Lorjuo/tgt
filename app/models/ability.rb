@@ -13,7 +13,7 @@ class Ability
       can :training_groups, :department
 
       can :rebuild, Page
-      can [:create, :read, :update, :sort], Department do |department|
+      can [:create, :read, :update, :sort_pages], Department do |department|
         user.departments.include? department
       end
     end

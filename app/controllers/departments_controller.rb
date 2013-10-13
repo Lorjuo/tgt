@@ -82,7 +82,7 @@ class DepartmentsController < ApplicationController
   #   end
   # end
   
-  def sort
+  def sort_pages
     @pages = @department.pages.nested_set.select('id, title, parent_id').load
   end
 

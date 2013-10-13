@@ -4,7 +4,7 @@ TgtRefurbished::Application.routes.draw do
 
   resources :departments do
     member do
-      get :sort
+      get :sort_pages
 
       # required for Sortable GUI server side actions
       post :rebuild
