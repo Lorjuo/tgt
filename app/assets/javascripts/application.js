@@ -20,6 +20,11 @@
 // require bootstrap/scrollspy
 //= require bootstrap/modal
 // require bootstrap/dropdown
+// 
+//# Input Elements
+//# Chosen
+//= require chosen-jquery
+//= require chosen_loader
 //
 //# Sortable Tree
 //= require jquery.ui.nestedSortable

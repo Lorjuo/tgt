@@ -1,0 +1,23 @@
+<div class="page-header">
+  <%= link_to users_path, :class => 'btn' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <% if can? :update, @user %>
+    <%= link_to edit_user_path(@user), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+      Edit
+    <% end %>
+  <% end %>
+  <h1>Show user</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Name:</dt>
+  <dd><%= @user.name %></dd>
+
+  <dt>Email:</dt>
+  <dd><%= mail_to @user.email, encode: "hex", :class => "email" do %>
+    <span class="glyphicon glyphicon-envelope"></span> Email
+  <% end %></dd>
+</dl>

@@ -27,6 +27,11 @@ module TgtRefurbished
       g.template_engine :erb 
     end
 
+
+    # Pagination
+    # set per_page globally
+    WillPaginate.per_page = 10
+
     # Only for debugging
     #config.action_controller.permit_all_parameters = true
   end

@@ -45,6 +45,9 @@ gem 'mysql2'
   gem 'faker'
   gem 'populator'
 
+# Debugger
+gem 'debugger'
+
 # Error Handling
 gem 'better_errors'
 gem 'binding_of_caller'
@@ -55,8 +58,22 @@ gem 'simple_form'
 # HTML Abstraction
 gem "haml-rails"
 
+# Input Elements
+  # Datepicker
+  gem 'bootstrap-datepicker-rails'
+  # Token Inputs
+  gem 'chosen-rails'
+  # gem 'chosen-sass-bootstrap-rails'
+
 # JQuery
 gem 'jquery-ui-rails'
+
+# Mail Helpers
+gem 'actionview-encoded_mail_to'
+
+# Pagination
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 # Placeholder
 gem 'holder_rails'

@@ -1,0 +1,31 @@
+<div class="page-header">
+  <%= link_to training_groups_path, :class => 'btn' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <% if can? :update, @training_group %>
+    <%= link_to edit_training_group_path(@training_group), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+      Edit
+    <% end %>
+  <% end %>
+  <h1>Show training_group</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Name:</dt>
+  <dd><%= @training_group.name %></dd>
+
+  <dt>Description:</dt>
+  <dd><%= @training_group.description %></dd>
+
+  <dt>Department:</dt>
+  <dd><%= @training_group.department_id %></dd>
+
+  <dt>Age begin:</dt>
+  <dd><%= @training_group.age_begin %></dd>
+
+  <dt>Age end:</dt>
+  <dd><%= @training_group.age_end %></dd>
+
+</dl>

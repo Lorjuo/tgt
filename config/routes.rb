@@ -1,5 +1,9 @@
 TgtRefurbished::Application.routes.draw do
 
+  resources :training_groups
+
+  resources :departments
+
   devise_for :users
   # Set scope admin to differentiate between devise and custom user administration
   scope "/admin" do

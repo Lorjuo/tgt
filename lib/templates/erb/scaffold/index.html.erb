@@ -34,7 +34,7 @@
       <%% end %>
       <%% if can? :destroy, <%= singular_table_name %> %>
       <td>
-        <%%= link_to 'Destroy', <%= singular_table_name %>, method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <%%= link_to <%= singular_table_name %>, method: :delete, data: { confirm: 'Are you sure?' } do %>
           <span class="glyphicon glyphicon-trash"></span> Destroy
         <%% end %>
       </td>
