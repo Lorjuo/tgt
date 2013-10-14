@@ -55,6 +55,7 @@ gem 'binding_of_caller'
 
 # Forms
 gem 'simple_form'
+gem 'nested_form'
 
 # HTML Abstraction
 gem "haml-rails"
@@ -90,6 +91,9 @@ gem 'rolify'
 # Tree Structures
 gem 'awesome_nested_set', github: 'huoxito/awesome_nested_set', branch: 'rails4'
 gem 'the_sortable_tree'#, '~> 2.3.0'
+
+# Url
+gem 'friendly_id', '5.0.0.rc2' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

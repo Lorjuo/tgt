@@ -1,4 +1,6 @@
 class Department < ActiveRecord::Base
+  extend FriendlyId
+  
   #attr_accessible :area_id, :name, :training_group_ids
 
   # Associations
@@ -12,4 +14,6 @@ class Department < ActiveRecord::Base
 
   # Scopes
   scope :specific, -> { where.not(name: 'generic') }
+
+  friendly_id :name, use: :slugged
 end

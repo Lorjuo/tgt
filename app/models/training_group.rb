@@ -6,7 +6,7 @@ class TrainingGroup < ActiveRecord::Base
   # Associations
   belongs_to :department
   has_and_belongs_to_many :trainers
-  #has_many :training_units
+  has_many :training_units
 
   #accepts_nested_attributes_for :training_units, allow_destroy: true
 

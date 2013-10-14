@@ -1,5 +1,5 @@
 <div class="page-header">
-  <%= link_to new_training_group_path, :class => 'btn btn-primary' do %>
+  <%= link_to new_department_training_group_path(@department), :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
     New Training group
   <% end if can? :create, TrainingGroup %>

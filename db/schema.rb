@@ -11,14 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131013115217) do
+ActiveRecord::Schema.define(version: 20131014183551) do
 
   create_table "departments", force: true do |t|
     t.string   "name"
     t.string   "training_group_ids"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
+
+  add_index "departments", ["slug"], name: "index_departments_on_slug", unique: true, using: :btree
 
   create_table "departments_users", id: false, force: true do |t|
     t.integer  "department_id"
@@ -26,6 +29,19 @@ ActiveRecord::Schema.define(version: 20131013115217) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "friendly_id_slugs", force: true do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "pages", force: true do |t|
     t.string   "title"
@@ -49,12 +65,42 @@ ActiveRecord::Schema.define(version: 20131013115217) do
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
 
+  create_table "trainers", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.date     "birthday"
+    t.string   "residence"
+    t.string   "phone"
+    t.string   "email"
+    t.text     "profession"
+    t.text     "education"
+    t.text     "disciplines"
+    t.text     "activities"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "trainers_training_groups", id: false, force: true do |t|
+    t.integer "trainer_id"
+    t.integer "training_group_id"
+  end
+
   create_table "training_groups", force: true do |t|
     t.string   "name"
     t.text     "description"
     t.integer  "department_id"
     t.integer  "age_begin"
     t.integer  "age_end"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "training_units", force: true do |t|
+    t.integer  "weekday"
+    t.time     "time_begin"
+    t.time     "time_end"
+    t.integer  "location_summer_id"
+    t.string   "location_winter_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

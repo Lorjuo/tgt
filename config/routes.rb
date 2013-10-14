@@ -1,14 +1,21 @@
 TgtRefurbished::Application.routes.draw do
 
+  resources :trainers
+
+  resources :training_units
+
   resources :training_groups
 
-  resources :departments do
+  resources :departments, :only =>:index
+  resources :departments, :shallow => true, :path => "", :except =>:index do
+  #resources :departments, :shallow => true do
     member do
+      get :training_groups
       get :sort_pages
-
       # required for Sortable GUI server side actions
       post :rebuild
     end
+    resources :training_groups#, :only => [:new, :create]
   end
 
   devise_for :users

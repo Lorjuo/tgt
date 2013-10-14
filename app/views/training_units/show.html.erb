@@ -1,0 +1,31 @@
+<div class="page-header">
+  <%= link_to training_units_path, :class => 'btn' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <% if can? :update, @training_unit %>
+    <%= link_to edit_training_unit_path(@training_unit), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+      Edit
+    <% end %>
+  <% end %>
+  <h1>Show training_unit</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Weekday:</dt>
+  <dd><%= @training_unit.weekday %></dd>
+
+  <dt>Time begin:</dt>
+  <dd><%= @training_unit.time_begin %></dd>
+
+  <dt>Time end:</dt>
+  <dd><%= @training_unit.time_end %></dd>
+
+  <dt>Location summer:</dt>
+  <dd><%= @training_unit.location_summer_id %></dd>
+
+  <dt>Location winter:</dt>
+  <dd><%= @training_unit.location_winter_id %></dd>
+
+</dl>

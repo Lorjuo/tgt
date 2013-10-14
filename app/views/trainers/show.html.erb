@@ -1,0 +1,46 @@
+<div class="page-header">
+  <%= link_to trainers_path, :class => 'btn' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <% if can? :update, @trainer %>
+    <%= link_to edit_trainer_path(@trainer), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+      Edit
+    <% end %>
+  <% end %>
+  <h1>Show trainer</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>First name:</dt>
+  <dd><%= @trainer.first_name %></dd>
+
+  <dt>Last name:</dt>
+  <dd><%= @trainer.last_name %></dd>
+
+  <dt>Birthday:</dt>
+  <dd><%= @trainer.birthday %></dd>
+
+  <dt>Residence:</dt>
+  <dd><%= @trainer.residence %></dd>
+
+  <dt>Phone:</dt>
+  <dd><%= @trainer.phone %></dd>
+
+  <dt>Email:</dt>
+  <dd><%= @trainer.email %></dd>
+
+  <dt>Profession:</dt>
+  <dd><%= @trainer.profession %></dd>
+
+  <dt>Education:</dt>
+  <dd><%= @trainer.education %></dd>
+
+  <dt>Disciplines:</dt>
+  <dd><%= @trainer.disciplines %></dd>
+
+  <dt>Activities:</dt>
+  <dd><%= @trainer.activities %></dd>
+
+</dl>

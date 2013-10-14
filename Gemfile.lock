@@ -88,6 +88,8 @@ GEM
       railties (>= 3.0.0)
     faker (1.2.0)
       i18n (~> 0.5)
+    friendly_id (5.0.0.rc2)
+      activerecord (~> 4.0.0)
     haml (4.0.3)
       tilt
     haml-rails (0.4)
@@ -118,6 +120,7 @@ GEM
     minitest (4.7.5)
     multi_json (1.8.1)
     mysql2 (0.3.13)
+    nested_form (0.3.2)
     orm_adapter (0.4.0)
     polyglot (0.3.3)
     populator (1.0.0)
@@ -203,6 +206,7 @@ DEPENDENCIES
   devise
   factory_girl_rails
   faker
+  friendly_id (= 5.0.0.rc2)
   haml-rails
   holder_rails
   jbuilder (~> 1.2)
@@ -210,6 +214,7 @@ DEPENDENCIES
   jquery-turbolinks
   jquery-ui-rails
   mysql2
+  nested_form
   populator
   quiet_assets
   rack-mini-profiler

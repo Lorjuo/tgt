@@ -1,0 +1,59 @@
+<div class="page-header">
+  <%= link_to new_trainer_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Trainer
+  <% end if can? :create, Trainer %>
+  <h1>Listing trainers</h1>
+</div>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Birthday</th>
+      <th>Residence</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Profession</th>
+      <th>Education</th>
+      <th>Disciplines</th>
+      <th>Activities</th>
+      <th></th>
+      <% if can? :update, Trainer %>
+      <th></th>
+      <% end %>
+      <% if can? :destroy, Trainer %>
+      <th></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+<% @trainers.each do |trainer| %>
+    <tr>
+      <td><%= trainer.first_name %></td>
+      <td><%= trainer.last_name %></td>
+      <td><%= trainer.birthday %></td>
+      <td><%= trainer.residence %></td>
+      <td><%= trainer.phone %></td>
+      <td><%= trainer.email %></td>
+      <td><%= trainer.profession %></td>
+      <td><%= trainer.education %></td>
+      <td><%= trainer.disciplines %></td>
+      <td><%= trainer.activities %></td>
+      <td><%= link_to 'Show', trainer %></td>
+      <% if can? :update, trainer %>
+      <td><%= link_to 'Edit', edit_trainer_path(trainer) %></td>
+      <% end %>
+      <% if can? :destroy, trainer %>
+      <td>
+        <%= link_to trainer, method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <span class="glyphicon glyphicon-trash"></span> Destroy
+        <% end %>
+      </td>
+      <% end %>
+    </tr>
+<% end %>
+  </tbody>
+</table>

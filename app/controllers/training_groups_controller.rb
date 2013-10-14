@@ -1,5 +1,10 @@
 class TrainingGroupsController < ApplicationController
   before_action :set_training_group, only: [:show, :edit, :update, :destroy]
+  before_action :load_nested_resources, :only => [:new, :create]
+
+  def load_nested_resources
+    @department = Department.find(params[:department_id])
+  end
 
   # GET /training_groups
   # GET /training_groups.json
@@ -14,7 +19,7 @@ class TrainingGroupsController < ApplicationController
 
   # GET /training_groups/new
   def new
-    @training_group = TrainingGroup.new
+    @training_group = @department.training_groups.new
   end
 
   # GET /training_groups/1/edit
@@ -24,7 +29,7 @@ class TrainingGroupsController < ApplicationController
   # POST /training_groups
   # POST /training_groups.json
   def create
-    @training_group = TrainingGroup.new(training_group_params)
+    @training_group = @department.training_groups.new(training_group_params)
 
     respond_to do |format|
       if @training_group.save

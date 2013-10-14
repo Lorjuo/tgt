@@ -1,10 +1,9 @@
 class DepartmentsController < ApplicationController
   include TheSortableTreeController::Rebuild
   
-  #before_action :set_department, only: [:show, :edit, :update, :destroy, :training_groups]
-  before_action :set_department, only: [:show, :edit, :update, :destroy, :sort]
+  before_action :set_department, only: [:show, :edit, :update, :destroy, :sort, :training_groups]
 
-  load_and_authorize_resource
+  load_and_authorize_resource :find_by => :slug
 
   # GET /departments
   # GET /departments.json
@@ -69,18 +68,19 @@ class DepartmentsController < ApplicationController
 
   # Nested Actions:
 
-  # def training_groups
-  #   @department = Department.find(params[:id])
-  #   @training_groups = @department.training_groups.associations
-  #   Rack::MiniProfiler.step("fetch training_groups") do
-  #     @training_groups.all
-  #   end
+  def training_groups
+    @training_groups = @department.training_groups
 
-  #   respond_to do |format|
-  #     format.html { render :template => "training_groups/index" }
-  #     format.json { render json: @training_groups }
-  #   end
-  # end
+    # These lines are just for time measuring -> otherwise the associations will be loaded in views
+    Rack::MiniProfiler.step("fetch training_groups") do
+      @training_groups.to_a
+    end
+
+    respond_to do |format|
+      format.html { render :template => "training_groups/index" }
+      format.json { render json: @training_groups }
+    end
+  end
   
   def sort_pages
     @pages = @department.pages.nested_set.select('id, title, parent_id').load
@@ -89,7 +89,7 @@ class DepartmentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_department
-      @department = Department.find(params[:id])
+      @department = Department.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
