@@ -106,7 +106,7 @@ gem 'the_sortable_tree'#, '~> 2.3.0'
 gem 'friendly_id', '5.0.0.rc2' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 
 # WYSIWYG
-gem 'ckeditor'#, github: 'galetahub/ckeditor'
+gem 'ckeditor', github: 'galetahub/ckeditor'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
