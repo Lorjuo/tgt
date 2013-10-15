@@ -2,16 +2,16 @@
 
   <div class="form-inputs">
     <%= f.input :name %>
-    <%= f.association :department,
+    <%# f.association :department,
       :as => :select,
-      :collection => Department.all(:order => 'name'),
+      :collection => Department.order(:name => :asc),
       :label_method => :name,
       :value_method => :id,
       :include_blank => false,
       :input_html => { :class => "chosen input-xlarge"} %>
     <%= f.association :trainers,
       :as => :select,
-      :collection => Trainer.all(:order => 'first_name ASC, last_name ASC'),
+      :collection => Trainer.order(:first_name => :asc).order(:last_name => :asc),
       :label_method => :name,
       :value_method => :id,
       :include_blank => false,

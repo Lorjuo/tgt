@@ -1,5 +1,7 @@
 TgtRefurbished::Application.routes.draw do
 
+  resources :locations
+
   resources :trainers
 
   resources :training_units

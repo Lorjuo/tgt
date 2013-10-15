@@ -21,6 +21,10 @@ class Ability
       can [:create, :read, :update, :destroy], TrainingGroup do |training_group|
         user.departments.include? training_group.department
       end
+
+      can [:create, :read, :update, :destroy], TrainingUnit do |training_unit|
+        user.departments.include? training_unit.training_group.department
+      end
     end
     #
     # The first argument to `can` is the action you are giving the user 

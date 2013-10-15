@@ -26,6 +26,7 @@
 //# Chosen
 //= require chosen-jquery
 //= require chosen_loader
+//= require jquery_nested_form
 //
 //# Sortable Tree
 //= require jquery.ui.nestedSortable

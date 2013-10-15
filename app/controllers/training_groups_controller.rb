@@ -2,8 +2,13 @@ class TrainingGroupsController < ApplicationController
   before_action :set_training_group, only: [:show, :edit, :update, :destroy]
   before_action :load_nested_resources, :only => [:new, :create]
 
+  #load_and_authorize_resource
+  #load_and_authorize_resource :training_group
+  #load_and_authorize_resource :training_unit, :through => :training_group, :shallow => true
+  load_and_authorize_resource :training_group, :through => :department, :shallow => true
+
   def load_nested_resources
-    @department = Department.find(params[:department_id])
+    @department = Department.friendly.find(params[:department_id])
   end
 
   # GET /training_groups
