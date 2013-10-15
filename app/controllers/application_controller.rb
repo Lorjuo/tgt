@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
     # https://github.com/ssendev/ckeditor/commit/5e1d83346e7f94a1cbe1f06cadb660a1a0ef042f
     # Solved meanwhile
     # NOTE: can probably be removed in next release: >4.0.6
-    elsif params[:controller] == 'ckeditor/pictures'
+    elsif params[:controller] == 'ckeditor/pictures' || params[:controller] == 'ckeditor/attachment_files'
       return false
     end
 

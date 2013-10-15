@@ -22,10 +22,8 @@
 
   <dt>Training Groups:</dt>
   <dd>
-    <%
-=begin @department.training_groups.each do |training_group| %>
+    <% @department.training_groups.each do |training_group| %>
       <div><%= link_to training_group.name, training_group_path(training_group) %></div>
-    <% end
-=end %>
+    <% end  %>
   </dd>
 </dl>

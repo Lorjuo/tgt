@@ -16,11 +16,15 @@
   <dt>Name:</dt>
   <dd><%= @training_group.name %></dd>
 
-  <dt>Description:</dt>
-  <dd><%= @training_group.description %></dd>
-
   <dt>Department:</dt>
-  <dd><%= @training_group.department_id %></dd>
+  <dd><%= link_to @training_group.department.name, @training_group.department %></dd>
+
+  <dt>Description:</dt>
+  <dd>
+    <%= raw @training_group.description %>
+    <%# truncate_html(training_group.description, length: 100, omission: '...') %>
+    <%# truncate(strip_tags(training_group.description), length: 100, omission: '...') %>
+  </dd>
 
   <dt>Age begin:</dt>
   <dd><%= @training_group.age_begin %></dd>
