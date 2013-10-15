@@ -1,6 +1,8 @@
 class TrainersController < ApplicationController
   before_action :set_trainer, only: [:show, :edit, :update, :destroy]
 
+  load_and_authorize_resource :find_by => :slug
+
   # GET /trainers
   # GET /trainers.json
   def index
@@ -64,7 +66,7 @@ class TrainersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_trainer
-      @trainer = Trainer.find(params[:id])
+      @trainer = Trainer.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

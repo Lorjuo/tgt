@@ -27,6 +27,9 @@
 //= require chosen-jquery
 //= require chosen_loader
 //
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.de
+//
 //# Nested Forms
 // require jquery_nested_form
 //= require cocoon

@@ -21,6 +21,9 @@ TgtRefurbished::Application.routes.draw do
     resources :training_groups#, :only => [:new, :create]
   end
 
+  resources :trainers, :only =>:index
+  resources :trainers, :shallow => true, :path => "", :except =>:index
+
   devise_for :users
   # Set scope admin to differentiate between devise and custom user administration
   scope "/admin" do

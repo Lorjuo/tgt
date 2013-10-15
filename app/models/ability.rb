@@ -26,6 +26,8 @@ class Ability
         user.departments.include? training_unit.training_group.department
       end
 
+      can [:create, :read, :update, :destroy], Trainer
+
       # Always performed
       can :access, :ckeditor   # needed to access Ckeditor filebrowser
 

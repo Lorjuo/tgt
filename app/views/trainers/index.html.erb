@@ -15,10 +15,10 @@
       <th>Residence</th>
       <th>Phone</th>
       <th>Email</th>
-      <th>Profession</th>
+      <!-- <th>Profession</th>
       <th>Education</th>
       <th>Disciplines</th>
-      <th>Activities</th>
+      <th>Activities</th> -->
       <th></th>
       <% if can? :update, Trainer %>
       <th></th>
@@ -38,10 +38,10 @@
       <td><%= trainer.residence %></td>
       <td><%= trainer.phone %></td>
       <td><%= trainer.email %></td>
-      <td><%= trainer.profession %></td>
+      <!-- <td><%= trainer.profession %></td>
       <td><%= trainer.education %></td>
       <td><%= trainer.disciplines %></td>
-      <td><%= trainer.activities %></td>
+      <td><%= trainer.activities %></td> -->
       <td><%= link_to 'Show', trainer %></td>
       <% if can? :update, trainer %>
       <td><%= link_to 'Edit', edit_trainer_path(trainer) %></td>

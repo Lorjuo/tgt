@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131015115228) do
+ActiveRecord::Schema.define(version: 20131015152057) do
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -100,7 +100,10 @@ ActiveRecord::Schema.define(version: 20131015115228) do
     t.text     "activities"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
+
+  add_index "trainers", ["slug"], name: "index_trainers_on_slug", unique: true, using: :btree
 
   create_table "trainers_training_groups", id: false, force: true do |t|
     t.integer "trainer_id"

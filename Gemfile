@@ -105,6 +105,9 @@ gem 'the_sortable_tree'#, '~> 2.3.0'
 # Url
 gem 'friendly_id', '5.0.0.rc2' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 
+# Validators
+gem 'valid_email'
+
 # WYSIWYG
 gem 'ckeditor', github: 'galetahub/ckeditor'
 
