@@ -38,7 +38,7 @@
       <% end %>
       <% if can? :destroy, training_group %>
       <td>
-        <%= link_to 'Destroy', training_group, method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <%= link_to training_group, method: :delete, data: { confirm: 'Are you sure?' } do %>
           <span class="glyphicon glyphicon-trash"></span> Destroy
         <% end %>
       </td>

@@ -79,6 +79,8 @@ class TrainingGroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def training_group_params
-      params.require(:training_group).permit(:name, :description, :department_id, :age_begin, :age_end)
+      params.require(:training_group).permit(:name, :description, :department_id, :age_begin, :age_end, :ancient, :trainer_ids => [],
+        :training_units_attributes => [:weekday, :time_begin, :time_end, :location_summer_id, :location_winter_id, :training_group_id])
+      # http://stackoverflow.com/questions/18436741/rails-4-strong-parameters-nested-objects#answer-18437539
     end
 end
