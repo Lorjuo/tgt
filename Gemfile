@@ -53,6 +53,9 @@ gem 'debugger'
 gem 'better_errors'
 gem 'binding_of_caller'
 
+# File Upload
+gem 'carrierwave'
+
 # Forms
 gem 'simple_form'
 # gem 'nested_form'
@@ -61,11 +64,17 @@ gem 'cocoon'
 # HTML Abstraction
 gem "haml-rails"
 
+# Image Processing
+gem 'mini_magick'
+
 # Input Elements
   # Datepicker
   gem 'bootstrap-datepicker-rails'
   # Token Inputs
   gem 'chosen-rails'
+  # For Rails 4 project, it is required to add compass-rails gem explicitly.
+  gem 'compass-rails', github: 'Compass/compass-rails'
+
   # gem 'chosen-sass-bootstrap-rails'
 
 # JQuery
@@ -95,6 +104,9 @@ gem 'the_sortable_tree'#, '~> 2.3.0'
 
 # Url
 gem 'friendly_id', '5.0.0.rc2' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
+
+# WYSIWYG
+gem 'ckeditor'#, github: 'galetahub/ckeditor'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

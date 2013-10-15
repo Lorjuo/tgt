@@ -25,6 +25,13 @@ class Ability
       can [:create, :read, :update, :destroy], TrainingUnit do |training_unit|
         user.departments.include? training_unit.training_group.department
       end
+
+      # Always performed
+      can :access, :ckeditor   # needed to access Ckeditor filebrowser
+
+      # Performed checks for actions:
+      can [:read, :create, :destroy], Ckeditor::Picture
+      can [:read, :create, :destroy], Ckeditor::AttachmentFile
     end
     #
     # The first argument to `can` is the action you are giving the user 

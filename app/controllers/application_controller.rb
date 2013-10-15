@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  check_authorization :unless => :devise_controller?
+  check_authorization :if => :custom_check_authorization?
 
   before_filter :_miniprofiler, :_cancan_sanitizer
 
@@ -39,5 +39,21 @@ class ApplicationController < ActionController::Base
     resource = controller_name.singularize.to_sym
     method = "#{resource}_params"
     params[resource] &&= send(method) if respond_to?(method, true)
+  end
+
+  private
+
+  def custom_check_authorization?
+    if devise_controller?
+      return false
+    # Fix for ckeditor to work with cancan
+    # https://github.com/ssendev/ckeditor/commit/5e1d83346e7f94a1cbe1f06cadb660a1a0ef042f
+    # Solved meanwhile
+    # NOTE: can probably be removed in next release: >4.0.6
+    elsif params[:controller] == 'ckeditor/pictures'
+      return false
+    end
+
+    return true
   end
 end

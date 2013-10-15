@@ -1,5 +1,5 @@
 class TrainingUnit < ActiveRecord::Base
-  scope :associations, includes(:training_group, :weekday, :location_summer, :location_winter)
+  scope :associations, -> {includes(:training_group, :weekday, :location_summer, :location_winter)}
 
   # Associations
   belongs_to :training_group
