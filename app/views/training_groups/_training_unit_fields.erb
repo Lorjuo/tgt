@@ -1,6 +1,6 @@
 <fieldset class="nested-fields">
   <legend>Training Unit</legend>
-  <%= f.input :weekday, collection: Date::DAYNAMES.zip((0..6).to_a) %>
+  <%= f.input :week_day, collection: Date::DAYNAMES.zip((0..6).to_a) %>
   <%= f.input :time_begin, :input_html => { :class => "input-small"} %>
   <%= f.input :time_end, :input_html => { :class => "input-small"} %>
   <%= f.association :location_summer, :input_html => { :class => "input-xlarge"} %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131015003945) do
+ActiveRecord::Schema.define(version: 20131015082725) do
 
   create_table "departments", force: true do |t|
     t.string   "name"
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 20131015003945) do
   end
 
   create_table "training_units", force: true do |t|
-    t.integer  "weekday"
+    t.integer  "week_day"
     t.time     "time_begin"
     t.time     "time_end"
     t.integer  "location_summer_id"
