@@ -1,21 +1,21 @@
 class TrainingGroupsController < ApplicationController
   before_action :set_training_group, only: [:show, :edit, :update, :destroy]
-  before_action :load_nested_resources, :only => [:new, :create]
+  before_action :load_parent_resource, :only => [:new, :create]
 
   #load_and_authorize_resource
   #load_and_authorize_resource :training_group
   #load_and_authorize_resource :training_unit, :through => :training_group, :shallow => true
   load_and_authorize_resource :training_group, :through => :department, :shallow => true
 
-  def load_nested_resources
+  def load_parent_resource
     @department = Department.friendly.find(params[:department_id])
   end
 
   # GET /training_groups
   # GET /training_groups.json
-  def index
-    @training_groups = TrainingGroup.all
-  end
+  # def index
+  #   @training_groups = TrainingGroup.all
+  # end
 
   # GET /training_groups/1
   # GET /training_groups/1.json
@@ -80,7 +80,7 @@ class TrainingGroupsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def training_group_params
       params.require(:training_group).permit(:name, :description, :department_id, :age_begin, :age_end, :ancient, :trainer_ids => [],
-        :training_units_attributes => [:week_day, :time_begin, :time_end, :location_summer_id, :location_winter_id, :training_group_id, :_destroy])
+        :training_units_attributes => [:id, :week_day, :time_begin, :time_end, :location_summer_id, :location_winter_id, :training_group_id, :_destroy])
       # http://stackoverflow.com/questions/18436741/rails-4-strong-parameters-nested-objects#answer-18437539
       # https://github.com/nathanvda/cocoon
     end

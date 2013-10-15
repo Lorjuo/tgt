@@ -69,6 +69,6 @@ class TrainingUnitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def training_unit_params
-      params.require(:training_unit).permit(:weekday, :time_begin, :time_end, :location_summer_id, :location_winter_id)
+      params.require(:training_unit).permit(:week_day, :time_begin, :time_end, :location_summer_id, :location_winter_id)
     end
 end
