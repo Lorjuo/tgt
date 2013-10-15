@@ -1,4 +1,4 @@
-<%= simple_nested_form_for([@department, @training_group], :defaults => { :input_html => { :class => 'input-xlarge' } }) do |f| %>
+<%= simple_form_for([@department, @training_group], :defaults => { :input_html => { :class => 'input-xlarge' } }) do |f| %>
 
   <div class="form-inputs">
     <%= f.input :name %>
@@ -22,10 +22,11 @@
     <%= f.input :ancient %>
   </div>
 
-  <%= f.fields_for :training_units do |unit_form| %>
+  <%= f.simple_fields_for :training_units do |unit_form| %>
     <%= render 'training_unit_fields', f:unit_form %>
   <% end %>
-  <p><%= f.link_to_add "Add a TrainingUnit", :training_units %></p>
+  <p><%# f.link_to_add "Add a TrainingUnit", :training_units %></p>
+  <p><%= link_to_add_association "Add a TrainingUnit", f, :training_units %></p>
 
   <div class="form-actions">
     <%= f.button :submit, :class => "btn-primary" %>

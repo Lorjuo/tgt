@@ -8,7 +8,7 @@ class TrainingGroup < ActiveRecord::Base
   has_and_belongs_to_many :trainers
   has_many :training_units
 
-  accepts_nested_attributes_for :training_units, allow_destroy: true
+  accepts_nested_attributes_for :training_units, :reject_if => :all_blank, allow_destroy: true
 
   # Validation
   validates :name, :presence => true

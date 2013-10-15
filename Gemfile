@@ -55,7 +55,8 @@ gem 'binding_of_caller'
 
 # Forms
 gem 'simple_form'
-gem 'nested_form'
+# gem 'nested_form'
+gem 'cocoon'
 
 # HTML Abstraction
 gem "haml-rails"

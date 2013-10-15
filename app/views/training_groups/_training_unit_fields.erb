@@ -1,12 +1,12 @@
-<fieldset>
+<fieldset class="nested-fields">
   <legend>Training Unit</legend>
-  <%# f.association :weekday, :input_html => { :class => "input-xlarge"} %>
-  <%= f.select :weekday, Date::DAYNAMES.zip((0..6).to_a) %>
+  <%= f.input :weekday, collection: Date::DAYNAMES.zip((0..6).to_a) %>
   <%= f.input :time_begin, :input_html => { :class => "input-small"} %>
   <%= f.input :time_end, :input_html => { :class => "input-small"} %>
   <%= f.association :location_summer, :input_html => { :class => "input-xlarge"} %>
   <%= f.association :location_winter, :input_html => { :class => "input-xlarge"} %>
 
   <%= f.hidden_field :_destroy %>
-  <%= f.link_to_remove "Remove this TrainingUnit" %>
+  <%# f.link_to_remove "Remove this TrainingUnit" %>
+  <%= link_to_remove_association "Remove this TrainingUnit", f %>
 </fieldset>
