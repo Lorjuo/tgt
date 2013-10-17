@@ -2,7 +2,7 @@ class ImagesController < ApplicationController
   load_and_authorize_resource
 
   before_action :set_image, only: [:show, :edit, :update, :destroy]
-  before_action :load_parent, :only => [:index, :new, :create]
+  before_action :load_parent, :only => [:new, :create]
 
   # GET /images
   # GET /images.json
@@ -71,7 +71,15 @@ class ImagesController < ApplicationController
   # DELETE /images/1
   # DELETE /images/1.json
   def destroy
+    @image = Image.find(params[:id])
+    store_dir = @image.file.store_dir
     @image.destroy
+
+    # Remove folder
+    FileUtils.remove_dir("#{Rails.root}/public/#{store_dir}", :force => true)
+    # Use this to remove a non empty folder
+    # FileUtils.rm_rf("#{Rails.root}/public/#{store_dir}")
+
     respond_to do |format|
       format.html { redirect_to images_url }
       format.json { head :no_content }

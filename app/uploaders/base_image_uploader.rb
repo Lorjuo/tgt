@@ -7,7 +7,7 @@ class BaseImageUploader < BaseUploader
   
   process quality: 90
 
-  process resize_to_fit: [600, 600]
+  process resize_to_fit: [800, 600]
 
   process :set_content_type
 

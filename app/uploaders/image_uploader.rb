@@ -14,7 +14,8 @@ class ImageUploader < BaseImageUploader
   # resize_to_limit does not work. But commandline operation works
 
   version :thumb do
-    process resize_to_fit: [64, 64]
+    #process resize_to_fit: [64, 64]
+    process resize_to_fill: [64, 48]
   end
   version :small do
     process resize_to_fit: [100, 100]

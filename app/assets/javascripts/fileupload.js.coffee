@@ -17,6 +17,10 @@ jQuery ->
       # IframeTransport will be automatically used if normal way fails
       forceIframeTransport: false
 
+      # Only allow sequential file uploads to preserver original upload order
+      # https://github.com/blueimp/jQuery-File-Upload/issues/2249
+      sequentialUploads: true
+
       add: (e, data) ->
         types = /(\.|\/)(jpg|jpeg|gif|png)$/i
         file = data.files[0]

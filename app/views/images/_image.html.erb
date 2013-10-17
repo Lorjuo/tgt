@@ -11,7 +11,7 @@
           <% end %>
         <% end %>
         <% if can?(:destroy, Image) %>
-          <%= link_to image, :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-mini' do %>
+          <%= link_to image, data: { confirm: 'Are you sure?'}, :method => :delete, class: 'btn btn-mini' do %>
             <i class="icon-trash"></i>
             delete
           <% end %>
