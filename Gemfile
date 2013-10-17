@@ -111,6 +111,12 @@ gem 'valid_email'
 # WYSIWYG
 gem 'ckeditor', github: 'galetahub/ckeditor'
 
+group :test do
+  gem 'minitest-spec-rails'
+  gem 'minitest-rails-capybara'
+  #gem 'turn'
+end
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

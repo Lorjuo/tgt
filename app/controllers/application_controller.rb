@@ -25,10 +25,12 @@ class ApplicationController < ActionController::Base
   end
 
   def _miniprofiler
-    if APP_CONFIG['debug']['miniprofiler_enabled'] && user_signed_in? && current_user.has_role?('admin')
-      Rack::MiniProfiler.authorize_request
-    else
-      Rack::MiniProfiler.deauthorize_request
+    if %w(development staging).include?(Rails.env)
+      if APP_CONFIG['debug']['miniprofiler_enabled'] && user_signed_in? && current_user.has_role?('admin')
+        Rack::MiniProfiler.authorize_request
+      else
+        Rack::MiniProfiler.deauthorize_request
+      end
     end
   end
 

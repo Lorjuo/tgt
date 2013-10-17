@@ -37,5 +37,13 @@ module TgtRefurbished
 
     # Only for debugging
     #config.action_controller.permit_all_parameters = true
+    
+    #https://github.com/harleyttd/miniprofiler
+    Rack::MiniProfiler.config.authorization_mode = :whitelist if Rails.env.production?
+
+    config.generators do |g|
+      g.test_framework :mini_test, :spec => true, :fixture => false
+      g.fixture_replacement :factory_girl, :dir => "test/factories"
+    end
   end
 end

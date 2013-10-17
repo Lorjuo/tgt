@@ -72,8 +72,10 @@ class DepartmentsController < ApplicationController
     @training_groups = @department.training_groups
 
     # These lines are just for time measuring -> otherwise the associations will be loaded in views
-    Rack::MiniProfiler.step("fetch training_groups") do
-      @training_groups.to_a
+    if %w(development staging).include?(Rails.env)
+      Rack::MiniProfiler.step("fetch training_groups") do
+        @training_groups.to_a
+      end
     end
 
     respond_to do |format|
