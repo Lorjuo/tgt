@@ -34,6 +34,10 @@ class Ability
       # Performed checks for actions:
       can [:read, :create, :destroy], Ckeditor::Picture
       can [:read, :create, :destroy], Ckeditor::AttachmentFile
+
+      #TODO: Set abilities for images, documents and uploaders
+      can [:create, :read, :update, :destroy], Image
+      can [:create, :read, :update, :destroy], Document
     end
     #
     # The first argument to `can` is the action you are giving the user 

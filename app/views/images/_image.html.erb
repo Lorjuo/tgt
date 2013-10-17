@@ -1,0 +1,22 @@
+<li class="image span2">
+  <div class="thumbnail">
+    <%= link_to image_tag(image.file_url(:_260x180)), image if image.file._260x180.present? %>
+    <div class="caption">
+      <!-- <p><%= image.name %></p> -->
+      <div style="text-align: center;">
+        <% if can?(:edit, Image) %>
+          <%= link_to edit_image_path(image), class: 'btn btn-mini' do %>
+            <i class="icon-edit "></i>
+            edit
+          <% end %>
+        <% end %>
+        <% if can?(:destroy, Image) %>
+          <%= link_to image, :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-mini' do %>
+            <i class="icon-trash"></i>
+            delete
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</li>

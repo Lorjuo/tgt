@@ -1,0 +1,22 @@
+<div class="page-header">
+  <%= link_to documents_path, :class => 'btn' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <% if can? :update, @document %>
+    <%= link_to edit_document_path(@document), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+      Edit
+    <% end %>
+  <% end %>
+  <h1>Show document</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Name:</dt>
+  <dd><%= @document.name %></dd>
+
+  <dt>File:</dt>
+  <dd><%= @document.file %></dd>
+
+</dl>

@@ -1,5 +1,13 @@
 TgtRefurbished::Application.routes.draw do
 
+  resources :documents
+
+  resources :images
+
+  resources :galleries, :shallow => true do
+    resources :images
+  end
+
   mount Ckeditor::Engine => '/ckeditor'
   resources :locations
 

@@ -22,6 +22,11 @@
 //= require bootstrap/modal
 // require bootstrap/dropdown
 // 
+//# File Upload
+//= require fileupload
+//= require jquery-fileupload
+//# require jquery-fileupload/basic
+// 
 //# Input Elements
 //# Chosen
 //= require chosen-jquery

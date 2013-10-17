@@ -55,6 +55,7 @@ gem 'binding_of_caller'
 
 # File Upload
 gem 'carrierwave'
+gem 'jquery-fileupload-rails'
 
 # Forms
 gem 'simple_form'

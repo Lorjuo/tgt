@@ -1,0 +1,48 @@
+<div class="page-header">
+  <%= link_to galleries_path, :class => 'btn' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <% if can? :update, @gallery %>
+    <%= link_to edit_gallery_path(@gallery), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+      Edit
+    <% end %>
+  <% end %>
+  <h1>Show gallery</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Name:</dt>
+  <dd><%= @gallery.name %></dd>
+
+</dl>
+
+<ul id="images" class="thumbnails">
+  <%= render(:partial => 'images/image', :collection => @images, :as => 'image') %>
+</ul>
+<div class="clear"></div>
+
+<% if can?(:update, Image) %>
+  <%= simple_form_for [@gallery, @image], :html => { :class => "fileupload", :multipart => true } do |f| %>
+    <%# f.input_field :file, :as => :file, name: "image[file]",  :multiple => true, :class => "btn btn-file" %>
+
+    <div class="btn btn-mini fileinput-button">
+      <i class="icon-plus"></i>
+      <span>Add Files...</span>
+      <%= f.file_field :file, name: "image[file]", :multiple => true, :class => "btn btn-file fileinput-button" %>
+      <%# f.file_field :image, :multiple => true %>
+    </div>
+  </div>
+  <% end %>
+<% end %>
+
+<script id="template-upload" type="text/x-tmpl">
+<div class="upload">
+  {%=o.name%}
+  <div class="progress"><div class="bar" style="width: 0%"></div></div>
+</div>
+</script>
+<script id="template-download" type="text/x-tmpl">
+  // template content
+</script>

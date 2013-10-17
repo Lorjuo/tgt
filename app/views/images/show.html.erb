@@ -1,0 +1,24 @@
+<div class="page-header">
+  <%= link_to polymorphic_path([@image.imageable, Image]), :class => 'btn' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <% if can? :update, @image %>
+    <%= link_to edit_image_path(@image), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+      Edit
+    <% end %>
+  <% end %>
+  <h1>Show image</h1>
+</div>
+
+<p><%= link_to(image_tag(@image.file_url(:thumb)), @image.file_url) if @image.file.thumb.present? %></p>
+
+<dl class="dl-horizontal">
+  <dt>Name:</dt>
+  <dd><%= @image.name %></dd>
+
+  <dt>Path:</dt>
+  <dd><%= @image.file %></dd>
+
+</dl>
