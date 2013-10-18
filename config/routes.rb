@@ -52,6 +52,12 @@ TgtRefurbished::Application.routes.draw do
     get :home, :on => :collection
   end
 
+  resources :elfinder, :only => [] do
+    get 'backend', :on => :collection
+    post 'backend', :on => :collection
+    get 'frontend', :on => :collection
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

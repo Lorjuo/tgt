@@ -1,3 +1,4 @@
+<%= render :partial => 'shared/tinymce' %>
 <%= simple_form_for([@department, @training_group], :defaults => { :input_html => { :class => 'input-xlarge' } }) do |f| %>
 
   <div class="form-inputs">
@@ -18,7 +19,7 @@
       :input_html => { :class => "chosen input-xlarge"} %>
     <%= f.input :age_begin, as: :integer %>
     <%= f.input :age_end, as: :integer %>
-    <%= f.input :description  %>
+    <%= f.input :description, as: :text, input_html: { class: 'tinymce' } %>
     <%= f.input :ancient %>
   </div>
 

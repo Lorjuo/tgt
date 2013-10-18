@@ -56,6 +56,7 @@ gem 'binding_of_caller'
 # File Upload
 gem 'carrierwave'
 gem 'jquery-fileupload-rails'
+gem 'el_finder'
 
 # Forms
 gem 'simple_form'
@@ -110,6 +111,9 @@ gem 'friendly_id', '5.0.0.rc2' # Note: You MUST use 5.0.0 or greater for Rails 4
 gem 'valid_email'
 
 # WYSIWYG
+gem 'tinymce-rails'
+# gem 'tinymce-rails', :git => 'git://github.com/spohlenz/tinymce-rails.git', :branch => 'tinymce-4'
+# gem 'tinymce-rails-imageupload'
 #gem 'ckeditor', github: 'galetahub/ckeditor'
 
 group :test do

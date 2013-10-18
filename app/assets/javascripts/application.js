@@ -44,5 +44,6 @@
 //= require sortable_tree/initializer
 //
 //# WYSIWYG
+//= require tinymce-jquery
 //
 //= require_tree .

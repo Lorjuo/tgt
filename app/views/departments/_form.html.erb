@@ -1,3 +1,4 @@
+<%= render :partial => 'shared/tinymce' %>
 <%= simple_form_for(@department, :defaults => { :input_html => { :class => 'input-xlarge' } }) do |f| %>
   <%= f.error_notification %>
 
@@ -10,7 +11,7 @@
       :value_method => :id,
       :include_blank => false,
       :input_html => { :class => "chosen input-xxlarge"} %>
-    <%= f.input :description  %>
+    <%= f.input :description, as: :text, input_html: { class: 'tinymce' } %>
   </div>
 
   <div class="form-actions">
