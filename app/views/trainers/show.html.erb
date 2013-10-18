@@ -12,6 +12,9 @@
   <h1>Show trainer</h1>
 </div>
 
+
+<p><%= link_to(image_tag(@trainer.image.file_url(:thumb)), @trainer.image.file_url) if @trainer.image.present? %></p>
+
 <dl class="dl-horizontal">
   <dt>First name:</dt>
   <dd><%= @trainer.first_name %></dd>

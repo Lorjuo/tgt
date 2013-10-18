@@ -3,6 +3,7 @@ class ImageUploader < BaseImageUploader
   process :set_content_type
 
   def store_dir
+    #parent_id = model.tmp_parent_id ? model.tmp_parent_id : model.imageable.id
     "uploads/"\
     "#{model.imageable.class.to_s.underscore}/"\
     "#{model.imageable.id.to_s}/"\

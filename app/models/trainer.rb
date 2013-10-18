@@ -5,6 +5,9 @@ class Trainer < ActiveRecord::Base
   
   # Associations
   has_and_belongs_to_many :training_groups
+  has_one :image, :as => :imageable, :class_name => '::Image', :dependent => :destroy
+
+  accepts_nested_attributes_for :image, allow_destroy: true
 
   # Validations
   validates :email, :presence => true, :email => true
