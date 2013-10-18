@@ -110,7 +110,7 @@ gem 'friendly_id', '5.0.0.rc2' # Note: You MUST use 5.0.0 or greater for Rails 4
 gem 'valid_email'
 
 # WYSIWYG
-gem 'ckeditor', github: 'galetahub/ckeditor'
+#gem 'ckeditor', github: 'galetahub/ckeditor'
 
 group :test do
   gem 'minitest-spec-rails'

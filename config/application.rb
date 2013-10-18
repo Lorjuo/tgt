@@ -23,7 +23,6 @@ module TgtRefurbished
     # Custom
     
     # Autoload Paths
-    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
 
     # Set the default template engine
     config.generators do |g| 

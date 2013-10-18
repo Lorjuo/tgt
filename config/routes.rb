@@ -10,7 +10,6 @@ TgtRefurbished::Application.routes.draw do
     resources :images
   end
 
-  mount Ckeditor::Engine => '/ckeditor'
   resources :locations
 
   resources :trainers
