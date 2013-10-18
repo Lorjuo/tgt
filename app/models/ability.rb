@@ -28,6 +28,10 @@ class Ability
 
       can [:create, :read, :update, :destroy], Trainer
 
+      can [:create, :read, :update, :destroy], Location
+
+      can [:create, :read, :update, :destroy], Message
+
       # Always performed
       can :access, :ckeditor   # needed to access Ckeditor filebrowser
 
@@ -36,6 +40,7 @@ class Ability
       can [:read, :create, :destroy], Ckeditor::AttachmentFile
 
       #TODO: Set abilities for images, documents and uploaders
+      #Maybe. http://stackoverflow.com/questions/8170475/cancan-abilities-for-inherited-resources-with-nesting-in-controller
       can [:create, :read, :update, :destroy], Image
       can [:create, :read, :update, :destroy], Document
     end

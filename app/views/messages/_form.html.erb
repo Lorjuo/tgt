@@ -1,0 +1,13 @@
+<%= simple_form_for(@message, :defaults => { :input_html => { :class => 'input-xlarge' } }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :department_id %>
+    <%= f.input :content, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full'}}  %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => "btn btn-primary" %>
+  </div>
+<% end %>

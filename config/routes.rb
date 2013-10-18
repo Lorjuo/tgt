@@ -1,5 +1,7 @@
 TgtRefurbished::Application.routes.draw do
 
+  resources :messages
+
   resources :documents
 
   resources :images

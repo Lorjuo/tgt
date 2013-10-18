@@ -1,0 +1,45 @@
+<div class="page-header">
+  <%= link_to new_message_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Message
+  <% end if can? :create, Message %>
+  <h1>Listing messages</h1>
+</div>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Department</th>
+      <th></th>
+      <% if can? :update, Message %>
+      <th></th>
+      <% end %>
+      <% if can? :destroy, Message %>
+      <th></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+<% @messages.each do |message| %>
+    <tr>
+      <td><%= message.title %></td>
+      <td><%= message.content %></td>
+      <td><%= message.department_id %></td>
+      <td><%= link_to 'Show', message %></td>
+      <% if can? :update, message %>
+      <td><%= link_to 'Edit', edit_message_path(message) %></td>
+      <% end %>
+      <% if can? :destroy, message %>
+      <td>
+        <%= link_to message, method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <span class="glyphicon glyphicon-trash"></span> Destroy
+        <% end %>
+      </td>
+      <% end %>
+    </tr>
+<% end %>
+  </tbody>
+</table>
