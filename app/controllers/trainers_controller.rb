@@ -64,7 +64,7 @@ class TrainersController < ApplicationController
       #@trainer.build_image unless @trainer.image.present?
       #if @trainer.update_attributes(params[:trainer].except(:image_attributes)) && @trainer.image.update_attributes(params[:trainer][:image_attributes])
       #debugger
-      #params[:trainer][:image_attributes][:imageable_id] = @trainer.id
+      #params[:trainer][:image_attributes][:attachable_id] = @trainer.id
       #@trainer.image.tmp_parent_id = @trainer.id
       if @trainer.update_attributes(params[:trainer])
         format.html { redirect_to @trainer, notice: 'Trainer was successfully updated.' }

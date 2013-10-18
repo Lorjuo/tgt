@@ -1,7 +1,7 @@
 class Image < ActiveRecord::Base
 
   # Associations
-  belongs_to :imageable, polymorphic: true
+  belongs_to :attachable, polymorphic: true
 
   # Uploader
   mount_uploader :file, ImageUploader, :mount_on => :file

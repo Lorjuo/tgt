@@ -13,7 +13,7 @@ class GalleriesController < ApplicationController
   # GET /galleries/1.json
   def show
     @image = @gallery.images.build
-    @images = Image.find(:all, :conditions  => [ 'imageable_id = ? AND imageable_type = ?', @gallery.id, 'gallery' ])
+    @images = Image.find(:all, :conditions  => [ 'attachable_id = ? AND attachable_type = ?', @gallery.id, 'gallery' ])
   end
 
   # GET /galleries/new

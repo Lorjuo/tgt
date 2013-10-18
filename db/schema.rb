@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131017152046) do
+ActiveRecord::Schema.define(version: 20131018093106) do
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -51,11 +51,11 @@ ActiveRecord::Schema.define(version: 20131017152046) do
     t.string   "file"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "documentable_id"
-    t.string   "documentable_type"
+    t.integer  "attachable_id"
+    t.string   "attachable_type"
   end
 
-  add_index "documents", ["documentable_id", "documentable_type"], name: "index_documents_on_documentable_id_and_documentable_type", using: :btree
+  add_index "documents", ["attachable_id", "attachable_type"], name: "index_documents_on_attachable_id_and_attachable_type", using: :btree
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -81,11 +81,11 @@ ActiveRecord::Schema.define(version: 20131017152046) do
     t.string   "file"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "imageable_id"
-    t.string   "imageable_type"
+    t.integer  "attachable_id"
+    t.string   "attachable_type"
   end
 
-  add_index "images", ["imageable_id", "imageable_type"], name: "index_images_on_imageable_id_and_imageable_type", using: :btree
+  add_index "images", ["attachable_id", "attachable_type"], name: "index_images_on_attachable_id_and_attachable_type", using: :btree
 
   create_table "locations", force: true do |t|
     t.string   "name"

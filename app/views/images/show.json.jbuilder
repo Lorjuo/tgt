@@ -1,1 +1,1 @@
-json.extract! @image, :name, :file, :imageable_id, :imageable_type, :created_at, :updated_at
+json.extract! @image, :name, :file, :attachable_id, :attachable_type, :created_at, :updated_at

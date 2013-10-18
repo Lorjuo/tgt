@@ -1,7 +1,7 @@
 class Document < ActiveRecord::Base
 
   # Associations
-  belongs_to :documentable, polymorphic: true
+  belongs_to :attachable, polymorphic: true
 
   # Uploader
   mount_uploader :file, DocumentUploader, :mount_on => :file
