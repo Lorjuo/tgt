@@ -13,10 +13,11 @@
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <%# stylesheet_link_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/smoothness/jquery-ui.css', 'elfinder/elfinder.min', 'elfinder/theme' %>
-    <%# javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js', 'elfinder/elfinder.min', 'elfinder/proxy/elFinderSupportVer1.js' %>
-    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= stylesheet_link_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/smoothness/jquery-ui.css', 'elfinder/elfinder.min', 'elfinder/theme' %>
+    <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js', 'elfinder/elfinder.min', 'elfinder/proxy/elFinderSupportVer1.js' %>
+
+    <%# stylesheet_link_tag    "jquery.ui.all", 'elfinder/elfinder.min', 'elfinder/theme' %>
+    <%# javascript_include_tag "jquery", 'jquery.ui.all', 'elfinder/elfinder.min', 'elfinder/proxy/elFinderSupportVer1.js' %>
     <%= csrf_meta_tags %>
   </head>
   <body>

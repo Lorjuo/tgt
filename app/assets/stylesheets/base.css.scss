@@ -1,0 +1,33 @@
+body {
+  /*background-image: url("background.jpg");*/
+  background-size: auto auto;
+  background-attachment: fixed;
+  vertical-align: baseline;
+}
+
+li, h1, h2, h3, h4, h5 {
+    line-height: 125%;
+}
+
+.window {
+  margin-bottom: 10px;
+  background-color: #ffffff;
+}
+
+.box {
+  background-color: #F9F9F9;
+  background-image: linear-gradient(to bottom, white, #F2F2F2);
+  background-repeat: repeat-x;
+  padding: 4px;
+}
+
+.collapse {
+  padding: 0;
+}
+
+.carousel {
+  margin-bottom: 0;
+  & p {
+    margin-bottom: 0;
+  }
+}

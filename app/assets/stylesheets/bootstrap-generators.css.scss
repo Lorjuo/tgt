@@ -1,0 +1,49 @@
+// Default 940px grid
+$gridColumns:             12;
+$gridColumnWidth:         72px;
+$gridGutterWidth:         8px;
+
+// 1200px min
+$gridColumnWidth1200:     88px;
+$gridGutterWidth1200:     12px;
+
+// 768px-979px
+$gridColumnWidth768:      54px;
+$gridGutterWidth768:      8px;
+
+$baseBorderRadius:      0px;
+$borderRadiusLarge:     0px;
+$borderRadiusSmall:     0px;
+
+@import "bootstrap-variables";
+@import "bootstrap.scss";
+
+body {
+  padding-top: $navbar-height + 10px;
+}
+
+@import "bootstrap-responsive";
+
+.page-header {
+  a.btn {
+    float: right;
+  }
+
+  a.btn + a.btn {
+    margin-right: 8px;
+  }
+}
+
+/*input[type="radio"], input[type="checkbox"] {
+  width: initial;
+  height: initial;
+  margin-top: 7px;
+}*/
+
+.btn.btn-primary {
+  color: #dddddd;
+}
+
+.btn:not(.btn-link) {
+  ;
+}

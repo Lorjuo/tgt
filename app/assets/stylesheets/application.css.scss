@@ -10,6 +10,12 @@
  *
  *= require_self
  *
+ *# Bootstrap
+ * require bootstrap-and-overrides
+ * require bootstrap-generators
+ * require bootstrap-variables
+ *= require bootstrap-datepicker
+ *= require scaffolds
  *
  *# JQuery
  *= require jquery.ui.all
@@ -21,11 +27,13 @@
  *# Chosen
  *= require chosen
  *
- *= require bootstrap-datepicker
- *
  *# Sortable Tree
  *= require sortable_tree
  *= require nested_options
  * 
- *= require_tree .
+ * require_tree .
+ *= require_directory .
+ *
+ * Custom
+ *= require base
  */

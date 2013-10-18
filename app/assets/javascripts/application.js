@@ -46,4 +46,5 @@
 //# WYSIWYG
 //= require tinymce-jquery
 //
-//= require_tree .
+// require_tree .
+//= require_directory .
