@@ -1,0 +1,19 @@
+<div class="page-header">
+  <%= link_to editable_pages_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <% if can? :update, @editable_page %>
+    <%= link_to edit_editable_page_path(@editable_page), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+      Edit
+    <% end %>
+  <% end %>
+  <h1>Show editable_page</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Content:</dt>
+  <dd><%= @editable_page.content %></dd>
+
+</dl>

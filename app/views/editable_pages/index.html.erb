@@ -1,0 +1,41 @@
+<div class="page-header">
+  <%= link_to new_editable_page_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Editable page
+  <% end if can? :create, EditablePage %>
+  <h1>Listing editable_pages</h1>
+</div>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th></th>
+      <% if can? :update, EditablePage %>
+      <th></th>
+      <% end %>
+      <% if can? :destroy, EditablePage %>
+      <th></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+<% @editable_pages.each do |editable_page| %>
+    <tr>
+      <td><%= editable_page.content %></td>
+      <td><%= link_to 'Show', editable_page %></td>
+      <% if can? :update, editable_page %>
+      <td><%= link_to 'Edit', edit_editable_page_path(editable_page) %></td>
+      <% end %>
+      <% if can? :destroy, editable_page %>
+      <td>
+        <%= link_to editable_page, method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <span class="glyphicon glyphicon-trash"></span> Destroy
+        <% end %>
+      </td>
+      <% end %>
+    </tr>
+<% end %>
+  </tbody>
+</table>

@@ -1,0 +1,2 @@
+<%= f.input :title %>
+<%= f.input :parent_id, :as => :select, collection: nested_set_options(Page, pageable.page) {|i| "#{'-' * i.level} #{i.title}" } %>

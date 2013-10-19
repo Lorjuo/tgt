@@ -1,0 +1,2 @@
+module EditablePagesHelper
+end

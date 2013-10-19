@@ -1,5 +1,7 @@
 TgtRefurbished::Application.routes.draw do
 
+  resources :editable_pages
+
   resources :messages
 
   resources :documents

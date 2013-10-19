@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131018183454) do
+ActiveRecord::Schema.define(version: 20131019195023) do
 
   create_table "departments", force: true do |t|
     t.string   "name"
@@ -41,6 +41,12 @@ ActiveRecord::Schema.define(version: 20131018183454) do
   end
 
   add_index "documents", ["attachable_id", "attachable_type"], name: "index_documents_on_attachable_id_and_attachable_type", using: :btree
+
+  create_table "editable_pages", force: true do |t|
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -95,7 +101,11 @@ ActiveRecord::Schema.define(version: 20131018183454) do
     t.integer  "rgt"
     t.integer  "depth"
     t.integer  "department_id"
+    t.integer  "pageable_id"
+    t.string   "pageable_type"
   end
+
+  add_index "pages", ["pageable_id", "pageable_type"], name: "index_pages_on_pageable_id_and_pageable_type", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name"

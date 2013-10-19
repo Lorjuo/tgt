@@ -1,0 +1,16 @@
+<%= render :partial => 'shared/tinymce' %>
+<%= simple_form_for(@editable_page) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.fields_for :page, @editable_page.page do |ff| %>
+      <%= render :partial => 'pages/pageable_fields', :object => @editable_page, :as => "pageable", :locals => { :f => ff } %>
+    <% end %>
+
+    <%= f.input :content, as: :text, input_html: { class: 'tinymce' }  %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn btn-primary col-lg-offset-2' %>
+  </div>
+<% end %>

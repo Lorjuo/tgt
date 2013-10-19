@@ -16,7 +16,7 @@ class Page < ActiveRecord::Base
   #before_destroy :invoke_touch
   
   # Associations
-  belongs_to :page
+  belongs_to :pageable, polymorphic: true, :dependent => :destroy
 
   # Validation  
   validates :title, presence: true
