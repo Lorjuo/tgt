@@ -18,8 +18,17 @@ TgtRefurbished::Application.routes.draw do
 
   resources :training_groups
 
+  resources :pages do
+    collection do
+      get :sort
+
+      # required for Sortable GUI server side actions
+      post :rebuild
+    end
+  end
+
   resources :departments, :only =>:index
-  resources :departments, :shallow => true, :path => "", :except =>:index do
+  resources :departments, :shallow => true, :except =>:index do #, :path => ""
   #resources :departments, :shallow => true do
     member do
       get :training_groups
@@ -37,15 +46,6 @@ TgtRefurbished::Application.routes.draw do
   # Set scope admin to differentiate between devise and custom user administration
   scope "/admin" do
     resources :users
-  end
-
-  resources :pages do
-    collection do
-      get :sort
-
-      # required for Sortable GUI server side actions
-      post :rebuild
-    end
   end
 
   resources :static_pages, :only => [] do
