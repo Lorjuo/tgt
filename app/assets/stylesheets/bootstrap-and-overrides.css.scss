@@ -1,6 +1,6 @@
 @import "bootstrap";
 body { padding-top: 60px !important; }
-@import "bootstrap-responsive";
+//@import "bootstrap-responsive"; // Seems that there is no need for in bootstrap 3
 //@import 'bootstrap/theme';
 
 .btn.btn-primary {

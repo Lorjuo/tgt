@@ -10,17 +10,21 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery.turbolinks
-//= require jquery.ui.all
-//= require jquery_ujs
 //= require turbolinks
 //
 //# Bootstrap
 //= require bootstrap
-// require bootstrap/scrollspy
+//# Bootstrap Javascript (has to be bevore jquery?)
+//#http://stackoverflow.com/questions/10218587/twitter-bootstrap-drop-down-suddenly-not-working
+//= require bootstrap/scrollspy
 //= require bootstrap/modal
-// require bootstrap/dropdown
+//= require bootstrap/dropdown
+//
+//# JQuery
+//= require jquery
+//= require jquery.turbolinks
+//= require jquery.ui.all
+//= require jquery_ujs
 // 
 //# File Upload
 //= require fileupload

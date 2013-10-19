@@ -14,7 +14,7 @@ class ElfinderController < ApplicationController
 
   el_finder(:backend) do
     # Prevent miniprofiler from appending javascript to json output
-    # Rack::MiniProfiler.discard_results
+    Rack::MiniProfiler.discard_results
     Rack::MiniProfiler.deauthorize_request
     {
       :root => File.join(Rails.public_path, 'files'),

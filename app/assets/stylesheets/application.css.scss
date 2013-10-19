@@ -11,7 +11,7 @@
  *= require_self
  *
  *# Bootstrap
- * require bootstrap-and-overrides
+ *= require bootstrap-and-overrides
  * require bootstrap-generators
  * require bootstrap-variables
  *= require bootstrap-datepicker
@@ -32,7 +32,7 @@
  *= require nested_options
  * 
  * require_tree .
- *= require_directory .
+ * require_directory .
  *
  * Custom
  *= require base
