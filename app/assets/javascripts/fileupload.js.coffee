@@ -34,17 +34,21 @@ jQuery ->
       progress: (e, data) ->
         if data.context
           progress = parseInt(data.loaded / data.total * 100, 10)
-          data.context.find('.bar').css('width', progress + '%')
+          data.context.find('.progress-bar').css('width', progress + '%')
       
       done: (e, data) ->
+        data.context.find('.progress-bar').addClass('progress-bar-success')
+        data.context.find('.progress').removeClass('progress-striped active')
         setTimeout (->
           data.context.hide()
         ), 3000
 
       always: (e, data) ->
-        data.context.find('.bar').css('width', 100 + '%')
+        data.context.find('.progress').removeClass('progress-striped active')
+        data.context.find('.progress-bar').css('width', 100 + '%')
       
       fail: (e, data) ->
+        data.context.find('.progress-bar').addClass('progress-bar-danger')
         alert("#{data.files[0].name} failed to upload.")
         console.log("Upload failed:")
         console.log(data)

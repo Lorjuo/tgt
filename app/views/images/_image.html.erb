@@ -1,22 +1,23 @@
-<li class="image span2">
+<div class="image col-md-2">
   <div class="thumbnail">
     <%= link_to image_tag(image.file_url(:_260x180)), image if image.file._260x180.present? %>
+    <%# holder_tag '260x180' %>
     <div class="caption">
       <!-- <p><%= image.name %></p> -->
       <div style="text-align: center;">
         <% if can?(:edit, Image) %>
-          <%= link_to edit_image_path(image), class: 'btn btn-mini' do %>
-            <i class="icon-edit "></i>
+          <%= link_to edit_image_path(image), class: 'btn btn-xs btn-default' do %>
+            <i class="glyphicon glyphicon-edit "></i>
             edit
           <% end %>
         <% end %>
         <% if can?(:destroy, Image) %>
-          <%= link_to image, data: { confirm: 'Are you sure?'}, :method => :delete, class: 'btn btn-mini' do %>
-            <i class="icon-trash"></i>
+          <%= link_to image, data: { confirm: 'Are you sure?'}, :method => :delete, class: 'btn btn-xs btn-default' do %>
+            <i class="glyphicon glyphicon-trash"></i>
             delete
           <% end %>
         <% end %>
       </div>
     </div>
   </div>
-</li>
+</div>

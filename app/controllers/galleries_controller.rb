@@ -13,6 +13,7 @@ class GalleriesController < ApplicationController
   # GET /galleries/1.json
   def show
     @image = @gallery.images.build
+    # TODO: replace find and all method - they are deprecated
     @images = Image.find(:all, :conditions  => [ 'attachable_id = ? AND attachable_type = ?', @gallery.id, 'gallery' ])
   end
 

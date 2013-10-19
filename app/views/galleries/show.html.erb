@@ -18,20 +18,20 @@
 
 </dl>
 
-<ul id="images" class="thumbnails">
+<div id="images" class="row">
   <%= render(:partial => 'images/image', :collection => @images, :as => 'image') %>
-</ul>
+</div>
 <div class="clear"></div>
 
 <% if can?(:update, Image) %>
   <%= simple_form_for [@gallery, @image], :html => { :class => "fileupload", :multipart => true } do |f| %>
     <%# f.input_field :file, :as => :file, name: "image[file]",  :multiple => true, :class => "btn btn-file" %>
 
-    <div class="btn btn-mini fileinput-button">
-      <i class="icon-plus"></i>
+    <div class="btn btn-default btn-file btn-primary fileinput-button">
+      <i class="glyphicon glyphicon-plus"></i>
       <span>Add Files...</span>
       <%= f.file_field :file, name: "image[file]", :multiple => true, :class => "btn btn-file fileinput-button" %>
-      <%# f.file_field :image, :multiple => true %>
+      <!-- Style Upload: http://stackoverflow.com/questions/14509449/styling-file-upload-button-for-simple-form-for-with-bootstrap-in-rails-3 -->
     </div>
   </div>
   <% end %>
@@ -40,7 +40,7 @@
 <script id="template-upload" type="text/x-tmpl">
 <div class="upload">
   {%=o.name%}
-  <div class="progress"><div class="bar" style="width: 0%"></div></div>
+  <div class="progress progress-striped active"><div class="progress-bar" style="width: 0%"></div></div>
 </div>
 </script>
 <script id="template-download" type="text/x-tmpl">
