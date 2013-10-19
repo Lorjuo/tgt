@@ -8,5 +8,7 @@
     Index
   %h1 Manage Pages
 
-%ol.sortable_tree{ data: { max_levels: 5, rebuild_url: rebuild_pages_url } }
-  = sortable_tree @pages
+%div.row
+  %div.col-lg-6
+    %ol.sortable_tree{ data: { max_levels: 5, rebuild_url: rebuild_pages_url } }
+      = sortable_tree @pages

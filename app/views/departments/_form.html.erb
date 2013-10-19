@@ -6,7 +6,7 @@
     <%= f.input :name %>
     <%= f.association :training_groups,
       :as => :select,
-      :collection => TrainingGroup.all(:order => 'name'),
+      :collection => TrainingGroup.order('name' => :asc),
       :label_method => :name,
       :value_method => :id,
       :include_blank => false,
