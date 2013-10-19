@@ -37,7 +37,8 @@ gem 'quiet_assets' # Disable some warnings
 # Bootstrap
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
   # Generator
-  #gem 'bootstrap-generators' # Only needed for first installation - Afterwards it leads to conflicts
+  # Maybe never needed: Generators by simple form
+  #gem 'bootstrap-generators' # Only needed for first installation? - Afterwards it leads to conflicts
 
 # Database
 gem 'mysql2'

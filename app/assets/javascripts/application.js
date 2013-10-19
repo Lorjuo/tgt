@@ -14,7 +14,7 @@
 //
 //# Bootstrap
 //= require bootstrap
-//# Bootstrap Javascript (has to be bevore jquery?)
+//# Bootstrap Javascript (has to be before jquery?)
 //#http://stackoverflow.com/questions/10218587/twitter-bootstrap-drop-down-suddenly-not-working
 //= require bootstrap/scrollspy
 //= require bootstrap/modal
