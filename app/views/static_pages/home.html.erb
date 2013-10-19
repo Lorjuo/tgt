@@ -13,6 +13,17 @@
   </fieldset>
 </form>
 
+<hr />
+
+<style type="text/css">
+<!--
+.form-inline .form-group{
+    margin-left: 0;
+    margin-right: 0;
+}
+-->
+</style>
+
 <form role="form">
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
@@ -33,4 +44,33 @@
     </label>
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+<hr />
+
+<form class="form-horizontal">
+    <div class="form-group">
+        <label for="name" class="col-xs-2 control-label">Name</label>
+        <div class="col-xs-10">
+            <input type="text" class="form-control col-sm-10" name="name" placeholder="name"/>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="birthday" class="col-xs-2 control-label">Birthday</label>
+        <div class="col-xs-10">
+            <div class="form-inline">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="year"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="month"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="day"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 </form>
