@@ -12,9 +12,9 @@ class Ability
       can :manage, :static_page
       can :training_groups, :department
 
-      can :rebuild, Page
+      can :rebuild, NavigationElement
 
-      can [:create, :read, :update, :sort_pages, :training_groups], Department do |department|
+      can [:create, :read, :update, :sort_navigation_elements, :training_groups], Department do |department|
         user.departments.include? department
       end
 

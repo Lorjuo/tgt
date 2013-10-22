@@ -84,8 +84,8 @@ class DepartmentsController < ApplicationController
     end
   end
   
-  def sort_pages
-    @pages = @department.pages.nested_set.select('id, title, parent_id').load
+  def sort_navigation_elements
+    @navigation_elements = @department.navigation_elements.nested_set.select('id, title, parent_id').load
   end
 
   private

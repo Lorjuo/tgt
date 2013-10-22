@@ -1,84 +1,84 @@
-class PagesController < ApplicationController
+class NavigationElementsController < ApplicationController
   include TheSortableTreeController::Rebuild
 
-  before_action :set_page, only: [:show, :edit, :update, :destroy]
+  before_action :set_navigation_element, only: [:show, :edit, :update, :destroy]
 
   load_and_authorize_resource
 
-  # GET /pages
-  # GET /pages.json
+  # GET /navigation_elements
+  # GET /navigation_elements.json
   def index
-    @pages = Page.all
+    @navigation_elements = NavigationElement.all
   end
 
-  # GET /pages/1
-  # GET /pages/1.json
+  # GET /navigation_elements/1
+  # GET /navigation_elements/1.json
   def show
   end
 
-  # GET /pages/new
+  # GET /navigation_elements/new
   def new
-    @page = Page.new
+    @navigation_element = NavigationElement.new
   end
 
-  # GET /pages/1/edit
+  # GET /navigation_elements/1/edit
   def edit
   end
 
-  # POST /pages
-  # POST /pages.json
+  # POST /navigation_elements
+  # POST /navigation_elements.json
   def create
-    @page = Page.new(page_params)
+    @navigation_element = NavigationElement.new(navigation_element_params)
 
     respond_to do |format|
-      if @page.save
-        format.html { redirect_to @page, notice: 'Page was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @page }
+      if @navigation_element.save
+        format.html { redirect_to @navigation_element, notice: 'NavigationElement was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @navigation_element }
       else
         format.html { render action: 'new' }
-        format.json { render json: @page.errors, status: :unprocessable_entity }
+        format.json { render json: @navigation_element.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /pages/1
-  # PATCH/PUT /pages/1.json
+  # PATCH/PUT /navigation_elements/1
+  # PATCH/PUT /navigation_elements/1.json
   def update
     respond_to do |format|
-      if @page.update(page_params)
-        format.html { redirect_to @page, notice: 'Page was successfully updated.' }
+      if @navigation_element.update(navigation_element_params)
+        format.html { redirect_to @navigation_element, notice: 'NavigationElement was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @page.errors, status: :unprocessable_entity }
+        format.json { render json: @navigation_element.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /pages/1
-  # DELETE /pages/1.json
+  # DELETE /navigation_elements/1
+  # DELETE /navigation_elements/1.json
   def destroy
-    @page.destroy
+    @navigation_element.destroy
     respond_to do |format|
-      format.html { redirect_to pages_url }
+      format.html { redirect_to navigation_elements_url }
       format.json { head :no_content }
     end
   end
 
   def sort
-    #@pages = Page.department(1).nested_set.select('id, title, parent_id').load
-    #@pages = Page.top_level.nested_set.select('id, title, parent_id').load
-    @pages = Page.nested_set.select('id, title, parent_id').load
+    #@navigation_elements = NavigationElement.department(1).nested_set.select('id, title, parent_id').load
+    #@navigation_elements = NavigationElement.top_level.nested_set.select('id, title, parent_id').load
+    @navigation_elements = NavigationElement.nested_set.select('id, title, parent_id').load
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_page
-      @page = Page.find(params[:id])
+    def set_navigation_element
+      @navigation_element = NavigationElement.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def page_params
-      params.require(:page).permit(:title)
+    def navigation_element_params
+      params.require(:navigation_element).permit(:title)
     end
 end

@@ -9,9 +9,9 @@
       Edit
     <% end %>
   <% end %>
-  <%= link_to sort_pages_department_path(@department), :class => 'btn btn-primary' do %>
+  <%= link_to sort_navigation_elements_department_path(@department), :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-th-list"></span>
-    Manage Pages
+    Manage NavigationElements
   <% end if can? :create, Department %>
   <h1>Show department</h1>
 </div>

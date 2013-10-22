@@ -1,4 +1,4 @@
-json.array!(@pages) do |page|
-  json.extract! page, :title
-  json.url page_url(page, format: :json)
+json.array!(@navigation_elements) do |navigation_element|
+  json.extract! navigation_element, :title
+  json.url navigation_element_url(navigation_element, format: :json)
 end

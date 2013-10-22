@@ -18,7 +18,7 @@ TgtRefurbished::Application.routes.draw do
 
   resources :training_groups
 
-  resources :pages do
+  resources :navigation_elements do
     collection do
       get :sort
 
@@ -32,7 +32,7 @@ TgtRefurbished::Application.routes.draw do
   #resources :departments, :shallow => true do
     member do
       get :training_groups
-      get :sort_pages
+      get :sort_navigation_elements
       # required for Sortable GUI server side actions
       post :rebuild
     end

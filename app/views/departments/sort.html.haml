@@ -1,14 +1,14 @@
 %div.page-header
-  - if can? :create, Page
-    = link_to new_page_path, :class => 'btn btn-primary' do
+  - if can? :create, NavigationElement
+    = link_to new_navigation_element_path, :class => 'btn btn-primary' do
       %span.glyphicon.glyphicon-plus
-      New Page
-  = link_to pages_path, :class => 'btn btn-primary' do
+      New NavigationElement
+  = link_to navigation_elements_path, :class => 'btn btn-primary' do
     %span.glyphicon.glyphicon-th-list
     Index
-  %h1 Manage Pages
+  %h1 Manage NavigationElements
 
 %div.row
   %div.col-lg-6
-    %ol.sortable_tree{ data: { max_levels: 5, rebuild_url: rebuild_pages_url } }
-      = sortable_tree @pages
+    %ol.sortable_tree{ data: { max_levels: 5, rebuild_url: rebuild_navigation_elements_url } }
+      = sortable_tree @navigation_elements

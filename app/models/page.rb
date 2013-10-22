@@ -1,4 +1,4 @@
-class Page < ActiveRecord::Base
+class NavigationElement < ActiveRecord::Base
   include TheSortableTree::Scopes
 
   scope :department, -> (id) { where(:department_id => id)}
@@ -14,9 +14,6 @@ class Page < ActiveRecord::Base
   # see: https://github.com/collectiveidea/awesome_nested_set/blob/master/lib/awesome_nested_set/awesome_nested_set.rb, line 66
   #before_save :invoke_touch
   #before_destroy :invoke_touch
-  
-  # Associations
-  belongs_to :page
 
   # Validation  
   validates :title, presence: true

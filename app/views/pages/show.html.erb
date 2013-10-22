@@ -1,19 +1,19 @@
 <div class="page-header">
-  <%= link_to pages_path, :class => 'btn btn-default' do %>
+  <%= link_to navigation_elements_path, :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
     Back
   <% end %>
-  <% if can? :update, @page %>
-    <%= link_to edit_page_path(@page), :class => 'btn btn-primary' do %>
+  <% if can? :update, @navigation_element %>
+    <%= link_to edit_navigation_element_path(@navigation_element), :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-pencil"></span>
       Edit
     <% end %>
   <% end %>
-  <h1>Show page</h1>
+  <h1>Show navigation_element</h1>
 </div>
 
 <dl class="dl-horizontal">
   <dt>Title:</dt>
-  <dd><%= @page.title %></dd>
+  <dd><%= @navigation_element.title %></dd>
 
 </dl>
