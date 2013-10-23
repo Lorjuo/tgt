@@ -1,0 +1,23 @@
+<%= simple_form_for(@navigation_element, :defaults => { :input_html => { :class => 'input-xlarge' } }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+
+    <%= f.input :controller_id do %>
+      <%= f.select("controller_id", @controllers, {:include_blank => true}) %>
+    <% end %>
+
+    <%= f.input :action_id do %>
+      <%= f.select("action_id", @actions, {:include_blank => true}) %>
+    <% end %>
+
+    <%= f.input :instance_id do %>
+      <%= f.select("instance_id", @instances, {:include_blank => true}) %>
+    <% end %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => "btn btn-primary" %>
+  </div>
+<% end %>

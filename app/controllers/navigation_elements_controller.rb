@@ -5,6 +5,22 @@ class NavigationElementsController < ApplicationController
 
   load_and_authorize_resource
 
+  before_filter :load_instance_variables, :only => [:new, :edit]
+
+  def load_instance_variables
+    Rails.application.eager_load!
+    @controllers = Hash[
+      ApplicationController.descendants.map do |controller|
+          unless controller.name.include?('Devise')
+            [ controller.name, controller.name.underscore.sub!('_controller', '') ]
+          end
+      end
+    ].sort
+
+    @actions = []
+    @instances = []
+  end
+
   # GET /navigation_elements
   # GET /navigation_elements.json
   def index
@@ -23,6 +39,25 @@ class NavigationElementsController < ApplicationController
 
   # GET /navigation_elements/1/edit
   def edit
+  end
+
+  def updated_controller
+    Rails.application.eager_load!
+    controller = ApplicationController.descendants.select { |f|
+      #puts "#{f.name.underscore} == #{params[:controller_id]}"
+      f.name.underscore.sub!('_controller', '') == params[:controller_id]
+    }.first
+
+    @actions = controller.action_methods.select{ |a|
+      !a.start_with?('_')
+    }.map{ |a|
+      [a, a]
+    }.insert(0, "Select a Action")
+
+    instance = Object.const_get(controller.name.sub!('Controller', '').singularize)
+    @instances = instance.all.map{ |a|
+      [a.respond_to?('name') ? a.name : a.id, a.id]
+    }.insert(0, "Select a Instance")
   end
 
   # POST /navigation_elements
@@ -79,6 +114,6 @@ class NavigationElementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def navigation_element_params
-      params.require(:navigation_element).permit(:title)
+      params.require(:navigation_element).permit(:title, :controller_id, :action_id, :instance_id)
     end
 end

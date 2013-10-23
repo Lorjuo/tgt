@@ -14,6 +14,9 @@
   <thead>
     <tr>
       <th>Title</th>
+      <th>Object</th>
+      <th>Action</th>
+      <th>Instance ID</th>
       <th></th>
       <% if can? :update, NavigationElement %>
       <th></th>
@@ -28,6 +31,9 @@
 <% @navigation_elements.each do |navigation_element| %>
     <tr>
       <td><%= navigation_element.title %></td>
+      <td><%= navigation_element.controller_id %></td>
+      <td><%= navigation_element.action_id %></td>
+      <td><%= navigation_element.instance_id %></td>
       <td><%= link_to 'Show', navigation_element %></td>
       <% if can? :update, navigation_element %>
       <td><%= link_to 'Edit', edit_navigation_element_path(navigation_element) %></td>
