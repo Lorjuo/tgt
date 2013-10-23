@@ -10,10 +10,10 @@ class NavigationElementsController < ApplicationController
   def load_instance_variables
     Rails.application.eager_load!
     @controllers = Hash[
-      ApplicationController.descendants.map do |controller|
-          unless controller.name.include?('Devise')
-            [ controller.name, controller.name.underscore.sub!('_controller', '') ]
-          end
+      ApplicationController.descendants.select { |controller|
+        !['DeviseController','ElfinderController','NavigationElementsController','UsersController'].include?(controller.name)
+      }.map do |controller|
+        [ controller.name, controller.name.underscore.sub!('_controller', '') ]
       end
     ].sort
 
