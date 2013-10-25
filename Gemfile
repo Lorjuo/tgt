@@ -101,6 +101,9 @@ gem 'cancan'
 gem 'devise'
 gem 'rolify'
 
+# String Operations
+gem 'truncate_html'
+
 # Tree Structures
 gem 'awesome_nested_set', github: 'huoxito/awesome_nested_set', branch: 'rails4'
 gem 'the_sortable_tree'#, '~> 2.3.0'

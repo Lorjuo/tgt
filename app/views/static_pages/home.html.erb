@@ -1,67 +1,48 @@
-<h1>Welcome</h1>
-
-<form>
-  <fieldset>
-    <legend>Legend</legend>
-    <label>Label name</label>
-    <input type="text" placeholder="Type something…">
-    <span class="help-block">Example block-level help text here.</span>
-    <label class="checkbox">
-      <input type="checkbox"> Check me out
-    </label>
-    <button type="submit" class="btn">Submit</button>
-  </fieldset>
-</form>
-
-<hr />
-
-<form role="form">
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+<div class="row equal">
+  <div class="col-lg-8 window">
+    <%= render :partial => 'messages/message_excerpt', :collection => @messages, :as => :message %>
   </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputFile">File input</label>
-    <input type="file" id="exampleInputFile">
-    <p class="help-block">Example block-level help text here.</p>
-  </div>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox"> Check me out
-    </label>
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
-
-<hr />
-
-<form class="form-horizontal">
-    <div class="form-group">
-        <label for="name" class="col-xs-2 control-label">Name</label>
-        <div class="col-xs-10">
-            <input type="text" class="form-control col-sm-10" name="name" placeholder="name"/>
-        </div>
-    </div>
-    
-    <div class="form-group">
-        <label for="birthday" class="col-xs-2 control-label">Birthday</label>
-        <div class="col-xs-10">
-            <div class="form-inline">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="year"/>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="month"/>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="day"/>
-                </div>
+  <div class="col-lg-4 window">
+    <!--  Carousel - consult the Twitter Bootstrap docs at
+        http://twitter.github.com/bootstrap/javascript.html#carousel -->
+    <div id="announcement-carousel" class="carousel slide box"><!-- class of slide for animation -->
+      <ol class="carousel-indicators">
+        <% @announcements.each do |announcement| %>
+          <li data-target="#announcement-carousel" data-slide-to="0"></li>
+        <% end %>
+      </ol>
+      <div class="carousel-inner">
+        <% @announcements.each do |announcement| %>
+          <div class="item">
+            <%= link_to announcement.link do %>
+              <%= raw announcement.content %>
+            <% end %>
+            <div class="carousel-caption">
+              <p><%= announcement.name %></p>
             </div>
-        </div>
+          </div>
+        <% end %>
+      </div>
+      <!--  Next and Previous controls below
+            href values must reference the id for this carousel -->
+      <!-- <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a> -->
+
+      <!-- Controls -->
+      <a class="left carousel-control" href="#announcement-carousel" data-slide="prev">
+        <span class="icon-prev"></span>
+      </a>
+      <a class="right carousel-control" href="#announcement-carousel" data-slide="next">
+        <span class="icon-next"></span>
+      </a>
     </div>
-    
-</form>
+
+    <div class="box">
+      Another box
+      <ul>
+        <li>stupid</li>
+        <li>list</li>
+      </ul>
+    </div>
+  </div>
+</div>

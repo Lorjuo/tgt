@@ -1,0 +1,21 @@
+<%# see: http://m5designstudio.com/2013/orlando-web-design/bootstrap-responsive-layout/ %>
+<div class="message box">
+  <div class="row">
+    <div class="message-image col-lg-2">
+      <!-- <img src="/uploads/embedded_image/file/0000/0013/3df3b017-d5af-4d19-8349-7eb33d9df1a4.jpg" width="100%" /> -->
+      <%# holder_tag '260x180', 'Image', 'gray', :class => 'holder' %>
+      <img src="http://placehold.it/260x180" width="100%" />
+    </div>
+    <div class="message-text col-lg-10">
+      <div class="message-header">
+        <p class="message-date"><%= localize( message.created_at.to_date, :format => :long ) %></p>
+        <h6><%= message.title %></h6>
+      </div>
+      <div class="message-content">
+        <%# truncate_html( message.content, length: 320, omission: '<a href="#"></a>' ) %>
+        <%= truncate(strip_tags(message.content), length: 320, omission: '...') %>
+        <%= link_to '...mehr', message, :class => 'btn-link' %>
+      </div>
+    </div>
+  </div>
+</div>

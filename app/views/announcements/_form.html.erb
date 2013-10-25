@@ -1,9 +1,10 @@
+<%= render :partial => 'shared/tinymce_small' %>
 <%= simple_form_for(@announcement) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <%= f.input :name %>
-    <%= f.input :content %>
+    <%= f.input :content, as: :text, input_html: { class: 'tinymce' } %>
     <%= f.input :link %>
     <%= f.input :active %>
   </div>

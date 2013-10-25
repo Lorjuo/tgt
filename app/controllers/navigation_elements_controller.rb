@@ -114,6 +114,6 @@ class NavigationElementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def navigation_element_params
-      params.require(:navigation_element).permit(:title, :controller_id, :action_id, :instance_id)
+      params.require(:navigation_element).permit(:title, :parent_id, :controller_id, :action_id, :instance_id, :department_id)
     end
 end

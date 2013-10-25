@@ -31,3 +31,21 @@ li, h1, h2, h3, h4, h5 {
     margin-bottom: 0;
   }
 }
+
+/* Navigation */
+
+#tgt-logo {
+  border: 0;
+  height: 36px;
+  margin: 6px 12px 6px 0px;
+  vertical-align: middle;
+  /*background-image: url("tgt-logo.png");
+  background-size: 16px;
+  background-repeat: no-repeat;*/
+  display: block;
+  float: left;
+}
+
+ul.nav li.dropdown:hover ul.dropdown-menu { 
+  display: block; 
+}

@@ -26,6 +26,9 @@
 //= require bootstrap/scrollspy
 //= require bootstrap/modal
 //= require bootstrap/dropdown
+//
+//# Grid
+//= require jquery.equalheights
 // 
 //# File Upload
 //= require fileupload

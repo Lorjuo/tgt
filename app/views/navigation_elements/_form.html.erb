@@ -4,6 +4,10 @@
   <div class="form-inputs">
     <%= f.input :title %>
 
+    <%= f.input :parent_id,
+      :as => :select,
+      collection: nested_set_options(NavigationElement.department(@navigation_element.department_id), @navigation_element) {|i| "#{'-' * i.level} #{i.title}" } %>
+
     <%= f.input :controller_id do %>
       <%# NOTE: remove class form-control when simple forms updates to bootstrap 3 %>
       <%= f.select("controller_id", @controllers, {:include_blank => true}, :class => 'form-control') %>
@@ -16,6 +20,8 @@
     <%= f.input :instance_id do %>
       <%= f.select("instance_id", @instances, {:include_blank => true}, :class => 'form-control') %>
     <% end %>
+
+    <%= f.input :department_id, :as => :hidden %>
   </div>
 
   <div class="form-actions">

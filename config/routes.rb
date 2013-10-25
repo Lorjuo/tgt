@@ -62,7 +62,7 @@ TgtRefurbished::Application.routes.draw do
   end
   
   resources :trainers, :only =>:index
-  resources :trainers, :shallow => true, :path => "", :except =>:index
+  resources :trainers, :shallow => true, :except =>:index
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
