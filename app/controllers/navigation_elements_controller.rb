@@ -11,7 +11,7 @@ class NavigationElementsController < ApplicationController
     Rails.application.eager_load!
     @controllers = Hash[
       ApplicationController.descendants.select { |controller|
-        !['DeviseController','ElfinderController','NavigationElementsController','UsersController'].include?(controller.name)
+        !['Devise::SessionController','ElfinderController','NavigationElementsController','UsersController'].include?(controller.name)
       }.map do |controller|
         [ controller.name, controller.name.underscore.sub!('_controller', '') ]
       end

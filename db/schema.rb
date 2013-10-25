@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131023114041) do
+ActiveRecord::Schema.define(version: 20131025175346) do
+
+  create_table "announcements", force: true do |t|
+    t.string   "name"
+    t.text     "content"
+    t.string   "link"
+    t.boolean  "active",     default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "departments", force: true do |t|
     t.string   "name"
@@ -98,6 +107,14 @@ ActiveRecord::Schema.define(version: 20131023114041) do
     t.string   "controller_id"
     t.string   "action_id"
     t.integer  "instance_id"
+  end
+
+  create_table "pages", force: true do |t|
+    t.string   "name"
+    t.integer  "department_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "roles", force: true do |t|

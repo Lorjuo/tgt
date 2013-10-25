@@ -1,0 +1,28 @@
+<div class="page-header">
+  <%= link_to announcements_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <% if can? :update, @announcement %>
+    <%= link_to edit_announcement_path(@announcement), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+      Edit
+    <% end %>
+  <% end %>
+  <h1>Show announcement</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Name:</dt>
+  <dd><%= @announcement.name %></dd>
+
+  <dt>Content:</dt>
+  <dd><%= @announcement.content %></dd>
+
+  <dt>Link:</dt>
+  <dd><%= @announcement.link %></dd>
+
+  <dt>Active:</dt>
+  <dd><%= @announcement.active %></dd>
+
+</dl>
