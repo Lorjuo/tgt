@@ -1,11 +1,11 @@
 class NavigationElementsController < ApplicationController
   include TheSortableTreeController::Rebuild
 
-  before_action :set_navigation_element, only: [:show, :edit, :update, :destroy]
-
   load_and_authorize_resource
 
+  before_action :set_navigation_element, only: [:show, :edit, :update, :destroy]
   before_filter :load_instance_variables, :only => [:new, :edit]
+  before_action :load_parent_resource, :only => [:new, :create]
 
   def load_instance_variables
     Rails.application.eager_load!
@@ -21,11 +21,15 @@ class NavigationElementsController < ApplicationController
     @instances = []
   end
 
+  def load_parent_resource
+    @department = Department.friendly.find(params[:department_id])
+  end
+
   # GET /navigation_elements
   # GET /navigation_elements.json
-  def index
-    @navigation_elements = NavigationElement.all
-  end
+  # def index
+  #   @navigation_elements = NavigationElement.all
+  # end
 
   # GET /navigation_elements/1
   # GET /navigation_elements/1.json
@@ -34,7 +38,7 @@ class NavigationElementsController < ApplicationController
 
   # GET /navigation_elements/new
   def new
-    @navigation_element = NavigationElement.new
+    @navigation_element = @department.navigation_elements.new
   end
 
   # GET /navigation_elements/1/edit
@@ -42,6 +46,7 @@ class NavigationElementsController < ApplicationController
   end
 
   def updated_controller
+    # TODO: Make this depending on abilities and department
     Rails.application.eager_load!
     controller = ApplicationController.descendants.select { |f|
       #puts "#{f.name.underscore} == #{params[:controller_id]}"
@@ -63,7 +68,8 @@ class NavigationElementsController < ApplicationController
   # POST /navigation_elements
   # POST /navigation_elements.json
   def create
-    @navigation_element = NavigationElement.new(navigation_element_params)
+    #@navigation_element = NavigationElement.new(navigation_element_params)
+    @navigation_element = @department.navigation_elements.new(navigation_element_params)
 
     respond_to do |format|
       if @navigation_element.save

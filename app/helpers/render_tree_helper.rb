@@ -26,7 +26,8 @@ module RenderTreeHelper
       def show_link
         node = options[:node]
         ns   = options[:namespace]
-        url  = h.url_for(ns + [node])
+        url  = #h.url_for(ns + [node])
+        url  = options[:node].url
         title_field = options[:title]
 
         h.link_to(node.send(title_field), url)

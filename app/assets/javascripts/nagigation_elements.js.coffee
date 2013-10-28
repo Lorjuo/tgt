@@ -6,6 +6,7 @@ $ ->
     controller = $("#navigation_element_controller_id").val()
     if controller
       $.ajax
+        # TODO: Maybe append department id
         url: "/navigation_elements/updated_controller"
         data:
           controller_id: $("#navigation_element_controller_id").val()

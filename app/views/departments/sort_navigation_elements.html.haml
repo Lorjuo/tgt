@@ -1,6 +1,6 @@
 %div.page-header
   - if can? :create, NavigationElement
-    = link_to new_navigation_element_path, :class => 'btn btn-primary' do
+    = link_to new_department_navigation_element_path(@department), :class => 'btn btn-primary' do
       %span.glyphicon.glyphicon-plus
       New NavigationElement
   = link_to @department, :class => 'btn btn-primary' do

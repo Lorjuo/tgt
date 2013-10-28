@@ -1,5 +1,6 @@
 class NavigationElement < ActiveRecord::Base
   include TheSortableTree::Scopes
+  include Rails.application.routes.url_helpers
 
   scope :department, -> (id) { where(:department_id => id)}
   #scope :top_level, -> { where(:department_id => nil)}
@@ -28,6 +29,6 @@ class NavigationElement < ActiveRecord::Base
   end
 
   def url
-    url_for :controller => controller_id, :action => action_id, :id => instance_id, :only_path => true
+    url_for :controller => controller_id, :action => action_id, :id => instance_id, :only_path => true unless controller_id.empty?
   end
 end

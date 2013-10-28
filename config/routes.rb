@@ -24,8 +24,6 @@ TgtRefurbished::Application.routes.draw do
 
   resources :navigation_elements do
     collection do
-      get :sort
-
       # required for Sortable GUI server side actions
       post :rebuild
       get :updated_controller
@@ -42,6 +40,15 @@ TgtRefurbished::Application.routes.draw do
       post :rebuild
     end
     resources :training_groups#, :only => [:new, :create]
+    resources :navigation_elements do
+      collection do
+        get :sort
+
+        # required for Sortable GUI server side actions
+        # post :rebuild
+        # get :updated_controller
+      end
+    end
   end
 
 

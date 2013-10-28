@@ -21,7 +21,8 @@
       <%= f.select("instance_id", @instances, {:include_blank => true}, :class => 'form-control') %>
     <% end %>
 
-    <%= f.input :department_id, :as => :hidden %>
+    <%# f.input :department_id, :as => :hidden %>
+    <%= f.input :department_id, :as => :hidden, :input_html => { :value => @department.slug } %>
   </div>
 
   <div class="form-actions">
