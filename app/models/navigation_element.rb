@@ -22,6 +22,14 @@ class NavigationElement < ActiveRecord::Base
 
   # Validation  
   validates :title, presence: true
+  validates :action_id, presence: true, :unless => :is_anchor?
+  validates :instance_id, presence: true, :unless => :is_anchor? #lambda{ state == 'invalid' }
+
+  def is_anchor?
+    #debugger
+    #controller_id.empty?
+    controller_id == ''
+  end
 
   def invoke_touch
     self.touch

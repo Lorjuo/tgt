@@ -22,7 +22,7 @@ TgtRefurbished::Application.routes.draw do
 
   resources :training_groups
 
-  resources :navigation_elements do
+  resources :navigation_elements, :only => [] do
     collection do
       # required for Sortable GUI server side actions
       post :rebuild
@@ -42,7 +42,7 @@ TgtRefurbished::Application.routes.draw do
     resources :training_groups#, :only => [:new, :create]
     resources :navigation_elements do
       collection do
-        get :sort
+        # get :sort
 
         # required for Sortable GUI server side actions
         # post :rebuild

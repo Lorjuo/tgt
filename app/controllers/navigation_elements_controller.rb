@@ -4,8 +4,9 @@ class NavigationElementsController < ApplicationController
   load_and_authorize_resource
 
   before_action :set_navigation_element, only: [:show, :edit, :update, :destroy]
+  before_action :load_parent_resource, only: [:sort, :index, :create, :new]
+  
   before_filter :load_instance_variables, :only => [:new, :edit]
-  before_action :load_parent_resource, :only => [:new, :create]
 
   def load_instance_variables
     Rails.application.eager_load!
@@ -27,9 +28,9 @@ class NavigationElementsController < ApplicationController
 
   # GET /navigation_elements
   # GET /navigation_elements.json
-  # def index
-  #   @navigation_elements = NavigationElement.all
-  # end
+  def index
+    @navigation_elements = NavigationElement.all
+  end
 
   # GET /navigation_elements/1
   # GET /navigation_elements/1.json
@@ -99,9 +100,11 @@ class NavigationElementsController < ApplicationController
   # DELETE /navigation_elements/1
   # DELETE /navigation_elements/1.json
   def destroy
+    @department = @navigation_element.department
+
     @navigation_element.destroy
     respond_to do |format|
-      format.html { redirect_to navigation_elements_url }
+      format.html { redirect_to department_navigation_elements_url(@department) }
       format.json { head :no_content }
     end
   end

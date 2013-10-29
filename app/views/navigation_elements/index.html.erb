@@ -1,9 +1,9 @@
 <div class="page-header">
-  <%= link_to new_navigation_element_path, :class => 'btn btn-primary' do %>
+  <%= link_to new_department_navigation_element_path, :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
     New NavigationElement
   <% end if can? :create, NavigationElement%>
-  <%= link_to sort_navigation_elements_path, :class => 'btn btn-primary' do %>
+  <%= link_to sort_navigation_elements_department_path(@department), :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-th-list"></span>
     Manage
   <% end if can? :sort, NavigationElement%>
