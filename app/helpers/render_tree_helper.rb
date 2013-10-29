@@ -31,7 +31,7 @@ module RenderTreeHelper
         title_field = options[:title]
 
         h.link_to(node.send(title_field), url)
-        #h.link_to(node.send(title_field), url, :class => "dropdown-toggle", :data => {:toggle => "dropdown"})#+h.tag(:b, :class => "caret")
+        #h.link_to(node.send(title_field), url, :class => "dropdown-toggle", :data => {:toggle => "dropdown"})#+h.tag(:span, :class => "caret")
       end
 
       def children

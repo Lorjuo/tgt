@@ -28,7 +28,7 @@
 //= require bootstrap/dropdown
 //
 //# Grid
-//= require jquery.equalheights
+// require jquery.equalheights
 // 
 //# File Upload
 //= require fileupload
