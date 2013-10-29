@@ -6,68 +6,30 @@ class NavigationElementsController < ApplicationController
   before_action :set_navigation_element, only: [:show, :edit, :update, :destroy]
   before_action :load_parent_resource, only: [:sort, :index, :create, :new]
   
-  before_filter :load_instance_variables, :only => [:new, :edit]
+  before_action :load_controllers, :only => [:new, :create, :edit, :update]
+  before_action :load_dependent_variables, only: [:new, :create, :edit, :update]
 
-  def load_instance_variables
-    Rails.application.eager_load!
-    @controllers = Hash[
-      ApplicationController.descendants.select { |controller|
-        !['Devise::SessionController','ElfinderController','NavigationElementsController','UsersController'].include?(controller.name)
-      }.map do |controller|
-        [ controller.name, controller.name.underscore.sub!('_controller', '') ]
-      end
-    ].sort
+  # Multi Select
+  #http://www.petermac.com/rails-3-jquery-and-multi-select-dependencies/
 
-    @actions = []
-    @instances = []
-  end
-
-  def load_parent_resource
-    @department = Department.friendly.find(params[:department_id])
-  end
-
-  # GET /navigation_elements
-  # GET /navigation_elements.json
   def index
     @navigation_elements = NavigationElement.all
   end
 
-  # GET /navigation_elements/1
-  # GET /navigation_elements/1.json
+
   def show
   end
 
-  # GET /navigation_elements/new
+
   def new
     @navigation_element = @department.navigation_elements.new
   end
 
-  # GET /navigation_elements/1/edit
+
   def edit
   end
 
-  def updated_controller
-    # TODO: Make this depending on abilities and department
-    Rails.application.eager_load!
-    controller = ApplicationController.descendants.select { |f|
-      #puts "#{f.name.underscore} == #{params[:controller_id]}"
-      f.name.underscore.sub!('_controller', '') == params[:controller_id]
-    }.first
 
-    @actions = controller.action_methods.select{ |a|
-      !a.start_with?('_')
-    }.map{ |a|
-      [a, a]
-    }.insert(0, "Select a Action")
-
-    instance = Object.const_get(controller.name.sub!('Controller', '').singularize)
-    @instances = instance.all.map{ |a|
-      [a.respond_to?('name') ? a.name : a.id, a.id]
-    }.insert(0, "Select a Instance")
-  end
-
-  # POST /navigation_elements
-  # POST /navigation_elements.json
   def create
     #@navigation_element = NavigationElement.new(navigation_element_params)
     @navigation_element = @department.navigation_elements.new(navigation_element_params)
@@ -83,8 +45,7 @@ class NavigationElementsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /navigation_elements/1
-  # PATCH/PUT /navigation_elements/1.json
+
   def update
     respond_to do |format|
       if @navigation_element.update(navigation_element_params)
@@ -97,8 +58,15 @@ class NavigationElementsController < ApplicationController
     end
   end
 
-  # DELETE /navigation_elements/1
-  # DELETE /navigation_elements/1.json
+
+  def change_controller
+    # TODO: Make this depending on abilities and department
+    load_dependent_variables
+
+    render partial: 'controller_dependent'
+  end
+
+
   def destroy
     @department = @navigation_element.department
 
@@ -124,5 +92,59 @@ class NavigationElementsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def navigation_element_params
       params.require(:navigation_element).permit(:title, :parent_id, :controller_id, :action_id, :instance_id, :department_id)
+    end
+
+  
+
+    def get_controller(controller_id)
+      Rails.application.eager_load!
+      ApplicationController.descendants.select { |f|
+        #puts "#{f.name.underscore} == #{params[:controller_id]}"
+        f.name.underscore.sub!('_controller', '') == controller_id
+      }.first
+    end
+
+    def load_available_actions(controller)
+      @actions = controller.action_methods.select{ |a|
+        !a.start_with?('_')
+      }.map{ |a|
+        [a, a]
+      }.insert(0, "Select a Action")
+    end
+
+    def load_available_instances(controller)
+      instance = Object.const_get(controller.name.sub!('Controller', '').singularize)
+      @instances = instance.all.map{ |a|
+        [a.respond_to?('name') ? a.name : a.id, a.id]
+      }.insert(0, "Select a Instance")
+    end
+
+    def load_controllers
+      Rails.application.eager_load!
+      @controllers = Hash[
+        ApplicationController.descendants.select { |controller|
+          !['Devise::SessionController','ElfinderController','NavigationElementsController','UsersController'].include?(controller.name)
+        }.map do |controller|
+          [ controller.name, controller.name.underscore.sub!('_controller', '') ]
+        end
+      ].sort
+    end
+
+    def load_parent_resource
+      @department = Department.friendly.find(params[:department_id])
+    end
+
+    def load_dependent_variables
+
+      if params[:navigation_element]
+        controller_id = params[:navigation_element][:controller_id]
+      else
+        controller_id = @navigation_element.controller_id
+      end
+
+      @controller = get_controller(controller_id)
+
+      load_available_actions(@controller) unless @controller.nil?
+      load_available_instances(@controller) unless @controller.nil?
     end
 end

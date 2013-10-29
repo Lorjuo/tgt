@@ -1,6 +1,6 @@
 <%= simple_form_for([@department, @navigation_element]) do |f| %>
   <%= f.error_notification %>
-
+  
   <div class="form-inputs">
     <%= f.input :title %>
 
@@ -13,13 +13,17 @@
       <%= f.select("controller_id", @controllers, {:include_blank => true}, :class => 'form-control') %>
     <% end %>
 
-    <%= f.input :action_id do %>
-      <%= f.select("action_id", @actions, {:include_blank => true}, :class => 'form-control') %>
-    <% end %>
+    <%#= f.input :action_id do %>
+      <%#= f.select("action_id", @actions, {:include_blank => true}, :class => 'form-control') %>
+    <%# end %>
 
-    <%= f.input :instance_id do %>
-      <%= f.select("instance_id", @instances, {:include_blank => true}, :class => 'form-control') %>
-    <% end %>
+    <%#= f.input :instance_id do %>
+      <%#= f.select("instance_id", @instances, {:include_blank => true}, :class => 'form-control') %>
+    <%# end %>
+
+    <div id="controllerDependentForm">
+      <%= render :partial => 'controller_dependent' %>
+    </div>
 
     <%= f.input :department_id, :as => :hidden %>
   </div>

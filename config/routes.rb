@@ -26,7 +26,7 @@ TgtRefurbished::Application.routes.draw do
     collection do
       # required for Sortable GUI server side actions
       post :rebuild
-      get :updated_controller
+      get :change_controller
     end
   end
 
