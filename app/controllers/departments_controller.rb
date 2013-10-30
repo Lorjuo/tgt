@@ -5,6 +5,8 @@ class DepartmentsController < ApplicationController
 
   load_and_authorize_resource :find_by => :slug
 
+  layout :resolve_layout
+
   # GET /departments
   # GET /departments.json
   def index
@@ -98,4 +100,13 @@ class DepartmentsController < ApplicationController
     def department_params
       params.require(:department).permit(:name, :description, :training_group_ids)
     end
+
+    def resolve_layout
+    case action_name
+    when "show"
+      "department"
+    else
+      "application"
+    end
+  end
 end
