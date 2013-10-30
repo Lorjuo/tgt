@@ -7,6 +7,8 @@ class TrainingGroupsController < ApplicationController
   #load_and_authorize_resource :training_unit, :through => :training_group, :shallow => true
   load_and_authorize_resource :training_group, :through => :department, :shallow => true
 
+  layout 'department'
+
   def load_parent_resource
     @department = Department.friendly.find(params[:department_id])
   end
@@ -20,6 +22,7 @@ class TrainingGroupsController < ApplicationController
   # GET /training_groups/1
   # GET /training_groups/1.json
   def show
+    @department = @training_group.department
   end
 
   # GET /training_groups/new
@@ -29,6 +32,7 @@ class TrainingGroupsController < ApplicationController
 
   # GET /training_groups/1/edit
   def edit
+    @department = @training_group.department
   end
 
   # POST /training_groups

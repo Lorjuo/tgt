@@ -20,7 +20,7 @@ TgtRefurbished::Application.routes.draw do
 
   resources :training_units
 
-  resources :training_groups
+  #resources :training_groups
 
   resources :navigation_elements, :only => [] do
     collection do
