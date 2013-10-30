@@ -43,6 +43,9 @@
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.de
 //
+//# Images
+//= require fancybox
+//
 //# Nested Forms
 // require jquery_nested_form
 //= require cocoon
