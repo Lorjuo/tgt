@@ -3,8 +3,10 @@ class NavigationElementsController < ApplicationController
 
   load_and_authorize_resource
 
+  layout 'department'
+
   before_action :set_navigation_element, only: [:show, :edit, :update, :destroy]
-  before_action :load_parent_resource, only: [:sort, :index, :create, :new]
+  before_action :load_parent_resource
   
   before_action :load_controllers, :only => [:new, :create, :edit, :update]
   before_action :load_dependent_variables, only: [:new, :create, :edit, :update]
@@ -31,7 +33,6 @@ class NavigationElementsController < ApplicationController
 
 
   def create
-    #@navigation_element = NavigationElement.new(navigation_element_params)
     @navigation_element = @department.navigation_elements.new(navigation_element_params)
 
     respond_to do |format|
@@ -68,8 +69,6 @@ class NavigationElementsController < ApplicationController
 
 
   def destroy
-    @department = @navigation_element.department
-
     @navigation_element.destroy
     respond_to do |format|
       format.html { redirect_to department_navigation_elements_url(@department) }
@@ -89,11 +88,20 @@ class NavigationElementsController < ApplicationController
       @navigation_element = NavigationElement.find(params[:id])
     end
 
+
+    def load_parent_resource
+      if params[:department_id]
+        @department = Department.friendly.find(params[:department_id])
+      else
+        @department = @navigation_element.department
+      end
+    end
+
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def navigation_element_params
       params.require(:navigation_element).permit(:title, :parent_id, :controller_id, :action_id, :instance_id, :department_id)
     end
-
   
 
     def get_controller(controller_id)
@@ -128,10 +136,6 @@ class NavigationElementsController < ApplicationController
           [ controller.name, controller.name.underscore.sub!('_controller', '') ]
         end
       ].sort
-    end
-
-    def load_parent_resource
-      @department = Department.friendly.find(params[:department_id])
     end
 
     def load_dependent_variables

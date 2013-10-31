@@ -1,0 +1,14 @@
+<%= content_tag :li, :class => "dropdown" do %>
+  <%#= link_to navigation_element.url do %>
+  <%= link_to navigation_element.url,
+    :class => "dropdown-toggle",
+    :data => (navigation_element.leaf?) ? {} : {:toggle => "dropdown"} do %>
+    <%= navigation_element.title %>
+    <%= tag :span, :class => "caret" unless navigation_element.leaf? %>
+  <% end %>
+  <% unless navigation_element.leaf? %>
+    <%= content_tag :ul, :class => "dropdown-menu" do %>
+      <%= render :partial => "layouts/sub_level_navigation", collection: navigation_element.children, :as => :navigation_element %>
+    <% end %>
+  <% end %>
+<% end %>

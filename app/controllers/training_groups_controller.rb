@@ -1,6 +1,6 @@
 class TrainingGroupsController < ApplicationController
   before_action :set_training_group, only: [:show, :edit, :update, :destroy]
-  before_action :load_parent_resource, :only => [:new, :create]
+  before_action :load_parent_resource
 
   #load_and_authorize_resource
   #load_and_authorize_resource :training_group
@@ -9,34 +9,24 @@ class TrainingGroupsController < ApplicationController
 
   layout 'department'
 
-  def load_parent_resource
-    @department = Department.friendly.find(params[:department_id])
-  end
-
-  # GET /training_groups
-  # GET /training_groups.json
   # def index
   #   @training_groups = TrainingGroup.all
   # end
 
-  # GET /training_groups/1
-  # GET /training_groups/1.json
+
   def show
-    @department = @training_group.department
   end
 
-  # GET /training_groups/new
+
   def new
     @training_group = @department.training_groups.new
   end
 
-  # GET /training_groups/1/edit
+
   def edit
-    @department = @training_group.department
   end
 
-  # POST /training_groups
-  # POST /training_groups.json
+
   def create
     @training_group = @department.training_groups.new(training_group_params)
 
@@ -51,8 +41,7 @@ class TrainingGroupsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /training_groups/1
-  # PATCH/PUT /training_groups/1.json
+
   def update
     respond_to do |format|
       if @training_group.update(training_group_params)
@@ -65,12 +54,11 @@ class TrainingGroupsController < ApplicationController
     end
   end
 
-  # DELETE /training_groups/1
-  # DELETE /training_groups/1.json
+
   def destroy
     @training_group.destroy
     respond_to do |format|
-      format.html { redirect_to training_groups_url }
+      format.html { redirect_to department_training_groups_path @department }
       format.json { head :no_content }
     end
   end
@@ -79,6 +67,14 @@ class TrainingGroupsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_training_group
       @training_group = TrainingGroup.find(params[:id])
+    end
+    
+    def load_parent_resource
+      if params[:department_id]
+        @department = Department.friendly.find(params[:department_id])
+      else
+        @department = @training_group.department
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

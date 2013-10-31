@@ -16,10 +16,10 @@ $ ->
     $.ajax
       # TODO: Maybe append department id
       type: "GET",
-      url: "/navigation_elements/change_controller"
+      url: "/departments/"+department_id+"/navigation_elements/change_controller"
       data:
         navigation_element:
-          controller_id: $("#navigation_element_controller_id").val()
+          controller_id: $("#navigation_element_controller_id").val()          
       dataType: "html"
       success: (content) ->
         $("#controllerDependentForm").html content

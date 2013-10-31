@@ -10,7 +10,6 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require turbolinks
 //
 //# JQuery
 //= require jquery
@@ -28,7 +27,7 @@
 //= require bootstrap/dropdown
 //
 //# Grid
-// require jquery.equalheights
+//= require jquery.equalheights
 // 
 //# File Upload
 //= require fileupload
@@ -59,3 +58,6 @@
 //
 // require_tree .
 //= require_directory .
+//
+//# Has to be the last (https://github.com/kossnocorp/jquery.turbolinks)
+//= require turbolinks

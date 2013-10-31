@@ -1,5 +1,5 @@
-jQuery ->
-  # $('.equal>div').equalHeights()
-  $(".equal>div").equalHeightColumns
-    minWidth: 750
-    # maxWidth: 1000
+$ ->
+  # # $('.equal>div').equalHeights()
+  # $(".equal>div").equalHeightColumns
+  #   minWidth: 750
+  #   # maxWidth: 1000

@@ -74,6 +74,8 @@ gem 'fancybox2-rails', '~> 0.2.4'
 # Input Elements
   # Datepicker
   gem 'bootstrap-datepicker-rails'
+  # Maybe replace with: https://github.com/tarruda/bootstrap-datetimepicker
+  # or especially this fork https://github.com/Eonasdan/bootstrap-datetimepicker
   # Token Inputs
   gem 'chosen-rails'
   # For Rails 4 project, it is required to add compass-rails gem explicitly.

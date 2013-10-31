@@ -1,4 +1,8 @@
-<%= simple_form_for([@department, @navigation_element]) do |f| %>
+<%= javascript_tag do %>
+  window.department_id = '<%= @department.id %>';
+<% end %>
+
+<%= simple_form_for(shallow_args(@department, @navigation_element)) do |f| %>
   <%= f.error_notification %>
   
   <div class="form-inputs">

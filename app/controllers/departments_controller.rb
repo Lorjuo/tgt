@@ -103,7 +103,7 @@ class DepartmentsController < ApplicationController
 
     def resolve_layout
     case action_name
-    when "show"
+    when "show", "training_groups", "sort_navigation_elements"
       "department"
     else
       "application"

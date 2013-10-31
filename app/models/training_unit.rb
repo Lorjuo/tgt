@@ -8,6 +8,7 @@ class TrainingUnit < ActiveRecord::Base
   belongs_to :location_winter, :class_name => 'Location'
 
   # Validation
+  validates :week_day, presence: true
 
   # Virtual attributes
   def name

@@ -1,17 +1,23 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
+  <div class="container"> <!-- Needed to center the navbar content -->
     <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
       <%= image_tag 'tgt-logo.png', :id => 'tgt-logo' %>
       <%= link_to "/", :class => "navbar-brand" do %>
         TG Traisa
       <% end %>
     </div>
-    <div class="collapse navbar-collapse">
+    <div class="collapse navbar-collapse" id="navigation">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
-        <%= just_tree NavigationElement.top_level %>
+        <%= render :partial => "layouts/top_level_navigation", collection: NavigationElement.top_level.roots, :as => :navigation_element %>
       </ul>
-      <ul class="nav navbar-nav pull-right">
+      <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             Account <span class="caret"></span>
