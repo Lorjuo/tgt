@@ -26,6 +26,15 @@ class GalleriesController < ApplicationController
   def edit
   end
 
+  def set_preview_image
+    @gallery.preview_image = Image.find(params['image_id'])
+    if @gallery.save
+      redirect_to @gallery, notice: 'Preview image successfully set.'
+    else
+      redirect_to @gallery, error: 'Preview image not successfully set.'
+    end
+  end
+
   # POST /galleries
   # POST /galleries.json
   def create

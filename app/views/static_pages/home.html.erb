@@ -1,48 +1,33 @@
 <div class="row equal">
-  <div class="col-sm-8 window">
-    <%= render :partial => 'messages/message_excerpt', :collection => @messages, :as => :message %>
+  <div class="col-sm-8">
+    <div class="window box">
+      <h3>Sportabgebot</h3>
+      <p>Zu unserem Sportangebot gelangen Sie hier</p>
+    </div>
+    <div class="window">
+      <%= render :partial => 'messages/message_excerpt', :collection => @messages, :as => :message %>
+    </div>
+    <div class="window box">
+      <h3>News Archiv</h3>
+      <p><%= link_to "Hier", messages_path %> gelangen sie zu vergangenen Nachrichtigen in unserem Archiv</p>
+    </div>
   </div>
-  <div class="col-sm-4 window">
-    <!--  Carousel - consult the Twitter Bootstrap docs at
-        http://twitter.github.com/bootstrap/javascript.html#carousel -->
-    <div id="announcement-carousel" class="carousel slide box"><!-- class of slide for animation -->
-      <ol class="carousel-indicators">
-        <% @announcements.each do |announcement| %>
-          <li data-target="#announcement-carousel" data-slide-to="0"></li>
-        <% end %>
-      </ol>
-      <div class="carousel-inner">
-        <% @announcements.each do |announcement| %>
-          <div class="item">
-            <%= link_to announcement.link do %>
-              <%= raw announcement.content %>
+  <div class="col-sm-4">
+    <div class="window">
+      <%= render :partial => 'layouts/announcements' %>
+    </div>
+    <div class="window box">
+      <h3>Photo Galleries</h3>
+      <div class="row">
+        <% Gallery.order(:updated_at => :desc).each do |gallery| %>
+          <% image = gallery.get_preview_image %>
+          <div class="col-sm-4">
+            <%= link_to(image.file_url, :class => 'fancybox', :rel => 'galleries', :caption => gallery.name) do %>
+              <%= image_tag image.file_url(:_260x180), :class => "img-responsive" %>
             <% end %>
-            <div class="carousel-caption">
-              <p><%= announcement.name %></p>
-            </div>
           </div>
         <% end %>
       </div>
-      <!--  Next and Previous controls below
-            href values must reference the id for this carousel -->
-      <!-- <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
-      <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a> -->
-
-      <!-- Controls -->
-      <a class="left carousel-control" href="#announcement-carousel" data-slide="prev">
-        <span class="icon-prev"></span>
-      </a>
-      <a class="right carousel-control" href="#announcement-carousel" data-slide="next">
-        <span class="icon-next"></span>
-      </a>
-    </div>
-
-    <div class="box">
-      Another box
-      <ul>
-        <li>stupid</li>
-        <li>list</li>
-      </ul>
     </div>
   </div>
 </div>

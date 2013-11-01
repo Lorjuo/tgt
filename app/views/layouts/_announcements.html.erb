@@ -1,0 +1,43 @@
+<!--  Carousel - consult the Twitter Bootstrap docs at
+    http://twitter.github.com/bootstrap/javascript.html#carousel -->
+<div id="announcement-carousel" class="carousel slide box"><!-- class of slide for animation -->
+  <ol class="carousel-indicators">
+    <% @announcements.each do |announcement| %>
+      <li data-target="#announcement-carousel" data-slide-to="0"></li>
+    <% end %>
+  </ol>
+  <div class="carousel-inner">
+    <% @announcements.each do |announcement| %>
+      <div class="item">
+        <%= link_to announcement.link do %>
+          <%= raw announcement.content %>
+        <% end %>
+        <div class="carousel-caption">
+          <p><%= announcement.name %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <!--  Next and Previous controls below
+        href values must reference the id for this carousel -->
+  <!-- <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a> -->
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#announcement-carousel" data-slide="prev">
+    <span class="icon-prev"></span>
+  </a>
+  <a class="right carousel-control" href="#announcement-carousel" data-slide="next">
+    <span class="icon-next"></span>
+  </a>
+</div>
+
+<div class="box">
+  <ul>
+    <% @announcements.each do |announcement| %>
+      <li>
+        <%= link_to announcement.name, announcement.link %>
+      </li>
+    <% end %>
+  </ul>
+</div>

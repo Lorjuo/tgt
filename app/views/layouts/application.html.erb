@@ -26,13 +26,13 @@
     <%= render 'layouts/messages' %>
     
     <div class="row">
-      <div class="col-lg-12" style="text-align: right">
+      <!-- <div class="col-lg-12" style="text-align: right">
         <% if user_signed_in? %>
           Hello <%= current_user.name %> (Roles: <%= current_user.roles.map{|role| role.name.to_s}.join(', ') %>)
         <% else %>
           (you are currently not logged in)
         <% end %>
-      </div>
+      </div> -->
     </div>
 
     <%= yield %>

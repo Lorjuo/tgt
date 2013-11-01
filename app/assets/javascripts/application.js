@@ -55,7 +55,7 @@
 //
 //# Table
 //= require dataTables/jquery.dataTables
-//= require dataTables/jquery.dataTables.bootstrap
+// require dataTables/jquery.dataTables.bootstrap
 //
 //# WYSIWYG
 //= require tinymce-jquery

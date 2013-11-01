@@ -42,19 +42,15 @@ private
 
 
   def fetch_messages
-    #messages = Message.accessible_by(current_ability, :read)
-    # messages = Message.accessible_by(Ability.new(@user), :read)
-    #                 .joins("LEFT OUTER JOIN ta_apps_providers ON ta_apps_providers.id = ta_apps_messages.provider_id")
-    #                 .joins("LEFT OUTER JOIN ta_apps_providerstatuses ON ta_apps_providerstatuses.id = ta_apps_messages.providerstatus_id")
-    #                 .joins("LEFT OUTER JOIN ta_apps_statuses ON ta_apps_statuses.id = ta_apps_messages.status_id")
-    #                 .joins("LEFT OUTER JOIN ta_apps_contributors_messages ON ta_apps_messages.id = ta_apps_contributors_messages.entry_id")
-    #                 .joins("LEFT OUTER JOIN ta_apps_contributors ON ta_apps_contributors_messages.contributor_id = ta_apps_contributors.id")
-                
-                    
-    # messages = messages.order("#{sort_column} #{sort_direction}")
-    # messages = messages.page(page).per_page(per_page)
-    # 
-    messages = Message.order("#{sort_column} #{sort_direction}")
+
+    #messages = Message.joins(:department)
+    messages = Message.joins("LEFT OUTER JOIN departments ON messages.department_id = departments.id")
+
+    if params[:sSearch].present?
+      messages = messages.where("title like :search or content like :search or departments.name like :search", search: "%#{params[:sSearch]}%")
+    end
+
+    messages = messages.order("#{sort_column} #{sort_direction}")
     messages = messages.page(page).per_page(per_page)
 
     
@@ -71,9 +67,7 @@ private
   end
 
   def sort_column
-    columns = %w[
-      messages.title
-      messages.content]
+    columns = ['', 'messages.title', '', 'departments.name']
     columns[params[:iSortCol_0].to_i]
   end
 

@@ -11,6 +11,9 @@ TgtRefurbished::Application.routes.draw do
   resources :images
 
   resources :galleries, :shallow => true do
+    member do
+      post :set_preview_image
+    end
     resources :images
   end
 

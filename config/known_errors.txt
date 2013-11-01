@@ -1,0 +1,9 @@
+NoMethodError Exception: undefined method `can' for #<User:0x007f9354de3c00>
+
+http://stackoverflow.com/questions/3293400/access-cancans-can-method-from-a-model
+class User < ActiveRecord::Base
+  def ability
+    @ability ||= Ability.new(self)
+  end
+  delegate :can?, :cannot?, :to => :ability
+end

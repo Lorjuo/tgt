@@ -4,7 +4,7 @@
     <div class="message-image col-sm-3">
       <%# holder_tag '260x180', 'Image', 'gray', :class => 'holder' %>
       <!-- <img src="http://placehold.it/260x180" width="100%" /> -->
-      <%= link_to(image_tag(message.image.file_url(:_260x180), :class => "img-responsive"), message.image.file_url, :class => "fancybox") if message.image.present? %>
+      <%= link_to(image_tag(message.image.file_url(:_260x180), :class => "img-responsive"), message.image.file_url, :class => "fancybox", :rel => 'messages', :caption => message.title) if message.image.present? %>
     </div>
     <div class="message-text col-sm-9">
       <div class="message-header">
