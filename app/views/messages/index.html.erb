@@ -26,8 +26,11 @@
 <% @messages.each do |message| %>
     <tr>
       <td><%= message.title %></td>
-      <td><%= message.content %></td>
-      <td><%= message.department_id %></td>
+      <td>
+        <%= truncate(strip_tags(message.content), length: 320, omission: '...') %>
+        <%= link_to '...mehr', message, :class => 'btn-link' %>
+      </td>
+      <td><%= message.department.name %></td>
       <td><%= link_to 'Show', message %></td>
       <% if can? :update, message %>
       <td><%= link_to 'Edit', edit_message_path(message) %></td>

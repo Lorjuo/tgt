@@ -17,10 +17,12 @@ class MessagesController < ApplicationController
   # GET /messages/new
   def new
     @message = Message.new
+    @message.build_image
   end
 
   # GET /messages/1/edit
   def edit
+    @message.build_image unless @message.image.present?
   end
 
   # POST /messages
@@ -71,6 +73,10 @@ class MessagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def message_params
-      params.require(:message).permit(:title, :content, :department_id)
+      debugger
+      #params[:message].delete("image_attributes")
+      params.require(:message).permit(:title, :content, :department_id, :image_attributes => [:file, :id])
+      # :file needed when upload a new image
+      # :id needed when fileupload is empty
     end
 end
