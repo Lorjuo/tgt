@@ -2,9 +2,9 @@
 <div class="message box">
   <div class="row">
     <div class="message-image col-sm-3">
-      <!-- <img src="/uploads/embedded_image/file/0000/0013/3df3b017-d5af-4d19-8349-7eb33d9df1a4.jpg" width="100%" /> -->
       <%# holder_tag '260x180', 'Image', 'gray', :class => 'holder' %>
-      <img src="http://placehold.it/260x180" width="100%" />
+      <!-- <img src="http://placehold.it/260x180" width="100%" /> -->
+      <%= link_to(image_tag(message.image.file_url(:_260x180), :class => "img-responsive"), message.image.file_url, :class => "fancybox") if message.image.present? %>
     </div>
     <div class="message-text col-sm-9">
       <div class="message-header">

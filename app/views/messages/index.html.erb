@@ -6,9 +6,12 @@
   <h1>Listing messages</h1>
 </div>
 
-<table class="table table-bordered table-striped">
+<table id="messages_data_table"
+  class="table table-bordered table-striped display"
+  data-source="<%= messages_url(format: "json") %>">
   <thead>
     <tr>
+      <th></th>
       <th>Title</th>
       <th>Content</th>
       <th>Department</th>
@@ -25,6 +28,7 @@
   <tbody>
 <% @messages.each do |message| %>
     <tr>
+      <td><%= link_to(image_tag(message.image.file_url(:thumb)), message.image.file_url, :class => "fancybox") if message.image.present? %></td>
       <td><%= message.title %></td>
       <td>
         <%= truncate(strip_tags(message.content), length: 320, omission: '...') %>

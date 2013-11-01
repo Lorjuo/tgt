@@ -53,6 +53,10 @@
 //= require jquery.ui.nestedSortable
 //= require sortable_tree/initializer
 //
+//# Table
+//= require dataTables/jquery.dataTables
+//= require dataTables/jquery.dataTables.bootstrap
+//
 //# WYSIWYG
 //= require tinymce-jquery
 //

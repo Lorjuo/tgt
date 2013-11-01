@@ -14,6 +14,13 @@ GIT
       activerecord (>= 4.0.0.beta)
 
 GIT
+  remote: git://github.com/rweng/jquery-datatables-rails.git
+  revision: 64507f284e7506ad53f93154a66376c9185d6168
+  specs:
+    jquery-datatables-rails (1.11.2)
+      jquery-rails
+
+GIT
   remote: git://github.com/thomas-mcdonald/bootstrap-sass.git
   revision: 6cc04bda62ed7ccf71d445fa82e706cb696b4fdb
   specs:
@@ -49,7 +56,7 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
-    arel (4.0.0)
+    arel (4.0.1)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
     better_errors (1.0.1)
@@ -221,7 +228,7 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.0.0)
+    sprockets-rails (2.0.1)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
@@ -280,6 +287,7 @@ DEPENDENCIES
   haml-rails
   holder_rails
   jbuilder (~> 1.2)
+  jquery-datatables-rails!
   jquery-fileupload-rails
   jquery-rails
   jquery-turbolinks

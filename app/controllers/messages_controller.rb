@@ -7,6 +7,10 @@ class MessagesController < ApplicationController
   # GET /messages.json
   def index
     @messages = Message.all
+    respond_to do |format|
+      format.html
+      format.json { render json: MessagesDatatable.new(view_context, current_user) }
+    end
   end
 
   # GET /messages/1
@@ -73,8 +77,6 @@ class MessagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def message_params
-      debugger
-      #params[:message].delete("image_attributes")
       params.require(:message).permit(:title, :content, :department_id, :image_attributes => [:file, :id])
       # :file needed when upload a new image
       # :id needed when fileupload is empty
