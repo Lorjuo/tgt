@@ -1,5 +1,5 @@
 body {
-  /*background-image: url("background.jpg");*/
+  background-image: url("background.jpg");
   background-size: auto auto;
   background-attachment: fixed;
   vertical-align: baseline;
@@ -18,6 +18,10 @@ li, h1, h2, h3, h4, h5 {
   background-color: #F9F9F9;
   background-image: linear-gradient(to bottom, white, #F2F2F2);
   background-repeat: repeat-x;
+  padding: 6px 12px 6px 12px;
+}
+
+.box.small-spacing {
   padding: 4px;
 }
 

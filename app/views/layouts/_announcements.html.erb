@@ -1,6 +1,6 @@
 <!--  Carousel - consult the Twitter Bootstrap docs at
     http://twitter.github.com/bootstrap/javascript.html#carousel -->
-<div id="announcement-carousel" class="carousel slide box"><!-- class of slide for animation -->
+<div id="announcement-carousel" class="carousel slide box small-spacing"><!-- class of slide for animation -->
   <ol class="carousel-indicators">
     <% @announcements.each do |announcement| %>
       <li data-target="#announcement-carousel" data-slide-to="0"></li>
@@ -32,12 +32,10 @@
   </a>
 </div>
 
-<div class="box">
-  <ul>
-    <% @announcements.each do |announcement| %>
-      <li>
-        <%= link_to announcement.name, announcement.link %>
-      </li>
-    <% end %>
-  </ul>
-</div>
+<ul class="box small-spacing list-group">
+  <% @announcements.each do |announcement| %>
+    <li class="list-group-item">
+      <%= link_to announcement.name, announcement.link %>
+    </li>
+  <% end %>
+</ul>

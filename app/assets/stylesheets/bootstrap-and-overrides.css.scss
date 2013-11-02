@@ -23,3 +23,37 @@ body { padding-top: 60px !important; }
     margin-right: auto;
     max-width: 100%;
 }
+
+/* List Group */
+ul.list-group {
+  margin-bottom: 10px;
+}
+
+ul.list-group li.list-group-item {
+  @include border-top-radius(0px); 
+  @include border-bottom-radius(0px);
+
+  &:hover {
+    background-color: #EEEEEE;
+  }
+
+  a {
+    color: #000;
+    &:visited {
+      color: #666;
+    }
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+/* Thumbnail */
+div.thumbnail {
+  @include border-top-radius(0px); 
+  @include border-bottom-radius(0px);
+
+  &:hover {
+    background-color: #EEEEEE;
+  }
+}
