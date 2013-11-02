@@ -3,6 +3,8 @@ body { padding-top: 60px !important; }
 //@import "bootstrap-responsive"; // Seems that there is no need for in bootstrap 3
 //@import 'bootstrap/theme';
 
+/* https://github.com/thomas-mcdonald/bootstrap-sass/blob/master/vendor/assets/stylesheets/bootstrap/_mixins.scss */
+
 .btn.btn-primary {
   color: #dddddd;
 }
@@ -55,5 +57,39 @@ div.thumbnail {
 
   &:hover {
     background-color: #EEEEEE;
+  }
+}
+
+
+/* Image Overlay */
+.image-wrapper {
+  position:relative;
+}
+
+.image-overlay {
+  top:0;
+  right:0;
+  position: absolute;
+}
+
+.toolbar {
+  font-size: 24px;
+  padding: 5px;
+  /*border: 1px solid #AAAAAA;
+  border-width: 0px 0px 1px 1px;
+  border-bottom-left-radius: 5px;
+  background-color: rgba(255,255,255,0.7);*/
+
+  a span {
+    /*color: #333333;*/
+    &.active {
+      color: yellow;
+    }
+  }
+
+  a:hover span {
+    &.glyphicon-star {
+      color: yellow;
+    }
   }
 }

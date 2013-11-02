@@ -3,6 +3,6 @@ class StaticPagesController < ApplicationController
 
   def home
     @announcements = Announcement.active
-    @messages = Message.limit(4)
+    @messages = Message.limit(3)
   end
 end

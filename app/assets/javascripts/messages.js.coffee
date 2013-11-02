@@ -20,6 +20,6 @@ $ ->
       bSortable: false
       aTargets: [0, 2, 4, 5, 6]
     ]
-    iDisplayLength: 100
+    iDisplayLength: 5
     aLengthMenu: [[5, 10, 25, 100000], [5, 10, 25, 'all']]
     sAjaxSource: $("#messages_data_table").data("source")

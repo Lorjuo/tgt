@@ -1,39 +1,43 @@
 <div class="image col-md-3 col-sm-4 col-xs-6">
   <div class="thumbnail">
     <%# link_to(image_tag(image.file_url(:_260x180)), image) if image.file._260x180.present? %>
-    <%= link_to(image.file_url, :class => 'fancybox', :rel => 'group', :caption => image.name) do %>
-      <%= image_tag(image.file_url(:_260x180)) %>
-    <% end if image.file._260x180.present? %>
+    <div class="image-wrapper">
+      <%= link_to(image.file_url, :class => 'fancybox', :rel => 'group', :caption => image.name) do %>
+        <%= image_tag(image.file_url(:_260x180)) %>
+      <% end if image.file._260x180.present? %>
+      <% if can?(:edit, image.attachable) %>
+        <div class="image-overlay toolbar">
+          <%= link_to set_preview_image_gallery_path(image.attachable, :image_id => image), :method => :post, :title => "set as preview image" do %>
+            <%= tag :span, :class => (image.attachable.preview_image_id == image.id) ? "glyphicon glyphicon-star active" : "glyphicon glyphicon-star" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
 
     <!--
       Overlay image buttons
       http://web.enavu.com/tutorials/making-image-overlay-caption-using-css/
       http://stackoverflow.com/questions/12443857/how-to-make-an-overlay-over-a-bootstrap-thumbnail
       https://groups.google.com/forum/#!topic/twitter-bootstrap-stackoverflow/kG8wjX08bBw
+      http://stackoverflow.com/questions/18631530/text-overlay-on-image -> seems to work
     -->
 
     <%# holder_tag '260x180' %>
     <div class="caption">
       <!-- <p><%= image.name %></p> -->
       <div style="text-align: center;">
-        <% if can?(:edit, image) %>
-          <%= link_to edit_image_path(image), class: 'btn btn-xs btn-default' do %>
-            <i class="glyphicon glyphicon-edit"></i>
-            edit
-          <% end %>
-        <% end %>
-        <% if can?(:edit, image.attachable) %>
-          <%= link_to set_preview_image_gallery_path(image.attachable, :image_id => image), :method => :post, class: 'btn btn-xs btn-default' do %>
-            <i class="glyphicon glyphicon-star"></i>
-            default
-          <% end %>
-        <% end %>
-        <% if can?(:destroy, image) %>
-          <%= link_to image, data: { confirm: 'Are you sure?'}, :method => :delete, class: 'btn btn-xs btn-default' do %>
-            <i class="glyphicon glyphicon-trash"></i>
-            delete
-          <% end %>
-        <% end %>
+        <%= link_to edit_image_path(image), class: 'btn btn-xs btn-default' do %>
+          <i class="glyphicon glyphicon-edit"></i>
+          edit
+        <% end if can?(:edit, image) %>
+        <%= link_to set_preview_image_gallery_path(image.attachable, :image_id => image), :method => :post, class: 'btn btn-xs btn-default' do %>
+          <i class="glyphicon glyphicon-star"></i>
+          default
+        <% end if can?(:edit, image.attachable) && false %>
+        <%= link_to image, data: { confirm: 'Are you sure?'}, :method => :delete, class: 'btn btn-xs btn-default' do %>
+          <i class="glyphicon glyphicon-trash"></i>
+          delete
+        <% end if can?(:destroy, image) %>
       </div>
     </div>
   </div>
