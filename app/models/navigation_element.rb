@@ -23,7 +23,7 @@ class NavigationElement < ActiveRecord::Base
   # Validation  
   validates :title, presence: true
   validates :action_id, presence: true, :unless => :is_anchor?
-  validates :instance_id, presence: true, :unless => :is_anchor? #lambda{ state == 'invalid' }
+  #validates :instance_id, presence: true, :unless => :is_anchor? #lambda{ state == 'invalid' }
 
   def is_anchor?
     #debugger

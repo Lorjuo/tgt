@@ -1,3 +1,14 @@
+
+/* Navigation */
+$navbar-height: 42px;
+$navbar-border-radius: 0px;
+
+/* Grid */
+/* Number of columns in the grid system */
+$grid-columns: 12 !default;
+/* Padding, to be divided by two and applied to the left and right of all columns */
+$grid-gutter-width: 12px !default;
+
 @import "bootstrap";
 body { padding-top: 60px !important; }
 //@import "bootstrap-responsive"; // Seems that there is no need for in bootstrap 3
@@ -91,5 +102,102 @@ div.thumbnail {
     &.glyphicon-star {
       color: yellow;
     }
+  }
+}
+
+body {
+  /*background-image: url("background.jpg");*/
+  background-size: auto auto;
+  background-attachment: fixed;
+  vertical-align: baseline;
+}
+
+li, h1, h2, h3, h4, h5 {
+    line-height: 125%;
+}
+
+.window {
+  margin-bottom: 10px;
+  background-color: #ffffff;
+}
+
+.box {
+  background-color: #F9F9F9;
+  background-image: linear-gradient(to bottom, white, #F2F2F2);
+  background-repeat: repeat-x;
+  padding: 6px 12px 6px 12px;
+}
+
+.box.small-spacing {
+  padding: 4px;
+}
+
+.collapse {
+  padding: 0;
+}
+
+.carousel {
+  margin-bottom: 0;
+  & p {
+    margin-bottom: 0;
+  }
+}
+
+/* Navigation */
+
+#tgt-logo {
+  border: 0;
+  height: 30px;
+  margin: 6px 12px 6px 0px;
+  vertical-align: middle;
+  /*background-image: url("tgt-logo.png");
+  background-size: 16px;
+  background-repeat: no-repeat;*/
+  display: block;
+  float: left;
+}
+
+/* NOTE: Reenable this, when multi layer manues are needed */;
+
+/*ul.nav li.dropdown:hover>ul.dropdown-menu { 
+  display: block; 
+}*/
+
+/* http://stackoverflow.com/questions/18023493/bootstrap-3-dropdown-sub-menu-missing */
+
+/*.dropdown-submenu{position:relative;}
+.dropdown-submenu>.dropdown-menu{top:0;left:100%;margin-top:-6px;margin-left:-1px;-webkit-border-radius:0 6px 6px 6px;-moz-border-radius:0 6px 6px 6px;border-radius:0 6px 6px 6px;}
+.dropdown-submenu:hover>.dropdown-menu{display:block;}
+.dropdown-submenu>a:after{display:block;content:" ";float:right;width:0;height:0;border-color:transparent;border-style:solid;border-width:5px 0 5px 5px;border-left-color:#cccccc;margin-top:5px;margin-right:-10px;}
+.dropdown-submenu:hover>a:after{border-left-color:#ffffff;}
+.dropdown-submenu.pull-left{float:none;}.dropdown-submenu.pull-left>.dropdown-menu{left:-100%;margin-left:10px;-webkit-border-radius:6px 0 6px 6px;-moz-border-radius:6px 0 6px 6px;border-radius:6px 0 6px 6px;}*/
+
+
+/* DataTables */
+.css_right {
+  float: right;
+}
+
+.control-label {
+  vertical-align: bottom !important;
+}
+
+.dataTables_processing {
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.table.dataTable {
+
+  th.sorting_asc, th.sorting_desc {
+    background-color: #F9F9F9;
+  }
+
+  tr.odd td.sorting_1 {
+    background-color: #F0F0F0;
+  }
+
+  tr.even td.sorting_1 {
+    background-color: #F9F9F9;
   }
 }

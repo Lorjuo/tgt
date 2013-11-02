@@ -35,7 +35,10 @@
 <ul class="box small-spacing list-group">
   <% @announcements.each do |announcement| %>
     <li class="list-group-item">
-      <%= link_to announcement.name, announcement.link %>
+      <%= link_to announcement.link do %>
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <%= announcement.name %>
+      <% end %>
     </li>
   <% end %>
 </ul>

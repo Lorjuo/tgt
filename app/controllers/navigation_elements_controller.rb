@@ -131,7 +131,7 @@ class NavigationElementsController < ApplicationController
       Rails.application.eager_load!
       @controllers = Hash[
         ApplicationController.descendants.select { |controller|
-          !['Devise::SessionController','ElfinderController','NavigationElementsController','UsersController'].include?(controller.name)
+          !['Devise::SessionController','ElfinderController','NavigationElementsController','UsersController', 'MessagesDatatable'].include?(controller.name)
         }.map do |controller|
           [ controller.name, controller.name.underscore.sub!('_controller', '') ]
         end
@@ -146,9 +146,11 @@ class NavigationElementsController < ApplicationController
         controller_id = @navigation_element.controller_id
       end
 
-      @controller = get_controller(controller_id)
+      if controller_id.present?
+        @controller = get_controller(controller_id)
 
-      load_available_actions(@controller) unless @controller.nil?
-      load_available_instances(@controller) unless @controller.nil?
+        load_available_actions(@controller) unless @controller.nil?
+        load_available_instances(@controller) unless @controller.nil?
+      end
     end
 end

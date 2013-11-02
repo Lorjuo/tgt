@@ -1,4 +1,4 @@
-<div class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container"> <!-- Needed to center the navbar content -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
@@ -17,7 +17,24 @@
         <li class="active"><a href="#">Home</a></li>
         <%= render :partial => "layouts/top_level_navigation", collection: NavigationElement.top_level.roots, :as => :navigation_element %>
       </ul>
+
       <ul class="nav navbar-nav navbar-right">
+        <% if current_user && current_user.has_role?('editor') %>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              Administration <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <%= content_tag :li do %>
+                  <%= link_to('Announcements', announcements_path) %>
+              <% end if current_user.can?(:edit, :announcements) %>
+              <%= content_tag :li do %>
+                  <%= link_to('Users', users_path) %>
+              <% end if current_user.can?(:edit, :users) %>
+            </ul>
+          </li>
+        <% end %>
+
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             Account <span class="caret"></span>
@@ -40,9 +57,10 @@
             <% end %>
           </ul>
         </li>
+
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
   </div>
-</div>
+</nav>
