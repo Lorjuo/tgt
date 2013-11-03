@@ -148,3 +148,6 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# Heroku
+gem 'rails_12factor', group: :production
