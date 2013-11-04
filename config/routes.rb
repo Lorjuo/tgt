@@ -17,7 +17,11 @@ TgtRefurbished::Application.routes.draw do
     resources :images
   end
 
-  resources :locations
+  resources :locations do
+    collection do
+      get :interactive_map
+    end
+  end
 
   resources :trainers
 

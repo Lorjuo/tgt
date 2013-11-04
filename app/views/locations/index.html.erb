@@ -3,6 +3,10 @@
     <span class="glyphicon glyphicon-plus"></span>
     New Location
   <% end if can? :create, Location %>
+  <%= link_to interactive_map_locations_path, class: "btn btn-default", 'data-no-turbolink' => false  do %>
+    <span class="glyphicon glyphicon-map-marker"></span>
+    Interactive Map
+  <% end %>
   <h1>Listing locations</h1>
 </div>
 

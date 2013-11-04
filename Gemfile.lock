@@ -129,6 +129,8 @@ GEM
     friendly_id (5.0.0.rc2)
       activerecord (~> 4.0.0)
     fssm (0.2.10)
+    geocoder (1.1.8)
+    gmaps4rails (2.0.3)
     haml (4.0.3)
       tilt
     haml-rails (0.4)
@@ -256,6 +258,7 @@ GEM
     uglifier (2.2.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    underscore-rails (1.5.2)
     valid_email (0.0.4)
       activemodel
       mail
@@ -289,6 +292,8 @@ DEPENDENCIES
   faker
   fancybox2-rails (~> 0.2.4)
   friendly_id (= 5.0.0.rc2)
+  geocoder
+  gmaps4rails
   haml-rails
   holder_rails
   jbuilder (~> 1.2)
@@ -315,5 +320,6 @@ DEPENDENCIES
   truncate_html
   turbolinks
   uglifier (>= 1.3.0)
+  underscore-rails
   valid_email
   will_paginate

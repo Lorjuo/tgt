@@ -64,6 +64,13 @@ gem 'simple_form'
 # gem 'nested_form'
 gem 'cocoon'
 
+# Google Maps
+gem 'gmaps4rails'
+# Does not work with turbolinks
+# http://stackoverflow.com/questions/13807686/gmaps4rails-and-turbolinks-not-loading-without-full-page-refresh
+gem 'geocoder'
+gem 'underscore-rails'
+
 # HTML Abstraction
 gem "haml-rails"
 

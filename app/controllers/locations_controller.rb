@@ -9,6 +9,18 @@ class LocationsController < ApplicationController
     @locations = Location.all
   end
 
+  def interactive_map
+    @loactions_with_geodata = Location.all.where( "latitude <> ''" ).where( "longitude <> ''" )
+    @geodata = Gmaps4rails.build_markers(@loactions_with_geodata) do |location, marker|
+      #https://github.com/apneadiving/Google-Maps-for-Rails/wiki/Json-builder
+      # https://github.com/apneadiving/Google-Maps-for-Rails/blob/master/vendor/assets/javascripts/gmaps/google/builders/marker.coffee
+      marker.lat location.latitude
+      marker.lng location.longitude
+      marker.title location.name
+      marker.infowindow render_to_string(:partial => "/locations/info", :locals => { :location => location})
+    end
+  end
+
   # GET /locations/1
   # GET /locations/1.json
   def show
@@ -71,6 +83,7 @@ class LocationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def location_params
-      params.require(:location).permit(:name)
+      params.require(:location).permit(:name, :address, :latitude, :longitude)
+      # TOOD: delete latitude and longitude
     end
 end

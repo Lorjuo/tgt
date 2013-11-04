@@ -26,6 +26,10 @@
 //= require bootstrap/modal
 //= require bootstrap/dropdown
 //
+//# Google Maps
+//= require underscore
+//= require gmaps/google
+//
 //# Grid
 //= require jquery.equalheights
 // 

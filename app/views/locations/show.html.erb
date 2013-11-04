@@ -16,4 +16,15 @@
   <dt>Name:</dt>
   <dd><%= @location.name %></dd>
 
+  <dt>Address:</dt>
+  <dd><%= @location.address %></dd>
+
+  <dt>Latitude:</dt>
+  <dd><%= @location.latitude %></dd>
+
+  <dt>Longitude:</dt>
+  <dd><%= @location.longitude %></dd>
+
 </dl>
+
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=14&markers=#{@location.latitude}%2C#{@location.longitude}" %>
