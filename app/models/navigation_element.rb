@@ -37,21 +37,18 @@ class NavigationElement < ActiveRecord::Base
     parent.invoke_touch unless parent.nil?
   end
 
+  # Return relative url for given navigation element
   def url
     if controller_id.empty?
       "#"
+    elsif instance_id.nil?
+      url_for :controller => controller_id, :action => action_id, :only_path => true
     else
       # http://stackoverflow.com/questions/5316290/get-model-class-from-symbol
       klass = controller_id.classify.constantize
       if instance_id.present?
         instance = klass.find(instance_id)
 
-        #url_for :controller => controller_id, :action => action_id, :id => instance_id, :only_path => true unless controller_id.empty?
-        
-        # http://apidock.com/rails/ActionController/Base/url_for
-        #url_for instance, :action => action_id, :only_path => true
-        #Rails.application.routes.url_helpers.polymorphic_path(instance, :action => action_id, :only_path => true)
-        # polymorphic_path(Department.first, :action => :edit, :only_path => true)
         if ["show"].include? action_id
           polymorphic_path(instance, :only_path => true)
         else
