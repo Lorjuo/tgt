@@ -1,14 +1,21 @@
-<%= content_tag :li, :class => "dropdown-submenu" do %>
-  <%#= link_to navigation_element.url do %>
-  <%= link_to navigation_element.url,
-    :class => "dropdown-toggle",
-    :data => (navigation_element.leaf?) ? {} : {:toggle => "dropdown"} do %>
-    <%= navigation_element.title %>
-    <%#= tag :span, :class => "glyphicon glyphicon-chevron-right" unless navigation_element.leaf? %>
-  <% end %>
-  <% unless navigation_element.leaf? %>
-    <%= content_tag :ul, :class => "dropdown-menu" do %>
-      <%= render :partial => "layouts/sub_level_navigation", collection: navigation_element.children, :as => :navigation_element %>
+<%# cache navigation_element do %>
+  <%= content_tag :li, :class => "dropdown-submenu" do %>
+    <%#= link_to navigation_element.url do %>
+    <%= link_to navigation_element.url,
+      :class => "dropdown-toggle",
+      :data => (navigation_element.leaf?) ? {} : {:toggle => "dropdown"} do %>
+      <%= navigation_element.title %>
+      <%#= tag :span, :class => "glyphicon glyphicon-chevron-right" unless navigation_element.leaf? %>
+    <% end %>
+    <% if navigation_element.children.present? %>
+    <%# unless navigation_element.leaf? %>
+      <%= content_tag :ul, :class => "dropdown-menu" do %>
+        <%= render :partial => "layouts/sub_level_navigation", collection: navigation_element.children, :as => :navigation_element %>
+        <%# navigation_element.children.each do |child| %>
+          <%#= render :partial => "layouts/sub_level_navigation", :locals => { :navigation_element => child } %>
+        <%# end %>
+        <%# https://github.com/rails/cache_digests/issues/47 %>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
+<%# end %>

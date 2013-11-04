@@ -38,7 +38,8 @@ module TgtRefurbished
     #config.action_controller.permit_all_parameters = true
     
     #https://github.com/harleyttd/miniprofiler
-    Rack::MiniProfiler.config.authorization_mode = :whitelist if Rails.env.production?
+    Rack::MiniProfiler.config.authorization_mode = :whitelist #if Rails.env.production? #behaviour handled by config.yml
+    Rack::MiniProfiler.config.start_hidden = true #Toggle with Alt+P
 
     config.generators do |g|
       g.test_framework :mini_test, :spec => true, :fixture => false

@@ -8,9 +8,9 @@ class NavigationElement < ActiveRecord::Base
   scope :top_level, -> { where(:department_id => 0)}
 
   # Columns in the categories table: lft, rgt and parent_id
-  acts_as_nested_set  :scope => :department_id,
-                      :after_add      => :invoke_touch, # these callbacks seem not to be triggered
-                      :after_remove   => :invoke_touch
+  acts_as_nested_set  :scope => :department_id#,
+                      #:after_add      => :invoke_touch, # these callbacks seem not to be triggered
+                      #:after_remove   => :invoke_touch
 
   # Invoke touch on parent, to update timestamp for fragment caching
   # declaring this in the association is not possible:
