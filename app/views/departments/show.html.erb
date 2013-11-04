@@ -12,7 +12,7 @@
   <%= link_to sort_navigation_elements_department_path(@department), :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-th-list"></span>
     Manage NavigationElements
-  <% end if can? :create, Department %>
+  <% end if can? :sort_navigation_elements, @department %>
   <h1>Show department</h1>
 </div>
 

@@ -70,6 +70,12 @@ class DepartmentsController < ApplicationController
 
   # Nested Actions:
 
+  def trainers
+    @trainers = Trainer.department(@department.id)
+
+    render :template => "trainers/index"
+  end 
+
   def training_groups
     @training_groups = @department.training_groups
 

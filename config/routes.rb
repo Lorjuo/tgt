@@ -37,6 +37,7 @@ TgtRefurbished::Application.routes.draw do
   #resources :departments, :shallow => true do
     member do
       get :training_groups
+      get :trainers
       get :sort_navigation_elements
       # required for Sortable GUI server side actions
       post :rebuild

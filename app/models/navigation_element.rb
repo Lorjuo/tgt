@@ -1,6 +1,7 @@
 class NavigationElement < ActiveRecord::Base
   include TheSortableTree::Scopes
   include Rails.application.routes.url_helpers
+  #include ActionController::PolymorphicRoutes
 
   scope :department, -> (id) { where(:department_id => id)}
   #scope :top_level, -> { where(:department_id => nil)}
@@ -37,6 +38,26 @@ class NavigationElement < ActiveRecord::Base
   end
 
   def url
-    url_for :controller => controller_id, :action => action_id, :id => instance_id, :only_path => true unless controller_id.empty?
+    if controller_id.empty?
+      "#"
+    else
+      # http://stackoverflow.com/questions/5316290/get-model-class-from-symbol
+      klass = controller_id.classify.constantize
+      if instance_id.present?
+        instance = klass.find(instance_id)
+
+        #url_for :controller => controller_id, :action => action_id, :id => instance_id, :only_path => true unless controller_id.empty?
+        
+        # http://apidock.com/rails/ActionController/Base/url_for
+        #url_for instance, :action => action_id, :only_path => true
+        #Rails.application.routes.url_helpers.polymorphic_path(instance, :action => action_id, :only_path => true)
+        # polymorphic_path(Department.first, :action => :edit, :only_path => true)
+        if ["show"].include? action_id
+          polymorphic_path(instance, :only_path => true)
+        else
+          polymorphic_path(instance, :action => action_id, :only_path => true)
+        end
+      end
+    end
   end
 end

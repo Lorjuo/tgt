@@ -1,49 +1,76 @@
 <div class="page-header">
-  <%= link_to trainers_path, :class => 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    Back
-  <% end %>
-  <% if can? :update, @trainer %>
-    <%= link_to edit_trainer_path(@trainer), :class => 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-pencil"></span>
-      Edit
+  <div class="pull-right button-group">
+    <%= link_to trainers_path, :class => 'btn btn-default' do %>
+      <span class="glyphicon glyphicon-list-alt"></span>
+      Back
     <% end %>
-  <% end %>
-  <h1>Show trainer</h1>
+    <% if can? :update, @trainer %>
+      <%= link_to edit_trainer_path(@trainer), :class => 'btn btn-primary' do %>
+      <span class="glyphicon glyphicon-pencil"></span>
+        Edit
+      <% end %>
+    <% end %>
+  </div>
+  <h1><%= @trainer.name %></h1>
 </div>
 
+<div class="row">
+  <div class="col-md-8">
+    <h3>Infos</h3>
+    <dl class="dl-horizontal">
+      <dt>Birthday:</dt>
+      <dd><%= @trainer.birthday %></dd>
 
-<p><%= link_to(image_tag(@trainer.image.file_url(:thumb)), @trainer.image.file_url) if @trainer.image.present? %></p>
+      <dt>Residence:</dt>
+      <dd><%= @trainer.residence %></dd>
 
-<dl class="dl-horizontal">
-  <dt>First name:</dt>
-  <dd><%= @trainer.first_name %></dd>
+      <dt>Phone:</dt>
+      <dd><%= @trainer.phone %></dd>
 
-  <dt>Last name:</dt>
-  <dd><%= @trainer.last_name %></dd>
+      <dt>Email:</dt>
+      <dd><%= @trainer.email %></dd>
 
-  <dt>Birthday:</dt>
-  <dd><%= @trainer.birthday %></dd>
+      <dt>Profession:</dt>
+      <dd><%= @trainer.profession %></dd>
 
-  <dt>Residence:</dt>
-  <dd><%= @trainer.residence %></dd>
+      <dt>Education:</dt>
+      <dd><%= @trainer.education %></dd>
 
-  <dt>Phone:</dt>
-  <dd><%= @trainer.phone %></dd>
+      <dt>Disciplines:</dt>
+      <dd><%= @trainer.disciplines %></dd>
 
-  <dt>Email:</dt>
-  <dd><%= @trainer.email %></dd>
+      <dt>Activities:</dt>
+      <dd><%= @trainer.activities %></dd>
 
-  <dt>Profession:</dt>
-  <dd><%= @trainer.profession %></dd>
+    </dl>
+  </div>
+  <div class="col-md-4">
+    <%= link_to(image_tag(@trainer.image.file_url, :class => "img-responsive"), @trainer.image.file_url, :class => "fancybox") if @trainer.image.present? %>
+  </div>
+</div>
 
-  <dt>Education:</dt>
-  <dd><%= @trainer.education %></dd>
-
-  <dt>Disciplines:</dt>
-  <dd><%= @trainer.disciplines %></dd>
-
-  <dt>Activities:</dt>
-  <dd><%= @trainer.activities %></dd>
-
-</dl>
+<div>
+  <h3>Trainingsgruppen</h3>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Gruppe</th>
+        <th>Abteilung</th>
+        <th>Wochentag</th>
+        <th>Uhrzeit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @trainer.training_groups.each do |training_group| %>
+        <% training_group.training_units.each do |training_unit| %>
+          <tr>
+            <td><%= link_to training_group.name, training_group %></td>
+            <td><%= link_to training_group.department.name, training_group.department %></td>
+            <td><%= Date::DAYNAMES[training_unit.week_day] %></td>
+            <td><%= training_unit.time_begin %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
