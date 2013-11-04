@@ -22,6 +22,11 @@
     <%= f.input :age_end, as: :integer %>
     <%= f.input :description, as: :text, input_html: { class: 'tinymce' } %>
     <%= f.input :ancient %>
+    
+    <%= f.simple_fields_for :image do |image_form| %>
+      <%# render 'training_unit_fields', f:image_form %>
+      <%= image_form.input :file, :as => :file %>
+    <% end %>
   </div>
 
   <%= f.simple_fields_for :training_units do |unit_form| %>

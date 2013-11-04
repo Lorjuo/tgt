@@ -1,35 +1,40 @@
 <div class="page-header">
-  <%= link_to department_training_groups_path(@training_group.department), :class => 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    Back
-  <% end %>
-  <% if can? :update, @training_group %>
-    <%= link_to edit_training_group_path(@training_group), :class => 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-pencil"></span>
-      Edit
+    <div class="pull-right button-group">
+    <%= link_to department_training_groups_path(@training_group.department), :class => 'btn btn-default' do %>
+      <span class="glyphicon glyphicon-list-alt"></span>
+      Back
     <% end %>
-  <% end %>
-  <h1>Show training_group</h1>
+    <% if can? :update, @training_group %>
+      <%= link_to edit_training_group_path(@training_group), :class => 'btn btn-primary' do %>
+      <span class="glyphicon glyphicon-pencil"></span>
+        Edit
+      <% end %>
+    <% end %>
+  </div>
+  <h1>Trainingsgruppe <%= @training_group.name %></h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dt>Name:</dt>
-  <dd><%= @training_group.name %></dd>
+<div class="row">
+  <div class="col-md-8">
 
-  <dt>Department:</dt>
-  <dd><%= link_to @training_group.department.name, @training_group.department %></dd>
-
-  <dt>Description:</dt>
-  <dd>
+    <h3>Beschreibung</h3>
     <%= raw @training_group.description %>
-    <%# truncate_html(training_group.description, length: 100, omission: '...') %>
-    <%# truncate(strip_tags(training_group.description), length: 100, omission: '...') %>
-  </dd>
+  </div>
+  <div class="col-md-4">
+    <h3>Infos</h3>
+    <dl class="dl-horizontal">
 
-  <dt>Age begin:</dt>
-  <dd><%= @training_group.age_begin %></dd>
+      <dt>Department:</dt>
+      <dd><%= link_to @training_group.department.name, @training_group.department %></dd>
 
-  <dt>Age end:</dt>
-  <dd><%= @training_group.age_end %></dd>
+      <dt>Age begin:</dt>
+      <dd><%= @training_group.age_begin %></dd>
 
-</dl>
+      <dt>Age end:</dt>
+      <dd><%= @training_group.age_end %></dd>
+
+    </dl>
+    <hr />
+    <%= link_to(image_tag(@training_group.image.file_url, :class => "img-responsive"), @training_group.image.file_url, :class => "fancybox") if @training_group.image.present? %>
+  </div>
+</div>
