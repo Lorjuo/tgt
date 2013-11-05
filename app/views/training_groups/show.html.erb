@@ -39,4 +39,30 @@
   </div>
 </div>
 
+<div class="row">
+  <div class="col-md-12">
+    <h3>Training Units</h3>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Weekday</th>
+          <th>Time</th>
+          <th>Location Summer</th>
+          <th>Location Winter</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @training_group.training_units.each do |training_unit| %>
+          <tr>
+            <td><%= Date::DAYNAMES[training_unit.week_day] %></td>
+            <td><%= training_unit.time_begin %></td>
+            <td><%= link_to training_unit.location_summer.name, training_unit.location_summer %></td>
+            <td><%= link_to training_unit.location_winter.name, training_unit.location_winter %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
 <%# TODO: Expand infos - especially add training units %>
