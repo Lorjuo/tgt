@@ -1,0 +1,18 @@
+<%#= f.input :file, :as => :file %>
+<div class="form-group file optional training_group_image_file">
+  <label class="file optional col-lg-2 control-label" for="training_group_image_attributes_file">Image</label>
+  <%= content_tag :div, :class => "col-lg-1" do %>
+    <%= link_to(image_tag(image.file_url(:thumb), :class => "img-responsive"), image.file_url, :class => "fancybox") %>
+  <% end if image.file.present? %>
+  <%= content_tag :div, :class => image.file.present? ? "col-lg-3" : "col-lg-4" do %>
+    <div class="input-group">
+      <span class="input-group-btn">
+        <span class="btn btn-default btn-file">
+          Browse…
+          <%= f.file_field :file, :class => "file btn btn-file fileinput-button" %>
+        </span>
+      </span>
+      <input class="form-control" type="text" readonly="">
+    </div>
+  <% end %>
+</div>

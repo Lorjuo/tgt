@@ -1,30 +1,51 @@
 <div class="page-header">
-  <%= link_to locations_path, :class => 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    Back
-  <% end %>
-  <% if can? :update, @location %>
-    <%= link_to edit_location_path(@location), :class => 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-pencil"></span>
-      Edit
+  <div class="pull-right button-group">
+    <%= link_to locations_path, :class => 'btn btn-default' do %>
+      <span class="glyphicon glyphicon-list-alt"></span>
+      Back
     <% end %>
-  <% end %>
+    <% if can? :update, @location %>
+      <%= link_to edit_location_path(@location), :class => 'btn btn-primary' do %>
+      <span class="glyphicon glyphicon-pencil"></span>
+        Edit
+      <% end %>
+    <% end %>
+  </div>
   <h1>Show location</h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dt>Name:</dt>
-  <dd><%= @location.name %></dd>
+<div class="row">
+  <div class="col-md-2">
+    <%= link_to(image_tag(@location.image.file_url, :class => "img-responsive"), @location.image.file_url, :class => "fancybox") if @location.image.present? %>
+  </div>
+  <div class="col-md-6">
+    <dl class="dl-horizontal">
+      <dt>Name:</dt>
+      <dd><%= @location.name %></dd>
 
-  <dt>Address:</dt>
-  <dd><%= @location.address %></dd>
+      <dt>Address:</dt>
+      <dd><%= @location.address %></dd>
 
-  <dt>Latitude:</dt>
-  <dd><%= @location.latitude %></dd>
+      <dt>Description:</dt>
+      <dd><%= @location.description %></dd>
 
-  <dt>Longitude:</dt>
-  <dd><%= @location.longitude %></dd>
+      <!-- <dt>Latitude:</dt>
+      <dd><%= @location.latitude %></dd>
 
-</dl>
+      <dt>Longitude:</dt>
+      <dd><%= @location.longitude %></dd> -->
 
-<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=14&markers=#{@location.latitude}%2C#{@location.longitude}" %>
+    </dl>
+
+  </div>
+  <div class="col-md-4">
+    <% zoom = 14 %>
+    <%#= link_to "http://maps.google.com/?ie=UTF8&hq=&&ll=#{@location.latitude},#{@location.longitude}&z=#{zoom}" do %>
+    <%#= link_to "http://maps.google.com/maps?q=#{@location.latitude},#{@location.longitude}&z=#{zoom}" do %>
+    <%= link_to "http://maps.google.com/maps?q=#{@location.address}&z=#{zoom}" do %>
+     <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=#{zoom}&markers=#{@location.latitude}%2C#{@location.longitude}", :class => "img-responsive" %>
+    <% end %>
+  </div>
+</div>
+
+<%# TODO: Add location occupancy plan %>

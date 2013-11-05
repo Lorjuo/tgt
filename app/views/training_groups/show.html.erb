@@ -19,8 +19,7 @@
 
     <h3>Beschreibung</h3>
     <%= raw @training_group.description %>
-  </div>
-  <div class="col-md-4">
+    
     <h3>Infos</h3>
     <dl class="dl-horizontal">
 
@@ -34,7 +33,10 @@
       <dd><%= @training_group.age_end %></dd>
 
     </dl>
-    <hr />
+  </div>
+  <div class="col-md-4">
     <%= link_to(image_tag(@training_group.image.file_url, :class => "img-responsive"), @training_group.image.file_url, :class => "fancybox") if @training_group.image.present? %>
   </div>
 </div>
+
+<%# TODO: Expand infos - especially add training units %>

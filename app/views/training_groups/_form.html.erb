@@ -24,8 +24,7 @@
     <%= f.input :ancient %>
     
     <%= f.simple_fields_for :image do |image_form| %>
-      <%# render 'training_unit_fields', f:image_form %>
-      <%= image_form.input :file, :as => :file %>
+      <%= render 'images/image_selector', f:image_form, image:@training_group.image %>
     <% end %>
   </div>
 

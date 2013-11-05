@@ -66,8 +66,8 @@ class TrainersController < ApplicationController
       #debugger
       #params[:trainer][:image_attributes][:attachable_id] = @trainer.id
       #@trainer.image.tmp_parent_id = @trainer.id
-      #if @trainer.update_attributes(params[:trainer])
-      if @trainer.update(trainer_params)
+      if @trainer.update_attributes(params[:trainer])
+      #if @trainer.update(trainer_params)
         format.html { redirect_to @trainer, notice: 'Trainer was successfully updated.' }
         format.json { head :no_content }
       else
@@ -96,6 +96,6 @@ class TrainersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def trainer_params
       params.require(:trainer).permit(:first_name, :last_name, :birthday, :residence, :phone, :email, :profession, :education, :disciplines, :activities,
-        :training_group_ids => [], :image_attributes => [:file] )
+        :training_group_ids => [], :image_attributes => [:file, :id] )
     end
 end

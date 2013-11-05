@@ -1,7 +1,12 @@
 class Location < ActiveRecord::Base
 
   geocoded_by :address
-  after_validation :geocode#, :if => :geocode?
+  after_validation :geocode, :if => :geocode?
+
+  # Associations
+  has_one :image, :as => :attachable, :class_name => '::Image', :dependent => :destroy
+
+  accepts_nested_attributes_for :image, allow_destroy: true
 
   def geocode?
     (!address.blank? && (latitude.blank? || longitude.blank?)) || address_changed?
