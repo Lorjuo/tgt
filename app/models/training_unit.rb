@@ -10,6 +10,10 @@ class TrainingUnit < ActiveRecord::Base
   # Validation
   validates :week_day, presence: true
 
+  # Scopes
+  scope :week_day, -> (id) { where(:week_day => id) }
+  scope :chronological_time, -> { order(:time_begin => :asc).order(:time_end => :asc) }
+
   # Virtual attributes
   def name
     "#{week_day.name} "\

@@ -1,6 +1,7 @@
- ☐ Production Environment
- ✔ Bug in update an model with attached image without selecting a new image (trainer, message, training group, location) -> Solved by adding :image_attributes => [:file, :id] to permit @done (13-11-05 10:58)
- ☐ Display image beside image upload field
- ☐ Style image upload field
+   ☐ Production Environment
+   ✔ Bug in update an model with attached image without selecting a new image (trainer, message, training group, location) -> Solved by adding :image_attributes => [:file, :id] to permit @done (13-11-05 10:58)
+   ☐ Display image beside image upload field
+   ☐ Style image upload field
+   ☐ Add Trainers in views
  Heroku:
    ☐ config.assets.initialize_on_precompile = false

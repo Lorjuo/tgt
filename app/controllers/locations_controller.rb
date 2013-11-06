@@ -1,3 +1,5 @@
+require 'column'
+
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
 
@@ -22,6 +24,39 @@ class LocationsController < ApplicationController
 
 
   def show
+    training_units = @location.training_units_winter
+
+    @data = Array.new
+    @data = {}
+    for day in 0..6
+
+      # Reset reference time
+      occupied_until = Time.zone.local(2000,1,1,0,0)
+
+      # Init columns array for each day
+      columns = @data[day] = Array.new
+      
+      # Init at least one column per day
+      columns << Column.new
+      
+      training_units.week_day(day).chronological_time.each do |training_unit|
+        
+        added = false
+
+        columns.each do |column|
+          if column.append training_unit
+            added = true
+            break
+          end
+        end
+
+        unless added
+          column = Column.new
+          column.append training_unit
+          columns << column
+        end
+      end
+    end
   end
 
 

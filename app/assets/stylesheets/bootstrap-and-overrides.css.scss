@@ -205,3 +205,12 @@ li, h1, h2, h3, h4, h5 {
 .time {
   //@extend .col-md-2
 }
+
+/* Schedule */
+.event {
+  color: #468847 !important;
+  background-color: #DFF0D8 !important;
+  border-color: #D6E9C6 !important;
+  border-radius: 8px !important;
+  border-width: 1px;
+}
