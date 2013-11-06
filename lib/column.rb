@@ -25,7 +25,7 @@ class Column
     time < @occupied_until
   end
 
-  def next_occupancy(time, step)
+  def next_occupancy(time, step_size)
     unless training_units.empty?
 
       # Fetch relevant training_unit
@@ -34,7 +34,7 @@ class Column
       if time >= training_unit[:time_begin]
         steps = 0
         begin 
-          time += step
+          time += step_size
           steps += 1
         end while (time < training_unit[:time_end])
         @occupied_until = training_unit[:time_end]

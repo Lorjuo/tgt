@@ -6,7 +6,7 @@
     <% end %>
     <% if can? :update, @location %>
       <%= link_to edit_location_path(@location), :class => 'btn btn-primary' do %>
-      <span class="glyphicon glyphicon-pencil"></span>
+        <span class="glyphicon glyphicon-pencil"></span>
         Edit
       <% end %>
     <% end %>
@@ -29,6 +29,19 @@
       <dt>Description:</dt>
       <dd><%= @location.description %></dd>
 
+      <dt>Schedule:</td>
+      <dd>
+        <%= link_to schedule_location_path(@location, :season => "summer") do %>
+          <span class="glyphicon glyphicon-calendar"></span>
+          summer
+        <% end %>
+        <br />
+        <%= link_to schedule_location_path(@location, :season => "winter") do %>
+          <span class="glyphicon glyphicon-calendar"></span>
+          winter
+        <% end %>
+      </dd>
+
       <!-- <dt>Latitude:</dt>
       <dd><%= @location.latitude %></dd>
 
@@ -50,6 +63,7 @@
 
 <%# TODO: Add location occupancy plan %>
 
+<% if false %>
 <div class="row">
   <div class="col-md-12">
     <h3>Training Units</h3>
@@ -77,52 +91,4 @@
     </table>
   </div>
 </div>
-
-<h3>Schedule</h3>
-<%#= p @data %>
-<% from = 8 %>
-<% to = 22 %>
-<% step = 30.minutes %>
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Uhrzeit</th>
-      <% @data.each do |day, columns| %>
-        <%= content_tag :th, :colspan => columns.length do %>
-          <%= Date::DAYNAMES[day] %>
-        <% end %>
-        <% columns.each {|column| column.reset_occupancy} %>
-      <% end %>
-    </tr>
-  </thead>
-  <tbody>
-
-    <% time = Time.zone.local(2000,1,1,8,0) %>
-    <% begin %>
-      <tr>
-        <th><%= time.min == 0 ? time.hour : "" %></th>
-
-        <% @data.each do |day, columns| %>
-          <% columns.each do |column| %>
-            <% unless column.is_occupied?(time) %>
-
-              <% occupancy = column.next_occupancy(time, step) %>
-              <% if occupancy.nil? %>
-
-                <%= tag :td %>
-
-              <% else %>
-
-                <%= content_tag :td, :rowspan => occupancy[:steps], :class => "event" do %>
-                  <%= render :partial => "training_units/schedule", :locals => {:training_unit => occupancy[:training_unit]} %>
-                <% end %>
-
-              <% end %>
-            <% end %>
-          <% end %>
-        <% end %>
-        <% time += 30.minutes %>
-      </tr>
-    <% end while time < Time.zone.local(2000,1,1,22,0) %>
-  </tbody>
-</table>
+<% end %>

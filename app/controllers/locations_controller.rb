@@ -22,41 +22,15 @@ class LocationsController < ApplicationController
     end
   end
 
-
-  def show
-    training_units = @location.training_units_winter
-
-    @data = Array.new
-    @data = {}
-    for day in 0..6
-
-      # Reset reference time
-      occupied_until = Time.zone.local(2000,1,1,0,0)
-
-      # Init columns array for each day
-      columns = @data[day] = Array.new
-      
-      # Init at least one column per day
-      columns << Column.new
-      
-      training_units.week_day(day).chronological_time.each do |training_unit|
-        
-        added = false
-
-        columns.each do |column|
-          if column.append training_unit
-            added = true
-            break
-          end
-        end
-
-        unless added
-          column = Column.new
-          column.append training_unit
-          columns << column
-        end
-      end
+  def schedule
+    @season = params[:season] || "summer"
+    @week_day = params[:week_day]
+    if @season == "summer"
+      training_units = @location.training_units_summer
+    else
+      training_units = @location.training_units_winter
     end
+    schedule_data(training_units)
   end
 
 
@@ -107,15 +81,55 @@ class LocationsController < ApplicationController
     end
   end
 
+
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_location
       @location = Location.find(params[:id])
     end
 
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def location_params
       params.require(:location).permit(:name, :address, :description, :image_attributes => [:file, :id])
       # TOOD: delete latitude and longitude
+    end
+
+
+    def schedule_data(training_units)
+      @data = {}
+      for day in 1..7
+
+        # Reset reference time
+        occupied_until = Time.zone.local(2000,1,1,0,0)
+
+        if(@week_day.nil? || @week_day.to_i == day%7)
+
+          # Init columns array for each day
+          columns = @data[day%7] = Array.new
+          
+          # Init at least one column per day
+          columns << Column.new
+          
+          training_units.week_day(day%7).chronological_time.each do |training_unit|
+            
+            added = false
+
+            columns.each do |column|
+              if column.append training_unit
+                added = true
+                break
+              end
+            end
+
+            unless added
+              column = Column.new
+              column.append training_unit
+              columns << column
+            end
+          end
+        end
+      end
     end
 end

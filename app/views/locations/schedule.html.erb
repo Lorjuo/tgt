@@ -1,0 +1,63 @@
+<div class="page-header">
+  <div class="pull-right button-group">
+    <%= link_to schedule_location_path(@location, :season => @season), :class => 'btn btn-default' do %>
+      <span class="glyphicon glyphicon-calendar"></span>
+      Full Week
+    <% end unless @week_day.nil? %>
+    <%= link_to locations_path, :class => 'btn btn-default' do %>
+      <span class="glyphicon glyphicon-list-alt"></span>
+      Back
+    <% end %>
+    <%= link_to @location, :class => 'btn btn-primary' do %>
+      <span class="glyphicon glyphicon-info-sign"></span>
+      Show
+    <% end %>
+  </div>
+  <h1>Schedule <%= @season %></h1>
+</div>
+
+<%#= p @data %>
+<table class="table table-bordered table-striped schedule">
+  <thead>
+    <tr>
+      <th>Uhrzeit</th>
+      <% @data.each do |day, columns| %>
+        <%= content_tag :th, :colspan => columns.length, :class => "first_column" do %>
+          <%= link_to schedule_location_path(@location, :season => @season, :week_day => day) do %>
+            <span class="glyphicon glyphicon-calendar"></span>
+            <%= Date::DAYNAMES[day] %>
+          <% end %>
+        <% end %>
+        <% columns.each {|column| column.reset_occupancy} %>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+
+    <% time = Time.zone.local(2000,1,1,APP_CONFIG['schedule']['start'],0) %>
+    <% begin %>
+      <% even = false %>
+      <tr>
+        <th><%= time.min == 0 ? "#{time.hour} Uhr" : "" %></th>
+
+        <% @data.each do |day, columns| %>
+          <% first_column = true %>
+          <% columns.each do |column| %>
+            <% unless column.is_occupied?(time) %>
+
+              <% occupancy = column.next_occupancy(time, APP_CONFIG['schedule']['step_size'].minutes) %>
+              <% if occupancy.nil? %>
+                <%= tag :td, :class => (even ? "even" : "odd")+" "+(first_column ? "first_column" : "") %>
+              <% else %>
+                <%= render :partial => "training_units/schedule", :locals => {:training_unit => occupancy[:training_unit], :steps => occupancy[:steps]} %>
+              <% end %>
+            <% end %>
+            <% first_column = false %>
+          <% end %>
+          <% even = !even %>
+        <% end %>
+        <% time += APP_CONFIG['schedule']['step_size'].minutes %>
+      </tr>
+    <% end while time < Time.zone.local(2000,1,1,APP_CONFIG['schedule']['end'],0) %>
+  </tbody>
+</table>

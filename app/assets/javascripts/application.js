@@ -26,6 +26,9 @@
 //= require bootstrap/modal
 //= require bootstrap/dropdown
 //
+//# Colorpicker
+//= require bootstrap-colorpicker
+//
 //# Google Maps
 //= require underscore
 //= require gmaps/google

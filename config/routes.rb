@@ -21,6 +21,9 @@ TgtRefurbished::Application.routes.draw do
     collection do
       get :interactive_map
     end
+    member do
+      get :schedule
+    end
   end
 
   resources :trainers

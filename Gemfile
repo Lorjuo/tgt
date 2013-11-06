@@ -33,6 +33,9 @@ gem 'jbuilder', '~> 1.2'
 # Assets
 gem 'quiet_assets' # Disable some warnings
 
+# Colorpicker
+gem 'bootstrap-colorpicker-rails'
+
 # CSS
 # Bootstrap
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'

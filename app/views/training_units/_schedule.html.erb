@@ -1,5 +1,25 @@
-<!-- <div class="alert alert-success fill"> -->
-<%= training_unit.time_begin.to_formatted_s(:time) %>
-<br />
-<%= training_unit.time_end.to_formatted_s(:time) %>
-<!-- </div> -->
+<%
+  title = training_unit.training_group.name
+  content = "Beginn: #{training_unit.time_begin.to_formatted_s(:time)} Uhr\n"
+  content += "Ende: #{training_unit.time_end.to_formatted_s(:time)} Uhr\n"
+%>
+
+<%# TODO: For HTML inside Popover: https://github.com/angular-ui/bootstrap/issues/220 %>
+  <!-- http://blog.calebnance.com/jquery/using-twitter-bootstap-trigger-popover-on-hover-instead-of-click.html -->
+  <%#= link_to training_unit.training_group.name, training_unit.training_group %>
+<%= content_tag :td,
+  :rowspan => steps,
+  :class => "event",
+  :style => "border-left-color: #{training_unit.training_group.department.color}",
+  :data => {:content => content,
+  :"original-title" => title} do %>
+  <%= link_to training_unit.training_group do %>
+    <% if @week_day.nil? %>
+      <%= training_unit.time_begin.to_formatted_s(:time) %>
+      <br />
+      <%= training_unit.time_end.to_formatted_s(:time) %>
+    <% else %>
+      <%= training_unit.training_group.name %>
+    <% end %>
+  <% end %>
+<% end %>
