@@ -207,7 +207,7 @@ li, h1, h2, h3, h4, h5 {
 }
 
 /* Schedule */
-table.schedule {
+table.schedule.false {
   thead tr th.first_column {
     border-left-width: 2px;
   }
@@ -256,5 +256,43 @@ table.schedule {
         background-color: #F0F0F0;
       }
     }*/
+  }
+}
+
+table.schedule {
+  thead tr th.first_column {
+    border-left-width: 2px;
+  }
+  tbody {
+    tr {
+      height: 23px;
+      min-height: 23px;
+      th {
+        font-size: $font-size-small;
+        padding: 2px 6px 2px 6px;
+      }
+      td {
+        &.first_column {
+          border-left-width: 2px;
+        }
+
+        &.event {
+          border-left-width: 3px;
+          vertical-align: middle !important;
+          height: 100%;
+          a {
+            padding: 2px 6px 2px 6px;
+            border-radius: 5px !important;
+            color: black;
+            display: block;
+            border: 1px solid #A3D38D;
+            background-color: #DFF0D8 !important;
+            height: 100%;
+            min-height: 100%;
+            vertical-align: middle !important;
+          }
+        }
+      }
+    }
   }
 }
