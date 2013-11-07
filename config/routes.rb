@@ -2,9 +2,9 @@ TgtRefurbished::Application.routes.draw do
 
   resources :announcements
 
-  resources :pages
+  resources :messages, :only =>:index
 
-  resources :messages
+  resources :pages
 
   resources :documents
 
@@ -49,6 +49,7 @@ TgtRefurbished::Application.routes.draw do
       # required for Sortable GUI server side actions
       post :rebuild
     end
+    resources :messages
     resources :training_groups#, :only => [:new, :create]
     resources :navigation_elements do
       collection do

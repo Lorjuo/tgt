@@ -13,12 +13,13 @@ class ElfinderController < ApplicationController
   include ElFinder::Action
 
   el_finder(:backend) do
+
     # Prevent miniprofiler from appending javascript to json output
     Rack::MiniProfiler.discard_results
     Rack::MiniProfiler.deauthorize_request
     {
-      :root => File.join(Rails.public_path, 'files'),
-      :url => '/files',
+      :root => File.join(Rails.public_path, 'files')+params[:path],
+      :url => '/files'+params[:path],
       :perms => {
         '.' => {:read => true, :write => true, :rm => true}, # '.' is the proper way to specify the home/root directory.
         # 'forbidden' => {:read => false, :write => false, :rm => false},

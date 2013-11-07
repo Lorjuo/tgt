@@ -2,9 +2,10 @@ class MessagesDatatable < ApplicationController # Inherit from ApplicationContro
 
   delegate :params, :h, :link_to, :image_tag, :strip_tags, :truncate, :number_to_currency, to: :@view
 
-  def initialize(view, current_user)
+  def initialize(view, current_user, department_id)
     @view = view
     @user = current_user
+    @department_id = department_id
   end
 
   def as_json(options = {})
@@ -45,6 +46,11 @@ private
 
     #messages = Message.joins(:department)
     messages = Message.joins("LEFT OUTER JOIN departments ON messages.department_id = departments.id")
+
+    debugger
+    if @department_id.present?
+      messages = messages.where("departments.id like :search", search: "%#{@department_id}%")
+    end
 
     if params[:sSearch].present?
       messages = messages.where("title like :search or content like :search or departments.name like :search", search: "%#{params[:sSearch]}%")

@@ -1,5 +1,8 @@
 /* Schedule */
 
+/* Lighten / Darken
+http://www.redguava.com.au/2011/10/lighten-or-darken-a-hexadecimal-color-in-ruby-on-rails/ */
+
 table.schedule.false {
   thead tr th.first_column {
     border-left-width: 2px;
@@ -73,6 +76,8 @@ table.schedule {
           border-left-width: 3px;
           vertical-align: middle !important;
           height: 100%;
+          padding: 2px;
+          margin: 2px;
           a {
             padding: 2px 6px 2px 6px;
             border-radius: 5px !important;

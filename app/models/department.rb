@@ -16,4 +16,24 @@ class Department < ActiveRecord::Base
   scope :specific, -> { where.not(name: 'generic') }
 
   friendly_id :name, use: :slugged
+
+  after_initialize :init
+  after_destroy :clean_up
+
+  def init
+    dir = File.join(Rails.public_path, 'files')+"/departments/#{self.id}"
+
+    unless File.directory?(dir)
+      FileUtils.mkdir_p(dir)
+    end
+  end
+
+  def clean_up
+    dir = File.join(Rails.public_path, 'files')+"/departments/#{self.id}"
+
+    if File.directory?(dir)
+      FileUtils.remove_dir(dir, :force => true)
+    end
+  end
+
 end

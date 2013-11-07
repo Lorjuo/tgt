@@ -74,6 +74,12 @@ class DepartmentsController < ApplicationController
     @trainers = Trainer.department(@department.id)
 
     render :template => "trainers/index"
+  end
+
+  def trainers
+    @messages = @department.messages
+
+    render :template => "messages/index"
   end 
 
   def training_groups

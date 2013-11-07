@@ -15,3 +15,8 @@ FactoryGirl.create(:user, first_name: "user", last_name: "generic")
 
 puts "Create generic department"
 Department.create({"name"=>"generic", "id"=>0})
+
+dir = File.join(Rails.public_path, 'files')+"/announcements"
+unless File.directory?(dir)
+  FileUtils.mkdir_p(dir)
+end

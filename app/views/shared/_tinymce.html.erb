@@ -1,3 +1,5 @@
+<!-- unresolved error: trying to access /departments/1/messages/ when opening template plugin -->
+
 <script type="text/javascript">
   // TODO: Problems with turbolinks
   // Move this to assets pipeline
@@ -57,7 +59,7 @@
   });
   
   function elFinderBrowser (field_name, url, type, win) {
-    var elfinder_url = '/elfinder/frontend';    // use an absolute path!
+    var elfinder_url = '/elfinder/frontend?path='+encodeURIComponent("<%= path %>");    // use an absolute path!
     tinyMCE.activeEditor.windowManager.open({
       file: elfinder_url,
       title: 'Filemanager',
