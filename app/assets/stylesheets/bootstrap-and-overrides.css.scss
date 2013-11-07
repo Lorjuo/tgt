@@ -14,96 +14,14 @@ body { padding-top: 60px !important; }
 //@import "bootstrap-responsive"; // Seems that there is no need for in bootstrap 3
 //@import 'bootstrap/theme';
 
+// Custom Includes
+@import "schedule";
+@import "navigation";
+@import "datatables";
+@import "thumbnails";
+@import "list_groups";
+
 /* https://github.com/thomas-mcdonald/bootstrap-sass/blob/master/vendor/assets/stylesheets/bootstrap/_mixins.scss */
-
-.btn.btn-primary {
-  color: #dddddd;
-}
-
-.form-inline .form-group {
-    margin-left: 0;
-    margin-right: 0;
-}
-
-.thumbnail {
-  margin-bottom: 20px;
-}
-
-/* http://stackoverflow.com/questions/12206117/making-a-thumbnail-image-a-link-in-bootstrap-un-centers-it */
-.thumbnail img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 100%;
-}
-
-/* List Group */
-ul.list-group {
-  margin-bottom: 10px;
-}
-
-ul.list-group li.list-group-item {
-  @include border-top-radius(0px); 
-  @include border-bottom-radius(0px);
-
-  &:hover {
-    background-color: #EEEEEE;
-  }
-
-  a {
-    color: #000;
-    &:visited {
-      color: #666;
-    }
-    &:hover {
-      color: #fff;
-    }
-  }
-}
-
-/* Thumbnail */
-div.thumbnail {
-  @include border-top-radius(0px); 
-  @include border-bottom-radius(0px);
-
-  &:hover {
-    background-color: #EEEEEE;
-  }
-}
-
-
-/* Image Overlay */
-.image-wrapper {
-  position:relative;
-}
-
-.image-overlay {
-  top:0;
-  right:0;
-  position: absolute;
-}
-
-.toolbar {
-  font-size: 24px;
-  padding: 5px;
-  /*border: 1px solid #AAAAAA;
-  border-width: 0px 0px 1px 1px;
-  border-bottom-left-radius: 5px;
-  background-color: rgba(255,255,255,0.7);*/
-
-  a span {
-    /*color: #333333;*/
-    &.active {
-      color: orange;
-    }
-  }
-
-  a:hover span {
-    &.glyphicon-star {
-      color: yellow;
-    }
-  }
-}
 
 body {
   /*background-image: url("background.jpg");*/
@@ -132,6 +50,15 @@ li, h1, h2, h3, h4, h5 {
   padding: 4px;
 }
 
+.btn.btn-primary {
+  color: #dddddd;
+}
+
+.form-inline .form-group {
+    margin-left: 0;
+    margin-right: 0;
+}
+
 .collapse {
   padding: 0;
 }
@@ -140,159 +67,5 @@ li, h1, h2, h3, h4, h5 {
   margin-bottom: 0;
   & p {
     margin-bottom: 0;
-  }
-}
-
-/* Navigation */
-
-#tgt-logo {
-  border: 0;
-  height: 30px;
-  margin: 6px 12px 6px 0px;
-  vertical-align: middle;
-  /*background-image: url("tgt-logo.png");
-  background-size: 16px;
-  background-repeat: no-repeat;*/
-  display: block;
-  float: left;
-}
-
-/* NOTE: Reenable this, when multi layer manues are needed */;
-
-/*ul.nav li.dropdown:hover>ul.dropdown-menu { 
-  display: block; 
-}*/
-
-/* http://stackoverflow.com/questions/18023493/bootstrap-3-dropdown-sub-menu-missing */
-
-/*.dropdown-submenu{position:relative;}
-.dropdown-submenu>.dropdown-menu{top:0;left:100%;margin-top:-6px;margin-left:-1px;-webkit-border-radius:0 6px 6px 6px;-moz-border-radius:0 6px 6px 6px;border-radius:0 6px 6px 6px;}
-.dropdown-submenu:hover>.dropdown-menu{display:block;}
-.dropdown-submenu>a:after{display:block;content:" ";float:right;width:0;height:0;border-color:transparent;border-style:solid;border-width:5px 0 5px 5px;border-left-color:#cccccc;margin-top:5px;margin-right:-10px;}
-.dropdown-submenu:hover>a:after{border-left-color:#ffffff;}
-.dropdown-submenu.pull-left{float:none;}.dropdown-submenu.pull-left>.dropdown-menu{left:-100%;margin-left:10px;-webkit-border-radius:6px 0 6px 6px;-moz-border-radius:6px 0 6px 6px;border-radius:6px 0 6px 6px;}*/
-
-
-/* DataTables */
-.css_right {
-  float: right;
-}
-
-.control-label {
-  vertical-align: bottom !important;
-}
-
-.dataTables_processing {
-  padding-top: 7px;
-  padding-bottom: 7px;
-}
-
-.table.dataTable {
-
-  th.sorting_asc, th.sorting_desc {
-    background-color: #F9F9F9;
-  }
-
-  tr.odd td.sorting_1 {
-    background-color: #F0F0F0;
-  }
-
-  tr.even td.sorting_1 {
-    background-color: #F9F9F9;
-  }
-}
-
-.time {
-  //@extend .col-md-2
-}
-
-/* Schedule */
-table.schedule.false {
-  thead tr th.first_column {
-    border-left-width: 2px;
-  }
-  tbody {
-    tr {
-      height: 23px;
-      min-height: 23px;
-      th {
-        font-size: $font-size-small;
-        padding: 2px 6px 2px  6px;
-      }
-      td {
-        padding: 2px 6px 2px  6px;
-        &.first_column {
-          border-left-width: 2px;
-        }
-        /*&.even {
-          background-color: #FFFFFF;
-        }
-        &.odd {
-          background-color: #FFFFFF;
-        }*/
-
-        &.event {
-          /*color: #468847 !important;
-          background-color: #DFF0D8 !important;
-          border-color: #D6E9C6 !important;
-          border-radius: 8px !important;
-          vertical-align: middle !important;*/
-
-          /*border-left-color: #FF0000;*/
-          border-left-width: 3px;
-          vertical-align: middle !important;
-          /*&:hover {
-            background-image: linear-gradient(to top, white, #F2F2F2);
-          }*/
-          @extend .box
-        }
-      }
-    }
-    /*tr:nth-child(2n+1) {
-      td.even {
-        background-color: #F9F9F9;
-      }
-      td.odd {
-        background-color: #F0F0F0;
-      }
-    }*/
-  }
-}
-
-table.schedule {
-  thead tr th.first_column {
-    border-left-width: 2px;
-  }
-  tbody {
-    tr {
-      height: 23px;
-      min-height: 23px;
-      th {
-        font-size: $font-size-small;
-        padding: 2px 6px 2px 6px;
-      }
-      td {
-        &.first_column {
-          border-left-width: 2px;
-        }
-
-        &.event {
-          border-left-width: 3px;
-          vertical-align: middle !important;
-          height: 100%;
-          a {
-            padding: 2px 6px 2px 6px;
-            border-radius: 5px !important;
-            color: black;
-            display: block;
-            border: 1px solid #A3D38D;
-            background-color: #DFF0D8 !important;
-            height: 100%;
-            min-height: 100%;
-            vertical-align: middle !important;
-          }
-        }
-      }
-    }
   }
 }

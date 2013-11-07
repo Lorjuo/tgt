@@ -1,0 +1,23 @@
+/* List Groups */
+ul.list-group {
+  margin-bottom: 10px;
+}
+
+ul.list-group li.list-group-item {
+  @include border-top-radius(0px); 
+  @include border-bottom-radius(0px);
+
+  &:hover {
+    background-color: #EEEEEE;
+  }
+
+  a {
+    color: #000;
+    &:visited {
+      color: #666;
+    }
+    &:hover {
+      color: #fff;
+    }
+  }
+}
