@@ -2,7 +2,7 @@
   <%= link_to new_department_message_path(@department), :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
     New Message
-  <% end if can? :create, Message && @department.present? %>
+  <% end if can?(:create, Message) && @department.present? %>
   <h1>Listing messages</h1>
 </div>
 

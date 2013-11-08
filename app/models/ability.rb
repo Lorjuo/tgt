@@ -7,14 +7,10 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.has_role?('admin')
       can :manage, :all
-    else
-      can :read, :all
-      can :manage, :static_page
-      can :training_groups, :department
+    else user.has_role?('editor')
+      # Department dependent
 
-      can :rebuild, NavigationElement
-
-      can [:create, :read, :update, :sort_navigation_elements, :training_groups], Department do |department|
+      can [:create, :read, :update, :sort_navigation_elements, :training_groups, :messages], Department do |department|
         user.departments.include? department
       end
 
@@ -26,19 +22,36 @@ class Ability
         user.departments.include? training_unit.training_group.department
       end
 
+      # General
+
       can [:create, :read, :update, :destroy], Trainer
 
       can [:create, :read, :update, :destroy], Location
 
-      can [:create, :read, :update, :destroy], Message
+      # WYSIWYG
 
       can :manage, :elfinder
 
-      #TODO: Set abilities for images, documents and uploaders
-      #Maybe. http://stackoverflow.com/questions/8170475/cancan-abilities-for-inherited-resources-with-nesting-in-controller
+      # ATTACHABLES
+      
       can [:create, :read, :update, :destroy], Image
       can [:create, :read, :update, :destroy], Document
+
+      # TODO
+      can :training_groups, :department
+
+      can :rebuild, NavigationElement
+
+      can [:create, :read, :update, :destroy], Message
+
+      #TODO: Set abilities for images, documents and uploaders
+      #Maybe. http://stackoverflow.com/questions/8170475/cancan-abilities-for-inherited-resources-with-nesting-in-controller
     end
+
+    # Everyone
+    can :read, :all
+    can :manage, :static_page
+
     #
     # The first argument to `can` is the action you are giving the user 
     # permission to do.

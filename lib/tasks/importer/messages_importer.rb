@@ -1,3 +1,8 @@
+# rails c
+# Message.all.each{|message| message.destroy}
+
+# TODO: import creation date
+
 module MessagesImporter
   # see for caching: http://stackoverflow.com/questions/6934415/prevent-rails-from-caching-results-of-activerecord-query
 
@@ -7,7 +12,7 @@ module MessagesImporter
     use_old_database
 
     messages = ActiveRecord::Base.connection.execute('
-      SELECT id, title, content FROM message
+      SELECT message.id, message.title, message.content, message.date, department.name AS department FROM message LEFT JOIN department ON message.department = department.id
       ')
 
     use_new_database
@@ -18,18 +23,24 @@ module MessagesImporter
       # puts "-import \"#{row.get("title")}\""
 
       # Check if message exists already
-      message = Message.where(headline: row.get("title"))
+      message = Message.where(title: row.get("title"), content: row.get("content"))
 
       # Reload message / Avoid caching problems
       message.reload
 
       if message.empty?
-        message = Message.new(headline: row.get("title"), 
-                        content: row.get("content"))
+        department = Department.where(name: row.get("department")).first
+        department_id = department.present? ? department.id : 0
+
+        message = Message.new(title: row.get("title"), 
+                        content: row.get("content"), 
+                        department_id: department_id, 
+                        created_at: row.get("date"), 
+                        updated_at: row.get("date"))
         begin
           message.save!
         rescue Exception => e
-          puts "Failed to save \"#{row.get("headline")}\": #{e.message}"
+          puts "Failed to save \"#{row.get("title")}\": #{e.message}"
         else
           import_counter+=1
         end

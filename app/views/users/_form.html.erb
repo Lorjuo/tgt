@@ -9,12 +9,11 @@
     <%= f.input :password_confirmation %>
     <%= f.association :roles, :as => :check_boxes %>
     <%= f.association :departments,
-      :as => :select,
+      :as => :check_boxes,
       :collection => Department.specific.order('name' => :asc),
       :label_method => :name,
       :value_method => :id,
-      :include_blank => false,
-      :input_html => { :class => "chosen input-xxlarge"} %>
+      :include_blank => false %>
   </div>
 
   <div class="form-actions">

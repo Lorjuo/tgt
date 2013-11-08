@@ -1,12 +1,13 @@
 <%# see: http://m5designstudio.com/2013/orlando-web-design/bootstrap-responsive-layout/ %>
 <div class="message box">
   <div class="row">
-    <div class="message-image col-md-3 col-xs-4">
+    <%= content_tag :div, :class => "message-image col-md-3 col-xs-4" do %>
       <%# holder_tag '260x180', 'Image', 'gray', :class => 'holder' %>
       <!-- <img src="http://placehold.it/260x180" width="100%" /> -->
-      <%= link_to(image_tag(message.image.file_url(:_260x180), :class => "img-responsive"), message.image.file_url, :class => "fancybox", :rel => 'messages', :caption => message.title) if message.image.present? %>
-    </div>
-    <div class="message-text col-md-9 col-xs-8">
+      <%= link_to(image_tag(message.image.file_url(:_260x180), :class => "img-responsive"), message.image.file_url, :class => "fancybox", :rel => 'messages', :caption => message.title) %>
+    <% end if message.image.present? %>
+    <%= content_tag :div,
+      :class => (message.image.present? ? "message-image col-md-9 col-xs-8" : "message-image col-md-12 col-xs-12") do %>
       <div class="message-header">
         <p class="message-date"><%= localize( message.created_at.to_date, :format => :long ) %></p>
         <h6><%= message.title %></h6>
@@ -16,6 +17,6 @@
         <%= truncate(strip_tags(message.content), length: 320, omission: '...') %>
         <%= link_to '...mehr', message, :class => 'btn-link' %>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
