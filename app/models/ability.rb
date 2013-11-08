@@ -50,7 +50,10 @@ class Ability
 
     # Everyone
     can :read, :all
-    can :manage, :static_page
+    can :manage, :static_pages
+
+    can :schedule, Location
+    can [:training_groups, :messages, :schedule], Department
 
     #
     # The first argument to `can` is the action you are giving the user 
