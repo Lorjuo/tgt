@@ -8,7 +8,11 @@
 
 <table id="messages_data_table"
   class="dataTable table table-bordered table-striped"
-  data-source="<%= messages_url(format: "json") %>">
+  data-source="<%=
+    @department.present? ?
+      department_messages_path(@department, format: "json") :
+      messages_path(format: "json")
+  %>">
   <thead>
     <tr>
       <th></th>
@@ -47,6 +51,6 @@
       </td>
       <% end %>
     </tr>
-<% end %>
+<% end if false %>
   </tbody>
 </table>

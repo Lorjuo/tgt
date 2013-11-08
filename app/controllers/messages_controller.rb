@@ -5,8 +5,7 @@ class MessagesController < ApplicationController
   before_action :load_parent_resource
 
   def index
-    @messages = Message.all
-    debugger
+    # @messages = Message.all # no longer needed because datatable is handled by MessageDatatable
     respond_to do |format|
       format.html
       format.json { render json: MessagesDatatable.new(view_context, current_user, params[:department_id]) }

@@ -26,8 +26,14 @@
 //= require bootstrap/modal
 //= require bootstrap/dropdown
 //
+//# Carousel
+//= require carousel
+//
 //# Colorpicker
 //= require bootstrap-colorpicker
+//
+//# Datepicker
+//= require datepicker_loader
 //
 //# Google Maps
 //= require underscore
@@ -40,6 +46,9 @@
 //= require fileupload
 //= require jquery-fileupload
 //# require jquery-fileupload/basic
+//
+//# File Upload Button
+//= require fileupload_button
 // 
 //# Input Elements
 //# Chosen
@@ -50,7 +59,11 @@
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.de
 //
 //# Images
+//= require fancybox_loader
 //= require fancybox
+//
+//# Navigation
+//= require navigation_elements
 //
 //# Nested Forms
 // require jquery_nested_form
@@ -63,12 +76,17 @@
 //# Table
 //= require dataTables/jquery.dataTables
 // require dataTables/jquery.dataTables.bootstrap
+//= require bootstrap-dataTables-paging
 //
 //# WYSIWYG
 //= require tinymce-jquery
 //
 // require_tree .
-//= require_directory .
+// require_directory .
+// 
+//# Specific Pages
+//= require messages
+//= require schedule
 //
 //# Has to be the last (https://github.com/kossnocorp/jquery.turbolinks)
 //= require turbolinks

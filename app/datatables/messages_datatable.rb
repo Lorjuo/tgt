@@ -47,9 +47,8 @@ private
     #messages = Message.joins(:department)
     messages = Message.joins("LEFT OUTER JOIN departments ON messages.department_id = departments.id")
 
-    debugger
     if @department_id.present?
-      messages = messages.where("departments.id like :search", search: "%#{@department_id}%")
+      messages = messages.where("departments.slug = :search", search: "#{@department_id}")
     end
 
     if params[:sSearch].present?
