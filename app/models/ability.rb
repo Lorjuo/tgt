@@ -50,7 +50,7 @@ class Ability
 
     # Everyone
     can :read, :all
-    can :manage, :static_pages
+    can :manage, :static_page
 
     can :schedule, Location
     can [:training_groups, :messages, :schedule], Department
