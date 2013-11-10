@@ -31,6 +31,7 @@
 //
 //# Colorpicker
 //= require bootstrap-colorpicker
+//= require colorpicker_loader
 //
 //# Datepicker
 //= require datepicker_loader

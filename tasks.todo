@@ -5,3 +5,4 @@
    ☐ Add Trainers in views
  Heroku:
    ☐ config.assets.initialize_on_precompile = false
+   ☐ Heroku Assets do not work
