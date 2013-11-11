@@ -45,5 +45,10 @@ module TgtRefurbished
       g.test_framework :mini_test, :spec => true, :fixture => false
       g.fixture_replacement :factory_girl, :dir => "test/factories"
     end
+
+    #config.assets.precompile += %w( tinymce_content.css )
+    config.assets.precompile += ['tinymce/*']
+    config.assets.precompile += ['elfinder/*']
+    # config.assets.precompile += %w[tinymce/tiny_mce.js tinymce/langs/en.js tinymce/themes/advanced/editor_template.js]
   end
 end
