@@ -70,7 +70,9 @@ TgtRefurbished::Application.routes.draw do
   end
 
   resources :static_pages, :only => [] do
-    get :home, :on => :collection
+    collection do
+      get :home
+    end
   end
 
   resources :elfinder, :only => [] do

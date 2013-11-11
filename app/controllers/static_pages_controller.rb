@@ -1,3 +1,5 @@
+require 'rubygems'
+require 'net/ssh'
 class StaticPagesController < ApplicationController
   load_and_authorize_resource :class => false
 
