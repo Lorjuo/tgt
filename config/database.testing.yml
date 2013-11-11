@@ -1,0 +1,9 @@
+testing:
+  adapter: mysql2
+  database: tgt_testing
+  encoding: utf8
+  username: root
+  password: integer
+  host: 127.0.0.1
+  port: 3306
+  timeout: 5000
