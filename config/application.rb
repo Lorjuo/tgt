@@ -46,9 +46,12 @@ module TgtRefurbished
       g.fixture_replacement :factory_girl, :dir => "test/factories"
     end
 
-    #config.assets.precompile += %w( tinymce_content.css )
-    config.assets.precompile += ['tinymce/*']
-    config.assets.precompile += ['elfinder/*']
+    config.assets.precompile += %w(
+        tinymce/themes/advanced/skins/bootstrap/ui.css
+        tinymce/themes/advanced/skins/bootstrap/content.css
+        )
+    # config.assets.precompile += ['tinymce/*']
+    # config.assets.precompile += ['elfinder/*']
     # config.assets.precompile += %w[tinymce/tiny_mce.js tinymce/langs/en.js tinymce/themes/advanced/editor_template.js]
   end
 end
