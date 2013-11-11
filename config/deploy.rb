@@ -23,6 +23,11 @@ before 'deploy:setup', 'rvm:install_ruby'
 
 require 'rvm/capistrano'
 
+# Uploaded Files
+# http://astonj.com/tech/how-to-get-capistrano-to-ignore-upload-directories-carrierwave/
+# http://stackoverflow.com/questions/9043662/carrierwave-files-with-capistrano
+set :shared_children, shared_children + %w{public/uploads public/files}
+
 namespace :deploy do
 
   task :setup_config, roles: :app do

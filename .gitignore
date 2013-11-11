@@ -35,6 +35,9 @@
 *.sublime-project
 *.sublime-workspace
 
+# Ignore Dumps
+*.sql
+
 # Ignore other unneeded files.
 database.yml
 doc/
