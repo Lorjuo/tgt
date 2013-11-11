@@ -32,6 +32,8 @@ gem 'jbuilder', '~> 1.2'
 
 # Assets
 gem 'quiet_assets' # Disable some warnings
+gem "non-stupid-digest-assets" # Because tinymce and elfinder do not work with assets pipeline:
+# http://stackoverflow.com/questions/17797962/rails-4-selective-asset-digest
 
 # Colorpicker
 gem 'bootstrap-colorpicker-rails'
