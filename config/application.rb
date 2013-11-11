@@ -47,11 +47,36 @@ module TgtRefurbished
     end
 
     config.assets.precompile += %w(
-        tinymce/themes/advanced/skins/bootstrap/ui.css
-        tinymce/themes/advanced/skins/bootstrap/content.css
-        )
+      tinymce/themes/advanced/skins/bootstrap/ui.css
+      tinymce/themes/advanced/skins/bootstrap/content.css
+    )
+    # + %w(
+    #   elfinder/elfinder.min.css
+    #   elfinder/theme.css
+    #   elfinder/elfinder.min.js
+    #   elfinder/proxy/elFinderSupportVer1.js
+    # )
+    
+    # Quick fix for colorpicker:
+    # https://github.com/alessani/bootstrap-colorpicker-rails/pull/11
+    config.assets.precompile += %w(
+      alpha.png
+      hue.png
+      saturation.png
+      bootstrap-colorpicker.js
+      bootstrap-colorpicker.css
+    )
+    # Quick fix for fancybox:
+    # https://github.com/kyparn/fancybox2-rails/issues/10
+    config.assets.precompile += %w(
+      blank.gif
+      fancybox_buttons.png
+      fancybox_loading.gif
+      fancybox_overlay.png
+      fancybox_sprite.png
+    )
     # config.assets.precompile += ['tinymce/*']
-    # config.assets.precompile += ['elfinder/*']
+    config.assets.precompile += ['elfinder/*']
     # config.assets.precompile += %w[tinymce/tiny_mce.js tinymce/langs/en.js tinymce/themes/advanced/editor_template.js]
   end
 end
