@@ -1,8 +1,10 @@
    ☐ Production Environment
    ✔ Bug in update an model with attached image without selecting a new image (trainer, message, training group, location) -> Solved by adding :image_attributes => [:file, :id] to permit @done (13-11-05 10:58)
-   ☐ Display image beside image upload field
-   ☐ Style image upload field
+   ✔ Display image beside image upload field @done (13-11-11 14:26)
+   ✔ Style image upload field @done (13-11-11 14:26)
    ☐ Add Trainers in views
+   ☐ Check what happens with upload temp folders
+   ☐ Check if upload and image resize do work in production
  Heroku:
    ☐ config.assets.initialize_on_precompile = false
    ☐ Heroku Assets do not work
