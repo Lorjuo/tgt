@@ -23,6 +23,7 @@ module TgtRefurbished
     # Custom
     
     # Autoload Paths
+    config.autoload_paths += %W(#{config.root}/lib)
 
     # Set the default template engine
     config.generators do |g| 
