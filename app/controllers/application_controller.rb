@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   check_authorization :if => :custom_check_authorization?
 
-  before_filter :_miniprofiler, :_cancan_sanitizer
+  before_filter :_miniprofiler, :_cancan_sanitizer, :set_locale
 
   # Not in use because nearly every page is readable
   # before_filter :authenticate_user! 
@@ -32,6 +32,28 @@ class ApplicationController < ActionController::Base
         Rack::MiniProfiler.deauthorize_request
       end
     end
+  end
+
+  # http://xyzpub.com/en/ruby-on-rails/3.2/i18n_mehrsprachige_rails_applikation.html
+  # http://dasskript.blogspot.de/2009/11/einfache-lokalisierung-einer-ruby-on.html
+  def set_locale
+    locale = nil
+    # logger.debug "* session has '#{session[:locale]}'"
+    if params.has_key?('locale')
+      locale = params[:locale]
+      session[:locale] = locale
+    else
+      if session[:locale]
+        locale = session[:locale]
+      else
+        locale = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+        if locale != ""
+          session[:locale] = locale
+        end
+      end
+    end
+    I18n.locale = locale
+    # logger.debug "* Locale set to '#{I18n.locale}'"
   end
 
   # Apply strong_parameters filtering before CanCan authorization

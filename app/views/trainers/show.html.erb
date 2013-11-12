@@ -2,44 +2,44 @@
   <div class="pull-right button-group">
     <%= link_to trainers_path, :class => 'btn btn-default' do %>
       <span class="glyphicon glyphicon-list-alt"></span>
-      Back
+      <%= t "general.list" %>
     <% end %>
     <% if can? :update, @trainer %>
       <%= link_to edit_trainer_path(@trainer), :class => 'btn btn-primary' do %>
       <span class="glyphicon glyphicon-pencil"></span>
-        Edit
+        <%= t "general.edit" %>
       <% end %>
     <% end %>
   </div>
-  <h1><%= @trainer.name %></h1>
+  <h1><%= t ".title", :name => @trainer.name %></h1>
 </div>
 
 <div class="row">
   <div class="col-md-8">
-    <h3>Infos</h3>
+    <h3><%= t ".info" %></h3>
     <dl class="dl-horizontal">
-      <dt>Birthday:</dt>
-      <dd><%= @trainer.birthday %></dd>
+      <dt><%= Trainer.human_attribute_name(:birthday) %>:</dt>
+      <dd><%= l @trainer.birthday, :format => :long %></dd>
 
-      <dt>Residence:</dt>
+      <dt><%= Trainer.human_attribute_name(:residence) %>:</dt>
       <dd><%= @trainer.residence %></dd>
 
-      <dt>Phone:</dt>
+      <dt><%= Trainer.human_attribute_name(:phone) %>:</dt>
       <dd><%= @trainer.phone %></dd>
 
-      <dt>Email:</dt>
+      <dt><%= Trainer.human_attribute_name(:email) %>:</dt>
       <dd><%= @trainer.email %></dd>
 
-      <dt>Profession:</dt>
+      <dt><%= Trainer.human_attribute_name(:profession) %>:</dt>
       <dd><%= @trainer.profession %></dd>
 
-      <dt>Education:</dt>
+      <dt><%= Trainer.human_attribute_name(:education) %>:</dt>
       <dd><%= @trainer.education %></dd>
 
-      <dt>Disciplines:</dt>
+      <dt><%= Trainer.human_attribute_name(:disciplines) %>:</dt>
       <dd><%= @trainer.disciplines %></dd>
 
-      <dt>Activities:</dt>
+      <dt><%= Trainer.human_attribute_name(:activities) %>:</dt>
       <dd><%= @trainer.activities %></dd>
 
     </dl>
@@ -50,14 +50,14 @@
 </div>
 
 <div>
-  <h3>Trainingsgruppen</h3>
+  <h3><%= TrainingGroup.model_name.human(:count => :lots) %></h3>
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th>Gruppe</th>
-        <th>Abteilung</th>
-        <th>Wochentag</th>
-        <th>Uhrzeit</th>
+        <th><%= TrainingUnit.human_attribute_name(:training_groups) %></th>
+        <th><%= TrainingUnit.human_attribute_name(:department) %></th>
+        <th><%= TrainingUnit.human_attribute_name(:week_day) %></th>
+        <th><%= TrainingUnit.human_attribute_name(:time) %></th>
       </tr>
     </thead>
     <tbody>
@@ -66,8 +66,8 @@
           <tr>
             <td><%= link_to training_group.name, training_group %></td>
             <td><%= link_to training_group.department.name, training_group.department %></td>
-            <td><%= Date::DAYNAMES[training_unit.week_day] %></td>
-            <td><%= training_unit.time_begin %></td>
+            <td><%= training_unit.display_week_day %></td>
+            <td><%= training_unit.time %></td>
           </tr>
         <% end %>
       <% end %>

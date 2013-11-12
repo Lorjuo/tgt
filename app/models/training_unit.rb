@@ -16,8 +16,15 @@ class TrainingUnit < ActiveRecord::Base
 
   # Virtual attributes
   def name
-    "#{week_day.name} "\
-      "(#{time_begin.strftime("%H:%M")}-"\
-      "#{time_end.strftime("%H:%M")})"
+    "#{week_day.name} + #{self.time}"
+  end
+
+  def time
+    "#{I18n.l(time_begin, format: :time)} - "\
+    "#{I18n.l(time_begin, format: :time)}"
+  end
+
+  def display_week_day
+    I18n.t(:"date.day_names").at(self.week_day)
   end
 end

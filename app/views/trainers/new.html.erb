@@ -1,9 +1,12 @@
-<div class="page-header">
+<% content_for :title do %>
+  <%= t('general.create_model', :model => Trainer.model_name.human ) %>
+<% end %>
+
+<% content_for :buttons do %>
   <%= link_to trainers_path, :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
-    Back
+    <%= t 'general.back' %>
   <% end %>
-  <h1>New trainer</h1>
-</div>
+<% end %>
 
 <%= render 'form' %>
