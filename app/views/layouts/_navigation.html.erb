@@ -14,7 +14,9 @@
     </div>
     <div class="collapse navbar-collapse" id="navigation">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li class="active"><a href="#">
+          <%= t ".home" %>
+        </a></li>
         <%= render :partial => "layouts/top_level_navigation", collection: NavigationElement.top_level.roots, :as => :navigation_element %>
       </ul>
 
@@ -22,14 +24,15 @@
         <% if current_user && current_user.has_role?('editor') %>
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              Administration <span class="caret"></span>
+              <%= t ".administration" %>
+              <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
               <%= content_tag :li do %>
-                  <%= link_to('Announcements', announcements_path) %>
+                  <%= link_to(Announcement.model_name.human(:count => :lots), announcements_path) %>
               <% end if current_user.can?(:edit, :announcements) %>
               <%= content_tag :li do %>
-                  <%= link_to('Users', users_path) %>
+                  <%= link_to(User.model_name.human(:count => :lots), users_path) %>
               <% end if current_user.can?(:edit, :users) %>
             </ul>
           </li>
@@ -37,29 +40,36 @@
 
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            Account <span class="caret"></span>
+            <%= t ".account" %>
+            <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
             <% if user_signed_in? %>
               <li>
-              <%= link_to('Edit account', edit_user_registration_path) %>
+              <%= link_to(t('.edit_account'), edit_user_registration_path) %>
               </li>
               <li>
-              <%= link_to('Logout', destroy_user_session_path, :method=>'delete') %>        
+              <%= link_to(t('.logout'), destroy_user_session_path, :method=>'delete') %>        
               </li>
             <% else %>
               <li>
-              <%= link_to('Sign up', new_user_registration_path)  %>
+              <%= link_to(t('.sign_up'), new_user_registration_path)  %>
               </li>
               <li>
-              <%= link_to('Login', new_user_session_path)  %>  
+              <%= link_to(t('.login'), new_user_session_path)  %>  
               </li>
             <% end %>
           </ul>
         </li>
 
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about"><%= t ".about" %></a></li>
+        <li><a href="#contact"><%= t ".contact" %></a></li>
+        <%= content_tag :li do %>
+          <%= link_to "English", locale: :en %>
+        <% end unless I18n.locale == :en %>
+        <%= content_tag :li do %>
+          <%= link_to "Deutsch", locale: :de %>
+        <% end unless I18n.locale == :de %>
       </ul>
     </div>
   </div>

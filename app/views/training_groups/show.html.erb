@@ -1,18 +1,19 @@
-<div class="page-header">
-    <div class="pull-right button-group">
-    <%= link_to department_training_groups_path(@training_group.department), :class => 'btn btn-default' do %>
-      <span class="glyphicon glyphicon-list-alt"></span>
-      Back
-    <% end %>
-    <% if can? :update, @training_group %>
-      <%= link_to edit_training_group_path(@training_group), :class => 'btn btn-primary' do %>
+<% content_for :title do %>
+  Trainingsgruppe <%= @training_group.name %>
+<% end %>
+
+<% content_for :buttons do %>
+  <%= link_to department_training_groups_path(@training_group.department), :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    <%= t "general.list" %>
+  <% end %>
+  <% if can? :update, @training_group %>
+    <%= link_to edit_training_group_path(@training_group), :class => 'btn btn-primary' do %>
       <span class="glyphicon glyphicon-pencil"></span>
-        Edit
-      <% end %>
+      <%= t "general.edit" %>
     <% end %>
-  </div>
-  <h1>Trainingsgruppe <%= @training_group.name %></h1>
-</div>
+  <% end %>
+<% end %>
 
 <div class="row">
   <div class="col-md-8">

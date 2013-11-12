@@ -68,15 +68,13 @@ module TgtRefurbished
     )
     # Quick fix for fancybox:
     # https://github.com/kyparn/fancybox2-rails/issues/10
-    config.assets.precompile += %w(
-      blank.gif
-      fancybox_buttons.png
-      fancybox_loading.gif
-      fancybox_overlay.png
-      fancybox_sprite.png
-    )
+    config.assets.precompile += %w( blank.gif fancybox_buttons.png fancybox_loading.gif fancybox_loading@2x.gif fancybox_overlay.png fancybox_sprite.png fancybox_sprite@2x.png )
     # config.assets.precompile += ['tinymce/*']
     config.assets.precompile += ['elfinder/*']
     # config.assets.precompile += %w[tinymce/tiny_mce.js tinymce/langs/en.js tinymce/themes/advanced/editor_template.js]
+    
+    # Internationalization
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**/*.{rb,yml}').to_s]
+    config.i18n.default_locale = :de
   end
 end

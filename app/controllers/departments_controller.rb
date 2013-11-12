@@ -76,7 +76,7 @@ class DepartmentsController < ApplicationController
     render :template => "trainers/index"
   end
 
-  def trainers
+  def messages
     @messages = @department.messages
 
     render :template => "messages/index"

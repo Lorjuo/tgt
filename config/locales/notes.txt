@@ -1,0 +1,29 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+# http://stackoverflow.com/questions/10282857/how-do-you-structure-i18n-yaml-files-in-rails
+# http://stackoverflow.com/questions/11097572/refactoring-ruby-on-rails-i18n-yaml-files-using-dictionaries
+# http://guides.rubyonrails.org/i18n.html#organization-of-locale-files
+# https://gist.github.com/rbarazi/360824
+# 
+# Sample
+# https://gist.github.com/rbarazi/360824
+# http://books.google.de/books?id=KdvTAAAAQBAJ&pg=PA257&lpg=PA257&dq=en.yml+github&source=bl&ots=UcY8a97FkB&sig=l47lklzxlqOOaVy_nzcG9-I41hU&hl=de&sa=X&ei=1PGBUo7eIdHAtAaZ04G4Dg&ved=0CD8Q6AEwAjgU#v=onepage&q=en.yml%20github&f=false

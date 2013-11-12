@@ -10,7 +10,7 @@ class Ability
     else user.has_role?('editor')
       # Department dependent
 
-      can [:create, :read, :update, :sort_navigation_elements, :training_groups, :messages], Department do |department|
+      can [:create, :read, :update, :sort_navigation_elements], Department do |department|
         user.departments.include? department
       end
 
@@ -52,8 +52,8 @@ class Ability
     can :read, :all
     can :manage, :static_page
 
-    can :schedule, Location
-    can [:training_groups, :messages, :schedule], Department
+    can [:schedule, :interactive_map], Location
+    can [:training_groups, :trainers, :messages, :schedule], Department
 
     #
     # The first argument to `can` is the action you are giving the user 

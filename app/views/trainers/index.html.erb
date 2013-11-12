@@ -1,20 +1,23 @@
-<div class="page-header">
+<% content_for :title do %>
+  <%= t ".title" %>
+<% end %>
+
+<% content_for :buttons do %>
   <%= link_to new_trainer_path, :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
-    New Trainer
+    <%= t('general.create_model', :model => Trainer.model_name.human ) %>
   <% end if can? :create, Trainer %>
-  <h1>Listing trainers</h1>
-</div>
+<% end %>
+
 
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Birthday</th>
-      <th>Residence</th>
-      <th>Phone</th>
-      <th>Email</th>
+      <th><%= Trainer.human_attribute_name(:name) %></th>
+      <th><%= Trainer.human_attribute_name(:birthday) %></th>
+      <th><%= Trainer.human_attribute_name(:residence) %></th>
+      <th><%= Trainer.human_attribute_name(:phone) %></th>
+      <th><%= Trainer.human_attribute_name(:email) %></th>
       <!-- <th>Profession</th>
       <th>Education</th>
       <th>Disciplines</th>
@@ -32,8 +35,7 @@
   <tbody>
 <% @trainers.each do |trainer| %>
     <tr>
-      <td><%= trainer.first_name %></td>
-      <td><%= trainer.last_name %></td>
+      <td><%= trainer.name %></td>
       <td><%= trainer.birthday %></td>
       <td><%= trainer.residence %></td>
       <td><%= trainer.phone %></td>
@@ -42,14 +44,15 @@
       <td><%= trainer.education %></td>
       <td><%= trainer.disciplines %></td>
       <td><%= trainer.activities %></td> -->
-      <td><%= link_to 'Show', trainer %></td>
+      <td><%= link_to t('general.show'), trainer %></td>
       <% if can? :update, trainer %>
-      <td><%= link_to 'Edit', edit_trainer_path(trainer) %></td>
+      <td><%= link_to t('general.edit'), edit_trainer_path(trainer) %></td>
       <% end %>
       <% if can? :destroy, trainer %>
       <td>
-        <%= link_to trainer, method: :delete, data: { confirm: 'Are you sure?' } do %>
-          <span class="glyphicon glyphicon-trash"></span> Destroy
+        <%= link_to trainer, method: :delete, data: { confirm: t('general.are_you_sure')} do %>
+          <span class="glyphicon glyphicon-trash"></span>
+          <%= t 'general.delete' %>
         <% end %>
       </td>
       <% end %>

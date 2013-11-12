@@ -1,6 +1,8 @@
 <%= simple_form_for(@trainer, :defaults => { :input_html => { :class => 'input-xlarge' } }) do |f| %>
   <%= f.error_notification %>
 
+  <%# Maybe split into columns %>
+
   <div class="form-inputs">
     <%= f.input :first_name %>
     <%= f.input :last_name %>
