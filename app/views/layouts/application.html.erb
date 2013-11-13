@@ -23,15 +23,6 @@
 
   <div class="container">
 
-    <% if content_for?(:title) %>
-      <div class="page-header">
-        <div class="pull-right button-group">
-          <%= yield(:buttons) %>
-        </div>
-        <h1><%= yield(:title) %></h1>
-      </div>
-    <% end %>
-
     <%= yield :sub_navigation %>
 
     <% if content_for?(:title) %>
