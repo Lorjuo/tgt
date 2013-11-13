@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>
-    <%= [content_for(:title), "Turngemeinde 1879 Traisa e.V."].compact.join(' - ') %>
+    <%= raw [content_for(:title), "Turngemeinde 1879 Traisa e.V."].compact.join(' - ') %>
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="description" content="">
@@ -23,6 +23,8 @@
 
   <div class="container">
 
+    <%= yield :sub_navigation %>
+
     <% if content_for?(:title) %>
       <div class="page-header">
         <div class="pull-right button-group">
@@ -31,8 +33,6 @@
         <h1><%= yield(:title) %></h1>
       </div>
     <% end %>
-
-    <%= yield :sub_navigation %>
     
     <%= render 'layouts/messages' %>
     

@@ -1,5 +1,5 @@
 <% content_for :title do %>
-  Trainingsgruppe <%= @training_group.name %>
+  <%= t ".title", :name => @training_group.name %>
 <% end %>
 
 <% content_for :buttons do %>
@@ -18,20 +18,17 @@
 <div class="row">
   <div class="col-md-8">
 
-    <h3>Beschreibung</h3>
+    <h3><%= TrainingGroup.human_attribute_name(:description) %></h3>
     <%= raw @training_group.description %>
     
-    <h3>Infos</h3>
+    <h3><%= t ".info" %></h3>
     <dl class="dl-horizontal">
 
-      <dt>Department:</dt>
+      <dt><%= TrainingGroup.human_attribute_name(:department) %>:</dt>
       <dd><%= link_to @training_group.department.name, @training_group.department %></dd>
 
-      <dt>Age begin:</dt>
-      <dd><%= @training_group.age_begin %></dd>
-
-      <dt>Age end:</dt>
-      <dd><%= @training_group.age_end %></dd>
+      <dt><%= TrainingGroup.human_attribute_name(:age) %>:</dt>
+      <dd><%= @training_group.age %></dd>
 
     </dl>
   </div>
@@ -42,21 +39,21 @@
 
 <div class="row">
   <div class="col-md-12">
-    <h3>Training Units</h3>
+    <h3><%= TrainingGroup.human_attribute_name(:training_units) %></h3>
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
-          <th>Weekday</th>
-          <th>Time</th>
-          <th>Location Summer</th>
-          <th>Location Winter</th>
+          <th><%= TrainingUnit.human_attribute_name(:week_day) %></th>
+          <th><%= TrainingUnit.human_attribute_name(:time) %></th>
+          <th><%= TrainingUnit.human_attribute_name(:location_summer) %></th>
+          <th><%= TrainingUnit.human_attribute_name(:location_winter) %></th>
         </tr>
       </thead>
       <tbody>
         <% @training_group.training_units.each do |training_unit| %>
           <tr>
-            <td><%= Date::DAYNAMES[training_unit.week_day] %></td>
-            <td><%= training_unit.time_begin %></td>
+            <td><%= training_unit.display_week_day %></td>
+            <td><%= training_unit.time %></td>
             <td><%= link_to training_unit.location_summer.name, training_unit.location_summer %></td>
             <td><%= link_to training_unit.location_winter.name, training_unit.location_winter %></td>
           </tr>

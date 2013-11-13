@@ -1,18 +1,21 @@
-<div class="page-header">
+<% content_for :title do %>
+  <%= t ".title" %>
+<% end %>
+
+<% content_for :buttons do %>
   <%= link_to new_department_training_group_path(@department), :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
-    New Training group
+    <%= t('general.create_model', :model => TrainingGroup.model_name.human ) %>
   <% end if can? :create, TrainingGroup %>
-  <h1>Listing training_groups</h1>
-</div>
+<% end %>
 
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Age begin</th>
-      <th>Age end</th>
+      <th><%= TrainingGroup.human_attribute_name(:name) %></th>
+      <th><%= TrainingGroup.human_attribute_name(:description) %></th>
+      <th><%= TrainingGroup.human_attribute_name(:age) %></th>
+      <th><%= TrainingGroup.human_attribute_name(:trainers) %></th>
       <th></th>
       <% if can? :update, TrainingGroup %>
       <th></th>
@@ -31,16 +34,21 @@
         <%# truncate_html(training_group.description, length: 100, omission: '...') %>
         <%= truncate(strip_tags(training_group.description), length: 100, omission: '...') %>
       </td>
-      <td><%= training_group.age_begin %></td>
-      <td><%= training_group.age_end %></td>
-      <td><%= link_to 'Show', training_group %></td>
+      <td><%= training_group.age %></td>
+      <td>
+        <% training_group.trainers.alphabetical.each do |trainer| %>
+          <%= link_to(trainer.name, trainer, :style => "display: block") %>
+        <% end %>
+      </td>
+      <td><%= link_to t('general.show'), training_group %></td>
       <% if can? :update, training_group %>
-      <td><%= link_to 'Edit', edit_training_group_path(training_group) %></td>
+      <td><%= link_to t('general.edit'), edit_training_group_path(training_group) %></td>
       <% end %>
       <% if can? :destroy, training_group %>
       <td>
         <%= link_to training_group, method: :delete, data: { confirm: 'Are you sure?' } do %>
-          <span class="glyphicon glyphicon-trash"></span> Destroy
+          <span class="glyphicon glyphicon-trash"></span>
+          <%= t('general.destroy') %>
         <% end %>
       </td>
       <% end %>

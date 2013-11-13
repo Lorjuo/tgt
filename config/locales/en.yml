@@ -15,11 +15,23 @@ en:
     show: Show
     update: Update
 
+    age:
+      range: '%{begin}-%{end} years'
+      begin: 'over %{begin} years'
+      end: 'to %{end} years'
+      unlimited: 'unlimited'
+
   attributes:
+    age: Age
+    department: Department
+    description: Description
     name: Name
     first_name: Givenname
     last_name: Surname
     time: Time
+    trainers: Trainers
+    training_groups: Training groups
+    training_units: Training units
     week_day: Day
 
   activerecord:
@@ -49,8 +61,6 @@ en:
     attributes:
       trainer:
         name: Full Name
-        department: Department
-        training_groups: Training groups
         image: Image
         birthday: Birthday
         residence: Residence
@@ -61,6 +71,17 @@ en:
         disciplines: Disciplines
         activities: Activities / Interests
 
+      training_group:
+        age_begin: Age (from)
+        age_end: Age (to)
+        ancient: Former group? # Gegenteil current
+
+      training_unit:
+        location_summer: Location (summer)
+        location_winter: Location (winter)
+        time_begin: Time (begin)
+        time_end: Time (end)
+
   trainers:
     index:
       title: Listing trainers
@@ -68,6 +89,16 @@ en:
       title: '%{name}'
       info: General information
     new: New trainer
+
+  training_groups:
+    index:
+      title: Listing training groups
+    show:
+      title: 'Training group "%{name}"'
+      info: General information
+    form:
+      add_training_unit: Add a training unit
+      remove_training_unit: Remove this training unit
 
   layouts:
     navigation:

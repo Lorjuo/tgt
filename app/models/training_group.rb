@@ -18,5 +18,27 @@ class TrainingGroup < ActiveRecord::Base
   validates :age_end, :presence => true, :numericality => { :only_integer => true }
   validates_with AgeRangeValidator
   #validates :end_date, :date => {:after => {:message => "must be after the start date", :value => lambda { |batch|  batch.start_date}}}
-end
 
+  # Scopes
+  scope :ancient, -> { where(:ancient => true)}
+  scope :current, -> { where(:ancient => false)}
+
+  # Virtual attributes
+  def age
+    valid_begin = 0 < age_begin && age_begin < 99
+    valid_end= 0 < age_end && age_end < 99
+
+    if valid_begin && valid_end
+      I18n.t "general.age.range", :begin => age_begin, :end => age_end
+
+    elsif valid_begin
+      I18n.t "general.age.begin", :begin => age_begin
+
+    elsif valid_end
+      I18n.t "general.age.end", :end => age_end
+      
+    else
+      I18n.t "general.age.unlimited"
+    end
+  end
+end

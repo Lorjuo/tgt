@@ -32,7 +32,8 @@
     <%= render 'training_unit_fields', f:unit_form %>
   <% end %>
   <p><%# f.link_to_add "Add a TrainingUnit", :training_units %></p>
-  <p><%= link_to_add_association "Add a TrainingUnit", f, :training_units %></p>
+  <p><%= link_to_add_association( content_tag( :span, "", :class => "glyphicon glyphicon-plus" ) + " "\
+  + t("training_groups.form.add_training_unit"), f, :training_units, :class => "btn btn-default" ) %></p>
 
   <div class="form-actions">
     <%= f.button :submit, :class => "btn-primary" %>

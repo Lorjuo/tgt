@@ -9,7 +9,8 @@ module Sprockets
         full_non_digest_path = File.join dir, info['logical_path']
         full_non_digest_gz_path = "#{full_non_digest_path}.gz"
         logger.info "Writing #{full_non_digest_path}"
-        if full_digest_path != full_non_digest_path # Added comparison for assets without digests (ex. .html)
+        debugger
+        if full_digest_path != full_non_digest_path # Added comparison for assets without digests (ex. html)
           FileUtils.cp full_digest_path, full_non_digest_path
           if File.exists? full_digest_gz_path
             logger.info "Writing #{full_non_digest_gz_path}"

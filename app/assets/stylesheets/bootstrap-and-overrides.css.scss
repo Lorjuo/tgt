@@ -59,6 +59,11 @@ li, h1, h2, h3, h4, h5 {
     margin-right: 0;
 }
 
+form fieldset.nested-fields {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .collapse {
   padding: 0;
 }

@@ -205,7 +205,6 @@ GEM
       net-ssh (>= 2.6.5)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
-    non-stupid-digest-assets (1.0.0)
     orm_adapter (0.4.0)
     polyglot (0.3.3)
     populator (1.0.0)
@@ -330,7 +329,6 @@ DEPENDENCIES
   minitest-rails-capybara
   minitest-spec-rails
   mysql2
-  non-stupid-digest-assets
   populator
   quiet_assets
   rack-mini-profiler

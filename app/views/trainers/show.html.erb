@@ -1,5 +1,8 @@
-<div class="page-header">
-  <div class="pull-right button-group">
+<% content_for :title do %>
+  <%= t ".title", :name => @trainer.name %>
+<% end %>
+
+<% content_for :buttons do %>
     <%= link_to trainers_path, :class => 'btn btn-default' do %>
       <span class="glyphicon glyphicon-list-alt"></span>
       <%= t "general.list" %>
@@ -10,9 +13,7 @@
         <%= t "general.edit" %>
       <% end %>
     <% end %>
-  </div>
-  <h1><%= t ".title", :name => @trainer.name %></h1>
-</div>
+<% end %>
 
 <div class="row">
   <div class="col-md-8">

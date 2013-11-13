@@ -1,6 +1,6 @@
 <fieldset class="nested-fields">
-  <legend>Training Unit</legend>
-  <%= f.input :week_day, collection: Date::DAYNAMES.zip((0..6).to_a) %>
+  <legend><%= TrainingUnit.model_name.human %></legend>
+  <%= f.input :week_day, collection: I18n.t(:"date.day_names").zip((0..6).to_a) %>
   <%= f.input :time_begin, :input_html => { :class => "input-small"} %>
   <%= f.input :time_end, :input_html => { :class => "input-small"} %>
   <%# TODO: Add input type for time %>
@@ -9,5 +9,7 @@
 
   <%= f.hidden_field :_destroy %>
   <%# f.link_to_remove "Remove this TrainingUnit" %>
-  <%= link_to_remove_association "Remove this TrainingUnit", f %>
+  <%= link_to_remove_association(
+    tag( :span, :class => "glyphicon glyphicon-minus" ) + " "\
+    + t("training_groups.form.remove_training_unit"), f, :class => "btn btn-default" ) %>
 </fieldset>

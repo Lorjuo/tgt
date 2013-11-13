@@ -1,13 +1,16 @@
-<div class="page-header">
+<% content_for :title do %>
+  <%= t('general.edit_model', :model => TrainingGroup.model_name.human ) %>
+<% end %>
+
+<% content_for :buttons do %>
   <%= link_to department_training_groups_path(@training_group.department), :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
-    Back
+    <%= t "general.list" %>
   <% end %>
   <%= link_to @training_group, :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-info-sign"></span>
-    Show
+    <%= t "general.show" %>
   <% end %>
-  <h1>Editing training_group</h1>
-</div>
+<% end %>
 
 <%= render 'form' %>

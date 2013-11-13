@@ -11,6 +11,7 @@ class Trainer < ActiveRecord::Base
 
   # Scopes
   scope :department, -> (id) { joins(:training_groups).where('training_groups.department_id = ?', id)}
+  scope :alphabetical, -> { order(:first_name => :asc, :last_name => :asc)}
 
   # Validations
   validates :email, :presence => true, :email => true
