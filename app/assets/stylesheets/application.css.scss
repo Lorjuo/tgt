@@ -14,9 +14,16 @@
  *= require bootstrap-and-overrides
  * require bootstrap-generators
  * require bootstrap-variables
+ *
+ *# Datepicker
  *= require bootstrap-datepicker
+ *
+ *# Timepicker
  *= require bootstrap-timepicker-rails/bootstrap-timepicker
  *= require scaffolds
+ *
+ *# Forked Datetimepicker
+ *= require bootstrap-datetimepicker
  *
  *# Colorpicker
  *= require bootstrap-colorpicker

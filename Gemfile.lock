@@ -6,6 +6,12 @@ GIT
       compass (>= 0.12.2, < 0.14)
 
 GIT
+  remote: git://github.com/Lorjuo/datetimepicker-rails.git
+  revision: e96cc1ad166f6eaaf930a09bdfd87b83c27c1438
+  specs:
+    datetimepicker-rails (0.0.8)
+
+GIT
   remote: git://github.com/huoxito/awesome_nested_set.git
   revision: fc4f75e345a8c55fa42f9b4101ed38cb49992be1
   branch: rails4
@@ -22,9 +28,9 @@ GIT
 
 GIT
   remote: git://github.com/thomas-mcdonald/bootstrap-sass.git
-  revision: 1aedbc34ae3a97d4209335adf21488d867dcc644
+  revision: efab96f854dc8b08d46297b9af313fbe815124ac
   specs:
-    bootstrap-sass (3.0.1.0.rc)
+    bootstrap-sass (3.0.2.1)
       sass (~> 3.2)
 
 GEM
@@ -308,6 +314,7 @@ DEPENDENCIES
   cocoon
   coffee-rails (~> 4.0.0)
   compass-rails!
+  datetimepicker-rails!
   debugger
   devise
   el_finder

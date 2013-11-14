@@ -86,6 +86,8 @@ gem 'fancybox2-rails', '~> 0.2.4'
 # Input Elements
   # Datepicker
   gem 'bootstrap-datepicker-rails'
+  gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :git => 'git://github.com/Lorjuo/datetimepicker-rails.git'
+  #gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :path => File.join('..', 'datetimepicker-rails')
   # Maybe replace with: https://github.com/tarruda/bootstrap-datetimepicker
   # or especially this fork https://github.com/Eonasdan/bootstrap-datetimepicker
   # Token Inputs

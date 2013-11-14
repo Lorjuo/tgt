@@ -23,6 +23,8 @@ class TrainingGroup < ActiveRecord::Base
   scope :ancient, -> { where(:ancient => true)}
   scope :current, -> { where(:ancient => false)}
 
+  attr_accessor :start_date_time, :closing_date, :begin_at # TODO: Remove this line
+
   # Virtual attributes
   def age
     valid_begin = 0 < age_begin && age_begin < 99

@@ -37,8 +37,16 @@
 //= require datepicker_loader
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.de
+//
+//# Timepicker
 //= require timepicker_loader
 //= require bootstrap-timepicker-rails/bootstrap-timepicker
+//
+//# Forked Datetimepicker
+//# require bootstrap-datetimepicker
+//= require bootstrap-datetimepicker/core
+//= require bootstrap-datetimepicker/pickers
+//= require bootstrap-datetimepicker/locales/bootstrap-datetimepicker.de.js
 //
 //# Google Maps
 //= require underscore
