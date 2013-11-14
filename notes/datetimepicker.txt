@@ -1,0 +1,21 @@
+http://tarruda.github.io/bootstrap-datetimepicker/
++ date
++ time
++ datetime
+- bootstrap 3
+gem https://github.com/zpaulovics/datetimepicker-rails
+
+#########################################################################
+
+http://jdewit.github.io/bootstrap-timepicker/
++ time
+- date
+- datetime
+gem https://github.com/rendom/bootstrap-3-timepicker
+rudimentary bootstrap 3 fork of
+gem https://github.com/jdewit/bootstrap-timepicker
+
+another fork
+https://github.com/m3wolf/bootstrap3-timepicker (no gem)
+
+#########################################################################

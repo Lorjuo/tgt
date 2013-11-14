@@ -1,8 +1,9 @@
 <fieldset class="nested-fields">
   <legend><%= TrainingUnit.model_name.human %></legend>
   <%= f.input :week_day, collection: I18n.t(:"date.day_names").zip((0..6).to_a) %>
-  <%= f.input :time_begin, :input_html => { :class => "input-small"} %>
-  <%= f.input :time_end, :input_html => { :class => "input-small"} %>
+  <%#= f.input :time_begin, :input_html => { :class => "input-small"} %>
+  <%#= f.input :time_end, :input_html => { :class => "input-small"} %>
+  <%= f.input :time_begin, as: :timepicker %>
   <%# TODO: Add input type for time %>
   <%= f.association :location_summer, :input_html => { :class => "input-xlarge"} %>
   <%= f.association :location_winter, :input_html => { :class => "input-xlarge"} %>
