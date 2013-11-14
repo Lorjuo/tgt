@@ -35,6 +35,10 @@
 //
 //# Datepicker
 //= require datepicker_loader
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.de
+//= require timepicker_loader
+//= require bootstrap-timepicker-rails/bootstrap-timepicker
 //
 //# Google Maps
 //= require underscore
@@ -55,9 +59,6 @@
 //# Chosen
 //= require chosen-jquery
 //= require chosen_loader
-//
-//= require bootstrap-datepicker/core
-//= require bootstrap-datepicker/locales/bootstrap-datepicker.de
 //
 //# Images
 //= require fancybox_loader
