@@ -6,12 +6,6 @@ GIT
       compass (>= 0.12.2, < 0.14)
 
 GIT
-  remote: git://github.com/Lorjuo/datetimepicker-rails.git
-  revision: e96cc1ad166f6eaaf930a09bdfd87b83c27c1438
-  specs:
-    datetimepicker-rails (0.0.8)
-
-GIT
   remote: git://github.com/huoxito/awesome_nested_set.git
   revision: fc4f75e345a8c55fa42f9b4101ed38cb49992be1
   branch: rails4
@@ -32,6 +26,11 @@ GIT
   specs:
     bootstrap-sass (3.0.2.1)
       sass (~> 3.2)
+
+PATH
+  remote: ../datetimepicker-rails
+  specs:
+    datetimepicker-rails (0.0.8)
 
 GEM
   remote: https://rubygems.org/
@@ -71,8 +70,6 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bootstrap-colorpicker-rails (0.3.1)
-      railties (>= 3.0)
-    bootstrap-datepicker-rails (1.1.1.8)
       railties (>= 3.0)
     bootstrap-will_paginate (0.0.10)
       will_paginate
@@ -303,7 +300,6 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-colorpicker-rails
-  bootstrap-datepicker-rails
   bootstrap-sass!
   bootstrap-will_paginate
   cancan

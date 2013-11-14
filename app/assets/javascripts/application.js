@@ -33,20 +33,12 @@
 //= require bootstrap-colorpicker
 //= require colorpicker_loader
 //
-//# Datepicker
-//= require datepicker_loader
-//= require bootstrap-datepicker/core
-//= require bootstrap-datepicker/locales/bootstrap-datepicker.de
-//
-//# Timepicker
-//= require timepicker_loader
-//= require bootstrap-timepicker-rails/bootstrap-timepicker
-//
 //# Forked Datetimepicker
 //# require bootstrap-datetimepicker
 //= require bootstrap-datetimepicker/core
-//= require bootstrap-datetimepicker/pickers
+//# require bootstrap-datetimepicker/pickers
 //= require bootstrap-datetimepicker/locales/bootstrap-datetimepicker.de.js
+//= require datetimepicker_loader
 //
 //# Google Maps
 //= require underscore
@@ -76,8 +68,8 @@
 //= require navigation_elements
 //
 //# Nested Forms
-// require jquery_nested_form
 //= require cocoon
+//= require nested_forms_loader
 //
 //# Sortable Tree
 //= require jquery.ui.nestedSortable

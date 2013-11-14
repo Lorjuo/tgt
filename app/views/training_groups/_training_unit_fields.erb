@@ -4,6 +4,7 @@
   <%#= f.input :time_begin, :input_html => { :class => "input-small"} %>
   <%#= f.input :time_end, :input_html => { :class => "input-small"} %>
   <%= f.input :time_begin, :as => :time_picker %>
+  <%= f.input :time_end, :as => :time_picker %>
   <%# TODO: Add input type for time %>
   <%= f.association :location_summer, :input_html => { :class => "input-xlarge"} %>
   <%= f.association :location_winter, :input_html => { :class => "input-xlarge"} %>
