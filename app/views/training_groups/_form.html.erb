@@ -22,20 +22,6 @@
     <%= f.input :age_end, as: :integer %>
     <%= f.input :description, as: :text, input_html: { class: 'tinymce' } %>
     <%= f.input :ancient %>
-
-    <%= f.input :start_date_time, :as => :datetime_picker %>
-
-    <%= f.input :closing_date, :as => :date_picker %>
-
-    <%= f.input :begin_at, :as => :time_picker %>
-
-    <!-- <div class="form-group">
-      <%= f.label :time %>
-      <div class="input-group bootstrap-timepicker col-md-4">
-        <input type="text" class="form-control timepicker">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-      </div>
-    </div> -->
     
     <%= f.simple_fields_for :image do |image_form| %>
       <%= render 'images/image_selector', f:image_form, image:@training_group.image %>

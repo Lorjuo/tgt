@@ -5,6 +5,9 @@
    ☐ Add Trainers in views
    ☐ Check what happens with upload temp folders
    ☐ Check if upload and image resize do work in production
+   ☐ Label method for ancient groups in i18n
+   ☐ Turbolinks Bug
+   ☐ IE Bug
  Heroku:
    ☐ config.assets.initialize_on_precompile = false
    ☐ Heroku Assets do not work
