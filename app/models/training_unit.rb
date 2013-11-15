@@ -21,7 +21,7 @@ class TrainingUnit < ActiveRecord::Base
 
   def time
     "#{I18n.l(time_begin, format: :time)} - "\
-    "#{I18n.l(time_begin, format: :time)}"
+    "#{I18n.l(time_end, format: :time)}"
   end
 
   def display_week_day
