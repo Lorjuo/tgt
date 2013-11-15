@@ -30,6 +30,7 @@
 # Ignore all uploaded files
 /public/uploads
 /public/files
+/public/assets
 
 # Ignore sublime Project Settings
 *.sublime-project
