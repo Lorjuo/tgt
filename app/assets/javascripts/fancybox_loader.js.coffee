@@ -1,6 +1,7 @@
 # $(document).ready ->
 # jQuery ->
 $ ->
+# $(document).on "page:load", ->
 # TODO: Problem with backwards button in browser
   $(".fancybox").fancybox
     helpers:
