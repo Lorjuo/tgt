@@ -6,6 +6,12 @@ GIT
       compass (>= 0.12.2, < 0.14)
 
 GIT
+  remote: git://github.com/Lorjuo/datetimepicker-rails.git
+  revision: b081b7b2de1fe04fd63fc76066ba01d986066b91
+  specs:
+    datetimepicker-rails (0.0.8)
+
+GIT
   remote: git://github.com/huoxito/awesome_nested_set.git
   revision: fc4f75e345a8c55fa42f9b4101ed38cb49992be1
   branch: rails4
@@ -26,11 +32,6 @@ GIT
   specs:
     bootstrap-sass (3.0.2.1)
       sass (~> 3.2)
-
-PATH
-  remote: ../datetimepicker-rails
-  specs:
-    datetimepicker-rails (0.0.8)
 
 GEM
   remote: https://rubygems.org/
