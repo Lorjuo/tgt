@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: git://github.com/Lorjuo/datetimepicker-rails.git
-  revision: 6911b16481c17b742def3fad85cdec88f61e3fa2
+  revision: 606b889f96bbcb03151769a05d702dc13aa6e58d
   specs:
     datetimepicker-rails (0.0.8)
 

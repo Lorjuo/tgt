@@ -14,6 +14,8 @@ class TrainingUnit < ActiveRecord::Base
   scope :week_day, -> (id) { where(:week_day => id) }
   scope :chronological_time, -> { order(:time_begin => :asc).order(:time_end => :asc) }
 
+  attr_accessor :daytime
+
   # Virtual attributes
   def name
     "#{week_day.name} + #{self.time}"
