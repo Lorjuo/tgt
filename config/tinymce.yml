@@ -2,6 +2,7 @@ default:
   plugins:
     - image
     - link
+  file_browser_callback : elFinderBrowser
 
 alternate:
   selector: textarea.table-editor

@@ -37,7 +37,7 @@ namespace :tgt do
 
   desc 'Copy ckeditor assets, that cant be used with digest'
   task copy_nondigest_assets: :environment do
-    copy_assets /tinymce/
+    #copy_assets /tinymce/
     copy_assets /elfinder/
 
     copy_assets /bootstrap\/glyphicons-halflings-regular.woff/

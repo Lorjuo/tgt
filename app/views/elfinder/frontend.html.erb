@@ -1,4 +1,4 @@
-<script type="text/javascript" src="/assets/tinymce/tiny_mce_popup.js"></script>
+<!-- Include jQuery, jQuery UI, elFinder (REQUIRED) -->
 
 <script type="text/javascript">
   var FileBrowserDialogue = {
@@ -6,31 +6,15 @@
       // Here goes your code for setting your custom things onLoad.
     },
     mySubmit: function (URL) {
-      var win = tinyMCEPopup.getWindowArg('window');
-
       // pass selected file path to TinyMCE
-      win.document.getElementById(tinyMCEPopup.getWindowArg('input')).value = URL;
-
-      // are we an image browser?
-      if (typeof(win.ImageDialog) != 'undefined') {
-        // update image dimensions
-        if (win.ImageDialog.getImageData) {
-          win.ImageDialog.getImageData();
-        }
-        // update preview if necessary
-        if (win.ImageDialog.showPreviewImage) {
-          win.ImageDialog.showPreviewImage(URL);
-        }
-      }
+      top.tinymce.activeEditor.windowManager.getParams().setUrl(URL);
 
       // close popup window
-      tinyMCEPopup.close();
+      top.tinymce.activeEditor.windowManager.close();
     }
   }
 
-  tinyMCEPopup.onInit.add(FileBrowserDialogue.init, FileBrowserDialogue);
-
-  $(function() {
+  $().ready(function() {
     var rails_csrf = {};
     rails_csrf[$('meta[name=csrf-param]').attr('content')] = $('meta[name=csrf-token]').attr('content');
 
@@ -39,11 +23,13 @@
       lang: 'en',
       url: '/elfinder/backend?path='+encodeURIComponent("<%= params[:path] %>"),  // connector URL
       getFileCallback: function(file) { // editor callback
+// actually file.url - doesnt work for me, but file does. (elfinder 2.0-rc1)
         FileBrowserDialogue.mySubmit(file); // pass selected file path to TinyMCE 
       },
       transport : new elFinderSupportVer1(),
-      customData: rails_csrf,
-    });      
+      customData: rails_csrf
+    }).elfinder('instance');      
   });
 </script>
+
 <div id='elfinder'></div>
