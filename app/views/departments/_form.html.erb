@@ -1,5 +1,6 @@
 <%# Uploader only works when department has been initialized %>
-<%= render :partial => 'shared/tinymce', :locals => { :path => "/departments/#{@department.id}" } unless @department.new_record? %>
+<%#= render :partial => 'shared/tinymce', :locals => { :path => "/departments/#{@department.id}" } unless @department.new_record? %>
+<%= tinymce %>
 <%= simple_form_for(@department, :defaults => { :input_html => { :class => 'input-xlarge' } }) do |f| %>
   <%= f.error_notification %>
 
