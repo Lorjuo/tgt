@@ -1,11 +1,27 @@
-<%= render :partial => 'shared/tinymce', :locals => { :path => "/departments/#{@message.department.id}" } %>
+<%= render :partial => 'shared/elfinder_loader', :locals => { :path => "" } unless @department.new_record? %>
+<%= tinymce %>
 <%= simple_form_for(shallow_args(@department, @message), :defaults => { :input_html => { :class => 'input-xlarge' } }) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :title %>
+    <%#= f.input :title, input_html: { class: 'tinymce' } %>
+    <div class="form-group string optional message_title">
+      <%= f.label :title %>
+      <div class="col-lg-10">
+        <%= f.input_field :title %>
+      </div>
+    </div>
+
     <%#= f.association :department %>
-    <%= f.input :content, as: :text, input_html: { class: 'tinymce' }  %>
+
+
+    <%#= f.input :content, as: :text, input_html: { class: 'tinymce' }  %>
+    <div class="form-group string optional message_content">
+      <%= f.label :content %>
+      <div class="col-lg-10">
+        <%= f.input_field :content, class: 'tinymce' %>
+      </div>
+    </div>
 
     <%= f.simple_fields_for :image do |image_form| %>
       <%#= image_form.input :file, :as => :file %>

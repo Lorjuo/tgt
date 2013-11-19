@@ -1,10 +1,15 @@
-<div class="page-header">
+<% content_for :title do %>
+  <%= t ".title" %>
+<% end %>
+
+<% content_for :buttons do %>
   <%= link_to new_department_message_path(@department), :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
-    New Message
+    <%= t('general.create_model', :model => Message.model_name.human ) %>
   <% end if can?(:create, Message) && @department.present? %>
-  <h1>Listing messages</h1>
-</div>
+<% end %>
+
+<%# TODO: localize %>
 
 <table id="messages_data_table"
   class="dataTable table table-bordered table-striped"

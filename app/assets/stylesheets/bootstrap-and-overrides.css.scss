@@ -25,10 +25,11 @@ body { padding-top: 60px !important; }
 /* https://github.com/thomas-mcdonald/bootstrap-sass/blob/master/vendor/assets/stylesheets/bootstrap/_mixins.scss */
 
 body {
-  /*background-image: url("background.jpg");*/
+  background-image: url("background.jpg");
   background-size: auto auto;
   background-attachment: fixed;
   vertical-align: baseline;
+  font-weight: 400;
 }
 
 li, h1, h2, h3, h4, h5 {
@@ -45,6 +46,12 @@ li, h1, h2, h3, h4, h5 {
   background-image: linear-gradient(to bottom, white, #F2F2F2);
   background-repeat: repeat-x;
   padding: 6px 12px 6px 12px;
+  overflow: auto; /* needed to prevent floating boxes to expand out of this box*/
+}
+
+.tall {
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .box.small-spacing {
@@ -73,5 +80,83 @@ form fieldset.nested-fields {
   margin-bottom: 0;
   & p {
     margin-bottom: 0;
+  }
+}
+
+div.mediaContainer {
+
+  /* set .medium as default */
+  @extend .col-md-4;
+  @extend .col-sm-6;
+  @extend .col-xs-12;
+
+  &.small {
+    @extend .col-md-3;
+    @extend .col-sm-6;
+    @extend .col-xs-12;
+  }
+
+  &.large {
+    @extend .col-md-6;
+    @extend .col-sm-6;
+    @extend .col-xs-12;
+  }
+
+  &.full {
+    @extend .col-md-12;
+    @extend .col-sm-12;
+    @extend .col-xs-12;
+  }
+
+  &, &.small, &.medium, &.large, &.full {
+    padding: 0;
+    margin-bottom: 12px;
+  }
+
+  &.right {
+    @media (min-width: $screen-sm-min) {
+      padding-left: $grid-gutter-width;
+      padding-right: 0;
+    }
+    float: right;
+    clear: right;
+  }
+
+  &.left {
+    @media (min-width: $screen-sm-min) {
+      padding-left: 0;
+      padding-right: $grid-gutter-width;
+    }
+    float: left;
+    clear: left;
+  }
+
+  div.media {
+
+    a.mediaLink {
+      img {
+        width: 100%;
+      }
+    }
+
+    .mediaInfo {
+      background-color: #E9E9E9;
+
+      * {
+        margin: 0;
+      }
+      p {
+        padding: 4px 8px 4px 8px;
+      }
+    }
+  }
+}
+
+
+
+div.message {
+  div.messageHeader {
+    clear: both;
+    margin-bottom: 12px;
   }
 }

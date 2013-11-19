@@ -1,9 +1,12 @@
-<div class="page-header">
-  <%= link_to department_training_groups_path(@department), :class => 'btn btn-default' do %>
+<% content_for :title do %>
+  <%= t('general.create_model', :model => Message.model_name.human ) %>
+<% end %>
+
+<% content_for :buttons do %>
+  <%= link_to department_messages_path(@message.department), :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
-    Back
+    <%= t 'general.list' %>
   <% end %>
-  <h1>New message</h1>
-</div>
+<% end %>
 
 <%= render 'form' %>

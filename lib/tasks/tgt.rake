@@ -50,5 +50,9 @@ namespace :tgt do
     copy_assets /fancybox_overlay.png/
     copy_assets /fancybox_sprite.png/
     copy_assets /fancybox_sprite@2x.png/
+
+    copy_assets /alpha.png/
+    copy_assets /hue.png/
+    copy_assets /saturation.png/
  end
 end

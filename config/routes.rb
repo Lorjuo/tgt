@@ -72,6 +72,7 @@ TgtRefurbished::Application.routes.draw do
   resources :static_pages, :only => [] do
     collection do
       get :home
+      get :page_layout
     end
   end
 

@@ -14,9 +14,6 @@
     </div>
     <div class="collapse navbar-collapse" id="navigation">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">
-          <%= t ".home" %>
-        </a></li>
         <%= render :partial => "layouts/top_level_navigation", collection: NavigationElement.top_level.roots, :as => :navigation_element %>
       </ul>
 
@@ -59,17 +56,16 @@
               <%= link_to(t('.login'), new_user_session_path)  %>  
               </li>
             <% end %>
+            <%= content_tag :li do %>
+              <%= link_to "English", locale: :en %>
+            <% end unless I18n.locale == :en %>
+            <%= content_tag :li do %>
+              <%= link_to "Deutsch", locale: :de %>
+            <% end unless I18n.locale == :de %>
           </ul>
         </li>
 
         <li><a href="#about"><%= t ".about" %></a></li>
-        <li><a href="#contact"><%= t ".contact" %></a></li>
-        <%= content_tag :li do %>
-          <%= link_to "English", locale: :en %>
-        <% end unless I18n.locale == :en %>
-        <%= content_tag :li do %>
-          <%= link_to "Deutsch", locale: :de %>
-        <% end unless I18n.locale == :de %>
       </ul>
     </div>
   </div>

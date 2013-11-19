@@ -5,4 +5,8 @@ class StaticPagesController < ApplicationController
     @announcements = Announcement.active
     @messages = Message.limit(3)
   end
+
+  def page_layout
+
+  end
 end

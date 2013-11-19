@@ -54,6 +54,7 @@ module TgtRefurbished
       elfinder/theme.css
       elfinder/elfinder.min.js
       elfinder/proxy/elFinderSupportVer1.js
+      wysiwyg.css
     )
     
     # Internationalization

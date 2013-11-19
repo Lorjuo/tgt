@@ -30,8 +30,8 @@ private
 
         #message.date_start.to_s,
         link_to('Show', message),
-        @user && @user.cannot?(:update, message) ? "<div class='btn btn-mini'>" + link_to('Edit', Rails.application.routes.url_helpers.edit_ta_apps_message_path(message)) + "</div>" : "",
-        @user && @user.cannot?(:destroy, message) ? "<div class='btn btn-mini btn-danger'>" + link_to('Delete', message, confirm: 'Are you sure?', method: :delete, style: "color:white") + "</div>" : ""
+        @user && @user.can?(:update, message) ? link_to('Edit', Rails.application.routes.url_helpers.edit_message_path(message)) : "",
+        @user && @user.can?(:destroy, message) ? link_to('Delete', message, confirm: 'Are you sure?', method: :delete) : ""
       ]
     end
   end

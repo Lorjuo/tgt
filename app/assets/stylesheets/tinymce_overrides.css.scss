@@ -1,5 +1,13 @@
 body { // needed to override default values
 
+  div.mce-fullscreen {
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0; right: 0;
+    @extend .container
+  }
+
   .mce-btn button {
     font-size: 12px;
     padding: 3px 9px 3px 9px;
@@ -12,5 +20,9 @@ body { // needed to override default values
   .mce-ico {
     width: 12px;
     height: 12px;
+  }
+
+  .mce-listbox span {
+    margin-right: 10px;
   }
 }

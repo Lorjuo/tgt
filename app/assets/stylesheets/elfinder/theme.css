@@ -5,6 +5,8 @@
  * @author Dmitry (dio) Levashov
  **/
 
+/* https://github.com/openteam/el_vfs/blob/master/app/assets/stylesheets/el_vfs/theme.sass */
+
 /* dialogs */
 .std42-dialog, .std42-dialog .ui-widget-content { background-color:#ededed; background-image:none; background-clip: content-box; }
 
