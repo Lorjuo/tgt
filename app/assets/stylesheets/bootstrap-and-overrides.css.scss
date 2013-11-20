@@ -25,7 +25,7 @@ body { padding-top: 60px !important; }
 /* https://github.com/thomas-mcdonald/bootstrap-sass/blob/master/vendor/assets/stylesheets/bootstrap/_mixins.scss */
 
 body {
-  background-image: url("background.jpg");
+  background-image: image-url("background.jpg");
   background-size: auto auto;
   background-attachment: fixed;
   vertical-align: baseline;
