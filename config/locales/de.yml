@@ -42,6 +42,9 @@ de:
       department:
         one: Abteilung
         other: Abteilungen
+      event:
+        one: Veranstaltung
+        other: Veranstaltungen
       image:
         one: Bild
         other: Bilder
@@ -62,6 +65,9 @@ de:
         other: Benutzer
 
     attributes:
+      event:
+        term: Datum
+
       message:
         title: Überschrift
         content: Text
@@ -88,6 +94,12 @@ de:
         location_winter: Ort (Winter)
         time_begin: Zeit (Beginn)
         time_end: Zeit (Ende)
+
+  events:
+    index:
+      title: Veranstaltungsübersicht
+    show:
+      title: '%{name}'
 
   messages:
     index:

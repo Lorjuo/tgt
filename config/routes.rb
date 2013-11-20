@@ -1,5 +1,7 @@
 TgtRefurbished::Application.routes.draw do
 
+  resources :events
+
   resources :announcements
 
   resources :messages, :only =>:index

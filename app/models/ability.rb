@@ -44,6 +44,8 @@ class Ability
 
       can [:create, :read, :update, :destroy], Message
 
+      can [:create, :read, :update, :destroy], Event
+
       #TODO: Set abilities for images, documents and uploaders
       #Maybe. http://stackoverflow.com/questions/8170475/cancan-abilities-for-inherited-resources-with-nesting-in-controller
     end

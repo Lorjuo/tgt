@@ -41,7 +41,10 @@ en:
         other: Announcements
       department:
         one: Department
-        other: Departments
+        other: Departments        
+      event:
+        one: Event
+        other: Events
       image:
         one: Image
         other: Images
@@ -62,6 +65,9 @@ en:
         other: Users
 
     attributes:
+      event:
+        term: Date
+
       message:
         title: Headline
         content: Text
@@ -88,6 +94,12 @@ en:
         location_winter: Location (winter)
         time_begin: Time (begin)
         time_end: Time (end)
+
+  events:
+    index:
+      title: Listing events
+    show:
+      title: '%{name}'
 
   messages:
     index:

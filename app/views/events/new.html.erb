@@ -1,0 +1,12 @@
+<% content_for :title do %>
+  <%= t('general.create_model', :model => Event.model_name.human ) %>
+<% end %>
+
+<% content_for :buttons do %>
+  <%= link_to events_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    <%= t 'general.list' %>
+  <% end %>
+<% end %>
+
+<%= render 'form' %>

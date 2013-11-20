@@ -1,0 +1,49 @@
+<% content_for :title do %>
+  <%= t ".title" %>
+<% end %>
+
+<% content_for :buttons do %>
+  <%= link_to new_event_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    <%= t('general.create_model', :model => Event.model_name.human ) %>
+  <% end if can? :create, Event %>
+<% end %>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th><%= Event.human_attribute_name("name") %></th>
+      <th><%= Event.human_attribute_name("term") %></th>
+      <th><%= Event.human_attribute_name("description") %></th>
+      <th></th>
+      <% if can? :update, Event %>
+      <th></th>
+      <% end %>
+      <% if can? :destroy, Event %>
+      <th></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+<% @events.each do |event| %>
+    <tr>
+      <td><%= event.name %></td>
+      <td><%= event.term %></td>
+      <td><%= event.description %></td>
+      <td><%= link_to t('general.show'), event %></td>
+      <% if can? :update, event %>
+      <td><%= link_to t('general.edit'), edit_event_path(event) %></td>
+      <% end %>
+      <% if can? :destroy, event %>
+      <td>
+        <%= link_to event, method: :delete, data: { confirm: t('general.are_you_sure') } do %>
+          <span class="glyphicon glyphicon-trash"></span>
+          <%= t('general.destroy') %>
+        <% end %>
+      </td>
+      <% end %>
+    </tr>
+<% end %>
+  </tbody>
+</table>

@@ -1,0 +1,30 @@
+
+
+<% content_for :title do %>
+  <%= t ".title", :name => @event.name %>
+<% end %>
+
+<% content_for :buttons do %>
+  <%= link_to events_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    <%= t "general.list" %>
+  <% end %>
+  <% if can? :update, @event %>
+    <%= link_to edit_event_path(@event), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+      <%= t "general.edit" %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<dl class="dl-horizontal">
+  <dt><%= Event.human_attribute_name("name") %>:</dt>
+  <dd><%= @event.name %></dd>
+
+  <dt><%= Event.human_attribute_name("term") %>:</dt>
+  <dd><%= @event.term %></dd>
+
+  <dt><%= Event.human_attribute_name("description") %>:</dt>
+  <dd><%= @event.description %></dd>
+
+</dl>

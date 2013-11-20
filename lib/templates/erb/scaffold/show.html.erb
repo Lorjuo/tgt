@@ -19,7 +19,7 @@
 
 <dl class="dl-horizontal">
   <%- attributes.each do |attribute| -%>
-  <dt><%%= <%= singular_table_name.to_s.classify %>.human_attribute_name.<%= attribute.human_name %> %>:</dt>
+  <dt><%%= <%= singular_table_name.to_s.classify %>.human_attribute_name("<%= attribute.name %>") %>:</dt>
   <dd><%%= @<%= singular_table_name %>.<%= attribute.name %> %></dd>
 
   <%- end -%>
