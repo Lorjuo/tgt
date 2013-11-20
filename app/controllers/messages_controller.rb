@@ -4,6 +4,8 @@ class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
   before_action :load_parent_resource
 
+  layout "two_columns"
+
   def index
     # @messages = Message.all # no longer needed because datatable is handled by MessageDatatable
     respond_to do |format|

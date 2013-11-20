@@ -5,9 +5,10 @@ class Ability
     alias_action :create, :read, :update, :destroy, :to => :crud
 
     user ||= User.new # guest user (not logged in)
+    byebug
     if user.has_role?('admin')
       can :manage, :all
-    else user.has_role?('editor')
+    elsif user.has_role?('editor')
       # Department dependent
 
       can [:create, :read, :update, :sort_navigation_elements], Department do |department|

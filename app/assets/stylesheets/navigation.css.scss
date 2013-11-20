@@ -1,6 +1,6 @@
 /* Navigation */
 
-#logo {
+#logoSmall {
   border: 0;
   height: 30px;
   margin: 6px 12px 6px 0px;
@@ -10,6 +10,14 @@
   background-repeat: no-repeat;*/
   display: block;
   float: left;
+}
+
+#logoWrapper {
+  color: white;
+}
+
+#logo {
+  height: 48px;
 }
 
 /* NOTE: Reenable this, when multi layer manues are needed */;

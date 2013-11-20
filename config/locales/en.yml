@@ -36,7 +36,7 @@ en:
 
   activerecord:
     models:
-      announcements:
+      announcement:
         one: Announcement
         other: Announcements
       department:

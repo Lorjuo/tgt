@@ -1,13 +1,14 @@
 <!--  Carousel - consult the Twitter Bootstrap docs at
     http://twitter.github.com/bootstrap/javascript.html#carousel -->
+<% announcements = Announcement.active %>
 <div id="announcement-carousel" class="carousel slide box small-spacing"><!-- class of slide for animation -->
   <ol class="carousel-indicators">
-    <% @announcements.each do |announcement| %>
+    <% announcements.each do |announcement| %>
       <li data-target="#announcement-carousel" data-slide-to="0"></li>
     <% end %>
   </ol>
   <div class="carousel-inner">
-    <% @announcements.each do |announcement| %>
+    <% announcements.each do |announcement| %>
       <div class="item">
         <%= link_to announcement.link do %>
           <%= raw announcement.content %>
@@ -33,7 +34,7 @@
 </div>
 
 <ul class="box small-spacing list-group">
-  <% @announcements.each do |announcement| %>
+  <% announcements.each do |announcement| %>
     <li class="list-group-item">
       <%= link_to announcement.link do %>
         <span class="glyphicon glyphicon-chevron-right"></span>
