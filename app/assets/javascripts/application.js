@@ -25,6 +25,8 @@
 //= require bootstrap/scrollspy
 //= require bootstrap/modal
 //= require bootstrap/dropdown
+//# Loaders
+//= require tooltip_loader
 //
 //# Carousel
 //= require carousel

@@ -124,3 +124,6 @@ en:
       sign_up: Register
       login: Login
       logout: Logout
+
+    sidebar:
+      galleries: Newest Fotos

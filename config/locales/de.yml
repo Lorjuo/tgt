@@ -124,3 +124,6 @@ de:
       sign_up: Registrieren
       login: Anmelden
       logout: Abmelden
+
+    sidebar:
+      galleries: Neueste Fotogalerien

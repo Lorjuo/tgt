@@ -1,19 +1,16 @@
-<%% content_for :title do %>
-  <%%= t ".title" %>
-<%% end %>
-
-<%% content_for :buttons do %>
+<div class="page-header">
   <%%= link_to new_<%= singular_table_name %>_path, :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
-    <%%= t('general.create_model', :model => <%= singular_table_name.to_s.classify %>.model_name.human ) %>
-  <%% end if can? :create, <%= singular_table_name.to_s.classify %> %>
-<%% end %>
+    New <%= human_name %>
+  <%% end if can? :create, <%= class_name %> %>
+  <h1>Listing <%= plural_table_name %></h1>
+</div>
 
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
 <% attributes.each do |attribute| -%>
-      <th><%%= <%= singular_table_name.to_s.classify %>.human_attribute_name.<%= attribute.human_name %> %></th>
+      <th><%= attribute.human_name %></th>
 <% end -%>
       <th></th>
       <%% if can? :update, <%= class_name %> %>
@@ -31,15 +28,14 @@
 <% attributes.each do |attribute| -%>
       <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
 <% end -%>
-      <td><%%= link_to t('general.show'), <%= singular_table_name %> %></td>
+      <td><%%= link_to 'Show', <%= singular_table_name %> %></td>
       <%% if can? :update, <%= singular_table_name %> %>
-      <td><%%= link_to t('general.edit'), edit_<%= singular_table_name %>_path(<%= singular_table_name %>) %></td>
+      <td><%%= link_to 'Edit', edit_<%= singular_table_name %>_path(<%= singular_table_name %>) %></td>
       <%% end %>
       <%% if can? :destroy, <%= singular_table_name %> %>
       <td>
-        <%%= link_to <%= singular_table_name %>, method: :delete, data: { confirm: t('general.are_you_sure') } do %>
-          <span class="glyphicon glyphicon-trash"></span>
-          <%%= t('general.destroy') %>
+        <%%= link_to <%= singular_table_name %>, method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <span class="glyphicon glyphicon-trash"></span> Destroy
         <%% end %>
       </td>
       <%% end %>
