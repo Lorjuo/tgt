@@ -6,6 +6,8 @@ class MessagesController < ApplicationController
 
   layout "two_columns"
 
+  layout :resolve_layout
+
   def index
     # @messages = Message.all # no longer needed because datatable is handled by MessageDatatable
     respond_to do |format|
@@ -86,5 +88,14 @@ class MessagesController < ApplicationController
       params.require(:message).permit(:title, :content, :department_id, :image_attributes => [:file, :id])
       # :file needed when upload a new image
       # :id needed when fileupload is empty
+    end
+
+    def resolve_layout
+      case action_name
+      when "index"
+        "one_column"
+      else
+        "two_columns"
+      end
     end
 end

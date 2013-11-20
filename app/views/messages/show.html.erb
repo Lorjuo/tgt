@@ -28,29 +28,25 @@
 
 <%# TODO: localize %>
 
-<div class="row">
-  <div class="col-md-12">
-    <div class="window box thin">
-      <div class="message">
-        <div class="messageHeader">
-          <div class="pull-right button-group">
-            <%= link_to department_messages_path(@message.department), :class => 'btn btn-default' do %>
-              <span class="glyphicon glyphicon-list-alt"></span>
-              Back
-            <% end %>
-            <% if can? :update, @message %>
-              <%= link_to edit_message_path(@message), :class => 'btn btn-primary' do %>
-              <span class="glyphicon glyphicon-pencil"></span>
-                Edit
-              <% end %>
-            <% end %>
-          </div>
-          <h1><%= @message.title %></h1>
-        </div>
-        <div class="messageContent">
-          <%= raw @message.content %>
-        </div>
+<div class="window box thin">
+  <div class="message">
+    <div class="messageHeader">
+      <div class="pull-right button-group">
+        <%= link_to department_messages_path(@message.department), :class => 'btn btn-default' do %>
+          <span class="glyphicon glyphicon-list-alt"></span>
+          Back
+        <% end %>
+        <% if can? :update, @message %>
+          <%= link_to edit_message_path(@message), :class => 'btn btn-primary' do %>
+          <span class="glyphicon glyphicon-pencil"></span>
+            Edit
+          <% end %>
+        <% end %>
       </div>
+      <h1><%= @message.title %></h1>
+    </div>
+    <div class="messageContent">
+      <%= raw @message.content %>
     </div>
   </div>
 </div>

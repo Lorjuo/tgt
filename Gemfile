@@ -53,8 +53,8 @@ gem 'mysql2'
   gem 'populator'
 
 # Debugger
-# gem 'debugger'
-gem 'byebug'
+gem 'debugger'
+# gem 'byebug'
 
 # Error Handling
 gem 'better_errors'

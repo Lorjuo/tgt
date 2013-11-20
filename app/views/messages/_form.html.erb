@@ -1,4 +1,4 @@
-<%= render :partial => 'shared/elfinder_loader', :locals => { :path => "" } unless @department.new_record? %>
+<%= render :partial => 'shared/elfinder_loader', :locals => { :path => "" } %>
 <%= tinymce %>
 <%= simple_form_for(shallow_args(@department, @message), :defaults => { :input_html => { :class => 'input-xlarge' } }) do |f| %>
   <%= f.error_notification %>

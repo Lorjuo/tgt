@@ -5,7 +5,6 @@ class Ability
     alias_action :create, :read, :update, :destroy, :to => :crud
 
     user ||= User.new # guest user (not logged in)
-    byebug
     if user.has_role?('admin')
       can :manage, :all
     elsif user.has_role?('editor')

@@ -10,14 +10,24 @@ class ApplicationController < ActionController::Base
   # Not in use because nearly every page is readable
   # before_filter :authenticate_user! 
 
-  # rescue_from CanCan::AccessDenied do |exception|
-  #   if user_signed_in?
-  #     redirect_to root_url, :alert => exception.message
-  #   else
-  #     #redirect_to new_user_session_path, :alert => exception.message
-  #     redirect_to({ :controller => 'devise/sessions', :action => 'new', :referring_page => request.path }, :alert => exception.message)
-  #   end
-  # end
+  rescue_from CanCan::AccessDenied do |exception|
+    if user_signed_in?
+      redirect_to root_url, :alert => exception.message
+    else
+      #redirect_to new_user_session_path, :alert => exception.message
+      redirect_to({ :controller => 'devise/sessions', :action => 'new', :referring_page => request.path }, :alert => exception.message)
+      # flash.keep
+    end
+  end
+
+  # Redirect to a specific page on successful sign in
+  def after_sign_in_path_for(resource)
+    if params[:user][:referring_page].present?
+      params[:user][:referring_page]
+    else
+      root_path
+    end
+  end
 
   # Redirect to a specific page on successful sign in
   def after_sign_in_path_for(resource)

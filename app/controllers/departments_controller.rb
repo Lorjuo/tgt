@@ -114,11 +114,11 @@ class DepartmentsController < ApplicationController
     end
 
     def resolve_layout
-    case action_name
-    when "show", "training_groups", "sort_navigation_elements"
-      "department"
-    else
-      "application"
+      case action_name
+      when "show", "training_groups", "sort_navigation_elements"
+        "department"
+      else
+        "application"
+      end
     end
-  end
 end

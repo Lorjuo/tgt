@@ -1,4 +1,5 @@
-<%= render :partial => 'shared/tinymce_small' %>
+<%= render :partial => 'shared/elfinder_loader', :locals => { :path => "" } %>
+<%= tinymce %>
 <%= simple_form_for(@announcement) do |f| %>
   <%= f.error_notification %>
 
