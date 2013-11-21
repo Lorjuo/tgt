@@ -23,12 +23,15 @@ de:
       unlimited: 'unbeschränkt'
 
   attributes:
+    active: Aktiv
     age: Alter
+    content: Inhalt
     department: Abteilung
     description: Beschreibung
     name: Name
     first_name: Vorname
     last_name: Nachname
+    link: Link
     time: Uhrzeit
     trainers: Trainer
     training_groups: Trainingsgruppen
@@ -66,6 +69,10 @@ de:
         other: Benutzer
 
     attributes:
+      announcement:
+        visible_from: Sichtbar seit
+        visible_to: Sichtbar bis
+
       event:
         term: Datum
 
@@ -95,6 +102,12 @@ de:
         location_winter: Ort (Winter)
         time_begin: Zeit (Beginn)
         time_end: Zeit (Ende)
+
+  announcements:
+    index:
+      title: Ankündigungsübersicht
+    show:
+      title: 'Ankündigung "%{name}"'
 
   events:
     index:

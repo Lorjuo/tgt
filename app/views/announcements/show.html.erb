@@ -1,28 +1,37 @@
-<div class="page-header">
+<% content_for :title do %>
+  <%= t ".title", :name => @announcement.name %>
+<% end %>
+
+<% content_for :buttons do %>
   <%= link_to announcements_path, :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
-    Back
+    <%= t "general.list" %>
   <% end %>
   <% if can? :update, @announcement %>
     <%= link_to edit_announcement_path(@announcement), :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-pencil"></span>
-      Edit
+      <%= t "general.edit" %>
     <% end %>
   <% end %>
-  <h1>Show announcement</h1>
-</div>
+<% end %>
 
 <dl class="dl-horizontal">
-  <dt>Name:</dt>
+  <dt><%= Announcement.human_attribute_name(:name) %></dt>
   <dd><%= @announcement.name %></dd>
 
-  <dt>Content:</dt>
+  <dt><%= Announcement.human_attribute_name(:content) %></dt>
   <dd><%= @announcement.content %></dd>
 
-  <dt>Link:</dt>
+  <dt><%= Announcement.human_attribute_name(:link) %></dt>
   <dd><%= @announcement.link %></dd>
 
-  <dt>Active:</dt>
+  <dt><%= Announcement.human_attribute_name(:active) %></dt>
   <dd><%= @announcement.active %></dd>
+
+  <dt><%= Announcement.human_attribute_name(:visible_from) %></dt>
+  <dd><%= l @announcement.visible_from unless @announcement.visible_from.nil? %></dd>
+
+  <dt><%= Announcement.human_attribute_name(:visible_to) %></dt>
+  <dd><%= l @announcement.visible_to unless @announcement.visible_from.nil? %></dd>
 
 </dl>

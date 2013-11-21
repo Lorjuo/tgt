@@ -21,6 +21,7 @@ module TinyMCE::Rails
     
     # Returns the JavaScript code required to initialize TinyMCE.
     def tinymce_javascript(config=:default, options={})
+      options[:language] = I18n.locale
       json = tinymce_configuration(config, options).to_json
       json = json.gsub('"elFinderBrowser"', 'elFinderBrowser')
       json = json[0..-2]

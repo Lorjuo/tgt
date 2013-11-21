@@ -12,7 +12,9 @@
     <%= f.input :visible_to, :as => :date_picker %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-9">
+      <%= f.button :submit, :class => "btn btn-primary" %>
+    </div>
   </div>
 <% end %>
