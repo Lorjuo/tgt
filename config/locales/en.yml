@@ -10,6 +10,7 @@ en:
     edit_model: "Edit %{model}"
     editing: Editing
     list: List
+    more: more
     search: Search
     send_email: Send email
     show: Show

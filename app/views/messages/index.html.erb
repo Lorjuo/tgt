@@ -9,8 +9,6 @@
   <% end if can?(:create, Message) && @department.present? %>
 <% end %>
 
-<%# TODO: localize %>
-
 <table id="messages_data_table"
   class="dataTable table table-bordered table-striped"
   data-source="<%=
@@ -21,9 +19,9 @@
   <thead>
     <tr>
       <th></th>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Department</th>
+      <th><%= Message.human_attribute_name(:title) %></th>
+      <th><%= Message.human_attribute_name(:content) %></th>
+      <th><%= Message.human_attribute_name(:department) %></th>
       <th></th>
       <% if can? :update, Message %>
       <th></th>
@@ -40,18 +38,18 @@
       <td><%= link_to(image_tag(message.image.file_url(:thumb)), message.image.file_url, :class => "fancybox") if message.image.present? %></td>
       <td><%= message.title %></td>
       <td>
-        <%= truncate(strip_tags(message.content), length: 320, omission: '...') %>
-        <%= link_to '...mehr', message, :class => 'btn-link' %>
+        <%= truncate(strip_tags(message.content), length: 320, omission: '') %>
       </td>
       <td><%= message.department.name %></td>
-      <td><%= link_to 'Show', message %></td>
+      <td><%= link_to t('general.show'), message %></td>
       <% if can? :update, message %>
-      <td><%= link_to 'Edit', edit_message_path(message) %></td>
+      <td><%= link_to t('general.edit'), edit_message_path(message) %></td>
       <% end %>
       <% if can? :destroy, message %>
       <td>
-        <%= link_to message, method: :delete, data: { confirm: 'Are you sure?' } do %>
-          <span class="glyphicon glyphicon-trash"></span> Destroy
+        <%= link_to message, method: :delete, data: { confirm: t('general.are_you_sure') } do %>
+          <span class="glyphicon glyphicon-trash"></span>
+          <%= t('general.destroy') %>
         <% end %>
       </td>
       <% end %>

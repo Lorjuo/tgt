@@ -15,7 +15,7 @@
       <div class="message-content">
         <%# truncate_html( message.content, length: 320, omission: '<a href="#"></a>' ) %>
         <%= truncate(strip_tags(message.content), length: 320, omission: '') %>
-        <%= link_to '...mehr', message, :class => 'btn-link' %>
+        <%= link_to "...#{general.more}", message, :class => 'btn-link' %>
       </div>
     <% end %>
   </div>

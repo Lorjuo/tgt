@@ -29,9 +29,9 @@ private
         message.department.name,
 
         #message.date_start.to_s,
-        link_to('Show', message),
-        @user && @user.can?(:update, message) ? link_to('Edit', Rails.application.routes.url_helpers.edit_message_path(message)) : "",
-        @user && @user.can?(:destroy, message) ? link_to('Delete', message, confirm: 'Are you sure?', method: :delete) : ""
+        link_to(I18n.t('general.show'), message),
+        @user && @user.can?(:update, message) ? link_to( I18n.t('general.edit'), Rails.application.routes.url_helpers.edit_message_path(message)) : "",
+        @user && @user.can?(:destroy, message) ? link_to( I18n.t('general.destroy'), message, confirm: I18n.t('general.are_you_sure'), method: :delete) : ""
       ]
     end
   end
