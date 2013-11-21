@@ -143,7 +143,7 @@ SimpleForm.setup do |config|
   # Default class for inputs
   # config.input_class = nil
   
-  config.label_class = 'col-lg-2 control-label'
+  config.label_class = 'col-lg-3 control-label'
   config.form_class = "simple_form form-horizontal"
   config.input_class = nil
 end
