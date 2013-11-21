@@ -1,6 +1,6 @@
 <!--  Carousel - consult the Twitter Bootstrap docs at
     http://twitter.github.com/bootstrap/javascript.html#carousel -->
-<% announcements = Announcement.active %>
+<% announcements = Announcement.active.visible %>
 <div id="announcement-carousel" class="carousel slide box small-spacing"><!-- class of slide for animation -->
   <ol class="carousel-indicators">
     <% announcements.each do |announcement| %>

@@ -4,7 +4,7 @@ class StaticPagesController < ApplicationController
   layout "two_columns"
 
   def home
-    @messages = Message.limit(3)
+    @messages = Message.limit(4)
   end
 
   def page_layout

@@ -2,3 +2,6 @@ en:
   time:
     formats:
       time: ! '%H:%M'
+  date:
+    formats:
+      year_month: ! '%B %Y'

@@ -5,6 +5,7 @@ class LocationsController < ApplicationController
 
   load_and_authorize_resource
 
+  layout :resolve_layout
 
   def index
     @locations = Location.all
@@ -130,6 +131,15 @@ class LocationsController < ApplicationController
             end
           end
         end
+      end
+    end
+
+    def resolve_layout
+      case action_name
+      when "schedule"
+        "one_column"
+      else
+        "two_columns"
       end
     end
 end

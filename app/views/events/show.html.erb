@@ -22,7 +22,7 @@
   <dd><%= @event.name %></dd>
 
   <dt><%= Event.human_attribute_name("term") %>:</dt>
-  <dd><%= @event.term %></dd>
+  <dd><%= I18n.localize(@event.term) %></dd>
 
   <dt><%= Event.human_attribute_name("description") %>:</dt>
   <dd><%= @event.description %></dd>

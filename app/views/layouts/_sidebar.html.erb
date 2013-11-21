@@ -1,19 +1,37 @@
-<div class="window">
-  <%= render :partial => 'layouts/announcements' %>
-</div>
-<div class="window box">
-  <h3><%= t ".galleries" %></h3>
-  <div class="row">
-    <% Gallery.order(:updated_at => :desc).each do |gallery| %>
-      <% image = gallery.get_preview_image %>
-      <div class="col-sm-4 col-xs-6">
-        <div class="thumbnail">
-          <%#= link_to(image.file_url, :class => 'fancybox', :rel => 'galleries', :caption => gallery.name) do %>
-          <%= link_to gallery do %>
-            <%= image_tag image.file_url(:_260x180), :class => "img-responsive" %>
-          <% end %>
+<div id="sidebar">
+  <div class="window">
+    <%= render :partial => 'layouts/announcements' %>
+  </div>
+  <div class="window box">
+    <h3><%= t ".galleries" %></h3>
+    <div class="row">
+      <% Gallery.order(:updated_at => :desc).each do |gallery| %>
+        <% image = gallery.get_preview_image %>
+        <div class="col-sm-4 col-xs-6">
+          <div class="thumbnail">
+            <%#= link_to(image.file_url, :class => 'fancybox', :rel => 'galleries', :caption => gallery.name) do %>
+            <%= link_to gallery do %>
+              <%= image_tag image.file_url(:_260x180), :class => "img-responsive" %>
+            <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="window box events">
+    <h3><%= t ".events" %></h3>
+    <%
+      events = Event.chronological.upcoming.limit(3)
+      event_months = events.group_by { |event| event.term.beginning_of_month }
+    %>
+
+    <% event_months.keys.sort.each do |month| %>
+      <div><b><%= l( month, :format => :year_month ) %></b></div>
+      <ul>
+        <% for event in event_months[month] %>
+          <li><b><%= event.term.day.ordinalize %></b> <%= link_to event.name, event %></li>
+        <% end %>
+      </ul>
     <% end %>
   </div>
 </div>

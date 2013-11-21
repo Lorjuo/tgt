@@ -29,7 +29,7 @@
 <% @events.each do |event| %>
     <tr>
       <td><%= event.name %></td>
-      <td><%= event.term %></td>
+      <td><%= I18n.localize(event.term) %></td>
       <td><%= event.description %></td>
       <td><%= link_to t('general.show'), event %></td>
       <% if can? :update, event %>

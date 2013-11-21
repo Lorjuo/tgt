@@ -2,3 +2,9 @@ de:
   time:
     formats:
       time: ! '%H:%M Uhr'
+  date:
+    formats:
+      year_month: ! '%B %Y'
+  number:    
+    ordinals:
+      other: "%d."

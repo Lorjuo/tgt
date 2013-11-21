@@ -45,6 +45,9 @@ gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
   # Maybe never needed: Generators by simple form
   #gem 'bootstrap-generators' # Only needed for first installation? - Afterwards it leads to conflicts
 
+# Date
+gem 'validates_timeliness', '~> 3.0'
+
 # Database
 gem 'mysql2'
   # Population

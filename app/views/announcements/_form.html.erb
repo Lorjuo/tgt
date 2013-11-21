@@ -8,6 +8,8 @@
     <%= f.input :content, as: :text, input_html: { class: 'tinymce' } %>
     <%= f.input :link %>
     <%= f.input :active %>
+    <%= f.input :visible_from, :as => :date_picker %>
+    <%= f.input :visible_to, :as => :date_picker %>
   </div>
 
   <div class="form-actions">

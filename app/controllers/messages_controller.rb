@@ -4,8 +4,6 @@ class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
   before_action :load_parent_resource
 
-  layout "two_columns"
-
   layout :resolve_layout
 
   def index

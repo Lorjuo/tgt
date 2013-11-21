@@ -1,3 +1,4 @@
+<div class="window box thin">
 <div class="page-header">
   <div class="pull-right button-group">
     <%= link_to schedule_location_path(@location, :season => @season), :class => 'btn btn-default' do %>
@@ -17,6 +18,7 @@
 </div>
 
 <%#= p @data %>
+<div class="col-md-12" style="overflow: auto">
 <table class="table table-bordered table-striped schedule">
   <thead>
     <tr>
@@ -61,3 +63,5 @@
     <% end while time < Time.zone.local(2000,1,1,APP_CONFIG['schedule']['end'],0) %>
   </tbody>
 </table>
+</div>
+</div>

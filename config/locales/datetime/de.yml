@@ -1,7 +1,9 @@
 de:
   datepicker:
     dformat: '%Y.%m.%d'        # display format of the date (this is the default, can be ommited)
-    pformat: 'yyyy-mm-dd'      # picking format of the date (this is the default, can be ommited)
+    dformat: '%d.%m.%Y'
+    pformat: 'yyyy-MM-dd'      # picking format of the date (this is the default, can be ommited)
+    pformat: 'dd.MM.yyyy'
     weekstart: 1               # the week starts on Sunday (this is the default, can be ommited)
   timepicker:
     dformat: '%R'              # display format of the time (this is the default, can be ommited)

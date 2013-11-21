@@ -11,15 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131120152437) do
+ActiveRecord::Schema.define(version: 20131121103211) do
 
   create_table "announcements", force: true do |t|
     t.string   "name"
     t.text     "content"
     t.string   "link"
-    t.boolean  "active",     default: true
+    t.boolean  "active",       default: true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "visible_from"
+    t.date     "visible_to"
   end
 
   create_table "departments", force: true do |t|
