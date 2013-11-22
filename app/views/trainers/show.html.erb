@@ -20,7 +20,7 @@
     <h3><%= t ".info" %></h3>
     <dl class="dl-horizontal">
       <dt><%= Trainer.human_attribute_name(:birthday) %>:</dt>
-      <dd><%= l @trainer.birthday, :format => :long %></dd>
+      <dd><%= l @trainer.birthday, :format => :long unless @trainer.birthday.nil? %></dd>
 
       <dt><%= Trainer.human_attribute_name(:residence) %>:</dt>
       <dd><%= @trainer.residence %></dd>

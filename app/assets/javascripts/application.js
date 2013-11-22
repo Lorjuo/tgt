@@ -42,6 +42,9 @@
 //= require bootstrap-datetimepicker/locales/bootstrap-datetimepicker.de.js
 //= require datetimepicker_loader
 //
+//# EqualHeights
+//= require equal_heights_loader
+//
 //# Google Maps
 //= require underscore
 //= require gmaps/google

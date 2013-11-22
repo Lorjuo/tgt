@@ -1,9 +1,12 @@
-<div class="page-header">
+<% content_for :title do %>
+  <%= t('general.create_model', :model => Department.model_name.human ) %>
+<% end %>
+
+<% content_for :buttons do %>
   <%= link_to departments_path, :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
-    Back
+    <%= t 'general.list' %>
   <% end %>
-  <h1>New department</h1>
-</div>
+<% end %>
 
 <%= render 'form' %>

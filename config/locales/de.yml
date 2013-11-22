@@ -25,6 +25,7 @@ de:
   attributes:
     active: Aktiv
     age: Alter
+    color: Farbe
     content: Inhalt
     department: Abteilung
     description: Beschreibung
@@ -109,6 +110,12 @@ de:
     show:
       title: 'Ankündigung "%{name}"'
 
+  departments:
+    index:
+      title: Abteilungsübersicht
+    show:
+      title: 'Abteilung "%{name}"'
+
   events:
     index:
       title: Veranstaltungsübersicht
@@ -140,6 +147,9 @@ de:
       remove_training_unit: Diese Trainingseinheit entfernen
 
   layouts:
+    department:
+      navigation_structure: Navigationsstruktur
+
     navigation:
       home: Home
       about: Impressum

@@ -1,0 +1,211 @@
+<!doctype html>
+
+<html lang="nl">
+
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        
+        <!--
+        This website was carefully constructed by
+        Interactive Studios
+        http://www.interactivestudios.nl
+        -->
+        
+        <title>EqualHeightColumns test</title>
+        
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        
+                
+
+        
+        <style type="text/css">
+                .blocks{
+                        list-style: none;
+                        width: 50%;
+                        margin: 0px auto;
+                        overflow: hidden;
+                        margin-bottom: 20px;
+                }
+                .blocks li{
+                        background: #eee;
+                        margin: 0 1%;
+                        padding: 0 2%;
+                        width: 27.33333%;
+                        float: left;
+                        display: block;
+                }
+                img{
+                        max-width: 100%;
+                }
+
+        </style>
+        
+</head>
+
+
+<body>
+        
+
+        
+        <ul class="blocks test-1">
+                <li>
+                        <h2>jQuery Equal Height Columns</h2>
+                        <p>This plugin makes multiple elements as high as the tallest element among them.</p>
+                        <p>It also works great for responsive and fluid designs.</p>
+                </li>
+
+                
+
+                <li>
+                        <h2>But does it have a lot of options I can set myself?.</h2>
+                        <p>There are three options you can set. MaxWidth is probably useless, but hey, it's there if you want to use it.</p>
+                        <p><strong>minWidth</strong>: The plugin won't do anything unless the width is wider than this value</p>
+                        <p><strong>maxWidth</strong>: The plugin won't do anything unless the width is smaller than this value</p>
+                        <p><strong>setHeightOn</strong>: The css attribute on which the height gets set.</p>
+                </li>
+
+                <li>
+                        <h2>Does it have downsides?</h2>
+                        <p>Yes. It works best on colums which are on a single line. If they span more lines the plugin won't take into account that each row probably would be better of with a different height. Now every row will have the height of the tallest element in the entire selection.</p>
+                        <p>Second, you can only have a single (configurable) bounded range for which the plugin kicks-in. This could be a problem in certain responsive websites.</p>
+                        
+                </li>
+        </ul>
+
+
+
+
+        <ul class="blocks test-2">
+                <li>
+                        <div class="text">
+                                <h2>Why this plugin?</h2>
+                                <p><strong>You could do this with tables right?</strong> Yes, but it's not semantic. Also it's not flexible enough for responsive websites.</p>
+                                <p><strong>But... Flexbox?</strong> It's possible, on IE10+.</p>
+                                <p><strong>What about display: table-cell;?.</strong> A bit better support, but you can't pull of example 2.</p>
+                        </div>
+                        <p><a href="#">Don't read more</a></p>
+                </li>
+
+                
+
+                <li>
+                        <div class="text">        
+                                <h2>About example 1 (look up)</h2>
+                                <p>It uses the minWidth and maxWidth options. You can see this in effect when you resize your your browser window.</p>
+                        </div>
+                        <p><a href="#">Don't read more</a></p>
+                </li>
+
+                <li>
+                        <div class="text">
+                                <h2>About example 2</h2>
+                                <p>This example wraps the main text in a wrapper div, followed by an &lt;a&gt; element. The plugin works it's magic on the wrapper div, which results in the links neatly matching up vertically.</p>
+                                
+                        </div>
+                        <p><a href="#">Don't read more</a></p>
+                </li>
+        </ul>
+        
+        
+        
+        <ul class="blocks test-3">
+                <li>
+                        <div class="text">
+                                <h2>Why this plugin?</h2>
+                                <p>
+                                        <img src="http://www.placehold.it/300x400" />
+                                </p>
+                        </div>
+                        <p><a href="#">Don't read more</a></p>
+                </li>
+
+                
+
+                <li>
+                        <div class="text">        
+                                <h2>About example 1 (look up)</h2>
+                                <p>
+                                        <img src="http://www.placehold.it/300x600" />
+                                </p>
+                        </div>
+                        <p><a href="#">Don't read more</a></p>
+                </li>
+
+                <li>
+                        <div class="text">
+                                <p>
+                                        <img src="http://www.placehold.it/500x300" />
+                                </p>
+                        </div>
+                        <p><a href="#">Don't read more</a></p>
+                </li>
+        </ul>
+        
+        
+        
+        <ul class="blocks test-4">
+                <li>
+                        <div class="text">
+                                <h2>Why this plugin?</h2>
+                                <p>
+                                        <img src="http://www.placehold.it/300x400" />
+                                </p>
+                        </div>
+                        <p><a href="#">Don't read more</a></p>
+                </li>
+
+                
+
+                <li>
+                        <div class="text">        
+                                <h2>About example 1 (look up)</h2>
+                                <p>
+                                        <img src="http://www.placehold.it/300x600" />
+                                </p>
+                        </div>
+                        <p><a href="#">Don't read more</a></p>
+                </li>
+
+                <li>
+                        <div class="text">
+                                <p>
+                                        <img src="http://www.placehold.it/500x300" />
+                                </p>
+                        </div>
+                        <p><a href="#">Don't read more</a></p>
+                </li>
+        </ul>
+        
+        
+        
+        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="/assets/jquery.equalheights.js?body=1"></script>
+
+        <script>
+
+(function() {
+$(function() {
+
+                $('.test-1 li').equalHeightColumns({
+                        minWidth: 500,
+                        maxWidth: 1000
+                });
+
+                $('.test-2 .text').equalHeightColumns();
+                $('.test-3 .text').equalHeightColumns();
+                
+                $('.test-4 .text').equalHeightColumns({
+                        afterLoading : 'iframe',
+                        afterTimeout : 500
+                });
+});
+}).call(this);
+        </script>
+
+  
+</body>
+
+</html>

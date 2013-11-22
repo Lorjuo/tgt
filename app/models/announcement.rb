@@ -3,7 +3,7 @@ class Announcement < ActiveRecord::Base
   # Scopes
   scope :active, -> { where(:active => true) }
   scope :visible, -> {
-    where("visible_from IS NULL OR visible_from < ?", Date.today)
+    where("visible_from IS NULL OR visible_from <= ?", Date.today)
     .where("visible_to IS NULL OR visible_to >= ?", Date.today)
   }
 

@@ -25,6 +25,7 @@ en:
   attributes:
     active: Active
     age: Age
+    color: Color
     content: Content
     department: Department
     description: Description
@@ -109,6 +110,12 @@ en:
     show:
       title: 'Announcement "%{name}"'
 
+  departments:
+    index:
+      title: Listing departments
+    show:
+      title: 'Department "%{name}"'
+
   events:
     index:
       title: Listing events
@@ -140,6 +147,9 @@ en:
       remove_training_unit: Remove this training unit
 
   layouts:
+    department:
+      navigation_structure: Navigation structure
+
     navigation:
       home: Home
       about: About
