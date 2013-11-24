@@ -46,7 +46,7 @@
       <% end %>
       <% if can? :destroy, training_group %>
       <td>
-        <%= link_to training_group, method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <%= link_to training_group, method: :delete, data: { confirm: t('general.are_you_sure') } do %>
           <span class="glyphicon glyphicon-trash"></span>
           <%= t('general.destroy') %>
         <% end %>

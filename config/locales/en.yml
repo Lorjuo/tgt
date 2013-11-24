@@ -1,5 +1,6 @@
 en:
   general:
+    add_files: Add Files...
     are_you_sure: Are you sure?
     browse: Browse
     cancel: Cancel
@@ -33,6 +34,7 @@ en:
     first_name: Givenname
     last_name: Surname
     link: Link
+    path: Path
     time: Time
     trainers: Trainers
     training_groups: Training groups
@@ -50,6 +52,9 @@ en:
       event:
         one: Event
         other: Events
+      gallery:
+        one: Photogallery
+        other: Photogalleries
       image:
         one: Image
         other: Images
@@ -115,12 +120,23 @@ en:
       title: Listing departments
     show:
       title: 'Department "%{name}"'
+      navigation_structure: Navigation structure
 
   events:
     index:
       title: Listing events
     show:
       title: '%{name}'
+
+  galleries:
+    index:
+      title: Listing Photogalleries
+    show:
+      title: 'Photogallery "%{name}"'
+
+  images:
+    image:
+      set_as_preview: Set as preview picture
 
   messages:
     index:
@@ -147,8 +163,6 @@ en:
       remove_training_unit: Remove this training unit
 
   layouts:
-    department:
-      navigation_structure: Navigation structure
 
     navigation:
       home: Home

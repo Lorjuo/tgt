@@ -1,13 +1,17 @@
-<div class="page-header">
+<% content_for :title do %>
+  <%= t('general.edit_model', :model => Image.model_name.human ) %>
+<% end %>
+
+
+<% content_for :buttons do %>
   <%= link_to polymorphic_path([@image.attachable, Image]), :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
-    Back
+    <%= t "general.list" %>
   <% end %>
   <%= link_to @image, :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-info-sign"></span>
-    Show
+    <%= t "general.show" %>
   <% end %>
-  <h1>Editing image</h1>
-</div>
+<% end %>
 
 <%= render 'form' %>

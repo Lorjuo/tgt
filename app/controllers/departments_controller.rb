@@ -97,6 +97,15 @@ class DepartmentsController < ApplicationController
       format.json { render json: @training_groups }
     end
   end
+
+  def galleries
+    @galleries = @department.galleries
+
+    respond_to do |format|
+      format.html { render :template => "galleries/index" }
+      format.json { render json: @galleries }
+    end
+  end
   
   def sort_navigation_elements
     @navigation_elements = @department.navigation_elements.nested_set.select('id, title, parent_id').load

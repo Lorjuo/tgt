@@ -7,7 +7,7 @@
       <% end if image.file._260x180.present? %>
       <% if can?(:edit, image.attachable) %>
         <div class="image-overlay toolbar">
-          <%= link_to set_preview_image_gallery_path(image.attachable, :image_id => image), :method => :post, :title => "set as preview image", :data => {:toggle => "tooltip"} do %>
+          <%= link_to set_preview_image_gallery_path(image.attachable, :image_id => image), :method => :post, :title => t(".set_as_preview"), :data => {:toggle => "tooltip"} do %>
             <%= tag :span, :class => (image.attachable.preview_image_id == image.id) ? "glyphicon glyphicon-star active" : "glyphicon glyphicon-star" %>
           <% end %>
         </div>
@@ -28,15 +28,15 @@
       <div style="text-align: center;">
         <%= link_to edit_image_path(image), class: 'btn btn-xs btn-default' do %>
           <i class="glyphicon glyphicon-edit"></i>
-          edit
+          <%= t "general.edit" %>
         <% end if can?(:edit, image) %>
         <%= link_to set_preview_image_gallery_path(image.attachable, :image_id => image), :method => :post, class: 'btn btn-xs btn-default' do %>
           <i class="glyphicon glyphicon-star"></i>
-          default
+          <%= t(".set_as_preview") %>
         <% end if can?(:edit, image.attachable) && false %>
         <%= link_to image, data: { confirm: 'Are you sure?'}, :method => :delete, class: 'btn btn-xs btn-default' do %>
           <i class="glyphicon glyphicon-trash"></i>
-          delete
+          <%= t "general.destroy" %>
         <% end if can?(:destroy, image) %>
       </div>
     </div>

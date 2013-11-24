@@ -1,15 +1,19 @@
-<div class="page-header">
-  <%= link_to new_gallery_path, :class => 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-plus"></span>
-    New Gallery
-  <% end if can? :create, Gallery %>
-  <h1>Listing galleries</h1>
-</div>
+<% content_for :title do %>
+  <%= t ".title" %>
+<% end %>
 
+<% content_for :buttons do %>
+  <%= link_to new_department_gallery_path(@department), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    <%= t('general.create_model', :model => Gallery.model_name.human ) %>
+  <% end if can? :create, Gallery %>
+<% end %>
+
+<div class="window box">
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
-      <th>Name</th>
+      <th><%= Gallery.human_attribute_name(:name) %></th>
       <th></th>
       <% if can? :update, Gallery %>
       <th></th>
@@ -24,14 +28,15 @@
 <% @galleries.each do |gallery| %>
     <tr>
       <td><%= gallery.name %></td>
-      <td><%= link_to 'Show', gallery %></td>
+      <td><%= link_to t('general.show'), gallery %></td>
       <% if can? :update, gallery %>
-      <td><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
+      <td><%= link_to t('general.edit'), edit_gallery_path(gallery) %></td>
       <% end %>
       <% if can? :destroy, gallery %>
       <td>
-        <%= link_to gallery, method: :delete, data: { confirm: 'Are you sure?' } do %>
-          <span class="glyphicon glyphicon-trash"></span> Destroy
+        <%= link_to gallery, method: :delete, data: { confirm: t('general.are_you_sure') } do %>
+          <span class="glyphicon glyphicon-trash"></span>
+          <%= t('general.destroy') %>
         <% end %>
       </td>
       <% end %>
@@ -41,3 +46,4 @@
 </table>
 
 <%#= polymorphic_path(Department.first, :action => :edit, :only_path => true) %>
+</div>

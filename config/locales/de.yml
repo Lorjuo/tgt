@@ -1,5 +1,6 @@
 de:
   general:
+    add_files: Dateien hinzufügen...
     are_you_sure: Sind Sie sich sicher?
     browse: Durchsuchen
     cancel: Abbrechen
@@ -33,6 +34,7 @@ de:
     first_name: Vorname
     last_name: Nachname
     link: Link
+    path: Pfad
     time: Uhrzeit
     trainers: Trainer
     training_groups: Trainingsgruppen
@@ -50,6 +52,9 @@ de:
       event:
         one: Veranstaltung
         other: Veranstaltungen
+      gallery:
+        one: Fotogalerie
+        other: Fotogalerien
       image:
         one: Bild
         other: Bilder
@@ -58,7 +63,7 @@ de:
         other: Nachrichten
       trainer:
         one: Trainer
-        other: Trainers
+        other: Trainer
       training_group:
         one: Trainingsgruppe
         other: Trainingsgruppen
@@ -115,12 +120,23 @@ de:
       title: Abteilungsübersicht
     show:
       title: 'Abteilung "%{name}"'
+      navigation_structure: Navigationsstruktur
 
   events:
     index:
       title: Veranstaltungsübersicht
     show:
       title: '%{name}'
+
+  galleries:
+    index:
+      title: Übersicht aller Fotogalerien
+    show:
+      title: 'Fotogalerie "%{name}"'
+
+  images:
+    image:
+      set_as_preview: Als Vorschaubild setzen
 
   messages:
     index:
@@ -147,8 +163,6 @@ de:
       remove_training_unit: Diese Trainingseinheit entfernen
 
   layouts:
-    department:
-      navigation_structure: Navigationsstruktur
 
     navigation:
       home: Home

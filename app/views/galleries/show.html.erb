@@ -1,19 +1,22 @@
-<div class="page-header">
-  <%= link_to galleries_path, :class => 'btn btn-default' do %>
+<% content_for :title do %>
+  <%= t ".title", :name => @gallery.name %>
+<% end %>
+
+<% content_for :buttons do %>
+  <%= link_to department_galleries_path(@gallery.department), :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
-    Back
+    <%= t "general.list" %>
   <% end %>
   <% if can? :update, @gallery %>
     <%= link_to edit_gallery_path(@gallery), :class => 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-pencil"></span>
-      Edit
+      <span class="glyphicon glyphicon-pencil"></span>
+      <%= t "general.edit" %>
     <% end %>
   <% end %>
-  <h1>Show gallery</h1>
-</div>
+<% end %>
 
 <dl class="dl-horizontal">
-  <dt>Name:</dt>
+  <dt><%= Gallery.human_attribute_name(:name) %>:</dt>
   <dd><%= @gallery.name %></dd>
 
 </dl>
@@ -29,7 +32,7 @@
 
     <div class="btn btn-default btn-file btn-primary fileinput-button">
       <i class="glyphicon glyphicon-plus"></i>
-      <span>Add Files...</span>
+      <span><%= t "general.add_files" %></span>
       <%= f.file_field :file, name: "image[file]", :multiple => true, :class => "btn btn-file fileinput-button" %>
       <!-- Style Upload: http://stackoverflow.com/questions/14509449/styling-file-upload-button-for-simple-form-for-with-bootstrap-in-rails-3 -->
     </div>

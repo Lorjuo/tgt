@@ -12,13 +12,6 @@ TgtRefurbished::Application.routes.draw do
 
   resources :images
 
-  resources :galleries, :shallow => true do
-    member do
-      post :set_preview_image
-    end
-    resources :images
-  end
-
   resources :locations do
     collection do
       get :interactive_map
@@ -46,10 +39,17 @@ TgtRefurbished::Application.routes.draw do
   #resources :departments, :shallow => true do
     member do
       get :training_groups
+      get :galleries
       get :trainers
       get :sort_navigation_elements
       # required for Sortable GUI server side actions
       post :rebuild
+    end
+    resources :galleries, :shallow => true do
+      member do
+        post :set_preview_image
+      end
+      resources :images
     end
     resources :messages
     resources :training_groups#, :only => [:new, :create]

@@ -202,3 +202,17 @@ div.mediaContainer {
 .form-control.colorpicker {
   padding: 6px 12px;
 }
+
+a.pill {
+  background: linear-gradient(to bottom, #08c, #04c);
+  border-radius: 6px;
+  color: #fff;
+  padding: 0px 8px;
+  white-space:nowrap;
+
+  &:hover {
+  background: linear-gradient(to bottom, #04c, #08c);
+    color: #ddd;
+    text-decoration: none;
+  }
+}

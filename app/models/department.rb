@@ -5,6 +5,7 @@ class Department < ActiveRecord::Base
 
   # Associations
   has_many :training_groups
+  has_many :galleries
   has_many :messages
   has_and_belongs_to_many :users#, through: :department_editor
   has_many :navigation_elements
