@@ -15,42 +15,44 @@
   <% end %>
 <% end %>
 
-<div class="row">
-  <div class="col-md-8">
-    <h3><%= t ".info" %></h3>
-    <dl class="dl-horizontal">
-      <dt><%= Trainer.human_attribute_name(:birthday) %>:</dt>
-      <dd><%= l @trainer.birthday, :format => :long unless @trainer.birthday.nil? %></dd>
+<div class="window box">
+  <div class="row">
+    <div class="col-md-8">
+      <h3><%= t ".info" %></h3>
+      <dl class="dl-horizontal">
+        <dt><%= Trainer.human_attribute_name(:birthday) %>:</dt>
+        <dd><%= l @trainer.birthday, :format => :long unless @trainer.birthday.nil? %></dd>
 
-      <dt><%= Trainer.human_attribute_name(:residence) %>:</dt>
-      <dd><%= @trainer.residence %></dd>
+        <dt><%= Trainer.human_attribute_name(:residence) %>:</dt>
+        <dd><%= @trainer.residence %></dd>
 
-      <dt><%= Trainer.human_attribute_name(:phone) %>:</dt>
-      <dd><%= @trainer.phone %></dd>
+        <dt><%= Trainer.human_attribute_name(:phone) %>:</dt>
+        <dd><%= @trainer.phone %></dd>
 
-      <dt><%= Trainer.human_attribute_name(:email) %>:</dt>
-      <dd><%= @trainer.email %></dd>
+        <dt><%= Trainer.human_attribute_name(:email) %>:</dt>
+        <dd><%= @trainer.email %></dd>
 
-      <dt><%= Trainer.human_attribute_name(:profession) %>:</dt>
-      <dd><%= @trainer.profession %></dd>
+        <dt><%= Trainer.human_attribute_name(:profession) %>:</dt>
+        <dd><%= @trainer.profession %></dd>
 
-      <dt><%= Trainer.human_attribute_name(:education) %>:</dt>
-      <dd><%= @trainer.education %></dd>
+        <dt><%= Trainer.human_attribute_name(:education) %>:</dt>
+        <dd><%= @trainer.education %></dd>
 
-      <dt><%= Trainer.human_attribute_name(:disciplines) %>:</dt>
-      <dd><%= @trainer.disciplines %></dd>
+        <dt><%= Trainer.human_attribute_name(:disciplines) %>:</dt>
+        <dd><%= @trainer.disciplines %></dd>
 
-      <dt><%= Trainer.human_attribute_name(:activities) %>:</dt>
-      <dd><%= @trainer.activities %></dd>
+        <dt><%= Trainer.human_attribute_name(:activities) %>:</dt>
+        <dd><%= @trainer.activities %></dd>
 
-    </dl>
-  </div>
-  <div class="col-md-4">
-    <%= link_to(image_tag(@trainer.image.file_url, :class => "img-responsive"), @trainer.image.file_url, :class => "fancybox") if @trainer.image.present? %>
+      </dl>
+    </div>
+    <div class="col-md-4">
+      <%= link_to(image_tag(@trainer.image.file_url, :class => "img-responsive"), @trainer.image.file_url, :class => "fancybox") if @trainer.image.present? %>
+    </div>
   </div>
 </div>
 
-<div>
+<div class="window box">
   <h3><%= TrainingGroup.model_name.human(:count => :lots) %></h3>
   <table class="table table-bordered table-striped">
     <thead>
@@ -65,8 +67,8 @@
       <% @trainer.training_groups.each do |training_group| %>
         <% training_group.training_units.each do |training_unit| %>
           <tr>
-            <td><%= link_to training_group.name, training_group %></td>
-            <td><%= link_to training_group.department.name, training_group.department %></td>
+            <td><%= link_to training_group.name, training_group, :class => "pill" %></td>
+            <td><%= link_to training_group.department.name, training_group.department, :class => "pill" %></td>
             <td><%= training_unit.display_week_day %></td>
             <td><%= training_unit.time %></td>
           </tr>

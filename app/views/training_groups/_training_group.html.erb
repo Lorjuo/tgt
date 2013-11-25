@@ -1,0 +1,8 @@
+<div class="media col-md-2">
+  <a class="pull-left" href="#">
+    <%= link_to(image_tag(training_group.image.file_url, :class => "img-responsive"), training_group.image.file_url, :class => "fancybox") if training_group.image.present? %>
+  </a>
+  <div class="media-body">
+    <h4 class="media-heading"><%= training_group.name %></h4>
+  </div>
+</div>

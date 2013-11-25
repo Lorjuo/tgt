@@ -127,7 +127,7 @@ class DepartmentsController < ApplicationController
       when "show", "training_groups", "sort_navigation_elements"
         "department"
       else
-        "application"
+        "two_columns"
       end
     end
 end

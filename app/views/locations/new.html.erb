@@ -1,9 +1,12 @@
-<div class="page-header">
+<% content_for :title do %>
+  <%= t('general.create_model', :model => locations_path.model_name.human ) %>
+<% end %>
+
+<% content_for :buttons do %>
   <%= link_to locations_path, :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
-    Back
+    <%= t 'general.list' %>
   <% end %>
-  <h1>New location</h1>
-</div>
+<% end %>
 
 <%= render 'form' %>

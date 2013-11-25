@@ -7,7 +7,7 @@ class TrainingGroupsController < ApplicationController
   #load_and_authorize_resource :training_unit, :through => :training_group, :shallow => true
   load_and_authorize_resource :training_group, :through => :department, :shallow => true
 
-  layout 'department'
+  layout 'two_columns'
 
   # def index
   #   @training_groups = TrainingGroup.all

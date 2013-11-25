@@ -1,45 +1,51 @@
-<div class="page-header">
+<% content_for :title do %>
+  <%= t ".title" %>
+<% end %>
+
+<% content_for :buttons do %>
   <%= link_to new_location_path, :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
-    New Location
+    <%= t('general.create_model', :model => Location.model_name.human ) %>
   <% end if can? :create, Location %>
   <%= link_to interactive_map_locations_path, class: "btn btn-default", 'data-no-turbolink' => false  do %>
     <span class="glyphicon glyphicon-map-marker"></span>
-    Interactive Map
+    <%= t "locations.interactive_map" %>
   <% end %>
-  <h1>Listing locations</h1>
-</div>
-
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th></th>
-      <% if can? :update, Location %>
-      <th></th>
-      <% end %>
-      <% if can? :destroy, Location %>
-      <th></th>
-      <% end %>
-    </tr>
-  </thead>
-
-  <tbody>
-<% @locations.each do |location| %>
-    <tr>
-      <td><%= location.name %></td>
-      <td><%= link_to 'Show', location %></td>
-      <% if can? :update, location %>
-      <td><%= link_to 'Edit', edit_location_path(location) %></td>
-      <% end %>
-      <% if can? :destroy, location %>
-      <td>
-        <%= link_to location, method: :delete, data: { confirm: 'Are you sure?' } do %>
-          <span class="glyphicon glyphicon-trash"></span> Destroy
-        <% end %>
-      </td>
-      <% end %>
-    </tr>
 <% end %>
-  </tbody>
-</table>
+
+<div class="window box">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th><%= Location.human_attribute_name(:name) %></th>
+        <th></th>
+        <% if can? :update, Location %>
+        <th></th>
+        <% end %>
+        <% if can? :destroy, Location %>
+        <th></th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+  <% @locations.each do |location| %>
+      <tr>
+        <td><%= location.name %></td>
+        <td><%= link_to t('general.show'), location %></td>
+        <% if can? :update, location %>
+        <td><%= link_to t('general.edit'), edit_location_path(location) %></td>
+        <% end %>
+        <% if can? :destroy, location %>
+        <td>
+          <%= link_to location, method: :delete, data: { confirm: t('general.are_you_sure') } do %>
+            <span class="glyphicon glyphicon-trash"></span>
+            <%= t('general.destroy') %>
+          <% end %>
+        </td>
+        <% end %>
+      </tr>
+  <% end %>
+    </tbody>
+  </table>
+</div>

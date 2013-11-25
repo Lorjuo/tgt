@@ -17,7 +17,7 @@ class GalleriesController < ApplicationController
   def show
     @image = @gallery.images.build
     # TODO: replace find and all method - they are deprecated
-    @images = Image.find(:all, :conditions  => [ 'attachable_id = ? AND attachable_type = ?', @gallery.id, 'gallery' ])
+    @images = Image.where('attachable_id = ? AND attachable_type = ?', @gallery.id, 'gallery')
   end
 
   # GET /galleries/new

@@ -19,17 +19,23 @@
   <% end if can? :sort_navigation_elements, @department %>
 <% end %>
 
-<dl class="dl-horizontal">
-  <dt><%= Department.human_attribute_name(:name) %>:</dt>
-  <dd><%= @department.name %></dd>
+<div class="window box">
 
-  <dt><%= Department.human_attribute_name(:training_groups) %>:</dt>
-  <dd>
-    <% @department.training_groups.each do |training_group| %>
-      <div><%= link_to training_group.name, training_group_path(training_group) %></div>
-    <% end  %>
-  </dd>
-</dl>
+  <dl class="dl-horizontal">
+    <dt><%= Department.human_attribute_name(:name) %>:</dt>
+    <dd><%= @department.name %></dd>
 
-<h3><%= Department.human_attribute_name(:description) %></h3>
-    <%= raw @department.description %>
+    <dt><%= Department.human_attribute_name(:training_groups) %>:</dt>
+    <dd>
+      <% @department.training_groups.each do |training_group| %>
+        <div><%= link_to training_group.name, training_group_path(training_group), :class => "pill" %></div>
+      <% end  %>
+    </dd>
+  </dl>
+  <%#= render :partial => "training_groups/training_group", :collection => @department.training_groups, :as => :training_group %>
+  <%= render  @department.training_groups %>
+
+  <h3><%= Department.human_attribute_name(:description) %></h3>
+      <%= raw @department.description %>
+
+</div>

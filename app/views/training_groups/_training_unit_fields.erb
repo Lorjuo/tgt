@@ -1,19 +1,45 @@
-<fieldset class="nested-fields">
-  <legend><%= TrainingUnit.model_name.human %></legend>
-  <%= f.input :week_day, collection: I18n.t(:"date.day_names").zip((0..6).to_a) %>
-  <%#= f.input :time_begin, :input_html => { :class => "input-small"} %>
-  <%#= f.input :time_end, :input_html => { :class => "input-small"} %>
-  <%= f.input :time_begin, :as => :time_picker %>
-  <%= f.input :time_end, :as => :time_picker %>
+<div class="col-md-6 nested-fields">
+  <div class="wrapper">
+    <%= f.input :week_day, collection: I18n.t(:"date.day_names").zip((0..6).to_a) %>
+    <%#= f.input :time_begin, :input_html => { :class => "input-small"} %>
+    <%#= f.input :time_end, :input_html => { :class => "input-small"} %>
+    <%#= f.input :time_begin, :as => :time_picker %>
+    <%#= f.input :time_end, :as => :time_picker %>
 
-  <%#= f.input :daytime, :as => :datetime_picker %>
-  <%# TODO: Add input type for time %>
-  <%= f.association :location_summer, :input_html => { :class => "input-xlarge"} %>
-  <%= f.association :location_winter, :input_html => { :class => "input-xlarge"} %>
+    <div class="form-group time_picker optional training_group_training_units_time">
+      <label class="time_picker optional col-lg-3 control-label">
+        Zeit
+      </label>
+      <div class="col-lg-9">
+        <div class="row">
+          <div class="col-md-5">
+            <%= f.input_field :time_begin, :as => :time_picker %>
+          </div>
+          <div class="col-md-2" style="padding-top: 7px; text-align: center">
+            bis
+          </div>
+          <div class="col-md-5">
+            <%= f.input_field :time_end, :as => :time_picker %>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <%= f.hidden_field :_destroy %>
-  <%# f.link_to_remove "Remove this TrainingUnit" %>
-  <%= link_to_remove_association(
-    content_tag( :span, "", :class => "glyphicon glyphicon-minus" ) + " "\
-    + t("training_groups.form.remove_training_unit"), f, :class => "btn btn-default" ) %>
-</fieldset>
+    <%#= f.input :daytime, :as => :datetime_picker %>
+    <%# TODO: Add input type for time %>
+    <%= f.association :location_summer, :input_html => { :class => "col-lg-12"} %>
+    <%= f.association :location_winter, :input_html => { :class => "col-lg-12"} %>
+
+    <hr />
+
+    <%= f.hidden_field :_destroy %>
+    <%# f.link_to_remove "Remove this TrainingUnit" %>
+    <div class="form-group">
+      <div class="col-lg-offset-3 col-lg-9">
+        <%= link_to_remove_association(
+      content_tag( :span, "", :class => "glyphicon glyphicon-minus" ) + " "\
+      + t("training_groups.form.remove_training_unit"), f, :class => "btn btn-default" ) %>
+      </div>
+    </div>
+  </div>
+</div>

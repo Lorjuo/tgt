@@ -1,22 +1,24 @@
-<%= render :partial => 'shared/elfinder_loader', :locals => { :path => "/departments/#{@department.id}" } unless @department.new_record? %>
-<%= tinymce %>
-<%= simple_form_for(@department, :defaults => { :input_html => { :class => 'input-xlarge' } }) do |f| %>
-  <%= f.error_notification %>
+<div class="window box">
+  <%= render :partial => 'shared/elfinder_loader', :locals => { :path => "/departments/#{@department.id}" } unless @department.new_record? %>
+  <%= tinymce %>
+  <%= simple_form_for(@department, :defaults => { :input_html => { :class => 'input-xlarge' } }) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%#= f.association :training_groups,
-      :as => :select,
-      :collection => TrainingGroup.order('name' => :asc),
-      :label_method => :name,
-      :value_method => :id,
-      :include_blank => false,
-      :input_html => { :class => "chosen input-xxlarge"} %>
-    <%= f.input :color, :input_html => { :class => "colorpicker", :data => {:"color-format" => "rgba"}} %>
-    <%= f.input :description, as: :text, input_html: { class: 'tinymce' } unless @department.new_record?  %>
-  </div>
+    <div class="form-inputs">
+      <%= f.input :name %>
+      <%#= f.association :training_groups,
+        :as => :select,
+        :collection => TrainingGroup.order('name' => :asc),
+        :label_method => :name,
+        :value_method => :id,
+        :include_blank => false,
+        :input_html => { :class => "chosen input-xxlarge"} %>
+      <%= f.input :color, :input_html => { :class => "colorpicker", :data => {:"color-format" => "rgba"}} %>
+      <%= f.input :description, as: :text, input_html: { class: 'tinymce' } unless @department.new_record?  %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, :class => "btn btn-primary" %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= f.button :submit, :class => "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

@@ -1,94 +1,97 @@
-<div class="page-header">
-  <div class="pull-right button-group">
-    <%= link_to locations_path, :class => 'btn btn-default' do %>
-      <span class="glyphicon glyphicon-list-alt"></span>
-      Back
-    <% end %>
-    <% if can? :update, @location %>
-      <%= link_to edit_location_path(@location), :class => 'btn btn-primary' do %>
-        <span class="glyphicon glyphicon-pencil"></span>
-        Edit
-      <% end %>
-    <% end %>
-  </div>
-  <h1>Show location</h1>
-</div>
-
-<div class="row">
-  <div class="col-md-2">
-    <%= link_to(image_tag(@location.image.file_url, :class => "img-responsive"), @location.image.file_url, :class => "fancybox") if @location.image.present? %>
-  </div>
-  <div class="col-md-6">
-    <dl class="dl-horizontal">
-      <dt>Name:</dt>
-      <dd><%= @location.name %></dd>
-
-      <dt>Address:</dt>
-      <dd><%= @location.address %></dd>
-
-      <dt>Description:</dt>
-      <dd><%= @location.description %></dd>
-
-      <dt>Schedule:</td>
-      <dd>
-        <%= link_to schedule_location_path(@location, :season => "summer") do %>
-          <span class="glyphicon glyphicon-calendar"></span>
-          summer
-        <% end %>
-        <br />
-        <%= link_to schedule_location_path(@location, :season => "winter") do %>
-          <span class="glyphicon glyphicon-calendar"></span>
-          winter
-        <% end %>
-      </dd>
-
-      <!-- <dt>Latitude:</dt>
-      <dd><%= @location.latitude %></dd>
-
-      <dt>Longitude:</dt>
-      <dd><%= @location.longitude %></dd> -->
-
-    </dl>
-
-  </div>
-  <div class="col-md-4">
-    <% zoom = 14 %>
-    <%#= link_to "http://maps.google.com/?ie=UTF8&hq=&&ll=#{@location.latitude},#{@location.longitude}&z=#{zoom}" do %>
-    <%#= link_to "http://maps.google.com/maps?q=#{@location.latitude},#{@location.longitude}&z=#{zoom}" do %>
-    <%= link_to "http://maps.google.com/maps?q=#{@location.address}&z=#{zoom}" do %>
-     <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=#{zoom}&markers=#{@location.latitude}%2C#{@location.longitude}", :class => "img-responsive" %>
-    <% end %>
-  </div>
-</div>
-
-<%# TODO: Add location occupancy plan %>
-
-<% if false %>
-<div class="row">
-  <div class="col-md-12">
-    <h3>Training Units</h3>
-    <table class="table table-bordered table-striped">
-      <thead>
-        <tr>
-          <th>Weekday</th>
-          <th>Time</th>
-          <th>Location Summer</th>
-          <th>Location Winter</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @location.training_units_winter.each do |training_unit| %>
-          <tr>
-            <!-- <td><%#= link_to training_group.name, training_group %></td>
-            <td><%#= link_to training_group.department.name, training_group.department %></td> -->
-            <td><%= Date::DAYNAMES[training_unit.week_day] %></td>
-            <td><%= training_unit.time_begin %></td>
-            <td><%= link_to training_unit.location_summer.name, training_unit.location_summer %></td>
-            <td><%= link_to training_unit.location_winter.name, training_unit.location_winter %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-</div>
+<% content_for :title do %>
+  <%= t ".title", :name => @location.name %>
 <% end %>
+
+<% content_for :buttons do %>
+  <%= link_to locations_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    <%= t "general.list" %>
+  <% end %>
+  <% if can? :update, @location %>
+    <%= link_to edit_location_path(@location), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+      <%= t "general.edit" %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<div class="window box">
+  <div class="row">
+    <div class="col-md-2">
+      <%= link_to(image_tag(@location.image.file_url, :class => "img-responsive"), @location.image.file_url, :class => "fancybox") if @location.image.present? %>
+    </div>
+    <div class="col-md-6">
+      <dl class="dl-horizontal">
+        <dt><%= Trainer.human_attribute_name(:name) %>:</dt>
+        <dd><%= @location.name %></dd>
+
+        <dt><%= Trainer.human_attribute_name(:address) %>:</dt>
+        <dd><%= @location.address %></dd>
+
+        <dt><%= Trainer.human_attribute_name(:description) %>:</dt>
+        <dd><%= @location.description %></dd>
+
+        <dt><%= t "general.schedule" %>:</td>
+        <dd>
+          <%= link_to schedule_location_path(@location, :season => "summer") do %>
+            <span class="glyphicon glyphicon-calendar"></span>
+            <%= t "general.summer" %>
+          <% end %>
+          <br />
+          <%= link_to schedule_location_path(@location, :season => "winter") do %>
+            <span class="glyphicon glyphicon-calendar"></span>
+            <%= t "general.winter" %>
+          <% end %>
+        </dd>
+
+        <!-- <dt>Latitude:</dt>
+        <dd><%= @location.latitude %></dd>
+
+        <dt>Longitude:</dt>
+        <dd><%= @location.longitude %></dd> -->
+
+      </dl>
+
+    </div>
+    <div class="col-md-4">
+      <% zoom = 14 %>
+      <%#= link_to "http://maps.google.com/?ie=UTF8&hq=&&ll=#{@location.latitude},#{@location.longitude}&z=#{zoom}" do %>
+      <%#= link_to "http://maps.google.com/maps?q=#{@location.latitude},#{@location.longitude}&z=#{zoom}" do %>
+      <%= link_to "http://maps.google.com/maps?q=#{@location.address}&z=#{zoom}" do %>
+       <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=#{zoom}&markers=#{@location.latitude}%2C#{@location.longitude}", :class => "img-responsive" %>
+      <% end %>
+    </div>
+  </div>
+
+  <%# TODO: Add location occupancy plan %>
+
+  <% if false %>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Training Units</h3>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Weekday</th>
+            <th>Time</th>
+            <th>Location Summer</th>
+            <th>Location Winter</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @location.training_units_winter.each do |training_unit| %>
+            <tr>
+              <!-- <td><%#= link_to training_group.name, training_group %></td>
+              <td><%#= link_to training_group.department.name, training_group.department %></td> -->
+              <td><%= Date::DAYNAMES[training_unit.week_day] %></td>
+              <td><%= training_unit.time_begin %></td>
+              <td><%= link_to training_unit.location_summer.name, training_unit.location_summer %></td>
+              <td><%= link_to training_unit.location_winter.name, training_unit.location_winter %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <% end %>
+</div>

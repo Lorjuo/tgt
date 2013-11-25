@@ -1,50 +1,58 @@
-<%= render :partial => 'shared/elfinder_loader', :locals => { :path => "/departments/#{@training_group.department.id}" } %>
-<%= tinymce %>
-<%= simple_form_for(shallow_args(@department, @training_group), :defaults => { :input_html => { :class => 'input-xlarge' } }) do |f| %>
-  <%= f.error_notification %>
+<div class="window box">
+  <%= render :partial => 'shared/elfinder_loader', :locals => { :path => "/departments/#{@training_group.department.id}" } %>
+  <%= tinymce %>
+  <%= simple_form_for(shallow_args(@department, @training_group), :defaults => { :input_html => { :class => 'input-xlarge' } }) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="row">
-    <div class="col-md-12">
-      <div class="form-inputs">
-        <%= f.input :name %>
-        <%# f.association :department,
-          :as => :select,
-          :collection => Department.order(:name => :asc),
-          :label_method => :name,
-          :value_method => :id,
-          :include_blank => false,
-          :input_html => { :class => "chosen input-xlarge"} %>
-        <%= f.association :trainers,
-          :as => :select,
-          :collection => Trainer.order(:first_name => :asc).order(:last_name => :asc),
-          :label_method => :name,
-          :value_method => :id,
-          :include_blank => false,
-          :input_html => { :class => "chosen input-xlarge"} %>
-        <%= f.input :age_begin, as: :integer %>
-        <%= f.input :age_end, as: :integer %>
-        <%= f.input :description, as: :text, input_html: { class: 'tinymce' } %>
-        <%= f.input :ancient %>
-        
-        <%= f.simple_fields_for :image do |image_form| %>
-          <%= render 'images/image_selector', f:image_form, image:@training_group.image %>
-        <% end %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-inputs">
+          <%= f.input :name %>
+          <%# f.association :department,
+            :as => :select,
+            :collection => Department.order(:name => :asc),
+            :label_method => :name,
+            :value_method => :id,
+            :include_blank => false,
+            :input_html => { :class => "chosen input-xlarge"} %>
+          <%= f.association :trainers,
+            :as => :select,
+            :collection => Trainer.order(:first_name => :asc).order(:last_name => :asc),
+            :label_method => :name,
+            :value_method => :id,
+            :include_blank => false,
+            :input_html => { :class => "chosen input-xlarge"} %>
+          <%= f.input :age_begin, as: :integer %>
+          <%= f.input :age_end, as: :integer %>
+          <%= f.input :description, as: :text, input_html: { class: 'tinymce' } %>
+          <%= f.input :ancient %>
+          
+          <%= f.simple_fields_for :image do |image_form| %>
+            <%= render 'images/image_selector', f:image_form, image:@training_group.image %>
+          <% end %>
 
-        <div class="form-group">
-          <div class="col-sm-offset-3 col-sm-9">
-            <%= f.button :submit, :class => "btn btn-primary" %>
+          <div class="form-group">
+            <div class="col-lg-offset-3 col-lg-9">
+              <%= f.button :submit, :class => "btn btn-primary" %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="col-md-12">
-      <%= f.simple_fields_for :training_units do |unit_form| %>
-        <%= render 'training_unit_fields', f:unit_form %>
-      <% end %>
-      <p><%# f.link_to_add "Add a TrainingUnit", :training_units %></p>
-      <p><%= link_to_add_association( content_tag( :span, "", :class => "glyphicon glyphicon-plus" ) + " "\
-      + t("training_groups.form.add_training_unit"), f, :training_units, :class => "btn btn-default" ) %></p>
+      <div class="col-md-12">
+        <h3>
+          <span class="glyphicon glyphicon-calendar"></span>
+          Trainingseinheiten
+        </h3>
+        <div class="row">
+          <%= f.simple_fields_for :training_units do |unit_form| %>
+            <%= render 'training_unit_fields', f:unit_form %>
+          <% end %>
+        </div>
+        <p><%# f.link_to_add "Add a TrainingUnit", :training_units %></p>
+        <p><%= link_to_add_association( content_tag( :span, "", :class => "glyphicon glyphicon-plus" ) + " "\
+        + t("training_groups.form.add_training_unit"), f, :training_units, :class => "btn btn-default" ) %></p>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

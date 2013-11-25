@@ -3,7 +3,9 @@
     <%= render :partial => 'layouts/announcements' %>
   </div>
   <div class="window box">
-    <h3><%= t ".galleries" %></h3>
+    <h3>
+      <%= t ".galleries" %>
+    </h3>
     <div class="row">
       <% Gallery.order(:updated_at => :desc).each do |gallery| %>
         <% image = gallery.get_preview_image %>
@@ -19,7 +21,9 @@
     </div>
   </div>
   <div class="window box events">
-    <h3><%= t ".events" %></h3>
+    <h3>
+      <%= t ".events" %>
+    </h3>
     <%
       events = Event.chronological.upcoming.limit(3)
       event_months = events.group_by { |event| event.term.beginning_of_month }

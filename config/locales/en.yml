@@ -17,6 +17,9 @@ en:
     show: Show
     update: Update
 
+    summer: Summer
+    winter: Winter
+
     age:
       range: '%{begin}-%{end} years'
       begin: 'over %{begin} years'
@@ -25,6 +28,7 @@ en:
 
   attributes:
     active: Active
+    address: Address
     age: Age
     color: Color
     content: Content
@@ -58,6 +62,9 @@ en:
       image:
         one: Image
         other: Images
+      location:
+        one: Location
+        other: Locations
       message:
         one: Message
         other: Messages
@@ -81,6 +88,9 @@ en:
 
       event:
         term: Date
+
+      location:
+        schedule: Occupancy Plan
 
       message:
         title: Headline
@@ -138,6 +148,15 @@ en:
     image:
       set_as_preview: Set as preview picture
 
+  locations:
+    index:
+      title: Listing locations
+    show:
+      title: 'Location %{name}'
+    schedule:
+      title: 'Occupancy Plan "%{name}" (%{season})'
+    interactive_map: Interactive Map
+
   messages:
     index:
       title: Listing messages
@@ -159,8 +178,8 @@ en:
       title: 'Training group "%{name}"'
       info: General information
     form:
-      add_training_unit: Add a training unit
-      remove_training_unit: Remove this training unit
+      add_training_unit: Add training unit
+      remove_training_unit: Remove training unit
 
   layouts:
 

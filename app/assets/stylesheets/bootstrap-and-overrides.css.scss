@@ -131,6 +131,7 @@ div.mediaContainer {
     clear: left;
   }
 
+  /* TODO: media already used by bootstrap */;
   div.media {
 
     a.mediaLink {
@@ -208,11 +209,30 @@ a.pill {
   border-radius: 6px;
   color: #fff;
   padding: 0px 8px;
-  white-space:nowrap;
+  white-space: nowrap;
 
   &:hover {
   background: linear-gradient(to bottom, #04c, #08c);
     color: #ddd;
     text-decoration: none;
   }
+}
+
+dl {
+  dd {
+    margin-left: 20px;
+  }
+}
+
+.media {
+  border: 1px solid $table-border-color;
+}
+
+.nested-fields .wrapper {
+  background-color: #E9E9E9;
+  padding: 10px;
+}
+
+.no-wrap {
+  white-space: nowrap;
 }

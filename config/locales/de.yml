@@ -17,6 +17,9 @@ de:
     show: Details
     update: Update
 
+    summer: Sommer
+    winter: Winter
+
     age:
       range: '%{begin}-%{end} Jahre'
       begin: 'ab %{begin} Jahren'
@@ -25,6 +28,7 @@ de:
 
   attributes:
     active: Aktiv
+    address: Adresse
     age: Alter
     color: Farbe
     content: Inhalt
@@ -58,6 +62,9 @@ de:
       image:
         one: Bild
         other: Bilder
+      location:
+        one: Sportstätte
+        other: Sportstätten
       message:
         one: Nachricht
         other: Nachrichten
@@ -81,6 +88,9 @@ de:
 
       event:
         term: Datum
+
+      location:
+        schedule: Belegungsplan
 
       message:
         title: Überschrift
@@ -138,6 +148,15 @@ de:
     image:
       set_as_preview: Als Vorschaubild setzen
 
+  locations:
+    index:
+      title: Liste der Sportstätten
+    show:
+      title: 'Sportstätte %{name}'
+    schedule:
+      title: 'Belegungsplan "%{name}" (%{season})'
+    interactive_map: Interaktive Karte
+
   messages:
     index:
       title: Nachrichtenübersicht
@@ -159,8 +178,8 @@ de:
       title: 'Trainingsgruppe "%{name}"'
       info: Allgemeine Infos
     form:
-      add_training_unit: Eine Trainingseinheit hinzufügen
-      remove_training_unit: Diese Trainingseinheit entfernen
+      add_training_unit: Trainingseinheit hinzufügen
+      remove_training_unit: Trainingseinheit entfernen
 
   layouts:
 
