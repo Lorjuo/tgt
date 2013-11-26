@@ -15,23 +15,25 @@
   <% end %>
 <% end %>
 
-<dl class="dl-horizontal">
-  <dt><%= Announcement.human_attribute_name(:name) %></dt>
-  <dd><%= @announcement.name %></dd>
+<div class="window box">
+  <dl class="dl-horizontal">
+    <dt><%= Announcement.human_attribute_name(:name) %></dt>
+    <dd><%= @announcement.name %></dd>
 
-  <dt><%= Announcement.human_attribute_name(:content) %></dt>
-  <dd><%= @announcement.content %></dd>
+    <dt><%= Announcement.human_attribute_name(:content) %></dt>
+    <dd><%= @announcement.content %></dd>
 
-  <dt><%= Announcement.human_attribute_name(:link) %></dt>
-  <dd><%= @announcement.link %></dd>
+    <dt><%= Announcement.human_attribute_name(:link) %></dt>
+    <dd><%= @announcement.link %></dd>
 
-  <dt><%= Announcement.human_attribute_name(:active) %></dt>
-  <dd><%= @announcement.active %></dd>
+    <dt><%= Announcement.human_attribute_name(:active) %></dt>
+    <dd><%= @announcement.active %></dd>
 
-  <dt><%= Announcement.human_attribute_name(:visible_from) %></dt>
-  <dd><%= l @announcement.visible_from unless @announcement.visible_from.nil? %></dd>
+    <dt><%= Announcement.human_attribute_name(:visible_from) %></dt>
+    <dd><%= l @announcement.visible_from unless @announcement.visible_from.nil? %></dd>
 
-  <dt><%= Announcement.human_attribute_name(:visible_to) %></dt>
-  <dd><%= l @announcement.visible_to unless @announcement.visible_from.nil? %></dd>
+    <dt><%= Announcement.human_attribute_name(:visible_to) %></dt>
+    <dd><%= l @announcement.visible_to unless @announcement.visible_from.nil? %></dd>
 
-</dl>
+  </dl>
+</div>

@@ -7,13 +7,20 @@
 <%# TODO: For HTML inside Popover: https://github.com/angular-ui/bootstrap/issues/220 %>
   <!-- http://blog.calebnance.com/jquery/using-twitter-bootstap-trigger-popover-on-hover-instead-of-click.html -->
   <%#= link_to training_unit.training_group.name, training_unit.training_group %>
+<%
+  color = training_unit.training_group.department.color || "\#000000"
+  color_object = RGB::Color.from_rgb_hex(color)
+  lighted_color_object = color_object.lighten_percent(90)
+  lighted_color = lighted_color_object.to_rgb_hex
+%>
 <%= content_tag :td,
   :rowspan => steps,
   :class => "event",
-  :style => "border-left-color: #{training_unit.training_group.department.color}",
   :data => {:content => content,
   :"original-title" => title} do %>
-  <%= link_to training_unit.training_group do %>
+  <%= link_to training_unit.training_group,
+    :style => "border-color: #{color};"\
+    "background-color: #{lighted_color};" do %>
     <% if @week_day.nil? %>
       <%= training_unit.time_begin.to_formatted_s(:time) %>
       <br />

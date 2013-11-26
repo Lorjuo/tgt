@@ -13,12 +13,14 @@
         :value_method => :id,
         :include_blank => false,
         :input_html => { :class => "chosen input-xxlarge"} %>
-      <%= f.input :color, :input_html => { :class => "colorpicker", :data => {:"color-format" => "rgba"}} %>
+      <%= f.input :color, :input_html => { :class => "colorpicker", :data => {:"color-format" => "hex"}} %>
       <%= f.input :description, as: :text, input_html: { class: 'tinymce' } unless @department.new_record?  %>
     </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, :class => "btn btn-primary" %>
+    <div class="form-group">
+      <div class="col-lg-offset-3 col-lg-9">
+        <%= f.button :submit, :class => "btn btn-primary" %>
+      </div>
     </div>
   <% end %>
 </div>

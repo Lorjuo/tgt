@@ -13,6 +13,7 @@
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
+        <th></th>
         <th><%= TrainingGroup.human_attribute_name(:name) %></th>
         <th><%= TrainingGroup.human_attribute_name(:description) %></th>
         <th><%= TrainingGroup.human_attribute_name(:age) %></th>
@@ -30,6 +31,7 @@
     <tbody>
   <% @training_groups.each do |training_group| %>
       <tr>
+        <td><%= link_to(image_tag(training_group.image.file_url(:thumb)), training_group.image.file_url, :class => "fancybox") if training_group.image.present? %></td>
         <td><%= training_group.name %></td>
         <td>
           <%# truncate_html(training_group.description, length: 100, omission: '...') %>

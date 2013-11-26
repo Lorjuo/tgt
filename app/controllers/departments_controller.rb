@@ -16,7 +16,7 @@ class DepartmentsController < ApplicationController
   # GET /departments/1
   # GET /departments/1.json
   def show
-    #@messages = Message.department(@department.id).limit(3)
+    @messages = Message.department(@department.id).limit(3)
   end
 
   # GET /departments/new
@@ -71,7 +71,7 @@ class DepartmentsController < ApplicationController
   # Nested Actions:
 
   def trainers
-    @trainers = Trainer.department(@department.id)
+    @trainers = Trainer.department(@department.id).alphabetical
 
     render :template => "trainers/index"
   end
@@ -125,7 +125,7 @@ class DepartmentsController < ApplicationController
     def resolve_layout
       case action_name
       when "show", "training_groups", "sort_navigation_elements"
-        "department"
+        "two_columns"
       else
         "two_columns"
       end

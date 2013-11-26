@@ -15,6 +15,7 @@ en:
     search: Search
     send_email: Send email
     show: Show
+    time: Time
     update: Update
 
     summer: Summer
@@ -177,6 +178,7 @@ en:
     show:
       title: 'Training group "%{name}"'
       info: General information
+      picture: Picture
     form:
       add_training_unit: Add training unit
       remove_training_unit: Remove training unit

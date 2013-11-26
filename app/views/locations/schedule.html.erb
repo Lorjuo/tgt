@@ -16,15 +16,15 @@
 <div class="window box">
   <%#= p @data %>
   <div class="col-md-12" style="overflow: auto">
-  <table class="table table-bordered table-striped schedule">
+  <table class="table table-bordered table-striped schedule" style="table-layout: fixed">
     <thead>
       <tr>
-        <th>Uhrzeit</th>
+        <th><%= t "general.time" %></th>
         <% @data.each do |day, columns| %>
-          <%= content_tag :th, :colspan => columns.length, :class => "first_column" do %>
+          <%= content_tag :th, :colspan => columns.length, :class => "first_column", :style => "overflow: hidden" do %>
             <%= link_to schedule_location_path(@location, :season => @season, :week_day => day), :class => "no-wrap" do %>
               <span class="glyphicon glyphicon-calendar"></span>
-              <%= Date::DAYNAMES[day] %>
+              <%= I18n.t(:"date.day_names").at(day) %>
             <% end %>
           <% end %>
           <% columns.each {|column| column.reset_occupancy} %>

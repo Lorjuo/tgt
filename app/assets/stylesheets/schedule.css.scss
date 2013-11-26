@@ -73,21 +73,33 @@ table.schedule {
         }
 
         &.event {
-          border-left-width: 3px;
+          /*border-left-width: 3px;*/
           vertical-align: middle !important;
           height: 100%;
           padding: 2px;
           margin: 2px;
           a {
             padding: 2px 4px 2px 4px;
-            border-radius: 5px !important;
+            /*border-radius: 2px !important;*/
             color: black;
             display: block;
             border: 1px solid #A3D38D;
-            background-color: #DFF0D8 !important;
+            /*background-color: #DFF0D8 !important;*/
             height: 100%;
             min-height: 100%;
             vertical-align: middle !important;
+
+            border-width: 1px 1px 1px 3px;
+            background-image: linear-gradient(to bottom, white, #F2F2F2);
+            border-top-color: #dddddd !important;
+            border-right-color: #dddddd !important;
+            border-bottom-color: #dddddd !important;
+
+
+            &:hover {
+              background-image: linear-gradient(to top, white, #F2F2F2);
+              text-decoration: none;
+            }
           }
         }
       }

@@ -49,13 +49,27 @@ li, h1, h2, h3, h4, h5 {
   overflow: auto; /* needed to prevent floating boxes to expand out of this box*/
 }
 
+.plain {
+  background-color: #FFFFFF;
+  height: 100%;
+  padding: 6px 12px 6px 12px;
+}
+
 .thin {
   padding-left: 5%;
   padding-right: 5%;
 }
 
-.box.small-spacing {
+.no-spacing {
+  padding: 0px;
+}
+
+.small-spacing {
   padding: 4px;
+}
+
+.medium-spacing {
+  padding: 6px;
 }
 
 .btn.btn-primary {
@@ -86,12 +100,15 @@ form fieldset.nested-fields {
 div.mediaContainer {
 
   /* set .medium as default */
-  @extend .col-md-4;
-  @extend .col-sm-6;
-  @extend .col-xs-12;
 
   &.small {
     @extend .col-md-3;
+    @extend .col-sm-4;
+    @extend .col-xs-6;
+  }
+
+  &.medium {
+    @extend .col-md-4;
     @extend .col-sm-6;
     @extend .col-xs-12;
   }
@@ -109,7 +126,7 @@ div.mediaContainer {
   }
 
   &, &.small, &.medium, &.large, &.full {
-    padding: 0;
+    //padding: 0;
     margin-bottom: 12px;
   }
 
@@ -131,12 +148,19 @@ div.mediaContainer {
     clear: left;
   }
 
+  &.large-spacing {
+    padding: 0px 18px;
+    margin: 12px 0 24px 0;
+  }
+
   /* TODO: media already used by bootstrap */;
   div.media {
+    border: 1px solid $table-border-color;
 
     a.mediaLink {
       img {
         width: 100%;
+        background-color: #EEEEEE;
       }
     }
 
@@ -153,9 +177,34 @@ div.mediaContainer {
   }
 }
 
+div.mediaContainer.decent {
+  div.media {
+    border: none;
+
+    a.mediaLink {
+      img {
+        width: 100%;
+      }
+    }
+
+    .mediaInfo {
+      background-color: inherit;
+
+      * {
+        margin: 0;
+      }
+      p {
+        padding: 8px 0 8px 0;
+      }
+    }
+  }
+}
 
 
 .message-excerpt {
+  .department-indicator {
+    height: 4px;
+  }
   .message-header {
 
     display: table;
@@ -222,10 +271,6 @@ dl {
   dd {
     margin-left: 20px;
   }
-}
-
-.media {
-  border: 1px solid $table-border-color;
 }
 
 .nested-fields .wrapper {

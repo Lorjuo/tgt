@@ -17,38 +17,32 @@
 
 <div class="window box">
 
-<dl class="dl-horizontal">
-  <dt><%= Gallery.human_attribute_name(:name) %>:</dt>
-  <dd><%= @gallery.name %></dd>
-
-</dl>
-
-<div id="images" class="row">
-  <%= render(:partial => 'images/image', :collection => @images, :as => 'image') %>
-</div>
-<div class="clear"></div>
-
-<% if can?(:update, Image) %>
-  <%= simple_form_for [@gallery, @image], :html => { :class => "fileupload", :multipart => true } do |f| %>
-    <%# f.input_field :file, :as => :file, name: "image[file]",  :multiple => true, :class => "btn btn-file" %>
-
-    <div class="btn btn-default btn-file btn-primary fileinput-button">
-      <span class="glyphicon glyphicon-plus"></span>
-      <span><%= t "general.add_files" %></span>
-      <%= f.file_field :file, name: "image[file]", :multiple => true, :class => "btn btn-file fileinput-button" %>
-      <!-- Style Upload: http://stackoverflow.com/questions/14509449/styling-file-upload-button-for-simple-form-for-with-bootstrap-in-rails-3 -->
+  <div id="images" class="row">
+    <%= render(:partial => 'images/image', :collection => @images, :as => 'image') %>
   </div>
-  <% end %>
-<% end %>
+  <div class="clear"></div>
 
-<script id="template-upload" type="text/x-tmpl">
-<div class="upload">
-  {%=o.name%}
-  <div class="progress progress-striped active"><div class="progress-bar" style="width: 0%"></div></div>
-</div>
-</script>
-<script id="template-download" type="text/x-tmpl">
-  // template content
-</script>
+  <% if can?(:update, Image) %>
+    <%= simple_form_for [@gallery, @image], :html => { :class => "fileupload", :multipart => true } do |f| %>
+      <%# f.input_field :file, :as => :file, name: "image[file]",  :multiple => true, :class => "btn btn-file" %>
+
+      <div class="btn btn-default btn-file btn-primary fileinput-button">
+        <span class="glyphicon glyphicon-plus"></span>
+        <span><%= t "general.add_files" %></span>
+        <%= f.file_field :file, name: "image[file]", :multiple => true, :class => "btn btn-file fileinput-button" %>
+        <!-- Style Upload: http://stackoverflow.com/questions/14509449/styling-file-upload-button-for-simple-form-for-with-bootstrap-in-rails-3 -->
+    </div>
+    <% end %>
+  <% end %>
+
+  <script id="template-upload" type="text/x-tmpl">
+  <div class="upload">
+    {%=o.name%}
+    <div class="progress progress-striped active"><div class="progress-bar" style="width: 0%"></div></div>
+  </div>
+  </script>
+  <script id="template-download" type="text/x-tmpl">
+    // template content
+  </script>
 
 </div>

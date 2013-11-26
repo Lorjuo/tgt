@@ -11,4 +11,20 @@ module ApplicationHelper
     view_flow.set :layout, capture { yield }
     render template: "layouts/#{parent_layout}"
   end
+
+  # https://gist.github.com/jfriedlaender/1273614
+  # ALternative: https://github.com/plashchynski/rgb
+  # Amount should be a decimal between 0 and 1. Lower means darker
+  def darken_color(hex_color, amount=0.4)
+    hex_color = hex_color.gsub('#','')
+    rgb = hex_color.scan(/../).map(&:hex).map{|color| color * amount}.map(&:round)
+    "#%02x%02x%02x" % rgb
+  end
+
+  # Amount should be a decimal between 0 and 1. Higher means lighter
+  def lighten_color(hex_color, amount=0.4)
+    hex_color = hex_color.gsub('#','')
+    rgb = hex_color.scan(/../).map(&:hex).map{|color| [(color + 255 * amount).round, 255].min}
+    "#%02x%02x%02x" % rgb
+  end
 end

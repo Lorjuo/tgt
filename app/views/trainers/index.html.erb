@@ -13,6 +13,7 @@
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
+        <th></th>
         <th><%= Trainer.human_attribute_name(:name) %></th>
         <th><%= Trainer.human_attribute_name(:birthday) %></th>
         <th><%= Trainer.human_attribute_name(:residence) %></th>
@@ -35,6 +36,7 @@
     <tbody>
   <% @trainers.each do |trainer| %>
       <tr>
+        <td><%= link_to(image_tag(trainer.image.file_url(:thumb)), trainer.image.file_url, :class => "fancybox") if trainer.image.present? %></td>
         <td><%= trainer.name %></td>
         <td><%= trainer.birthday %></td>
         <td><%= trainer.residence %></td>

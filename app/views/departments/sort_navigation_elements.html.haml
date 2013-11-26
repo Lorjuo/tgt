@@ -8,5 +8,6 @@
     Index
   %h1 Manage NavigationElements
 
-%ol.sortable_tree{ data: { max_levels: 5, rebuild_url: rebuild_navigation_elements_url } }
-  = sortable_tree @navigation_elements
+%div.window.box.thin
+  %ol.sortable_tree{ data: { max_levels: 5, rebuild_url: rebuild_navigation_elements_url } }
+    = sortable_tree @navigation_elements

@@ -46,14 +46,14 @@
               <%= link_to(t('.edit_account'), edit_user_registration_path) %>
               </li>
               <li>
-              <%= link_to(t('.logout'), destroy_user_session_path, :method=>'delete') %>        
+              <%= link_to(t('.logout'), destroy_user_session_path(:referring_page => request.fullpath), :method=>'delete') %>        
               </li>
             <% else %>
               <li>
               <%= link_to(t('.sign_up'), new_user_registration_path)  %>
               </li>
               <li>
-              <%= link_to(t('.login'), new_user_session_path)  %>  
+              <%= link_to(t('.login'), new_user_session_path(:referring_page => request.fullpath)) %>  
               </li>
             <% end %>
             <%= content_tag :li do %>

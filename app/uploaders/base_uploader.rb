@@ -28,6 +28,12 @@ class BaseUploader < CarrierWave::Uploader::Base
     original_filename
   end
 
+  # https://github.com/carrierwaveuploader/carrierwave#providing-a-default-url
+  def default_url
+    ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
+    #ActionController::Base.helpers.asset_path("fallback/" + "default.gif")
+  end
+
   # partitions ID to be like: 0000/0000/0123
   # to keep no more than 10,000 entries per directory
   # EXT3 max: 32,000 dirs

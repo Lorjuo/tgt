@@ -34,6 +34,10 @@ class ApplicationController < ActionController::Base
     params[:user][:referring_page] || super
   end
 
+  def after_sign_out_path_for(resource_or_scope)
+    params[:referring_page] || super
+  end
+
   def _miniprofiler
     if %w(development staging).include?(Rails.env)
       if APP_CONFIG['debug']['miniprofiler_enabled'] && user_signed_in? && current_user.has_role?('admin')

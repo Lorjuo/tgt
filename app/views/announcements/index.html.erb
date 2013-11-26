@@ -1,47 +1,54 @@
-<div class="page-header">
+<% content_for :title do %>
+  <%= t ".title" %>
+<% end %>
+
+<% content_for :buttons do %>
   <%= link_to new_announcement_path, :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
-    New Announcement
+    <%= t('general.create_model', :model => Announcement.model_name.human ) %>
   <% end if can? :create, Announcement %>
-  <h1>Listing announcements</h1>
-</div>
-
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Content</th>
-      <th>Link</th>
-      <th>Active</th>
-      <th></th>
-      <% if can? :update, Announcement %>
-      <th></th>
-      <% end %>
-      <% if can? :destroy, Announcement %>
-      <th></th>
-      <% end %>
-    </tr>
-  </thead>
-
-  <tbody>
-<% @announcements.each do |announcement| %>
-    <tr>
-      <td><%= announcement.name %></td>
-      <td><%= announcement.content %></td>
-      <td><%= announcement.link %></td>
-      <td><%= announcement.active %></td>
-      <td><%= link_to 'Show', announcement %></td>
-      <% if can? :update, announcement %>
-      <td><%= link_to 'Edit', edit_announcement_path(announcement) %></td>
-      <% end %>
-      <% if can? :destroy, announcement %>
-      <td>
-        <%= link_to announcement, method: :delete, data: { confirm: 'Are you sure?' } do %>
-          <span class="glyphicon glyphicon-trash"></span> Destroy
-        <% end %>
-      </td>
-      <% end %>
-    </tr>
 <% end %>
-  </tbody>
-</table>
+
+<div class="window box">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Content</th>
+        <th>Link</th>
+        <th>Active</th>
+        <th></th>
+        <% if can? :update, Announcement %>
+        <th></th>
+        <% end %>
+        <% if can? :destroy, Announcement %>
+        <th></th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+  <% @announcements.each do |announcement| %>
+      <tr>
+        <td><%= announcement.name %></td>
+        <td>
+          <%= truncate(strip_tags(announcement.content), length: 320, omission: '') %>
+        </td>
+        <td><%= announcement.link %></td>
+        <td><%= announcement.active %></td>
+        <td><%= link_to 'Show', announcement %></td>
+        <% if can? :update, announcement %>
+        <td><%= link_to 'Edit', edit_announcement_path(announcement) %></td>
+        <% end %>
+        <% if can? :destroy, announcement %>
+        <td>
+          <%= link_to announcement, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <span class="glyphicon glyphicon-trash"></span> Destroy
+          <% end %>
+        </td>
+        <% end %>
+      </tr>
+  <% end %>
+    </tbody>
+  </table>
+</div>

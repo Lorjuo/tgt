@@ -1,8 +1,56 @@
-<div class="media col-md-2">
-  <a class="pull-left" href="#">
-    <%= link_to(image_tag(training_group.image.file_url, :class => "img-responsive"), training_group.image.file_url, :class => "fancybox") if training_group.image.present? %>
-  </a>
-  <div class="media-body">
-    <h4 class="media-heading"><%= training_group.name %></h4>
+<!-- <div class="media col-md-2">
+  <div class="row">
+    <div class="col-md-6">
+      <%= link_to(image_tag(training_group.image.file_url, :class => "img-responsive"), training_group.image.file_url, :class => "fancybox") if training_group.image.present? %>
+    </div>
+    <div class="col-md-6">
+      <h4><%= training_group.name %></h4>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div class="col-md-3">
+  <div class="thumbnail">
+    <div class="image-wrapper">
+      <%= link_to(training_group.image.file_url, :class => 'fancybox', :rel => 'group', :caption => training_group.image.name) do %>
+        <%= image_tag(training_group.image.file_url(:_260x180)) %>
+      <% end if training_group.image.present? %>
+    </div>
+    <div class="caption">
+      <h4><%= training_group.name %></h4>
+    </div>
+  </div>
+</div>
+ -->
+
+<!-- <div class="col-md-4 col-sm-4 col-xs-6">
+  <div class="thin">
+    <div class="row">
+      <div class="col-md-12">
+        <% if training_group.image.present? %>
+          <%= link_to(training_group.image.file_url, :class => 'fancybox', :rel => 'group', :caption => training_group.name) do %>
+            <%= image_tag(image_url(training_group.image, :_260x180), :class => "img-responsive") %>
+          <% end %>
+        <% else %>
+          <%= image_tag(ImageUploader.new.send(:_260x180).default_url, :class => "img-responsive") %>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%= link_to training_group.name, training_group %>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="mediaContainer decent large-spacing col-md-4 col-xs-6">
+  <div class="media">
+    <%= link_to(training_group, :title => training_group.name, :class => "mediaLink") do %>
+      <%= image_tag(image_url(training_group.image, :_260x180), :class => "img-responsive") %>
+    <% end %>
+    <div class="mediaInfo" style="min-height: 4em">
+      <p><%= link_to training_group.name, training_group %></p>
+    </div>
   </div>
 </div>

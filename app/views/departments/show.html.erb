@@ -19,9 +19,8 @@
   <% end if can? :sort_navigation_elements, @department %>
 <% end %>
 
-<div class="window box">
 
-  <dl class="dl-horizontal">
+  <!-- <dl class="dl-horizontal">
     <dt><%= Department.human_attribute_name(:name) %>:</dt>
     <dd><%= @department.name %></dd>
 
@@ -31,11 +30,36 @@
         <div><%= link_to training_group.name, training_group_path(training_group), :class => "pill" %></div>
       <% end  %>
     </dd>
-  </dl>
+  </dl> -->
   <%#= render :partial => "training_groups/training_group", :collection => @department.training_groups, :as => :training_group %>
-  <%= render  @department.training_groups %>
 
-  <h3><%= Department.human_attribute_name(:description) %></h3>
-      <%= raw @department.description %>
+<div class="window box">
+  <!-- <h3><%= Department.human_attribute_name(:description) %></h3> -->
+  <%= raw @department.description %>
+</div>
 
+<div class="window">
+  <div class="plain">
+    <div style="background-image: linear-gradient(to bottom, #718DFF, #3C63FF); display: inline-block; color: white; padding: 5px 10px; font-size: 24px; margin-right: 10px">
+      <%= fa_icon "users" %>
+    </div>
+    <h3 style="display: inline-block">
+      <%= TrainingGroup.model_name.human(:count => :lots) %>
+    </h3>
+    <div class="row" style="margin: 0 -18px 0 -18px">
+      <%= render  @department.training_groups %>
+    </div>
+  </div>
+</div>
+
+<div class="window">
+  <div class="plain">
+    <div style="background-image: linear-gradient(to bottom, #718DFF, #3C63FF); display: inline-block; color: white; padding: 5px 10px; font-size: 24px; margin-right: 10px">
+      <%= fa_icon "align-left" %>
+    </div>
+    <h3 style="display: inline-block">
+      <%= Message.model_name.human(:count => :lots) %>
+    </h3>
+  </div>
+  <%= render :partial => 'messages/message_excerpt', :collection => @messages, :as => :message %>
 </div>

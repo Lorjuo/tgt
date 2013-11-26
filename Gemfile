@@ -83,6 +83,10 @@ gem 'underscore-rails'
 # HTML Abstraction
 gem "haml-rails"
 
+# Icons
+gem "font-awesome-rails"
+# Glyphicons via bootstrap
+
 # Image Processing
 gem 'mini_magick'
 gem 'fancybox2-rails', '~> 0.2.4'
