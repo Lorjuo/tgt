@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby "2.0.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.0.0'
@@ -54,10 +55,6 @@ gem 'mysql2'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'populator'
-
-# Debugger
-gem 'debugger'
-# gem 'byebug'
 
 # Error Handling
 gem 'better_errors'
@@ -172,6 +169,10 @@ group :development do
   gem 'capistrano'
   gem 'capistrano-ext'
   gem 'rvm-capistrano'
+  
+  # Debugger
+  gem 'debugger'
+  # gem 'byebug'
 end
 
 # Use debugger
