@@ -1,5 +1,6 @@
 de:
   general:
+    actions: Aktionen
     add_files: Dateien hinzufügen...
     are_you_sure: Sind Sie sich sicher?
     browse: Durchsuchen
@@ -18,8 +19,14 @@ de:
     time: Uhrzeit
     update: Update
 
+    current: Aktuelle
+    ancient: Ehemalige
+
     summer: Sommer
     winter: Winter
+
+    time:
+      range: '%{begin}-%{end} Uhr'
 
     age:
       range: '%{begin}-%{end} Jahre'
@@ -34,6 +41,7 @@ de:
     color: Farbe
     content: Inhalt
     department: Abteilung
+    departments: Abteilungen
     description: Beschreibung
     name: Name
     first_name: Vorname
@@ -45,6 +53,7 @@ de:
     training_groups: Trainingsgruppen
     training_units: Trainingseinheiten
     week_day: Wochentag
+    week_days: Wochentage
 
   activerecord:
     models:

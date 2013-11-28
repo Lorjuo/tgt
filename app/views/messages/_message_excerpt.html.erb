@@ -4,20 +4,20 @@
     <%#= link_to message.department.name, message.department %>
   <%# end %>
   <div class="row">
-    <%= content_tag :div, :class => "message-image col-md-3 col-xs-4" do %>
+    <%= content_tag :div, :class => "message-image col-md-3 col-xs-5" do %>
       <%# holder_tag '260x180', 'Image', 'gray', :class => 'holder' %>
       <!-- <img src="http://placehold.it/260x180" width="100%" /> -->
       <%= link_to(image_tag(message.image.file_url(:_260x180), :class => "img-responsive"), message.image.file_url, :class => "fancybox", :rel => 'messages', :caption => message.title) %>
     <% end if message.image.present? %>
     <%= content_tag :div,
-      :class => (message.image.present? ? "message-image col-md-9 col-xs-8" : "message-image col-md-12 col-xs-12") do %>
+      :class => (message.image.present? ? "col-md-9 col-xs-7" : "col-md-12 col-xs-12") do %>
       <div class="message-header">
         <div class="message-title"><%= message.title %></div>
         <div class="message-date"><%= localize( message.created_at.to_date, :format => :long ) %></div>
       </div>
       <div class="message-content">
         <%# truncate_html( message.content, length: 320, omission: '<a href="#"></a>' ) %>
-        <%= truncate(strip_tags(message.content), length: 320, omission: '') %>
+        <%= truncate(strip_tags(message.content), length: 320, omission: '', :separator => ' ') %>
         <%= link_to "...#{t 'general.more'}", message, :class => 'btn-link' %>
       </div>
     <% end %>

@@ -1,0 +1,24 @@
+<table id="training_groups_data_table"
+  class="dataTable table table-bordered table-striped"
+  data-source="<%=
+    @department.present? ?
+      department_training_groups_path(@department, format: "json") :
+      training_groups_path(format: "json")
+  %>">
+  <thead>
+    <tr>
+      <th></th>
+      <th><%= TrainingGroup.human_attribute_name(:name) %></th>
+      <th><%= TrainingGroup.human_attribute_name(:description) %></th>
+      <th><%= TrainingGroup.human_attribute_name(:age) %></th>
+      <th><%= TrainingGroup.human_attribute_name(:trainers) %></th>
+      <% if can? :update, TrainingGroup %>
+        <%= content_tag :th, t("general.actions") %>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render :partial => "training_groups/table_row", :collection => training_groups, :as => :training_group %>
+  </tbody>
+</table>

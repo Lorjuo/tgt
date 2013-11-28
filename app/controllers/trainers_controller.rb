@@ -3,6 +3,8 @@ class TrainersController < ApplicationController
 
   load_and_authorize_resource :find_by => :slug
 
+  layout "two_columns"
+
   # GET /trainers
   # GET /trainers.json
   def index

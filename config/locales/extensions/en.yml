@@ -2,6 +2,7 @@ en:
   time:
     formats:
       time: ! '%H:%M'
+      time_short: ! '%H:%M'
   date:
     formats:
       year_month: ! '%B %Y'

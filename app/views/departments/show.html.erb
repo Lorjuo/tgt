@@ -33,20 +33,20 @@
   </dl> -->
   <%#= render :partial => "training_groups/training_group", :collection => @department.training_groups, :as => :training_group %>
 
-<div class="window box">
+<div class="window box thin">
   <!-- <h3><%= Department.human_attribute_name(:description) %></h3> -->
   <%= raw @department.description %>
 </div>
 
 <div class="window">
-  <div class="plain">
+  <div class="plain thin">
     <div style="background-image: linear-gradient(to bottom, #718DFF, #3C63FF); display: inline-block; color: white; padding: 5px 10px; font-size: 24px; margin-right: 10px">
       <%= fa_icon "users" %>
     </div>
     <h3 style="display: inline-block">
       <%= TrainingGroup.model_name.human(:count => :lots) %>
     </h3>
-    <div class="row" style="margin: 0 -18px 0 -18px">
+    <div class="row" style="margin: 0 -24px 0 -24px">
       <%= render  @department.training_groups %>
     </div>
   </div>

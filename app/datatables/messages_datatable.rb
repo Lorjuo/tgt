@@ -1,6 +1,6 @@
 class MessagesDatatable < ApplicationController # Inherit from ApplicationController to enable paths and urls
 
-  delegate :params, :h, :link_to, :image_tag, :strip_tags, :truncate, :number_to_currency, to: :@view
+  delegate :params, :h, :link_to, :image_tag, :strip_tags, :truncate, to: :@view
 
   def initialize(view, current_user, department_id)
     @view = view
@@ -22,13 +22,11 @@ private
   def data
     messages.map do |message|
       [
-        # To be customized
         message.image.present? ? link_to(image_tag(message.image.file_url(:thumb)), message.image.file_url, :class => "fancybox") : "",
         message.title,
         truncate(strip_tags(message.content), length: 320, omission: '...'),
         message.department.name,
 
-        #message.date_start.to_s,
         link_to(I18n.t('general.show'), message),
         @user && @user.can?(:update, message) ? link_to( I18n.t('general.edit'), Rails.application.routes.url_helpers.edit_message_path(message)) : "",
         @user && @user.can?(:destroy, message) ? link_to( I18n.t('general.destroy'), message, confirm: I18n.t('general.are_you_sure'), method: :delete) : ""

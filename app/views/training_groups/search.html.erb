@@ -1,0 +1,60 @@
+<% content_for :title do %>
+  <%= t ".title" %>
+<% end %>
+
+<% content_for :buttons do %>
+  <%= link_to new_department_training_group_path(@department), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    <%= t('general.create_model', :model => TrainingGroup.model_name.human ) %>
+  <% end if can? :create, TrainingGroup %>
+<% end %>
+
+<div class="window box">
+
+  <%= simple_form_for TrainingGroup.new do |f| %>
+    <p>Ich bin
+    <%= f.input_field :age, :style => "display: inline; width: 3em", :maxlength => "2" %>
+    Jahre alt.</p>
+
+    <p>Ich möchte in folgenden Abteilungen aktiv sein
+    <%= f.input_field :departments,
+      #:as => :check_boxes,
+      :collection => Department.specific.order(:name => :asc),
+      :label_method => :name,
+      :value_method => :id,
+      :include_blank => false,
+      :class => "chosen", :multiple => true, :style => "display: inline; width: 16em" %></p>
+
+    <p>Ich habe an folgenden Wochentagen Zeit
+    <%= f.input_field :week_days,
+      #:as => :check_boxes,
+      :collection => I18n.t(:"date.day_names").zip((0..6).to_a),
+      :class => "chosen", :multiple => true, :style => "display: inline; width: 16em" %></p>
+  <% end %>
+
+  <hr />
+
+  <table id="training_groups_data_table"
+    class="dataTable table table-bordered table-striped"
+    data-source="<%=
+      @department.present? ?
+        department_training_groups_path(@department, format: "json") :
+        training_groups_path(format: "json")
+    %>">
+    <thead>
+      <tr>
+        <th></th>
+        <th data-class="expand"><%= TrainingGroup.human_attribute_name(:name) %></th>
+        <th data-hide="xs"><%= TrainingGroup.human_attribute_name(:training_units) %></th>
+        <th data-hide="xs"><%= TrainingGroup.human_attribute_name(:age) %></th>
+        <th data-hide="xs"><%= TrainingGroup.human_attribute_name(:department) %></th>
+        <% if can? :update, TrainingGroup %>
+          <%= content_tag :th, t("general.actions"), data: { hide: "xs" } %>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+    </tbody>
+  </table>
+</div>

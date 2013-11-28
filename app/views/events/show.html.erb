@@ -1,5 +1,3 @@
-
-
 <% content_for :title do %>
   <%= t ".title", :name => @event.name %>
 <% end %>
@@ -17,14 +15,16 @@
   <% end %>
 <% end %>
 
-<dl class="dl-horizontal">
-  <dt><%= Event.human_attribute_name("name") %>:</dt>
-  <dd><%= @event.name %></dd>
+<div class="window box">
+  <dl class="dl-horizontal">
+    <dt><%= Event.human_attribute_name("name") %>:</dt>
+    <dd><%= @event.name %></dd>
 
-  <dt><%= Event.human_attribute_name("term") %>:</dt>
-  <dd><%= I18n.localize(@event.term) %></dd>
+    <dt><%= Event.human_attribute_name("term") %>:</dt>
+    <dd><%= I18n.localize(@event.term) %></dd>
 
-  <dt><%= Event.human_attribute_name("description") %>:</dt>
-  <dd><%= @event.description %></dd>
+    <dt><%= Event.human_attribute_name("description") %>:</dt>
+    <dd><%= @event.description %></dd>
 
-</dl>
+  </dl>
+</div>

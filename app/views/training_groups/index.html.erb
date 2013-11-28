@@ -10,53 +10,12 @@
 <% end %>
 
 <div class="window box">
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th></th>
-        <th><%= TrainingGroup.human_attribute_name(:name) %></th>
-        <th><%= TrainingGroup.human_attribute_name(:description) %></th>
-        <th><%= TrainingGroup.human_attribute_name(:age) %></th>
-        <th><%= TrainingGroup.human_attribute_name(:trainers) %></th>
-        <th></th>
-        <% if can? :update, TrainingGroup %>
-        <th></th>
-        <% end %>
-        <% if can? :destroy, TrainingGroup %>
-        <th></th>
-        <% end %>
-      </tr>
-    </thead>
+  <h3><%= "#{t("general.current")} #{TrainingGroup.model_name.human(:count => :lots)}" %></h3>
+  <%= render :partial => "training_groups/table", :locals => {:training_groups => @training_groups.current} %>
 
-    <tbody>
-  <% @training_groups.each do |training_group| %>
-      <tr>
-        <td><%= link_to(image_tag(training_group.image.file_url(:thumb)), training_group.image.file_url, :class => "fancybox") if training_group.image.present? %></td>
-        <td><%= training_group.name %></td>
-        <td>
-          <%# truncate_html(training_group.description, length: 100, omission: '...') %>
-          <%= truncate(strip_tags(training_group.description), length: 100, omission: '...') %>
-        </td>
-        <td><%= training_group.age %></td>
-        <td>
-          <% training_group.trainers.alphabetical.each do |trainer| %>
-            <%= link_to(trainer.name, trainer, :class => "pill") %>
-          <% end %>
-        </td>
-        <td><%= link_to t('general.show'), training_group %></td>
-        <% if can? :update, training_group %>
-        <td><%= link_to t('general.edit'), edit_training_group_path(training_group) %></td>
-        <% end %>
-        <% if can? :destroy, training_group %>
-        <td>
-          <%= link_to training_group, method: :delete, data: { confirm: t('general.are_you_sure') } do %>
-            <span class="glyphicon glyphicon-trash"></span>
-            <%= t('general.destroy') %>
-          <% end %>
-        </td>
-        <% end %>
-      </tr>
+  <% ancient_groups = @training_groups.ancient %>
+  <% if ancient_groups.present? %>
+    <h3><%= "#{t("general.ancient")} #{TrainingGroup.model_name.human(:count => :lots)}" %></h3>
+    <%= render :partial => "training_groups/table", :locals => {:training_groups => ancient_groups} %>
   <% end %>
-    </tbody>
-  </table>
 </div>

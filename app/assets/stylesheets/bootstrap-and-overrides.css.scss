@@ -5,9 +5,21 @@ $navbar-border-radius: 0px;
 
 /* Grid */
 /* Number of columns in the grid system */
-$grid-columns: 12 !default;
+$grid-columns: 12;
 /* Padding, to be divided by two and applied to the left and right of all columns */
-$grid-gutter-width: 12px !default;
+$grid-gutter-width: 12px;
+
+/* Colors */
+$blue-darker:            lighten(#001, 10%) !default;
+$blue-dark:              lighten(#001, 20%) !default;
+$blue:                   lighten(#001, 30%) !default;
+$blue-light:             lighten(#001, 60%) !default;
+$blue-lighter:           lighten(#001, 90%) !default;
+
+/* Font */
+
+$text-color:            $blue-darker;
+/*$font-size-base:        14px;*/
 
 @import "bootstrap";
 body { padding-top: 60px !important; }
@@ -29,12 +41,29 @@ body {
   background-size: auto auto;
   background-attachment: fixed;
   vertical-align: baseline;
-  font-weight: 400;
+  /*font-family: sans-serif;*/
+
+  /*@media (max-width: $screen-xs-max) {
+    font-size: $font-size-base * 0.9;
+  }
+
+  @media (min-width: $screen-sm-min) {
+    font-size: $font-size-base * 0.9;
+  }*/
+
+  @media (min-width: $screen-md-min) {
+    font-size: $font-size-base * 1.1;
+  }
+
+  /*@media (min-width: $screen-lg-min) {
+    font-size: $font-size-base * 1.1;
+  }*/
+
 }
 
-li, h1, h2, h3, h4, h5 {
+/*li, h1, h2, h3, h4, h5 {
     line-height: 125%;
-}
+}*/
 
 .window {
   margin-bottom: 10px;
@@ -46,7 +75,7 @@ li, h1, h2, h3, h4, h5 {
   background-image: linear-gradient(to bottom, white, #F2F2F2);
   background-repeat: repeat-x;
   padding: 6px 12px 6px 12px;
-  overflow: auto; /* needed to prevent floating boxes to expand out of this box*/
+  /*overflow: auto;*/ /* needed to prevent floating boxes to expand out of this box (mediaContainers inside messages) */
 }
 
 .plain {
@@ -149,7 +178,7 @@ div.mediaContainer {
   }
 
   &.large-spacing {
-    padding: 0px 18px;
+    padding: 0px 24px;
     margin: 12px 0 24px 0;
   }
 
@@ -216,7 +245,7 @@ div.mediaContainer.decent {
     }
 
     .message-title {
-      font-size: ceil($font-size-base * 1.2);
+      font-size: 1.2em;
       font-weight: $headings-font-weight;
     }
 
@@ -280,4 +309,11 @@ dl {
 
 .no-wrap {
   white-space: nowrap;
+}
+
+/* Table */
+.tableActions {
+  a {
+    display: inline-block;
+  }
 }

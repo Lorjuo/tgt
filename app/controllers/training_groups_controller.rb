@@ -7,11 +7,25 @@ class TrainingGroupsController < ApplicationController
   #load_and_authorize_resource :training_unit, :through => :training_group, :shallow => true
   load_and_authorize_resource :training_group, :through => :department, :shallow => true
 
-  layout 'two_columns'
+  layout :resolve_layout
 
   # def index
   #   @training_groups = TrainingGroup.all
   # end
+  
+  def index
+    respond_to do |format|
+      format.html
+      format.json { render json: TrainingGroupsDatatable.new(view_context, current_user, params[:department_id]) }
+    end
+  end
+  
+  def search
+    respond_to do |format|
+      format.html
+      format.json { render json: TrainingGroupsDatatable.new(view_context, current_user, params[:department_id]) }
+    end
+  end
 
 
   def show
@@ -74,7 +88,7 @@ class TrainingGroupsController < ApplicationController
     def load_parent_resource
       if params[:department_id]
         @department = Department.friendly.find(params[:department_id])
-      else
+      elsif @training_group.present?
         @department = @training_group.department
       end
     end
@@ -86,5 +100,14 @@ class TrainingGroupsController < ApplicationController
         :image_attributes => [:file, :id])
       # http://stackoverflow.com/questions/18436741/rails-4-strong-parameters-nested-objects#answer-18437539
       # https://github.com/nathanvda/cocoon
+    end
+
+    def resolve_layout
+      case action_name
+      when "index", "search"
+        "one_column"
+      else
+        "two_columns"
+      end
     end
 end

@@ -37,7 +37,7 @@
             <dd><%= link_to @training_group.department.name, @training_group.department, :class => "pill" %></dd>
 
             <dt><%= TrainingGroup.human_attribute_name(:age) %>:</dt>
-            <dd><%= @training_group.age %></dd>
+            <dd><%= @training_group.display_age %></dd>
           </dl>
         </div>
 

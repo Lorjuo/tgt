@@ -15,53 +15,78 @@
   <% end %>
 <% end %>
 
-<div class="window box">
-  <div class="row">
-    <div class="col-md-2">
-      <%= link_to(image_tag(@location.image.file_url, :class => "img-responsive"), @location.image.file_url, :class => "fancybox") if @location.image.present? %>
-    </div>
-    <div class="col-md-6">
-      <dl class="dl-horizontal">
-        <dt><%= Trainer.human_attribute_name(:name) %>:</dt>
-        <dd><%= @location.name %></dd>
+<div class="window">
+  <div class="box">
+    <h1>
+      <%= t ".title", :name => @location.name %>
+    </h1>
+  </div>
 
-        <dt><%= Trainer.human_attribute_name(:address) %>:</dt>
-        <dd><%= @location.address %></dd>
+  <div class="box">
+    <div class="row">
+      <div class="col-md-8">
+        <h3>
+          <span class="glyphicon glyphicon-info-sign"></span>
+          <%= t ".info" %>
+        </h3>
+        <dl class="dl-horizontal">
+          <dt><%= Location.human_attribute_name(:name) %>:</dt>
+          <dd><%= @location.name %></dd>
 
-        <dt><%= Trainer.human_attribute_name(:description) %>:</dt>
-        <dd><%= @location.description %></dd>
+          <dt><%= Location.human_attribute_name(:address) %>:</dt>
+          <dd><%= @location.address %></dd>
 
-        <dt><%= t "general.schedule" %>:</td>
-        <dd>
-          <%= link_to schedule_location_path(@location, :season => "summer") do %>
-            <span class="glyphicon glyphicon-calendar"></span>
-            <%= t "general.summer" %>
-          <% end %>
-          <br />
-          <%= link_to schedule_location_path(@location, :season => "winter") do %>
-            <span class="glyphicon glyphicon-calendar"></span>
-            <%= t "general.winter" %>
-          <% end %>
-        </dd>
-
-        <!-- <dt>Latitude:</dt>
-        <dd><%= @location.latitude %></dd>
-
-        <dt>Longitude:</dt>
-        <dd><%= @location.longitude %></dd> -->
-
-      </dl>
-
-    </div>
-    <div class="col-md-4">
-      <% zoom = 14 %>
-      <%#= link_to "http://maps.google.com/?ie=UTF8&hq=&&ll=#{@location.latitude},#{@location.longitude}&z=#{zoom}" do %>
-      <%#= link_to "http://maps.google.com/maps?q=#{@location.latitude},#{@location.longitude}&z=#{zoom}" do %>
-      <%= link_to "http://maps.google.com/maps?q=#{@location.address}&z=#{zoom}" do %>
-       <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=#{zoom}&markers=#{@location.latitude}%2C#{@location.longitude}", :class => "img-responsive" %>
-      <% end %>
+          <dt><%= Location.human_attribute_name(:description) %>:</dt>
+          <dd><%= @location.description %></dd>
+        </dl>
+      </div>
+      <div class="col-md-4">
+        <h3>
+          <span class="glyphicon glyphicon-picture"></span>
+          <%= t ".picture" %>
+        </h3>
+        <%= link_to(image_tag(@location.image.file_url, :class => "img-responsive"), @location.image.file_url, :class => "fancybox") if @location.image.present? %>
+      </div>
     </div>
   </div>
+
+  <div class="box">
+    <div class="row">
+      <div class="col-md-8">
+        <h3>
+          <span class="glyphicon glyphicon-calendar"></span>
+          <%= Location.human_attribute_name(:schedule) %>
+        </h3>
+        <dl class="dl-horizontal">
+          <dt><%= Location.human_attribute_name(:schedule) %>:</td>
+          <dd>
+            <%= link_to schedule_location_path(@location, :season => "summer") do %>
+              <span class="glyphicon glyphicon-calendar"></span>
+              <%= t "general.summer" %>
+            <% end %>
+            <br />
+            <%= link_to schedule_location_path(@location, :season => "winter") do %>
+              <span class="glyphicon glyphicon-calendar"></span>
+              <%= t "general.winter" %>
+            <% end %>
+          </dd>
+        </dl>
+      </div>
+      <div class="col-md-4">
+        <h3>
+          <span class="glyphicon glyphicon-map-marker"></span>
+          <%= t ".map" %>
+        </h3>
+        <% zoom = 14 %>
+        <%#= link_to "http://maps.google.com/?ie=UTF8&hq=&&ll=#{@location.latitude},#{@location.longitude}&z=#{zoom}" do %>
+        <%#= link_to "http://maps.google.com/maps?q=#{@location.latitude},#{@location.longitude}&z=#{zoom}" do %>
+        <%= link_to "http://maps.google.com/maps?q=#{@location.address}&z=#{zoom}" do %>
+         <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=#{zoom}&markers=#{@location.latitude}%2C#{@location.longitude}", :class => "img-responsive" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
   <%# TODO: Add location occupancy plan %>
 
@@ -94,4 +119,3 @@
     </div>
   </div>
   <% end %>
-</div>

@@ -1,0 +1,23 @@
+<tr>
+  <td><%= link_to(image_tag(training_group.image.file_url(:thumb)), training_group.image.file_url, :class => "fancybox") if training_group.image.present? %></td>
+  <td><%= link_to training_group.name, training_group %></td>
+  <td>
+    <%= truncate(strip_tags(training_group.description), length: 100, omission: '...') %>
+  </td>
+  <td><%= training_group.display_age %></td>
+  <td>
+    <% training_group.trainers.alphabetical.each do |trainer| %>
+      <%= link_to(trainer.name, trainer, :class => "pill") %>
+    <% end %>
+  </td>
+
+  <%= content_tag :td, :class => "tableActions" do %>
+    <%= link_to edit_training_group_path(training_group), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
+      <%= tag :span, :class => "glyphicon glyphicon-edit" %>
+    <% end %>
+
+    <%= link_to training_group, data: { confirm: I18n.t('general.are_you_sure') }, method: :delete, :title => t("general.destroy"), :data => {:toggle => "tooltip"} do %>
+      <%= tag :span, :class => "glyphicon glyphicon-trash" %>
+    <% end if can? :destroy, training_group %>
+  <% end if can? :update, TrainingGroup %>
+</tr>

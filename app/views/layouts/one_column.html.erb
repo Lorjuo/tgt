@@ -1,4 +1,15 @@
 <%= inside_layout "application" do %>
+
+  <% if content_for?(:title) %>
+    <div class="window box">
+      <div class="pull-right button-group">
+        <%= yield(:buttons) %>
+      </div>
+      <h1><%= yield(:title) %></h1>
+    </div>
+  <% end %>
+
+
   <div class="row">
     <div class="col-sm-12">
       <div class="window">
@@ -12,4 +23,5 @@
       </div>
     </div>
   </div>
+  
 <% end %>

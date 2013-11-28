@@ -82,8 +82,8 @@
 //
 //# Table
 //= require dataTables/jquery.dataTables
-// require dataTables/jquery.dataTables.bootstrap
-//= require bootstrap-dataTables-paging
+//= require dataTables/jquery.dataTables.bootstrap3
+//= require dataTables/jquery.dataTables.responsive
 //
 //# WYSIWYG
 //= require tinymce-jquery
@@ -94,6 +94,7 @@
 //# Specific Pages
 //= require messages
 //= require schedule
+//= require training_groups
 //
 //# Has to be the last (https://github.com/kossnocorp/jquery.turbolinks)
 //= require turbolinks

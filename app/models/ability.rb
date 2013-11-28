@@ -56,6 +56,7 @@ class Ability
 
     can [:schedule, :interactive_map], Location
     can [:training_groups, :trainers, :messages, :schedule], Department
+    can [:search], TrainingGroup
 
     #
     # The first argument to `can` is the action you are giving the user 

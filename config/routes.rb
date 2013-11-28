@@ -25,7 +25,9 @@ TgtRefurbished::Application.routes.draw do
 
   resources :training_units
 
-  #resources :training_groups
+  resources :training_groups, :only => :index do
+    get :search, on: :collection
+  end
 
   resources :navigation_elements, :only => [] do
     collection do

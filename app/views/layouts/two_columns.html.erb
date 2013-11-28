@@ -1,7 +1,21 @@
 <%= inside_layout "application" do %>
+
   <div class="row">
     <div class="col-sm-8">
+
+      <% if content_for?(:title) %>
+        <div class="window box">
+          <div class="pull-right button-group">
+            <%= yield(:buttons) %>
+          </div>
+          <h1><%= yield(:title) %></h1>
+        </div>
+      <% end %>
+
+
       <%= yield %>
+
+      
       <footer class="window box">
         <p>&copy; Julien Seitz 2013</p>
       </footer>
@@ -13,4 +27,5 @@
       <%= render :partial => "layouts/sidebar" %>
     </div>
   </div>
+
 <% end %>

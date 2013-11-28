@@ -23,33 +23,11 @@
 
   <div class="container">
 
-    <!-- <div id="logoWrapper">
-      <%= image_tag 'tgt-logo.png', :id => 'logo' %>
-      <h1>Turngemeinde 1879 Traisa e.V.</h1>
-    </div> -->
-
-    <%= yield :sub_navigation %>
-    
-    <%= render 'layouts/messages' %>
-
-    <% if content_for?(:title) %>
-      <div class="page-header window box">
-        <div class="pull-right button-group">
-          <%= yield(:buttons) %>
-        </div>
-        <h1><%= yield(:title) %></h1>
-      </div>
+    <% if @department.present? %>
+      <%= render :partial => "layouts/department_navigation" %>
     <% end %>
     
-    <!-- <div class="row">
-      <div class="col-lg-12" style="text-align: right">
-        <% if user_signed_in? %>
-          Hello <%= current_user.name %> (Roles: <%= current_user.roles.map{|role| role.name.to_s}.join(', ') %>)
-        <% else %>
-          (you are currently not logged in)
-        <% end %>
-      </div>
-    </div> -->
+    <%= render 'layouts/messages' %>
 
     <%= yield %>
     <%= yield :scripts %><%# needed for gmaps4rails %>

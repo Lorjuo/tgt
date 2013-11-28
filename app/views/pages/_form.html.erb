@@ -1,14 +1,18 @@
-<%= render :partial => 'shared/tinymce' %>
-<%= simple_form_for(@page) do |f| %>
-  <%= f.error_notification %>
+<%= render :partial => 'shared/elfinder_loader', :locals => { :path => "" } %>
+<%= tinymce %>
 
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :department_id %>
-    <%= f.input :content, as: :text, input_html: { class: 'tinymce' }  %>
-  </div>
+<div class="window box">
+  <%= simple_form_for(@page) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+    <div class="form-inputs">
+      <%= f.input :name %>
+      <%= f.input :department_id %>
+      <%= f.input :content, as: :text, input_html: { class: 'tinymce' }  %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+</div>

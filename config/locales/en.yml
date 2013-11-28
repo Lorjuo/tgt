@@ -1,5 +1,6 @@
 en:
   general:
+    actions: Actions
     add_files: Add Files...
     are_you_sure: Are you sure?
     browse: Browse
@@ -21,6 +22,9 @@ en:
     summer: Summer
     winter: Winter
 
+    time:
+      range: "%{begin}-%{end} o'clock"
+
     age:
       range: '%{begin}-%{end} years'
       begin: 'over %{begin} years'
@@ -34,6 +38,7 @@ en:
     color: Color
     content: Content
     department: Department
+    departments: Departments
     description: Description
     name: Name
     first_name: Givenname
@@ -45,6 +50,7 @@ en:
     training_groups: Training groups
     training_units: Training units
     week_day: Day
+    week_days: Days
 
   activerecord:
     models:

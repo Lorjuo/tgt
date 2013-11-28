@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '~> 4.0.0'
 
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
@@ -129,6 +129,8 @@ gem 'truncate_html'
 
 # Table
 gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
+gem 'lodash-rails'
+# Alternative: https://github.com/berk/will_filter/wiki/Customizing-Table-View
 
 # Tree Structures
 gem 'awesome_nested_set', github: 'huoxito/awesome_nested_set', branch: 'rails4'

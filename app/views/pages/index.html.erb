@@ -6,40 +6,42 @@
   <h1>Listing pages</h1>
 </div>
 
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Department</th>
-      <th>Content</th>
-      <th></th>
-      <% if can? :update, Page %>
-      <th></th>
-      <% end %>
-      <% if can? :destroy, Page %>
-      <th></th>
-      <% end %>
-    </tr>
-  </thead>
-
-  <tbody>
-<% @pages.each do |page| %>
-    <tr>
-      <td><%= page.name %></td>
-      <td><%= page.department_id %></td>
-      <td><%= page.content %></td>
-      <td><%= link_to 'Show', page %></td>
-      <% if can? :update, page %>
-      <td><%= link_to 'Edit', edit_page_path(page) %></td>
-      <% end %>
-      <% if can? :destroy, page %>
-      <td>
-        <%= link_to page, method: :delete, data: { confirm: 'Are you sure?' } do %>
-          <span class="glyphicon glyphicon-trash"></span> Destroy
+<div class="window box">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Content</th>
+        <th></th>
+        <% if can? :update, Page %>
+        <th></th>
         <% end %>
-      </td>
-      <% end %>
-    </tr>
-<% end %>
-  </tbody>
-</table>
+        <% if can? :destroy, Page %>
+        <th></th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+  <% @pages.each do |page| %>
+      <tr>
+        <td><%= page.name %></td>
+        <td><%= page.department_id %></td>
+        <td><%= page.content %></td>
+        <td><%= link_to 'Show', page %></td>
+        <% if can? :update, page %>
+        <td><%= link_to 'Edit', edit_page_path(page) %></td>
+        <% end %>
+        <% if can? :destroy, page %>
+        <td>
+          <%= link_to page, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <span class="glyphicon glyphicon-trash"></span> Destroy
+          <% end %>
+        </td>
+        <% end %>
+      </tr>
+  <% end %>
+    </tbody>
+  </table>
+</div>

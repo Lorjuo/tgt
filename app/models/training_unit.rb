@@ -18,12 +18,11 @@ class TrainingUnit < ActiveRecord::Base
 
   # Virtual attributes
   def name
-    "#{week_day.name} + #{self.time}"
+    "#{display_week_day} #{self.time}"
   end
 
   def time
-    "#{I18n.l(time_begin, format: :time)} - "\
-    "#{I18n.l(time_end, format: :time)}"
+    I18n.t "general.time.range", :begin => I18n.l(time_begin, format: :time_short), :end => I18n.l(time_end, format: :time_short)
   end
 
   def display_week_day

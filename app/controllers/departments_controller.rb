@@ -124,8 +124,8 @@ class DepartmentsController < ApplicationController
 
     def resolve_layout
       case action_name
-      when "show", "training_groups", "sort_navigation_elements"
-        "two_columns"
+      when "training_groups"
+        "one_column"
       else
         "two_columns"
       end
