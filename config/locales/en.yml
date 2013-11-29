@@ -181,6 +181,11 @@ en:
   training_groups:
     index:
       title: Listing training groups
+    search:
+      title: Search our groups
+      sentence_age: "I am %{input} years old"
+      sentence_departments: "I want to actuate in the following departments %{input}"
+      sentence_week_days: "I have time on the following days %{input}"
     show:
       title: 'Training group "%{name}"'
       info: General information

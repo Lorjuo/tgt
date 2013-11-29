@@ -184,6 +184,13 @@ de:
   training_groups:
     index:
       title: Gruppenübersicht
+
+    search:
+      title: Unsere Trainingsangebote
+      sentence_age: "Ich bin %{input} Jahre alt"
+      sentence_departments: "Ich möchte in folgenden Abteilungen aktiv sein %{input}"
+      sentence_week_days: "Ich habe an folgenden Wochentagen Zeit %{input}"
+
     show:
       title: 'Trainingsgruppe "%{name}"'
       info: Allgemeine Infos

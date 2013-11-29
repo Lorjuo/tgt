@@ -46,13 +46,15 @@ $ ->
   responsiveHelper = undefined
   # https://github.com/thomas-mcdonald/bootstrap-sass/blob/master/vendor/assets/stylesheets/bootstrap/_variables.scss
   breakpointDefinition =
-    xs: 480
-    sm: 768
-    md: 992
-    lg: 1200
+    #xxs: 480 # Smaller than ...
+    xs: 768
+    sm: 992
+    md: 1200
+    lg: 1900
 
   tableContainer = $("#training_groups_data_table")
   tableContainer.dataTable
+    sDom: "<'row'<'col-md-6'l><'col-md-6 filterDiv'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>"
 
     sPaginationType: "bootstrap"
     # Setup for responsive datatables helper.
@@ -80,7 +82,7 @@ $ ->
     #   aTargets: [1]
     # ,
       bSortable: false
-      aTargets: [0, 2, 5]
+      aTargets: ["image", "actions"]
     ]
 
 
