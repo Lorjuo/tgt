@@ -26,16 +26,18 @@
 
 
 filter_text = (tableContainer, element, colNum) ->
-  oTable = $(tableContainer).dataTable()
-  oTable.fnFilter( $(element)[0].value, colNum )
+  if ($(tableContainer).length > 0)
+    oTable = $(tableContainer).dataTable()
+    oTable.fnFilter( $(element)[0].value, colNum )
 
 filter_select = (tableContainer, element, colNum) ->
-  oTable = $(tableContainer).dataTable()
+  if ($(tableContainer).length > 0)
+    oTable = $(tableContainer).dataTable()
 
-  selectedIds = new Array()
-  $(element).children(":selected").each ->
-    selectedIds.push(this.value)
-  oTable.fnFilter( selectedIds.join(','), colNum )
+    selectedIds = new Array()
+    $(element).children(":selected").each ->
+      selectedIds.push(this.value)
+    oTable.fnFilter( selectedIds.join(','), colNum )
 
 # Export this function to global scope
 window.filter_text = filter_text
@@ -103,3 +105,16 @@ $ ->
   $(element_departments).change ->
     filter_select( tableContainer, element_departments, 4 )
   filter_select( tableContainer, element_departments, 4 ) # also do this on load
+
+  $('.datatable').dataTable
+    sPaginationType: "bootstrap"
+    #sDom: "<'row'<'col-md-6'l><'col-md-6 filterDiv'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>"
+    #sDom: "<r>t<'row'<'col-md-6'i><'col-md-6'p>>"
+    sDom: "<r>t<'row'>"
+    iDisplayLength: 9999
+    bProcessing: true
+    bServerSide: false #für Ajax
+
+  $("a.add_fields")
+    .data("association-insertion-position", "append")
+    .data "association-insertion-node", "#insertionNode"
