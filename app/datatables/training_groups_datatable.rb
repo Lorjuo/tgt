@@ -37,7 +37,7 @@ private
       ]
 
       edit_link = link_to edit_icon, @url_helper.edit_training_group_path(training_group), :title => t("general.edit"), :data => {:toggle => "tooltip"}
-      destroy_link = link_to destroy_icon, training_group, :title => t("general.edit"), data: { confirm: I18n.t('general.are_you_sure') }, method: :delete, :data => {:toggle => "tooltip"}
+      destroy_link = link_to destroy_icon, training_group, :title => t("general.edit"), data: { confirm: I18n.t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete
 
       if @user && @user.can?( :update, TrainingGroup )
         if @user && @user.can?( :destroy, TrainingGroup )

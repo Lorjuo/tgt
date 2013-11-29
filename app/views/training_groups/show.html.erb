@@ -1,5 +1,4 @@
 <% content_for :title do %>
-  <%= link_to(image_tag(@training_group.image.file_url(:thumb), :class => "img-responsive"), @training_group.image.file_url, :class => "fancybox") if @training_group.image.present? %>
   <%= t ".title", :name => @training_group.name %>
 <% end %>
 
@@ -16,14 +15,25 @@
   <% end %>
 <% end %>
 
-<div class="row eqme">
+<div class="row">
   <div class="col-md-12 window">
     <div class="box">
-      <h3>
-        <span class="glyphicon glyphicon-align-left"></span>
-        <%= TrainingGroup.human_attribute_name(:description) %>
-      </h3>
-      <%= raw @training_group.description %>
+      <div class="row">
+        <div class="col-md-8">
+          <h3>
+            <span class="glyphicon glyphicon-align-left"></span>
+            <%= TrainingGroup.human_attribute_name(:description) %>
+          </h3>
+          <%= raw @training_group.description %>
+        </div>
+        <div class="col-md-4">
+          <h3>
+            <span class="glyphicon glyphicon-picture"></span>
+            <%= t ".picture" %>
+          </h3>
+          <%= link_to(image_tag(@training_group.image.file_url(:_260x180), :class => "img-responsive"), @training_group.image.file_url, :class => "fancybox") if @training_group.image.present? %>
+        </div>
+      </div>
     </div>
 
     <div class="box">
@@ -54,19 +64,6 @@
       </div>
     </div>
   </div>
-  <!-- <div class="col-md-4 window">
-    <div class="plain no-spacing">
-      <div class="box">
-        <h3>
-          <span class="glyphicon glyphicon-picture"></span>
-          <%= t ".picture" %>
-        </h3>
-      </div>
-      <div class="box small-spacing">
-        <%= link_to(image_tag(@training_group.image.file_url, :class => "img-responsive"), @training_group.image.file_url, :class => "fancybox") if @training_group.image.present? %>
-      </div>
-    </div>
-  </div> -->
 </div>
 
 <div class="row">
@@ -76,7 +73,7 @@
         <span class="glyphicon glyphicon-calendar"></span>
         <%= TrainingGroup.human_attribute_name(:training_units) %>
       </h3>
-      <table class="table table-bordered table-striped datatable">
+      <table class="table table-bordered table-striped datatable defaults">
         <thead>
           <tr>
             <th><%= TrainingUnit.human_attribute_name(:week_day) %></th>

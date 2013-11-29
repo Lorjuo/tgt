@@ -10,25 +10,14 @@
 <% end %>
 
 <div class="window box">
-  <table class="table table-bordered table-striped">
+  <table class="table table-bordered table-striped datatable defaults">
     <thead>
       <tr>
-        <th></th>
+        <th class="no-sort"></th>
         <th><%= Trainer.human_attribute_name(:name) %></th>
-        <th><%= Trainer.human_attribute_name(:birthday) %></th>
-        <th><%= Trainer.human_attribute_name(:residence) %></th>
-        <th><%= Trainer.human_attribute_name(:phone) %></th>
-        <th><%= Trainer.human_attribute_name(:email) %></th>
-        <!-- <th>Profession</th>
-        <th>Education</th>
-        <th>Disciplines</th>
-        <th>Activities</th> -->
-        <th></th>
-        <% if can? :update, Trainer %>
-        <th></th>
-        <% end %>
-        <% if can? :destroy, Trainer %>
-        <th></th>
+        <th class="no-sort"><%= Trainer.human_attribute_name(:training_groups) %></th>
+        <% if can? :update, User %>
+          <th class="no-sort">Aktionen</th>
         <% end %>
       </tr>
     </thead>
@@ -37,26 +26,23 @@
   <% @trainers.each do |trainer| %>
       <tr>
         <td><%= link_to(image_tag(trainer.image.file_url(:thumb)), trainer.image.file_url, :class => "fancybox") if trainer.image.present? %></td>
-        <td><%= trainer.name %></td>
-        <td><%= trainer.birthday %></td>
-        <td><%= trainer.residence %></td>
-        <td><%= trainer.phone %></td>
-        <td><%= trainer.email %></td>
-        <!-- <td><%= trainer.profession %></td>
-        <td><%= trainer.education %></td>
-        <td><%= trainer.disciplines %></td>
-        <td><%= trainer.activities %></td> -->
-        <td><%= link_to t('general.show'), trainer %></td>
-        <% if can? :update, trainer %>
-        <td><%= link_to t('general.edit'), edit_trainer_path(trainer) %></td>
-        <% end %>
-        <% if can? :destroy, trainer %>
+        <td><%= link_to trainer.name, trainer %></td>
         <td>
-          <%= link_to trainer, method: :delete, data: { confirm: t('general.are_you_sure')} do %>
-            <span class="glyphicon glyphicon-trash"></span>
-            <%= t('general.destroy') %>
+          <% trainer.training_groups.each do |training_group| %>
+            <%= link_to training_group.name, training_group, class: "pill" %>
           <% end %>
         </td>
+        <% if can? :update, trainer %>
+          <td>
+            <%= link_to edit_trainer_path(trainer), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
+              <%= tag :span, :class => "glyphicon glyphicon-edit" %>
+            <% end %>
+            <% if can? :destroy, trainer %>
+              <%= link_to trainer, :title => t("general.destroy"), data: { confirm: I18n.t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete do %>
+                <%= tag :span, :class => "glyphicon glyphicon-trash" %>
+              <% end %>
+            <% end %>
+          </td>
         <% end %>
       </tr>
   <% end %>

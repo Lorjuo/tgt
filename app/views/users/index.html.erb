@@ -6,45 +6,46 @@
   <h1>Listing users</h1>
 </div>
 
-<%= will_paginate @users %>
-
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Username</th>
-      <th>Email</th>
-      <% if can? :update, User %>
-      <th></th>
-      <% end %>
-      <% if can? :destroy, User %>
-      <th></th>
-      <% end %>
-    </tr>
-  </thead>
-
-  <tbody>
-<% @users.each do |user| %>
-    <tr>
-      <td><%= link_to user.name, user %></td>
-      <td>
-        <%# mail_to user.email, nil, :replace_at => "(at)", :replace_dot => "(dot)", :class => "email" %>
-        <%= mail_to user.email, encode: "hex", :class => "email" do %>
-          <span class="glyphicon glyphicon-envelope"></span> Email
+<div class="window box">
+  <table class="table table-bordered table-striped datatable searchable">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th class="no-sort">Email</th>
+        <th class="no-sort">Rollen</th>
+        <% if can? :update, User %>
+          <th class="no-sort">Aktionen</th>
         <% end %>
-      </td>
-      <% if can? :update, user %>
-      <td><%= link_to 'Edit', edit_user_path(user) %></td>
-      <% end %>
-      <% if can? :destroy, user %>
-      <td>
-        <%= link_to user, method: :delete, data: { confirm: 'Are you sure?' } do %>
-          <span class="glyphicon glyphicon-trash"></span> Destroy
-        <% end %>
-      </td>
-      <% end %>
-    </tr>
-<% end %>
-  </tbody>
-</table>
+      </tr>
+    </thead>
 
-<%= will_paginate @users %>
+    <tbody>
+  <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.name, user %></td>
+        <td>
+          <%#= mail_to user.email, nil, :replace_at => "(at)", :replace_dot => "(dot)", :class => "email" %>
+          <%= mail_to user.email, encode: "hex", :class => "email" do %>
+            <span class="glyphicon glyphicon-envelope"></span> Email
+          <% end %>
+        </td>
+        <td>
+          <%= user.roles.map(&:name).join(', ') %>
+        </td>
+        <% if can? :update, user %>
+          <td>
+            <%= link_to edit_user_path(user), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
+              <%= tag :span, :class => "glyphicon glyphicon-edit" %>
+            <% end %>
+            <% if can? :destroy, user %>
+              <%= link_to user, :title => t("general.destroy"), data: { confirm: I18n.t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete do %>
+                <%= tag :span, :class => "glyphicon glyphicon-trash" %>
+              <% end %>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+  <% end %>
+    </tbody>
+  </table>
+</div>

@@ -84,6 +84,7 @@
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap3
 //= require dataTables/jquery.dataTables.responsive
+//= require datatables
 //
 //# WYSIWYG
 //= require tinymce-jquery

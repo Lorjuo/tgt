@@ -3,10 +3,12 @@ class UsersController < ApplicationController
 
   load_and_authorize_resource
 
+  layout "one_column"
+
   # GET /users
   # GET /users.json
   def index
-    @users = User.order('last_name').order('first_name').page(params[:page])
+    @users = User.order('last_name').order('first_name')
   end
 
   # GET /users/1
