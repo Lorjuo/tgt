@@ -4,7 +4,9 @@
   <td>
     <%= truncate(strip_tags(training_group.description), length: 100, omission: '...') %>
   </td>
+  <% unless ancient %>
   <td><%= training_group.display_age %></td>
+  <% end %>
   <td>
     <% training_group.trainers.alphabetical.each do |trainer| %>
       <%= link_to(trainer.name, trainer, :class => "pill") %>

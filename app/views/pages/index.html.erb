@@ -1,18 +1,21 @@
-<div class="page-header">
+<% content_for :title do %>
+  <%= t ".title" %>
+<% end %>
+
+<% content_for :buttons do %>
   <%= link_to new_page_path, :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
-    New Page
+    <%= t('general.create_model', :model => Page.model_name.human ) %>
   <% end if can? :create, Page %>
-  <h1>Listing pages</h1>
-</div>
+<% end %>
 
 <div class="window box">
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Department</th>
-        <th>Content</th>
+        <th><%= Page.human_attribute_name(:name) %></th>
+        <th><%= Page.human_attribute_name(:department) %></th>
+        <th><%= Page.human_attribute_name(:content) %></th>
         <th></th>
         <% if can? :update, Page %>
         <th></th>
@@ -29,14 +32,15 @@
         <td><%= page.name %></td>
         <td><%= page.department_id %></td>
         <td><%= page.content %></td>
-        <td><%= link_to 'Show', page %></td>
+        <td><%= link_to link_to t('general.show'), page %></td>
         <% if can? :update, page %>
-        <td><%= link_to 'Edit', edit_page_path(page) %></td>
+        <td><%= link_to link_to t('general.edit'), edit_page_path(page) %></td>
         <% end %>
         <% if can? :destroy, page %>
         <td>
-          <%= link_to page, method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <span class="glyphicon glyphicon-trash"></span> Destroy
+          <%= link_to page, method: :delete, data: { confirm: t('general.are_you_sure')} do %>
+            <span class="glyphicon glyphicon-trash"></span>
+            <%= t('general.destroy') %>
           <% end %>
         </td>
         <% end %>

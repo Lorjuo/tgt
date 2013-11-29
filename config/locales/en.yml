@@ -75,6 +75,9 @@ en:
       message:
         one: Message
         other: Messages
+      page:
+        one: Page
+        other: Pages
       trainer:
         one: Trainer
         other: Trainers

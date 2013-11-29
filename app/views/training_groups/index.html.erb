@@ -11,11 +11,11 @@
 
 <div class="window box">
   <h3><%= "#{t("general.current")} #{TrainingGroup.model_name.human(:count => :lots)}" %></h3>
-  <%= render :partial => "training_groups/table", :locals => {:training_groups => @training_groups.current} %>
+  <%= render :partial => "training_groups/table", :locals => {:training_groups => @training_groups.current, ancient: false} %>
 
   <% ancient_groups = @training_groups.ancient %>
   <% if ancient_groups.present? %>
     <h3><%= "#{t("general.ancient")} #{TrainingGroup.model_name.human(:count => :lots)}" %></h3>
-    <%= render :partial => "training_groups/table", :locals => {:training_groups => ancient_groups} %>
+    <%= render :partial => "training_groups/table", :locals => {:training_groups => ancient_groups, ancient: true } %>
   <% end %>
 </div>

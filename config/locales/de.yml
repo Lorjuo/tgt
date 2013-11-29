@@ -78,6 +78,9 @@ de:
       message:
         one: Nachricht
         other: Nachrichten
+      page:
+        one: Seite
+        other: Seiten
       trainer:
         one: Trainer
         other: Trainer
@@ -172,6 +175,12 @@ de:
       title: Nachrichtenübersicht
     show:
       title: '%{title}'
+
+  pages:
+    index:
+      title: Seitenübersicht
+    show:
+      title: 'Seite %{name}'
 
   trainers:
     index:

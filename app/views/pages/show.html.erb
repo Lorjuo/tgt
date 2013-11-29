@@ -1,26 +1,29 @@
-<div class="page-header">
+<% content_for :title do %>
+  <%= t ".title", :name => @page.name %>
+<% end %>
+
+<% content_for :buttons do %>
   <%= link_to pages_path, :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
-    Back
+    <%= t "general.list" %>
   <% end %>
   <% if can? :update, @page %>
     <%= link_to edit_page_path(@page), :class => 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-pencil"></span>
-      Edit
+      <span class="glyphicon glyphicon-pencil"></span>
+      <%= t "general.edit" %>
     <% end %>
   <% end %>
-  <h1>Show page</h1>
-</div>
+<% end %>
 
 <div class="window box">
   <dl class="dl-horizontal">
-    <dt>Name:</dt>
+    <dt><%= Page.human_attribute_name(:name) %>:</dt>
     <dd><%= @page.name %></dd>
 
-    <dt>Department:</dt>
+    <dt><%= Page.human_attribute_name(:department) %>:</dt>
     <dd><%= @page.department_id %></dd>
 
-    <dt>Content:</dt>
+    <dt><%= Page.human_attribute_name(:content) %>:</dt>
     <dd><%= @page.content %></dd>
 
   </dl>
