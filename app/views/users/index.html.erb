@@ -14,9 +14,9 @@
     <thead>
       <tr>
         <th data-class="expand"><%= User.human_attribute_name(:name) %></th>
-        <th class="no-sort" data-hide="xs"><%= User.human_attribute_name(:email) %></th>
-        <th class="no-sort" data-hide="xs"><%= User.human_attribute_name(:roles) %></th>
-        <th class="no-sort" data-hide="xs,sm"><%= User.human_attribute_name(:departments) %></th>
+        <th class="no-sort" data-hide="xxs,xs"><%= User.human_attribute_name(:email) %></th>
+        <th class="no-sort" data-hide="xxs,xs"><%= User.human_attribute_name(:roles) %></th>
+        <th class="no-sort" data-hide="xxs,xs,sm"><%= User.human_attribute_name(:departments) %></th>
         <% if can? :update, User %>
           <th class="no-sort"><%= t "general.actions" %></th>
         <% end %>

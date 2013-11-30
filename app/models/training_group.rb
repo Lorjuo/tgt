@@ -42,16 +42,16 @@ class TrainingGroup < ActiveRecord::Base
     valid_end = 0 < age_end && age_end < 99
 
     if valid_begin && valid_end
-      I18n.t "general.age.range", :begin => age_begin, :end => age_end
+      I18n.t "general.age_formats.range", :begin => age_begin, :end => age_end
 
     elsif valid_begin
-      I18n.t "general.age.begin", :begin => age_begin
+      I18n.t "general.age_formats.begin", :begin => age_begin
 
     elsif valid_end
-      I18n.t "general.age.end", :end => age_end
+      I18n.t "general.age_formats.end", :end => age_end
       
     else
-      I18n.t "general.age.unlimited"
+      I18n.t "general.age_formats.unlimited"
     end
   end
 end

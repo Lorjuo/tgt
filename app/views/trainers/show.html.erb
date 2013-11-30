@@ -61,13 +61,13 @@
 
 <div class="window box">
   <h3><%= TrainingGroup.model_name.human(:count => :lots) %></h3>
-  <table class="table table-bordered table-striped">
+  <table class="table table-bordered table-striped datatable defaults">
     <thead>
       <tr>
-        <th><%= TrainingUnit.human_attribute_name(:training_groups) %></th>
-        <th><%= TrainingUnit.human_attribute_name(:department) %></th>
+        <th data-class="expand"><%= TrainingUnit.human_attribute_name(:training_groups) %></th>
+        <th data-hide="xxs,xs,sm"><%= TrainingUnit.human_attribute_name(:department) %></th>
         <th><%= TrainingUnit.human_attribute_name(:week_day) %></th>
-        <th><%= TrainingUnit.human_attribute_name(:time) %></th>
+        <th data-hide="xxs"><%= TrainingUnit.human_attribute_name(:time) %></th>
       </tr>
     </thead>
     <tbody>

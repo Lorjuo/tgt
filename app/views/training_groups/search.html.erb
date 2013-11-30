@@ -41,8 +41,8 @@
       <tr>
         <th class="image no-sort"></th>
         <th class="name" data-class="expand"><%= TrainingGroup.human_attribute_name(:name) %></th>
-        <th class="training_unit" data-hide="xs"><%= TrainingGroup.human_attribute_name(:training_units) %></th>
-        <th class="age" data-hide="xs"><%= TrainingGroup.human_attribute_name(:age) %></th>
+        <th class="training_unit" data-hide="xxs,xs"><%= TrainingGroup.human_attribute_name(:training_units) %></th>
+        <th class="age" data-hide="xxs,xs"><%= TrainingGroup.human_attribute_name(:age) %></th>
         <th class="department" data-hide="sm,xs"><%= TrainingGroup.human_attribute_name(:department) %></th>
         <% if can? :update, TrainingGroup %>
           <%= content_tag :th, t("general.actions"), class: "actions no-sort" %>

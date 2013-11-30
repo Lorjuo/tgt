@@ -10,11 +10,11 @@
     <tr>
       <th class="no-sort"></th>
       <th data-class="expand"><%= TrainingGroup.human_attribute_name(:name) %></th>
-      <th class="no-sort" data-hide="xs"><%= TrainingGroup.human_attribute_name(:description) %></th>
+      <th class="no-sort" data-hide="xxs,xs"><%= TrainingGroup.human_attribute_name(:description) %></th>
       <% unless ancient %>
-        <th data-hide="xs"><%= TrainingGroup.human_attribute_name(:age) %></th>
+        <th data-hide="xxs,xs"><%= TrainingGroup.human_attribute_name(:age) %></th>
       <% end %>
-      <th class="no-sort" data-hide="xs"><%= TrainingGroup.human_attribute_name(:trainers) %></th>
+      <th class="no-sort" data-hide="xxs,xs"><%= TrainingGroup.human_attribute_name(:trainers) %></th>
       <% if can? :update, TrainingGroup %>
         <%= content_tag :th, t("general.actions"), class: "no-sort" %>
       <% end %>

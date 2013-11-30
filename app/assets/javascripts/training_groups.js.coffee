@@ -1,7 +1,7 @@
 $ ->
   # Init Datatable
   tableContainer = $("#training_groups_data_table")
-  tableContainer.dataTable $.extend({}, datatablesDefaults, datatablesResponsive,
+  tableContainer.dataTable $.extend({}, datatablesDefaults, datatablesSearchable, datatablesResponsive,
 
     bServerSide: true #für Ajax
     aaSorting: [[ 1, "asc" ]]

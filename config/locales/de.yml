@@ -25,10 +25,10 @@ de:
     summer: Sommer
     winter: Winter
 
-    time:
+    time_formats:
       range: '%{begin}-%{end} Uhr'
 
-    age:
+    age_formats:
       range: '%{begin}-%{end} Jahre'
       begin: 'ab %{begin} Jahren'
       end: 'bis %{end} Jahre'

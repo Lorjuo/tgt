@@ -21,8 +21,8 @@
       <tr>
         <th class="no-sort"></th>
         <th data-class="expand"><%= Message.human_attribute_name(:title) %></th>
-        <th class="no-sort" data-hide="xs"><%= Message.human_attribute_name(:content) %></th>
-        <th data-hide="xs"><%= Message.human_attribute_name(:department) %></th>
+        <th class="no-sort" data-hide="xxs,xs"><%= Message.human_attribute_name(:content) %></th>
+        <th data-hide="xxs,xs"><%= Message.human_attribute_name(:department) %></th>
         <% if can? :update, Message %>
           <th class="no-sort"><%= t "general.actions" %></th>
         <% end %>

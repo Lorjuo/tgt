@@ -70,7 +70,7 @@ window.datatablesResponsive =
 # Create Breakpoint definition depending on bootstrap
 # https://github.com/thomas-mcdonald/bootstrap-sass/blob/master/vendor/assets/stylesheets/bootstrap/_variables.scss
 window.breakpointDefinition =
-  #xxs: 480 # Smaller than ...
+  xxs: 480 # Smaller than ...
   xs: 768
   sm: 992
   md: 1200

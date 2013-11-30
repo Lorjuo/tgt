@@ -22,7 +22,7 @@ class TrainingUnit < ActiveRecord::Base
   end
 
   def time
-    I18n.t "general.time.range", :begin => I18n.l(time_begin, format: :time_short), :end => I18n.l(time_end, format: :time_short)
+    I18n.t "general.time_formats.range", :begin => I18n.l(time_begin, format: :time_short), :end => I18n.l(time_end, format: :time_short)
   end
 
   def display_week_day

@@ -22,10 +22,10 @@ en:
     summer: Summer
     winter: Winter
 
-    time:
+    time_formats:
       range: "%{begin}-%{end} o'clock"
 
-    age:
+    age_formats:
       range: '%{begin}-%{end} years'
       begin: 'over %{begin} years'
       end: 'to %{end} years'
