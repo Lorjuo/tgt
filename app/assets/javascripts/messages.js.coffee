@@ -1,5 +1,5 @@
 $ ->
-  $("#messages_data_table").dataTable $.extend(datatablesDefaults, datatablesSearchable, datatablesResponsive,
+  $("#messages_data_table").dataTable $.extend({}, datatablesDefaults, datatablesSearchable, datatablesResponsive,
 
     bServerSide: true #für Ajax
     aaSorting: [[ 1, "asc" ]]

@@ -34,6 +34,7 @@ window.datatablesDefaults =
     bSortable: false
     aTargets: ["no-sort"] # Prevent sorting by these rows
   ]
+  bDestroy: true
   # For html column filtering: http://datatables.net/plug-ins/filtering#functions
 
 window.datatablesPageable =
@@ -78,6 +79,6 @@ window.breakpointDefinition =
 
 # Attach onload actions
 $ ->
-  $('.datatable.defaults').dataTable $.extend( datatablesDefaults, datatablesResponsive )
-  $('.datatable.pageable').dataTable $.extend( datatablesDefaults, datatablesPageable, datatablesResponsive )
-  $('.datatable.searchable').dataTable $.extend( datatablesDefaults, datatablesSearchable, datatablesResponsive )
+  $('.datatable.defaults').dataTable $.extend( {}, datatablesDefaults, datatablesResponsive )
+  $('.datatable.pageable').dataTable $.extend( {}, datatablesDefaults, datatablesPageable, datatablesResponsive )
+  $('.datatable.searchable').dataTable $.extend( {}, datatablesDefaults, datatablesSearchable, datatablesResponsive )
