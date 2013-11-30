@@ -140,18 +140,24 @@ div.mediaContainer {
     @extend .col-md-4;
     @extend .col-sm-6;
     @extend .col-xs-12;
+    @media (max-width: $screen-xs-max) {
+      padding: 0;
+    }
   }
 
   &.large {
     @extend .col-md-6;
     @extend .col-sm-6;
     @extend .col-xs-12;
+    @media (max-width: $screen-xs-max) {
+      padding: 0;
+    }
   }
 
   &.full {
     @extend .col-md-12;
-    @extend .col-sm-12;
-    @extend .col-xs-12;
+    //@extend .col-sm-12;
+    //@extend .col-xs-12;
   }
 
   &, &.small, &.medium, &.large, &.full {
