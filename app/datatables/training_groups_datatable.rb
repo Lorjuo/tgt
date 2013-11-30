@@ -47,6 +47,8 @@ private
         end
       end
 
+      # TODO: make authorization dependent on actual object
+
       array
     end
   end

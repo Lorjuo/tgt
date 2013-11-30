@@ -10,11 +10,11 @@
   <table class="table table-bordered table-striped datatable searchable">
     <thead>
       <tr>
-        <th>Username</th>
-        <th class="no-sort">Email</th>
-        <th class="no-sort">Rollen</th>
+        <th data-class="expand">Username</th>
+        <th class="no-sort" data-hide="xs">Email</th>
+        <th class="no-sort" data-hide="xs">Rollen</th>
         <% if can? :update, User %>
-          <th class="no-sort">Aktionen</th>
+          <th class="no-sort"><%= t "general.actions" %></th>
         <% end %>
       </tr>
     </thead>

@@ -33,7 +33,11 @@
         <dd><%= @trainer.phone %></dd>
 
         <dt><%= Trainer.human_attribute_name(:email) %>:</dt>
-        <dd><%= @trainer.email %></dd>
+        <dd>
+          <%= mail_to @trainer.email, encode: "hex", :class => "email" do %>
+            <span class="glyphicon glyphicon-envelope"></span> Email
+          <% end %>
+        </dd>
 
         <dt><%= Trainer.human_attribute_name(:profession) %>:</dt>
         <dd><%= @trainer.profession %></dd>

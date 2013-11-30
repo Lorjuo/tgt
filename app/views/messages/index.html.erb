@@ -19,16 +19,12 @@
     %>">
     <thead>
       <tr>
-        <th></th>
-        <th><%= Message.human_attribute_name(:title) %></th>
-        <th><%= Message.human_attribute_name(:content) %></th>
-        <th><%= Message.human_attribute_name(:department) %></th>
-        <th></th>
+        <th class="no-sort"></th>
+        <th data-class="expand"><%= Message.human_attribute_name(:title) %></th>
+        <th class="no-sort" data-hide="xs"><%= Message.human_attribute_name(:content) %></th>
+        <th data-hide="xs"><%= Message.human_attribute_name(:department) %></th>
         <% if can? :update, Message %>
-        <th></th>
-        <% end %>
-        <% if can? :destroy, Message %>
-        <th></th>
+          <th class="no-sort"><%= t "general.actions" %></th>
         <% end %>
       </tr>
     </thead>
@@ -41,18 +37,18 @@
         <td>
           <%= truncate(strip_tags(message.content), length: 320, omission: '') %>
         </td>
-        <td><%= message.department.name %></td>
-        <td><%= link_to t('general.show'), message %></td>
+        <td><%= link_to message.department.name, message.department, class: "pill" %></td>
         <% if can? :update, message %>
-        <td><%= link_to t('general.edit'), edit_message_path(message) %></td>
-        <% end %>
-        <% if can? :destroy, message %>
-        <td>
-          <%= link_to message, method: :delete, data: { confirm: t('general.are_you_sure') } do %>
-            <span class="glyphicon glyphicon-trash"></span>
-            <%= t('general.destroy') %>
-          <% end %>
-        </td>
+          <td>
+            <%= link_to edit_message_path(message), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
+              <%= tag :span, :class => "glyphicon glyphicon-edit" %>
+            <% end %>
+            <% if can? :destroy, message %>
+              <%= link_to message, :title => t("general.destroy"), data: { confirm: I18n.t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete do %>
+                <%= tag :span, :class => "glyphicon glyphicon-trash" %>
+              <% end %>
+            <% end %>
+          </td>
         <% end %>
       </tr>
   <% end if false %>
