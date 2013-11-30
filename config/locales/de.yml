@@ -182,7 +182,7 @@ de:
     index:
       title: Seitenübersicht
     show:
-      title: 'Seite %{name}'
+      title: '%{name}'
 
   trainers:
     index:

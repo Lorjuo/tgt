@@ -13,10 +13,10 @@
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Content</th>
-        <th>Link</th>
-        <th>Active</th>
+        <th><%= Announcement.human_attribute_name("name") %></th>
+        <th><%= Announcement.human_attribute_name("content") %></th>
+        <th><%= Announcement.human_attribute_name("link") %></th>
+        <th><%= Announcement.human_attribute_name("active") %></th>
         <th></th>
         <% if can? :update, Announcement %>
         <th></th>
@@ -36,14 +36,15 @@
         </td>
         <td><%= announcement.link %></td>
         <td><%= announcement.active %></td>
-        <td><%= link_to 'Show', announcement %></td>
+        <td><%= link_to t("general.show"), announcement %></td>
         <% if can? :update, announcement %>
-        <td><%= link_to 'Edit', edit_announcement_path(announcement) %></td>
+        <td><%= link_to t("general.edit"), edit_announcement_path(announcement) %></td>
         <% end %>
         <% if can? :destroy, announcement %>
         <td>
-          <%= link_to announcement, method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <span class="glyphicon glyphicon-trash"></span> Destroy
+          <%= link_to announcement, method: :delete, data: { confirm: t('general.are_you_sure') } do %>
+            <span class="glyphicon glyphicon-trash"></span>
+            <%= t "general.destroy" %>
           <% end %>
         </td>
         <% end %>

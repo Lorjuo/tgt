@@ -2,10 +2,10 @@
    ✔ Bug in update an model with attached image without selecting a new image (trainer, message, training group, location) -> Solved by adding :image_attributes => [:file, :id] to permit @done (13-11-05 10:58)
    ✔ Display image beside image upload field @done (13-11-11 14:26)
    ✔ Style image upload field @done (13-11-11 14:26)
-   ☐ Add Trainers in views
+   ✔ Add Trainers in views @done (13-11-30 14:51)
    ☐ Check what happens with upload temp folders
    ☐ Check if upload and image resize do work in production
-   ☐ Label method for ancient groups in i18n
+   ✔ Label method for ancient groups in i18n @done (13-11-30 14:51)
    ✔ Turbolinks Bug @done (13-11-15 14:30)
    ✔ IE Bug @done (13-11-15 14:30)
    ☐ Tinymce browser backwards bug

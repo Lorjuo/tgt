@@ -175,6 +175,12 @@ en:
     show:
       title: '%{title}'
 
+  pages:
+    index:
+      title: Listing pages
+    show:
+      title: '%{name}'
+
   trainers:
     index:
       title: Listing trainers

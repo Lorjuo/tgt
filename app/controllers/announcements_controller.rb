@@ -3,6 +3,8 @@ class AnnouncementsController < ApplicationController
 
   before_action :set_announcement, only: [:show, :edit, :update, :destroy]
 
+  layout "two_columns"
+
   # GET /announcements
   # GET /announcements.json
   def index

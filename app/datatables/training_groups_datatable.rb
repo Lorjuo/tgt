@@ -70,7 +70,7 @@ private
     end
 
     if params[:sSearch].present?
-      training_groups = training_groups.where("training_groups.name like :search or training_groups.description like :search or departments.name like :search", search: "%#{params[:sSearch]}%")
+      training_groups = training_groups.where("training_groups.name like :search or departments.name like :search", search: "%#{params[:sSearch]}%")
     end
 
     if params[:sSearch_2].present?

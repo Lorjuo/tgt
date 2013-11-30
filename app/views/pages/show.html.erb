@@ -16,15 +16,5 @@
 <% end %>
 
 <div class="window box">
-  <dl class="dl-horizontal">
-    <dt><%= Page.human_attribute_name(:name) %>:</dt>
-    <dd><%= @page.name %></dd>
-
-    <dt><%= Page.human_attribute_name(:department) %>:</dt>
-    <dd><%= @page.department_id %></dd>
-
-    <dt><%= Page.human_attribute_name(:content) %>:</dt>
-    <dd><%= @page.content %></dd>
-
-  </dl>
+  <%= raw @page.content %>
 </div>

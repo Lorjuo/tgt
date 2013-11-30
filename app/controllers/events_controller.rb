@@ -3,6 +3,8 @@ class EventsController < ApplicationController
 
   load_and_authorize_resource
 
+  layout "two_columns"
+
   # GET /events
   # GET /events.json
   def index

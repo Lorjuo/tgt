@@ -28,7 +28,7 @@ private
       array = [
         message.image.present? ? link_to(image_tag(message.image.file_url(:thumb)), message.image.file_url, :class => "fancybox") : "",
         message.title,
-        truncate(strip_tags(message.content), length: 320, omission: '...'),
+        truncate(strip_tags(message.content), length: 240, omission: '...', separator: ' '),
         link_to(message.department.name, message.department, class: "pill")#,
 
         #link_to(I18n.t('general.show'), message),

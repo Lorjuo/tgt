@@ -33,7 +33,7 @@ module TinyMCE::Rails
       "}"
       json += ",\"content_css\" : \""+path_to_stylesheet('application')+","+path_to_stylesheet('wysiwyg')+"\""
       json += "}"
-      "tinyMCE.init(#{json});".html_safe
+      "tinyMCE.init($.extend({},tinymceDefaults,#{json}));".html_safe
 
     end
     

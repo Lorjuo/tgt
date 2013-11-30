@@ -88,6 +88,7 @@
 //
 //# WYSIWYG
 //= require tinymce-jquery
+//= require tinymce_defaults
 //
 // require_tree .
 // require_directory .
