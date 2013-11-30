@@ -1,33 +1,36 @@
-<div class="page-header">
+<% content_for :title do %>
+  <%= t ".title", :name => @user.name %>
+<% end %>
+
+<% content_for :buttons do %>
   <%= link_to users_path, :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
-    Back
+    <%= t "general.list" %>
   <% end %>
   <% if can? :update, @user %>
     <%= link_to edit_user_path(@user), :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-pencil"></span>
-      Edit
+      <%= t "general.edit" %>
     <% end %>
   <% end %>
-  <h1>Show user</h1>
-</div>
+<% end %>
 
 <div class="window box">
   <dl class="dl-horizontal">
-    <dt>Name:</dt>
+    <dt><%= User.human_attribute_name(:name) %>:</dt>
     <dd><%= @user.name %></dd>
 
-    <dt>Email:</dt>
+    <dt><%= User.human_attribute_name(:email) %>:</dt>
     <dd><%= mail_to @user.email, encode: "hex", :class => "email" do %>
       <span class="glyphicon glyphicon-envelope"></span> Email
     <% end %></dd>
 
-    <dt>Roles:</dt>
+    <dt><%= User.human_attribute_name(:roles) %>:</dt>
     <dd><% @user.roles.each do |role| %>
       <div><%= role.name %></div>
     <% end %></dd>
 
-    <dt>Departments:</dt>
+    <dt><%= User.human_attribute_name(:departments) %>:</dt>
     <dd><% @user.departments.each do |department| %>
       <div><%= link_to department.name, department %></div>
     <% end %></dd>

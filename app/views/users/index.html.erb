@@ -1,18 +1,22 @@
-<div class="page-header">
+<% content_for :title do %>
+  <%= t ".title" %>
+<% end %>
+
+<% content_for :buttons do %>
   <%= link_to new_user_path, :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
-    New User
+    <%= t('general.create_model', :model => User.model_name.human ) %>
   <% end if can? :create, User %>
-  <h1>Listing users</h1>
-</div>
+<% end %>
 
 <div class="window box">
   <table class="table table-bordered table-striped datatable searchable">
     <thead>
       <tr>
-        <th data-class="expand">Username</th>
-        <th class="no-sort" data-hide="xs">Email</th>
-        <th class="no-sort" data-hide="xs">Rollen</th>
+        <th data-class="expand"><%= User.human_attribute_name(:name) %></th>
+        <th class="no-sort" data-hide="xs"><%= User.human_attribute_name(:email) %></th>
+        <th class="no-sort" data-hide="xs"><%= User.human_attribute_name(:roles) %></th>
+        <th class="no-sort" data-hide="xs,sm"><%= User.human_attribute_name(:departments) %></th>
         <% if can? :update, User %>
           <th class="no-sort"><%= t "general.actions" %></th>
         <% end %>
@@ -31,6 +35,11 @@
         </td>
         <td>
           <%= user.roles.map(&:name).join(', ') %>
+        </td>
+        <td>
+          <% user.departments.each do |department| %>
+            <%= link_to department.name, department, :class => "pill" %>
+          <% end %>
         </td>
         <% if can? :update, user %>
           <td>

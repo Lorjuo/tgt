@@ -43,11 +43,14 @@ de:
     department: Abteilung
     departments: Abteilungen
     description: Beschreibung
+    email: E-Mail
     name: Name
     first_name: Vorname
     last_name: Nachname
     link: Link
     path: Pfad
+    role: Rolle
+    roles: Rollen
     time: Uhrzeit
     trainers: Trainer
     training_groups: Trainingsgruppen
@@ -115,7 +118,6 @@ de:
         birthday: Geburstag
         residence: Wohnort
         phone: Telefon
-        email: E-Mail
         profession: Beruf / Ausbildung
         education: Trainerausbildung
         disciplines: Disziplinen
@@ -207,6 +209,12 @@ de:
     form:
       add_training_unit: Trainingseinheit hinzufügen
       remove_training_unit: Trainingseinheit entfernen
+
+  users:
+    index:
+      title: Benutzerübersicht
+    show:
+      title: 'Benutzer %{name}'
 
   layouts:
 

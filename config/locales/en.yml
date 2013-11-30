@@ -40,11 +40,14 @@ en:
     department: Department
     departments: Departments
     description: Description
+    email: E-Mail
     name: Name
     first_name: Givenname
     last_name: Surname
     link: Link
     path: Path
+    role: Role
+    roles: Roles
     time: Time
     trainers: Trainers
     training_groups: Training groups
@@ -112,7 +115,6 @@ en:
         birthday: Birthday
         residence: Residence
         phone: Phone
-        email: E-Mail
         profession: Career / Education
         education: Coaching education
         disciplines: Disciplines
@@ -196,6 +198,12 @@ en:
     form:
       add_training_unit: Add training unit
       remove_training_unit: Remove training unit
+
+  users:
+    index:
+      title: Listing users
+    show:
+      title: 'User "%{name}"'
 
   layouts:
 

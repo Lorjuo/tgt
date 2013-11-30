@@ -1,13 +1,16 @@
-<div class="page-header">
-  <%= link_to users_path, :class => 'btn btn-default' do %>
+<% content_for :title do %>
+  <%= t('general.edit_model', :model => Trainer.model_name.human ) %>
+<% end %>
+
+<% content_for :buttons do %>
+   <%= link_to users_path, :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
-    Back
+    <%= t "general.list" %>
   <% end %>
   <%= link_to @user, :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-info-sign"></span>
-    Show
+    <%= t "general.show" %>
   <% end %>
-  <h1>Editing user</h1>
-</div>
+<% end %>
 
 <%= render 'form' %>
