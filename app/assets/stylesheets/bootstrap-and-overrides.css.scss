@@ -51,13 +51,13 @@ body {
     font-size: $font-size-base * 0.9;
   }*/
 
-  @media (min-width: $screen-md-min) {
-    font-size: $font-size-base * 1.1;
-  }
-
-  /*@media (min-width: $screen-lg-min) {
+  /*@media (min-width: $screen-md-min) {
     font-size: $font-size-base * 1.1;
   }*/
+
+  @media (min-width: $screen-lg-min) {
+    font-size: $font-size-base * 1.1;
+  }
 
 }
 
