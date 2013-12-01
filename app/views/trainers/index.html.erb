@@ -38,7 +38,7 @@
               <%= tag :span, :class => "glyphicon glyphicon-edit" %>
             <% end %>
             <% if can? :destroy, trainer %>
-              <%= link_to trainer, :title => t("general.destroy"), data: { confirm: I18n.t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete do %>
+              <%= link_to trainer, :title => t("general.destroy"), data: { confirm: t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete do %>
                 <%= tag :span, :class => "glyphicon glyphicon-trash" %>
               <% end %>
             <% end %>
