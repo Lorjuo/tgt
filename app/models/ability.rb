@@ -55,7 +55,7 @@ class Ability
     can :manage, :static_page
 
     can [:schedule, :interactive_map], Location
-    can [:training_groups, :trainers, :messages, :schedule], Department
+    can [:training_groups, :trainers, :messages, :schedule, :galleries], Department
     can [:search], TrainingGroup
 
     #

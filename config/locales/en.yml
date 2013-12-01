@@ -14,6 +14,7 @@ en:
     list: List
     more: more
     search: Search
+    search_term: Search Term
     send_email: Send email
     show: Show
     time: Time
@@ -172,6 +173,8 @@ en:
   messages:
     index:
       title: Listing messages
+      sentence_department: "Only show news assigned to this department %{input}"
+      sentence_search_term: "I want to search for the following term %{input}"
     show:
       title: '%{title}'
 

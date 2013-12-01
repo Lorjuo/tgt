@@ -9,26 +9,52 @@
   <% end if can? :create, TrainingGroup %>
 <% end %>
 
+<div class="row eqme">
+  <div class="col-md-8">
+    <div class="window">
+      <div class="box" style="height: 100%">
+        <h3>
+          <span class="glyphicon glyphicon-search"></span>
+          Suche
+        </h3>
+
+        <%= simple_form_for TrainingGroup.new do |f| %>
+          <p><%= raw t ".sentence_age", :input => (f.input_field :age, :class => "input-sm", :style => "display: inline; width: 3em", :maxlength => "2") %></p>
+
+          <p><%= raw t ".sentence_departments", :input => (f.input_field :departments,
+            #:as => :check_boxes,
+            :collection => Department.specific.order(:name => :asc),
+            :label_method => :name,
+            :value_method => :id,
+            :include_blank => false,
+            :class => "chosen input-sm", :multiple => true, :style => "display: inline; width: 16em") %></p>
+
+          <p><%= raw t ".sentence_week_days", :input => (f.input_field :week_days,
+            #:as => :check_boxes,
+            :collection => I18n.t(:"date.day_names").zip((0..6).to_a),
+            :class => "chosen input-sm", :multiple => true, :style => "display: inline; width: 16em") %></p>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="window">
+      <div class="box" style="height: 100%">
+        <h3>
+          <span class="glyphicon glyphicon-download-alt"></span>
+          Flyer
+        </h3>
+        <p>Hier können Sie sich unseren aktuellen Angebotsflyer herunterladen</p>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="window box">
-
-  <%= simple_form_for TrainingGroup.new do |f| %>
-    <p><%= raw t ".sentence_age", :input => (f.input_field :age, :style => "display: inline; width: 3em", :maxlength => "2") %></p>
-
-    <p><%= raw t ".sentence_departments", :input => (f.input_field :departments,
-      #:as => :check_boxes,
-      :collection => Department.specific.order(:name => :asc),
-      :label_method => :name,
-      :value_method => :id,
-      :include_blank => false,
-      :class => "chosen", :multiple => true, :style => "display: inline; width: 16em") %></p>
-
-    <p><%= raw t ".sentence_week_days", :input => (f.input_field :week_days,
-      #:as => :check_boxes,
-      :collection => I18n.t(:"date.day_names").zip((0..6).to_a),
-      :class => "chosen", :multiple => true, :style => "display: inline; width: 16em") %></p>
-  <% end %>
-
-  <hr />
+  <h3>
+    <span class="glyphicon glyphicon-list"></span>
+    Trainingsangebote
+  </h3>
 
   <table id="training_groups_data_table"
     class="dataTable table table-bordered table-striped"

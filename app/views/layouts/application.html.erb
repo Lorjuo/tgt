@@ -23,6 +23,8 @@
 
   <div class="container">
 
+    <%= render :partial => "layouts/header" %>
+
     <% if @department.present? %>
       <%= render :partial => "layouts/department_navigation" %>
     <% end %>

@@ -14,6 +14,7 @@ de:
     list: Übersicht
     more: mehr
     search: Suche
+    search_term: Suchbegriff
     send_email: Versende E-Mail
     show: Details
     time: Uhrzeit
@@ -175,6 +176,9 @@ de:
   messages:
     index:
       title: Nachrichtenübersicht
+      title: Unsere Trainingsangebote
+      sentence_department: "Durchsuche nur Nachrichten dieser Abteilung %{input}"
+      sentence_search_term: "Ich möchte nach folgendem Begriff suchen %{input}"
     show:
       title: '%{title}'
 

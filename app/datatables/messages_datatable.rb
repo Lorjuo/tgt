@@ -72,6 +72,16 @@ private
       messages = messages.where("title like :search or content like :search or departments.name like :search", search: "%#{params[:sSearch]}%")
     end
 
+    if params[:sSearch_2].present?
+      params[:sSearch_2].split(/ /).each do |term|
+        messages = messages.where("title like :search or content like :search", search: "%#{term}%")
+      end
+    end
+
+    if params[:sSearch_3].present?
+      messages = messages.where(:department_id => params[:sSearch_3])
+    end
+
     messages = messages.order("#{sort_column} #{sort_direction}")
     messages = messages.page(page).per_page(per_page)
 

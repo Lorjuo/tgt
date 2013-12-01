@@ -1,0 +1,26 @@
+<div class="" id="header">
+  <div class="row">
+    <div class="col-md-5 left">
+      <%= image_tag "tgt-logo.png" %>
+      <div id="title">
+        <h4>Turngemeinde 1879 Traisa e.V.</h4>
+        <h4>Hier bewegt sich Mühltal!</h4>
+      </div>
+    </div>
+    <div class="col-md-4 middle">
+      <%#= image_tag "leichtathletik.png" %>
+    </div>
+    <div class="col-md-3">
+      <form action="<%= messages_path %>">
+        <div class="input-group">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </span>
+          <input type="text" name="search_term" class="form-control" placeholder="<%= t("general.search_term") %>">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

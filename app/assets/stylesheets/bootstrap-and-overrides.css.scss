@@ -21,6 +21,22 @@ $blue-lighter:           lighten(#001, 90%) !default;
 $text-color:            $blue-darker;
 /*$font-size-base:        14px;*/
 
+$border-radius-small: 0;
+$border-radius-base: 0;
+$border-radius-large: 0;
+
+/*$navbar-default-bg: #0000A0;
+$navbar-default-color: #FFFFFF;
+$navbar-default-link-color: #FFFFFF;
+$navbar-default-link-active-bg: #FFFFFF;
+$navbar-default-link-active-color: #000055;
+
+$navbar-default-brand-color: #FFFFFF;*/
+
+/*.navbar {
+  box-shadow: 2px 2px 3px 0px #333;
+}*/
+
 @import "bootstrap";
 body { padding-top: 60px !important; }
 //@import "bootstrap-responsive"; // Seems that there is no need for in bootstrap 3
@@ -124,6 +140,31 @@ form .nested-fields {
   margin-bottom: 0;
   & p {
     margin-bottom: 0;
+  }
+}
+
+#header {
+  color: white;
+  margin-bottom: 20px;
+
+  .left {
+    display: table;
+
+    img {
+      display: table-cell;
+      height: 72px;
+    }
+
+    #title {
+      display: table-cell;
+      vertical-align: top;
+    }
+  }
+
+  .middle{
+    img {
+      height: 72px;
+    }
   }
 }
 

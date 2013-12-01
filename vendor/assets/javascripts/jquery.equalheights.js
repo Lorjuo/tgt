@@ -140,6 +140,6 @@ $.fn.extend({
 
 $(function(){
   $(window).resize(function(){
-    $('.eqme>div').equalHeights();
+    $('.eqme div.window').equalHeights();
   }).trigger('resize');
 });

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default" role="menu" id="department_navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="navbar-header">
+  <!-- <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#sub_navigation">
       <span class="sr-only">Toggle navigation</span>
       <span class="icon-bar"></span>
@@ -8,11 +8,11 @@
       <span class="icon-bar"></span>
     </button>
     <%= link_to @department.name, @department, :class => "navbar-brand" %>
-  </div>
+  </div> -->
 
   <div class="collapse navbar-collapse" id="sub_navigation">
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
+      <li class="active"><%= link_to @department.name, @department, :class => "navbar-brand" %></li>
       <%= render :partial => "layouts/top_level_navigation", collection: NavigationElement.department(@department.id).roots, :as => :navigation_element %>
     </ul>
   </div>
