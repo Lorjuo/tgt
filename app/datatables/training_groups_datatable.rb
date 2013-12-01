@@ -62,7 +62,7 @@ private
   def fetch_training_groups
 
     training_groups = TrainingGroup.joins("LEFT OUTER JOIN departments ON training_groups.department_id = departments.id")
-    training_groups = training_groups.joins(:training_units) # Cannot include this table, because search conditions prevent showing all units
+    training_groups = training_groups.includes(:training_units) # Cannot include this table, because search conditions prevent showing all units
     training_groups = training_groups.includes(:image)
 
     if @department_id.present?

@@ -61,5 +61,5 @@ namespace :deploy do
   task :copy_nondigest_assets, roles: :app do
     run "cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} tgt:copy_nondigest_assets"
   end
-  after 'deploy:assets:precompile', 'copy_nondigest_assets'
+  #after 'deploy:assets:precompile', 'copy_nondigest_assets'
 end
