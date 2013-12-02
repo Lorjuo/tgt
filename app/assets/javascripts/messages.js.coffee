@@ -1,6 +1,6 @@
 $ ->
   tableContainer = $("#messages_data_table")
-  tableContainer.dataTable $.extend({}, datatablesDefaults, datatablesSearchable, datatablesResponsive,
+  tableContainer.dataTable $.extend({}, datatablesDefaults, datatablesPageable, datatablesResponsive,
 
     bServerSide: true #für Ajax
     aaSorting: [[ 1, "asc" ]]
