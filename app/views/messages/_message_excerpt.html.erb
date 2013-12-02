@@ -11,7 +11,7 @@
     <%= content_tag :div, :class => "message-image col-md-3 col-xs-5" do %>
       <%# holder_tag '260x180', 'Image', 'gray', :class => 'holder' %>
       <!-- <img src="http://placehold.it/260x180" width="100%" /> -->
-      <%= link_to(image_tag(message.image.file_url(:_260x180), :class => "img-responsive"), message.image.file_url, :class => "fancybox", :rel => 'messages', :caption => message.title) %>
+      <%= link_to(image_tag(message.image.file_url(:_260x180), :class => "img-responsive", size: "260x180"), message.image.file_url, :class => "fancybox", :rel => 'messages', :caption => message.title) %>
     <% end if message.image.present? %>
     <%= content_tag :div,
       :class => (message.image.present? ? "col-md-9 col-xs-7" : "col-md-12 col-xs-12") do %>

@@ -1,5 +1,5 @@
 <tr>
-  <td><%= link_to(image_tag(training_group.image.file_url(:thumb)), training_group.image.file_url, :class => "fancybox") if training_group.image.present? %></td>
+  <td><%= link_to(image_tag(training_group.image.file_url(:thumb), size: "64x48"), training_group.image.file_url, :class => "fancybox") if training_group.image.present? %></td>
   <td><%= link_to training_group.name, training_group %></td>
   <td>
     <%= truncate(strip_tags(training_group.description), length: 100, omission: '...') %>

@@ -15,52 +15,50 @@
   <% end %>
 <% end %>
 
-<div class="row">
-  <div class="col-md-12 window">
-    <div class="box">
-      <div class="row">
-        <div class="col-md-8">
-          <h3>
-            <span class="glyphicon glyphicon-align-left"></span>
-            <%= TrainingGroup.human_attribute_name(:description) %>
-          </h3>
-          <%= raw @training_group.description %>
-        </div>
-        <div class="col-md-4">
-          <h3>
-            <span class="glyphicon glyphicon-picture"></span>
-            <%= t ".picture" %>
-          </h3>
-          <%= link_to(image_tag(@training_group.image.file_url(:_260x180), :class => "img-responsive"), @training_group.image.file_url, :class => "fancybox") if @training_group.image.present? %>
-        </div>
+<div class="window">
+  <div class="box">
+    <div class="row">
+      <div class="col-md-8">
+        <h3>
+          <span class="glyphicon glyphicon-align-left"></span>
+          <%= TrainingGroup.human_attribute_name(:description) %>
+        </h3>
+        <%= raw @training_group.description %>
+      </div>
+      <div class="col-md-4">
+        <h3>
+          <span class="glyphicon glyphicon-picture"></span>
+          <%= t ".picture" %>
+        </h3>
+        <%= link_to(image_tag(@training_group.image.file_url(:_260x180), :class => "img-responsive"), @training_group.image.file_url, :class => "fancybox") if @training_group.image.present? %>
       </div>
     </div>
+  </div>
 
-    <div class="box">
-      <div class="row">
-        <div class="col-md-6">
-          <h3>
-            <span class="glyphicon glyphicon-info-sign"></span>
-            <%= t ".info" %>
-          </h3>
-          <dl>
-            <dt><%= TrainingGroup.human_attribute_name(:department) %>:</dt>
-            <dd><%= link_to @training_group.department.name, @training_group.department, :class => "pill" %></dd>
+  <div class="box">
+    <div class="row">
+      <div class="col-md-6">
+        <h3>
+          <span class="glyphicon glyphicon-info-sign"></span>
+          <%= t ".info" %>
+        </h3>
+        <dl>
+          <dt><%= TrainingGroup.human_attribute_name(:department) %>:</dt>
+          <dd><%= link_to @training_group.department.name, @training_group.department, :class => "pill" %></dd>
 
-            <dt><%= TrainingGroup.human_attribute_name(:age) %>:</dt>
-            <dd><%= @training_group.display_age %></dd>
-          </dl>
-        </div>
+          <dt><%= TrainingGroup.human_attribute_name(:age) %>:</dt>
+          <dd><%= @training_group.display_age %></dd>
+        </dl>
+      </div>
 
-        <div class="col-md-6">
-          <h3>
-            <span class="glyphicon glyphicon-user"></span>
-            <%= Trainer.model_name.human(:count => :lots) %>
-          </h3>
-          <% @training_group.trainers.each do |trainer| %>
-            <%= link_to trainer.name, trainer, :class => "pill" %>
-          <% end %>
-        </div>
+      <div class="col-md-6">
+        <h3>
+          <span class="glyphicon glyphicon-user"></span>
+          <%= Trainer.model_name.human(:count => :lots) %>
+        </h3>
+        <% @training_group.trainers.each do |trainer| %>
+          <%= link_to trainer.name, trainer, :class => "pill" %>
+        <% end %>
       </div>
     </div>
   </div>
@@ -68,7 +66,7 @@
 
 <div class="row">
   <div class="col-md-12">
-    <div class="box window">
+    <div class="window box">
       <h3>
         <span class="glyphicon glyphicon-calendar"></span>
         <%= TrainingGroup.human_attribute_name(:training_units) %>

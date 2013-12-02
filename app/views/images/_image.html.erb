@@ -2,7 +2,7 @@
   <div class="thumbnail">
     <%# link_to(image_tag(image.file_url(:_260x180)), image) if image.file._260x180.present? %>
     <div class="image-wrapper">
-      <%= link_to(image.file_url, :class => 'fancybox', :rel => 'group', :caption => image.name) do %>
+      <%= link_to(image.file_url, :class => 'fancybox', size: "260x180", :rel => 'group', :caption => image.name) do %>
         <%= image_tag(image.file_url(:_260x180)) %>
       <% end if image.file._260x180.present? %>
       <% if can?(:edit, image.attachable) %>
