@@ -56,7 +56,7 @@
   <% @messages.each do |message| %>
       <tr>
         <td><%= link_to(image_tag(message.image.file_url(:thumb)), message.image.file_url, :class => "fancybox") if message.image.present? %></td>
-        <td><%= message.title %></td>
+        <td><%= link_to message.title, message %></td>
         <td>
           <%= truncate(strip_tags(message.content), length: 240, omission: '', separator: ' ') %>
         </td>
