@@ -166,7 +166,7 @@ end
 group :development do
   # Use Capistrano for deployment
   # gem 'capistrano', group: :development
-  gem 'capistrano'
+  gem 'capistrano', '~> 2.1'
   gem 'capistrano-ext'
   gem 'rvm-capistrano'
   
