@@ -15,7 +15,7 @@
     Suche
   </h3>
 
-  <%= simple_form_for Message.new do |f| %>
+  <%= simple_form_for Message.new, :html => { :class => "ajax_form" } do |f| %>
     <p><%= raw t ".sentence_search_term", :input => (f.input_field :search_term, :class => "input-sm", :style => "display: inline; width: 16em", :placeholder => t("general.search_term"), :value => params[:search_term]) %></p>
 
     <p><%= raw t ".sentence_department", :input => (f.input_field :department,
@@ -31,7 +31,7 @@
 <div class="window box">
   <h3>
     <span class="glyphicon glyphicon-list"></span>
-    Nachrichten
+    <%= Message.model_name.human %>
   </h3>
   <table id="messages_data_table"
     class="dataTable table table-bordered table-striped"

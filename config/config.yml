@@ -5,6 +5,9 @@ defaults: &defaults
     start: 8 # start hour of schedule
     end: 22 # end hour of schedule
     step_size: 30 # step size in minutes
+  header:
+    title: Turngemeinde 1879 Traisa e.V.
+    subtitle: Wir bewegen Mühltal!
 
 development:
   <<: *defaults

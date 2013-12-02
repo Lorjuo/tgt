@@ -31,7 +31,7 @@
       <tr>
         <td><%= page.name %></td>
         <td><%= page.department_id %></td>
-        <td><%= page.content %></td>
+        <td><%= truncate(strip_tags(page.content), length: 240, omission: '', separator: ' ') %></td>
         <td><%= link_to link_to t('general.show'), page %></td>
         <% if can? :update, page %>
         <td><%= link_to link_to t('general.edit'), edit_page_path(page) %></td>

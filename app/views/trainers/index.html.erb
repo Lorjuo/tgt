@@ -14,8 +14,8 @@
     <thead>
       <tr>
         <th class="no-sort"></th>
-        <th><%= Trainer.human_attribute_name(:name) %></th>
-        <th class="no-sort"><%= Trainer.human_attribute_name(:training_groups) %></th>
+        <th data-class="expand"><%= Trainer.human_attribute_name(:name) %></th>
+        <th data-hide="xxs,xs,sm" class="no-sort"><%= Trainer.human_attribute_name(:training_groups) %></th>
         <% if can? :update, User %>
           <th class="no-sort">Aktionen</th>
         <% end %>

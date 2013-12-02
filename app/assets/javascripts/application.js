@@ -59,6 +59,9 @@
 //
 //# File Upload Button
 //= require fileupload_button
+//
+//# Forms
+//= require ajax_forms
 // 
 //# Input Elements
 //# Chosen

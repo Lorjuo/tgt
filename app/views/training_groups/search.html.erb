@@ -18,7 +18,7 @@
           Suche
         </h3>
 
-        <%= simple_form_for TrainingGroup.new do |f| %>
+        <%= simple_form_for TrainingGroup.new, :html => { :class => "ajax_form" }  do |f| %>
           <p><%= raw t ".sentence_age", :input => (f.input_field :age, :class => "input-sm", :style => "display: inline; width: 3em", :maxlength => "2") %></p>
 
           <p><%= raw t ".sentence_departments", :input => (f.input_field :departments,
@@ -53,7 +53,7 @@
 <div class="window box">
   <h3>
     <span class="glyphicon glyphicon-list"></span>
-    Trainingsangebote
+    <%= TrainingGroup.model_name.human %>
   </h3>
 
   <table id="training_groups_data_table"
