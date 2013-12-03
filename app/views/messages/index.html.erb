@@ -31,7 +31,7 @@
 <div class="window box">
   <h3>
     <span class="glyphicon glyphicon-list"></span>
-    <%= Message.model_name.human %>
+    <%= Message.model_name.human(:count => :lots) %>
   </h3>
   <table id="messages_data_table"
     class="dataTable table table-bordered table-striped"

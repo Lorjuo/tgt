@@ -47,7 +47,7 @@ gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
   #gem 'bootstrap-generators' # Only needed for first installation? - Afterwards it leads to conflicts
 
 # Date
-gem 'validates_timeliness', '~> 3.0'
+gem 'validates_timeliness'
 
 # Database
 gem 'mysql2'
@@ -86,7 +86,7 @@ gem "font-awesome-rails"
 
 # Image Processing
 gem 'mini_magick'
-gem 'fancybox2-rails', '~> 0.2.4'
+gem 'fancybox2-rails', '~> 0.2'
 
 # Input Elements
   # Datepicker
@@ -134,7 +134,7 @@ gem 'awesome_nested_set', github: 'huoxito/awesome_nested_set', branch: 'rails4'
 gem 'the_sortable_tree'#, '~> 2.3.0'
 
 # Url
-gem 'friendly_id', '5.0.0.rc2' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
+gem 'friendly_id' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 
 # Validators
 gem 'valid_email'

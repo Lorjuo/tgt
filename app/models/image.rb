@@ -1,5 +1,8 @@
 class Image < ActiveRecord::Base
 
+  # Note: Alternative approach:
+  # http://rails-bestpractices.com/posts/45-use-sti-and-polymorphic-model-for-multiple-uploads
+
   # Associations
   belongs_to :attachable, polymorphic: true
 
