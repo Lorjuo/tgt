@@ -1,11 +1,11 @@
 <div class="window box">
-  <h3>Sportangebot</h3>
-  <p>Zu unserem Sportangebot gelangen Sie <%= link_to "hier", search_training_groups_path %></p>
+  <h3><%= t ".training_offer" %></h3>
+  <p><%= raw t(".training_offer_sentence", :link => link_to(t("general.here"), search_training_groups_path)) %></p>
 </div>
 <div class="window">
   <%= render :partial => 'messages/message_excerpt', :collection => @messages, :as => :message %>
 </div>
 <div class="window box">
-  <h3>News Archiv</h3>
-  <p><%= link_to "Hier", messages_path %> gelangen sie zu vergangenen Nachrichtigen in unserem Archiv</p>
+  <h3><%= t ".news_archive" %></h3>
+  <p><%= raw t(".news_archive_sentence", :link => link_to(t("general.here").capitalize, messages_path)) %></p>
 </div>

@@ -11,6 +11,7 @@ en:
     edit: Edit
     edit_model: "Edit %{model}"
     editing: Editing
+    here: here
     list: List
     more: more
     search: Search
@@ -184,6 +185,13 @@ en:
     show:
       title: '%{name}'
 
+  static_pages:
+    home: 
+      news_archive: News Archive
+      news_archive_sentence: '%{link} you can access our News Archive'
+      training_offer: Sports Programme
+      training_offer_sentence: 'Our sports courses can be accessed %{link}'
+
   trainers:
     index:
       title: Listing trainers
@@ -195,11 +203,15 @@ en:
   training_groups:
     index:
       title: Listing training groups
+
     search:
       title: Search our groups
+      flyer: Flyer
+      flyer_sentence: "%{link} you can download our actual Training Programme as a Flyer"
       sentence_age: "I am %{input} years old"
       sentence_departments: "I want to actuate in the following departments %{input}"
       sentence_week_days: "I have time on the following days %{input}"
+
     show:
       title: 'Training group "%{name}"'
       info: General information

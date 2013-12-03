@@ -11,6 +11,7 @@ de:
     edit: Bearbeiten
     edit_model: "%{model} bearbeiten"
     editing: Bearbeite
+    here: hier
     list: Übersicht
     more: mehr
     search: Suche
@@ -176,7 +177,6 @@ de:
   messages:
     index:
       title: Nachrichtenübersicht
-      title: Unsere Trainingsangebote
       sentence_department: "Durchsuche nur Nachrichten dieser Abteilung %{input}"
       sentence_search_term: "Ich möchte nach folgendem Begriff suchen %{input}"
     show:
@@ -187,6 +187,13 @@ de:
       title: Seitenübersicht
     show:
       title: '%{name}'
+
+  static_pages:
+    home:
+      news_archive: Nachrichten Archiv
+      news_archive_sentence: '%{link} gelangen Sie zu unserem Nachrichten Archiv'
+      training_offer: Sportangebot
+      training_offer_sentence: 'Zu unserem Sportangebot gelangen Sie %{link}'
 
   trainers:
     index:
@@ -202,6 +209,8 @@ de:
 
     search:
       title: Unsere Trainingsangebote
+      flyer: Flyer
+      flyer_sentence: "%{link} hier können Sie sich unser aktuelles Trainingsangebot herunterladen"
       sentence_age: "Ich bin %{input} Jahre alt"
       sentence_departments: "Ich möchte in folgenden Abteilungen aktiv sein %{input}"
       sentence_week_days: "Ich habe an folgenden Wochentagen Zeit %{input}"

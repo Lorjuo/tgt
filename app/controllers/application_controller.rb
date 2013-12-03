@@ -34,9 +34,9 @@ class ApplicationController < ActionController::Base
     params[:user][:referring_page] || super
   end
 
-  def after_sign_out_path_for(resource_or_scope)
-    params[:referring_page] || super
-  end
+  # def after_sign_out_path_for(resource_or_scope)
+  #   params[:referring_page] || super
+  # end
 
   def _miniprofiler
     if %w(development staging).include?(Rails.env)

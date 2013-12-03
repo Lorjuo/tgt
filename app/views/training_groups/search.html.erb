@@ -8,7 +8,7 @@
       <div class="box" style="height: 100%">
         <h3>
           <span class="glyphicon glyphicon-search"></span>
-          Suche
+          <%= t "general.search" %>
         </h3>
 
         <%= simple_form_for TrainingGroup.new, :html => { :class => "ajax_form" }  do |f| %>
@@ -36,9 +36,9 @@
       <div class="box" style="height: 100%">
         <h3>
           <span class="glyphicon glyphicon-download-alt"></span>
-          Flyer
+          <%= t ".flyer" %>
         </h3>
-        <p>Hier können Sie sich unseren aktuellen Angebotsflyer herunterladen</p>
+          <p><%= raw t(".flyer_sentence", :link => link_to(t("general.here").capitalize, "#")) %></p>
       </div>
     </div>
   </div>
