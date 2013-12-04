@@ -7,6 +7,10 @@ class Message < ActiveRecord::Base
   belongs_to :department
   has_one :image, :as => :attachable, :class_name => '::Image', :dependent => :destroy
 
+  has_many :references
+  has_many :galleries, :through => :references, :source => :reference_to, :source_type => 'Gallery'
+  has_many :documents, :through => :references, :source => :reference_to, :source_type => 'Document'
+
   accepts_nested_attributes_for :image, allow_destroy: true
 
   #Scopes

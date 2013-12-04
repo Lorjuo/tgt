@@ -48,5 +48,6 @@
     <div class="messageContent">
       <%= raw @message.content %>
     </div>
+    <%= render :partial => "shared/references_to", :locals => { references: @message.references } %>
   </div>
 </div>

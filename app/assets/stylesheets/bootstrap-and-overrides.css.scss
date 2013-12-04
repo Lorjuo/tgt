@@ -81,6 +81,29 @@ body {
     line-height: 125%;
 }*/
 
+a.decent {
+  color: $text-color;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+ul.references {
+  @extend .list-unstyled;
+  li {
+    a {
+      font-weight: bold;
+      &:hover {
+        color: #FA7D19;
+      }
+    }
+    .type {
+      font-weight: bold;
+      color: #FA7D19;
+    }
+  }
+}
+
 .window {
   margin-bottom: 10px;
   /*background-color: #ffffff;*/

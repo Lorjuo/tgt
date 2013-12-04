@@ -14,6 +14,8 @@ de:
     here: hier
     list: Übersicht
     more: mehr
+    reference: Verknüpfung
+    references: Verknüpfungen
     search: Suche
     search_term: Suchbegriff
     send_email: Versende E-Mail
@@ -45,7 +47,11 @@ de:
     department: Abteilung
     departments: Abteilungen
     description: Beschreibung
+    document: Dokument
+    documents: Dokumente
     email: E-Mail
+    gallery: Fotogalerie
+    galleries: Fotogalerien
     name: Name
     first_name: Vorname
     last_name: Nachname
@@ -68,6 +74,9 @@ de:
       department:
         one: Abteilung
         other: Abteilungen
+      document:
+        one: Dokument
+        other: Dokumente
       event:
         one: Veranstaltung
         other: Veranstaltungen

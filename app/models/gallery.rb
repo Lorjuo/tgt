@@ -4,6 +4,9 @@ class Gallery < ActiveRecord::Base
   belongs_to :department
   has_many :images, :as => :attachable, :class_name => '::Image', dependent: :destroy
   belongs_to :preview_image, :class_name => '::Image'
+  
+  has_many :references, :as => :reference_to # polymorphic
+  has_many :messages, :through => :references
 
   accepts_nested_attributes_for :images, allow_destroy: true
 

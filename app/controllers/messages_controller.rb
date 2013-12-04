@@ -83,7 +83,8 @@ class MessagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def message_params
-      params.require(:message).permit(:title, :content, :department_id, :image_attributes => [:file, :id])
+      params.require(:message).permit(:title, :content, :department_id, :image_attributes => [:file, :id],
+        :gallery_ids => [], :document_ids => [])
       # :file needed when upload a new image
       # :id needed when fileupload is empty
     end

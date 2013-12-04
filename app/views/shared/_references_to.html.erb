@@ -1,0 +1,10 @@
+<ul class="references">
+  <% references.each do |reference| %>
+    <li>
+      <%= content_tag :span, reference.reference_to.class.model_name.human, :class => "type" %>
+      <%= link_to reference.reference_to, :class => "decent" do  -%>
+        <%= reference.reference_to.name -%><%- end -%><%= ',' -%>
+      <%= content_tag :span, localize( reference.reference_to.created_at.to_date, :format => :long ), :class => "date" %>
+    </li>
+  <% end %>
+</ul>

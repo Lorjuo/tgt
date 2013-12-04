@@ -14,6 +14,8 @@ en:
     here: here
     list: List
     more: more
+    reference: Reference
+    references: References
     search: Search
     search_term: Search Term
     send_email: Send email
@@ -42,7 +44,11 @@ en:
     department: Department
     departments: Departments
     description: Description
+    document: Document
+    documents: Documents
     email: E-Mail
+    gallery: Photogallery
+    galleries: Photogalleries
     name: Name
     first_name: Givenname
     last_name: Surname
@@ -64,7 +70,10 @@ en:
         other: Announcements
       department:
         one: Department
-        other: Departments        
+        other: Departments
+      document:
+        one: Document
+        other: Documents
       event:
         one: Event
         other: Events

@@ -24,6 +24,7 @@
         <%= truncate(strip_tags(message.content), length: 320, omission: '', :separator => ' ') %>
         <%= link_to "...#{t 'general.more'}", message, :class => 'btn-link' %>
       </div>
+      <%#= render :partial => "shared/references_to", :locals => { references: message.references } %>
     <% end %>
   </div>
 </div>
