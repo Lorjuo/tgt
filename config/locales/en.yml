@@ -8,8 +8,10 @@ en:
     create: Create
     create_model: "Create %{model}"
     destroy: Delete
+    destroy_selected: Delete selected
     edit: Edit
     edit_model: "Edit %{model}"
+    edit_selected: Edit selected
     editing: Editing
     here: here
     list: List
@@ -19,8 +21,11 @@ en:
     search: Search
     search_term: Search Term
     send_email: Send email
+    select_all: Select all
     show: Show
     time: Time
+    time_from: from
+    time_to: to
     update: Update
 
     summer: Summer

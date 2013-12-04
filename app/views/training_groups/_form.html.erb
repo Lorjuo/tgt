@@ -42,7 +42,7 @@
       <div class="col-md-12">
         <h3>
           <span class="glyphicon glyphicon-calendar"></span>
-          Trainingseinheiten
+          <%= TrainingUnit.model_name.human(:count => :lots) %>
         </h3>
         <div id="insertionNode" class="row">
           <%= f.simple_fields_for :training_units do |unit_form| %>

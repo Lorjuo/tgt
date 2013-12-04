@@ -60,6 +60,7 @@ class ImagesController < ApplicationController
   # PATCH/PUT /images/1.json
   def update
     respond_to do |format|
+      debugger
       if @image.update(image_params)
         format.html { redirect_to @image, notice: 'Image was successfully updated.' }
         format.json { head :no_content }
@@ -74,18 +75,40 @@ class ImagesController < ApplicationController
   # DELETE /images/1.json
   def destroy
     @image = Image.find(params[:id])
-    store_dir = @image.file.store_dir
     @image.destroy
-
-    # Remove folder
-    FileUtils.remove_dir("#{Rails.root}/public/#{store_dir}", :force => true)
-    # Use this to remove a non empty folder
-    # FileUtils.rm_rf("#{Rails.root}/public/#{store_dir}")
 
     respond_to do |format|
       format.html { redirect_to images_url }
       format.json { head :no_content }
     end
+  end
+  
+  def edit_multiple
+
+    if params[:commit] == 'Destroy'
+      @images = Image.find(params[:image_ids])
+      @images.each { |image| Image.destroy(image.id) }
+      redirect_to images_path
+    end
+
+    @images = Image.find(params[:image_ids])
+  end
+
+  def update_multiple
+    @images = Image.update(params[:images].keys, params[:images].values)
+    @images.reject! { |p| p.errors.empty? }
+    if @images.empty?
+      redirect_to images_url
+    else
+      render "edit_multiple"
+    end
+    # @images = []
+    # params[:images].each do |id, param|
+    #   @image = Image.find(id)
+    #   @image.update!(param)
+    #   @images.push @image
+    # end
+    # render "edit_multiple"
   end
 
   private

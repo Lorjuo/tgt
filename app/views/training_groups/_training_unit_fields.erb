@@ -8,7 +8,7 @@
 
     <div class="form-group time_picker optional training_group_training_units_time">
       <label class="time_picker optional col-lg-3 control-label">
-        Zeit
+        <%= t "general.time" %>
       </label>
       <div class="col-lg-9">
         <div class="row">
@@ -16,7 +16,7 @@
             <%= f.input_field :time_begin, :as => :time_picker %>
           </div>
           <div class="col-md-2" style="padding-top: 7px; text-align: center">
-            bis
+            <%= t "general.time_to" %>
           </div>
           <div class="col-md-5">
             <%= f.input_field :time_end, :as => :time_picker %>

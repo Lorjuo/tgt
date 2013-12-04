@@ -1,0 +1,35 @@
+<% content_for :title do %>
+  <%= t('general.edit_model', :model => Image.model_name.human(:count => :lots) ) %>
+<% end %>
+
+<div class="window box">
+
+  <h3>
+    <span class="glyphicon glyphicon-calendar"></span>
+    <%= Image.model_name.human(:count => :lots) %>
+  </h3>
+
+  <%#= simple_form_for([@parent, @image], :defaults => { :input_html => { :class => 'input-xlarge' } }) do |f| %>
+  <%= simple_form_for :image, :url => update_multiple_images_path, method: :post, :html => {:multipart => true} do |form| %>
+    <div class="row">
+      <% @images.each do |image| %>
+        <fieldset class="col-md-6 nested-fields">
+          <div class="wrapper">
+            <!--<label><%= image.name %></label>-->
+            <%= simple_fields_for "images[]", image do |f| %>
+            <%#= simple_fields_for image do |f| %>
+              <%= f.input :name %>
+              <%#= f.file_field :file %>
+              <%= render 'images/image_selector', f:f, image:image %>
+            <% end %>
+          </div>
+        </fieldset>
+      <% end %>
+    </div>
+      
+    <div class="form-actions">
+      <%= form.button :submit, t("helpers.submit.update", :model => Image.model_name.human(:count => :lots)), :class => "btn btn-primary" %>
+      <%#= form.button :submit, :class => "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

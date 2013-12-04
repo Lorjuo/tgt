@@ -10,7 +10,10 @@ TgtRefurbished::Application.routes.draw do
 
   resources :documents
 
-  resources :images
+  resources :images do
+    get :edit_multiple, on: :collection
+    post :update_multiple, on: :collection
+  end
 
   resources :locations do
     collection do

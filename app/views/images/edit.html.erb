@@ -2,7 +2,6 @@
   <%= t('general.edit_model', :model => Image.model_name.human ) %>
 <% end %>
 
-
 <% content_for :buttons do %>
   <%= link_to polymorphic_path([@image.attachable, Image]), :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>

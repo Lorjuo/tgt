@@ -79,6 +79,8 @@
 //= require cocoon
 //= require nested_forms_loader
 //
+//# Select
+//= require select
 //# Sortable Tree
 //= require jquery.ui.nestedSortable
 //= require sortable_tree/initializer
