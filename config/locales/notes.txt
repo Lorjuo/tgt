@@ -27,3 +27,15 @@
 # Sample
 # https://gist.github.com/rbarazi/360824
 # http://books.google.de/books?id=KdvTAAAAQBAJ&pg=PA257&lpg=PA257&dq=en.yml+github&source=bl&ots=UcY8a97FkB&sig=l47lklzxlqOOaVy_nzcG9-I41hU&hl=de&sa=X&ei=1PGBUo7eIdHAtAaZ04G4Dg&ved=0CD8Q6AEwAjgU#v=onepage&q=en.yml%20github&f=false
+
+
+Relations:
+
+Has_relation:
+https://gist.github.com/Squeegy/123966
+
+Reverse polymorphic:
+https://gist.github.com/runemadsen/1242485
+
+STI and polymorphic:
+http://rails-bestpractices.com/posts/45-use-sti-and-polymorphic-model-for-multiple-uploads

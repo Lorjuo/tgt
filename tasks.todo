@@ -9,6 +9,11 @@
    ✔ Turbolinks Bug @done (13-11-15 14:30)
    ✔ IE Bug @done (13-11-15 14:30)
    ☐ Tinymce browser backwards bug
+   ☐ Create references between media types
+   ☐ Add multi select and edit for galleries
+   ☐ Add schedule for departments
+   ☐ Add documents objects
+   ☐ Refactor navigation
  Heroku:
    ☐ config.assets.initialize_on_precompile = false
    ☐ Heroku Assets do not work
