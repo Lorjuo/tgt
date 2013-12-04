@@ -89,16 +89,23 @@ a.decent {
 
 ul.references {
   @extend .list-unstyled;
+  border-top: 1px solid $blue-darker;
+  margin: 20px 0px;
   li {
+    border-bottom: 1px solid $blue-darker;
     a {
-      font-weight: bold;
+      display: block;
+      padding: 3px 0px;
       &:hover {
-        color: #FA7D19;
+        background-image: linear-gradient(to top, white, #F2F2F2);
       }
+    }
+    .title {
+      /*font-weight: bold;*/
     }
     .type {
       font-weight: bold;
-      color: #FA7D19;
+      /*color: $blue;*/
     }
   }
 }

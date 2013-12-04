@@ -23,25 +23,24 @@
     -->
 
     <%# holder_tag '260x180' %>
-    <div class="caption">
-      <!-- <p><%= image.name %></p> -->
-      <div style="text-align: center">
+    <% if can?(:edit, image) %>
+      <div class="caption">
+        <!-- <p><%= image.name %></p> -->
         <%= check_box_tag "image_ids[]", image.id %>
         <%= link_to edit_image_path(image) do %>
           <span class="glyphicon glyphicon-edit"></span>
           <%= t "general.edit" %>
-        <% end if can?(:edit, image) %>
+        <% end %>
         <%= link_to set_preview_image_gallery_path(image.attachable, :image_id => image), :method => :post do %>
           <span class="glyphicon glyphicon-star"></span>
           <%= t(".set_as_preview") %>
-        <% end if can?(:edit, image.attachable) && false %>
+        <% end if false %>
         <%= link_to image, data: { confirm: t("general.are_you_sure")}, :method => :delete do %>
           <span class="glyphicon glyphicon-trash"></span>
           <%= t "general.destroy" %>
         <% end if can?(:destroy, image) %>
-
       </div>
-    </div>
+    <% end %>
     
     <!-- Does not work, because where is no input-group-xs, but a btn-group-xs
     <!--<div class="caption">

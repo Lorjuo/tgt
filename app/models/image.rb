@@ -17,7 +17,6 @@ class Image < ActiveRecord::Base
   attr_accessor :tmp_parent_id
 
   def default_name
-    debugger
     # file.filename replaced by file.original_file
     if(self.name.blank?)
       self.name = File.basename(file.original_file, '.*').titleize if file
