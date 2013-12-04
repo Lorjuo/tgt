@@ -8,6 +8,11 @@ class TrainingGroup < ActiveRecord::Base
   has_and_belongs_to_many :trainers
   has_many :training_units
   has_one :image, :as => :attachable, :class_name => '::Image', :dependent => :destroy
+  
+  # References
+  has_many :references, :as => :reference_from # polymorphic
+  has_many :galleries, :through => :references, :source => :reference_to, :source_type => 'Gallery'
+  has_many :documents, :through => :references, :source => :reference_to, :source_type => 'Document'
 
   accepts_nested_attributes_for :training_units, :reject_if => :all_blank, allow_destroy: true
   accepts_nested_attributes_for :image, allow_destroy: true

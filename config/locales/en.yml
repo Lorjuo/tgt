@@ -2,11 +2,13 @@ en:
   general:
     actions: Actions
     add_files: Add Files...
+    ancient: Ancient
     are_you_sure: Are you sure?
     browse: Browse
     cancel: Cancel
     create: Create
     create_model: "Create %{model}"
+    current: Current
     destroy: Delete
     destroy_selected: Delete selected
     edit: Edit

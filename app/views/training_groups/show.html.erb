@@ -94,3 +94,13 @@
     </div>
   </div>
 </div>
+
+<% if @training_group.references.present? %>
+  <div class="window box">
+    <h3>
+      <span class="glyphicon glyphicon-link"></span>
+      <%= t "general.references" %>
+    </h3>
+    <%= render :partial => "shared/references_to", :locals => { references: @training_group.references } %>
+  </div>
+<% end %>

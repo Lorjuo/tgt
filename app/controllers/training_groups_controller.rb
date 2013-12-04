@@ -97,7 +97,8 @@ class TrainingGroupsController < ApplicationController
     def training_group_params
       params.require(:training_group).permit(:name, :description, :department_id, :age_begin, :age_end, :ancient, :trainer_ids => [],
         :training_units_attributes => [:id, :week_day, :time_begin, :time_end, :location_summer_id, :location_winter_id, :training_group_id, :_destroy],
-        :image_attributes => [:file, :id])
+        :image_attributes => [:file, :id],
+        :gallery_ids => [], :document_ids => [])
       # http://stackoverflow.com/questions/18436741/rails-4-strong-parameters-nested-objects#answer-18437539
       # https://github.com/nathanvda/cocoon
     end
