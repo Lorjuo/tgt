@@ -72,9 +72,10 @@ class ApplicationController < ActionController::Base
 
   # Apply strong_parameters filtering before CanCan authorization
   # See https://github.com/ryanb/cancan/issues/571#issuecomment-10753675
+  # updated: http://stackoverflow.com/questions/19273182/activemodelforbiddenattributeserror-cancan-rails-4-model-with-scoped-con/19504322#19504322
   def _cancan_sanitizer
   #before_filter do
-    resource = controller_name.singularize.to_sym
+    resource = controller_path.singularize.gsub('/', '_').to_sym
     method = "#{resource}_params"
     params[resource] &&= send(method) if respond_to?(method, true)
   end

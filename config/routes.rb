@@ -1,5 +1,9 @@
 TgtRefurbished::Application.routes.draw do
 
+  namespace :carnival do
+    resources :sessions
+  end
+
   resources :events
 
   resources :announcements

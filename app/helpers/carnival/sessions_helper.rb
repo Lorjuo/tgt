@@ -1,0 +1,2 @@
+module Carnival::SessionsHelper
+end

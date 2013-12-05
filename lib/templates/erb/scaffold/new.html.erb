@@ -1,5 +1,5 @@
 <%% content_for :title do %>
-  <%%= t('general.create_model', :model => <%= singular_table_name.to_s.classify %>.model_name.human ) %>
+  <%%= t('general.create_model', :model => <%= class_name %>.model_name.human ) %>
 <%% end %>
 
 <%% content_for :buttons do %>
