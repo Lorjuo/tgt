@@ -1,0 +1,34 @@
+<% content_for :title do %>
+  <%#= t ".title", :name => @carnival_reservation.name %>
+  TODO
+<% end %>
+
+<% content_for :buttons do %>
+  <%= link_to carnival_reservations_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    <%= t "general.list" %>
+  <% end %>
+  <% if can? :update, @carnival_reservation %>
+    <%= link_to edit_carnival_reservation_path(@carnival_reservation), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+      <%= t "general.edit" %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<div class="window box">
+  <dl class="dl-horizontal">
+    <dt><%= Carnival::Reservation.human_attribute_name("order_id") %>:</dt>
+    <dd><%= @carnival_reservation.order_id %></dd>
+
+    <dt><%= Carnival::Reservation.human_attribute_name("session_id") %>:</dt>
+    <dd><%= @carnival_reservation.session_id %></dd>
+
+    <dt><%= Carnival::Reservation.human_attribute_name("category_id") %>:</dt>
+    <dd><%= @carnival_reservation.category_id %></dd>
+
+    <dt><%= Carnival::Reservation.human_attribute_name("amount") %>:</dt>
+    <dd><%= @carnival_reservation.amount %></dd>
+
+  </dl>
+</div>

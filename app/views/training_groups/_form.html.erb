@@ -1,7 +1,7 @@
 <div class="window box">
   <%= render :partial => 'shared/elfinder_loader', :locals => { :path => "/departments/#{@training_group.department.id}" } %>
   <%= tinymce %>
-  <%= simple_form_for(shallow_args(@department, @training_group), :defaults => { :input_html => { :class => 'input-xlarge' } }) do |f| %>
+  <%= simple_form_for(shallow_args(@department, @training_group)) do |f| %>
     <%= f.error_notification %>
 
     <div class="row">
@@ -14,14 +14,14 @@
             :label_method => :name,
             :value_method => :id,
             :include_blank => false,
-            :input_html => { :class => "chosen input-xlarge"} %>
+            :input_html => { :class => "chosen"} %>
           <%= f.association :trainers,
             :as => :select,
             :collection => Trainer.order(:first_name => :asc).order(:last_name => :asc),
             :label_method => :name,
             :value_method => :id,
             :include_blank => false,
-            :input_html => { :class => "chosen input-xlarge"} %>
+            :input_html => { :class => "chosen"} %>
           <%= f.input :age_begin, as: :integer %>
           <%= f.input :age_end, as: :integer %>
           <%= f.input :description, as: :text, input_html: { class: 'tinymce' } %>

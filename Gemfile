@@ -139,6 +139,9 @@ gem 'friendly_id' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 # Validators
 gem 'valid_email'
 
+# Wizard
+gem 'wicked'
+
 # WYSIWYG
 gem 'tinymce-rails'
 # gem 'tinymce-rails', :git => 'git://github.com/spohlenz/tinymce-rails.git', :branch => 'tinymce-4'

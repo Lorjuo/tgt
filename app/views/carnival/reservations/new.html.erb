@@ -1,9 +1,9 @@
 <% content_for :title do %>
-  <%= t('general.create_model', :model => Carnival::Session.model_name.human ) %>
+  <%= t('general.create_model', :model => Carnival::Reservation.model_name.human ) %>
 <% end %>
 
 <% content_for :buttons do %>
-  <%= link_to carnival_sessions_path, :class => 'btn btn-default' do %>
+  <%= link_to carnival_reservations_path, :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
     <%= t 'general.list' %>
   <% end %>

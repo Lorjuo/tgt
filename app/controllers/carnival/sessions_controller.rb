@@ -73,6 +73,6 @@ class Carnival::SessionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def carnival_session_params
-      params.require(:carnival_session).permit(:name, :term)
+      params.require(:carnival_session).permit(:name, :term, :category_ids => [])
     end
 end

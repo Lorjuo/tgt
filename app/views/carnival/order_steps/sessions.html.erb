@@ -1,0 +1,27 @@
+<div class="window box">
+  <%= simple_form_for(@order, :url => wizard_path, :method => :put) do |f| %>
+    <%= f.error_notification %>
+
+    <h3>
+      <span class="glyphicon glyphicon-calendar"></span>
+      Sessions
+    </h3>
+
+    <div id="insertionNode" class="row">
+      <%= f.simple_fields_for :reservations do |unit_form| %>
+        <%= render 'reservation_fields', f:unit_form %>
+      <% end %>
+    </div>
+    <%= link_to_add_association( content_tag( :span, "", :class => "glyphicon glyphicon-plus" ) + " "\
+    + "Add", f, :reservations, :class => "btn btn-default" ) %>
+
+    <div class="form-group">
+      <div class="col-lg-offset-3 col-lg-9">
+          <%= f.button :submit, :class => "btn btn-primary" %>
+      </div>
+    </div>
+
+    <%= link_to 'skip', next_wizard_path %>
+    <%= link_to 'back', previous_wizard_path %>
+  <% end %>
+</div>

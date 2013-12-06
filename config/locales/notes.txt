@@ -39,3 +39,8 @@ https://gist.github.com/runemadsen/1242485
 
 STI and polymorphic:
 http://rails-bestpractices.com/posts/45-use-sti-and-polymorphic-model-for-multiple-uploads
+
+Circular Dependency:
+Typing errors
+Restart server
+Max one mudule layer to work with cancan

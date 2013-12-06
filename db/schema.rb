@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131204234239) do
+ActiveRecord::Schema.define(version: 20131205182133) do
 
   create_table "announcements", force: true do |t|
     t.string   "name"
@@ -24,11 +24,51 @@ ActiveRecord::Schema.define(version: 20131204234239) do
     t.date     "visible_to"
   end
 
+  create_table "carnival_categories", force: true do |t|
+    t.string   "name"
+    t.integer  "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "carnival_orders", primary_key: "order_id", force: true do |t|
+    t.integer  "person_id"
+    t.string   "notice"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "carnival_people", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "street"
+    t.string   "zip"
+    t.string   "city"
+    t.string   "email"
+    t.string   "phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "carnival_reservations", force: true do |t|
+    t.integer  "order_id"
+    t.integer  "session_id"
+    t.integer  "category_id"
+    t.integer  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "carnival_sessions", force: true do |t|
     t.string   "name"
     t.datetime "term"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "carnival_sessions_categories", id: false, force: true do |t|
+    t.integer "session_id"
+    t.integer "category_id"
   end
 
   create_table "departments", force: true do |t|

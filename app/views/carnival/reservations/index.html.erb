@@ -1,0 +1,53 @@
+<% content_for :title do %>
+  <%= t ".title" %>
+<% end %>
+
+<% content_for :buttons do %>
+  <%= link_to new_carnival_reservation_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    <%= t('general.create_model', :model => Carnival::Reservation.model_name.human ) %>
+  <% end if can? :create, Carnival::Reservation %>
+<% end %>
+
+<div class="window box">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th><%= Carnival::Reservation.human_attribute_name("order_id") %></th>
+        <th><%= Carnival::Reservation.human_attribute_name("session_id") %></th>
+        <th><%= Carnival::Reservation.human_attribute_name("category_id") %></th>
+        <th><%= Carnival::Reservation.human_attribute_name("amount") %></th>
+        <th></th>
+        <% if can? :update, Carnival::Reservation %>
+        <th></th>
+        <% end %>
+        <% if can? :destroy, Carnival::Reservation %>
+        <th></th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+  <% @carnival_reservations.each do |carnival_reservation| %>
+      <tr>
+        <td><%= carnival_reservation.order_id %></td>
+        <td><%= carnival_reservation.session_id %></td>
+        <td><%= carnival_reservation.category_id %></td>
+        <td><%= carnival_reservation.amount %></td>
+        <td><%= link_to t('general.show'), carnival_reservation %></td>
+        <% if can? :update, carnival_reservation %>
+        <td><%= link_to t('general.edit'), edit_carnival_reservation_path(carnival_reservation) %></td>
+        <% end %>
+        <% if can? :destroy, carnival_reservation %>
+        <td>
+          <%= link_to carnival_reservation, method: :delete, data: { confirm: t('general.are_you_sure') } do %>
+            <span class="glyphicon glyphicon-trash"></span>
+            <%= t('general.destroy') %>
+          <% end %>
+        </td>
+        <% end %>
+      </tr>
+  <% end %>
+    </tbody>
+  </table>
+</div>
