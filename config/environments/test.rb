@@ -33,4 +33,11 @@ TgtRefurbished::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  # Customized
+
+  # Load initializers before models get cached
+  config.before_eager_load do
+    Dir[File.expand_path "../../initializers/*", __FILE__].each { |file| require file }
+  end
 end

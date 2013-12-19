@@ -20,12 +20,12 @@
 /config/database.production.yml
 
 # Ignore test files
-/test/controllers
-/test/helpers
-/test/integration
-/test/mailers
-/test/models
-/test/test_helper.rb
+# /test/controllers
+# /test/helpers
+# /test/integration
+# /test/mailers
+# /test/models
+# /test/test_helper.rb
 
 # Ignore all uploaded files
 /public/uploads

@@ -149,8 +149,13 @@ gem 'tinymce-rails'
 #gem 'ckeditor', github: 'galetahub/ckeditor'
 
 group :test do
-  gem 'minitest-spec-rails'
+  # gem 'minitest-spec-rails'
+  gem 'minitest-rails'
   gem 'minitest-rails-capybara'
+  gem 'minitest-colorize'
+  gem 'minitest-focus'
+  # gem 'minitest-matchers' # NOTE: DO NOT USE THIS - BUT NECESSARY FOR ABILITY TESTING
+  gem 'minitest-spec-context'
   #gem 'turn'
 end
 

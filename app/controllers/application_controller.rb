@@ -59,11 +59,13 @@ class ApplicationController < ActionController::Base
     else
       if session[:locale]
         locale = session[:locale]
-      else
+      elsif request.env['HTTP_ACCEPT_LANGUAGE'].present?
         locale = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
         if locale != ""
           session[:locale] = locale
         end
+      else
+        locale = 'en'
       end
     end
     I18n.locale = locale

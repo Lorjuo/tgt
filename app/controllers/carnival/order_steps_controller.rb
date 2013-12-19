@@ -11,6 +11,7 @@ class Carnival::OrderStepsController < ApplicationController
   def create
     @order = Carnival::Order.create
     @order.build_person
+    @order.build_reservation
     @order.save! :validate => false
     Rails.logger.info @order.id
     redirect_to wizard_path(steps.first, :order_id => @order.id)
@@ -25,8 +26,7 @@ class Carnival::OrderStepsController < ApplicationController
     @order = Carnival::Order.find(params[:order_id])
     @order.update_attributes!(carnival_order_steps_params)
     # case step
-    # when :confirm_password
-    #   @user.update_attributes(params[:user])
+    # when :sessions
     # end
     render_wizard @order
   end

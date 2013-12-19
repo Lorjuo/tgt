@@ -1,4 +1,10 @@
 <div class="window box">
+
+  <h3>
+    <span class="glyphicon glyphicon-user"></span>
+    Personal Information
+  </h3>
+
   <%= simple_form_for(@order, :url => wizard_path, :method => :put) do |f| %>
     <%= f.error_notification %>
 
@@ -7,8 +13,19 @@
         <%= person_form.input :first_name %>
         <%= person_form.input :last_name %>
         <%= person_form.input :street %>
-        <%= person_form.input :zip %>
-        <%= person_form.input :city %>
+
+        <%# http://stackoverflow.com/questions/9449481/multiple-inputs-on-a-single-line-with-twitter-bootstrap-and-simple-form-2-0 %>
+        <%= person_form.input :city, label: 'City/State/Zip' do %>
+          <div class="row">
+            <div class="col-xs-3">
+              <%= person_form.input_field :city %>
+            </div>
+            <div class="col-xs-9">
+              <%= person_form.input_field :zip%>
+            </div>
+          </div>
+        <% end %>
+
         <%= person_form.input :email %>
         <%= person_form.input :phone %>
       <% end %>

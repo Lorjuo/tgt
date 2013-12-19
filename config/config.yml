@@ -16,3 +16,6 @@ production:
   <<: *defaults
   debug:
     miniprofiler_enabled: false
+
+test:
+  <<: *defaults

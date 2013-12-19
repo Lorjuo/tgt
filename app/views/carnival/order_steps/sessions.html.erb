@@ -1,11 +1,12 @@
 <div class="window box">
+
+  <h3>
+    <span class="glyphicon glyphicon-calendar"></span>
+    Sessions
+  </h3>
+  
   <%= simple_form_for(@order, :url => wizard_path, :method => :put) do |f| %>
     <%= f.error_notification %>
-
-    <h3>
-      <span class="glyphicon glyphicon-calendar"></span>
-      Sessions
-    </h3>
 
     <div id="insertionNode" class="row">
       <%= f.simple_fields_for :reservations do |unit_form| %>

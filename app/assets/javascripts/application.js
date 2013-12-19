@@ -71,6 +71,7 @@
 //# Images
 //= require fancybox_loader
 //= require fancybox
+//= require jquery.mousewheel-3.0.6.pack
 //
 //# Navigation
 //= require navigation_elements

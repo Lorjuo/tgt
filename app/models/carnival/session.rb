@@ -9,6 +9,6 @@ class Carnival::Session < ActiveRecord::Base
 
   # Virtual attributes
   def display
-    "#{name} #{term}"
+    "#{name} (#{I18n.localize(term, :format => :datetime_short)})"
   end
 end
