@@ -119,7 +119,7 @@ gem 'rack-mini-profiler'
 # Security
 gem 'cancan'
 gem 'devise'
-gem 'rolify'
+gem 'rolify', '~> 3.3.0.rc4' # https://github.com/EppO/rolify/pull/129
 
 # String Operations
 gem 'truncate_html'
@@ -156,7 +156,7 @@ group :test do
   gem 'minitest-focus'
   # gem 'minitest-matchers' # NOTE: DO NOT USE THIS - BUT NECESSARY FOR ABILITY TESTING
   gem 'minitest-spec-context'
-  #gem 'turn'
+  gem 'turn'
 end
 
 group :doc do
