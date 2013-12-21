@@ -1,0 +1,15 @@
+$count = 0
+describe "let" do
+  let(:count) { $count += 1 }
+
+  # Does not work with random order tests
+
+  it "memoizes the value" do
+    count.must_equal 1
+    count.must_equal 1
+  end
+
+  it "is not cached across examples" do
+    count.must_equal 2
+  end
+end

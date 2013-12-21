@@ -97,7 +97,8 @@ ul.references {
       display: block;
       padding: 3px 0px;
       &:hover {
-        background-image: linear-gradient(to top, white, #F2F2F2);
+        /*background-image: linear-gradient(to top, white, #F2F2F2);*/
+        background-color: #E0E0F0;
       }
     }
     .title {

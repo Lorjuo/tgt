@@ -6,10 +6,13 @@ FactoryGirl.define do
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
     password {first_name}
-    email {"#{first_name}@tgtraisa.de"}
+    email {"#{first_name}.#{last_name}@tgtraisa.de"}
+
+    factory :editor do
+      after(:create) {|user| user.add_role(:editor)}
+    end
 
     factory :admin do
-      #admin true
       after(:create) {|user| user.add_role(:admin)}
     end
   end

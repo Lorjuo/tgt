@@ -1,0 +1,56 @@
+class Tests
+  SUBTESTS = %w(Abstract Decision Quantitative Verbal)
+end
+
+describe Tests do
+
+  describe "before assigning @ - " do
+    # describe "this doesn't work because the loops are all at the same describe level (the befores override one another)" do
+    #   Tests::SUBTESTS.each do |test|
+    #     before(:each) do
+    #       @test = test
+    #     end
+
+    #     specify test do
+    #       @test.must_equal test
+    #     end
+    #   end
+    # end
+
+    describe "this does work because there's an inner describe block isolating the examples" do
+      Tests::SUBTESTS.each do |test|
+        describe "#{test} in a block" do
+          before(:each) do
+            @test = test
+          end
+
+          specify test do
+            @test.must_equal test
+          end
+        end
+      end
+    end
+  end
+
+  describe "lazy-let blocks" do
+    Tests::SUBTESTS.each do |test|
+      describe "#{test} in a block" do
+        let(:thetest) {test}
+
+        specify test do
+          thetest.must_equal test
+        end
+      end
+    end
+
+    # describe "lazy-let blocks - not working" do
+    #   Tests::SUBTESTS.each do |test|
+    #     let(:thetest) {test}
+
+    #     specify test do
+    #       thetest.must_equal test
+    #     end
+    #   end
+    # end
+  end
+end

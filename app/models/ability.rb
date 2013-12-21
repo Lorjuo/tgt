@@ -10,10 +10,6 @@ class Ability
     elsif user.has_role?('editor')
       # Department dependent
 
-      can [:create, :read, :update, :sort_navigation_elements], Department do |department|
-        user.departments.include? department
-      end
-
       can [:create, :read, :update, :destroy], TrainingGroup do |training_group|
         user.departments.include? training_group.department
       end
@@ -46,6 +42,8 @@ class Ability
 
       can [:create, :read, :update, :destroy], Event
 
+      can [:create, :read, :update, :destroy], Announcement
+
       #TODO: Set abilities for images, documents and uploaders
       #Maybe. http://stackoverflow.com/questions/8170475/cancan-abilities-for-inherited-resources-with-nesting-in-controller
     end
@@ -57,6 +55,10 @@ class Ability
     can [:schedule, :interactive_map], Location
     can [:training_groups, :trainers, :messages, :schedule, :galleries], Department
     can [:search], TrainingGroup
+
+    can [:create, :read, :update, :sort_navigation_elements], Department do |department|
+      user.departments.include? department
+    end
 
     #
     # The first argument to `can` is the action you are giving the user 

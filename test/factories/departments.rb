@@ -2,7 +2,6 @@
 
 FactoryGirl.define do
   factory :department do
-    name "MyString"
-    training_group_ids "MyString"
+    sequence(:name) { |n| "foo#{n}department"}
   end
 end
