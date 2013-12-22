@@ -8,19 +8,8 @@ class Ability
     if user.has_role?('admin')
       can :manage, :all
     elsif user.has_role?('editor')
-      # Department dependent
-
-      can [:create, :read, :update, :destroy], TrainingGroup do |training_group|
-        user.departments.include? training_group.department
-      end
-
-      can [:create, :read, :update, :destroy], TrainingUnit do |training_unit|
-        user.departments.include? training_unit.training_group.department
-      end
 
       # General
-
-      can [:create, :read, :update, :destroy], Trainer
 
       can [:create, :read, :update, :destroy], Location
 
@@ -38,8 +27,6 @@ class Ability
 
       can :rebuild, NavigationElement
 
-      can [:create, :read, :update, :destroy], Message
-
       can [:create, :read, :update, :destroy], Event
 
       can [:create, :read, :update, :destroy], Announcement
@@ -56,8 +43,27 @@ class Ability
     can [:training_groups, :trainers, :messages, :schedule, :galleries], Department
     can [:search], TrainingGroup
 
+
+    # Department dependent
     can [:create, :read, :update, :sort_navigation_elements], Department do |department|
       user.departments.include? department
+    end
+
+    can [:create, :read, :update, :destroy], TrainingGroup do |training_group|
+      user.departments.include? training_group.department
+    end
+
+    can [:create, :read, :update, :destroy], TrainingUnit do |training_unit|
+      user.departments.include? training_unit.try(:training_group).try(:department)
+      # try syntax needed because there are sometimes no dependencies in tests
+    end
+
+    can [:create, :read, :update, :destroy], Message do |message|
+      user.departments.include? message.department
+    end
+
+    can [:update], Trainer do |trainer|
+      user.trainer == trainer
     end
 
     #

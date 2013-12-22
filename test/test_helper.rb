@@ -10,8 +10,8 @@ if ENV.keys.grep(/ZEUS/).any?
   MiniTest::Unit.class_variable_set("@@installed_at_exit", true)
 end
 
-require 'minitest/rails'
 require "rails/test_help"
+require 'minitest/rails'
 require 'minitest/rails/capybara'
 require 'minitest/focus'
 require 'minitest/colorize'

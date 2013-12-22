@@ -21,6 +21,21 @@ describe "User" do
     end
 
 
+    # Has trainer profile
+    context "when has trainer profile" do
+      let(:trainer){ FactoryGirl.create(:trainer) }
+
+      before(:all) do
+        user.trainer = trainer
+      end
+
+      it "can update own profile" do
+        ability.can?(:update, trainer).must_equal true
+      end
+
+    end
+
+
     # Has department
     context "when has department" do
       let(:department){ FactoryGirl.create(:department) }

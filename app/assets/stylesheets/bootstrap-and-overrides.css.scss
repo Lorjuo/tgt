@@ -255,9 +255,14 @@ div.mediaContainer {
     clear: left;
   }
 
+  &.medium-spacing {
+    padding: 0px 18px;
+    margin: 12px 0 18px 0; /* TODO: Maybe move margin out of this line */
+  }
+
   &.large-spacing {
     padding: 0px 24px;
-    margin: 12px 0 24px 0;
+    margin: 12px 0 18px 0;/* TODO: Maybe move margin out of this line */
   }
 
   /* TODO: media already used by bootstrap */;
@@ -302,6 +307,10 @@ div.mediaContainer.decent {
       }
       p {
         padding: 8px 0 8px 0;
+        font-size: 0.8em;;
+        a {
+          color: $text-color;
+        }
       }
     }
   }
@@ -394,4 +403,12 @@ dl {
   a {
     display: inline-block;
   }
+}
+
+.department-indicator.horizontal {
+  height: 2px;
+}
+
+label.checkbox {
+  font-weight: normal;
 }

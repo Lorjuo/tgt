@@ -56,10 +56,6 @@ gem 'mysql2'
   gem 'faker'
   gem 'populator'
 
-# Error Handling
-gem 'better_errors'
-gem 'binding_of_caller'
-
 # File Upload
 gem 'carrierwave'
 gem 'jquery-fileupload-rails'
@@ -137,7 +133,7 @@ gem 'the_sortable_tree'#, '~> 2.3.0'
 gem 'friendly_id' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 
 # Validators
-gem 'valid_email'
+gem 'email_validator'
 
 # Wizard
 gem 'wicked'
@@ -156,7 +152,7 @@ group :test do
   gem 'minitest-focus'
   # gem 'minitest-matchers' # NOTE: DO NOT USE THIS - BUT NECESSARY FOR ABILITY TESTING
   gem 'minitest-spec-context'
-  # gem 'turn'
+  gem 'turn'
 end
 
 group :doc do
@@ -181,6 +177,10 @@ group :development do
   # Debugger
   gem 'debugger'
   # gem 'byebug'
+
+  # Error Handling
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 # Use debugger

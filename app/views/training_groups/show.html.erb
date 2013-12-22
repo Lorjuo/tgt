@@ -102,7 +102,7 @@
         <!-- <span class="glyphicon glyphicon-link"></span> -->
         <%= t "general.references" %>
       </h3>
-      <%= render :partial => "shared/references_to", :locals => { references: @training_group.references } %>
+      <%= render :partial => "shared/references_to", :locals => { references: @training_group.references, short: true } %>
     </div>
   <% end %>
 <% end %>

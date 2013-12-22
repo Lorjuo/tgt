@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   
   # Associations
   has_and_belongs_to_many :departments#, through: :department_editor
+  belongs_to :trainer
 
   # Validation
   validates :email, :presence => true, :email => true

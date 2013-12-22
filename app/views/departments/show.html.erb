@@ -33,33 +33,37 @@
   </dl> -->
   <%#= render :partial => "training_groups/training_group", :collection => @department.training_groups, :as => :training_group %>
 
-<div class="window box thin">
-  <!-- <h3><%= Department.human_attribute_name(:description) %></h3> -->
-  <%= raw @department.description %>
-</div>
+<% if @department.description.present? %>
+  <div class="window box thin">
+    <!-- <h3><%= Department.human_attribute_name(:description) %></h3> -->
+    <%= raw @department.description %>
+  </div>
+<% end %>
 
 <div class="window">
   <div class="plain thin">
-    <div style="background-image: linear-gradient(to bottom, #718DFF, #3C63FF); display: inline-block; color: white; padding: 5px 10px; font-size: 24px; margin-right: 10px">
+    <!-- <div style="background-image: linear-gradient(to bottom, #718DFF, #3C63FF); display: inline-block; color: white; padding: 5px 10px; font-size: 24px; margin-right: 10px">
       <%= fa_icon "users" %>
-    </div>
+    </div> -->
     <h3 style="display: inline-block">
+      <%= fa_icon "users" %>
       <%= TrainingGroup.model_name.human(:count => :lots) %>
     </h3>
-    <div class="row" style="margin: 0 -24px 0 -24px">
+    <div class="row" style="margin: 0 -18px 0 -18px">
       <%= render  @department.training_groups %>
     </div>
   </div>
 </div>
 
-<div class="window">
-  <div class="plain">
-    <div style="background-image: linear-gradient(to bottom, #718DFF, #3C63FF); display: inline-block; color: white; padding: 5px 10px; font-size: 24px; margin-right: 10px">
-      <%= fa_icon "align-left" %>
+<% content_for :sidebar do %>
+  <div class="window">
+    <div class="box">
+      <h3 style="display: inline-block">
+        <%= fa_icon "align-left" %>
+        <%= Message.model_name.human(:count => :lots) %>
+      </h3>
     </div>
-    <h3 style="display: inline-block">
-      <%= Message.model_name.human(:count => :lots) %>
-    </h3>
+    <%= render :partial => 'messages/message_shortcut', :collection => @messages, :as => :message %>
   </div>
-  <%= render :partial => 'messages/message_excerpt', :collection => @messages, :as => :message %>
-</div>
+<% end %>
+

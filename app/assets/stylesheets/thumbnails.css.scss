@@ -24,17 +24,39 @@ div.thumbnail {
 
 /* Image Overlay */
 .image-wrapper {
-  position:relative;
+  position: relative;
 }
 
 .image-overlay {
-  top:0;
-  right:0;
+  top: 0;
+  right: 0;
   position: absolute;
 
   &.top-left {
     right: inherit;
     left: 0;
+  }
+
+  &.bottom{
+    top: inherit;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+  }
+}
+
+.overlay-title {
+  background-color: rgba(0,0,0,0.5);
+  text-align: center;
+  padding: 2px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.image-wrapper:hover {
+  .overlay-title {
+    text-shadow: -1px 1px 8px #ffc, 1px -1px 8px #fff;
   }
 }
 

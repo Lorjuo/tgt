@@ -1,5 +1,7 @@
 jQuery ->
-  $('.chosen').chosen()
+  $('.chosen').each ->
+    $(this).chosen
+      allow_single_deselect: $(this).data( "include-blank" )
 
 #ready = ->
 #  $('.chosen').chosen()
