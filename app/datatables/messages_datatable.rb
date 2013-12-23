@@ -1,6 +1,6 @@
 class MessagesDatatable < ApplicationController # Inherit from ApplicationController to enable paths and urls
 
-  delegate :params, :h, :link_to, :tag, :image_tag, :strip_tags, :truncate, to: :@view
+  delegate :params, :h, :link_to, :link_to_pill, :tag, :content_tag, :image_tag, :strip_tags, :truncate, to: :@view
 
   def initialize(view, current_user, department_id)
     @view = view
@@ -29,7 +29,7 @@ private
         message.image.present? ? link_to(image_tag(message.image.file_url(:thumb), size: "64x48"), message.image.file_url, :class => "fancybox") : "",
         link_to(message.title, message),
         truncate(strip_tags(message.content), length: 240, omission: '...', separator: ' '),
-        link_to(message.department.name, message.department, class: "pill")#,
+        link_to_pill(message.department.name, message.department, :class => "no-wrap")#,
 
         #link_to(I18n.t('general.show'), message),
         #@user && @user.can?(:update, message) ? link_to( I18n.t('general.edit'), Rails.application.routes.url_helpers.edit_message_path(message)) : "",
@@ -39,11 +39,14 @@ private
       edit_link = link_to edit_icon, @url_helper.edit_message_path(message), :title => t("general.edit"), :data => {:toggle => "tooltip"}
       destroy_link = link_to destroy_icon, message, :title => t("general.edit"), data: { confirm: I18n.t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete
 
-      if @user && @user.can?( :update, Message )
-        if @user && @user.can?( :destroy, Message )
+      #if @user && @user.can?( :update, Message )
+      if @user
+        if @user.can?( :destroy, Message )
           array << edit_link+destroy_link
-        else
+        elsif @user.can?( :destroy, Message )
           array << edit_link
+        else
+          array << ''
         end
       end
 

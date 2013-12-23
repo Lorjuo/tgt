@@ -51,6 +51,7 @@ class Ability
 
     can [:create, :read, :update, :destroy], TrainingGroup do |training_group|
       user.departments.include? training_group.department
+      false
     end
 
     can [:create, :read, :update, :destroy], TrainingUnit do |training_unit|
@@ -62,9 +63,22 @@ class Ability
       user.departments.include? message.department
     end
 
+    can [:create, :read, :update, :destroy], Trainer do |trainer|
+      # Multiple joins:
+      # http://stackoverflow.com/questions/11417287/advanced-query-in-rails-with-multiple-joins
+      # Unique:
+      # http://stackoverflow.com/questions/9658881/rails-select-unique-values-from-a-column
+      department_ids = Department.uniq.joins(training_groups: :trainers).where('trainers.id' => trainer.id).map(&:id)
+      # Double sided include?
+      # http://stackoverflow.com/questions/8026300/check-for-multiple-items-in-array-using-include-ruby-beginner
+      user.departments.map(&:id).any? { |x| department_ids.include?(x) }
+    end
+
     can [:update], Trainer do |trainer|
       user.trainer == trainer
     end
+
+    can [:create, :read, :update, :destroy], User
 
     #
     # The first argument to `can` is the action you are giving the user 

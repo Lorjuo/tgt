@@ -9,7 +9,7 @@
   <% end %>
   <td>
     <% training_group.trainers.alphabetical.each do |trainer| %>
-      <%= link_to(trainer.name, trainer, :class => "pill") %>
+      <%= link_to_pill(trainer.name, trainer) %>
     <% end %>
   </td>
 

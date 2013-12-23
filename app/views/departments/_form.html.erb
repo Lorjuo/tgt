@@ -15,6 +15,11 @@
         :input_html => { :class => "chosen input-xxlarge"} %>
       <%= f.input :color, :input_html => { :class => "colorpicker", :data => {:"color-format" => "hex"}} %>
       <%= f.input :description, as: :text, input_html: { class: 'tinymce' } unless @department.new_record?  %>
+      <%= f.association :users,
+        :collection => User.order('first_name' => :asc).order('last_name' => :asc),
+        :label_method => :name,
+        :value_method => :id,
+        :input_html => { :class => "chosen" } %>
     </div>
 
     <div class="form-group">

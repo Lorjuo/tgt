@@ -1,6 +1,6 @@
 class TrainingGroupsDatatable < ApplicationController # Inherit from ApplicationController to enable paths and urls
 
-  delegate :params, :h, :link_to, :image_tag, :tag, :strip_tags, :truncate, to: :@view
+  delegate :params, :h, :link_to, :link_to_pill, :image_tag, :tag, :content_tag, :strip_tags, :truncate, to: :@view
 
   def initialize(view, current_user, department_id)
     @view = view
@@ -31,19 +31,21 @@ private
         link_to(training_group.name, training_group),
         #truncate(strip_tags(training_group.description), length: 320, omission: '...'),
         #training_group.training_units(&:time_begin).join(' '),
-        training_group.training_units.map{|training_unit| link_to training_unit.name, training_group, class: "pill"}.join(' '),
+        training_group.training_units.map{|training_unit| link_to_pill(training_unit.name, training_group)}.join(' '),
         training_group.display_age,
-        link_to(training_group.department.name, training_group.department, :class => "pill")
+        link_to_pill(training_group.department.name, training_group.department, :class => "no-wrap")
       ]
 
       edit_link = link_to edit_icon, @url_helper.edit_training_group_path(training_group), :title => t("general.edit"), :data => {:toggle => "tooltip"}
       destroy_link = link_to destroy_icon, training_group, :title => t("general.edit"), data: { confirm: I18n.t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete
 
-      if @user && @user.can?( :update, TrainingGroup )
-        if @user && @user.can?( :destroy, TrainingGroup )
+      if @user
+        if @user.can?( :destroy, TrainingGroup )
           array << edit_link+destroy_link
-        else
+        elsif @user.can?( :destroy, TrainingGroup )
           array << edit_link
+        else
+          array << ''
         end
       end
 

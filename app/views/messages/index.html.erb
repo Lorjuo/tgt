@@ -46,7 +46,8 @@
         <th data-class="expand"><%= Message.human_attribute_name(:title) %></th>
         <th class="no-sort" data-hide="xxs,xs"><%= Message.human_attribute_name(:content) %></th>
         <th data-hide="xxs,xs"><%= Message.human_attribute_name(:department) %></th>
-        <% if can? :update, Message %>
+        <%# if can? :update, Message %>
+        <% if user_signed_in? %>
           <th class="no-sort"><%= t "general.actions" %></th>
         <% end %>
       </tr>
@@ -60,8 +61,9 @@
         <td>
           <%= truncate(strip_tags(message.content), length: 240, omission: '', separator: ' ') %>
         </td>
-        <td><%= link_to message.department.name, message.department, class: "pill" %></td>
-        <% if can? :update, message %>
+        <td><%= link_to_pill message.department.name, message.department %></td>
+        <%# if can? :update, message %>
+        <% if user_signed_in? %>
           <td>
             <%= link_to edit_message_path(message), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
               <%= tag :span, :class => "glyphicon glyphicon-edit" %>

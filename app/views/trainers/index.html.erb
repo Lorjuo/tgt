@@ -16,7 +16,8 @@
         <th class="no-sort"></th>
         <th data-class="expand"><%= Trainer.human_attribute_name(:name) %></th>
         <th data-hide="xxs,xs,sm" class="no-sort"><%= Trainer.human_attribute_name(:training_groups) %></th>
-        <% if can? :update, User %>
+        <%# if can? :update, User %>
+        <% if user_signed_in? %>
           <th class="no-sort">Aktionen</th>
         <% end %>
       </tr>
@@ -29,10 +30,11 @@
         <td><%= link_to trainer.name, trainer %></td>
         <td>
           <% trainer.training_groups.each do |training_group| %>
-            <%= link_to training_group.name, training_group, class: "pill" %>
+            <%= link_to_pill training_group.name, training_group %>
           <% end %>
         </td>
-        <% if can? :update, trainer %>
+        <%# if can? :update, trainer %>
+        <% if user_signed_in? %>
           <td>
             <%= link_to edit_trainer_path(trainer), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
               <%= tag :span, :class => "glyphicon glyphicon-edit" %>

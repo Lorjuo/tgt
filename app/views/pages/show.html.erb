@@ -19,12 +19,14 @@
   <%= raw @page.content %>
 </div>
 
-<% if @page.references.present? %>
-  <div class="window box">
-    <h3>
-      <span class="glyphicon glyphicon-link"></span>
-      <%= t "general.references" %>
-    </h3>
-    <%= render :partial => "shared/references_to", :locals => { references: @page.references } %>
-  </div>
+<% content_for :sidebar do %>
+  <% if @page.references.present? %>
+    <div class="window box">
+      <h3>
+        <span class="glyphicon glyphicon-link"></span>
+        <%= t "general.references" %>
+      </h3>
+      <%= render :partial => "shared/references_to", :locals => { references: @page.references } %>
+    </div>
+  <% end %>
 <% end %>

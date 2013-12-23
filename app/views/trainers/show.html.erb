@@ -74,8 +74,8 @@
       <% @trainer.training_groups.each do |training_group| %>
         <% training_group.training_units.each do |training_unit| %>
           <tr>
-            <td><%= link_to training_group.name, training_group, :class => "pill" %></td>
-            <td><%= link_to training_group.department.name, training_group.department, :class => "pill" %></td>
+            <td><%= link_to_pill training_group.name, training_group %></td>
+            <td><%= link_to_pill training_group.department.name, training_group.department %></td>
             <td><%= training_unit.display_week_day %></td>
             <td><%= training_unit.time %></td>
           </tr>

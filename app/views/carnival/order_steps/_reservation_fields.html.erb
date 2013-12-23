@@ -5,14 +5,14 @@
           :collection => Carnival::Session.order(:name => :asc, :term => :asc),
           :label_method => :display,
           :value_method => :id,
-          :include_blank => false,
+          :include_blank => true,
           :input_html => { :class => "chosen"} %>
     <%= f.association :category,
           :as => :select,
           :collection => Carnival::Category.order(:name => :asc, :price => :asc),
           :label_method => :display,
           :value_method => :id,
-          :include_blank => false,
+          :include_blank => true,
           :input_html => { :class => "chosen"} %>
     <%= f.input :amount %>
 

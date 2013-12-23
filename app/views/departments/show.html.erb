@@ -27,7 +27,7 @@
     <dt><%= Department.human_attribute_name(:training_groups) %>:</dt>
     <dd>
       <% @department.training_groups.each do |training_group| %>
-        <div><%= link_to training_group.name, training_group_path(training_group), :class => "pill" %></div>
+        <div><%= link_to_pill training_group.name, training_group_path(training_group) %></div>
       <% end  %>
     </dd>
   </dl> -->
@@ -41,7 +41,7 @@
 <% end %>
 
 <div class="window">
-  <div class="plain thin">
+  <div class="plain">
     <!-- <div style="background-image: linear-gradient(to bottom, #718DFF, #3C63FF); display: inline-block; color: white; padding: 5px 10px; font-size: 24px; margin-right: 10px">
       <%= fa_icon "users" %>
     </div> -->

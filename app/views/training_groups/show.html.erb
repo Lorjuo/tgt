@@ -44,7 +44,7 @@
         </h3>
         <dl>
           <dt><%= TrainingGroup.human_attribute_name(:department) %>:</dt>
-          <dd><%= link_to @training_group.department.name, @training_group.department, :class => "pill" %></dd>
+          <dd><%= link_to_pill @training_group.department.name, @training_group.department %></dd>
 
           <dt><%= TrainingGroup.human_attribute_name(:age) %>:</dt>
           <dd><%= @training_group.display_age %></dd>
@@ -57,7 +57,7 @@
           <%= Trainer.model_name.human(:count => :lots) %>
         </h3>
         <% @training_group.trainers.each do |trainer| %>
-          <%= link_to trainer.name, trainer, :class => "pill" %>
+          <%= link_to_pill trainer.name, trainer %>
         <% end %>
       </div>
     </div>
@@ -74,10 +74,10 @@
       <table class="table table-bordered table-striped datatable defaults">
         <thead>
           <tr>
-            <th><%= TrainingUnit.human_attribute_name(:week_day) %></th>
+            <th data-class="expand"><%= TrainingUnit.human_attribute_name(:week_day) %></th>
             <th><%= TrainingUnit.human_attribute_name(:time) %></th>
-            <th><%= TrainingUnit.human_attribute_name(:location_summer) %></th>
-            <th><%= TrainingUnit.human_attribute_name(:location_winter) %></th>
+            <th data-hide="xxs,xs,sm"><%= TrainingUnit.human_attribute_name(:location_summer) %></th>
+            <th data-hide="xxs,xs,sm"><%= TrainingUnit.human_attribute_name(:location_winter) %></th>
           </tr>
         </thead>
         <tbody>
@@ -85,8 +85,8 @@
             <tr>
               <td><%= training_unit.display_week_day %></td>
               <td><%= training_unit.time %></td>
-              <td><%= link_to training_unit.location_summer.name, training_unit.location_summer, :class => "pill" unless training_unit.location_summer.nil? %></td>
-              <td><%= link_to training_unit.location_winter.name, training_unit.location_winter, :class => "pill" unless training_unit.location_winter.nil? %></td>
+              <td><%= link_to_pill training_unit.location_summer.name, training_unit.location_summer unless training_unit.location_summer.nil? %></td>
+              <td><%= link_to_pill training_unit.location_winter.name, training_unit.location_winter unless training_unit.location_winter.nil? %></td>
             </tr>
           <% end %>
         </tbody>

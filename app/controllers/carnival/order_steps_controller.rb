@@ -11,7 +11,7 @@ class Carnival::OrderStepsController < ApplicationController
   def create
     @order = Carnival::Order.create
     @order.build_person
-    @order.build_reservation
+    @order.reservations.build
     @order.save! :validate => false
     Rails.logger.info @order.id
     redirect_to wizard_path(steps.first, :order_id => @order.id)
@@ -24,7 +24,7 @@ class Carnival::OrderStepsController < ApplicationController
 
   def update
     @order = Carnival::Order.find(params[:order_id])
-    @order.update_attributes!(carnival_order_steps_params)
+    @order.update_attributes(carnival_order_steps_params)
     # case step
     # when :sessions
     # end

@@ -27,4 +27,10 @@ module ApplicationHelper
     rgb = hex_color.scan(/../).map(&:hex).map{|color| [(color + 255 * amount).round, 255].min}
     "#%02x%02x%02x" % rgb
   end
+
+  def link_to_pill(name, path, options = {})
+    content_tag :div, class: "pill" do
+      link_to(name, path, options)
+    end
+  end
 end

@@ -257,12 +257,12 @@ div.mediaContainer {
 
   &.medium-spacing {
     padding: 0px 18px;
-    margin: 12px 0 18px 0; /* TODO: Maybe move margin out of this line */
+    margin: 6px 0 18px 0; /* TODO: Maybe move margin out of this line */
   }
 
   &.large-spacing {
     padding: 0px 24px;
-    margin: 12px 0 18px 0;/* TODO: Maybe move margin out of this line */
+    margin: 6px 0 18px 0;/* TODO: Maybe move margin out of this line */
   }
 
   /* TODO: media already used by bootstrap */;
@@ -307,7 +307,7 @@ div.mediaContainer.decent {
       }
       p {
         padding: 8px 0 8px 0;
-        font-size: 0.8em;;
+        font-size: 0.8em;
         a {
           color: $text-color;
         }
@@ -369,17 +369,24 @@ div.mediaContainer.decent {
   padding: 6px 12px;
 }
 
-a.pill {
-  background: linear-gradient(to bottom, #08c, #04c);
-  border-radius: 6px;
-  color: #fff;
-  padding: 0px 8px;
-  white-space: nowrap;
+div.pill {
+  display: inline-block;
+  a {
+    background: linear-gradient(to bottom, #08c, #04c);
+    border-radius: 6px;
+    color: #fff;
+    padding: 0px 8px;
+    white-space: nowrap; /* causes errors in opera on small displays */
+    white-space: pre-wrap;
+    max-width: 100px;
 
-  &:hover {
-  background: linear-gradient(to bottom, #04c, #08c);
-    color: #ddd;
-    text-decoration: none;
+    &:hover {
+    background: linear-gradient(to bottom, #04c, #08c);
+      color: #ddd;
+      text-decoration: none;
+    }
+    /*box-shadow:5px 0 0 #0058be, -5px 0 0 #0058be;
+    margin-left:0;*/
   }
 }
 
@@ -395,7 +402,7 @@ dl {
 }
 
 .no-wrap {
-  white-space: nowrap;
+  white-space: nowrap !important;
 }
 
 /* Table */
@@ -407,6 +414,7 @@ dl {
 
 .department-indicator.horizontal {
   height: 2px;
+  display: none;
 }
 
 label.checkbox {
