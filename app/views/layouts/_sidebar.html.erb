@@ -13,7 +13,7 @@
         <div class="col-sm-4 col-xs-6">
           <div class="thumbnail">
             <%#= link_to(image.file_url, :class => 'fancybox', :rel => 'galleries', :caption => gallery.name) do %>
-            <%= link_to gallery do %>
+            <%= link_to gallery, :title => gallery.name, :data => {:toggle => "tooltip"} do %>
               <%= image_tag image.file_url(:_260x180), :class => "img-responsive" %>
             <% end %>
           </div>

@@ -37,7 +37,7 @@ private
       ]
 
       edit_link = link_to edit_icon, @url_helper.edit_message_path(message), :title => t("general.edit"), :data => {:toggle => "tooltip"}
-      destroy_link = link_to destroy_icon, message, :title => t("general.edit"), data: { confirm: I18n.t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete
+      destroy_link = link_to destroy_icon, message, :title => t("general.destrpy"), data: { confirm: I18n.t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete
 
       #if @user && @user.can?( :update, Message )
       if @user

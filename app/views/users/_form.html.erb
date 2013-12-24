@@ -30,6 +30,7 @@
             :value_method => :id,
             :include_blank => false,
             :hint => t(".departments_hint"),
+            :wrapper => :checkbox,
             :item_wrapper_class => 'col-sm-6' %>
           <%= f.association :trainer,
             :collection => Trainer.order('first_name' => :asc).order('last_name' => :asc),

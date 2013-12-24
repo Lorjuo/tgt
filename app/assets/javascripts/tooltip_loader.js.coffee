@@ -3,7 +3,7 @@
 
 init_tooltips = () ->
   $("[data-toggle=\"tooltip\"]").tooltip
-    placement: "auto right"
+    placement: "auto top"
     container: 'body'
 
 # Export this function to global scope
