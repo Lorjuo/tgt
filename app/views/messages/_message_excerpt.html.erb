@@ -1,19 +1,36 @@
-<%# see: http://m5designstudio.com/2013/orlando-web-design/bootstrap-responsive-layout/ %>
-<div class="message-excerpt box">
-  <div class="row">
-    <%= content_tag :div, :class => "message-image col-md-3 col-xs-5" do %>
-      <%= link_to(image_tag(message.image.file_url(:_260x180), :class => "img-responsive", size: "260x180"), message.image.file_url, :class => "fancybox", :rel => 'messages', :caption => message.title) %>
-    <% end if message.image.present? %>
-    <%= content_tag :div,
-      :class => (message.image.present? ? "col-md-9 col-xs-7" : "col-md-12 col-xs-12") do %>
-      <div class="message-header">
-        <div class="message-title"><%= message.title %></div>
-        <div class="message-date"><%= localize( message.created_at.to_date, :format => :long ) %></div>
+<%
+
+case size
+when :small
+  image_size = '64x48'
+  thumb_type = :thumb
+  text_length = 120
+when :large
+  image_size = '130x90'
+  thumb_type = :_260x180
+  text_length = 320
+end
+
+%>
+
+<div class="box">
+  <div class="media message-excerpt <%= size %>">
+    <% if message.image.present? %>
+      <% image = image_tag(message.image.file_url(thumb_type), :class => "media-object", size: image_size) %>
+      <%= link_to(image, message.image.file_url, :class => "fancybox pull-left", :rel => 'messages', :caption => message.title) %>
+    <% end %>
+    <%= content_tag :div, :class => "media-body" do %>
+      <div class="media-heading">
+        <div class="title">
+          <%= link_to_decent message.title, message %>
+          <span class="department">(<%= link_to message.department.name, message.department, :class => "decent" %>)</span>
+        </div>
+        <div class="date"><%= localize( message.created_at.to_date, :format => :long ) %></div>
       </div>
-      <div class="message-content">
-        <%= truncate(strip_tags(message.content), length: 320, omission: '', :separator => ' ') %>
-        <%= link_to "...#{t 'general.more'}", message, :class => 'btn-link' %>
-      </div>
+      <%= link_to message, :class => "content decent" do %>
+        <%= truncate(strip_tags(message.content), length: text_length, omission: '', :separator => ' ') %>
+        <%= content_tag :span, "...#{t 'general.more'}", :class => 'btn-link more' %>
+      <% end %>
     <% end %>
   </div>
 </div>

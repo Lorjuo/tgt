@@ -82,7 +82,8 @@ body {
 
 a.decent {
   color: $text-color;
-  &:hover {
+  outline: 0;
+  &, &:hover {
     text-decoration: none;
   }
 }
@@ -321,26 +322,48 @@ div.mediaContainer.decent {
   min-height: 360px;
 }
 
-.message-excerpt {
-  .message-header {
 
+.media.message-excerpt {
+
+  .media-heading {
     display: table;
     width: 100%;
-    margin: 10px 0px;
 
-    .message-date, .message-title {
+    .title, .date {
       display: table-cell;
     }
 
-    .message-title {
-      font-size: 1.2em;
-      font-weight: $headings-font-weight;
+    .title {
+      font-weight: bold;
+      .department { font-weight: normal; white-space: nowrap;
+        &:hover { text-decoration: underline; }
+      }
     }
 
-    .message-date {
+    .date {
       text-align: right;
       min-width: 120px;
     }
+  }
+
+  .content {
+    display: block;
+  }
+
+  &.small {
+    .media-heading {
+      .title {
+        .department { display: none; }
+      }
+      .date { display: none; }
+    }
+    .content {
+      font-size: 0.9em;
+      .more { display: none; }
+    }
+  }
+  &.large {
+    .media-heading { margin: 10px 0px; }
   }
 }
 

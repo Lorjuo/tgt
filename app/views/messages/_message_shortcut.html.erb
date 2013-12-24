@@ -1,9 +1,0 @@
-<div class="box">
-  <div class="media">
-    <%= link_to(image_tag(message.image.file_url(:thumb), :class => "img-responsive", size: "64x48"), message.image.file_url, :class => "pull-left fancybox", :rel => 'messages', :caption => message.title) if message.image.present? %>
-    <div class="media-body">
-      <h4 class="media-heading"><%= message.title %></h4>
-      <%#= truncate(strip_tags(message.content), length: 120, omission: '', :separator => ' ') %>
-    </div>
-  </div>
-</div>

@@ -33,4 +33,9 @@ module ApplicationHelper
       link_to(name, path, options)
     end
   end
+
+  def link_to_decent(name, path, options = {})
+    options[:class] ? options[:class] += ' decent' : options[:class] = 'decent'
+    link_to(name, path, options)
+  end
 end
