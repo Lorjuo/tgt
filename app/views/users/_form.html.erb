@@ -22,7 +22,8 @@
       </div>
       <div class="col-md-6">
         <div class="thin">
-          <%= f.association :roles, :as => :check_boxes %>
+          <%= f.association :roles, :as => :check_boxes,
+            :item_wrapper_class => 'col-sm-6' %>
           <%= f.association :departments,
             :as => :check_boxes,
             :collection => Department.specific.order('name' => :asc),

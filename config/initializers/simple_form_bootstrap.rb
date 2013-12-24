@@ -42,9 +42,8 @@ SimpleForm.setup do |config|
     b.use :placeholder
     b.use :label
     b.wrapper tag: 'div', class: 'col-lg-9' do |ba|
-      ba.wrapper tag: 'div', class: 'row' do |bb|
-        bb.use :input
-      end
+      ba.use :input
+      ba.wrapper tag: 'div', class: 'clearfix', :style => 'clear: both' do |bb| end
       ba.use :error, wrap_with: { tag: 'span', class: 'help-inline' }
       ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
     end
