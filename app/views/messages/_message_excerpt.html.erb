@@ -1,16 +1,7 @@
 <%# see: http://m5designstudio.com/2013/orlando-web-design/bootstrap-responsive-layout/ %>
-<!-- <div style="background-color: orange; color: white">Sport|Kultur|...</div> -->
-<%#= content_tag :div, :class => "department-indicator", :style => "background-color: #000055" do %>
-  <%#= link_to message.department.name, message.department, :style => "color: white; margin-left: 12px;" %>
-<%# end %>
 <div class="message-excerpt box">
-  <%#= content_tag :div, :class => "department-indicator", :style => "background-color: #{message.department.color}" do %>
-    <%#= link_to message.department.name, message.department %>
-  <%# end %>
   <div class="row">
     <%= content_tag :div, :class => "message-image col-md-3 col-xs-5" do %>
-      <%# holder_tag '260x180', 'Image', 'gray', :class => 'holder' %>
-      <!-- <img src="http://placehold.it/260x180" width="100%" /> -->
       <%= link_to(image_tag(message.image.file_url(:_260x180), :class => "img-responsive", size: "260x180"), message.image.file_url, :class => "fancybox", :rel => 'messages', :caption => message.title) %>
     <% end if message.image.present? %>
     <%= content_tag :div,
@@ -20,11 +11,9 @@
         <div class="message-date"><%= localize( message.created_at.to_date, :format => :long ) %></div>
       </div>
       <div class="message-content">
-        <%# truncate_html( message.content, length: 320, omission: '<a href="#"></a>' ) %>
         <%= truncate(strip_tags(message.content), length: 320, omission: '', :separator => ' ') %>
         <%= link_to "...#{t 'general.more'}", message, :class => 'btn-link' %>
       </div>
-      <%#= render :partial => "shared/references_to", :locals => { references: message.references } %>
     <% end %>
   </div>
 </div>

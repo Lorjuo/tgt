@@ -255,6 +255,7 @@ de:
       title: 'Benutzer %{name}'
     form:
       departments_hint: 'Abteilungen, welche von diesem Nutzer verwaltet werden können'
+      password_hint: 'Feld lediglich erforderlich, wenn Passwort geändert werden soll'
       trainer_hint: 'Zugehöriges Trainerprofil, welches durch diesen Nutzer verwaltet wird'
 
   layouts:

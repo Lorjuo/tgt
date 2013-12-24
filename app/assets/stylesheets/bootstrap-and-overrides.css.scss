@@ -317,10 +317,11 @@ div.mediaContainer.decent {
 }
 
 
+.message {
+  min-height: 360px;
+}
+
 .message-excerpt {
-  .department-indicator {
-    height: 4px;
-  }
   .message-header {
 
     display: table;
@@ -411,10 +412,14 @@ dl {
     display: inline-block;
   }
 }
+.department-indicator {
+  &.horizontal {
+    height: 2px;
+  }
+  display: none;
+}
 
 .department-indicator.horizontal {
-  height: 2px;
-  display: none;
 }
 
 label.checkbox {

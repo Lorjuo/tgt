@@ -254,6 +254,7 @@ en:
       title: 'User "%{name}"'
     form:
       departments_hint: 'These departments can be managed by current user'
+      password_hint: 'This field is only needed when password should be changed'
       trainer_hint: 'Assigned Trainer profile, that can be managed by this user'
 
   layouts:

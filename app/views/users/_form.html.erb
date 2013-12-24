@@ -8,8 +8,11 @@
           <%= f.input :first_name %>
           <%= f.input :last_name %>
           <%= f.input :email %>
-          <%= f.input :password %>
-          <%= f.input :password_confirmation %>
+          <%= f.input :password,
+            :hint => t(".password_hint"),
+            :input_html => { :autocomplete => "off" } %>
+          <%= f.input :password_confirmation,
+            :input_html => { :autocomplete => "off" } %>
           <div class="form-group">
             <div class="col-lg-offset-3 col-lg-9">
               <%= f.button :submit, :class => "btn btn-primary" %>

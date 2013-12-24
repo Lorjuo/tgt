@@ -173,6 +173,8 @@ group :development do
   gem 'capistrano', '~> 2.1'
   gem 'capistrano-ext'
   gem 'rvm-capistrano'
+
+  gem 'hirb'
   
   # Debugger
   gem 'debugger'
