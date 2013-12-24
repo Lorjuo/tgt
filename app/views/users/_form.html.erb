@@ -25,13 +25,16 @@
             :collection => Department.specific.order('name' => :asc),
             :label_method => :name,
             :value_method => :id,
-            :include_blank => false %>
+            :include_blank => false,
+            :hint => t(".departments_hint"),
+            :item_wrapper_class => 'col-sm-6' %>
           <%= f.association :trainer,
             :collection => Trainer.order('first_name' => :asc).order('last_name' => :asc),
             :label_method => :name,
             :value_method => :id,
             :include_blank => true,
-            :input_html => { :class => "chosen", :data => {:include_blank => true} } %>
+            :input_html => { :class => "chosen", :data => {:include_blank => true} },
+            :hint => t(".trainer_hint") %>
         </div>
       </div>
     </div>

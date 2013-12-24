@@ -19,7 +19,9 @@
         :collection => User.order('first_name' => :asc).order('last_name' => :asc),
         :label_method => :name,
         :value_method => :id,
-        :input_html => { :class => "chosen" } %>
+        :include_blank => true,
+        :input_html => { :class => "chosen", :data => {:include_blank => true} },
+        :hint => t(".user_hint") %>
     </div>
 
     <div class="form-group">

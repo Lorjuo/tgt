@@ -118,6 +118,9 @@ de:
         visible_from: Sichtbar seit
         visible_to: Sichtbar bis
 
+      department:
+        users: Zugewiesene Benutzer
+
       event:
         term: Datum
 
@@ -138,6 +141,7 @@ de:
         education: Trainerausbildung
         disciplines: Disziplinen
         activities: Hobbies / Interssen
+        user: Benutzerkonto
 
       training_group:
         age_begin: Alter (von)
@@ -149,6 +153,9 @@ de:
         location_winter: Ort (Winter)
         time_begin: Zeit (Beginn)
         time_end: Zeit (Ende)
+
+      user:
+        trainer: Trainerprofil
 
   announcements:
     index:
@@ -162,6 +169,8 @@ de:
     show:
       title: 'Abteilung "%{name}"'
       navigation_structure: Navigationsstruktur
+    form:
+      users_hint: 'Benutzer, welche diese Abteilung administrieren können'
 
   events:
     index:
@@ -216,6 +225,8 @@ de:
       title: '%{name}'
       info: Allgemeine Infos
     new: Neuer Trainer
+    form:
+      users_hint: 'Benutzer, welcher dieses Trainerprofil verwalten kann'
 
   training_groups:
     index:
@@ -242,6 +253,9 @@ de:
       title: Benutzerübersicht
     show:
       title: 'Benutzer %{name}'
+    form:
+      departments_hint: 'Abteilungen, welche von diesem Nutzer verwaltet werden können'
+      trainer_hint: 'Zugehöriges Trainerprofil, welches durch diesen Nutzer verwaltet wird'
 
   layouts:
 

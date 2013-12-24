@@ -117,6 +117,9 @@ en:
         visible_from: Visible from
         visible_to: Visible to
 
+      department:
+        users: Zugewiesene Benutzer
+
       event:
         term: Date
 
@@ -137,6 +140,7 @@ en:
         education: Coaching education
         disciplines: Disciplines
         activities: Activities / Interests
+        user: Useraccount
 
       training_group:
         age_begin: Age (from)
@@ -148,6 +152,9 @@ en:
         location_winter: Location (winter)
         time_begin: Time (begin)
         time_end: Time (end)
+
+      user:
+        trainer: Attached Trainer Profile
 
   announcements:
     index:
@@ -161,6 +168,8 @@ en:
     show:
       title: 'Department "%{name}"'
       navigation_structure: Navigation structure
+    form:
+      users_hint: 'Users that can manage this department'
 
   events:
     index:
@@ -215,6 +224,8 @@ en:
       title: '%{name}'
       info: General information
     new: New trainer
+    form:
+      users_hint: 'Assigned user, that can manage this trainer profile'
 
   training_groups:
     index:
@@ -241,6 +252,9 @@ en:
       title: Listing users
     show:
       title: 'User "%{name}"'
+    form:
+      departments_hint: 'These departments can be managed by current user'
+      trainer_hint: 'Assigned Trainer profile, that can be managed by this user'
 
   layouts:
 

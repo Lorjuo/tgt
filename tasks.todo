@@ -4,6 +4,7 @@
  ☐ create department news
  ☐ improve gallery design
  ☐ create intern forum
+ ☐ maybe change user trainer relationship to many to one
 
  ☐ Production Environment
  ✔ Bug in update an model with attached image without selecting a new image (trainer, message, training group, location) -> Solved by adding :image_attributes => [:file, :id] to permit @done (13-11-05 10:58)

@@ -7,7 +7,7 @@ defaults: &defaults
     step_size: 30 # step size in minutes
   header:
     title: Turngemeinde 1879 Traisa e.V.
-    subtitle: Wir bewegen Mühltal!
+    subtitle: Bei uns bewegt sich Mühltal!
 
 development:
   <<: *defaults

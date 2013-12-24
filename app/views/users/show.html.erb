@@ -34,5 +34,8 @@
     <dd><% @user.departments.each do |department| %>
       <div><%= link_to department.name, department %></div>
     <% end %></dd>
+
+    <dt><%= User.human_attribute_name(:trainer) %>:</dt>
+    <dd><%= link_to @user.trainer.name, @user.trainer if @user.trainer.present? %></dd>
   </dl>
 </div>
