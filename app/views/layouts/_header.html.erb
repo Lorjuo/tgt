@@ -1,12 +1,14 @@
 <div class="" id="header">
   <div class="row">
     <div class="col-md-5 left">
-      <%= link_to root_path do %>
-        <%= image_tag "tgt-logo.png" %>
-      <% end %>
-      <div id="title">
-        <h4><%= APP_CONFIG['header']['title'] %></h4>
-        <h4><%= APP_CONFIG['header']['subtitle'] %></h4>
+      <div class="media">
+        <%= link_to root_path, class: "pull-left" do %>
+          <%= image_tag "tgt-logo.png", class: "media-object" %>
+        <% end %>
+        <div id="title" class="media-body">
+          <h4><%= APP_CONFIG['header']['title'] %></h4>
+          <h4><%= APP_CONFIG['header']['subtitle'] %></h4>
+        </div>
       </div>
     </div>
     <div class="col-md-4 middle">

@@ -2,6 +2,9 @@ class Image < ActiveRecord::Base
 
   # Note: Alternative approach:
   # http://rails-bestpractices.com/posts/45-use-sti-and-polymorphic-model-for-multiple-uploads
+  # https://coderwall.com/p/g4lkbq
+  # http://stackoverflow.com/questions/849897/can-rails-migrations-be-used-to-convert-data
+  # http://makandracards.com/makandra/15575-how-to-write-complex-migrations-in-rails
 
   # Associations
   belongs_to :attachable, polymorphic: true

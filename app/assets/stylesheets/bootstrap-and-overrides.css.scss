@@ -178,17 +178,16 @@ form .nested-fields {
   color: white;
   margin-bottom: 20px;
 
-  .left {
-    display: table;
+  img {
+    height: 72px;
+  }
 
-    img {
-      display: table-cell;
-      height: 72px;
-    }
-
-    #title {
-      display: table-cell;
-      vertical-align: top;
+  #title {
+    vertical-align: top;
+    h4 {
+      @media (max-width: $screen-xs-max) {
+        font-size: 1em;
+      }
     }
   }
 
@@ -334,7 +333,7 @@ div.mediaContainer.decent {
     }
 
     .title {
-      font-weight: 600;
+      font-weight: bold;
       .department { font-weight: normal; white-space: nowrap;
         &:hover { text-decoration: underline; }
       }
