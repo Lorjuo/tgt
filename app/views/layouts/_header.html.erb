@@ -1,6 +1,6 @@
 <div class="" id="header">
   <div class="row">
-    <div class="col-md-5 left">
+    <div class="col-sm-6 left">
       <div class="media">
         <%= link_to root_path, class: "pull-left" do %>
           <%= image_tag "tgt-logo.png", class: "media-object" %>
@@ -11,27 +11,20 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4 middle">
+    <div class="col-sm-3 middle">
       <%#= image_tag "leichtathletik.png" %>
     </div>
-    <div class="col-md-3">
-      <div class="row">
-        <div class="col-xs-6">
-          <a class="toggleMenu" href="#">Kinder-Sport-Treff</a>
+    <div class="col-sm-3 hidden-xs">
+      <form action="<%= messages_path %>">
+        <div class="input-group">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </span>
+          <input type="text" name="search_term" class="form-control" placeholder="<%= t("general.search_term") %>">
         </div>
-        <div class="col-sm-12 col-xs-6">
-          <form action="<%= messages_path %>">
-            <div class="input-group">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button">
-                  <span class="glyphicon glyphicon-search"></span>
-                </button>
-              </span>
-              <input type="text" name="search_term" class="form-control" placeholder="<%= t("general.search_term") %>">
-            </div>
-          </form>
-        </div>
-      </div>
+      </form>
     </div>
   </div>
 </div>

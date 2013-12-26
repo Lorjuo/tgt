@@ -5,7 +5,7 @@
       :class => "dropdown-toggle",
       :data => (navigation_element.leaf?) ? {} : {:toggle => "dropdown"} do %>
       <%= navigation_element.title %>
-      <%#= tag :span, :class => "glyphicon glyphicon-chevron-right" unless navigation_element.leaf? %>
+      <%= tag :span, :class => "caret" unless navigation_element.leaf? %>
     <% end %>
     <% if navigation_element.children.present? %>
     <%# unless navigation_element.leaf? %>

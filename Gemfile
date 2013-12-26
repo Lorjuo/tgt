@@ -41,7 +41,7 @@ gem 'bootstrap-colorpicker-rails'
 
 # CSS
 # Bootstrap
-gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
+gem 'bootstrap-sass'
   # Generator
   # Maybe never needed: Generators by simple form
   #gem 'bootstrap-generators' # Only needed for first installation? - Afterwards it leads to conflicts
