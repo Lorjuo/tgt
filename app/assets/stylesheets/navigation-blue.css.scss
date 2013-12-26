@@ -1,0 +1,113 @@
+/* Custom Styles */
+
+$navigationBlue: #000066;
+$hoverFirstLevel: #FFFFFF;
+$indicatorFirstLevelHover: #0000A0;
+$hoverSecondLevelSmall: #0066AA;
+$hoverSecondLevelLarge: #0081C2;
+$indicatorSecondLevel: #0000A0;
+
+$colorFirstLevel: #FFFFFF;
+$colorHoverFirstLevel: $navigationBlue;
+$colorSecondLevel: #000000;
+$colorThirdLevelSmall: #DDDDDD;
+
+$dropdown: #FFFFFF;
+$dropdownBorder: #AAAAAA;
+
+$separator: #CCCCCC;
+
+.navigation.blue {
+  background-color: $navigationBlue;
+
+  a {
+    color: $colorFirstLevel;
+  }
+
+  li a:hover {
+    background-color: $hoverFirstLevel;
+    color: $colorHoverFirstLevel;
+  }
+
+  li ul {
+    background-color: $dropdown;
+  }
+
+  li li a {
+    color: $colorSecondLevel;
+  }
+  li li a:hover {
+    background-color: $hoverSecondLevelSmall;
+  }
+}
+
+/* Small */
+
+@media (max-width: $screen-xs-max) {
+  .navigation.blue {
+
+    li:not(:first-child)>a {
+      border-top: 1px solid $separator;
+    }
+
+    li a:hover {
+      .indicator {
+        border: 0;
+        @include caret($indicatorSize, $indicatorFirstLevelHover, down);
+      }
+    li.active>a
+      .indicator {
+        border: 0;
+        @include caret($indicatorSize, $indicatorFirstLevelHover, up);
+      }
+    }
+
+    li li a {
+      .indicator {
+        border: 0;
+        @include caret($indicatorSize, $indicatorSecondLevel, down);
+      }
+    }
+
+    li li li a {
+      background-color: $colorThirdLevelSmall;
+    }
+  }
+}
+
+/* Large */
+
+@media (min-width: $screen-sm-min) {
+  .navigation.blue {
+    li.active>a {
+      background-color: $hoverFirstLevel;
+      color: $colorHoverFirstLevel;
+    }
+
+    li a:hover {
+      .indicator {
+        border: 0;
+        @include caret($indicatorSize, $indicatorFirstLevelHover, right);
+      }
+    }
+
+    li li:not(:first-child)>a {
+      border-top: 1px solid $separator;
+    }
+
+    li ul {
+      border: 0px solid $dropdownBorder;
+    }
+
+    li li a {
+      .indicator {
+        border: 0;
+        @include caret($indicatorSize, $indicatorSecondLevel, right);
+      }
+    }
+
+    li li a:hover, li li.active>a {
+      background-color: $hoverSecondLevelLarge;
+    }
+  }
+}

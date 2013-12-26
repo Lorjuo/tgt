@@ -14,7 +14,7 @@
     </div>
     <div class="collapse navbar-collapse" id="navigation">
       <ul class="nav navbar-nav">
-        <%= render :partial => "layouts/top_level_navigation", collection: NavigationElement.top_level.roots, :as => :navigation_element %>
+        <%= render :partial => "layouts/top_level_navigation", collection: NavigationElement.top_level.roots, :as => :navigation_element, :locals => {:simple => false} %>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">

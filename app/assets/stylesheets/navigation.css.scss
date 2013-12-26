@@ -1,36 +1,189 @@
-/* Navigation */
-
-#logoSmall {
-  border: 0;
-  height: 30px;
-  margin: 6px 12px 6px 0px;
-  vertical-align: middle;
-  /*background-image: url("tgt-logo.png");
-  background-size: 16px;
-  background-repeat: no-repeat;*/
-  display: block;
-  float: left;
-}
-
-#logoWrapper {
-  color: white;
-}
-
-#logo {
-  height: 48px;
-}
-
-/* NOTE: Reenable this, when multi layer manues are needed */;
-
-/*ul.nav li.dropdown:hover>ul.dropdown-menu { 
-  display: block; 
-}*/
-
-/* http://stackoverflow.com/questions/18023493/bootstrap-3-dropdown-sub-menu-missing */
-
-/*.dropdown-submenu{position:relative;}
+.dropdown-submenu{position:relative;}
 .dropdown-submenu>.dropdown-menu{top:0;left:100%;margin-top:-6px;margin-left:-1px;-webkit-border-radius:0 6px 6px 6px;-moz-border-radius:0 6px 6px 6px;border-radius:0 6px 6px 6px;}
 .dropdown-submenu:hover>.dropdown-menu{display:block;}
 .dropdown-submenu>a:after{display:block;content:" ";float:right;width:0;height:0;border-color:transparent;border-style:solid;border-width:5px 0 5px 5px;border-left-color:#cccccc;margin-top:5px;margin-right:-10px;}
 .dropdown-submenu:hover>a:after{border-left-color:#ffffff;}
-.dropdown-submenu.pull-left{float:none;}.dropdown-submenu.pull-left>.dropdown-menu{left:-100%;margin-left:10px;-webkit-border-radius:6px 0 6px 6px;-moz-border-radius:6px 0 6px 6px;border-radius:6px 0 6px 6px;}*/
+.dropdown-submenu.pull-left{float:none;}.dropdown-submenu.pull-left>.dropdown-menu{left:-100%;margin-left:10px;-webkit-border-radius:6px 0 6px 6px;-moz-border-radius:6px 0 6px 6px;border-radius:6px 0 6px 6px;}
+
+.navigationWrapper {
+  ul, li {
+    margin: 0;
+    padding: 0;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+    outline: none;
+  }
+}
+
+.toggleMenu {
+  display:  none;
+  background: #666;
+  padding: 7px 15px;
+  color: #fff;
+}
+
+
+
+$borderRadius: 0px;
+$indicatorSize: 5px;
+
+.navigation {
+  list-style: none;
+  /* IE < 7 Fix */
+  *zoom: 1;
+  position: relative;
+
+  /* Clearfixes */
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+
+  ul {
+    width: 12em;
+  }
+
+  a {
+    padding: 8px 15px;
+    *zoom: 1;
+  }
+
+  & > li {
+    float: left;
+    z-index: 200;
+  }
+
+  & > li > a {
+    display: block;
+  }
+
+  li ul {
+    position: absolute;
+    left: -9999px;
+    z-index: 100;
+    padding: 3px;
+  }
+
+  /* Second Level */
+  li li a {
+    display: block;
+    position: relative;
+    z-index:100;
+  }
+
+  li li ul {
+    padding: 0px;
+  }
+
+  /* Third Level */
+  li li li a {
+    z-index:200;
+  }
+
+  /* Horizontal menu - Dropdown*/
+  li {
+    position: relative;
+  }
+
+  & > li.active > ul {
+    left: 0;
+  }
+
+  li li.active ul {
+    left: 100%;
+    top: 0;
+  }
+
+
+  li .indicator {
+    float: right;
+    margin: 6px 0px 6px 5px;
+  }
+}
+
+/* Mobile Version */
+
+@media (max-width: $screen-sm-min) {
+  .navigation {
+    & > li {
+      float: none;
+    }
+
+    ul {
+      display: block;
+      width: 100%;
+    }
+
+    & > li.active > ul , li li.active ul {
+      position: static;
+    }
+
+    li li a {
+      padding-left: 25px;
+    }
+
+    li li li a {
+      padding-left: 35px;
+    }
+
+    li .indicator {
+      @include caret($indicatorSize, white, down);
+    }
+
+    li.active>a>.indicator {
+      border: 0;
+      @include caret($indicatorSize, white, up);
+    }
+  }
+}
+
+/* Desktop Version */
+
+@media (min-width: $screen-sm-min) {
+  .navigation {
+    a {
+      padding: 5px 15px;
+    }
+
+    /* First Level */
+    li ul {
+      box-shadow: 2px 2px 3px 0px #333;
+      padding: 3px 0px;
+      border-radius: $borderRadius;
+      border-top-left-radius: 0;
+      margin-left: 0px;
+    }
+
+    li li a {
+      background-color: inherit;
+    }
+    
+    /* Second Level */
+    li li ul {
+      padding: 3px 0px;
+      margin-top: -3px; /* 3px padding + 1px border */
+      border-radius: $borderRadius;
+    }
+  }
+
+  li .indicator {
+    @include caret($indicatorSize, white, down);
+  }
+
+  li li .indicator {
+    border: 0; /* Clear first layer */
+    @include caret($indicatorSize, white, right);
+  }
+}
+
+@import "navigation-blue";

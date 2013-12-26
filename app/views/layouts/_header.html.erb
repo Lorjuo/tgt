@@ -15,16 +15,23 @@
       <%#= image_tag "leichtathletik.png" %>
     </div>
     <div class="col-md-3">
-      <form action="<%= messages_path %>">
-        <div class="input-group">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button">
-              <span class="glyphicon glyphicon-search"></span>
-            </button>
-          </span>
-          <input type="text" name="search_term" class="form-control" placeholder="<%= t("general.search_term") %>">
+      <div class="row">
+        <div class="col-xs-6">
+          <a class="toggleMenu" href="#">Kinder-Sport-Treff</a>
         </div>
-      </form>
+        <div class="col-sm-12 col-xs-6">
+          <form action="<%= messages_path %>">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">
+                  <span class="glyphicon glyphicon-search"></span>
+                </button>
+              </span>
+              <input type="text" name="search_term" class="form-control" placeholder="<%= t("general.search_term") %>">
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </div>

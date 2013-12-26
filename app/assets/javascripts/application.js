@@ -74,6 +74,7 @@
 //= require jquery.mousewheel-3.0.6.pack
 //
 //# Navigation
+//= require navigation
 //= require navigation_elements
 //
 //# Nested Forms

@@ -41,6 +41,7 @@ body { padding-top: 60px !important; }
 //@import "bootstrap-responsive"; // Seems that there is no need for in bootstrap 3
 //@import 'bootstrap/theme';
 
+@import "caret";
 // Custom Includes
 @import "schedule";
 @import "navigation";
@@ -60,11 +61,11 @@ body {
 
   /*@media (max-width: $screen-xs-max) {
     font-size: $font-size-base * 0.9;
-  }
+  }*/
 
   @media (min-width: $screen-sm-min) {
     font-size: $font-size-base * 0.9;
-  }*/
+  }
 
   /*@media (min-width: $screen-md-min) {
     font-size: $font-size-base * 1.1;
@@ -176,7 +177,7 @@ form .nested-fields {
 
 #header {
   color: white;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 
   img {
     height: 72px;
@@ -190,6 +191,12 @@ form .nested-fields {
       }
     }
   }
+
+  .left {
+    @media (max-width: $screen-xs-max) {
+      margin-bottom: 10px;
+    }
+  }      
 
   .middle{
     img {
