@@ -9,6 +9,11 @@
 
 $navigation-bar-height: 36px;
 
+.window.navigation-bar {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .navigation-bar {
   @include clearfix();
 
@@ -41,8 +46,9 @@ $navigation-bar-height: 36px;
 
   .navigation-brand {
     float: left;
-    padding: 5px;
-    font-size: 1.2em;
+    padding: 5px 10px;
+    font-size: 1em;
+    font-weight: bold;
   }
 
   .navigation-bar-toggle {
@@ -66,13 +72,6 @@ $navigation-bar-height: 36px;
       margin-top: 4px;
     }
   }
-}
-
-.toggleMenu {
-  display:  none;
-  background: #666;
-  padding: 7px 15px;
-  color: #fff;
 }
 
 

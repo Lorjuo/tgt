@@ -1,3 +1,4 @@
+/* http://andylangton.co.uk/blog/development/get-viewport-size-width-and-height-javascript */
 function viewport() {
   var e = window, a = 'inner';
   if (!('innerWidth' in window )) {

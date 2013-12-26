@@ -28,8 +28,8 @@ end
         <div class="date"><%= localize( message.created_at.to_date, :format => :long ) %></div>
       </div>
       <%= link_to message, :class => "content decent" do %>
-        <%= truncate(strip_tags(message.content), length: text_length, omission: '', :separator => ' ') %>
-        <%= content_tag :span, "...#{t 'general.more'}", :class => 'btn-link more' %>
+        <%= truncate(strip_tags(message.content), length: text_length, omission: '...', :separator => ' ') %>
+        <%= content_tag :span, "#{t 'general.more'}", :class => 'btn-link more' %>
       <% end %>
     <% end %>
   </div>

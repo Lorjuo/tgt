@@ -19,23 +19,19 @@
 
 
 
-
-
-<div class="window">
-  <div class="navigation-bar">
+<div class="window navigation-bar">
     
-    <div class="navigation-header">
-      <button class="navigation-bar-toggle">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to @department.name, @department, :class => "navigation-brand" %>
-    </div>
-
-    <ul class="navigation blue">
-      <%= render :partial => "layouts/simple_navigation", collection: NavigationElement.department(@department.id).roots, :as => :navigation_element %>
-    </ul>
+  <div class="navigation-header">
+    <button class="navigation-bar-toggle">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <%= link_to @department.name, @department, :class => "navigation-brand" %>
   </div>
+
+  <ul class="navigation blue">
+    <%= render :partial => "layouts/simple_navigation", collection: NavigationElement.department(@department.id).roots, :as => :navigation_element %>
+  </ul>
 </div>
