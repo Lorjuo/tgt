@@ -1,16 +1,15 @@
-/* Custom Styles */
 
 $navigationBlue: #000066;
-$hoverFirstLevel: #FFFFFF;
-$indicatorFirstLevelHover: #0000A0;
-$hoverSecondLevelSmall: #0066AA;
-$hoverSecondLevelLarge: #0081C2;
-$indicatorSecondLevel: #0000A0;
 
+$backgroundFirstLevel: $navigationBlue;
+$backgroundFirstLevelHover: #FFFFFF;
 $colorFirstLevel: #FFFFFF;
-$colorHoverFirstLevel: $navigationBlue;
+$colorFirstLevelHover: $navigationBlue;
+$backgroundSecondLevelHover: #0066AA;
 $colorSecondLevel: #000000;
-$colorThirdLevelSmall: #DDDDDD;
+$colorSecondLevelHover: $navigationBlue;
+/* --> */
+$colorThirdLevelMobile: #DDDDDD;
 
 $dropdown: #FFFFFF;
 $dropdownBorder: #AAAAAA;
@@ -18,15 +17,15 @@ $dropdownBorder: #AAAAAA;
 $separator: #CCCCCC;
 
 .navigation.blue {
-  background-color: $navigationBlue;
+  background-color: $backgroundFirstLevel;
 
   a {
     color: $colorFirstLevel;
   }
 
   li a:hover {
-    background-color: $hoverFirstLevel;
-    color: $colorHoverFirstLevel;
+    background-color: $backgroundFirstLevelHover;
+    color: $colorFirstLevelHover;
   }
 
   li ul {
@@ -37,77 +36,59 @@ $separator: #CCCCCC;
     color: $colorSecondLevel;
   }
   li li a:hover {
-    background-color: $hoverSecondLevelSmall;
+    background-color: $backgroundSecondLevelHover;
   }
 }
 
-/* Small */
+/* Mobile */
 
-@media (max-width: $screen-xs-max) {
-  .navigation.blue {
+.navigation.mobile.blue {
 
-    li:not(:first-child)>a {
-      border-top: 1px solid $separator;
-    }
+  li:not(:first-child)>a, li ul {
+    border-top: 1px solid $separator;
+  }
 
-    li a:hover {
-      .indicator {
-        border: 0;
-        @include caret($indicatorSize, $indicatorFirstLevelHover, down);
-      }
-    li.active>a
-      .indicator {
-        border: 0;
-        @include caret($indicatorSize, $indicatorFirstLevelHover, up);
-      }
-    }
-
-    li li a {
-      .indicator {
-        border: 0;
-        @include caret($indicatorSize, $indicatorSecondLevel, down);
-      }
-    }
-
-    li li li a {
-      background-color: $colorThirdLevelSmall;
-    }
+  li li li a {
+    background-color: $colorThirdLevelMobile;
   }
 }
 
-/* Large */
+/* Desktop */
 
-@media (min-width: $screen-sm-min) {
-  .navigation.blue {
-    li.active>a {
-      background-color: $hoverFirstLevel;
-      color: $colorHoverFirstLevel;
+.navigation.desktop.blue {
+  li.active>a {
+    background-color: $backgroundFirstLevelHover;
+    color: $colorFirstLevelHover;
+  }
+
+  li li:not(:first-child)>a {
+    border-top: 1px solid $separator;
+  }
+
+  li ul {
+    border: 0px solid $dropdownBorder;
+  }
+
+  li li a:hover, li li.active>a {
+    background-color: $backgroundSecondLevelHover;
+  }
+
+  li {
+    a .indicator {
+      @include caret($caretSize, $colorFirstLevel, down);
     }
-
-    li a:hover {
-      .indicator {
-        border: 0;
-        @include caret($indicatorSize, $indicatorFirstLevelHover, right);
-      }
+    &.active>a .indicator, a:hover .indicator{
+      @include caret($caretSize, $colorFirstLevelHover, down);
     }
+  }
 
-    li li:not(:first-child)>a {
-      border-top: 1px solid $separator;
+  li li {
+    a .indicator {
+      border: 0;
+      @include caret($caretSize, $colorSecondLevel, right);
     }
-
-    li ul {
-      border: 0px solid $dropdownBorder;
-    }
-
-    li li a {
-      .indicator {
-        border: 0;
-        @include caret($indicatorSize, $indicatorSecondLevel, right);
-      }
-    }
-
-    li li a:hover, li li.active>a {
-      background-color: $hoverSecondLevelLarge;
+    &.active>a .indicator, a:hover .indicator{
+      @include caret($caretSize, $colorSecondLevelHover, right);
     }
   }
 }
