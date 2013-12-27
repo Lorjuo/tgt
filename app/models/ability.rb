@@ -78,8 +78,6 @@ class Ability
       user.trainer == trainer
     end
 
-    can [:create, :read, :update, :destroy], User
-
     #
     # The first argument to `can` is the action you are giving the user 
     # permission to do.

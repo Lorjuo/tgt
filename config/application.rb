@@ -4,14 +4,14 @@ require 'rails/all'
 
 # Pick the frameworks you want:
 # http://blog.crowdint.com/2013/06/14/testing-rails-with-minitest.html
-require "active_record/railtie"
-require "action_controller/railtie"
-require 'rake/testtask'
-require "action_mailer/railtie"
-# require "active_resource/railtie"
-require "sprockets/railtie"
-require "minitest/rails/railtie"
-# require "rails/test_unit/railtie"
+# require "active_record/railtie"
+# require "action_controller/railtie"
+# require 'rake/testtask'
+# require "action_mailer/railtie"
+# # require "active_resource/railtie"
+# require "sprockets/railtie"
+# require "minitest/rails/railtie"
+# # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
