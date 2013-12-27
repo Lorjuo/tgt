@@ -22,7 +22,7 @@
    
     border-top: $size solid transparent;
     border-bottom: $size solid transparent;
-    border-right:$size solid blue;
+    border-right:$size solid $color;
    
   } @else if $direction == "right" {
    

@@ -7,7 +7,7 @@ $colorFirstLevel: #FFFFFF;
 $colorFirstLevelHover: $navigationBlue;
 $backgroundSecondLevelHover: #0066AA;
 $colorSecondLevel: #000000;
-$colorSecondLevelHover: $navigationBlue;
+$colorSecondLevelHover: #FFFFFF; /*$navigationBlue;*/
 /* --> */
 $colorThirdLevelMobile: #DDDDDD;
 
@@ -45,7 +45,7 @@ $separator: #CCCCCC;
 
   .navigation-collapse.mobile {
 
-    li:not(:first-child)>a, li ul {
+    li:not(:first-child)>a, ul {
       border-top: 1px solid $separator;
     }
 
@@ -74,22 +74,32 @@ $separator: #CCCCCC;
       background-color: $backgroundSecondLevelHover;
     }
 
-    li {
-      a .indicator {
+    .navigation > li {
+      & > a .indicator {
         @include caret($caretSize, $colorFirstLevel, down);
       }
-      &.active>a .indicator, a:hover .indicator{
+      &.active > a .indicator, a:hover .indicator{
+        border: 0;
         @include caret($caretSize, $colorFirstLevelHover, down);
       }
     }
 
-    li li {
+    .navigation.left li li {
       a .indicator {
-        border: 0;
         @include caret($caretSize, $colorSecondLevel, right);
       }
-      &.active>a .indicator, a:hover .indicator{
+      &.active > a .indicator, a:hover .indicator{
+        border: 0;
         @include caret($caretSize, $colorSecondLevelHover, right);
+      }
+    }
+    .navigation.right li li {
+      a .indicator {
+        @include caret($caretSize, $colorSecondLevel, left);
+      }
+      &.active > a .indicator, a:hover .indicator{
+        border: 0;
+        @include caret($caretSize, $colorSecondLevelHover, left);
       }
     }
   }

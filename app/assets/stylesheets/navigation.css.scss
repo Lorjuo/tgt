@@ -52,7 +52,9 @@ $navigation-bar-height: 36px;
   }
 
   .navigation-collapse {
-    float: left;
+    /*float: left;*/
+    display: block;
+    overflow: visible;
   }
 
   .navigation-bar-toggle {
@@ -122,9 +124,10 @@ $caretSize: 5px;
 
   li ul {
     position: absolute;
-    left: -9999px;
     z-index: 100;
   }
+  &.left li ul {left: -9999px;}
+  &.right li ul {right: 9999px;}
 
   /* Second Level */
   li li a {
@@ -150,14 +153,14 @@ $caretSize: 5px;
     position: relative;
   }
 
-  & > li.active > ul {
-    left: 0;
-  }
+  &.left > li.active > ul {left: 0;}
+  &.right > li.active > ul {right: 0;}
 
   li li.active ul {
-    left: 100%;
     top: 0;
   }
+  &.left li li.active ul {left: 100%;}
+  &.right li li.active ul {right: 100%;}
 
 
 
@@ -180,10 +183,8 @@ $caretSize: 5px;
 
   /* Indicator */
   li .indicator {
+    margin: 6px 5px 6px 5px;
     float: right;
-    margin: 6px 0px 6px 5px;
-    /*position: absolute; right: 0;
-    margin: 12px 5px 12px 5px;*/
   }
 }
 
@@ -251,8 +252,19 @@ $caretSize: 5px;
   /* Second Level */
   li li ul {
     padding: 3px 0px;
-    margin-top: -3px; /* 3px padding + 1px border */
+    margin-top: -2px; /* -3px padding + 1px border-top | TODO Bug on first li on dropdown because of border-top*/
     border-radius: $borderRadius;
+  }
+  .navigation.left li li ul {margin-left: 0px;}
+  .navigation.right li li ul {margin-right: 0px;}
+
+
+  /* Indicator */
+  .navigation.left li li {
+    .indicator {float: right;}
+  }
+  .navigation.right li li {
+    .indicator {float: left;}
   }
 }
 
