@@ -28,7 +28,7 @@ $(document).ready(function() {
   $(".navigation-bar-toggle").click(function(e) {
     e.preventDefault();
     $(this).toggleClass("active");
-    $(".navigation").slideToggle();
+    $(".navigation-collapse").slideToggle();
   });
   adjustMenu();
 })
@@ -40,12 +40,12 @@ $(window).bind('resize orientationchange', function() {
 
 var adjustMenu = function() {
   if (ww < 768) {
-    $(".navigation").removeClass( "desktop" ).addClass( "mobile" )
+    $(".navigation-collapse").removeClass( "desktop" ).addClass( "mobile" )
     $(".navigation-bar-toggle").css("display", "inline-block");
     if (!$(".navigation-bar-toggle").hasClass("active")) {
-      $(".navigation").hide();
+      $(".navigation-collapse").hide();
     } else {
-      $(".navigation").show();
+      $(".navigation-collapse").show();
     }
     $(".navigation li").unbind('mouseenter mouseleave');
     $(".navigation li a.parent").unbind('click').bind('click', function(e) {
@@ -55,9 +55,9 @@ var adjustMenu = function() {
     });
   } 
   else if (ww >= 768) {
-    $(".navigation").removeClass( "mobile" ).addClass( "desktop" )
+    $(".navigation-collapse").removeClass( "mobile" ).addClass( "desktop" )
     $(".navigation-bar-toggle").css("display", "none");
-    $(".navigation").show();
+    $(".navigation-collapse").show();
     $(".navigation li").removeClass("active");
     $(".navigation li a").unbind('click');
     $(".navigation li").unbind('mouseenter mouseleave').bind('mouseenter mouseleave', function() {

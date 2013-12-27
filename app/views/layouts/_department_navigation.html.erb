@@ -20,7 +20,7 @@
 
 
 
-<div class="window navigation-bar">
+<div class="window navigation-bar blue">
     
   <div class="navigation-header">
     <button class="navigation-bar-toggle">
@@ -30,10 +30,14 @@
       <span class="icon-bar"></span>
     </button>
     <%= link_to @department.name, @department, :class => "navigation-brand" %>
-
   </div>
 
-  <ul class="navigation blue">
-    <%= render :partial => "layouts/simple_navigation", collection: NavigationElement.department(@department.id).roots, :as => :navigation_element %>
-  </ul>
+  <div class="navigation-collapse">
+    <ul class="navigation left">
+      <%= render :partial => "layouts/simple_navigation", collection: NavigationElement.department(@department.id).roots, :as => :navigation_element %>
+    </ul>
+    <ul class="navigation right">
+      <%= render :partial => "layouts/simple_navigation", collection: NavigationElement.department(@department.id).roots, :as => :navigation_element %>
+    </ul>
+  </div>
 </div>

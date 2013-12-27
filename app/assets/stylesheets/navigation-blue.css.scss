@@ -16,79 +16,81 @@ $dropdownBorder: #AAAAAA;
 
 $separator: #CCCCCC;
 
-.navigation.blue {
+.navigation-bar.blue {
   background-color: $backgroundFirstLevel;
 
-  a {
-    color: $colorFirstLevel;
-  }
-
-  li a:hover {
-    background-color: $backgroundFirstLevelHover;
-    color: $colorFirstLevelHover;
-  }
-
-  li ul {
-    background-color: $dropdown;
-  }
-
-  li li a {
-    color: $colorSecondLevel;
-  }
-  li li a:hover {
-    background-color: $backgroundSecondLevelHover;
-  }
-}
-
-/* Mobile */
-
-.navigation.mobile.blue {
-
-  li:not(:first-child)>a, li ul {
-    border-top: 1px solid $separator;
-  }
-
-  li li li a {
-    background-color: $colorThirdLevelMobile;
-  }
-}
-
-/* Desktop */
-
-.navigation.desktop.blue {
-  li.active>a {
-    background-color: $backgroundFirstLevelHover;
-    color: $colorFirstLevelHover;
-  }
-
-  li li:not(:first-child)>a {
-    border-top: 1px solid $separator;
-  }
-
-  li ul {
-    border: 0px solid $dropdownBorder;
-  }
-
-  li li a:hover, li li.active>a {
-    background-color: $backgroundSecondLevelHover;
-  }
-
-  li {
-    a .indicator {
-      @include caret($caretSize, $colorFirstLevel, down);
+  .navigation {
+    a {
+      color: $colorFirstLevel;
     }
-    &.active>a .indicator, a:hover .indicator{
-      @include caret($caretSize, $colorFirstLevelHover, down);
+
+    li a:hover {
+      background-color: $backgroundFirstLevelHover;
+      color: $colorFirstLevelHover;
+    }
+
+    li ul {
+      background-color: $dropdown;
+    }
+
+    li li a {
+      color: $colorSecondLevel;
+    }
+    li li a:hover {
+      background-color: $backgroundSecondLevelHover;
     }
   }
 
-  li li {
-    a .indicator {
-      border: 0;
-      @include caret($caretSize, $colorSecondLevel, right);
+  /* Mobile */
+
+  .navigation-collapse.mobile {
+
+    li:not(:first-child)>a, li ul {
+      border-top: 1px solid $separator;
     }
-    &.active>a .indicator, a:hover .indicator{
-      @include caret($caretSize, $colorSecondLevelHover, right);
+
+    li li li a {
+      background-color: $colorThirdLevelMobile;
+    }
+  }
+
+  /* Desktop */
+
+  .navigation-collapse.desktop {
+    li.active>a {
+      background-color: $backgroundFirstLevelHover;
+      color: $colorFirstLevelHover;
+    }
+
+    li li:not(:first-child)>a {
+      border-top: 1px solid $separator;
+    }
+
+    li ul {
+      border: 0px solid $dropdownBorder;
+    }
+
+    li li a:hover, li li.active>a {
+      background-color: $backgroundSecondLevelHover;
+    }
+
+    li {
+      a .indicator {
+        @include caret($caretSize, $colorFirstLevel, down);
+      }
+      &.active>a .indicator, a:hover .indicator{
+        @include caret($caretSize, $colorFirstLevelHover, down);
+      }
+    }
+
+    li li {
+      a .indicator {
+        border: 0;
+        @include caret($caretSize, $colorSecondLevel, right);
+      }
+      &.active>a .indicator, a:hover .indicator{
+        @include caret($caretSize, $colorSecondLevelHover, right);
+      }
     }
   }
 }

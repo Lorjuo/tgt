@@ -51,6 +51,10 @@ $navigation-bar-height: 36px;
     font-weight: bold;
   }
 
+  .navigation-collapse {
+    float: left;
+  }
+
   .navigation-bar-toggle {
     float: right;
     border: 1px solid black;
@@ -85,6 +89,9 @@ $caretSize: 5px;
   *zoom: 1;
 
 
+
+  &.left { float: left; }
+  &.right { float: right; }
 
 
   /* Clearfixes */
@@ -184,8 +191,8 @@ $caretSize: 5px;
 
 
 /* Mobile Version */
-.navigation.mobile {
-  & > li {
+.navigation-collapse.mobile {
+  .navigation > li {
     float: none;
   }
 
@@ -194,7 +201,7 @@ $caretSize: 5px;
     width: 100%;
   }
 
-  & > li.active > ul , li li.active ul {
+  .navigation > li.active > ul , li li.active ul {
     position: static;
   }
 
@@ -223,7 +230,7 @@ $caretSize: 5px;
 
 
 /* Desktop Version */
-.navigation.desktop {
+.navigation-collapse.desktop {
   a {
     padding: 5px 15px;
   }
