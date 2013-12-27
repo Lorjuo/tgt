@@ -31,19 +31,19 @@
 <% end %>
 
 <% content_for :head do %>
-  <meta property="og:type" content="article"/>
+  <meta property='og:type' content='article'/>
 
   <% if @message.image.present? %>
-    <meta property='og:image' content='<%= @message.image.file_url %>' />
-    <meta name='twitter:image' content='<%= @message.image.file_url %>' />
+    <meta property='og:image' content='<%= request.host + @message.image.file_url %>' />
+    <meta name='twitter:image' content='<%= request.host + @message.image.file_url %>' />
   <% end %>
 
-  <meta property="og:url" content='<%= message_url(@message) %>' />
-  <meta name="twitter:url" content='<%= message_url(@message) %>' />
+  <meta property='og:url' content='<%= message_url(@message) %>' />
+  <meta name='twitter:url' content='<%= message_url(@message) %>' />
 
   <% description = truncate(strip_tags(@message.content), length: 240, omission: '...', :separator => ' ') %>
-  <meta property="og:description" content='<%= description %>' />
-  <meta name="twitter:description" content='<%= description %>' />
+  <meta property='og:description' content='<%= description %>' />
+  <meta name='twitter:description' content='<%= description %>' />
 <% end %>
 
 <div class="window box thin">

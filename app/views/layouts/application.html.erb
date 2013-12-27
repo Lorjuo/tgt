@@ -14,11 +14,13 @@
   Ortslauf, Ortskernlauf, Entega, Entega-Ortslauf, Mühltal, Bewegungsangebot, Kinder-Sport-Treff, Hallensportfest, NightRun" />
   <%= yield :head %>
 
-  <meta property="og:title" content="<%= title %>"/>
+  <meta name='twitter:card' content='summary'> 
+
+  <meta property='og:title' content='<%= title %>'/>
 
   <meta property='og:locale' content='de_DE'/>
-  <meta property='og:image' content='<%= asset_url("tgt.png") %>' />
-  <meta name='twitter:image' content='<%= asset_url("tgt.png") %>' />
+  <meta property='og:image' content='<%= asset_url("tgt-social.png") %>' />
+  <meta name='twitter:image' content='<%= asset_url("tgt-social.png") %>' />
 
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
