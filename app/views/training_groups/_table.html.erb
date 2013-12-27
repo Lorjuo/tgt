@@ -15,7 +15,7 @@
         <th data-hide="xxs,xs"><%= TrainingGroup.human_attribute_name(:age) %></th>
       <% end %>
       <th class="no-sort" data-hide="xxs,xs"><%= TrainingGroup.human_attribute_name(:trainers) %></th>
-      <% if can? :update, TrainingGroup %>
+      <% if user_signed_in? %>
         <%= content_tag :th, t("general.actions"), class: "no-sort" %>
       <% end %>
     </tr>

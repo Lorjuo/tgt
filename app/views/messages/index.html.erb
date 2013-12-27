@@ -24,7 +24,8 @@
       :label_method => :name,
       :value_method => :id,
       :include_blank => true,
-      :class => "input-sm chosen", :multiple => false, :style => "display: inline; width: 16em") %></p>
+      :class => "input-sm chosen", :multiple => false, :style => "display: inline; width: 16em",
+      :selected => @department.present? ? @department.id : false) %></p>
   <% end %>
 </div>
 
@@ -36,7 +37,7 @@
   <table id="messages_data_table"
     class="dataTable table table-bordered table-striped"
     data-source="<%=
-      @department.present? ?
+      @department.present? && false ?
         department_messages_path(@department, format: "json") :
         messages_path(format: "json")
     %>">

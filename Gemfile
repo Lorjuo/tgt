@@ -117,6 +117,8 @@ gem 'cancan'
 gem 'devise'
 gem 'rolify', '~> 3.3.0.rc4' # https://github.com/EppO/rolify/pull/129
 
+# Social Media
+
 # String Operations
 gem 'truncate_html'
 

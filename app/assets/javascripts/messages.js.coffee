@@ -16,7 +16,7 @@ $ ->
     filter_text( tableContainer, element_search_term, 2 )
   filter_text( tableContainer, element_search_term, 2 ) # also do this on load
 
-  # Filter age
+  # Filter department
   element_department = "#message_department"
   $(element_department).change ->
     filter_select( tableContainer, element_department, 3 )

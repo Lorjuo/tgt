@@ -42,6 +42,11 @@ $navbar-default-brand-color: #FFFFFF;*/
   border-bottom: 1px solid #999999;
 }
 
+.navbar-inverse .navbar-nav > .open > a {
+  background: none;
+  background-image: linear-gradient(to bottom, rgba(92,92,128,1), rgba(92,92,144,0.8));
+}
+
 @import "bootstrap";
 body { padding-top: 60px !important; }
 //@import "bootstrap-responsive"; // Seems that there is no need for in bootstrap 3

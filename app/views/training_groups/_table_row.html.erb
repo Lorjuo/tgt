@@ -16,10 +16,10 @@
   <%= content_tag :td, :class => "tableActions" do %>
     <%= link_to edit_training_group_path(training_group), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
       <%= tag :span, :class => "glyphicon glyphicon-edit" %>
-    <% end %>
+    <% end if can? :update, training_group%>
 
     <%= link_to training_group, data: { confirm: I18n.t('general.are_you_sure') }, method: :delete, :title => t("general.destroy"), :data => {:toggle => "tooltip"} do %>
       <%= tag :span, :class => "glyphicon glyphicon-trash" %>
     <% end if can? :destroy, training_group %>
-  <% end if can? :update, TrainingGroup %>
+  <% end if user_signed_in? %>
 </tr>
