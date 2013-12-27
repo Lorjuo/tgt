@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <meta property="og:type" content="website"/>
+<% end %>
+
 <div class="window box">
   <h3><%= t ".training_offer" %></h3>
   <p><%= raw t(".training_offer_sentence", :link => link_to(t("general.here"), search_training_groups_path)) %></p>

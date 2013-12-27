@@ -1,15 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:fb="http://ogp.me/ns/fb#">
 <head>
   <meta charset="utf-8">
-  <title>
-    <%= raw [content_for(:title), "Turngemeinde 1879 Traisa e.V."].compact.join(' - ') %>
-  </title>
   <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">-->
   <meta name="viewport" content="initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> <!-- this is necessary to prevent quirks mode in IE -->
+
+  <% title = raw [content_for(:title), "Turngemeinde 1879 Traisa e.V."].compact.join(' - ') %>
+  <title><%= title %></title>
+  <meta name="description" content="Aktuelle Neuigkeiten und Informationen der TG 1879 Traisa e.V.">
+  <meta name="Keywords" content="Traisa, Sport, Kultur, 25.06.02,TGT,tgt,TG TRAISA,TG Traisa,TG-TRAISA,TG-Traisa,TG 1879,TG Traisa Turngemeinde,Turngemeinde Traisa,Turngemeinde 1879 Traisa, Turngemeinde 1879 Traisa e.V.,Sport,Sportverein,Mühltal,Muehltal,Hessen,Handball,Turnen,Mutter und Kind,Vorstand,Leichtathletik, Basketball, Ski, Skigymnastik,Technik,Theater,Ohlebach,Ohlebach-Theater,Laien-Theater,Karneval,Fasching,Garde,Basketball,Beach,Beach-Volleyball,Volleyball,Kinder,Jugend,Jugendliche,Kurse,Aerobic,Wirbelsäulengymnastk,Kugelstossen,Weitsprung,Athletic,Hochsprung,Speerwurf,Diskus,Hürden,Lauf,Sprint,Mittelstrecke,Langstrecke,Staffel,Sportart,individual,Senioren,Hallensportfest,Wettkampf,Kooperation,Sponsoren,DAFÜR,Dafuer GmbH,Sport-Studio,Studio,Freizeit,Kinder,Technik,Licht,Ton, Amateurtheater, Laienspielgruppe, Ohlebach-Theater, Theater, Lustspiele, Komödien, Schauspieler, Laienspieler, Theatergruppe,
+  Ortslauf, Ortskernlauf, Entega, Entega-Ortslauf, Mühltal, Bewegungsangebot, Kinder-Sport-Treff, Hallensportfest, NightRun" />
+  <%= yield :head %>
+
+  <meta property="og:title" content="<%= title %>"/>
+
+  <meta property='og:locale' content='de_DE'/>
+  <meta property='og:image' content='<%= asset_url("tgt.png") %>' />
+  <meta name='twitter:image' content='<%= asset_url("tgt.png") %>' />
 
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
