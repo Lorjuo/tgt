@@ -87,8 +87,6 @@
 //= require jquery.ui.nestedSortable
 //= require sortable_tree/initializer
 //
-//# Social Media
-//
 //# Table
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap3
@@ -109,4 +107,3 @@
 //
 //# Has to be the last (https://github.com/kossnocorp/jquery.turbolinks)
 //= require turbolinks
-Turbolinks.pagesCached(0); // Reenable Backwards button in browser http://stackoverflow.com/questions/17029399/clicking-back-in-the-browser-disables-my-javascript-code-if-im-using-turbolin

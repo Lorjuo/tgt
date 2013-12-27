@@ -1,0 +1,23 @@
+%ul.social_links<
+  %li.caption<
+    ='share:'
+  %li.twitter<
+    = link_to "http://twitter.com/home?status=Check%20out%20the%20Portfolio%20Project%20-%20#{request.url}", :target => "blank", :title => "Share on Twitter", :data => {:toggle => "tooltip"} do
+      = fa_icon "twitter-square"
+    / %a{:href => "http://twitter.com/home?status=Check%20out%20the%20Portfolio%20Project%20-%20#{request.url}"}
+    /   = image_tag('twitter.png', :alt => 'Share this on twitter', :title => 'Share this on twitter')
+  %li.facebook<
+    = link_to "http://www.facebook.com/sharer.php?u=#{request.url}&t=PortfolioProject", :target => "blank", :title => "Share on Facebook", :data => {:toggle => "tooltip"} do
+      = fa_icon "facebook-square"
+    / %a{:href => "http://www.facebook.com/sharer.php?u=#{request.url}&t=PortfolioProject", :target => "blank"}
+    /   = image_tag('facebook.png', :alt => "Share this on facebook", :title => "Share this on facebook")
+  %li.linkedin<
+    = link_to "http://www.linkedin.com/shareArticle?mini=true&url=#{request.url}&title=Check%20out%20Portfolio-Project.com&source=#{request.url}", :target => "blank", :title => "Share on LinkedIn", :data => {:toggle => "tooltip"} do
+      = fa_icon "linkedin-square"
+    / %a{:href => "http://www.linkedin.com/shareArticle?mini=true&url=#{request.url}&title=Check%20out%20Portfolio-Project.com&source=#{request.url}"}
+    /   = image_tag('linkedin.png', :alt => "Share this on linkedin", :title => "Share this on linkedin")
+  / %li.gplus
+  /   .g-plusone{"data-count" => "false", "data-size" => "small"}
+  %li.google-plus<
+    = link_to "https://plus.google.com/share?url=#{request.url}", :target => "blank", :title => "Share on Google+", :data => {:toggle => "tooltip"} do
+      = fa_icon "google-plus-square"

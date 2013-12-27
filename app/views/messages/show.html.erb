@@ -48,6 +48,14 @@
     <div class="messageContent">
       <%= raw @message.content %>
     </div>
+    <div class="messageFooter">
+      <div class="date">
+        <%= localize( @message.created_at, :format => :short_full ) %>
+      </div>
+      <div class="share">
+        <%= render :partial => "shared/social_media_share" %>
+      </div>
+    </div>
     <%= render :partial => "shared/references_to", :locals => { references: @message.references } %>
   </div>
 </div>

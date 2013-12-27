@@ -135,7 +135,7 @@ ul.references {
   background-image: linear-gradient(to bottom, white, #F2F2F2);
   background-repeat: repeat-x;
   padding: 6px 12px 6px 12px;
-  /*overflow: auto;*/ /* needed to prevent floating boxes to expand out of this box (mediaContainers inside messages) */
+  /*overflow: auto;*/ /* needed to prevent floating boxes to expand out of this box (mediaContainers inside ps) */
 }
 
 .plain {
@@ -336,7 +336,65 @@ div.mediaContainer.decent {
 
 
 .message {
-  min-height: 360px;
+
+  .messageContent {
+    min-height: 180px;
+    margin-bottom: 40px;
+  }
+
+  .messageFooter {
+    @include clearfix();
+    vertical-align: middle;
+      line-height: 42px;
+
+    .date {
+      float: left;
+      vertical-align: middle;
+    }
+    .share {
+      float: right;
+      vertical-align: middle;
+      margin-left: 10px;
+    }
+  }
+}
+
+
+
+/* Social Media */
+ul.social_links{
+  display: block;
+  padding: 0; margin: 0;
+  li {
+    display: block;
+    vertical-align: middle;
+    float: left;
+
+    &.caption {
+    }
+
+    a {
+      font-size: 24px;
+      text-decoration: none;
+      margin-left: 3px;
+    }
+
+    &.google-plus a {
+      color: #b43123;
+    }
+
+    &.twitter a {
+      color: #49c8f5;
+    }
+
+    &.facebook a {
+      color: #3c5a98;
+    }
+
+    &.linkedin a {
+      color: #006699;
+    }
+  }
 }
 
 
