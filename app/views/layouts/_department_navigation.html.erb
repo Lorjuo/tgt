@@ -38,7 +38,11 @@
     </ul>
     <% if can? :update, @department %>
       <ul class="navigation left">
-        <li><%= link_to "Verwaltung", "#" %>
+        <li>
+          <%= link_to "#" do %>
+            <%= fa_icon "key" %>
+            Verwaltung
+          <% end %>
           <ul>
             <li><%= link_to "Seiten", pages_path %></li>
             <li><%= link_to "Navigation", department_navigation_elements_path(@department) %>

@@ -21,7 +21,7 @@ class BaseUploader < CarrierWave::Uploader::Base
   end
 
   def filename
-    @name ||= "#{secure_token}.#{file.extension}" if original_filename.present?
+    @name ||= "#{secure_token}.#{file.extension}" if original_filename.present? # TODO: unless insted of if?
   end
 
   def original_file

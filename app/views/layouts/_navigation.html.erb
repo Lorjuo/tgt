@@ -21,6 +21,7 @@
         <% if current_user && current_user.has_role?('editor') %>
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <%= fa_icon "key" %>
               <%= t ".administration" %>
               <span class="caret"></span>
             </a>

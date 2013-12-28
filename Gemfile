@@ -90,6 +90,7 @@ gem 'fancybox2-rails', '~> 0.2'
   #gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :path => File.join('..', 'datetimepicker-rails')
   
   # Token Inputs
+  # Chosen check smartphone compatibility. Especially message and training group search
   gem 'chosen-rails'
   # For Rails 4 project, it is required to add compass-rails gem explicitly.
   gem 'compass-rails', github: 'Compass/compass-rails'
