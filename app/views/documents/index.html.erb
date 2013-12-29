@@ -13,10 +13,12 @@
   <table class="table table-bordered table-striped datatable searchable">
     <thead>
       <tr>
+        <th><%= Document.human_attribute_name(:image) %></th>
         <th><%= Document.human_attribute_name(:name) %></th>
         <th><%= Document.human_attribute_name(:file) %></th>
+        <th><%= Document.human_attribute_name(:thumbnails) %></th>
         <% if user_signed_in? %>
-          <th class="no-sort"><% t "general.actions" %></th>
+          <th class="no-sort"><%= t "general.actions" %></th>
         <% end %>
       </tr>
     </thead>
@@ -24,8 +26,22 @@
     <tbody>
   <% @documents.each do |document| %>
       <tr>
+        <td><%= link_to(image_tag(document.file_url(:thumb)), document.file_url, :class => "fancybox") if document.present? %></td>
         <td><%= link_to document.name, document %></td>
         <td><%= document.file %></td>
+        <td>
+          <% if document.file.thumb.present? %>
+            <%= link_to document.file.thumb.url, :class => "no-wrap" do %>
+              <span class="glyphicon glyphicon-picture"></span>
+              <%= t("general.small") %><% end %>,
+            <%= link_to document.file._240x240.url, :class => "no-wrap" do %>
+              <span class="glyphicon glyphicon-picture"></span>
+              <%= t("general.medium") %><% end %>,
+            <%= link_to document.file.full.url, :class => "no-wrap" do %>
+              <span class="glyphicon glyphicon-picture"></span>
+              <%= t("general.large") %><% end %>
+          <% end %>
+        </td>
         <% if user_signed_in? %>
           <td>
             <%= link_to edit_document_path(document), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>

@@ -31,6 +31,9 @@
 //# Carousel
 //= require carousel
 //
+//# Clipboard
+//= require zeroclipboard
+//
 //# Colorpicker
 //= require bootstrap-colorpicker
 //= require colorpicker_loader

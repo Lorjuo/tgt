@@ -18,12 +18,10 @@
     <thead>
       <tr>
         <th><%= Location.human_attribute_name(:name) %></th>
-        <th></th>
-        <% if can? :update, Location %>
-        <th></th>
-        <% end %>
-        <% if can? :destroy, Location %>
-        <th></th>
+        <th><%= Location.human_attribute_name(:address) %>:</th>
+        <th><%= Location.human_attribute_name(:schedule) %>:</th>
+        <% if user_signed_in? %>
+          <th class="no-sort"><%= t "general.actions" %></th>
         <% end %>
       </tr>
     </thead>
@@ -31,18 +29,30 @@
     <tbody>
   <% @locations.each do |location| %>
       <tr>
-        <td><%= location.name %></td>
-        <td><%= link_to t('general.show'), location %></td>
-        <% if can? :update, location %>
-        <td><%= link_to t('general.edit'), edit_location_path(location) %></td>
-        <% end %>
-        <% if can? :destroy, location %>
+        <td><%= link_to location.name, location %></td>
+        <td><%= location.address %></td>
         <td>
-          <%= link_to location, method: :delete, data: { confirm: t('general.are_you_sure') } do %>
-            <span class="glyphicon glyphicon-trash"></span>
-            <%= t('general.destroy') %>
+          <%= link_to schedule_location_path(location, :season => "summer") do %>
+            <span class="glyphicon glyphicon-calendar"></span>
+            <%= t "general.summer" %>
+          <% end %>
+          <br />
+          <%= link_to schedule_location_path(location, :season => "winter") do %>
+            <span class="glyphicon glyphicon-calendar"></span>
+            <%= t "general.winter" %>
           <% end %>
         </td>
+        <% if user_signed_in? %>
+          <td>
+            <%= link_to edit_location_path(location), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
+              <%= tag :span, :class => "glyphicon glyphicon-edit" %>
+            <% end %>
+            <% if can? :destroy, location %>
+              <%= link_to location, :title => t("general.destroy"), data: { confirm: t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete do %>
+                <%= tag :span, :class => "glyphicon glyphicon-trash" %>
+              <% end %>
+            <% end %>
+          </td>
         <% end %>
       </tr>
   <% end %>

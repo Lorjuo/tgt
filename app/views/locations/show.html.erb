@@ -90,32 +90,30 @@
 
   <%# TODO: Add location occupancy plan %>
 
-  <% if false %>
-  <div class="row">
-    <div class="col-md-12">
-      <h3>Training Units</h3>
-      <table class="table table-bordered table-striped">
-        <thead>
-          <tr>
-            <th>Weekday</th>
-            <th>Time</th>
-            <th>Location Summer</th>
-            <th>Location Winter</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @location.training_units_winter.each do |training_unit| %>
-            <tr>
-              <!-- <td><%#= link_to training_group.name, training_group %></td>
-              <td><%#= link_to training_group.department.name, training_group.department %></td> -->
-              <td><%= Date::DAYNAMES[training_unit.week_day] %></td>
-              <td><%= training_unit.time_begin %></td>
-              <td><%= link_to training_unit.location_summer.name, training_unit.location_summer %></td>
-              <td><%= link_to training_unit.location_winter.name, training_unit.location_winter %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <% end %>
+<% if false %>
+<div class="window box">
+  <h3><%= TrainingGroup.human_attribute_name(:training_units) %></h3>
+  <table class="table table-bordered table-striped datatable searchable">
+    <thead>
+      <tr>
+        <th data-class="expand"><%= TrainingUnit.human_attribute_name(:week_day) %></th>
+        <th><%= TrainingUnit.human_attribute_name(:time) %></th>
+        <th data-hide="xxs,xs,sm"><%= TrainingUnit.human_attribute_name(:location_summer) %></th>
+        <th data-hide="xxs,xs,sm"><%= TrainingUnit.human_attribute_name(:location_winter) %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @location.training_units_winter.each do |training_unit| %>
+        <tr>
+          <!-- <td><%#= link_to training_group.name, training_group %></td>
+          <td><%#= link_to training_group.department.name, training_group.department %></td> -->
+          <td><%= Date::DAYNAMES[training_unit.week_day] %></td>
+          <td><%= training_unit.time %></td>
+          <td><%= link_to training_unit.location_summer.name, training_unit.location_summer %></td>
+          <td><%= link_to training_unit.location_winter.name, training_unit.location_winter %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<% end %>

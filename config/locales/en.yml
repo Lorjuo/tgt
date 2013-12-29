@@ -31,6 +31,10 @@ en:
     time_to: to
     update: Update
 
+    small: Small
+    medium: Medium
+    large: Large
+
     summer: Summer
     winter: Winter
 
@@ -58,12 +62,16 @@ en:
     gallery: Photogallery
     galleries: Photogalleries
     name: Name
+    file: File
     first_name: Givenname
+    image: Image
     last_name: Surname
     link: Link
     path: Path
     role: Role
     roles: Roles
+    thumbnail: Thumbnail
+    thumbnails: Thumbnails
     time: Time
     trainers: Trainers
     training_groups: Training groups
@@ -145,7 +153,6 @@ en:
 
       trainer:
         name: Full Name
-        image: Image
         birthday: Birthday
         residence: Residence
         phone: Phone

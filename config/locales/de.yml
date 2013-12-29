@@ -29,6 +29,10 @@ de:
     time_to: bis
     update: Update
 
+    small: Klein
+    medium: Mittel
+    large: Groß
+
     current: Aktuelle
     ancient: Ehemalige
 
@@ -59,12 +63,16 @@ de:
     gallery: Fotogalerie
     galleries: Fotogalerien
     name: Name
+    file: Datei
     first_name: Vorname
+    image: Bild
     last_name: Nachname
     link: Link
     path: Pfad
     role: Rolle
     roles: Rollen
+    thumbnail: Thumbnail
+    thumbnails: Thumbnails
     time: Uhrzeit
     trainers: Trainer
     training_groups: Trainingsgruppen
@@ -146,7 +154,6 @@ de:
 
       trainer:
         name: Vollständiger Name
-        image: Bild
         birthday: Geburstag
         residence: Wohnort
         phone: Telefon
