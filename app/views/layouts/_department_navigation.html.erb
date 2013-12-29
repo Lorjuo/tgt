@@ -44,13 +44,13 @@
             Verwaltung
           <% end %>
           <ul>
-            <li><%= link_to "Seiten", pages_path %></li>
-            <li><%= link_to "Navigation", department_navigation_elements_path(@department) %>
+            <li><%= link_to Page.model_name.human(:count => :lots), pages_path %></li>
+            <li><%= link_to t("general.navigation"), department_navigation_elements_path(@department) %>
               <ul>
-                <li><%= link_to "Sublevel", department_navigation_elements_path(@department) %>
+                <li><%= link_to "Anordnung", sort_navigation_elements_department_path(@department) %>
               </ul>
             </li>
-            <li><%= link_to "Dokumente", documents_path %>
+            <li><%= link_to Document.model_name.human(:count => :lots), documents_path %>
           </ul>
         </li>
       </ul>

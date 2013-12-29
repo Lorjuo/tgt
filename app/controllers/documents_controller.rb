@@ -3,6 +3,8 @@ class DocumentsController < ApplicationController
 
   load_and_authorize_resource
 
+  layout 'one_column'
+
   # GET /documents
   # GET /documents.json
   def index

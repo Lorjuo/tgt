@@ -26,12 +26,19 @@
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
+              <% generic_department = Department.where(:name=>"generic").first %>
               <%= content_tag :li do %>
-                  <%= link_to(Announcement.model_name.human(:count => :lots), announcements_path) %>
+                <%= link_to t("general.navigation"), department_navigation_elements_path(generic_department) %>
+              <% end if current_user.can?(:edit, generic_department) %>
+              <%= content_tag :li do %>
+                <%= link_to(Announcement.model_name.human(:count => :lots), announcements_path) %>
               <% end if current_user.can?(:edit, :announcements) %>
               <%= content_tag :li do %>
-                  <%= link_to(User.model_name.human(:count => :lots), users_path) %>
+                <%= link_to(User.model_name.human(:count => :lots), users_path) %>
               <% end if current_user.can?(:edit, :users) %>
+              <%= content_tag :li do %>
+                <%= link_to(Department.model_name.human(:count => :lots), departments_path) %>
+              <% end if current_user.can?(:edit, :departments) %>
             </ul>
           </li>
         <% end %>

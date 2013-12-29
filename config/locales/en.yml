@@ -18,6 +18,7 @@ en:
     here: here
     list: List
     more: more
+    navigation: Navigation
     reference: Reference
     references: References
     search: Search
@@ -96,6 +97,9 @@ en:
       message:
         one: Message
         other: Messages
+      navigation_element:
+        one: Navigationselement
+        other: Navigationselements
       page:
         one: Page
         other: Pages
@@ -129,6 +133,15 @@ en:
       message:
         title: Headline
         content: Text
+
+      navigation:
+        action_id: Action
+        controller_id: Controller
+        instance_id: Instance
+        parent_id: Parental element
+
+        object: Object
+        url: Url
 
       trainer:
         name: Full Name
@@ -167,9 +180,14 @@ en:
       title: Listing departments
     show:
       title: 'Department "%{name}"'
-      navigation_structure: Navigation structure
     form:
       users_hint: 'Users that can manage this department'
+
+  documents:
+    index:
+      title: Listing documents
+    show:
+      title: 'Document "%{name}"'
 
   events:
     index:
@@ -203,6 +221,12 @@ en:
       sentence_search_term: "I want to search for the following term %{input}"
     show:
       title: '%{title}'
+
+  navigation_elements:
+    index:
+      title: Navigation
+    show:
+      title: 'Navigation element "%{name}"'
 
   pages:
     index:

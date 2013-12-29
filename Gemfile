@@ -182,6 +182,8 @@ group :development do
   # Debugger
   gem 'debugger'
   # gem 'byebug'
+  
+  gem "rails-i18n-debug"
 
   # Error Handling
   gem 'better_errors'

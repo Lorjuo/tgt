@@ -1,6 +1,6 @@
 <%# cache navigation_element do %>
   <%= content_tag :li do %>
-    <%= link_to navigation_element.title, navigation_element.url %>
+    <%= link_to navigation_element.name, navigation_element.url %>
     <% if navigation_element.children.present? %>
       <%= content_tag :ul do %>
         <%= render :partial => "layouts/simple_navigation", collection: navigation_element.children, :as => :navigation_element %>

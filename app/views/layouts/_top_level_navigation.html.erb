@@ -4,7 +4,7 @@
     <%= link_to navigation_element.url,
       :class => "dropdown-toggle",
       :data => (navigation_element.leaf?) ? {} : {:toggle => "dropdown"} do %>
-      <%= navigation_element.title %>
+      <%= navigation_element.name %>
       <%= tag :span, :class => "caret" unless navigation_element.leaf? %>
     <% end %>
     <% if navigation_element.children.present? %>

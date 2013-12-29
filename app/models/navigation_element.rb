@@ -39,6 +39,7 @@ class NavigationElement < ActiveRecord::Base
 
   # Return relative url for given navigation element
   def url
+    # TODO bug with controllers without models e.g. StaticPages
     if controller_id.empty?
       "#"
     elsif instance_id.nil?

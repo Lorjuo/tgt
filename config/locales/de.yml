@@ -16,6 +16,7 @@ de:
     here: hier
     list: Übersicht
     more: mehr
+    navigation: Navigation
     reference: Verknüpfung
     references: Verknüpfungen
     search: Suche
@@ -97,6 +98,9 @@ de:
       message:
         one: Nachricht
         other: Nachrichten
+      navigation_element:
+        one: Navigationselement
+        other: Navigationselemente
       page:
         one: Seite
         other: Seiten
@@ -130,6 +134,15 @@ de:
       message:
         title: Überschrift
         content: Text
+
+      navigation_element:
+        action_id: Aktion
+        controller_id: Kontroller
+        instance_id: Instanz
+        parent_id: Elternelement
+
+        object: Objekt
+        url: Url
 
       trainer:
         name: Vollständiger Name
@@ -168,9 +181,14 @@ de:
       title: Abteilungsübersicht
     show:
       title: 'Abteilung "%{name}"'
-      navigation_structure: Navigationsstruktur
     form:
       users_hint: 'Benutzer, welche diese Abteilung administrieren können'
+
+  documents:
+    index:
+      title: Dokumentenübersicht
+    show:
+      title: 'Dokument "%{name}"'
 
   events:
     index:
@@ -204,6 +222,12 @@ de:
       sentence_search_term: "Ich möchte nach folgendem Begriff suchen %{input}"
     show:
       title: '%{title}'
+
+  navigation_elements:
+    index:
+      title: Navigation
+    show:
+      title: 'Navigationselement "%{name}"'
 
   pages:
     index:

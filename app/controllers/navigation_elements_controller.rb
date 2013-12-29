@@ -3,7 +3,7 @@ class NavigationElementsController < ApplicationController
 
   load_and_authorize_resource
 
-  layout 'department'
+  layout 'one_column'
 
   before_action :set_navigation_element, only: [:show, :edit, :update, :destroy]
   before_action :load_parent_resource
@@ -15,7 +15,7 @@ class NavigationElementsController < ApplicationController
   #http://www.petermac.com/rails-3-jquery-and-multi-select-dependencies/
 
   def index
-    @navigation_elements = NavigationElement.all
+    @navigation_elements = @department.navigation_elements
   end
 
 
@@ -77,9 +77,9 @@ class NavigationElementsController < ApplicationController
   end
 
   def sort
-    #@navigation_elements = NavigationElement.department(1).nested_set.select('id, title, parent_id').load
-    #@navigation_elements = NavigationElement.top_level.nested_set.select('id, title, parent_id').load
-    @navigation_elements = NavigationElement.nested_set.select('id, title, parent_id').load
+    #@navigation_elements = NavigationElement.department(1).nested_set.select('id, name, parent_id').load
+    #@navigation_elements = NavigationElement.top_level.nested_set.select('id, name, parent_id').load
+    @navigation_elements = NavigationElement.nested_set.select('id, name, parent_id').load
   end
 
   private
@@ -100,7 +100,7 @@ class NavigationElementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def navigation_element_params
-      params.require(:navigation_element).permit(:title, :parent_id, :controller_id, :action_id, :instance_id, :department_id)
+      params.require(:navigation_element).permit(:name, :parent_id, :controller_id, :action_id, :instance_id, :department_id)
     end
   
 

@@ -1,22 +1,27 @@
-<div class="page-header">
+<% content_for :title do %>
+  <%= t ".title", :name => @document.name %>
+<% end %>
+
+<% content_for :buttons do %>
   <%= link_to documents_path, :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
-    Back
+    <%= t "general.list" %>
   <% end %>
   <% if can? :update, @document %>
     <%= link_to edit_document_path(@document), :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-pencil"></span>
-      Edit
+      <%= t "general.edit" %>
     <% end %>
   <% end %>
-  <h1>Show document</h1>
+<% end %>
+
+<div class="window box">
+  <dl class="dl-horizontal">
+    <dt><%= NavigationElement.human_attribute_name(:name) %>:</dt>
+    <dd><%= @document.name %></dd>
+
+    <dt><%= NavigationElement.human_attribute_name(:file) %>:</dt>
+    <dd><%= @document.file %></dd>
+
+  </dl>
 </div>
-
-<dl class="dl-horizontal">
-  <dt>Name:</dt>
-  <dd><%= @document.name %></dd>
-
-  <dt>File:</dt>
-  <dd><%= @document.file %></dd>
-
-</dl>

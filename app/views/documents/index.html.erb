@@ -1,43 +1,45 @@
-<div class="page-header">
+<% content_for :title do %>
+  <%= t ".title" %>
+<% end %>
+
+<% content_for :buttons do %>
   <%= link_to new_document_path, :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
-    New Document
+    <%= t('general.create_model', :model => Document.model_name.human ) %>
   <% end if can? :create, Document %>
-  <h1>Listing documents</h1>
-</div>
-
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>File</th>
-      <th></th>
-      <% if can? :update, Document %>
-      <th></th>
-      <% end %>
-      <% if can? :destroy, Document %>
-      <th></th>
-      <% end %>
-    </tr>
-  </thead>
-
-  <tbody>
-<% @documents.each do |document| %>
-    <tr>
-      <td><%= document.name %></td>
-      <td><%= document.file %></td>
-      <td><%= link_to 'Show', document %></td>
-      <% if can? :update, document %>
-      <td><%= link_to 'Edit', edit_document_path(document) %></td>
-      <% end %>
-      <% if can? :destroy, document %>
-      <td>
-        <%= link_to document, method: :delete, data: { confirm: 'Are you sure?' } do %>
-          <span class="glyphicon glyphicon-trash"></span> Destroy
-        <% end %>
-      </td>
-      <% end %>
-    </tr>
 <% end %>
-  </tbody>
-</table>
+
+<div class="window box">
+  <table class="table table-bordered table-striped datatable searchable">
+    <thead>
+      <tr>
+        <th><%= Document.human_attribute_name(:name) %></th>
+        <th><%= Document.human_attribute_name(:file) %></th>
+        <% if user_signed_in? %>
+          <th class="no-sort"><% t "general.actions" %></th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+  <% @documents.each do |document| %>
+      <tr>
+        <td><%= link_to document.name, document %></td>
+        <td><%= document.file %></td>
+        <% if user_signed_in? %>
+          <td>
+            <%= link_to edit_document_path(document), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
+              <%= tag :span, :class => "glyphicon glyphicon-edit" %>
+            <% end %>
+            <% if can? :destroy, document %>
+              <%= link_to document, :title => t("general.destroy"), data: { confirm: t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete do %>
+                <%= tag :span, :class => "glyphicon glyphicon-trash" %>
+              <% end %>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+  <% end %>
+    </tbody>
+  </table>
+</div>
