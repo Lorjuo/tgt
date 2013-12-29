@@ -27,7 +27,7 @@
         :input_html => { :rows => "3"} %>
       <%= f.input :activities,
         :input_html => { :rows => "3"} %>
-      <%= f.association :user,
+      <%#= f.association :user,
         :collection => User.order('first_name' => :asc).order('last_name' => :asc),
         :label_method => :name,
         :value_method => :id,

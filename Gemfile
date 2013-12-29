@@ -183,7 +183,7 @@ group :development do
   gem 'debugger'
   # gem 'byebug'
   
-  gem "rails-i18n-debug"
+  # gem "rails-i18n-debug"
 
   # Error Handling
   gem 'better_errors'
