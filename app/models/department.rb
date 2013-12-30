@@ -9,6 +9,7 @@ class Department < ActiveRecord::Base
   has_many :messages
   has_and_belongs_to_many :users#, through: :department_editor
   has_many :navigation_elements
+  has_and_belongs_to_many :flyers, :join_table => 'departments_flyers', :class_name => Document
 
   # Validations
   validates :name, :presence => true

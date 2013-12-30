@@ -22,6 +22,12 @@
         :include_blank => true,
         :input_html => { :class => "chosen", :data => {:include_blank => true} },
         :hint => t(".user_hint") %>
+      <%= f.association :flyers,
+        :collection => Document.order('name' => :asc),
+        :label_method => :name,
+        :value_method => :id,
+        :include_blank => true,
+        :input_html => { :class => "chosen", :data => {:include_blank => true} }%>
     </div>
 
     <div class="form-group">

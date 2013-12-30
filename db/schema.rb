@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131228194738) do
+ActiveRecord::Schema.define(version: 20131229183522) do
 
   create_table "announcements", force: true do |t|
     t.string   "name"
@@ -82,6 +82,13 @@ ActiveRecord::Schema.define(version: 20131228194738) do
   end
 
   add_index "departments", ["slug"], name: "index_departments_on_slug", unique: true, using: :btree
+
+  create_table "departments_flyers", id: false, force: true do |t|
+    t.integer  "department_id"
+    t.integer  "document_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "departments_users", id: false, force: true do |t|
     t.integer  "department_id"
