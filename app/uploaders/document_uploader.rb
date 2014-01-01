@@ -12,14 +12,6 @@ class DocumentUploader < BaseUploader
     # "#{model.id.to_s}"
   end
 
-  # Move files instead of copying for better performance
-  def move_to_cache
-    true
-  end
-  def move_to_store
-    true
-  end
-
   # process :convert => 'jpg', :if => :image?
 
   # process :set_content_type, :if => :image?
@@ -43,7 +35,7 @@ class DocumentUploader < BaseUploader
   #   }]
   # end
 
-  version :image, :if => :thumbnail? do
+  version :cover, :if => :thumbnail? do
     # process :extract_first_page
     # process :create_thumb
     # process :cover
@@ -55,6 +47,17 @@ class DocumentUploader < BaseUploader
     def full_filename (for_file = model.source.file)
       super.chomp(File.extname(super)) + '.jpg'
     end
+
+    version :thumb do
+      process :convert => 'jpg'
+      process resize_to_fill: [64, 48]
+    end
+
+    version :_240x240 do
+      process :convert => 'jpg'
+      process resize_to_fit: [240, 240]
+    end
+
   end
 
   # version :full, :if => :thumbnail? do

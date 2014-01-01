@@ -4,7 +4,7 @@ module MiniMagick
     def run(command_builder)
       command = command_builder.command
 
-      Rails.logger.warn "MiniMagick Command: #{command}"
+      Rails.logger.debug "MiniMagick Command: #{command}"
       # puts caller if command =~ /mogrify/
 
       sub = Subexec.run(command, :timeout => MiniMagick.timeout)
