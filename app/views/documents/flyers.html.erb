@@ -1,0 +1,27 @@
+<% content_for :title do %>
+  <%#= t ".title" %>TODO
+<% end %>
+
+<% content_for :buttons do %>
+  <%= link_to new_document_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    <%= t('general.create_model', :model => Document.model_name.human ) %>
+  <% end if can? :create, Document %>
+<% end if false %>
+
+<div class="window box">
+  <div class="jcarousel">
+    <ul>
+      <% @flyers.each do |flyer| %>
+        <li>
+          <%#= link_to(image_tag(trainer.image.file_url(:thumb)), trainer.image.file_url, :class => "fancybox") if trainer.image.present? %>
+          <%= flyer.name %>
+          <%#= flyer.file.exists? ? 'ja' : 'nein' %>
+          <%= flyer.file.version_exists?(:thumb) ? 'ja' : 'nein' %>
+          <%#= flyer.file_url(:_240x240).present? ? 'ja' : 'nein' %>
+          <%= image_tag(flyer.file_url(:thumb)) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

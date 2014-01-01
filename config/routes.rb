@@ -59,6 +59,7 @@ TgtRefurbished::Application.routes.draw do
       get :trainers
       get :messages
       get :sort_navigation_elements
+      get :flyers
       # required for Sortable GUI server side actions
       post :rebuild
     end

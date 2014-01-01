@@ -111,6 +111,11 @@ class DepartmentsController < ApplicationController
     @navigation_elements = @department.navigation_elements.nested_set.select('id, name, parent_id').load
   end
 
+  def flyers
+    @flyers = @department.flyers
+    render :template => "documents/flyers"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_department
@@ -119,7 +124,7 @@ class DepartmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def department_params
-      params.require(:department).permit(:name, :description, :color, :training_group_ids => [], :user_ids => [])
+      params.require(:department).permit(:name, :description, :color, :training_group_ids => [], :user_ids => [], :flyer_ids => [])
     end
 
     def resolve_layout

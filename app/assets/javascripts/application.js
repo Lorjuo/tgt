@@ -30,6 +30,8 @@
 //
 //# Carousel
 //= require carousel
+//= require jquery.jcarousel
+//= require jcarousel_loader
 //
 //# Clipboard
 //= require zeroclipboard

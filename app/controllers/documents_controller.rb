@@ -1,7 +1,8 @@
 class DocumentsController < ApplicationController
   before_action :set_document, only: [:show, :edit, :update, :destroy]
 
-  load_and_authorize_resource
+  # Important: DO NOT USE load_and_authorize_resource, because this affects carrierwave uploader to process twice
+  authorize_resource
 
   layout 'one_column'
 
@@ -44,6 +45,7 @@ class DocumentsController < ApplicationController
   # PATCH/PUT /documents/1
   # PATCH/PUT /documents/1.json
   def update
+    Rails.logger.info "Before update"
     respond_to do |format|
       if @document.update(document_params)
         format.html { redirect_to @document, notice: 'Document was successfully updated.' }
@@ -53,6 +55,7 @@ class DocumentsController < ApplicationController
         format.json { render json: @document.errors, status: :unprocessable_entity }
       end
     end
+    Rails.logger.info "After update"
   end
 
   # DELETE /documents/1

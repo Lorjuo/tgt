@@ -34,29 +34,29 @@
         <%= link_to "javascript:void(0)", :class => "btn btn-default btn-xs" do %>
           <%= fa_icon "clipboard" %>
           Copy
-        <% end if false%>
+        <% end if false %>
       </dd>
       <dd>
         <%= link_to @document.file._240x240.url do %>
           <span class="glyphicon glyphicon-picture"></span>
           <%= t("general.medium") %>
-        <% end %>
+        <% end  if false %>
 
         <%= link_to "javascript:void(0)", :class => "btn btn-default btn-xs" do %>
           <%= fa_icon "clipboard" %>
           Copy
-        <% end if false%>
+        <% end if false %>
       </dd>
       <dd>
         <%= link_to @document.file.full.url do %>
           <span class="glyphicon glyphicon-picture"></span>
           <%= t("general.large") %>
-        <% end %>
+        <% end  if false %>
 
         <%= link_to "javascript:void(0)", :class => "btn btn-default btn-xs" do %>
           <%= fa_icon "clipboard" %>
           Copy
-        <% end if false%>
+        <% end if false %>
       </dd>
     <% end %>
   </dl>

@@ -85,6 +85,7 @@ gem "font-awesome-rails"
 
 # Image Processing
 gem 'mini_magick'
+gem 'rmagick'
 gem 'fancybox2-rails', '~> 0.2'
 
 # Input Elements
@@ -187,6 +188,8 @@ group :development do
   # gem 'byebug'
   
   # gem "rails-i18n-debug"
+  
+  gem 'thin'
 
   # Error Handling
   gem 'better_errors'

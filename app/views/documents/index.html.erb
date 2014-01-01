@@ -36,10 +36,10 @@
               <%= t("general.small") %><% end %>,
             <%= link_to document.file._240x240.url, :class => "no-wrap" do %>
               <span class="glyphicon glyphicon-picture"></span>
-              <%= t("general.medium") %><% end %>,
+              <%= t("general.medium") %><% end if false %>,
             <%= link_to document.file.full.url, :class => "no-wrap" do %>
               <span class="glyphicon glyphicon-picture"></span>
-              <%= t("general.large") %><% end %>
+              <%= t("general.large") %><% end if false %>
           <% end %>
         </td>
         <% if user_signed_in? %>
