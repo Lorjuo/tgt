@@ -22,7 +22,7 @@ class NavigationElement < ActiveRecord::Base
   belongs_to :department
 
   # Validation  
-  validates :title, presence: true
+  validates :name, presence: true
   validates :action_id, presence: true, :unless => :is_anchor?
   #validates :instance_id, presence: true, :unless => :is_anchor? #lambda{ state == 'invalid' }
 
