@@ -49,13 +49,21 @@ class DocumentUploader < BaseUploader
     end
 
     version :thumb do
-      process :convert => 'jpg'
-      process resize_to_fill: [64, 48]
+      process resize_to_fill: [64, 48, 'Center', 'jpg'] do |img|
+        img.format('jpg')
+        img
+      end
     end
 
     version :_240x240 do
-      process :convert => 'jpg'
-      process resize_to_fit: [240, 240]
+      process resize_to_fit: [240, 240, 'jpg']
+      # Yield Blocks do not work: http://stackoverflow.com/questions/19646083/carrierwave-how-to-pass-block-to-resize-and-pad
+      # process resize_to_fit: [240, 240] do |img|
+      #   img.format('jpg')
+      #   img
+      # end
+      # process :resize_and_pad => [1200, 1200, 'white'] { |img| do_everything_else.call img }
+      # process :resize_to_fit => [240, 240] { |img| img.format('jpg'); img }
     end
 
   end
@@ -87,14 +95,14 @@ class DocumentUploader < BaseUploader
   # end
 
   # https://github.com/carrierwaveuploader/carrierwave/pull/691
-  def cover
-    manipulate! do |frame, index|
-      #frame if index.zero?
-      if index == 0
-        frame
-      end
-    end
-  end
+  # def cover
+  #   manipulate! do |frame, index|
+  #     #frame if index.zero?
+  #     if index == 0
+  #       frame
+  #     end
+  #   end
+  # end
 
   # def cover
   #   format = 'png'
@@ -198,20 +206,54 @@ class DocumentUploader < BaseUploader
   end
 
   def mogrify(options = {})
-    manipulate! do |img|
-      img.format("jpg") do |c|
-        #c.fuzz        "3%"
-        #c.trim
-        #c.rotate      "#{options[:rotate]}" if options.has_key?(:rotate)
-        c.resize      "#{options[:resolution]}>" if options.has_key?(:resolution)
-        c.resize      "#{options[:resolution]}<" if options.has_key?(:resolution)
-        #c.push        '+profile'
-        #c.+           "!xmp,*"
-        #c.profile     "#{Rails.root}/lib/color_profiles/sRGB_v4_ICC_preference_displayclass.icc"
-        #c.colorspace  "sRGB"
-      end
-      img
-    end
+    format = 'jpg'
+    @format = format
+    # manipulate! do |img|
+    #   # img.format        format.to_s.downcase
+    #   # img.combine_options do |cmd|
+    #   #   cmd.profile     "#{Rails.root}/lib/color_profiles/USWebCoatedSWOP.icc"
+    #   #   cmd.resize      "#{options[:resolution]}>" if options.has_key?(:resolution)
+    #   #   cmd.resize      "#{options[:resolution]}<" if options.has_key?(:resolution)
+    #   #   cmd.colorspace  "sRGB"
+    #   #   cmd.profile     "#{Rails.root}/lib/color_profiles/sRGB_v4_ICC_preference_displayclass.icc"
+    #   # end
+    #   # img.format(format.to_s.downcase) do |c|
+    #   #   c.profile     "#{Rails.root}/lib/color_profiles/USWebCoatedSWOP.icc"
+    #   #   #c.fuzz        "3%"
+    #   #   #c.trim
+    #   #   #c.rotate      "#{options[:rotate]}" if options.has_key?(:rotate)
+    #   #   c.resize      "#{options[:resolution]}>" if options.has_key?(:resolution)
+    #   #   c.resize      "#{options[:resolution]}<" if options.has_key?(:resolution)
+    #   #   #c.push        '+profile'
+    #   #   #c.+           "!xmp,*"
+    #   #   c.colorspace  "sRGB"
+    #   #   c.profile     "#{Rails.root}/lib/color_profiles/sRGB_v4_ICC_preference_displayclass.icc"
+        
+    #   #   #c.quality     100
+    #   #   #c.depth       16
+    #   #   #c.profile     'sRGB.icc'
+    #   # end
+    #   img
+    # end
+    dirname = File.dirname(current_path)
+    jpg_path = "#{File.join(dirname, File.basename(current_path, File.extname(current_path)))}.jpg"
+
+    # Maybe strip command at beginning to strip existing profiles
+
+    # http://www.imagemagick.org/discourse-server/viewtopic.php?t=18514
+    imagemagick_command = "mogrify"\
+    " -filter lanczos2sharp"\
+    " -antialias"\
+    " -profile #{Rails.root}/lib/color_profiles/USWebCoatedSWOP.icc"\
+    " -profile #{Rails.root}/lib/color_profiles/sRGB_v4_ICC_preference_displayclass.icc"\
+    " -colorspace sRGB"\
+    " -format jpg -resize 800x800\\> -distort resize 800x800\\< -quality 80"\
+    " #{current_path}\\[0\\]"
+    system(imagemagick_command)
+    File.unlink current_path
+    File.rename jpg_path, current_path
+    Rails.logger.warn imagemagick_command #+ `time #{imagemagick_command}`
+    #::MiniMagick::Image.open(current_path)
   end
 
 

@@ -26,18 +26,18 @@
     <tbody>
   <% @documents.each do |document| %>
       <tr>
-        <td><%= link_to(image_tag(document.file_url(:thumb)), document.file_url, :class => "fancybox") if document.present? %></td>
+        <td><%= link_to(image_tag(document.file.cover.thumb.url), document.file_url, :class => "fancybox") if document.present? %></td>
         <td><%= link_to document.name, document %></td>
         <td><%= document.file %></td>
         <td>
-          <% if document.file.thumb.present? %>
-            <%= link_to document.file.thumb.url, :class => "no-wrap" do %>
+          <% if document.file.cover.present? %>
+            <%= link_to document.file.cover.thumb.url, :class => "no-wrap" do %>
               <span class="glyphicon glyphicon-picture"></span>
               <%= t("general.small") %><% end %>,
-            <%= link_to document.file._240x240.url, :class => "no-wrap" do %>
+            <%= link_to document.file.cover_240x240.url, :class => "no-wrap" do %>
               <span class="glyphicon glyphicon-picture"></span>
               <%= t("general.medium") %><% end if false %>,
-            <%= link_to document.file.full.url, :class => "no-wrap" do %>
+            <%= link_to document.file.cover.url, :class => "no-wrap" do %>
               <span class="glyphicon glyphicon-picture"></span>
               <%= t("general.large") %><% end if false %>
           <% end %>

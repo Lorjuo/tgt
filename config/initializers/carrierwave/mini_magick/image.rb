@@ -4,8 +4,10 @@ module MiniMagick
     def run(command_builder)
       command = command_builder.command
 
+      # CUSTOMIZATION BEGIN
       Rails.logger.debug "MiniMagick Command: #{command}"
       # puts caller if command =~ /mogrify/
+      # CUSTOMIZATION END
 
       sub = Subexec.run(command, :timeout => MiniMagick.timeout)
 

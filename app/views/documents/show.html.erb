@@ -23,10 +23,10 @@
     <dt><%= Document.human_attribute_name(:file) %>:</dt>
     <dd><%= @document.file %></dd>
 
-    <% if @document.file.thumb.present? %>
+    <% if @document.file.cover.present? %>
       <dt><%= Document.human_attribute_name(:thumbnails) %>:</dt>
       <dd>
-        <%= link_to @document.file.thumb.url do %>
+        <%= link_to @document.file.cover.thumb.url do %>
           <span class="glyphicon glyphicon-picture"></span>
           <%= t("general.small") %>
         <% end %>
@@ -37,10 +37,10 @@
         <% end if false %>
       </dd>
       <dd>
-        <%= link_to @document.file._240x240.url do %>
+        <%= link_to @document.file.cover._240x240.url do %>
           <span class="glyphicon glyphicon-picture"></span>
           <%= t("general.medium") %>
-        <% end  if false %>
+        <% end %>
 
         <%= link_to "javascript:void(0)", :class => "btn btn-default btn-xs" do %>
           <%= fa_icon "clipboard" %>
@@ -48,10 +48,10 @@
         <% end if false %>
       </dd>
       <dd>
-        <%= link_to @document.file.full.url do %>
+        <%= link_to @document.file.cover.url do %>
           <span class="glyphicon glyphicon-picture"></span>
           <%= t("general.large") %>
-        <% end  if false %>
+        <% end %>
 
         <%= link_to "javascript:void(0)", :class => "btn btn-default btn-xs" do %>
           <%= fa_icon "clipboard" %>
