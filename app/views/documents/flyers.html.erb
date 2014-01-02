@@ -14,12 +14,12 @@
     <ul>
       <% @flyers.each do |flyer| %>
         <li>
-          <%#= link_to(image_tag(trainer.image.file_url(:thumb)), trainer.image.file_url, :class => "fancybox") if trainer.image.present? %>
+          <%= link_to(image_tag(flyer.file.cover.url, :size => "240x360"), flyer.file.cover.url, :class => "fancybox") if flyer.file.cover.url.present? %>
           <%= flyer.name %>
           <%#= flyer.file.exists? ? 'ja' : 'nein' %>
-          <%= flyer.file.version_exists?(:thumb) ? 'ja' : 'nein' %>
+          <%= flyer.file.version_exists?(:cover) ? 'ja' : 'nein' %>
           <%#= flyer.file_url(:_240x240).present? ? 'ja' : 'nein' %>
-          <%= image_tag(flyer.file_url(:thumb)) %>
+          <%#= image_tag(flyer.file.cover.url) %>
         </li>
       <% end %>
     </ul>

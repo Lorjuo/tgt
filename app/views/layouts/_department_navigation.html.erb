@@ -51,6 +51,7 @@
               </ul>
             </li>
             <li><%= link_to Document.model_name.human(:count => :lots), documents_path %>
+            <li><%= link_to Department.model_name.human, edit_department_path(@department) %>
           </ul>
         </li>
       </ul>
