@@ -16,6 +16,7 @@
         <th><%= Document.human_attribute_name(:image) %></th>
         <th><%= Document.human_attribute_name(:name) %></th>
         <th><%= Document.human_attribute_name(:file) %></th>
+        <th><%= Document.human_attribute_name(:size) %></th>
         <th><%= Document.human_attribute_name(:thumbnails) %></th>
         <% if user_signed_in? %>
           <th class="no-sort"><%= t "general.actions" %></th>
@@ -28,18 +29,24 @@
       <tr>
         <td><%= link_to(image_tag(document.file.cover.thumb.url), document.file_url, :class => "fancybox") if document.present? %></td>
         <td><%= link_to document.name, document %></td>
-        <td><%= document.file %></td>
+        <td>
+          <%= link_to document.file.url do %>
+            <span class="glyphicon glyphicon-download-alt"></span>
+            <%= File.basename(document.file.url) %>
+          <% end %>
+        </td>
+        <td><%= number_to_human_size(File.size("#{document.file.path}"), precision: 2) %></td>
         <td>
           <% if document.file.cover.present? %>
             <%= link_to document.file.cover.thumb.url, :class => "no-wrap" do %>
               <span class="glyphicon glyphicon-picture"></span>
               <%= t("general.small") %><% end %>,
-            <%= link_to document.file.cover_240x240.url, :class => "no-wrap" do %>
+            <%= link_to document.file.cover._240x240.url, :class => "no-wrap" do %>
               <span class="glyphicon glyphicon-picture"></span>
-              <%= t("general.medium") %><% end if false %>,
+              <%= t("general.medium") %><% end %>,
             <%= link_to document.file.cover.url, :class => "no-wrap" do %>
               <span class="glyphicon glyphicon-picture"></span>
-              <%= t("general.large") %><% end if false %>
+              <%= t("general.large") %><% end %>
           <% end %>
         </td>
         <% if user_signed_in? %>

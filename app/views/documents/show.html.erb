@@ -15,49 +15,72 @@
   <% end %>
 <% end %>
 
+
 <div class="window box">
-  <dl class="dl-horizontal">
-    <dt><%= Document.human_attribute_name(:name) %>:</dt>
-    <dd><%= @document.name %></dd>
+  <div class="row">
+    <div class="col-md-9">
+      <h3>
+        <span class="glyphicon glyphicon-info-sign"></span>
+        <%= t ".info" %>
+      </h3>
+      <dl class="dl-horizontal">
+        <dt><%= Document.human_attribute_name(:name) %>:</dt>
+        <dd><%= @document.name %></dd>
 
-    <dt><%= Document.human_attribute_name(:file) %>:</dt>
-    <dd><%= @document.file %></dd>
+        <dt><%= Document.human_attribute_name(:file) %>:</dt>
+        <dd>
+          <%= link_to @document.file.url do %>
+            <span class="glyphicon glyphicon-download-alt"></span>
+            <%= File.basename(@document.file.url) %>
+          <% end %>
+        </dd>
 
-    <% if @document.file.cover.present? %>
-      <dt><%= Document.human_attribute_name(:thumbnails) %>:</dt>
-      <dd>
-        <%= link_to @document.file.cover.thumb.url do %>
-          <span class="glyphicon glyphicon-picture"></span>
-          <%= t("general.small") %>
+        <dt><%= Document.human_attribute_name(:size) %>:</dt>
+        <dd><%= number_to_human_size(File.size("#{@document.file.path}"), precision: 2) %></dd>
+
+        <dt><%= Document.human_attribute_name(:created_at) %>:</dt>
+        <dd><%= localize( @document.created_at, :format => :short_full ) %></dd>
+
+        <% if @document.file.cover.present? %>
+          <dt><%= Document.human_attribute_name(:thumbnails) %>:</dt>
+          <dd>
+            <%= link_to @document.file.cover.thumb.url do %>
+              <span class="glyphicon glyphicon-picture"></span>
+              <%= t("general.small") %>
+            <% end %>
+
+            <%= link_to "javascript:void(0)", :class => "btn btn-default btn-xs" do %>
+              <%= fa_icon "clipboard" %>
+              Copy
+            <% end if false %>
+          </dd>
+          <dd>
+            <%= link_to @document.file.cover._240x240.url do %>
+              <span class="glyphicon glyphicon-picture"></span>
+              <%= t("general.medium") %>
+            <% end %>
+
+            <%= link_to "javascript:void(0)", :class => "btn btn-default btn-xs" do %>
+              <%= fa_icon "clipboard" %>
+              Copy
+            <% end if false %>
+          </dd>
+          <dd>
+            <%= link_to @document.file.cover.url do %>
+              <span class="glyphicon glyphicon-picture"></span>
+              <%= t("general.large") %>
+            <% end %>
+
+            <%= link_to "javascript:void(0)", :class => "btn btn-default btn-xs" do %>
+              <%= fa_icon "clipboard" %>
+              Copy
+            <% end if false %>
+          </dd>
         <% end %>
-
-        <%= link_to "javascript:void(0)", :class => "btn btn-default btn-xs" do %>
-          <%= fa_icon "clipboard" %>
-          Copy
-        <% end if false %>
-      </dd>
-      <dd>
-        <%= link_to @document.file.cover._240x240.url do %>
-          <span class="glyphicon glyphicon-picture"></span>
-          <%= t("general.medium") %>
-        <% end %>
-
-        <%= link_to "javascript:void(0)", :class => "btn btn-default btn-xs" do %>
-          <%= fa_icon "clipboard" %>
-          Copy
-        <% end if false %>
-      </dd>
-      <dd>
-        <%= link_to @document.file.cover.url do %>
-          <span class="glyphicon glyphicon-picture"></span>
-          <%= t("general.large") %>
-        <% end %>
-
-        <%= link_to "javascript:void(0)", :class => "btn btn-default btn-xs" do %>
-          <%= fa_icon "clipboard" %>
-          Copy
-        <% end if false %>
-      </dd>
-    <% end %>
-  </dl>
+      </dl>
+    </div>
+    <div class="col-md-3">
+      <%= link_to(image_tag(@document.file.cover.url, :class => "img-responsive"), @document.file.cover.url, :class => "fancybox") if @document.file.cover.present? %>
+    </div>
+  </div>
 </div>

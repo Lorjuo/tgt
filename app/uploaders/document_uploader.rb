@@ -55,6 +55,13 @@ class DocumentUploader < BaseUploader
       end
     end
 
+    version :_80x80 do
+      process resize_to_fill: [80, 80, 'Center', 'jpg'] do |img|
+        img.format('jpg')
+        img
+      end
+    end
+
     version :_240x240 do
       process resize_to_fit: [240, 240, 'jpg']
       # Yield Blocks do not work: http://stackoverflow.com/questions/19646083/carrierwave-how-to-pass-block-to-resize-and-pad

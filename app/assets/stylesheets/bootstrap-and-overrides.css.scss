@@ -61,6 +61,10 @@ body { padding-top: 60px !important; }
 @import "list_groups";
 @import "tinymce_overrides";
 
+
+// Carousel
+@import "jcarousel";
+
 /* https://github.com/thomas-mcdonald/bootstrap-sass/blob/master/vendor/assets/stylesheets/bootstrap/_mixins.scss */
 
 body {
@@ -136,6 +140,7 @@ ul.references {
   background-repeat: repeat-x;
   padding: 6px 12px 6px 12px;
   /*overflow: auto;*/ /* needed to prevent floating boxes to expand out of this box (mediaContainers inside ps) */
+  /* Shadow effects */
 }
 
 .plain {

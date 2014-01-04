@@ -1,27 +1,55 @@
-<% content_for :title do %>
-  <%#= t ".title" %>TODO
-<% end %>
-
-<% content_for :buttons do %>
-  <%= link_to new_document_path, :class => 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-plus"></span>
-    <%= t('general.create_model', :model => Document.model_name.human ) %>
-  <% end if can? :create, Document %>
-<% end if false %>
-
-<div class="window box">
-  <div class="jcarousel">
-    <ul>
-      <% @flyers.each do |flyer| %>
-        <li>
-          <%= link_to(image_tag(flyer.file.cover.url, :size => "240x360"), flyer.file.cover.url, :class => "fancybox") if flyer.file.cover.url.present? %>
-          <%= flyer.name %>
-          <%#= flyer.file.exists? ? 'ja' : 'nein' %>
-          <%= flyer.file.version_exists?(:cover) ? 'ja' : 'nein' %>
-          <%#= flyer.file_url(:_240x240).present? ? 'ja' : 'nein' %>
-          <%#= image_tag(flyer.file.cover.url) %>
-        </li>
-      <% end %>
-    </ul>
+<div class="">
+  <div class="row connected-carousels">
+    <div class="col-xs-5">
+      <div class="window">
+        <div class="carousel-stage-wrapper">
+          <div class="carousel carousel-stage">
+            <ul>
+              <% @flyers.each do |flyer| %>
+                <li>
+                  <%= link_to(image_tag(flyer.file.cover.url, :class => "img-responsive"), flyer.file.cover.url) if flyer.file.cover.url.present? %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+          <a href="#" class="prev prev-stage"><span>&lsaquo;</span></a>
+          <a href="#" class="next next-stage"><span>&rsaquo;</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-7">
+      <div class="window">
+        <div class="carousel-navigation-wrapper">
+          <a href="#" class="prev prev-navigation btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+          </a>
+          <div class="carousel carousel-navigation">
+            <ul>
+              <% @flyers.each do |flyer| %>
+                <li>
+                  <div class="media">
+                    <div class="pull-left">
+                      <%= image_tag(flyer.file.cover._80x80.url) if flyer.file.cover._80x80.url.present? %>
+                    </div>
+                    <div class="media-body">
+                      <h4><%= flyer.name %></h4>
+                      <div>
+                        <%= link_to flyer.file.url, class: "btn btn-default btn-xs" do %>
+                          <span class="glyphicon glyphicon-download-alt"></span>
+                          <%= number_to_human_size(File.size("#{flyer.file.path}"), precision: 2) %>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+          <a href="#" class="next next-navigation btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-chevron-down"></span>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

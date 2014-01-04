@@ -4,7 +4,7 @@ de:
       time: ! '%H:%M Uhr'
       time_short: ! '%H:%M'
       datetime_short: ! '%a, %e. %b, %H:%M Uhr'
-      short_full: ! '%d. %B %Y, %H:%M Uhr'
+      short_full: ! '%e. %B %Y, %H:%M Uhr'
   date:
     formats:
       year_month: ! '%B %Y'

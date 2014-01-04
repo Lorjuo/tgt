@@ -2,6 +2,7 @@ class Document < ActiveRecord::Base
 
   # Associations
   belongs_to :attachable, polymorphic: true
+  has_many :references, :as => :reference_to, :dependent => :destroy # polymorphic
 
   # Uploader
   mount_uploader :file, DocumentUploader, :mount_on => :file

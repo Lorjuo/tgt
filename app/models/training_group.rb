@@ -10,7 +10,7 @@ class TrainingGroup < ActiveRecord::Base
   has_one :image, :as => :attachable, :class_name => '::Image', :dependent => :destroy
   
   # References
-  has_many :references, :as => :reference_from # polymorphic
+  has_many :references, :as => :reference_from, :dependent => :destroy # polymorphic
   has_many :galleries, :through => :references, :source => :reference_to, :source_type => 'Gallery'
   has_many :documents, :through => :references, :source => :reference_to, :source_type => 'Document'
 
