@@ -23,7 +23,7 @@
         :input_html => { :class => "chosen", :data => {:include_blank => true} },
         :hint => t(".user_hint") %>
       <%= f.association :flyers,
-        :collection => Document.order('name' => :asc),
+        :collection => Document.where(:department_id => @department.id).order('name' => :asc),
         :label_method => :name,
         :value_method => :id,
         :include_blank => true,

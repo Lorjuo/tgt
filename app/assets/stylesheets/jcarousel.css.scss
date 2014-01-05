@@ -77,7 +77,7 @@
   -moz-box-shadow: 0 0 2px #999;
   box-shadow: 0 0 2px #999;*/
   min-height: 240px;
-  max-height: 320px;
+  max-height: 480px;
 }
 .connected-carousels .carousel-navigation ul {
   /*width: 60px;*/
@@ -209,9 +209,9 @@
   height: 80px;
 }
 
-.connected-carousels .carousel-stage-wrapper, .connected-carousels .carousel-navigation-wrapper {
+/*.connected-carousels .carousel-stage-wrapper, .connected-carousels .carousel-navigation-wrapper {
   box-shadow: 2px 2px 3px 0px #333;
-}
+}*/
 
 .connected-carousels .prev-navigation,
 .connected-carousels .next-navigation {

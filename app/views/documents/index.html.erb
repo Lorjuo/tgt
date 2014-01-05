@@ -3,10 +3,10 @@
 <% end %>
 
 <% content_for :buttons do %>
-  <%= link_to new_document_path, :class => 'btn btn-primary' do %>
+  <%= link_to new_department_document_path(@department), :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
     <%= t('general.create_model', :model => Document.model_name.human ) %>
-  <% end if can? :create, Document %>
+  <% end if @department.present? && can?(:create, Document) %>
 <% end %>
 
 <div class="window box">

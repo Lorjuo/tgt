@@ -4,12 +4,13 @@ class Department < ActiveRecord::Base
   #attr_accessible :area_id, :name, :training_group_ids
 
   # Associations
-  has_many :training_groups
+  has_many :documents
+  has_and_belongs_to_many :flyers, :join_table => 'departments_flyers', :class_name => Document
   has_many :galleries
   has_many :messages
-  has_and_belongs_to_many :users#, through: :department_editor
   has_many :navigation_elements
-  has_and_belongs_to_many :flyers, :join_table => 'departments_flyers', :class_name => Document
+  has_many :training_groups
+  has_and_belongs_to_many :users#, through: :department_editor
 
   # Validations
   validates :name, :presence => true

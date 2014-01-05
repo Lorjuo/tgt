@@ -1,5 +1,6 @@
 class DocumentsController < ApplicationController
   before_action :set_document, only: [:show, :edit, :update, :destroy]
+  before_action :load_parent_resource
 
   # Important: DO NOT USE load_and_authorize_resource, because this affects carrierwave uploader to process twice
   authorize_resource
@@ -9,7 +10,11 @@ class DocumentsController < ApplicationController
   # GET /documents
   # GET /documents.json
   def index
-    @documents = Document.all
+    if @department.present?
+      @documents = @department.documents.all
+    else
+      @documents = Document.all
+    end
   end
 
   # GET /documents/1
@@ -19,7 +24,7 @@ class DocumentsController < ApplicationController
 
   # GET /documents/new
   def new
-    @document = Document.new
+    @document = @department.documents.new
   end
 
   # GET /documents/1/edit
@@ -29,7 +34,7 @@ class DocumentsController < ApplicationController
   # POST /documents
   # POST /documents.json
   def create
-    @document = Document.new(document_params)
+    @document = @department.documents.new(document_params)
 
     respond_to do |format|
       if @document.save
@@ -63,7 +68,7 @@ class DocumentsController < ApplicationController
   def destroy
     @document.destroy
     respond_to do |format|
-      format.html { redirect_to documents_url }
+      format.html { redirect_to department_documents_path @department }
       format.json { head :no_content }
     end
   end
@@ -73,9 +78,17 @@ class DocumentsController < ApplicationController
     def set_document
       @document = Document.find(params[:id])
     end
+    
+    def load_parent_resource
+      if params[:department_id]
+        @department = Department.friendly.find(params[:department_id])
+      elsif @document.present?
+        @department = @document.department
+      end
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
-      params.require(:document).permit(:name, :file, :attachable_id, :attachable_type)
+      params.require(:document).permit(:name, :file, :department_id, :attachable_id, :attachable_type)
     end
 end

@@ -1,5 +1,8 @@
 TgtRefurbished::Application.routes.draw do
 
+
+  # Carnival
+
   #get "carnival/orders/steps", to: "carnival/order_steps#personal_information", via: "post"
   get '/carnival/orders/steps(.:format)', :to => "carnival/order_steps#create", via: "post"
   namespace :carnival do
@@ -11,21 +14,43 @@ TgtRefurbished::Application.routes.draw do
     resources :sessions
   end
 
+
+
+  # Events
+
   resources :events
 
+
+
+  # Announcements
+  
   resources :announcements
+
+
+
+  # Messages
 
   resources :messages, :only =>:index
 
+
+
+  # Pages
+
   resources :pages
 
-  resources :documents
+
+
+  # Images
 
   resources :images do
     get :edit_multiple, on: :collection
     post :update_multiple, on: :collection
   end
 
+
+
+  # Locations
+  
   resources :locations do
     collection do
       get :interactive_map
@@ -35,13 +60,23 @@ TgtRefurbished::Application.routes.draw do
     end
   end
 
-  resources :trainers
 
+
+  # TrainingUnits
+  
   resources :training_units
+
+
+
+  # TrainingGroups
 
   resources :training_groups, :only => :index do
     get :search, on: :collection
   end
+
+
+
+  # NavigationElements
 
   resources :navigation_elements, :only => [] do
     collection do
@@ -49,6 +84,10 @@ TgtRefurbished::Application.routes.draw do
       post :rebuild
     end
   end
+
+
+
+  # Departments
 
   resources :departments, :only =>:index
   resources :departments, :shallow => true, :except =>:index do #, :path => ""
@@ -63,6 +102,10 @@ TgtRefurbished::Application.routes.draw do
       # required for Sortable GUI server side actions
       post :rebuild
     end
+
+    # Nested Resources
+    
+    resources :documents
     resources :galleries, :shallow => true do
       member do
         post :set_preview_image
@@ -81,14 +124,27 @@ TgtRefurbished::Application.routes.draw do
       end
     end
   end
+  resources :documents, :only =>:index
 
 
+
+  # Devise
+  
   devise_for :users
+
+
+
+  # Users
+  
   # Set scope admin to differentiate between devise and custom user administration
   scope "/admin" do
     resources :users
   end
 
+
+
+  # Static Pages
+  
   resources :static_pages, :only => [] do
     collection do
       get :home
@@ -96,14 +152,26 @@ TgtRefurbished::Application.routes.draw do
     end
   end
 
+
+
+  # Elfinder
+
   resources :elfinder, :only => [] do
     get 'backend', :on => :collection
     post 'backend', :on => :collection
     get 'frontend', :on => :collection
   end
   
-  resources :trainers, :only =>:index
-  resources :trainers, :shallow => true, :except =>:index
+
+
+  # Trainers
+  
+  resources :trainers
+  # resources :trainers, :only =>:index
+  # resources :trainers, :shallow => true, :except =>:index
+  
+  
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

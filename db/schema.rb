@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131229183522) do
+ActiveRecord::Schema.define(version: 20140105121049) do
 
   create_table "announcements", force: true do |t|
     t.string   "name"
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(version: 20131229183522) do
     t.datetime "updated_at"
     t.integer  "attachable_id"
     t.string   "attachable_type"
+    t.integer  "department_id"
   end
 
   add_index "documents", ["attachable_id", "attachable_type"], name: "index_documents_on_attachable_id_and_attachable_type", using: :btree

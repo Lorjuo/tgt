@@ -1,6 +1,7 @@
 class Document < ActiveRecord::Base
 
   # Associations
+  belongs_to :department
   belongs_to :attachable, polymorphic: true
   has_many :references, :as => :reference_to, :dependent => :destroy # polymorphic
 

@@ -6,6 +6,13 @@
       <%= f.input :name %>
       <%#= f.input :file %>
       <%= render 'images/image_selector', f:f, image:@document %>
+      <%= f.association :department,
+        :as => :select,
+        :collection => Department.order(:name => :asc),
+        :label_method => :name,
+        :value_method => :id,
+        :include_blank => false,
+        :input_html => { :class => "chosen"} %>
     </div>
 
 

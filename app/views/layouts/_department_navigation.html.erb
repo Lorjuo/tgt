@@ -50,7 +50,7 @@
                 <li><%= link_to "Anordnung", sort_navigation_elements_department_path(@department) %>
               </ul>
             </li>
-            <li><%= link_to Document.model_name.human(:count => :lots), documents_path %>
+            <li><%= link_to Document.model_name.human(:count => :lots), department_documents_path(@department) %>
             <li><%= link_to Department.model_name.human, edit_department_path(@department) %>
           </ul>
         </li>
