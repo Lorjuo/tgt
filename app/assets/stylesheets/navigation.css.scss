@@ -120,6 +120,7 @@ $caretSize: 5px;
 
   & > li > a {
     display: block;
+    overflow: auto; /* Needed for IE to align on one line */
   }
 
   li ul {

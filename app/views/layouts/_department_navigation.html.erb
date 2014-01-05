@@ -41,8 +41,7 @@
         <li>
           <%= link_to "#" do %>
             <%= fa_icon "key" %>
-            Verwaltung
-          <% end %>
+            Verwaltung<% end %><%# Prevent whitespaces here %>
           <ul>
             <li><%= link_to Page.model_name.human(:count => :lots), pages_path %></li>
             <li><%= link_to t("general.navigation"), department_navigation_elements_path(@department) %>
