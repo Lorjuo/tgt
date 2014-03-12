@@ -88,7 +88,7 @@ en:
         one: Department
         other: Departments
       document:
-        one: Document
+        one: Docume
         other: Documents
       event:
         one: Event
@@ -304,3 +304,7 @@ en:
     sidebar:
       galleries: Newest Fotos
       events: Upcoming Events
+
+  will_paginate:
+    previous_label: previous
+    next_label: next

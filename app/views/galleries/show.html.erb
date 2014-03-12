@@ -19,4 +19,7 @@
   <div id="images" class="row">
     <%= render(:partial => 'images/image', :collection => @images, :as => 'image') %>
   </div>
+  <div class="row">
+    <%= will_paginate @images %>
+  </div>
 </div>

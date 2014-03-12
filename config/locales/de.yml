@@ -305,3 +305,7 @@ de:
     sidebar:
       galleries: Neueste Fotogalerien
       events: Veranstaltungen
+
+  will_paginate:
+    previous_label: zurück
+    next_label: weiter

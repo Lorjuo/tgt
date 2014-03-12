@@ -16,9 +16,11 @@ class GalleriesController < ApplicationController
   # GET /galleries/1
   # GET /galleries/1.json
   def show
-    @image = @gallery.images.build
-    # TODO: replace find and all method - they are deprecated
-    @images = Image.where('attachable_id = ? AND attachable_type = ?', @gallery.id, 'gallery')
+    @images = Image.where('attachable_id = ? AND attachable_type = ?', @gallery.id, 'gallery').paginate(:page => params[:page])
+
+    # Move this lines to admin show method
+    # @image = @gallery.images.build
+    # @images = Image.where('attachable_id = ? AND attachable_type = ?', @gallery.id, 'gallery')
   end
 
   # GET /galleries/new

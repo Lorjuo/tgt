@@ -86,6 +86,9 @@
 //= require cocoon
 //= require nested_forms_loader
 //
+//# Pagination
+//= require endless_page
+//
 //# Select
 //= require select
 //# Sortable Tree
