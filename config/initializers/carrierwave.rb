@@ -3,7 +3,25 @@
 # Yield Blocks do not work:
 # http://stackoverflow.com/questions/19646083/carrierwave-how-to-pass-block-to-resize-and-pad
 module CarrierWave
+  module RMagick
+
+    def quality(percentage)
+      manipulate! do |img|
+        img.write(current_path){ self.quality = percentage } unless img.quality == percentage
+        img = yield(img) if block_given?
+        img
+      end
+    end
+
+  end
   module MiniMagick
+    def quality(percentage)
+      manipulate! do |img|
+        img.quality(percentage.to_s)
+        img = yield(img) if block_given?
+        img
+      end
+    end
     def resize_to_limit(width, height, format="")
       manipulate! do |img|
         img.resize "#{width}x#{height}>"

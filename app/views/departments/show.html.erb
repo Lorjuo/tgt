@@ -1,6 +1,6 @@
-<% content_for :title do %>
-  <%= t ".title", :name => @department.name %>
-<% end %>
+<%# content_for :title do %>
+  <%#= t ".title", :name => @department.name %>
+<%# end %>
 
 <% content_for :buttons do %>
   <%= link_to departments_path, :class => 'btn btn-default' do %>
@@ -32,6 +32,12 @@
     </dd>
   </dl> -->
   <%#= render :partial => "training_groups/training_group", :collection => @department.training_groups, :as => :training_group %>
+
+<div class="window box">
+  <h3>Test</h3>
+  <h3>Test</h3>
+  <h4>Test</h4>
+</div>
 
 <% if @department.description.present? %>
   <div class="window box thin">

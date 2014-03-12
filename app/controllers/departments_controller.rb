@@ -129,7 +129,7 @@ class DepartmentsController < ApplicationController
 
     def resolve_layout
       case action_name
-      when "training_groups"#, "flyers"
+      when "training_groups", "flyers"
         "one_column"
       else
         "two_columns"
