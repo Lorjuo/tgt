@@ -10,40 +10,46 @@
 <% end %>
 
 <div class="window box">
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th><%= Gallery.human_attribute_name(:name) %></th>
-      <th></th>
-      <% if can? :update, Gallery %>
-      <th></th>
-      <% end %>
-      <% if can? :destroy, Gallery %>
-      <th></th>
-      <% end %>
-    </tr>
-  </thead>
-
-  <tbody>
-<% @galleries.each do |gallery| %>
-    <tr>
-      <td><%= gallery.name %></td>
-      <td><%= link_to t('general.show'), gallery %></td>
-      <% if can? :update, gallery %>
-      <td><%= link_to t('general.edit'), edit_gallery_path(gallery) %></td>
-      <% end %>
-      <% if can? :destroy, gallery %>
-      <td>
-        <%= link_to gallery, method: :delete, data: { confirm: t('general.are_you_sure') } do %>
-          <span class="glyphicon glyphicon-trash"></span>
-          <%= t('general.destroy') %>
+  <% if false %>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th><%= Gallery.human_attribute_name(:name) %></th>
+        <th></th>
+        <% if can? :update, Gallery %>
+        <th></th>
         <% end %>
-      </td>
-      <% end %>
-    </tr>
-<% end %>
-  </tbody>
-</table>
+        <% if can? :destroy, Gallery %>
+        <th></th>
+        <% end %>
+      </tr>
+    </thead>
 
-<%#= polymorphic_path(Department.first, :action => :edit, :only_path => true) %>
+    <tbody>
+  <% @galleries.each do |gallery| %>
+      <tr>
+        <td><%= gallery.name %></td>
+        <td><%= link_to t('general.show'), gallery %></td>
+        <% if can? :update, gallery %>
+        <td><%= link_to t('general.edit'), edit_gallery_path(gallery) %></td>
+        <% end %>
+        <% if can? :destroy, gallery %>
+        <td>
+          <%= link_to gallery, method: :delete, data: { confirm: t('general.are_you_sure') } do %>
+            <span class="glyphicon glyphicon-trash"></span>
+            <%= t('general.destroy') %>
+          <% end %>
+        </td>
+        <% end %>
+      </tr>
+  <% end %>
+    </tbody>
+  </table>
+  <% end %>
+
+  <%#= polymorphic_path(Department.first, :action => :edit, :only_path => true) %>
+
+  <div class="row">
+    <%= render(:partial => 'galleries/gallery', :collection => @galleries, :as => 'gallery') %>
+  </div>
 </div>
