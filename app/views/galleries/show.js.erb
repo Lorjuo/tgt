@@ -2,6 +2,7 @@ $('#images').append('<%= j render(@images) %>');
 <% if @images.next_page %>
   $('.pagination').replaceWith('<%= j will_paginate(@images) %>');
 <% else %>
-    $('.pagination').remove();
+  $('.pagination').remove();
+  <%# Show more images button: http://railscasts.com/episodes/114-endless-page-revised?view=comments#comment_155938 %>
 <% end %>
 <%# sleep 1 %>

@@ -12,3 +12,11 @@ $(window).load ->
         $('.pagination').text("Fetching more items...")
         $.getScript(url)
     $(window).scroll()
+
+# Issues:
+# At the moment there is no possibility to add images dynamically to fancybox when fancybox is open
+# Possible approachs can be find here:
+# https://github.com/fancyapps/fancyBox/issues/242
+# https://github.com/fancyapps/fancyBox/issues/257
+# And it will be probably possible to populate fancybox dynamically on fancybox version 3:
+# http://fancyapps.com/fancybox/beta/

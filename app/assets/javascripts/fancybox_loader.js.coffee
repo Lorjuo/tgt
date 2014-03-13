@@ -15,6 +15,7 @@ $ ->
     beforeLoad: ->
       @title = $(@element).attr("caption")
 
+
   $(".message a>img").each (index, image) ->
     parent = $(this).closest("a")
 
