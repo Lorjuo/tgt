@@ -11,6 +11,10 @@ class Document < ActiveRecord::Base
   before_create :default_name
   before_update :default_name
 
+  #Scopes
+  scope :department, -> (id) { where(:department_id => id)}
+  scope :chronological, -> { order("created_at" => :desc) }
+
   def default_name
     # file.filename replaced by file.original_file
     if(self.name.blank?)

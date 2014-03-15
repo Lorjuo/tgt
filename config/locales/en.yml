@@ -64,6 +64,8 @@ en:
     name: Name
     file: File
     first_name: Givenname
+    flyer: Flyer
+    flyers: Flyers
     image: Image
     last_name: Surname
     link: Link

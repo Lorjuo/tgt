@@ -65,6 +65,8 @@ de:
     name: Name
     file: Datei
     first_name: Vorname
+    flyer: Flyer
+    flyers: Flyer
     image: Bild
     last_name: Nachname
     link: Link
