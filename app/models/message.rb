@@ -16,4 +16,5 @@ class Message < ActiveRecord::Base
 
   #Scopes
   scope :department, -> (id) { where(:department_id => id)}
+  scope :chronological, -> { order("created_at" => :desc) }
 end

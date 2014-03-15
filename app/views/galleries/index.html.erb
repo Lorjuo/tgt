@@ -53,3 +53,28 @@
     <%= render(:partial => 'galleries/gallery', :collection => @galleries, :as => 'gallery') %>
   </div>
 </div>
+
+<div class="window">
+  <div class="box"><h4>Mehr Infos</h4>
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+      <li><a href="#profile" data-toggle="tab">Profile</a></li>
+      <li><a href="#messages" data-toggle="tab">Messages</a></li>
+      <li><a href="#settings" data-toggle="tab">Settings</a></li>
+    </ul>
+  </div>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div class="tab-pane fade active" id="home">...</div>
+    <div class="tab-pane fade" id="profile">...</div>
+    <div class="tab-pane fade" id="messages">
+      <%= render :partial => 'messages/message_excerpt', :collection => @department.messages.chronological.limit(4), :as => :message, :locals => { :size => :large } %>
+    </div>
+    <div class="tab-pane fade" id="settings">...</div>
+  </div>
+
+  
+</div>
