@@ -71,7 +71,11 @@ class DepartmentsController < ApplicationController
   # Nested Actions:
 
   def trainers
-    @trainers = Trainer.department(@department.id).alphabetical
+    # For some reason this line (getting trainers by scoped association)
+    # does not work
+    # maybe because of dynamic ordering functionality provided by jquery datatables
+    # @trainers = trainers
+    @trainers = Trainer.department(@department.id)
 
     render :template => "trainers/index"
   end

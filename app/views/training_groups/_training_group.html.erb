@@ -44,7 +44,7 @@
   </div>
 </div> -->
 
-<div class="mediaContainer decent medium-spacing col-md-3 col-xs-6">
+<!--<div class="mediaContainer decent medium-spacing col-md-3 col-xs-6">
   <div class="media">
     <div class="image-wrapper">
       <%= link_to(training_group, :title => training_group.name, :class => "mediaLink") do %>
@@ -60,6 +60,23 @@
           (<%= training_group.display_age %>)
         <% end %>
       </p>
+    </div>
+  </div>
+</div> -->
+
+<div class="col-md-3 col-sm-4 col-xs-6">
+  <div class="image-wrapper">
+    <div class="image">
+      <%= link_to( training_group, :title => training_group.name ) do %>
+        <%= image_tag(image_url(training_group.image, :_260x180), :class => "img-responsive") %>
+        <!--<div class="image-overlay bottom overlay-title">Gruppe ansehen</div>-->
+      <% end %>
+    </div>
+    <div class="image-text">
+      <%= link_to training_group, :class => "title" do %>
+        <%= training_group.name %>
+      <% end %>
+      <span class="age"><%= training_group.display_age %></span>
     </div>
   </div>
 </div>

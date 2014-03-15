@@ -33,32 +33,65 @@
   </dl> -->
   <%#= render :partial => "training_groups/training_group", :collection => @department.training_groups, :as => :training_group %>
 
-<div class="window box">
+<!-- <div class="window box">
   <h3>Test</h3>
   <h3>Test</h3>
   <h4>Test</h4>
-</div>
+</div> -->
 
 <% if @department.description.present? %>
-  <div class="window box thin">
+  <div class="window box" style="overflow:hidden">
     <!-- <h3><%= Department.human_attribute_name(:description) %></h3> -->
     <%= raw @department.description %>
   </div>
 <% end %>
 
 <div class="window">
-  <div class="plain">
-    <!-- <div style="background-image: linear-gradient(to bottom, #718DFF, #3C63FF); display: inline-block; color: white; padding: 5px 10px; font-size: 24px; margin-right: 10px">
-      <%= fa_icon "users" %>
-    </div> -->
-    <h3 style="display: inline-block">
-      <%= fa_icon "users" %>
-      <%= TrainingGroup.model_name.human(:count => :lots) %>
-    </h3>
-    <div class="row" style="margin: 0 -18px 0 -18px">
-      <%= render  @department.training_groups %>
+  <div class="box">
+    <h4>Mehr Infos</h4>
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#trainingGroups" data-toggle="tab" class="title">
+        <%= fa_icon "users" %>
+        <%= TrainingGroup.model_name.human(:count => :lots) %>
+      </a></li>
+      <li><a href="#trainers" data-toggle="tab" class="title">
+        <%= Trainer.model_name.human(:count => :lots) %>
+      </a></li>
+      <li><a href="#messages" data-toggle="tab" class="title">
+        <%= fa_icon "message" %>
+        <%= Message.model_name.human(:count => :lots) %>
+      </a></li>
+      <li><a href="#galleries" data-toggle="tab" class="title">
+        <%= Gallery.model_name.human(:count => :lots) %>
+      </a></li>
+    </ul>
+  </div>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div class="tab-pane fade active in" id="trainingGroups">
+      <div class="plain"><div class="row">
+        <%= render @department.training_groups %>
+      </div></div>
+    </div>
+    <div class="tab-pane fade" id="trainers">
+      <div class="plain"><div class="row">
+        <%= render @department.trainers %>
+      </div></div>
+    </div>
+    <div class="tab-pane fade" id="messages">
+      <%= render :partial => 'messages/message_excerpt', :collection => @department.messages.chronological.limit(4), :as => :message, :locals => { :size => :large } %>
+    </div>
+    <div class="tab-pane fade" id="galleries">
+      <div class="plain"><div class="row">
+        <%= render(:partial => 'galleries/gallery', :collection => @department.galleries.chronological, :as => 'gallery') %>
+      </div></div>
     </div>
   </div>
+
+  
 </div>
 
 <% content_for :sidebar do %>

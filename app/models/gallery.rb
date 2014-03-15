@@ -14,6 +14,9 @@ class Gallery < ActiveRecord::Base
   # Validation
   validates :name, :presence => true
 
+  #Scopes
+  scope :chronological, -> { order("created_at" => :desc) }
+
   def get_preview_image
     self.preview_image || self.images.first
   end

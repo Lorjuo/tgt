@@ -10,6 +10,7 @@ class Department < ActiveRecord::Base
   has_many :messages
   has_many :navigation_elements
   has_many :training_groups
+  has_many :trainers, :through => :training_groups, :order => [ :first_name, :last_name ], :uniq => true
   has_and_belongs_to_many :users#, through: :department_editor
 
   # Validations
@@ -38,5 +39,9 @@ class Department < ActiveRecord::Base
       FileUtils.remove_dir(dir, :force => true)
     end
   end
+
+  #def trainers
+  #  Trainer.department(self.id)
+  #end
 
 end
