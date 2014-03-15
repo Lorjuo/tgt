@@ -1,7 +1,7 @@
-<div class="image col-md-3 col-sm-4 col-xs-6">
-  <div class="thumbnail checkbox-wrapper">
+<div class="col-md-3 col-sm-4 col-xs-6">
+  <div class="thumbnail image-wrapper checkbox-wrapper">
     <%# link_to(image_tag(image.file_url(:_260x180)), image) if image.file._260x180.present? %>
-    <div class="image-wrapper">
+    <div class="image">
       <%= link_to(image.file_url, :class => 'fancybox', size: "260x180", :rel => 'group', :caption => image.name) do %>
         <%= image_tag(image.file_url(:_260x180)) %>
       <% end if image.file._260x180.present? %>

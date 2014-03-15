@@ -3,9 +3,9 @@
     <% references.each do |reference| %>
       <li>
         <%= link_to reference.reference_to, :class => "decent" do %>
-          <%= content_tag :span, reference.reference_to.class.model_name.human, :class => "type" %>
-          <%= content_tag :span, reference.reference_to.name, :class => "title" %>,
-          <%= content_tag :span, localize( reference.reference_to.created_at.to_date, :format => :long ), :class => "date" %>
+          <%= content_tag :span, reference.reference_to.class.model_name.human, :class => "reference-type" %>
+          <%= content_tag :span, reference.reference_to.name, :class => "reference-title" %>,
+          <%= content_tag :span, localize( reference.reference_to.created_at.to_date, :format => :long ), :class => "reference-date" %>
         <% end %>
       </li>
     <% end %>
