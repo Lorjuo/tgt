@@ -120,7 +120,7 @@ gem 'rack-mini-profiler'
 # Security
 gem 'cancan'
 gem 'devise'
-gem 'rolify', '~> 3.3.0.rc4' # https://github.com/EppO/rolify/pull/129
+gem 'rolify', github: "EppO/rolify" #, '~> 3.3.0.rc4' # https://github.com/EppO/rolify/pull/129
 
 # Social Media
 
