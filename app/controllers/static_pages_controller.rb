@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
   load_and_authorize_resource :class => false
 
-  layout "two_columns"
+  layout :resolve_layout
 
   def home
     @messages = Message.limit(4)
@@ -9,5 +9,18 @@ class StaticPagesController < ApplicationController
 
   def page_layout
 
+  end
+
+  def media_box
+
+  end
+
+  def resolve_layout
+    case action_name
+    when "media_box"
+      false
+    else
+      "two_columns"
+    end
   end
 end

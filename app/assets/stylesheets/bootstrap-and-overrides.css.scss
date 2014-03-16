@@ -261,19 +261,19 @@ div.mediaContainer {
   }
 
   &.right {
-    @media (min-width: $screen-sm-min) {
+    /*@media (min-width: $screen-sm-min) {*/
       padding-left: $grid-gutter-width;
       padding-right: 0;
-    }
+    /*}*/
     float: right;
     clear: right;
   }
 
   &.left {
-    @media (min-width: $screen-sm-min) {
+    /*@media (min-width: $screen-sm-min) {*/
       padding-left: 0;
       padding-right: $grid-gutter-width;
-    }
+    /*}*/
     float: left;
     clear: left;
   }

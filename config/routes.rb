@@ -149,6 +149,7 @@ TgtRefurbished::Application.routes.draw do
     collection do
       get :home
       get :page_layout
+      get :media_box
     end
   end
 

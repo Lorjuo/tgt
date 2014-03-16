@@ -1,7 +1,36 @@
-[
-  {
-    "title": "MediaBox",
-    "description": "Box für Medien und Zusatzinformationen",
-    "url": "/assets/tinymce/customized/mediaBox.html"
-  },
+[{
+        "title": "MediaBox (klein, links)",
+        "description": "Box für Medien und Zusatzinformationen",
+        "url": "/static_pages/media_box?size=small&align=left"
+    }, {
+        "title": "MediaBox (klein, rechts)",
+        "description": "Box für Medien und Zusatzinformationen",
+        "url": "/static_pages/media_box?size=small&align=right"
+    },
+
+    {
+        "title": "MediaBox (mittel, links)",
+        "description": "Box für Medien und Zusatzinformationen",
+        "url": "/static_pages/media_box?size=medium&align=left"
+    }, {
+        "title": "MediaBox (mittel, rechts)",
+        "description": "Box für Medien und Zusatzinformationen",
+        "url": "/static_pages/media_box?size=medium&align=right"
+    },
+
+    {
+        "title": "MediaBox (groß, links)",
+        "description": "Box für Medien und Zusatzinformationen",
+        "url": "/static_pages/media_box?size=large&align=left"
+    }, {
+        "title": "MediaBox (groß, rechts)",
+        "description": "Box für Medien und Zusatzinformationen",
+        "url": "/static_pages/media_box?size=large&align=right"
+    },
+
+    {
+        "title": "MediaBox (volle breite)",
+        "description": "Box für Medien und Zusatzinformationen",
+        "url": "/static_pages/media_box?size=full"
+    }
 ]
