@@ -33,6 +33,14 @@ GIT
       jquery-rails
       sass-rails
 
+GIT
+  remote: git://github.com/spohlenz/tinymce-rails.git
+  revision: e03d27f3b491be68f460e9644e09ef0fad23e2cd
+  branch: tinymce-4
+  specs:
+    tinymce-rails (4.0.18)
+      railties (>= 3.1.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -293,8 +301,6 @@ GEM
       atomic (>= 1.1.7, < 2)
     tilt (1.4.1)
     timeliness (0.3.7)
-    tinymce-rails (4.0.18)
-      railties (>= 3.1.1)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -382,7 +388,7 @@ DEPENDENCIES
   simple_form
   the_sortable_tree
   thin
-  tinymce-rails
+  tinymce-rails!
   truncate_html
   turbolinks
   turn

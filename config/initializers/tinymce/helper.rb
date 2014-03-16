@@ -22,18 +22,30 @@ module TinyMCE::Rails
     # Returns the JavaScript code required to initialize TinyMCE.
     def tinymce_javascript(config=:default, options={})
       options[:language] = I18n.locale
-      json = tinymce_configuration(config, options).to_json
+      json = tinymce_configuration(config, options).to_javascript #to_json
+
+      # IMPORTANT:
+      # Remove escape sequence from file browser callback
+      # http://www.tinymce.com/forum/viewtopic.php?pid=86749#p86749
+      # https://github.com/stfalcon/TinymceBundle/commit/0e6f8b05493c8d534510de5f96400a0258efe767
       json = json.gsub('"elFinderBrowser"', 'elFinderBrowser')
+
+      # Remove closing brackets to attach more content
       json = json[0..-2]
-      json += ",\"template_replace_values\": {"\
-        "\"size\": function() {return window.prompt('Größe der Box (\"small\", \"medium\"=default, \"large\",\"full\")');},"\
-        "\"align\": function() {return window.prompt('Ausrichtung der Box (\"left\", \"right\")');},"\
-        "\"title\": function() {return window.prompt(\"Titel\");},"\
-        "\"description\": function() {return window.prompt(\"Beschreibung\");}"\
-      "}"
+
+      # json += ",\"template_replace_values\": {"\
+      #   "\"size\": function() {return window.prompt('Größe der Box (\"small\", \"medium\"=default, \"large\",\"full\")');},"\
+      #   "\"align\": function() {return window.prompt('Ausrichtung der Box (\"left\", \"right\")');},"\
+      #   "\"title\": function() {return window.prompt(\"Titel\");},"\
+      #   "\"description\": function() {return window.prompt(\"Beschreibung\");}"\
+      # "}"
+
+      # Add Path to css files
       json += ",\"content_css\" : \""+path_to_stylesheet('application')+","+path_to_stylesheet('wysiwyg')+"\""
       json += "}"
-      "tinyMCE.init($.extend({},tinymceDefaults,#{json}));".html_safe
+      #{}"tinyMCE.init($.extend({},tinymceDefaults,#{json}));".html_safe
+      "tinyMCE.init(#{json});".html_safe
+      #{}"tinyMCE.init(#{tinymce_configuration(config, options).to_javascript});".html_safe
 
     end
     

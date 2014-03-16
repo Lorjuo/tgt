@@ -49,6 +49,9 @@
  *= require dataTables/jquery.dataTables
  *= require dataTables/jquery.dataTables.bootstrap3
  *= require dataTables/jquery.dataTables.responsive
+ *
+ *# WYSIWYG
+ *= require tinymce_overrides
  * 
  * require_tree .
  * require_directory .

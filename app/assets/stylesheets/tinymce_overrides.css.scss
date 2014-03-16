@@ -8,9 +8,8 @@ body { // needed to override default values
     @extend .container
   }
 
-  .mce-btn button {
-    font-size: 12px;
-    padding: 3px 9px 3px 9px;
+  .mce-btn button{
+    padding: 3px 6px 3px 6px;
   }
 
   .mce-text {
@@ -26,3 +25,6 @@ body { // needed to override default values
     margin-right: 10px;
   }
 }
+
+/*.defaultSkin span.mceIcon, .defaultSkin img.mceIcon {display:block; width:20px; height:20px}
+.defaultSkin .mceButton {display:block; border:1px solid #F0F0EE; width: 20px; height:20px; margin-right:1px}*/

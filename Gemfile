@@ -146,8 +146,8 @@ gem 'email_validator'
 gem 'wicked'
 
 # WYSIWYG
-gem 'tinymce-rails'
-# gem 'tinymce-rails', :git => 'git://github.com/spohlenz/tinymce-rails.git', :branch => 'tinymce-4'
+#gem 'tinymce-rails'
+gem 'tinymce-rails', :git => 'git://github.com/spohlenz/tinymce-rails.git', :branch => 'tinymce-4'
 # gem 'tinymce-rails-imageupload'
 #gem 'ckeditor', github: 'galetahub/ckeditor'
 
