@@ -9,7 +9,7 @@ set :deploy_to, "/var/www/#{fetch(:application)}" #{}"/home/#{fetch(:deploy_user
 set :scm, :git
 
 set :format, :pretty
-set :log_level, :info
+set :log_level, :debug
 set :pty, true #default on
 #set :use_sudo, true
 
@@ -31,11 +31,13 @@ set :rbenv_ruby, '2.1.1' # maybe dash has to be deleted
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 set :rbenv_roles, :all # default value
 
+set :default_env, {
+  'PATH' => "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH"
+}
 
 set :linked_files, %w{config/database.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
 set :keep_releases, 5
 
 
