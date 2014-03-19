@@ -5,7 +5,7 @@ body { // needed to override default values
     margin-left: auto;
     margin-right: auto;
     left: 0; right: 0;
-    @extend .container
+    /*@extend .container*/
   }
 
   .mce-btn button{

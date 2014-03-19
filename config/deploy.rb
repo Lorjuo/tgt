@@ -1,65 +1,107 @@
-require "bundler/capistrano"
+set :application, 'tgt'
+set :repo_url, "git@github.com:Lorjuo/#{fetch(:application)}"
+#set :repository, "http://USER:PASS@git.somewhere.tld"
 
-set :stages, %w(production testing)
-set :default_stage, "production"
-require 'capistrano/ext/multistage'
+# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
-# set :rake, "#{rake} --trace"
-set :bundle_flags, "--quiet" #"--deployment"
+#deploy_to has been switched to specific stages
+set :deploy_to, "/var/www/#{fetch(:application)}" #{}"/home/#{fetch(:deploy_user)}/apps/#{fetch(:full_app_name)}"
+set :scm, :git
 
-default_run_options[:pty] = true
-ssh_options[:forward_agent] = true
+set :format, :pretty
+set :log_level, :info
+set :pty, true #default on
+#set :use_sudo, true
+
+# https://github.com/capistrano/capistrano/wiki/Using-SSH-Keys
+# https://github.com/capistrano/capistrano/issues/666
+set :ssh_options, {
+  forward_agent: true,
+#  verbose: :debug, # For debugging
+  user: "deploy"
+#  keys: %w(/home/julien/.ssh/id_rsa)
+#   auth_methods: %w(password)
+}
+#set :scm_passphrase, "integer"
+
+# setup rvm.
+set :rbenv_type, :system
+set :rbenv_ruby, '2.1.1' # maybe dash has to be deleted
+#set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+set :rbenv_map_bins, %w{rake gem bundle ruby rails}
+set :rbenv_roles, :all # default value
 
 
-#reb: turned off, due to not working most of the time
+set :linked_files, %w{config/database.yml}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
-#after "deploy", "deploy:cleanup" # keep only the last 5 releases
+# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+set :keep_releases, 5
 
-set :rvm_ruby_string, :local
-set :rvm_autolibs_flag, "read-only"
 
-before 'deploy:setup', 'rvm:install_rvm'
-before 'deploy:setup', 'rvm:install_ruby'
+# what specs should be run before deployment is allowed to
+# continue, see lib/capistrano/tasks/run_tests.cap
+set :tests, ["spec"]
 
-require 'rvm/capistrano'
+# which config files should be copied by deploy:setup_config
+# see documentation in lib/capistrano/tasks/setup_config.cap
+# for details of operations
+set(:config_files, %w(
+  nginx.conf
+  database.example.yml
+  log_rotation
+  monit
+  unicorn.rb
+  unicorn_init.sh
+))
+# TODO: add config.yml
 
-# Uploaded Files
-# http://astonj.com/tech/how-to-get-capistrano-to-ignore-upload-directories-carrierwave/
-# http://stackoverflow.com/questions/9043662/carrierwave-files-with-capistrano
-set :shared_children, shared_children + %w{public/uploads public/files}
+# which config files should be made executable after copying
+# by deploy:setup_config
+set(:executable_config_files, %w(
+  unicorn_init.sh
+))
+
+# files which need to be symlinked to other parts of the
+# filesystem. For example nginx virtualhosts, log rotation
+# init scripts etc.
+set(:symlinks, [
+  {
+    source: "nginx.conf",
+    link: "/etc/nginx/sites-enabled/#{fetch(:application)}" #full_app_name
+  },
+  {
+    source: "unicorn_init.sh",
+    link: "/etc/init.d/unicorn_#{fetch(:application)}" #full_app_name
+  },
+  {
+    source: "log_rotation",
+    link: "/etc/logrotate.d/#{fetch(:application)}" #full_app_name
+  },
+  {
+    source: "monit",
+    link: "/etc/monit/conf.d/#{fetch(:application)}.conf" #full_app_name
+  }
+])
+
+
+# this:
+# http://www.capistranorb.com/documentation/getting-started/flow/
+# is worth reading for a quick overview of what tasks are called
+# and when for `cap stage deploy`
 
 namespace :deploy do
-
-  task :setup_config, roles: :app do
-    puts "current_path: #{current_path}"
-    sudo "ln -nfs #{current_path}/config/apache.#{fetch :rails_env}.conf /etc/apache2/sites-available/#{application}"
-    run "mkdir -p /var/www/sites"
-    sudo "ln -nfs /var/www/#{application}/current/public/ /var/www/sites/#{application}"
-    run "mkdir -p #{shared_path}/config"
-    run "mkdir -p #{shared_path}/cached-copy"
-    put File.read("config/database.#{fetch :rails_env}.yml"), "#{shared_path}/config/database.yml"
-    puts "Now edit the config files in #{shared_path}."
-  end
-  after "deploy:setup", "deploy:setup_config"
-
-  task :symlink_config, roles: :app do
-    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-  end
-  after "deploy:finalize_update", "deploy:symlink_config"
-
-  desc "Make sure local git is in sync with remote."
-  task :check_revision, roles: :web do
-    unless `git rev-parse HEAD` == `git rev-parse origin/master`
-      puts "WARNING: HEAD is not the same as origin/master"
-      puts "Run `git push` to sync changes."
-      exit
+  # make sure we're deploying what we think we're deploying
+  before :deploy, "deploy:check_revision"
+  # only allow a deploy with passing tests to deployed
+  before :deploy, "deploy:run_tests"
+  # compile assets locally then rsync
+  after 'deploy:symlink:shared', 'deploy:compile_assets_locally'
+  after :finishing, 'deploy:cleanup'
+  
+  task :whoami do
+    on roles(:all) do
+      execute :whoami
     end
   end
-  before "deploy", "deploy:check_revision"
-  
-  desc 'copy ckeditor nondigest assets'
-  task :copy_assets, roles: :app do
-    run "cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} tgt:copy_nondigest_assets"
-  end
-  after 'deploy:assets:precompile', 'deploy:copy_assets'
 end

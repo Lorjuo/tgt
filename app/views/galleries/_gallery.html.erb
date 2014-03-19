@@ -6,7 +6,7 @@
       <div class="image preview_cycle">
         <%= image_tag(gallery.preview_image.file_url(:_260x180), :class => "img-responsive") %>
 
-        <% preview_images = Image.where('attachable_id = ? AND attachable_type = ?', gallery.id, 'gallery').order("RAND()").limit(4) %>
+        <% preview_images = Image.where('attachable_id = ? AND attachable_type = ?', gallery.id, 'gallery').order("RAND()").limit(4).where.not(id: gallery.preview_image.id) %>
         <% preview_images.each do |preview_image| %>
           <%= image_tag(preview_image.file_url(:_260x180), :class => "img-responsive") %>
         <% end %>

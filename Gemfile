@@ -122,6 +122,11 @@ gem 'cancan'
 gem 'devise'
 gem 'rolify', github: "EppO/rolify" #, '~> 3.3.0.rc4' # https://github.com/EppO/rolify/pull/129
 
+# SSH
+#gem 'net-ssh', '~> 2.8.1', :git => "https://github.com/net-ssh/net-ssh"
+gem 'net-ssh', '~> 2.7.0'
+# http://stackoverflow.com/questions/21560297/capistrano-sshauthenticationfailed-not-prompting-for-password
+
 # Social Media
 
 # String Operations
@@ -148,6 +153,7 @@ gem 'wicked'
 # WYSIWYG
 #gem 'tinymce-rails'
 gem 'tinymce-rails', :git => 'git://github.com/spohlenz/tinymce-rails.git', :branch => 'tinymce-4'
+gem 'tinymce-rails-langs'
 # gem 'tinymce-rails-imageupload'
 #gem 'ckeditor', github: 'galetahub/ckeditor'
 
@@ -177,9 +183,12 @@ end
 group :development do
   # Use Capistrano for deployment
   # gem 'capistrano', group: :development
-  gem 'capistrano', '~> 2.1'
-  gem 'capistrano-ext'
-  gem 'rvm-capistrano'
+  gem 'capistrano', '~> 3.1'
+
+  # rails specific capistrano funcitons
+  gem 'capistrano-rails', '~> 1.1.0'
+
+  gem 'capistrano-rbenv', '~> 2.0'
 
   gem 'hirb'
   
