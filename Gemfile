@@ -208,6 +208,10 @@ group :development do
   gem 'binding_of_caller'
 end
 
+group :production do
+  gem 'unicorn'
+end
+
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
