@@ -16,7 +16,7 @@ set :branch, ENV["REVISION"] || "master"
 # definition into the server list. The second argument
 # something that quacks like a hash can be used to set
 # extended properties on the server.
-server 'ubuntuprod', roles: %w{web app db}, :primary => true#, my_property: :my_value
+server 'ubuntuprod', roles: %w{web app db}, :user => 'deploy', :primary => true#, my_property: :my_value
 
 # used in case we're deploying multiple versions of the same
 # app side by side. Also provides quick sanity checks when looking

@@ -27,13 +27,14 @@ set :ssh_options, {
 # setup rvm.
 set :rbenv_type, :system
 set :rbenv_ruby, '2.1.1' # maybe dash has to be deleted
+set :rbenv_prefix, ""
 #set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 set :rbenv_roles, :all # default value
 
-set :default_env, {
-  'PATH' => "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH"
-}
+# set :default_env, {
+#   'PATH' => "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH"
+# }
 
 set :linked_files, %w{config/database.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}

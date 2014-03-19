@@ -304,7 +304,7 @@ GEM
       atomic (>= 1.1.7, < 2)
     tilt (1.4.1)
     timeliness (0.3.7)
-    tins (1.0.0)
+    tins (1.0.1)
     tinymce-rails-langs (4.20140129)
       tinymce-rails (~> 4.0)
     treetop (1.4.15)
