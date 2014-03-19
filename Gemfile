@@ -157,6 +157,9 @@ gem 'tinymce-rails-langs'
 # gem 'tinymce-rails-imageupload'
 #gem 'ckeditor', github: 'galetahub/ckeditor'
 
+# TEMPORAL QUICKFIX http://stackoverflow.com/questions/22510461/could-not-find-thread-safe-0-3-0-in-any-of-the-sources
+gem 'thread_safe', '0.2.0'
+
 group :test do
   # gem 'minitest-spec-rails'
   gem 'minitest-rails'

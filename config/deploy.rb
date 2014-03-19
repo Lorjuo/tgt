@@ -35,6 +35,11 @@ set :rbenv_roles, :all # default value
 # set :default_env, {
 #   'PATH' => "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH"
 # }
+# set :default_environment, {
+#   :PATH => '$HOME/.rvm/gems/ruby-2.0.0-p353/bin:$PATH',
+#   :GEM_HOME => '$HOME/.rvm/gems/ruby-2.0.0-p353',
+#   :GEM_PATH => '$HOME/.rvm/gems/ruby-2.0.0-p353:$HOME/.rvm/gems/ruby-2.0.0-p353@global'
+# }
 
 set :linked_files, %w{config/database.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
