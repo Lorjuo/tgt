@@ -130,4 +130,7 @@ namespace :deploy do
     end
   end
   after 'deploy:assets:precompile', 'deploy:copy_assets'
+
+  # For interactive rails console:
+  # https://gist.github.com/toobulkeh/8214198
 end

@@ -2,6 +2,7 @@ namespace :tgt do
   require Rails.root + "lib/tasks/importer/importer"
  
   desc "Import old database, usage: rake tgt:import['old_database_name']"
+  #bundle exec rake tgt:import['tgt_old'] RAILS_ENV=production as deploy user on production environment
   #rake tgt:import\['old_database_name'\] in zsh
   task :import, [:oldDatabase] => :environment do |t, args|
   #task :import, :oldDatabase, needs::environment do |t, args|
