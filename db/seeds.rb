@@ -14,12 +14,14 @@ FactoryGirl.create(:admin, first_name: "admin", last_name: "generic")
 FactoryGirl.create(:user, first_name: "user", last_name: "generic")
 
 puts "Create generic department"
-department = Department.create({"name"=>"generic", "id"=>0})
+Department.create({"name"=>"generic", "id"=>0})
+
+department = Department.first
 department.id = 0
 department.save!
 
 # Reset autoincrement counter
-ActiveRecord::Base.connection.execute("ALTER TABLE department AUTO_INCREMENT = 1") 
+ActiveRecord::Base.connection.execute("ALTER TABLE departments AUTO_INCREMENT = 1") 
 
 dir = File.join(Rails.public_path, 'files')+"/announcements"
 unless File.directory?(dir)
