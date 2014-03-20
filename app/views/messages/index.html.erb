@@ -47,6 +47,7 @@
         <th data-class="expand"><%= Message.human_attribute_name(:title) %></th>
         <th class="no-sort" data-hide="xxs,xs"><%= Message.human_attribute_name(:content) %></th>
         <th data-hide="xxs,xs"><%= Message.human_attribute_name(:department) %></th>
+        <th data-hide="xxs,xs"><%= Message.human_attribute_name(:date) %></th>
         <%# if can? :update, Message %>
         <% if user_signed_in? %>
           <th class="no-sort"><%= t "general.actions" %></th>
@@ -63,6 +64,7 @@
           <%= truncate(strip_tags(message.content), length: 240, omission: '', separator: ' ') %>
         </td>
         <td><%= link_to_pill message.department.name, message.department %></td>
+        <td><%= localize( message.created_at.to_date, :format => :default ) %></td>
         <%# if can? :update, message %>
         <% if user_signed_in? %>
           <td>

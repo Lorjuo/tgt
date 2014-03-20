@@ -9,6 +9,7 @@ en:
     create: Create
     create_model: "Create %{model}"
     current: Current
+    date: Date
     destroy: Delete
     destroy_selected: Delete selected
     edit: Edit
@@ -53,6 +54,7 @@ en:
     age: Age
     color: Color
     content: Content
+    date: Date
     department: Department
     departments: Departments
     description: Description
