@@ -1,4 +1,4 @@
-<%# cache navigation_element do %>
+<%#= cache navigation_element do %>
   <%= content_tag :li, :class => "dropdown-submenu" do %>
     <%#= link_to navigation_element.url do %>
     <%= link_to navigation_element.url,
@@ -11,6 +11,10 @@
     <%# unless navigation_element.leaf? %>
       <%= content_tag :ul, :class => "dropdown-menu" do %>
         <%= render :partial => "layouts/sub_level_navigation", collection: navigation_element.children, :as => :navigation_element %>
+        <%# replaced the line above with the following because of cache recursion issue: https://github.com/rails/cache_digests/issues/47
+          at the moment both alternatives seem to work %>
+        <%#= render navigation_elements: navigation_element.children, partial: 'layouts/sub_level_navigation' %>
+
         <%# navigation_element.children.each do |child| %>
           <%#= render :partial => "layouts/sub_level_navigation", :locals => { :navigation_element => child } %>
         <%# end %>

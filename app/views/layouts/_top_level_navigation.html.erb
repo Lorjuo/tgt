@@ -1,4 +1,4 @@
-<%# cache navigation_element do %>
+<%#= cache navigation_element do %>
   <%= content_tag :li, :class => "dropdown" do %>
     <%#= link_to navigation_element.url do %>
     <%= link_to navigation_element.url,
@@ -10,6 +10,7 @@
     <% if navigation_element.children.present? %>
     <%# unless navigation_element.leaf? %>
       <%= content_tag :ul, :class => "dropdown-menu" do %>
+        <%# Template Dependency: layouts/sub_level_navigation %>
         <%= render :partial => "layouts/sub_level_navigation", collection: navigation_element.children, :as => :navigation_element %>
       <% end %>
     <% end %>

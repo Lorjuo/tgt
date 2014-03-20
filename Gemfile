@@ -117,6 +117,9 @@ gem 'holder_rails'
 # Profiler
 gem 'rack-mini-profiler'
 
+# Server
+gem 'unicorn'
+
 # Security
 gem 'cancan'
 gem 'devise'
@@ -208,9 +211,6 @@ group :development do
   gem 'binding_of_caller'
 end
 
-group :production do
-  gem 'unicorn'
-end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

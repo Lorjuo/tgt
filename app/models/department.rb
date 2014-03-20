@@ -10,15 +10,10 @@ class Department < ActiveRecord::Base
   has_many :messages
   has_many :navigation_elements
   has_many :training_groups
-  has_many :trainers, :through => :training_groups, :order => [ :first_name, :last_name ], :uniq => true
-  
-#   2014-03-16 17:12:39.776 [WARN ] DEPRECATION WARNING: The following options in your Department.has_many :trainers declaration are deprecated: :order,:uniq. Please use a scope block instead. For example, the following:
-
-#     has_many :spam_comments, conditions: { spam: true }, class_name: 'Comment'
-
-# should be rewritten as the following:
-
-#     has_many :spam_comments, -> { where spam: true }, class_name: 'Comment'
+  #deprecated:
+  #has_many :trainers, :through => :training_groups, :order => [ :first_name, :last_name ], :uniq => true
+  #new syntax:
+  has_many :trainers, -> { order('trainers.first_name, trainers.last_name') }, :through => :training_groups
 
   has_and_belongs_to_many :users#, through: :department_editor
 
