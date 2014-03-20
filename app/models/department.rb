@@ -25,7 +25,8 @@ class Department < ActiveRecord::Base
 
   friendly_id :name, use: :slugged
 
-  after_initialize :init
+  #after_initialize :init
+  after_create :init
   after_destroy :clean_up
 
   def init
@@ -33,6 +34,20 @@ class Department < ActiveRecord::Base
 
     unless File.directory?(dir)
       FileUtils.mkdir_p(dir)
+    end
+
+    unless self.name == 'generic'
+      # see navigation_elements_controller
+      # and http://rubydoc.info/gems/acts_as_tree/1.5.0/frames
+      NavigationElement.create(:name => self.name, :parent_id => nil, :controller_id => 'departments', :action_id => 'show', :instance_id => self.id, :department_id => 1)
+
+      #self.navigation_elements.new(:name, :parent_id, :controller_id, :action_id, :instance_id, :department_id)
+      self.navigation_elements.create(:name => "Fotos", :parent_id => nil, :controller_id => 'departments', :action_id => 'galleries', :instance_id => self.id)
+      self.navigation_elements.create(:name => "Trainingsgruppen", :parent_id => nil, :controller_id => 'departments', :action_id => 'training_groups', :instance_id => self.id)
+      self.navigation_elements.create(:name => "Trainer", :parent_id => nil, :controller_id => 'departments', :action_id => 'trainers', :instance_id => self.id)
+      self.navigation_elements.create(:name => "News", :parent_id => nil, :controller_id => 'departments', :action_id => 'messages', :instance_id => self.id)
+      self.navigation_elements.create(:name => "Flyer", :parent_id => nil, :controller_id => 'departments', :action_id => 'flyers', :instance_id => self.id)
+      # TODO: Events
     end
   end
 

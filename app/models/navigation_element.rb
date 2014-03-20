@@ -5,7 +5,7 @@ class NavigationElement < ActiveRecord::Base
 
   scope :department, -> (id) { where(:department_id => id)}
   #scope :top_level, -> { where(:department_id => nil)}
-  scope :top_level, -> { where(:department_id => 0)}
+  scope :top_level, -> { where(:department_id => Department.where(:name => "generic").first.id)}
 
   # Columns in the categories table: lft, rgt and parent_id
   acts_as_nested_set  :scope => :department_id#,
@@ -29,7 +29,7 @@ class NavigationElement < ActiveRecord::Base
   def is_anchor?
     #debugger
     #controller_id.empty?
-    controller_id == ''
+    controller_id.blank?
   end
 
   def invoke_touch
@@ -40,7 +40,7 @@ class NavigationElement < ActiveRecord::Base
   # Return relative url for given navigation element
   def url
     # TODO bug with controllers without models e.g. StaticPages
-    if controller_id.empty?
+    if controller_id.blank?
       "#"
     elsif instance_id.nil?
       url_for :controller => controller_id, :action => action_id, :only_path => true
