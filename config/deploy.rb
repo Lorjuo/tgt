@@ -112,4 +112,22 @@ namespace :deploy do
       execute :whoami
     end
   end
+
+  # desc 'copy nondigest assets'
+  # task :copy_assets, roles: :app do
+  #   run "cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} tgt:copy_nondigest_assets"
+  # end
+  # after 'deploy:assets:precompile', 'deploy:copy_assets'
+
+  desc 'copy nondigest assets'
+  task :copy_assets do
+    on roles(fetch(:assets_roles)) do
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, "tgt:copy_nondigest_assets"
+        end
+      end
+    end
+  end
+  after 'deploy:assets:precompile', 'deploy:copy_assets'
 end
