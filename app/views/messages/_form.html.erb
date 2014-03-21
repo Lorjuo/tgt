@@ -16,6 +16,7 @@
 
       <%#= f.association :department %>
 
+      <%= f.input :abstract, as: :text, :placeholder => t(".abstract_hint"), input_html: { maxlength: 360 } %>
 
       <%= f.input :content, as: :text, input_html: { class: 'tinymce' }  %>
       <!--<div class="form-group string optional message_content">

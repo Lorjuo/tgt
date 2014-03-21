@@ -50,6 +50,7 @@ de:
       unlimited: 'unbeschränkt'
 
   attributes:
+    abstract: Kurzfassung
     active: Aktiv
     address: Adresse
     age: Alter
@@ -233,6 +234,8 @@ de:
       sentence_search_term: "Ich möchte nach folgendem Begriff suchen %{input}"
     show:
       title: '%{title}'
+    form:
+      abstract_hint: 'Kurzfassung wird automatisch generiert, wenn dieses Feld leer gelassen wird'
 
   navigation_elements:
     index:

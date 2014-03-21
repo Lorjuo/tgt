@@ -49,6 +49,7 @@ en:
       unlimited: 'unlimited'
 
   attributes:
+    abstract: Abstract
     active: Active
     address: Address
     age: Age
@@ -232,6 +233,8 @@ en:
       sentence_search_term: "I want to search for the following term %{input}"
     show:
       title: '%{title}'
+    form:
+      abstract_hint: 'Leaving this field blank, abstract will be automatically generated'
 
   navigation_elements:
     index:

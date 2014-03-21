@@ -28,7 +28,7 @@ private
       array = [
         message.image.present? ? link_to(image_tag(message.image.file_url(:thumb), size: "64x48"), message.image.file_url, :class => "fancybox") : "",
         link_to(message.title, message),
-        truncate(strip_tags(message.content), length: 240, omission: '...', separator: ' '),
+        message.display_abstract + '...',
         link_to_pill(message.department.name, message.department, :class => "no-wrap"),
         localize( message.created_at.to_date, :format => :default )#,
 

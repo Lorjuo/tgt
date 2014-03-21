@@ -61,7 +61,7 @@
         <td><%= link_to(image_tag(message.image.file_url(:thumb), size: "64x48"), message.image.file_url, :class => "fancybox") if message.image.present? %></td>
         <td><%= link_to message.title, message %></td>
         <td>
-          <%= truncate(strip_tags(message.content), length: 240, omission: '', separator: ' ') %>
+          <%= message.display_abstract %>
         </td>
         <td><%= link_to_pill message.department.name, message.department %></td>
         <td><%= localize( message.created_at.to_date, :format => :default ) %></td>

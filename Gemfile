@@ -63,6 +63,9 @@ gem 'mysql2'
 gem 'carrierwave'
 gem 'jquery-fileupload-rails'
 gem 'el_finder'
+# Alternatives:
+# http://www.roxyfileman.com/
+# http://cflove.org/2013/10/coldfusion-file-manager-for-tinymce-4.cfm
 
 # Forms
 gem 'simple_form'
@@ -149,6 +152,9 @@ gem 'friendly_id' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 
 # Validators
 gem 'email_validator'
+
+# Wakeup
+# http://www.mythtv.org/wiki/ACPI_Wakeup
 
 # Wizard
 gem 'wicked'

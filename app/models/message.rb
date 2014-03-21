@@ -17,4 +17,15 @@ class Message < ActiveRecord::Base
   #Scopes
   scope :department, -> (id) { where(:department_id => id)}
   scope :chronological, -> { order("created_at" => :desc) }
+
+  def display_abstract( options={} )
+    options.reverse_merge! :text_length => 240
+    if self.abstract.present?
+      self.abstract
+    else
+      ActionController::Base.helpers.truncate(
+        ActionController::Base.helpers.strip_tags(self.content),
+        length: options[:text_length], omission: '', :separator => ' ')
+    end
+  end
 end

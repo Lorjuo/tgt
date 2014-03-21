@@ -13,7 +13,7 @@ class Department < ActiveRecord::Base
   #deprecated:
   #has_many :trainers, :through => :training_groups, :order => [ :first_name, :last_name ], :uniq => true
   #new syntax:
-  has_many :trainers, -> { order('trainers.first_name, trainers.last_name') }, :through => :training_groups
+  has_many :trainers, -> { order('trainers.first_name, trainers.last_name').uniq }, :through => :training_groups
 
   has_and_belongs_to_many :users#, through: :department_editor
 

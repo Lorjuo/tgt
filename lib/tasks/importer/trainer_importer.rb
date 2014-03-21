@@ -43,6 +43,9 @@ module TrainersImporter
 
         trainer.training_groups << new_training_group
         begin
+          # https://github.com/norman/friendly_id/issues/183
+          trainer.send :set_slug
+          # Maybe it's not a good idea to skip validation
           trainer.save(:validate => false)
         rescue Exception => e
           puts "Failed to save \"#{row.get("firstname")} #{row.get("surname")}\": #{e.message}"
