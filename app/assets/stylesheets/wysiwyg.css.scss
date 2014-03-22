@@ -4,3 +4,6 @@ body {
   background-image: none;
   padding: 12px !important;
 }
+table td, table th {
+  min-width: 3em;
+}

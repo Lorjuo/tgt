@@ -41,7 +41,7 @@
     </div>
     <div class="messageFooter">
       <div class="date">
-        <%= localize( @message.created_at, :format => :short_full ) %>
+        <%= localize( @message.created_at.to_date, :format => :long ) %>
       </div>
       <div class="share">
         <%= render :partial => "shared/social_media_share" %>

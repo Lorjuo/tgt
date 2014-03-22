@@ -6,6 +6,12 @@ body { // needed to override default values
     margin-right: auto;
     left: 0; right: 0;
     /*@extend .container*/
+    .mce-edit-area {
+       /* .mce-container, .mce-container *, .mce-widget, .mce-widget *, .mce-reset - 0px
+      .mce-container, .mce-container *, .mce-widget, .mce-widget *, .mce-reset - 0px */
+      /* class="mce-edit-area mce-container mce-panel mce-stack-layout-item" */
+      /*margin-bottom: -60px;*/
+    }
   }
 
   .mce-btn button{

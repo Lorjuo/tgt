@@ -36,13 +36,14 @@ default:
     - lists
     - table
     #- autoresize
-    #- contextmenu
+    - contextmenu
     - fullscreen
     - paste
     - searchreplace
     - template
     - textcolor
     - code
+    # - importcss
 
   entity_encoding: "raw"
   image_advtab: true # For extended image functionality
@@ -55,11 +56,11 @@ default:
   menubar: open edit insert view format table# tools
 
   #toolbar: undo redo | styleselect forecolor backcolor | bold italic | alignleft aligncenter alignright alignjustify |  bullist numlist outdent indent | link image template table hr | code fullscreen 
-  toolbar: undo redo | styleselect forecolor backcolor | bold italic | alignleft aligncenter alignright alignjustify |  bullist numlist outdent indent | link image template table hr | code fullscreen 
+  toolbar: undo redo | styleselect removeformat forecolor backcolor | bold italic | alignleft aligncenter alignright alignjustify |  bullist numlist outdent indent | link image template table hr | code fullscreen 
   convert_urls: false
   # relative_urls: false
 
-  height: 560
+  height: 480
 
 alternate:
   selector: textarea.table-editor

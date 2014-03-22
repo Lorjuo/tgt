@@ -1,0 +1,226 @@
+window.tinymceDefaults = {
+    style_formats: [{
+            title: 'Headers',
+            items: [{
+                title: 'h1',
+                block: 'h1'
+            }, {
+                title: 'h2',
+                block: 'h2'
+            }, {
+                title: 'h3',
+                block: 'h3'
+            }, {
+                title: 'h4',
+                block: 'h4'
+            }, {
+                title: 'h5',
+                block: 'h5'
+            }, {
+                title: 'h6',
+                block: 'h6'
+            }]
+        },
+
+        {
+            title: 'Inline',
+            items: [{
+                title: 'Bold',
+                inline: 'b',
+                icon: 'bold'
+            }, {
+                title: 'Italic',
+                inline: 'i',
+                icon: 'italic'
+            }, {
+                title: 'Underline',
+                inline: 'span',
+                styles: {
+                    textDecoration: 'underline'
+                },
+                icon: 'underline'
+            }, {
+                title: 'Strikethrough',
+                inline: 'span',
+                styles: {
+                    textDecoration: 'line-through'
+                },
+                icon: 'strikethrough'
+            }, {
+                title: 'Superscript',
+                inline: 'sup',
+                icon: 'superscript'
+            }, {
+                title: 'Subscript',
+                inline: 'sub',
+                icon: 'subscript'
+            }, {
+                title: 'Code',
+                inline: 'code',
+                icon: 'code'
+            }, ]
+        },
+
+        {
+            title: 'Blocks',
+            items: [{
+                title: 'Paragraph',
+                block: 'p'
+            }, {
+                title: 'Blockquote',
+                block: 'blockquote'
+            }, {
+                title: 'Div',
+                block: 'div'
+            }, {
+                title: 'Pre',
+                block: 'pre'
+            }]
+        },
+
+        {
+            title: 'Alignment',
+            items: [{
+                title: 'Left',
+                block: 'div',
+                styles: {
+                    textAlign: 'left'
+                },
+                icon: 'alignleft'
+            }, {
+                title: 'Center',
+                block: 'div',
+                styles: {
+                    textAlign: 'center'
+                },
+                icon: 'aligncenter'
+            }, {
+                title: 'Right',
+                block: 'div',
+                styles: {
+                    textAlign: 'right'
+                },
+                icon: 'alignright'
+            }, {
+                title: 'Justify',
+                block: 'div',
+                styles: {
+                    textAlign: 'justify'
+                },
+                icon: 'alignjustify'
+            }]
+        }
+    ] #,
+    # style_formats_merge: true # For merging new and
+    default styles
+}
+
+
+
+
+# window.tinymceDefaults = {
+    # style_formats: [
+        # {
+            title: 'Bold text',
+            inline: 'b'
+        },
+        # {
+            title: 'Red text',
+            inline: 'span',
+            styles: {
+                color: '#ff0000'
+            }
+        },
+        # {
+            title: 'Red header',
+            block: 'h1',
+            styles: {
+                color: '#ff0000'
+            }
+        },
+        # {
+            title: 'Example 1',
+            inline: 'span',
+            classes: 'example1'
+        },
+        # {
+            title: 'Example 2',
+            inline: 'span',
+            classes: 'example2'
+        },
+        # {
+            title: 'Table styles'
+        },
+        # {
+            title: 'Table row 1',
+            selector: 'tr',
+            classes: 'tablerow1'
+        }
+        #
+    ]
+    #
+};
+
+# window.tinymceDefaults = {}
+# importcss_selector_filter: # / \.prefix | \.otherprefix /
+    # window.tinymceDefaults =
+    # style_formats: [
+        # title: "Bold text"
+        # inline: "b"
+        #,
+        # title: "Red text"
+        # inline: "span"
+        # styles:
+        # color: "#ff0000"
+        #,
+        # title: "Red header"
+        # block: "h1"
+        # styles:
+        # color: "#ff0000"
+        #,
+        # title: "Example 1"
+        # inline: "span"
+        # classes: "example1"
+        #,
+        # title: "Example 2"
+        # inline: "span"
+        # classes: "example2"
+        #,
+        # title: "Table styles"
+        # selector: "table"
+        # classes: "table table-bordered table-striped datatable defaults"
+        #,
+        # title: "Table row 1"
+        # selector: "tr"
+        # classes: "tablerow1"
+        #
+]
+# formats: # alignleft: # selector: "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"
+# classes: "left"
+
+# aligncenter: # selector: "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"
+# classes: "center"
+
+# alignright: # selector: "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"
+# classes: "right"
+
+# alignfull: # selector: "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"
+# classes: "full"
+
+# bold: # inline: "span"
+# classes: "bold"
+
+# italic: # inline: "span"
+# classes: "italic"
+
+# underline: # inline: "span"
+# classes: "underline"
+# exact: true
+
+# strikethrough: # inline: "del"
+
+# customformat: # inline: "span"
+# styles: # color: "#00ff00"
+# fontSize: "20px"
+
+# attributes: # title: "My custom format"
