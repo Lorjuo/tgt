@@ -143,6 +143,7 @@ window.tinymceDefaults = {
             }]
         },
     ],
+    // TODO: Removeformat does not work for table classes
     removeformat: [{
         selector: 'table',
         remove: 'all',
