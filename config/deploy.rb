@@ -1,3 +1,7 @@
+# TODO: Problem: unicorn still working on old release
+# http://stackoverflow.com/questions/13578687/unicorn-continues-to-use-old-code-following-deploy-restart
+# Still does not really restart after using https://github.com/tablexi/capistrano3-unicorn
+
 set :application, 'tgt'
 set :repo_url, "git@github.com:Lorjuo/#{fetch(:application)}"
 #set :repository, "http://USER:PASS@git.somewhere.tld"
@@ -130,6 +134,11 @@ namespace :deploy do
     end
   end
   after 'deploy:assets:precompile', 'deploy:copy_assets'
+
+  after 'deploy:publishing', 'deploy:restart'
+  task :restart do
+    invoke 'unicorn:restart'
+  end
 
   # For interactive rails console:
   # https://gist.github.com/toobulkeh/8214198

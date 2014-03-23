@@ -205,6 +205,8 @@ group :development do
 
   gem 'capistrano-rbenv', '~> 2.0'
 
+  gem 'capistrano3-unicorn'
+
   gem 'hirb'
   
   # Debugger
