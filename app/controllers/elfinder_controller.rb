@@ -25,7 +25,7 @@ class ElfinderController < ApplicationController
     Rack::MiniProfiler.discard_results
     Rack::MiniProfiler.deauthorize_request
     {
-      :root => File.join(Rails.public_path, 'files')+params[:path],
+      :root => File.join(Rails.public_path, 'files'),#+params[:path],
       :url => '/files',#+params[:path],
       :perms => {
         # http://rubular.com For regular expression testing
