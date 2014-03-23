@@ -22,7 +22,7 @@
     var elf = $('#elfinder').elfinder({
       // set your elFinder options here
       lang: 'en',
-      url: '/elfinder/backend?path='+encodeURIComponent("<%= params[:path] %>"),  // connector URL
+      url: '/elfinder/backend'//'?path='+encodeURIComponent("<%= params[:path] %>"),  // connector URL
       getFileCallback: function(file) { // editor callback
 // actually file.url - doesnt work for me, but file does. (elfinder 2.0-rc1)
         FileBrowserDialogue.mySubmit(file); // pass selected file path to TinyMCE 
