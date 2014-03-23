@@ -42,7 +42,7 @@ set :rbenv_roles, :all # default value
 # }
 
 set :linked_files, %w{config/database.yml}
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads public/files}
 
 set :keep_releases, 5
 
