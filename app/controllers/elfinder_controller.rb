@@ -3,6 +3,13 @@ require 'el_finder/action'
 class ElfinderController < ApplicationController
   load_and_authorize_resource :class => false
 
+  def frontend_wrapper
+    # Prevent miniprofiler from appending javascript to json output
+    Rack::MiniProfiler.discard_results
+    Rack::MiniProfiler.deauthorize_request
+    render :layout => 'elfinder_wrapper'
+  end
+
   def frontend
     # Prevent miniprofiler from appending javascript to json output
     Rack::MiniProfiler.discard_results
