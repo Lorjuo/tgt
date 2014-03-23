@@ -1,5 +1,7 @@
 class Department < ActiveRecord::Base
   extend FriendlyId
+
+  include StringHelper
   
   #attr_accessible :area_id, :name, :training_group_ids
 
@@ -30,24 +32,46 @@ class Department < ActiveRecord::Base
   after_destroy :clean_up
 
   def init
-    dir = File.join(Rails.public_path, 'files')+"/departments/#{self.id}"
+    create_directory_structure
+    create_navigation_structure unless self.name == 'generic' 
+  end
 
-    unless File.directory?(dir)
-      FileUtils.mkdir_p(dir)
+  def create_navigation_structure
+    # see navigation_elements_controller
+    # and http://rubydoc.info/gems/acts_as_tree/1.5.0/frames
+    NavigationElement.create(:name => self.name, :parent_id => nil, :controller_id => 'departments', :action_id => 'show', :instance_id => self.id, :department_id => 1)
+
+    #self.navigation_elements.new(:name, :parent_id, :controller_id, :action_id, :instance_id, :department_id)
+    self.navigation_elements.create(:name => "Fotos", :parent_id => nil, :controller_id => 'departments', :action_id => 'galleries', :instance_id => self.id)
+    self.navigation_elements.create(:name => "Trainingsgruppen", :parent_id => nil, :controller_id => 'departments', :action_id => 'training_groups', :instance_id => self.id)
+    self.navigation_elements.create(:name => "Trainer", :parent_id => nil, :controller_id => 'departments', :action_id => 'trainers', :instance_id => self.id)
+    self.navigation_elements.create(:name => "News", :parent_id => nil, :controller_id => 'departments', :action_id => 'messages', :instance_id => self.id)
+    self.navigation_elements.create(:name => "Flyer", :parent_id => nil, :controller_id => 'departments', :action_id => 'flyers', :instance_id => self.id)
+    # TODO: Events
+  end
+
+  # Department.all.each{|dep| dep.create_directory_structure}
+  def create_directory_structure
+    if self.name == 'generic'
+      department_name = 'Verein'
+    else
+      department_name = sanitize_filename(self.name).strip.squish
     end
+    puts department_name
 
-    unless self.name == 'generic'
-      # see navigation_elements_controller
-      # and http://rubydoc.info/gems/acts_as_tree/1.5.0/frames
-      NavigationElement.create(:name => self.name, :parent_id => nil, :controller_id => 'departments', :action_id => 'show', :instance_id => self.id, :department_id => 1)
+    root_dir = File.join(Rails.public_path, 'files')+"/#{department_name}/"
 
-      #self.navigation_elements.new(:name, :parent_id, :controller_id, :action_id, :instance_id, :department_id)
-      self.navigation_elements.create(:name => "Fotos", :parent_id => nil, :controller_id => 'departments', :action_id => 'galleries', :instance_id => self.id)
-      self.navigation_elements.create(:name => "Trainingsgruppen", :parent_id => nil, :controller_id => 'departments', :action_id => 'training_groups', :instance_id => self.id)
-      self.navigation_elements.create(:name => "Trainer", :parent_id => nil, :controller_id => 'departments', :action_id => 'trainers', :instance_id => self.id)
-      self.navigation_elements.create(:name => "News", :parent_id => nil, :controller_id => 'departments', :action_id => 'messages', :instance_id => self.id)
-      self.navigation_elements.create(:name => "Flyer", :parent_id => nil, :controller_id => 'departments', :action_id => 'flyers', :instance_id => self.id)
-      # TODO: Events
+    # mkdir_p: Creates a directory and all its parent directories
+
+    directories = ['Seiten/_Beispielseite',
+      'Veranstaltungen/2001_Beispielveranstaltung',
+      'Nachrichten/2001_01_01_Beispielnachricht',
+      'Ankuendigungen/2001_01_01_Beispielankuendigung',
+      'Sonstiges/_Beispielordner'
+    ]
+
+    directories.each do |dir|
+      FileUtils.mkdir_p(root_dir+dir) unless File.directory?(root_dir+dir)
     end
   end
 

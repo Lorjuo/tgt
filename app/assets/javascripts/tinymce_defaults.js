@@ -135,7 +135,7 @@ window.tinymceDefaults = {
             }, {
                 title: 'Striped',
                 selector: "table",
-                classes: 'table table-striped datatable defaults'
+                classes: 'table table-striped'
             }, {
                 title: 'Datatable (remember to set th and thead)',
                 selector: "table",

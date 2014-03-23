@@ -19,9 +19,23 @@ class ElfinderController < ApplicationController
     Rack::MiniProfiler.deauthorize_request
     {
       :root => File.join(Rails.public_path, 'files')+params[:path],
-      :url => '/files'+params[:path],
+      :url => '/files',#+params[:path],
       :perms => {
-        '.' => {:read => true, :write => true, :rm => true}, # '.' is the proper way to specify the home/root directory.
+        # http://rubular.com For regular expression testing
+        # 
+        # /Leichtathletik -> false
+        # /Leichtathletik/test.jpg -> false
+        # /Leichtathletik/Bilder -> false
+        # /Leichtathletik/Bilder/test.jpg -> true
+
+        /^[^\/]*$/ => {:read => true, :write => false, :rm => false}, # Absolutely don't know why this works
+        /.*/ => {:read => true, :write => true, :rm => true}
+        #/^[^\/]*(\/[^\/]+){0,0}$/ => {:read => true, :write => false, :rm => false},
+        #/^[^\/]*\/{0,1}[^\/]*$/ => {:read => true, :write => false, :rm => false},
+        #/^[^\/]*\/{0,3}$/ => {:read => true, :write => false, :rm => false},
+        #/^[^\/]*\/{2,}[^\/]*$/ => {:read => true, :write => true, :rm => true}
+        #/^[^\/]*\/{4,}[^\/]*$/ => {:read => true, :write => true, :rm => true}
+        #'.' => {:read => true, :write => false, :rm => false} # '.' is the proper way to specify the home/root directory.
         # 'forbidden' => {:read => false, :write => false, :rm => false},
         # /README/ => {:write => false},
         # /pjkh\.png$/ => {:write => false, :rm => false},

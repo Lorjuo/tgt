@@ -66,6 +66,9 @@ gem 'el_finder'
 # Alternatives:
 # http://www.roxyfileman.com/
 # http://cflove.org/2013/10/coldfusion-file-manager-for-tinymce-4.cfm
+# http://www.quivive-file-manager.com
+# http://www.responsivefilemanager.com
+# http://codecanyon.net/item/tinymce-4-image-manager/4744204
 
 # Forms
 gem 'simple_form'

@@ -1,5 +1,7 @@
 class Announcement < ActiveRecord::Base
 
+  # TODO: Maybe replace anouncements freetext html with images
+
   # Scopes
   scope :active, -> { where(:active => true) }
   scope :visible, -> {
