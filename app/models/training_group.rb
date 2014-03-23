@@ -40,6 +40,8 @@ class TrainingGroup < ActiveRecord::Base
     " OR age_end >= 99"\
     " OR age_end >= ?", age)
   }
+  scope :chronological, -> { order(:age_begin => :asc, :age_end => :asc) }
+  scope :alphabetical, -> { order(:name => :asc)}
 
   # Virtual attributes
   def display_age

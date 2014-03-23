@@ -9,7 +9,8 @@ en:
     create: Create
     create_model: "Create %{model}"
     current: Current
-    date: Date
+    custom_date: Date
+    # date: Date # Reserved Keyword
     destroy: Delete
     destroy_selected: Delete selected
     edit: Edit

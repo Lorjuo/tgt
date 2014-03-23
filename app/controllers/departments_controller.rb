@@ -87,7 +87,7 @@ class DepartmentsController < ApplicationController
   end 
 
   def training_groups
-    @training_groups = @department.training_groups
+    @training_groups = @department.training_groups.chronological
 
     # These lines are just for time measuring -> otherwise the associations will be loaded in views
     if %w(development staging).include?(Rails.env)
@@ -103,7 +103,7 @@ class DepartmentsController < ApplicationController
   end
 
   def galleries
-    @galleries = @department.galleries
+    @galleries = @department.galleries.chronological
 
     respond_to do |format|
       format.html { render :template => "galleries/index" }

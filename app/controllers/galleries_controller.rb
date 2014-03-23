@@ -89,7 +89,7 @@ class GalleriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gallery_params
-      params.require(:gallery).permit(:name, :department_id)
+      params.require(:gallery).permit(:name, :custom_date, :department_id)
     end
     
     def load_parent_resource
