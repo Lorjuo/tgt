@@ -30,7 +30,7 @@ private
         link_to(message.title, message),
         message.display_abstract + '...',
         link_to_pill(message.department.name, message.department, :class => "no-wrap"),
-        localize( message.created_at.to_date, :format => :default )#,
+        localize( message.custom_date.to_date, :format => :default )#,
 
         #link_to(I18n.t('general.show'), message),
         #@user && @user.can?(:update, message) ? link_to( I18n.t('general.edit'), Rails.application.routes.url_helpers.edit_message_path(message)) : "",
@@ -103,7 +103,7 @@ private
   end
 
   def sort_column
-    columns = ['', 'messages.title', '', 'departments.name', 'messages.created_at']
+    columns = ['', 'messages.title', '', 'departments.name', 'messages.custom_date']
     columns[params[:iSortCol_0].to_i]
   end
 

@@ -25,7 +25,7 @@ end
           <%= link_to_decent message.title, message %>
           <span class="department">(<%= link_to message.department.name, message.department, :class => "decent" %>)</span>
         </div>
-        <div class="date"><%= localize( message.created_at.to_date, :format => :long ) %></div>
+        <div class="date"><%= localize( message.custom_date.to_date, :format => :long ) %></div>
       </div>
       <%= link_to message, :class => "content decent" do %>
         <%= message.display_abstract(:text_length => text_length) + '...' %>

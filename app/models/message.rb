@@ -18,6 +18,12 @@ class Message < ActiveRecord::Base
   scope :department, -> (id) { where(:department_id => id)}
   scope :chronological, -> { order("created_at" => :desc) }
 
+  after_initialize :default_values
+  # http://stackoverflow.com/questions/9090204/rails-migration-set-current-date-as-default-value
+  def default_values
+    self.custom_date ||= Date.today.to_s if new_record?
+  end
+
   def display_abstract( options={} )
     options.reverse_merge! :text_length => 240
     if self.abstract.present?

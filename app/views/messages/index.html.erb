@@ -64,7 +64,7 @@
           <%= message.display_abstract %>
         </td>
         <td><%= link_to_pill message.department.name, message.department %></td>
-        <td><%= localize( message.created_at.to_date, :format => :default ) %></td>
+        <td><%= localize( message.custom_date.to_date, :format => :default ) %></td>
         <%# if can? :update, message %>
         <% if user_signed_in? %>
           <td>

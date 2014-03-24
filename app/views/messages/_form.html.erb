@@ -15,6 +15,7 @@
       </div>-->
 
       <%#= f.association :department %>
+      <%= f.input :custom_date, :as => :date_picker %>
 
       <%= f.input :abstract, as: :text, :placeholder => t(".abstract_hint"), input_html: { maxlength: 360 } %>
 
