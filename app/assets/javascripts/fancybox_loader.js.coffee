@@ -20,7 +20,7 @@ $ ->
     parent = $(this).closest("a")
 
     parent.attr("href", image.src)
-    info = parent.closest(".media").find(".mediaInfo")
+    info = parent.closest(".mediaWrapper").find(".mediaText")
     parent.attr("caption", $(info).text())
 
     parent.fancybox

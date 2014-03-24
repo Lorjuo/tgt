@@ -1,39 +1,6 @@
-.preview_cycle {
+.previewCycle {
 } 
  
-.preview_cycle img {
+.previewCycle img {
   background-color: #eee;
-}
-
-.title {
-  color: #3060A0;
-  font-weight: bold;
-  display: block;
-  font-size: 0.8em;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.image-wrapper {
-  margin-bottom: 20px;
-  border: 1px solid #CCCCCC;
-  .image {
-    border-bottom: 1px solid #CCCCCC;
-  }
-  .image-text {
-    padding: 5px;
-    .content, .age {
-      color: #999999;
-      display: block;
-      font-size: 0.7em;
-    }
-  }
-}
-
-.bold {
-  font-weight: bold;
-}
-
-.italic {
-  font-style:italic;
 }

@@ -228,3 +228,8 @@ end
 
 # Heroku
 gem 'rails_12factor', group: :production
+
+# TODO: UTF 8 Problem when copying this message
+# http://stackoverflow.com/questions/6115612/how-to-convert-an-entire-mysql-database-characterset-and-collation-to-utf-8
+# Probably have to convert database to utf8-unicode-ci
+# http://stackoverflow.com/questions/766809/whats-the-difference-between-utf8-general-ci-and-utf8-unicode-ci

@@ -26,7 +26,8 @@ class ElfinderController < ApplicationController
     Rack::MiniProfiler.deauthorize_request
     {
       :root => File.join(Rails.public_path, 'files'),#+params[:path],
-      :url => '/files',#+params[:path],
+      :url => '/files', #+params[:path],
+      :defaultView => 'list', # icons or list
       :perms => {
         # http://rubular.com For regular expression testing
         # 

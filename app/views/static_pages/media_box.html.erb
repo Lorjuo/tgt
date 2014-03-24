@@ -1,11 +1,13 @@
 <!-- TODO: improve structure of media container -->
 <!-- Check wheather link does really work -->
-<div class="mediaContainer <%= params[:align] %> <%= params[:size] %>">
-  <div class="media">
-    <a class="mediaLink" href="#">
-      <img src="http://placehold.it/300x200" class="img-responsive">
-    </a>
-    <div class="mediaInfo">
+<div class="mediaBox <%= params[:align] %> <%= params[:size] %>">
+  <div class="mediaWrapper"><!-- imageWrapper -->
+    <div class="mediaObject"><!-- image -->
+      <a class="mediaLink" href="#">
+        <img src="http://placehold.it/300x200" class="img-responsive">
+      </a>
+    </div>
+    <div class="mediaText">
       <p>Beschreibung</p>
     </div>
   </div>

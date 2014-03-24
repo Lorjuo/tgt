@@ -1,11 +1,11 @@
 <div class="col-md-3 col-sm-4 col-xs-6">
-  <div class="image-wrapper">
-    <div class="image">
+  <div class="mediaWrapper">
+    <div class="mediaObject">
       <%= link_to( document, :title => document.name ) do %>
         <%= image_tag(document.file.cover._240x240.url, :class => "img-responsive") %>
       <% end %>
     </div>
-    <div class="image-text">
+    <div class="mediaText">
       <%= link_to document, :class => "title" do %>
         <%= document.name %>
       <% end %>

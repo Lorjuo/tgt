@@ -2,7 +2,7 @@ class GalleriesController < ApplicationController
   # Important: DO NOT USE load_and_authorize_resource, because this affects carrierwave uploader to process twice
   authorize_resource
 
-  before_action :set_gallery, only: [:show, :edit, :update, :destroy]
+  before_action :set_gallery, only: [:show, :edit, :update, :destroy, :set_preview_image]
   before_action :load_parent_resource, :through => :department, :shallow => true # cancan
 
   layout 'one_column'

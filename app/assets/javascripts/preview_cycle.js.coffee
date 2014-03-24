@@ -4,7 +4,7 @@ jQuery ->
   $(".cycle2").cycle {}
   
   # Cycle plugin
-  $(".preview_cycle").cycle(
+  $(".previewCycle").cycle(
     #fx: "none"
     speed: 300 # speed of the transition (any valid fx speed value) 
     timeout: 700 # milliseconds between slide transitions (0 to disable auto advance)

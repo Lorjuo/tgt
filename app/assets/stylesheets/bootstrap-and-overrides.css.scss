@@ -139,7 +139,7 @@ ul.references {
   background-image: linear-gradient(to bottom, white, #F2F2F2);
   background-repeat: repeat-x;
   padding: 6px 12px 6px 12px;
-  /*overflow: auto;*/ /* needed to prevent floating boxes to expand out of this box (mediaContainers inside ps) */
+  /*overflow: auto;*/ /* needed to prevent floating boxes to expand out of this box (mediaBoxs inside ps) */
   /* Shadow effects */
 }
 
@@ -221,7 +221,7 @@ form .nested-fields {
   }
 }
 
-div.mediaContainer {
+div.mediaBox {
 
   /* set .medium as default */
 
@@ -289,7 +289,7 @@ div.mediaContainer {
   }
 
   /* TODO: media already used by bootstrap */;
-  div.media {
+  /*div.media {
     border: 1px solid $table-border-color;
 
     a.mediaLink {
@@ -309,10 +309,10 @@ div.mediaContainer {
         padding: 4px 8px 4px 8px;
       }
     }
-  }
+  }*/
 }
 
-div.mediaContainer.decent {
+/*div.mediaBox.decent {
   div.media {
     border: none;
 
@@ -337,7 +337,7 @@ div.mediaContainer.decent {
       }
     }
   }
-}
+}*/
 
 
 .message {
