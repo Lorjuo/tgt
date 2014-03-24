@@ -17,6 +17,12 @@ class Gallery < ActiveRecord::Base
   #Scopes
   scope :chronological, -> { order(:custom_date => :desc) }
 
+  after_initialize :default_values
+  # http://stackoverflow.com/questions/9090204/rails-migration-set-current-date-as-default-value
+  def default_values
+    self.custom_date ||= Date.today.to_s if new_record?
+  end
+
   def get_preview_image
     self.preview_image || self.images.first
   end
