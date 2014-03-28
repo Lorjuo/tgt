@@ -66,7 +66,7 @@ class Department < ActiveRecord::Base
     directories = ['Seiten/_Beispielseite',
       'Veranstaltungen/2001_Beispielveranstaltung',
       'Nachrichten/2001_01_01_Beispielnachricht',
-      'Ankuendigungen/2001_01_01_Beispielankuendigung',
+      # 'Ankuendigungen/2001_01_01_Beispielankuendigung',
       'Sonstiges/_Beispielordner'
     ]
 

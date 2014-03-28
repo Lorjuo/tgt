@@ -78,7 +78,9 @@
 //= require fancybox
 //= require jquery.mousewheel-3.0.6.pack
 //= require preview_cycle
+//= require cycle2_loader
 //= require jquery.cycle2
+//= require jquery.cycle2.caption2.js
 //
 //# Navigation
 //= require navigation

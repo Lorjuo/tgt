@@ -1,7 +1,11 @@
 de:
+  "false": "no"
+  "true": "ja"
+
   general:
     actions: Aktionen
     add_files: Dateien hinzufügen...
+    always: immer
     are_you_sure: Sind Sie sich sicher?
     browse: Durchsuchen
     cancel: Abbrechen
@@ -18,6 +22,7 @@ de:
     list: Übersicht
     more: mehr
     navigation: Navigation
+    never: niemals
     reference: Verknüpfung
     references: Verknüpfungen
     search: Suche
@@ -49,11 +54,16 @@ de:
       end: 'bis %{end} Jahre'
       unlimited: 'unbeschränkt'
 
+    date_formats:
+      begin: 'ab'
+      end: 'bis'
+
   attributes:
     abstract: Kurzfassung
     active: Aktiv
     address: Adresse
     age: Alter
+    caption: Beschriftung
     color: Farbe
     content: Inhalt
     custom_date: Datum
@@ -83,6 +93,7 @@ de:
     trainers: Trainer
     training_groups: Trainingsgruppen
     training_units: Trainingseinheiten
+    visible: Sichtbar
     week_day: Wochentag
     week_days: Wochentage
 
@@ -133,7 +144,7 @@ de:
 
     attributes:
       announcement:
-        visible_from: Sichtbar seit
+        visible_from: Sichtbar von
         visible_to: Sichtbar bis
 
       department:

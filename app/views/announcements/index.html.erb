@@ -10,19 +10,15 @@
 <% end %>
 
 <div class="window box">
-  <table class="table table-bordered table-striped">
+  <table class="table table-bordered table-striped datatable searchable">
     <thead>
       <tr>
-        <th><%= Announcement.human_attribute_name("name") %></th>
-        <th><%= Announcement.human_attribute_name("content") %></th>
-        <th><%= Announcement.human_attribute_name("link") %></th>
-        <th><%= Announcement.human_attribute_name("active") %></th>
-        <th></th>
-        <% if can? :update, Announcement %>
-        <th></th>
-        <% end %>
-        <% if can? :destroy, Announcement %>
-        <th></th>
+        <th data-class="expand"><%= Announcement.human_attribute_name("name") %></th>
+        <th data-hide="xxs,xs,sm"><%= Announcement.human_attribute_name("caption") %></th>
+        <th data-hide="xxs,xs,sm"><%= Announcement.human_attribute_name("active") %></th>
+        <th data-hide="xxs,xs,sm" class="no-sort"><%= Announcement.human_attribute_name("visible") %></th>
+        <% if user_signed_in? %>
+          <th class="no-sort"><%= t "general.actions" %></th>
         <% end %>
       </tr>
     </thead>
@@ -30,23 +26,22 @@
     <tbody>
   <% @announcements.each do |announcement| %>
       <tr>
-        <td><%= announcement.name %></td>
-        <td>
-          <%= truncate(strip_tags(announcement.content), length: 320, omission: '') %>
-        </td>
-        <td><%= announcement.link %></td>
-        <td><%= announcement.active %></td>
-        <td><%= link_to t("general.show"), announcement %></td>
-        <% if can? :update, announcement %>
-        <td><%= link_to t("general.edit"), edit_announcement_path(announcement) %></td>
-        <% end %>
-        <% if can? :destroy, announcement %>
-        <td>
-          <%= link_to announcement, method: :delete, data: { confirm: t('general.are_you_sure') } do %>
-            <span class="glyphicon glyphicon-trash"></span>
-            <%= t "general.destroy" %>
-          <% end %>
-        </td>
+        <td><%= link_to announcement.name, announcement %></td>
+        <td><%= announcement.caption %></td>
+        <td><%= t announcement.active.to_s %></td>
+        <td><%= announcement.display_visible %></td>
+        <%# if can? :update, announcement %>
+        <% if user_signed_in? %>
+          <td>
+            <%= link_to edit_announcement_path(announcement), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
+              <%= tag :span, :class => "glyphicon glyphicon-edit" %>
+            <% end %>
+            <% if can? :destroy, announcement %>
+              <%= link_to announcement, :title => t("general.destroy"), data: { confirm: t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete do %>
+                <%= tag :span, :class => "glyphicon glyphicon-trash" %>
+              <% end %>
+            <% end %>
+          </td>
         <% end %>
       </tr>
   <% end %>

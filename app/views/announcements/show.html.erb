@@ -20,8 +20,8 @@
     <dt><%= Announcement.human_attribute_name(:name) %></dt>
     <dd><%= @announcement.name %></dd>
 
-    <dt><%= Announcement.human_attribute_name(:content) %></dt>
-    <dd><%= @announcement.content %></dd>
+    <dt><%= Announcement.human_attribute_name(:caption) %></dt>
+    <dd><%= @announcement.caption %></dd>
 
     <dt><%= Announcement.human_attribute_name(:link) %></dt>
     <dd><%= @announcement.link %></dd>
@@ -33,7 +33,7 @@
     <dd><%= l @announcement.visible_from unless @announcement.visible_from.nil? %></dd>
 
     <dt><%= Announcement.human_attribute_name(:visible_to) %></dt>
-    <dd><%= l @announcement.visible_to unless @announcement.visible_from.nil? %></dd>
+    <dd><%= l @announcement.visible_to unless @announcement.visible_to.nil? %></dd>
 
   </dl>
 </div>

@@ -1,6 +1,56 @@
+<!--
+  Height:
+  http://jquery.malsup.com/cycle2/demo/autoheight.php
+  Non-Image Slides:
+  http://jquery.malsup.com/cycle2/demo/non-image.php
+  Complex Layout with many animations:
+  http://jsfiddle.net/defonic/npqB5/
+  Progress Indicator:
+  http://codepen.io/BrandFever/pen/lyfAv
+  http://jquery.malsup.com/cycle2/demo/progress.php
+-->
+
+<div class="box small small-spacing">
+  <div class="cycle-slideshow"
+    data-cycle-slides="> a"
+    data-cycle-overlay=".cycle-overlay"
+    data-cycle-overlay-template="<span class=page>&nbsp;<br>{{slideNum}} / {{slideCount}}</span><span class=caption>{{caption}}</span>"
+
+    data-cycle-auto-height="1:1"
+
+    data-cycle-fx=scrollHorz
+    data-cycle-timeout=5000
+    data-cycle-pause-on-hover="true">
+    <!--
+      data-cycle-caption-plugin=caption2 does not work because of timer conflicts with turbolinks
+      https://github.com/inossidabile/blog/blob/master/source/_posts/2013-01-18-dangers-of-turbolinks.markdown
+    -->
+
+    <!-- empty element for overlay -->
+    <div class="overlay">
+      <div class="cycle-overlay"></div>
+    </div>
+
+    <% Announcement.active.visible.each do |announcement| %>
+      <%= link_to announcement.get_link,
+        class: (announcement.link.present? ? '' : 'fancybox'),
+        :data => { :caption => announcement.caption } do %>
+        <%= image_tag announcement.image.file_url, title: announcement.name %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+
+
 <!--  Carousel - consult the Twitter Bootstrap docs at
     http://twitter.github.com/bootstrap/javascript.html#carousel -->
-<% announcements = Announcement.active.visible %>
+<% if false %><% announcements = Announcement.active.visible %>
 <div id="announcement-carousel" class="carousel slide box small-spacing hidden-xs"><!-- class of slide for animation -->
   <ol class="carousel-indicators">
     <% announcements.each do |announcement| %>
@@ -11,7 +61,8 @@
     <% announcements.each do |announcement| %>
       <div class="item">
         <%= link_to announcement.link do %>
-          <%= raw announcement.content %>
+          <%#= raw announcement.content %>
+          <%= image_tag(announcement.image.file_url, :class => "img-responsive") %>
         <% end %>
         <div class="carousel-caption">
           <p><%= announcement.name %></p>
@@ -31,9 +82,27 @@
   <a class="right carousel-control" href="#announcement-carousel" data-slide="next">
     <span class="icon-next"></span>
   </a>
-</div>
+</div><% end %>
 
-<ul class="box small-spacing list-group">
+<% if false %><div class="box small small-spacing">
+  <% announcement = Announcement.find(2) %>
+
+  <div class="mediaWrapper" style="margin-bottom: 0px; height: 360px"><!-- or max height -->
+    <div class="mediaObject" style="height: 360px; overflow:hidden; background-color: rgb(50, 0, 0)"><!-- or max height -->
+      <%= image_tag(announcement.image.file_url, :class => "img-responsive") %>
+      <div class="mediaOverlay bottom" style="background-color: rgba(0,0,0,0.5); padding: 12px; color: white; font-size: 1.1em; line-height: 1.5em">
+        <div style="height: 2px; width: 120px; background-color: green">&nbsp;</div>
+        <div style="float: left">Spring<br />
+        Sonnenberg Gardens</div>
+        <div style="float: right">
+          Seite 1/4
+        </div>
+      </div>
+    </div>
+  </div>
+</div><% end %>
+
+<% if false %><ul class="box small-spacing list-group">
   <% announcements.each do |announcement| %>
     <li class="list-group-item">
       <%= link_to announcement.link do %>
@@ -42,4 +111,4 @@
       <% end %>
     </li>
   <% end %>
-</ul>
+</ul><% end %>

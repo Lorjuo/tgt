@@ -19,10 +19,12 @@ class AnnouncementsController < ApplicationController
   # GET /announcements/new
   def new
     @announcement = Announcement.new
+    @announcement.build_image
   end
 
   # GET /announcements/1/edit
   def edit
+    @announcement.build_image unless @announcement.image.present?
   end
 
   # POST /announcements
@@ -73,6 +75,6 @@ class AnnouncementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def announcement_params
-      params.require(:announcement).permit(:name, :content, :link, :active, :visible_from, :visible_to)
+      params.require(:announcement).permit(:name, :caption, :link, :active, :visible_from, :visible_to, :image_attributes => [:file, :id])
     end
 end

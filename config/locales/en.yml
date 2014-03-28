@@ -1,11 +1,16 @@
 en:
+  "false": "no"
+  "true": "yes"
+
   general:
     actions: Actions
     add_files: Add Files...
+    always: always
     ancient: Ancient
     are_you_sure: Are you sure?
     browse: Browse
     cancel: Cancel
+    caption: Caption
     create: Create
     create_model: "Create %{model}"
     current: Current
@@ -20,6 +25,7 @@ en:
     list: List
     more: more
     navigation: Navigation
+    never: never
     reference: Reference
     references: References
     search: Search
@@ -47,6 +53,10 @@ en:
       begin: 'over %{begin} years'
       end: 'to %{end} years'
       unlimited: 'unlimited'
+
+    date_formats:
+      begin: 'from'
+      end: 'until'
 
   attributes:
     abstract: Abstract
@@ -82,6 +92,7 @@ en:
     trainers: Trainers
     training_groups: Training groups
     training_units: Training units
+    visible: Visible
     week_day: Day
     week_days: Days
 
@@ -133,7 +144,7 @@ en:
     attributes:
       announcement:
         visible_from: Visible from
-        visible_to: Visible to
+        visible_to: Visible until
 
       department:
         users: Zugewiesene Benutzer
