@@ -9,7 +9,7 @@
   http://codepen.io/BrandFever/pen/lyfAv
   http://jquery.malsup.com/cycle2/demo/progress.php
 -->
-
+<% announcements = Announcement.active.visible %>
 <div class="box small small-spacing">
   <div class="cycle-slideshow"
     data-cycle-slides="> a"
@@ -17,6 +17,9 @@
     data-cycle-overlay-template="<span class=page>&nbsp;<br>{{slideNum}} / {{slideCount}}</span><span class=caption>{{caption}}</span>"
 
     data-cycle-auto-height="1:1"
+
+    data-cycle-random=false
+    data-cycle-starting-slide=<%= rand(1..announcements.count) %>
 
     data-cycle-fx=scrollHorz
     data-cycle-timeout=5000
@@ -31,7 +34,7 @@
       <div class="cycle-overlay"></div>
     </div>
 
-    <% Announcement.active.visible.each do |announcement| %>
+    <% announcements.each do |announcement| %>
       <%= link_to announcement.get_link,
         class: (announcement.link.present? ? '' : 'fancybox'),
         :data => { :caption => announcement.caption } do %>
