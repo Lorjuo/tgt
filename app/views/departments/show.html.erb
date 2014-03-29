@@ -46,61 +46,7 @@
   </div>
 <% end %>
 
-<div class="window">
-  <div class="box">
-    <h4>Mehr Infos</h4>
-
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs">
-      <li class="active"><a href="#trainingGroups" data-toggle="tab" class="title">
-        <%= fa_icon "users" %>
-        <%= TrainingGroup.model_name.human(:count => :lots) %>
-      </a></li>
-      <li><a href="#trainers" data-toggle="tab" class="title">
-        <%= Trainer.model_name.human(:count => :lots) %>
-      </a></li>
-      <li><a href="#messages" data-toggle="tab" class="title">
-        <%= fa_icon "message" %>
-        <%= Message.model_name.human(:count => :lots) %>
-      </a></li>
-      <li><a href="#galleries" data-toggle="tab" class="title">
-        <%= Gallery.model_name.human(:count => :lots) %>
-      </a></li>
-      <li><a href="#flyers" data-toggle="tab" class="title">
-        <%= Department.human_attribute_name(:flyers) %>
-      </a></li>
-    </ul>
-  </div>
-
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div class="tab-pane fade active in" id="trainingGroups">
-      <div class="plain"><div class="row">
-        <%= render @department.training_groups.includes(:image).chronological %>
-      </div></div>
-    </div>
-    <div class="tab-pane fade" id="trainers">
-      <div class="plain"><div class="row">
-        <%= render @department.trainers.includes(:image).alphabetical %>
-      </div></div>
-    </div>
-    <div class="tab-pane fade" id="messages">
-      <%= render :partial => 'messages/message_excerpt', :collection => @department.messages.includes(:image).chronological.limit(4), :as => :message, :locals => { :size => :large } %>
-    </div>
-    <div class="tab-pane fade" id="galleries">
-      <div class="plain"><div class="row">
-        <%= render(:partial => 'galleries/gallery', :collection => @department.galleries.chronological, :as => 'gallery') %>
-      </div></div>
-    </div>
-    <div class="tab-pane fade" id="flyers">
-      <div class="plain"><div class="row">
-        <%= render(:partial => 'documents/document', :collection => @department.flyers.chronological, :as => 'document') %>
-      </div></div>
-    </div>
-  </div>
-
-  
-</div>
+<%= render :partial => 'pagelet' %>
 
 <% content_for :sidebar do %>
   <div class="window">
