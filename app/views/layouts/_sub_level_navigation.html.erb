@@ -10,6 +10,7 @@
     <% if navigation_element.children.present? %>
     <%# unless navigation_element.leaf? %>
       <%= content_tag :ul, :class => "dropdown-menu" do %>
+        <%# Template Dependency: layouts/sub_level_navigation %>
         <%= render :partial => "layouts/sub_level_navigation", collection: navigation_element.children, :as => :navigation_element %>
         <%# replaced the line above with the following because of cache recursion issue: https://github.com/rails/cache_digests/issues/47
           at the moment both alternatives seem to work %>

@@ -229,6 +229,16 @@ end
 # Heroku
 gem 'rails_12factor', group: :production
 
+# Resources:
+# 
+# Caching:
+# https://www.appneta.com/blog/russian-doll-caching/
+# https://github.com/n8/multi_fetch_fragments
+# http://www.sitepoint.com/caching-cache-digest/
+# https://devcenter.heroku.com/articles/caching-strategies
+# http://www.tablexi.com/blog/2013/07/russian-doll-caching-in-rails/developers/
+# http://de.slideshare.net/znice/caching-strategies-in-rails-4-25542080
+
 # TODO: UTF 8 Problem when copying this message
 # http://stackoverflow.com/questions/6115612/how-to-convert-an-entire-mysql-database-characterset-and-collation-to-utf-8
 # Probably have to convert database to utf8-unicode-ci

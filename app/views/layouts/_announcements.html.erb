@@ -10,40 +10,42 @@
   http://jquery.malsup.com/cycle2/demo/progress.php
 -->
 <% announcements = Announcement.active.visible.includes(:image).load %>
-<div class="box small small-spacing">
-  <div class="cycle-slideshow"
-    data-cycle-slides="> a"
-    data-cycle-overlay=".cycle-overlay"
-    data-cycle-overlay-template="<span class=page>&nbsp;<br>{{slideNum}} / {{slideCount}}</span><span class=caption>{{caption}}</span>"
 
-    data-cycle-auto-height="1:1"
+<% cache(announcements, skip_digest: true) do %>
+  <div class="box small small-spacing">
+    <div class="cycle-slideshow"
+      data-cycle-slides="> a"
+      data-cycle-overlay=".cycle-overlay"
+      data-cycle-overlay-template="<span class=page>&nbsp;<br>{{slideNum}} / {{slideCount}}</span><span class=caption>{{caption}}</span>"
 
-    data-cycle-random=false
-    data-cycle-starting-slide=<%= rand(1..announcements.count) %>
+      data-cycle-auto-height="1:1"
 
-    data-cycle-fx=scrollHorz
-    data-cycle-timeout=5000
-    data-cycle-pause-on-hover="true">
-    <!--
-      data-cycle-caption-plugin=caption2 does not work because of timer conflicts with turbolinks
-      https://github.com/inossidabile/blog/blob/master/source/_posts/2013-01-18-dangers-of-turbolinks.markdown
-    -->
+      data-cycle-random=false
+      data-cycle-starting-slide=<%= rand(1..announcements.count) %>
 
-    <!-- empty element for overlay -->
-    <div class="overlay">
-      <div class="cycle-overlay"></div>
-    </div>
+      data-cycle-fx=scrollHorz
+      data-cycle-timeout=5000
+      data-cycle-pause-on-hover="true">
+      <!--
+        data-cycle-caption-plugin=caption2 does not work because of timer conflicts with turbolinks
+        https://github.com/inossidabile/blog/blob/master/source/_posts/2013-01-18-dangers-of-turbolinks.markdown
+      -->
 
-    <% announcements.each do |announcement| %>
-      <%= link_to announcement.get_link,
-        class: (announcement.link.present? ? '' : 'fancybox'),
-        :data => { :caption => announcement.caption } do %>
-        <%= image_tag announcement.image.file_url, title: announcement.name %>
+      <!-- empty element for overlay -->
+      <div class="overlay">
+        <div class="cycle-overlay"></div>
+      </div>
+
+      <% announcements.each do |announcement| %>
+        <%= link_to announcement.get_link,
+          class: (announcement.link.present? ? '' : 'fancybox'),
+          :data => { :caption => announcement.caption } do %>
+          <%= image_tag announcement.image.file_url, title: announcement.name %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
-</div>
-
+<% end %>
 
 
 

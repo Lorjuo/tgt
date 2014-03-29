@@ -14,9 +14,24 @@
     </div>
     <div class="collapse navbar-collapse" id="navigation">
       <ul class="nav navbar-nav">
-        <%# https://github.com/rails/cache_digests/pull/16 %>
-        <% cache('navigation', :skip_digest => false) do %>
-          <%= render :partial => "layouts/top_level_navigation", collection: NavigationElement.top_level.roots, :as => :navigation_element, :locals => {:simple => false} %>
+        <% navigation_elements = NavigationElement.top_level.roots %>
+
+         <%# Error: Couldn't find template for digesting: navigation_elements/navigation_element.html
+          not solved but message disappeard after removing alle cache ... directives inside this top level caching and removing all cache_digest stuff even inside comments
+          https://github.com/rails/cache_digests/pull/16
+          https://github.com/rails/cache_digests/issues/60 %>
+
+        <%# Fragment caching for index action with no parent object:
+          Possible Attemps:
+          In use: http://stackoverflow.com/questions/14816992/how-to-handle-key-based-expiration-of-collections-if-there-is-no-parent-model-in
+          http://blog.berylliumwork.com/2013/08/cache-collection-in-rails.html
+          http://www.sitepoint.com/caching-cache-digest/
+        %>
+
+        <% cache(['navigation', navigation_elements], skip_digest: true) do %>
+          <%# Template Dependency: layouts/top_level_navigation %>
+          <%= render :partial => "layouts/top_level_navigation", collection: navigation_elements, :as => :navigation_element, :locals => {:simple => false} %>
+          <%# http://api.rubyonrails.org/classes/ActionView/Helpers/CacheHelper.html %>
         <% end %>
       </ul>
 
