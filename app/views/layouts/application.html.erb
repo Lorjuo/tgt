@@ -44,14 +44,16 @@
 
     <%= render :partial => "layouts/header" %>
 
-    <% if @department.present? %>
-      <%= render :partial => "layouts/department_navigation" %>
-    <% end %>
-    
-    <%= render 'layouts/messages' %>
+    <div class="pageContent">
+      <% if @department.present? %>
+        <%= render :partial => "layouts/department_navigation" %>
+      <% end %>
+      
+      <%= render 'layouts/messages' %>
 
-    <%= yield %>
-    <%= yield :scripts %><%# needed for gmaps4rails %>
+      <%= yield %>
+      <%= yield :scripts %><%# needed for gmaps4rails %>
+    </div>
   </div>
 </body>
 </html>

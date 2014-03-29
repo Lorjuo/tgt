@@ -50,12 +50,12 @@
     }*/
     /* http://stackoverflow.com/questions/9320017/place-floating-contents-at-the-bottom-right-of-a-paragraph-of-text */
     .cycle-overlay {
-      position:relative; padding-right: 2em;
+      position:relative; padding-right: 3em;
       min-height: 3em;
       .caption {
       }
       .page {
-        position:absolute; right: 0; bottom: 0; width: 2em;
+        position:absolute; right: 0; bottom: 0; width: 3em; text-align: right;
       }
     }
   }

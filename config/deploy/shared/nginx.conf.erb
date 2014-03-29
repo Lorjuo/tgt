@@ -6,7 +6,9 @@ server {
   listen 80 default deferred;
   root <%= fetch(:deploy_to) %>/current/public;
 
-  location ^~ /assets/ {
+  # location ^~ /assets/ {
+  # http://nginx.org/en/docs/beginners_guide.html
+  location ~ ^\/(assets|uploads)\/ {
     gzip_static on;
     expires max;
     add_header Cache-Control public;
@@ -30,7 +32,9 @@ server {
   listen 443 default deferred;
   root <%= fetch(:deploy_to) %>/current/public;
 
-  location ^~ /assets/ {
+  # location ^~ /assets/ {
+  # http://nginx.org/en/docs/beginners_guide.html
+  location ~ ^\/(assets|uploads)\/ {}
     gzip_static on;
     expires max;
     add_header Cache-Control public;

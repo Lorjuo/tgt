@@ -14,7 +14,10 @@
     </div>
     <div class="collapse navbar-collapse" id="navigation">
       <ul class="nav navbar-nav">
-        <%= render :partial => "layouts/top_level_navigation", collection: NavigationElement.top_level.roots, :as => :navigation_element, :locals => {:simple => false} %>
+        <%# https://github.com/rails/cache_digests/pull/16 %>
+        <% cache('navigation', :skip_digest => false) do %>
+          <%= render :partial => "layouts/top_level_navigation", collection: NavigationElement.top_level.roots, :as => :navigation_element, :locals => {:simple => false} %>
+        <% end %>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">

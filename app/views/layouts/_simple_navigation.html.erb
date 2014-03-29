@@ -1,4 +1,4 @@
-<%# cache navigation_element do %>
+<%#= cache navigation_element do %>
   <%= content_tag :li do %>
     <%= link_to navigation_element.name, navigation_element.url %>
     <% if navigation_element.children.present? %>

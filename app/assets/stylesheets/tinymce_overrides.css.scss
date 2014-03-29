@@ -5,6 +5,7 @@ body { // needed to override default values
     margin-left: auto;
     margin-right: auto;
     left: 0; right: 0;
+    z-index: 1000; /* Has to be higher than 200 because cycle2 overlay container already defines this */
     /*@extend .container*/
     .mce-edit-area {
        /* .mce-container, .mce-container *, .mce-widget, .mce-widget *, .mce-reset - 0px

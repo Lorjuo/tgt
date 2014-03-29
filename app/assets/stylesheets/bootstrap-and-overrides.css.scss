@@ -96,6 +96,10 @@ body {
     line-height: 125%;
 }*/
 
+img {
+  max-width: 100%;
+}
+
 a.decent {
   color: $text-color;
   outline: 0;
@@ -152,6 +156,10 @@ ul.references {
 .thin {
   padding-left: 5%;
   padding-right: 5%;
+}
+
+.pageContent {
+  background-color: rgba(255,255,255,0.1);
 }
 
 .no-spacing {
