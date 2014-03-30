@@ -37,7 +37,7 @@ gem 'quiet_assets' # Disable some warnings
 # http://stackoverflow.com/questions/17797962/rails-4-selective-asset-digest
 
 # Clipboard
-gem 'zeroclipboard-rails'
+#ZeroClipBoardDisabled: gem 'zeroclipboard-rails'
 
 # Colorpicker
 gem 'bootstrap-colorpicker-rails'

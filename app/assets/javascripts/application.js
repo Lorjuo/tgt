@@ -29,7 +29,8 @@
 //= require tooltip_loader
 //
 //# Clipboard # TODO: Check if this is needed
-//= require zeroclipboard
+//#ZeroClipBoardDisabled:
+// require zeroclipboard
 //
 //# Colorpicker
 //= require bootstrap-colorpicker

@@ -39,7 +39,8 @@
       <% announcements.each do |announcement| %>
         <%= link_to announcement.get_link,
           class: (announcement.link.present? ? '' : 'fancybox'),
-          :data => { :caption => announcement.caption } do %>
+          :data => { :caption => simple_format(announcement.caption) } do %>
+          <%# http://stackoverflow.com/questions/4253689/parsing-newline-characters-in-textareas-without-allowing-all-html-tags %>
           <%= image_tag announcement.image.file_url, title: announcement.name %>
         <% end %>
       <% end %>
