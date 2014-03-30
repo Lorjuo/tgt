@@ -22,8 +22,8 @@
 //# Bootstrap
 //= require bootstrap
 //# Bootstrap Javascript
-//= require bootstrap/scrollspy
-//= require bootstrap/modal
+// require bootstrap/scrollspy
+// require bootstrap/modal
 //= require bootstrap/dropdown
 //# Loaders
 //= require tooltip_loader
@@ -47,7 +47,6 @@
 //
 //# Google Maps # TODO: Maybe remove this
 //#Gmaps4RailsDisabled:
-// require underscore
 // require gmaps/google
 //
 //# Grid # TODO: Maybe remove this
@@ -100,6 +99,10 @@
 //= require dataTables/jquery.dataTables.bootstrap3
 //= require dataTables/jquery.dataTables.responsive
 //= require datatables
+//
+//# Underscore js
+//=require underscore
+//# at the moment needed for jquery dataTables responsive and gmaps4rails
 //
 //# WYSIWYG
 //= require tinymce-jquery
