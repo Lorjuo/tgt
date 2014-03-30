@@ -35,7 +35,7 @@
   <div class="navigation-collapse">
     <ul class="navigation right">
       <% navigation_elements = NavigationElement.department(@department.id).roots %>
-      <% cache(['department_navigation', navigation_elements], skip_digest: true) do %>
+      <% cache(['department_navigation', cache_key_for(navigation_elements)], skip_digest: true) do %>
         <%= render :partial => "layouts/simple_navigation", collection: navigation_elements, :as => :navigation_element %>
       <% end %>
     </ul>

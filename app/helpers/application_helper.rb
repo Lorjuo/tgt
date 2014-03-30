@@ -39,4 +39,8 @@ module ApplicationHelper
     link_to(name, path, options)
   end
 
+  def cache_key_for(models)
+    "#{models.count}-#{models.map(&:updated_at).max.utc.to_s(:number)}"
+  end
+
 end

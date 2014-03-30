@@ -11,7 +11,7 @@
 -->
 <% announcements = Announcement.active.visible.includes(:image).load %>
 
-<% cache(announcements, skip_digest: true) do %>
+<% cache(cache_key_for(announcements), skip_digest: true) do %>
   <div class="box small small-spacing">
     <div class="cycle-slideshow"
       data-cycle-slides="> a"

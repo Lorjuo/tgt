@@ -12,17 +12,18 @@ class LocationsController < ApplicationController
     @locations = Location.all
   end
 
-  def interactive_map
-    @loactions_with_geodata = Location.all.where( "latitude <> ''" ).where( "longitude <> ''" )
-    @geodata = Gmaps4rails.build_markers(@loactions_with_geodata) do |location, marker|
-      #https://github.com/apneadiving/Google-Maps-for-Rails/wiki/Json-builder
-      # https://github.com/apneadiving/Google-Maps-for-Rails/blob/master/vendor/assets/javascripts/gmaps/google/builders/marker.coffee
-      marker.lat location.latitude
-      marker.lng location.longitude
-      marker.title location.name
-      marker.infowindow render_to_string(:partial => "/locations/info", :locals => { :location => location})
-    end
-  end
+  # Gmaps4RailsDisabled:
+  # def interactive_map
+  #   @loactions_with_geodata = Location.all.where( "latitude <> ''" ).where( "longitude <> ''" )
+  #   @geodata = Gmaps4rails.build_markers(@loactions_with_geodata) do |location, marker|
+  #     #https://github.com/apneadiving/Google-Maps-for-Rails/wiki/Json-builder
+  #     # https://github.com/apneadiving/Google-Maps-for-Rails/blob/master/vendor/assets/javascripts/gmaps/google/builders/marker.coffee
+  #     marker.lat location.latitude
+  #     marker.lng location.longitude
+  #     marker.title location.name
+  #     marker.infowindow render_to_string(:partial => "/locations/info", :locals => { :location => location})
+  #   end
+  # end
 
   def schedule
     @season = params[:season] || "summer"

@@ -76,7 +76,7 @@ gem 'simple_form'
 gem 'cocoon'
 
 # Google Maps
-gem 'gmaps4rails'
+# Gmaps4RailsDisabled: gem 'gmaps4rails'
 # Does not work with turbolinks
 # http://stackoverflow.com/questions/13807686/gmaps4rails-and-turbolinks-not-loading-without-full-page-refresh
 gem 'geocoder'
@@ -238,6 +238,7 @@ gem 'rails_12factor', group: :production
 # https://devcenter.heroku.com/articles/caching-strategies
 # http://www.tablexi.com/blog/2013/07/russian-doll-caching-in-rails/developers/
 # http://de.slideshare.net/znice/caching-strategies-in-rails-4-25542080
+# Why not using fragment caching: http://nicksda.apotomo.de/2011/02/rails-misapprehensions-caching-views-is-not-the-views-job/
 
 # TODO: UTF 8 Problem when copying this message
 # http://stackoverflow.com/questions/6115612/how-to-convert-an-entire-mysql-database-characterset-and-collation-to-utf-8

@@ -29,7 +29,7 @@
     <div class="tab-pane fade active in" id="trainingGroups">
       <div class="plain"><div class="row">
         <% training_groups = @department.training_groups.includes(:image).chronological %>
-        <% cache([:media, training_groups], skip_digest: true) do %>
+        <% cache([:media, cache_key_for(training_groups)], skip_digest: true) do %>
           <%= render training_groups %>
         <% end %>
       </div></div>
@@ -37,14 +37,14 @@
     <div class="tab-pane fade" id="trainers">
       <div class="plain"><div class="row">
         <% trainers = @department.trainers.includes(:image).alphabetical %>
-        <% cache([:media, trainers], skip_digest: true) do %>
+        <% cache([:media, cache_key_for(trainers)], skip_digest: true) do %>
           <%= render trainers %>
         <% end %>
       </div></div>
     </div>
     <div class="tab-pane fade" id="messages">
       <% messages = @department.messages.includes(:image).chronological.limit(4) %>
-      <% cache([:excerpts_large, messages], skip_digest: true) do %>
+      <% cache([:excerpts_large, cache_key_for(messages)], skip_digest: true) do %>
         <%= render :partial => 'messages/message_excerpt', :collection => messages, :as => :message, :locals => { :size => :large } %>
       <% end %>
     </div>

@@ -28,12 +28,7 @@
 //# Loaders
 //= require tooltip_loader
 //
-//# Carousel
-//= require carousel
-//= require jquery.jcarousel
-//= require jcarousel_loader
-//
-//# Clipboard
+//# Clipboard # TODO: Check if this is needed
 //= require zeroclipboard
 //
 //# Colorpicker
@@ -47,14 +42,15 @@
 //= require bootstrap-datetimepicker/locales/bootstrap-datetimepicker.de.js
 //= require datetimepicker_loader
 //
-//# EqualHeights
+//# EqualHeights # TODO: Maybe remove this
 //= require equal_heights_loader
 //
-//# Google Maps
-//= require underscore
-//= require gmaps/google
+//# Google Maps # TODO: Maybe remove this
+//#Gmaps4RailsDisabled:
+// require underscore
+// require gmaps/google
 //
-//# Grid
+//# Grid # TODO: Maybe remove this
 //= require jquery.equalheights
 // 
 //# File Upload
@@ -80,7 +76,7 @@
 //= require preview_cycle
 //= require cycle2_loader
 //= require jquery.cycle2
-//= require jquery.cycle2.caption2.js
+// require jquery.cycle2.caption2.js # At the moment this is not needed because it does not work with turbolinks
 //
 //# Navigation
 //= require navigation

@@ -52,9 +52,10 @@ TgtRefurbished::Application.routes.draw do
   # Locations
   
   resources :locations do
-    collection do
-      get :interactive_map
-    end
+    # Gmaps4RailsDisabled:
+    # collection do
+    #   get :interactive_map
+    # end
     member do
       get :schedule
     end

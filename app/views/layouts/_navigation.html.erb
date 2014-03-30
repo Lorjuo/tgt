@@ -24,11 +24,15 @@
         <%# Fragment caching for index action with no parent object:
           Possible Attemps:
           In use: http://stackoverflow.com/questions/14816992/how-to-handle-key-based-expiration-of-collections-if-there-is-no-parent-model-in
-          http://blog.berylliumwork.com/2013/08/cache-collection-in-rails.html
+          http://stackoverflow.com/questions/21767949/rails-caching-a-paginated-collection
+            https://gist.github.com/aaronjensen/6062912
+          cache_key_for_products:
+            http://guides.rubyonrails.org/caching_with_rails.html#fragment-caching
+            http://blog.berylliumwork.com/2013/08/cache-collection-in-rails.html
           http://www.sitepoint.com/caching-cache-digest/
         %>
 
-        <% cache(['navigation', navigation_elements], skip_digest: true) do %>
+        <% cache(['navigation', cache_key_for(navigation_elements)], skip_digest: true) do %>
           <%# Template Dependency: layouts/top_level_navigation %>
           <%= render :partial => "layouts/top_level_navigation", collection: navigation_elements, :as => :navigation_element, :locals => {:simple => false} %>
           <%# http://api.rubyonrails.org/classes/ActionView/Helpers/CacheHelper.html %>
