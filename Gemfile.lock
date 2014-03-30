@@ -170,7 +170,6 @@ GEM
       activerecord (>= 4.0.0)
     fssm (0.2.10)
     geocoder (1.1.9)
-    gmaps4rails (2.1.2)
     haml (4.0.5)
       tilt
     haml-rails (0.5.3)
@@ -373,7 +372,6 @@ DEPENDENCIES
   font-awesome-rails
   friendly_id
   geocoder
-  gmaps4rails
   haml-rails
   hirb
   holder_rails
