@@ -68,7 +68,10 @@ module TgtRefurbished
       elfinder/elfinder.min.js
       elfinder/proxy/elFinderSupportVer1.js
       wysiwyg.css
+      *-bundle.js
     )
+    # http://blog.seancarpenter.net/2012/11/05/page-specific-javascript-with-the-asset-pipeline/
+    # http://brandonhilkert.com/blog/page-specific-javascript-in-rails/
     
     # Internationalization
     config.i18n.enforce_available_locales = false #http://stackoverflow.com/questions/20361428/rails-i18n-validation-deprecation-warning

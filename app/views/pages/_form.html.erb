@@ -1,5 +1,8 @@
 <%= render :partial => 'shared/elfinder_loader', :locals => { :path => "" } %>
 <%= tinymce %>
+<% content_for(:head) do %>
+  <%= javascript_include_tag "administration-bundle", "data-turbolinks-track" => true %>
+<% end %>
 
 <div class="window box">
   <%= simple_form_for(@page) do |f| %>

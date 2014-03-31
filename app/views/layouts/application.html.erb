@@ -12,7 +12,6 @@
   <meta name="description" content="Aktuelle Neuigkeiten und Informationen der TG 1879 Traisa e.V.">
   <meta name="Keywords" content="Traisa, Sport, Kultur, 25.06.02,TGT,tgt,TG TRAISA,TG Traisa,TG-TRAISA,TG-Traisa,TG 1879,TG Traisa Turngemeinde,Turngemeinde Traisa,Turngemeinde 1879 Traisa, Turngemeinde 1879 Traisa e.V.,Sport,Sportverein,Mühltal,Muehltal,Hessen,Handball,Turnen,Mutter und Kind,Vorstand,Leichtathletik, Basketball, Ski, Skigymnastik,Technik,Theater,Ohlebach,Ohlebach-Theater,Laien-Theater,Karneval,Fasching,Garde,Basketball,Beach,Beach-Volleyball,Volleyball,Kinder,Jugend,Jugendliche,Kurse,Aerobic,Wirbelsäulengymnastk,Kugelstossen,Weitsprung,Athletic,Hochsprung,Speerwurf,Diskus,Hürden,Lauf,Sprint,Mittelstrecke,Langstrecke,Staffel,Sportart,individual,Senioren,Hallensportfest,Wettkampf,Kooperation,Sponsoren,DAFÜR,Dafuer GmbH,Sport-Studio,Studio,Freizeit,Kinder,Technik,Licht,Ton, Amateurtheater, Laienspielgruppe, Ohlebach-Theater, Theater, Lustspiele, Komödien, Schauspieler, Laienspieler, Theatergruppe,
   Ortslauf, Ortskernlauf, Entega, Entega-Ortslauf, Mühltal, Bewegungsangebot, Kinder-Sport-Treff, Hallensportfest, NightRun" />
-  <%= yield :head %>
 
   <meta name='twitter:card' content='summary'> 
 
@@ -36,6 +35,8 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= favicon_link_tag '/favicon.ico' %>
   <%= csrf_meta_tags %>
+  <%= yield :head %>
+  <%# http://stackoverflow.com/questions/14258273/can-i-use-javascript-include-tag-with-content-forhead-in-show-html-erb %>
 </head>
 <body>
   <%= render 'layouts/navigation' %>

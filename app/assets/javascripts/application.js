@@ -105,10 +105,6 @@
 //=require underscore
 //# at the moment needed for jquery dataTables responsive and gmaps4rails
 //
-//# WYSIWYG
-//= require tinymce-jquery
-//= require tinymce_defaults
-//
 // require_tree .
 // require_directory .
 // 
@@ -119,3 +115,4 @@
 //
 //# Has to be the last (https://github.com/kossnocorp/jquery.turbolinks)
 //= require turbolinks
+//# TODO: Check if including administration-bundle.js after this line has negative effects
