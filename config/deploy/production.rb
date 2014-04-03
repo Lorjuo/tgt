@@ -21,9 +21,9 @@ server 'ubuntuprod', roles: %w{web app db}, :user => 'deploy', :primary => true#
 # used in case we're deploying multiple versions of the same
 # app side by side. Also provides quick sanity checks when looking
 # at filepaths
-set :deploy_to, "/var/www/#{fetch(:application)}"
-#set :full_app_name, "#{fetch(:application)}_#{fetch(:stage)}"
-#set :deploy_to, "/var/www/#{fetch(:full_app_name)}" #"/home/#{fetch(:deploy_user)}/apps/#{fetch(:full_app_name)}"
+#set :deploy_to, "/var/www/#{fetch(:application)}"
+set :full_app_name, "#{fetch(:application)}_#{fetch(:stage)}"
+set :deploy_to, "/var/www/#{fetch(:full_app_name)}" #"/home/#{fetch(:deploy_user)}/apps/#{fetch(:full_app_name)}"
 
 # dont try and infer something as important as environment from
 # stage name.

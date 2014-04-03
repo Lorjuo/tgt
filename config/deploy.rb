@@ -9,7 +9,8 @@ set :repo_url, "git@github.com:Lorjuo/#{fetch(:application)}"
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
 #deploy_to has been switched to specific stages
-set :deploy_to, "/var/www/#{fetch(:application)}" #{}"/home/#{fetch(:deploy_user)}/apps/#{fetch(:full_app_name)}"
+#set :deploy_to, "/var/www/#{fetch(:application)}"
+set :deploy_to, "/home/#{fetch(:deploy_user)}/apps/#{fetch(:full_app_name)}"
 set :scm, :git
 
 set :format, :pretty
@@ -76,23 +77,30 @@ set(:executable_config_files, %w(
 
 # files which need to be symlinked to other parts of the
 # filesystem. For example nginx virtualhosts, log rotation
-# init scripts etc.
+# init scripts etc. The full_app_name variable isn't
+# available at this point so we use a custom template {{}}
+# tag and then add it at run time.
+# https://github.com/TalkingQuickly/capistrano-3-rails-template/blob/master/config/deploy.rb
 set(:symlinks, [
   {
     source: "nginx.conf",
-    link: "/etc/nginx/sites-enabled/#{fetch(:application)}" #full_app_name
+    #link: "/etc/nginx/sites-enabled/#{fetch(:application)}"
+    link: "/etc/nginx/sites-enabled/{{full_app_name}}"
   },
   {
     source: "unicorn_init.sh",
-    link: "/etc/init.d/unicorn_#{fetch(:application)}" #full_app_name
+    #link: "/etc/init.d/unicorn_#{fetch(:application)}"
+    link: "/etc/init.d/unicorn_{{full_app_name}}"
   },
   {
     source: "log_rotation",
-    link: "/etc/logrotate.d/#{fetch(:application)}" #full_app_name
+    #link: "/etc/logrotate.d/#{fetch(:application)}"
+    link: "/etc/logrotate.d/{{full_app_name}}"
   },
   {
     source: "monit",
-    link: "/etc/monit/conf.d/#{fetch(:application)}.conf" #full_app_name
+    #link: "/etc/monit/conf.d/#{fetch(:application)}.conf"
+    link: "/etc/monit/conf.d/{{full_app_name}}.conf"
   }
 ])
 
