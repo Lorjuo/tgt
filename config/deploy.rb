@@ -10,7 +10,7 @@ set :repo_url, "git@github.com:Lorjuo/#{fetch(:application)}"
 
 #deploy_to has been switched to specific stages
 #set :deploy_to, "/var/www/#{fetch(:application)}"
-set :deploy_to, "/home/#{fetch(:deploy_user)}/apps/#{fetch(:full_app_name)}"
+#set :deploy_to, "/home/#{fetch(:deploy_user)}/apps/#{fetch(:full_app_name)}"
 set :scm, :git
 
 set :format, :pretty
@@ -36,6 +36,10 @@ set :rbenv_prefix, ""
 #set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 set :rbenv_roles, :all # default value
+
+# http://stackoverflow.com/questions/20789080/capistrano-3-wrong-path-in-the-shared-path-variable
+set :unicorn_config_path, -> {"#{shared_path}/config/unicorn.rb"}
+set :unicorn_rack_env, fetch(:stage)
 
 # set :default_env, {
 #   'PATH' => "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH"
