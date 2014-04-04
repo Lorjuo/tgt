@@ -66,6 +66,7 @@ set :tests, ["spec"]
 set(:config_files, %w(
   nginx.conf
   log_rotation
+  config.yml
   monit
   unicorn.rb
   unicorn_init.sh

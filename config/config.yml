@@ -17,5 +17,8 @@ production:
   debug:
     miniprofiler_enabled: false
 
+staging:
+  <<: *defaults
+
 test:
   <<: *defaults
