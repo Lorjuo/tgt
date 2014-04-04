@@ -45,6 +45,19 @@
 
     <%= render :partial => "layouts/header" %>
 
+    <% if user_signed_in? && Rails.env.production? %>
+      <div class="alert alert-warning alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>Produktivumgebung!</strong> Bitte nutzen Sie die <a href="http://tgt.dyndns.org:8080/">Testumgebung</a> um Features auszuprobieren
+      </div>
+    <% elsif user_signed_in? && Rails.env.staging? %>
+      <div class="alert alert-warning alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>Testumgebung</strong> Viel Spaß beim herumspielen - <a href="http://tgt.dyndns.org:8080/">zur Produktivumgebung</a>
+      </div>
+    <% end %>
+      
+
     <div class="pageContent">
       <% if @department.present? %>
         <%= render :partial => "layouts/department_navigation" %>

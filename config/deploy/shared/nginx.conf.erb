@@ -3,7 +3,7 @@ upstream unicorn_<%= fetch(:full_app_name) %> {
 }
 
 server {
-  listen 80 default deferred;
+  listen <%= fetch(:http_port) %> default deferred;
   root <%= fetch(:deploy_to) %>/current/public;
 
   # location ^~ /assets/ {

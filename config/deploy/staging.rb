@@ -27,7 +27,7 @@ set :deploy_to, "/var/www/#{fetch(:full_app_name)}" #"/home/#{fetch(:deploy_user
 
 # dont try and infer something as important as environment from
 # stage name.
-set :rails_env, :production
+set :rails_env, :staging
 
 # number of unicorn workers, this will be reflected in
 # the unicorn.rb and the monit configs
@@ -36,6 +36,8 @@ set :unicorn_worker_count, 5
 # whether we're using ssl or not, used for building nginx
 # config file
 set :enable_ssl, false
+
+set :http_port, 8080
 
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options
