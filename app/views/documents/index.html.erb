@@ -10,6 +10,13 @@
 <% end %>
 
 <div class="window box">
+  <div class="row">
+    <%= render(:partial => 'documents/document', :collection => @documents.chronological, :as => 'document') %>
+  </div>
+</div>
+
+<% if false %>
+<div class="window box">
   <table class="table table-bordered table-striped datatable searchable">
     <thead>
       <tr>
@@ -66,3 +73,4 @@
     </tbody>
   </table>
 </div>
+<% end %>

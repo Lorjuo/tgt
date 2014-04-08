@@ -5,6 +5,13 @@
   http://stackoverflow.com/questions/15576514/responsive-background-slideshow-with-maintained-aspect-ratio-malsup-cycle2
 -->
 
+
+<div class="window box">
+  <h3><%= "#{t("general.current")} #{Document.model_name.human(:count => :lots)}" %></h3>
+  <%= render(:partial => 'documents/document', :collection => @department.documents.chronological, :as => 'document') %>
+</div>
+
+<% if false %>
 <div class="">
   <div class="row connected-carousels">
     <div class="col-xs-7">
@@ -12,9 +19,9 @@
         <div class="carousel-stage-wrapper">
           <div class="carousel carousel-stage">
             <ul>
-              <% @flyers.each do |flyer| %>
+              <% @documents.each do |document| %>
                 <li>
-                  <%= link_to(image_tag(flyer.file.cover.url, :class => "img-responsive"), flyer.file.cover.url) if flyer.file.cover.url.present? %>
+                  <%= link_to(image_tag(document.file.cover.url, :class => "img-responsive"), document.file.cover.url) if document.file.cover.url.present? %>
                 </li>
               <% end %>
             </ul>
@@ -32,18 +39,18 @@
           </a>
           <div class="carousel carousel-navigation">
             <ul>
-              <% @flyers.each do |flyer| %>
+              <% @documents.each do |document| %>
                 <li>
                   <div class="media">
                     <div class="pull-left">
-                      <%= image_tag(flyer.file.cover._80x80.url) if flyer.file.cover._80x80.url.present? %>
+                      <%= image_tag(document.file.cover._80x80.url) if document.file.cover._80x80.url.present? %>
                     </div>
                     <div class="media-body">
-                      <h4><%= flyer.name %></h4>
+                      <h4><%= document.name %></h4>
                       <div>
-                        <%= link_to flyer.file.url, class: "btn btn-default btn-xs" do %>
+                        <%= link_to document.file.url, class: "btn btn-default btn-xs" do %>
                           <span class="glyphicon glyphicon-download-alt"></span>
-                          <%= number_to_human_size(File.size("#{flyer.file.path}"), precision: 2) %>
+                          <%= number_to_human_size(File.size("#{document.file.path}"), precision: 2) %>
                         <% end %>
                       </div>
                     </div>
@@ -60,3 +67,5 @@
     </div>
   </div>
 </div>
+
+<% end %>

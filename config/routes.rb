@@ -99,7 +99,7 @@ TgtRefurbished::Application.routes.draw do
       get :trainers
       get :messages
       get :sort_navigation_elements
-      get :flyers
+      get :documents
       # required for Sortable GUI server side actions
       post :rebuild
     end
@@ -125,13 +125,20 @@ TgtRefurbished::Application.routes.draw do
       end
     end
   end
-  resources :documents, :only =>:index
+
 
 
 
   # Devise
   
   devise_for :users
+
+
+
+  # Documents
+  # 
+  #resources :documents, :only =>:index
+
 
 
 

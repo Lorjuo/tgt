@@ -7,7 +7,7 @@ class Department < ActiveRecord::Base
 
   # Associations
   has_many :documents
-  has_and_belongs_to_many :flyers, :join_table => 'departments_flyers', :class_name => Document
+  # has_and_belongs_to_many :flyers, :join_table => 'departments_flyers', :class_name => Document
   has_many :galleries
   has_many :messages
   has_many :navigation_elements
@@ -46,7 +46,7 @@ class Department < ActiveRecord::Base
     self.navigation_elements.create(:name => "Trainingsgruppen", :parent_id => nil, :controller_id => 'departments', :action_id => 'training_groups', :instance_id => self.id)
     self.navigation_elements.create(:name => "Trainer", :parent_id => nil, :controller_id => 'departments', :action_id => 'trainers', :instance_id => self.id)
     self.navigation_elements.create(:name => "News", :parent_id => nil, :controller_id => 'departments', :action_id => 'messages', :instance_id => self.id)
-    self.navigation_elements.create(:name => "Flyer", :parent_id => nil, :controller_id => 'departments', :action_id => 'flyers', :instance_id => self.id)
+    # self.navigation_elements.create(:name => "Document", :parent_id => nil, :controller_id => 'departments', :action_id => 'documents', :instance_id => self.id)
     # TODO: Events
   end
 

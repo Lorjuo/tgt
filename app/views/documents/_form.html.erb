@@ -1,12 +1,12 @@
 <div class="window box">
-  <%= simple_form_for(@document, :defaults => { :input_html => { :class => 'input-xlarge' } }) do |f| %>
+  <%= simple_form_for(shallow_args(@department, @document), :defaults => { :input_html => { :class => 'input-xlarge' } }) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">
       <%= f.input :name %>
       <%#= f.input :file %>
       <%= render 'images/image_selector', f:f, image:@document %>
-      <%= f.association :department,
+      <%#= f.association :department,
         :as => :select,
         :collection => Department.order(:name => :asc),
         :label_method => :name,

@@ -115,9 +115,9 @@ class DepartmentsController < ApplicationController
     @navigation_elements = @department.navigation_elements.nested_set.select('id, name, parent_id').load
   end
 
-  def flyers
-    @flyers = @department.flyers
-    render :template => "documents/flyers"
+  def documents
+    @documents = @department.documents
+    render :template => "documents/index"
   end
 
   private
@@ -128,15 +128,16 @@ class DepartmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def department_params
-      params.require(:department).permit(:name, :description, :color, :training_group_ids => [], :user_ids => [], :flyer_ids => [])
+      params.require(:department).permit(:name, :description, :color, :training_group_ids => [], :user_ids => [])
     end
 
     def resolve_layout
-      case action_name
-      when "training_groups", "flyers"
-        "one_column"
-      else
-        "two_columns"
-      end
+      "two_columns"
+      # case action_name
+      # when "training_groups", "flyers"
+      #   "one_column"
+      # else
+      #   "two_columns"
+      # end
     end
 end
