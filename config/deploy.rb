@@ -58,7 +58,8 @@ set :keep_releases, 5
 
 # what specs should be run before deployment is allowed to
 # continue, see lib/capistrano/tasks/run_tests.cap
-set :tests, ["spec"]
+set :tests, ["controllers", "models"]
+# controllers, factories, features, models, all
 
 # which config files should be copied by deploy:setup_config
 # see documentation in lib/capistrano/tasks/setup_config.cap
