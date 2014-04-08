@@ -35,6 +35,8 @@ TgtRefurbished::Application.configure do
   config.active_support.deprecation = :stderr
 
   # Customized
+  
+  config.cache_store = :null_store # Disable Fragment Caching in test environmen
 
   # Load initializers before models get cached
   config.before_eager_load do

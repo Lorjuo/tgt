@@ -5,7 +5,8 @@ class NavigationElement < ActiveRecord::Base
 
   scope :department, -> (id) { where(:department_id => id)}
   #scope :top_level, -> { where(:department_id => nil)}
-  scope :top_level, -> { where(:department_id => Department.where(:name => "generic").first.id)}
+  #scope :top_level, -> { where(:department_id => Department.where(:name => "generic").first.id)}
+  scope :top_level, -> { joins(:department).where('departments.name' => 'generic')}
 
   # Columns in the categories table: lft, rgt and parent_id
   acts_as_nested_set  :scope => :department_id#,

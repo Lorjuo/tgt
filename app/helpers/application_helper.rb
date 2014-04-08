@@ -40,7 +40,8 @@ module ApplicationHelper
   end
 
   def cache_key_for(models)
-    "#{models.count}-#{models.map(&:updated_at).max.utc.to_s(:number)}"
+    # http://stackoverflow.com/questions/10360448/how-to-chain-try-and-scoped-to-s-in-rails
+    "#{models.count}-#{models.map(&:updated_at).max.try(:utc).try(:to_s, :number)}"
   end
 
 end

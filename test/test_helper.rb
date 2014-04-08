@@ -1,3 +1,6 @@
+# rake test:all
+# rake db:test:prepare
+
 # http://blog.crowdint.com/2013/06/14/testing-rails-with-minitest.html
 
 ENV["RAILS_ENV"] = "test"

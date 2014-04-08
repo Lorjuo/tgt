@@ -33,26 +33,30 @@ class Department < ActiveRecord::Base
 
   def init
     create_directory_structure
-    create_navigation_structure unless self.name == 'generic' 
+
+    # self.name does not work with tests
+    create_navigation_structure unless name == 'generic' 
   end
 
   def create_navigation_structure
     # see navigation_elements_controller
     # and http://rubydoc.info/gems/acts_as_tree/1.5.0/frames
-    NavigationElement.create(:name => self.name, :parent_id => nil, :controller_id => 'departments', :action_id => 'show', :instance_id => self.id, :department_id => 1)
+    NavigationElement.create(:name => name, :parent_id => nil, :controller_id => 'departments', :action_id => 'show', :instance_id => id, :department_id => 1)
 
-    #self.navigation_elements.new(:name, :parent_id, :controller_id, :action_id, :instance_id, :department_id)
-    self.navigation_elements.create(:name => "Fotos", :parent_id => nil, :controller_id => 'departments', :action_id => 'galleries', :instance_id => self.id)
-    self.navigation_elements.create(:name => "Trainingsgruppen", :parent_id => nil, :controller_id => 'departments', :action_id => 'training_groups', :instance_id => self.id)
-    self.navigation_elements.create(:name => "Trainer", :parent_id => nil, :controller_id => 'departments', :action_id => 'trainers', :instance_id => self.id)
-    self.navigation_elements.create(:name => "News", :parent_id => nil, :controller_id => 'departments', :action_id => 'messages', :instance_id => self.id)
-    # self.navigation_elements.create(:name => "Document", :parent_id => nil, :controller_id => 'departments', :action_id => 'documents', :instance_id => self.id)
+    #navigation_elements.new(:name, :parent_id, :controller_id, :action_id, :instance_id, :department_id)
+    navigation_elements.create(:name => "Fotos", :parent_id => nil, :controller_id => 'departments', :action_id => 'galleries', :instance_id => id)
+    navigation_elements.create(:name => "Trainingsgruppen", :parent_id => nil, :controller_id => 'departments', :action_id => 'training_groups', :instance_id => id)
+    navigation_elements.create(:name => "Trainer", :parent_id => nil, :controller_id => 'departments', :action_id => 'trainers', :instance_id => id)
+    navigation_elements.create(:name => "News", :parent_id => nil, :controller_id => 'departments', :action_id => 'messages', :instance_id => id)
+    # navigation_elements.create(:name => "Document", :parent_id => nil, :controller_id => 'departments', :action_id => 'documents', :instance_id => id)
     # TODO: Events
   end
 
   # Department.all.each{|dep| dep.create_directory_structure}
   def create_directory_structure
-    if self.name == 'generic'
+
+    # self.name does not work with tests
+    if name == 'generic'
       department_name = 'Verein'
     else
       department_name = sanitize_filename(self.name).strip.squish

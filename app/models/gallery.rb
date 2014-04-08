@@ -20,7 +20,8 @@ class Gallery < ActiveRecord::Base
   after_initialize :default_values
   # http://stackoverflow.com/questions/9090204/rails-migration-set-current-date-as-default-value
   def default_values
-    self.custom_date ||= Date.today.to_s if new_record?
+    # self.custom_date does not work with tests
+    custom_date ||= Date.today.to_s if new_record?
   end
 
   def get_preview_image
