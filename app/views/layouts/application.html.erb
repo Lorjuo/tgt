@@ -53,12 +53,12 @@
       <% if Rails.env.production? #&& user_signed_in? %>
         <div class="alert alert-warning alert-dismissable">
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          <strong>Produktivumgebung!</strong> Bitte nutzen Sie die <a href="http://tgt.dyndns.info:8080/">Testumgebung</a> um Features auszuprobieren
+          <strong>Produktivumgebung!</strong> Bitte nutzen Sie die <a href="http://tgt.no-ip.info:8080/">Testumgebung</a> um Features auszuprobieren
         </div>
       <% elsif Rails.env.staging? #&& user_signed_in? %>
         <div class="alert alert-success alert-dismissable">
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          <strong>Testumgebung</strong> Viel Spaß beim herumspielen - <a href="http://tgt.dyndns.info:80/">zur Produktivumgebung</a>
+          <strong>Testumgebung</strong> Viel Spaß beim herumspielen - <a href="http://tgt.no-ip.info:80/">zur Produktivumgebung</a>
         </div>
       <% end %>
       
