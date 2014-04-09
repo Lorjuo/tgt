@@ -79,5 +79,5 @@ TgtRefurbished::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # CUSTOMIZATION
-  config.action_controller.asset_host = "http://tgt-static.no-ip.info" # See more at: http://www.speedawarenessmonth.com/speeding-up-asset-delivery-from-your-rails-app/#sthash.1U1JZaue.dpuf
+  config.action_controller.asset_host = "http://tgt-static.no-ip.info:8080" # See more at: http://www.speedawarenessmonth.com/speeding-up-asset-delivery-from-your-rails-app/#sthash.1U1JZaue.dpuf
 end
