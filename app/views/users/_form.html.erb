@@ -32,7 +32,10 @@
             :include_blank => false,
             :hint => t(".departments_hint"),
             :wrapper => :checkbox,
-            :item_wrapper_class => 'col-sm-6' %>
+            :item_wrapper_class => 'col-sm-6',
+            :disabled => ( current_user.has_role?(:admin) ?
+              [] :
+              (Department.pluck(:id) - current_user.departments.pluck(:id))) %>
           <%= f.association :trainer,
             :collection => Trainer.order('first_name' => :asc).order('last_name' => :asc),
             :label_method => :name,
