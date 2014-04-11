@@ -44,4 +44,9 @@ module ApplicationHelper
     "#{models.count}-#{models.map(&:updated_at).max.try(:utc).try(:to_s, :number)}"
   end
 
+  def age(dob) # http://stackoverflow.com/questions/819263/get-persons-age-in-ruby
+    now = Time.now.utc.to_date
+    now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
+  end
+
 end
