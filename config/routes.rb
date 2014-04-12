@@ -1,6 +1,12 @@
 TgtRefurbished::Application.routes.draw do
 
 
+  resources :media_links
+
+  resources :extern_links
+
+  resources :links,:only => [:index]
+
   # Carnival
 
   #get "carnival/orders/steps", to: "carnival/order_steps#personal_information", via: "post"
@@ -123,6 +129,9 @@ TgtRefurbished::Application.routes.draw do
         # post :rebuild
         get :change_controller
       end
+    end
+    resources :media_links do
+      get :change_controller, :on => :collection
     end
   end
 

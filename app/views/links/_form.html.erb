@@ -1,0 +1,17 @@
+<%= simple_form_for(@link) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :lft %>
+    <%= f.input :rgt %>
+    <%= f.input :depth %>
+    <%= f.input :department_id %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-3 col-lg-9">
+        <%= f.button :submit, :class => "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

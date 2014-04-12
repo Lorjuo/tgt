@@ -78,5 +78,9 @@ module TgtRefurbished
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**/*.{rb,yml}').to_s]
     config.i18n.default_locale = :de
     # http://stackoverflow.com/questions/20361428/rails-i18n-validation-deprecation-warning
+    # 
+    #ActiveRecordQueryTrace.enabled = true
+    #ActiveRecordQueryTrace.level = :full
+    #ActiveRecordQueryTrace.lines = 0
   end
 end

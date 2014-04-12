@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 #ruby "2.0.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.0'
+gem 'rails', '~> 4.1'
 
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
@@ -50,10 +50,14 @@ gem 'bootstrap-sass'
   #gem 'bootstrap-generators' # Only needed for first installation? - Afterwards it leads to conflicts
 
 # Date
-gem 'validates_timeliness'
+gem 'validates_timeliness',
+  :git => 'git://github.com/yabawock/validates_timeliness.git',
+  :ref => '7f02909'  # Temporary fix to disable deprecation warnings
+  # https://github.com/adzap/validates_timeliness/issues/113
 
 # Database
 gem 'mysql2'
+  gem 'active_record_query_trace'
   # Population
   gem 'factory_girl_rails'
   gem 'faker'
@@ -174,8 +178,8 @@ gem 'thread_safe', '0.2.0'
 
 group :test do
   # gem 'minitest-spec-rails'
-  gem 'minitest-rails'
-  gem 'minitest-rails-capybara'
+  #gem 'minitest-rails' # Disabled because of compatibility issues
+  #gem 'minitest-rails-capybara' # Disabled because of compatibility issues
   gem 'minitest-colorize'
   gem 'minitest-focus'
   # gem 'minitest-matchers' # NOTE: DO NOT USE THIS - BUT NECESSARY FOR ABILITY TESTING

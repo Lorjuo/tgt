@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140408132524) do
+ActiveRecord::Schema.define(version: 20140412133841) do
 
   create_table "announcements", force: true do |t|
     t.string   "name"
@@ -117,6 +117,12 @@ ActiveRecord::Schema.define(version: 20140408132524) do
     t.datetime "updated_at"
   end
 
+  create_table "extern_links", force: true do |t|
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
     t.integer  "sluggable_id",              null: false
@@ -150,6 +156,21 @@ ActiveRecord::Schema.define(version: 20140408132524) do
 
   add_index "images", ["attachable_id", "attachable_type"], name: "index_images_on_attachable_id_and_attachable_type", using: :btree
 
+  create_table "links", force: true do |t|
+    t.string   "name"
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.integer  "depth"
+    t.integer  "department_id"
+    t.integer  "linkable_id"
+    t.string   "linkable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "links", ["linkable_id", "linkable_type"], name: "index_links_on_linkable_id_and_linkable_type", using: :btree
+
   create_table "locations", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -159,6 +180,13 @@ ActiveRecord::Schema.define(version: 20140408132524) do
     t.float    "longitude"
     t.boolean  "gmaps"
     t.text     "description"
+  end
+
+  create_table "media_links", force: true do |t|
+    t.string   "controller_id"
+    t.integer  "instance_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "messages", force: true do |t|

@@ -1,0 +1,5 @@
+<%= simple_fields_for @media_link || 'media_link' do |f| %>
+  <%= f.input :instance_id, label: t("activerecord.attributes.media_link.instance_id") do %>
+    <%= f.select("instance_id", @instances, {:include_blank => false}, :class => 'form-control') %>
+  <% end %>
+<% end %>
