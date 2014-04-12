@@ -1,7 +1,8 @@
 class ExternLinksController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource :department
+  load_and_authorize_resource :extern_link, :through => :department, :shallow => true
 
-  before_action :set_extern_link, only: [:show, :edit, :update, :destroy]
+  #before_action :set_extern_link, only: [:show, :edit, :update, :destroy]
 
   # GET /extern_links
   # GET /extern_links.json

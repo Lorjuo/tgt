@@ -1,11 +1,6 @@
 TgtRefurbished::Application.routes.draw do
 
 
-  resources :media_links
-
-  resources :extern_links
-
-  resources :links,:only => [:index]
 
   # Carnival
 
@@ -130,6 +125,10 @@ TgtRefurbished::Application.routes.draw do
         get :change_controller
       end
     end
+
+
+    resources :links,:only => [:index]
+    resources :extern_links
     resources :media_links do
       get :change_controller, :on => :collection
     end

@@ -3,11 +3,11 @@
 <% end %>
 
 <%# content_for :buttons do %>
-  <%= link_to new_extern_link_path, :class => 'btn btn-primary' do %>
+  <%= link_to new_department_extern_link_path(@department), :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
     <%= t('general.create_model', :model => ExternLink.model_name.human ) %>
   <% end if can? :create, ExternLink %>
-  <%= link_to new_media_link_path, :class => 'btn btn-primary' do %>
+  <%= link_to new_department_media_link_path(@department), :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
     <%= t('general.create_model', :model => MediaLink.model_name.human ) %>
   <% end if can? :create, MediaLink %>
