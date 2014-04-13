@@ -17,7 +17,7 @@ class Department < ActiveRecord::Base
   #new syntax:
   has_many :trainers, -> { order('trainers.first_name, trainers.last_name').uniq }, :through => :training_groups
 
-  has_many :links; has_many :media_links; has_many :extern_links
+  has_many :links#; has_many :media_links; has_many :extern_links
 
   has_and_belongs_to_many :users#, through: :department_editor
 

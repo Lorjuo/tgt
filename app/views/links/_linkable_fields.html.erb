@@ -6,4 +6,6 @@
         collection: nested_set_options(NavigationElement.department(@navigation_element.department_id), @navigation_element) {|i| "#{'-' * i.level} #{i.name}" } %>
 <%= f.input :parent_id,
         :as => :select,
-        collection: nested_set_options(Link.all, linkable.link) {|i| "#{'-' * i.level} #{i.name}" } %>
+        collection: nested_set_options(Link.department(@department.id).all, linkable.link) {|i| "#{'-' * i.level} #{i.name}" } %>
+
+<%= f.input :department_id, :as => :hidden %>

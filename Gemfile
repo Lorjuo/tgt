@@ -63,6 +63,9 @@ gem 'mysql2'
   gem 'faker'
   gem 'populator'
 
+# DRY
+gem 'inherited_resources'
+
 # File Upload
 gem 'carrierwave'
 gem 'jquery-fileupload-rails'
@@ -131,7 +134,7 @@ gem 'rack-mini-profiler'
 gem 'unicorn'
 
 # Security
-gem 'cancan'
+gem 'cancancan'
 gem 'devise'
 gem 'rolify', github: "EppO/rolify" #, '~> 3.3.0.rc4' # https://github.com/EppO/rolify/pull/129
 

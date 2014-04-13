@@ -17,6 +17,7 @@
   <thead>
     <tr>
       <th><%= Link.human_attribute_name("name") %></th>
+      <th><%= Link.human_attribute_name("linkable_type") %></th>
       <th><%= Link.human_attribute_name("lft") %></th>
       <th><%= Link.human_attribute_name("rgt") %></th>
       <th><%= Link.human_attribute_name("depth") %></th>
@@ -35,6 +36,7 @@
 <% @links.each do |link| %>
     <tr>
       <td><%= link.name %></td>
+      <td><%= link.linkable_type %></td>
       <td><%= link.lft %></td>
       <td><%= link.rgt %></td>
       <td><%= link.depth %></td>

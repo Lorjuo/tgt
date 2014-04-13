@@ -1,9 +1,9 @@
-<%= simple_form_for(@extern_link) do |f| %>
+<%= simple_form_for(shallow_args(@department, @linkable)) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.fields_for :link, @extern_link.link do |ff| %>
-      <%= render :partial => 'links/linkable_fields', :object => @extern_link, :as => "linkable", :locals => { :f => ff } %>
+    <%= f.fields_for :link, @linkable.link do |ff| %>
+      <%= render :partial => 'links/linkable_fields', :object => @linkable, :as => "linkable", :locals => { :f => ff } %>
     <% end %>
     <%= f.input :url %>
   </div>
