@@ -14,7 +14,6 @@
     </div>
     <div class="collapse navbar-collapse" id="navigation">
       <ul class="nav navbar-nav">
-        <% navigation_elements = NavigationElement.top_level.roots %>
 
          <%# Error: Couldn't find template for digesting: navigation_elements/navigation_element.html
           not solved but message disappeard after removing alle cache ... directives inside this top level caching and removing all cache_digest stuff even inside comments
@@ -32,9 +31,10 @@
           http://www.sitepoint.com/caching-cache-digest/
         %>
 
-        <% cache(['navigation', cache_key_for(navigation_elements)], skip_digest: true) do %>
+        <% links = Link.top_level.roots %>
+        <% cache(['navigation', cache_key_for(links)], skip_digest: true) do %>
           <%# Template Dependency: layouts/top_level_navigation %>
-          <%= render :partial => "layouts/top_level_navigation", collection: navigation_elements, :as => :navigation_element, :locals => {:simple => false} %>
+          <%= render :partial => "layouts/top_level_navigation", collection: links, :as => :link, :locals => {:simple => false} %>
           <%# http://api.rubyonrails.org/classes/ActionView/Helpers/CacheHelper.html %>
         <% end %>
       </ul>
@@ -56,8 +56,8 @@
                 <%= link_to Message.model_name.human(:count => :lots), messages_path %>
               <% end if current_user.can?(:edit, :messages) %>
               <%= content_tag :li do %>
-                <%= link_to Page.model_name.human(:count => :lots), pages_path %>
-              <% end if current_user.can?(:edit, :pages) %>
+                <%= link_to Link.model_name.human(:count => :lots), department_links_path(generic_department) %>
+              <% end if current_user.can?(:edit, :link) %>
               <%= content_tag :li do %>
                 <%= link_to(Announcement.model_name.human(:count => :lots), announcements_path) %>
               <% end if current_user.can?(:edit, :announcements) %>

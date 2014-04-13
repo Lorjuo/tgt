@@ -11,6 +11,18 @@
     <span class="glyphicon glyphicon-plus"></span>
     <%= t('general.create_model', :model => MediaLink.model_name.human ) %>
   <% end if can? :create, MediaLink %>
+  <%= link_to new_department_page_path(@department), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    <%= t('general.create_model', :model => Page.model_name.human ) %>
+  <% end if can? :create, Page %>
+  <%= link_to new_department_placeholder_path(@department), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    <%= t('general.create_model', :model => Placeholder.model_name.human ) %>
+  <% end if can? :create, Placeholder %>
+  <%= link_to sort_department_links_path(@department), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-th-list"></span>
+    <%= t('.manage') %>
+  <% end if can? :sort, Link%>
 <%# end %>
 
 <table class="table table-bordered table-striped">

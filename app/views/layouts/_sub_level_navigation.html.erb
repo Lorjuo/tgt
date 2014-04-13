@@ -1,23 +1,23 @@
-<%#= cache navigation_element do %>
+<%#= cache link do %>
   <%= content_tag :li, :class => "dropdown-submenu" do %>
-    <%#= link_to navigation_element.url do %>
-    <%= link_to navigation_element.url,
+    <%#= link_to link.url do %>
+    <%= link_to link.url,
       :class => "dropdown-toggle",
-      :data => (navigation_element.leaf?) ? {} : {:toggle => "dropdown"} do %>
-      <%= navigation_element.name %>
-      <%= tag :span, :class => "caret" unless navigation_element.leaf? %>
+      :data => (link.leaf?) ? {} : {:toggle => "dropdown"} do %>
+      <%= link.name %>
+      <%= tag :span, :class => "caret" unless link.leaf? %>
     <% end %>
-    <% if navigation_element.children.present? %>
-    <%# unless navigation_element.leaf? %>
+    <% if link.children.present? %>
+    <%# unless link.leaf? %>
       <%= content_tag :ul, :class => "dropdown-menu" do %>
         <%# Template Dependency: layouts/sub_level_navigation %>
-        <%= render :partial => "layouts/sub_level_navigation", collection: navigation_element.children, :as => :navigation_element %>
+        <%= render :partial => "layouts/sub_level_navigation", collection: link.children, :as => :link %>
         <%# replaced the line above with the following because of cache recursion issue: https://github.com/rails/cache_digests/issues/47
           at the moment both alternatives seem to work %>
-        <%#= render navigation_elements: navigation_element.children, partial: 'layouts/sub_level_navigation' %>
+        <%#= render links: link.children, partial: 'layouts/sub_level_navigation' %>
 
-        <%# navigation_element.children.each do |child| %>
-          <%#= render :partial => "layouts/sub_level_navigation", :locals => { :navigation_element => child } %>
+        <%# link.children.each do |child| %>
+          <%#= render :partial => "layouts/sub_level_navigation", :locals => { :link => child } %>
         <%# end %>
         <%# https://github.com/rails/cache_digests/issues/47 %>
         <%# https://github.com/rails/rails/issues/12521 %>

@@ -1,25 +1,3 @@
-<!-- <nav class="navbar navbar-default" role="menu" id="department_navigation">
-
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#sub_navigation">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <%= link_to @department.name, @department, :class => "navbar-brand" %>
-  </div>
-
-  <div class="collapse navbar-collapse" id="sub_navigation">
-    <ul class="nav navbar-nav">
-      <%= render :partial => "layouts/top_level_navigation", collection: NavigationElement.department(@department.id).roots, :as => :navigation_element %>
-    </ul>
-  </div>
-</nav> -->
-
-
-
-
 <div class="window navigation-bar blue">
     
   <div class="navigation-header">
@@ -34,9 +12,9 @@
 
   <div class="navigation-collapse">
     <ul class="navigation right">
-      <% navigation_elements = NavigationElement.department(@department.id).roots %>
-      <% cache(['department_navigation', cache_key_for(navigation_elements)], skip_digest: true) do %>
-        <%= render :partial => "layouts/simple_navigation", collection: navigation_elements, :as => :navigation_element %>
+      <% links = Link.department(@department.id).roots %>
+      <% cache(['department_navigation', cache_key_for(links)], skip_digest: true) do %>
+        <%= render :partial => "layouts/simple_navigation", collection: links, :as => :link %>
       <% end %>
     </ul>
     <% if can? :update, @department %>
@@ -46,7 +24,7 @@
             <%= fa_icon "key" %>
             Verwaltung<% end %><%# Prevent whitespaces here %>
           <ul>
-            <li><%= link_to Page.model_name.human(:count => :lots), pages_path %></li>
+            <li><%= link_to Link.model_name.human(:count => :lots), department_links_path(@department) %></li>
             <li><%= link_to t("general.navigation"), department_navigation_elements_path(@department) %>
               <ul>
                 <li><%= link_to "Anordnung", sort_navigation_elements_department_path(@department) %>

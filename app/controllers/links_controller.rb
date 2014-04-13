@@ -7,17 +7,30 @@ class LinksController < ApplicationController
   
   before_action :set_link, only: [:show, :edit, :update, :destroy]
 
-  before_action :load_department
+  before_action :load_department, except: [:rebuild]
 
   def index
     @links = @department.links
   end
 
+  def show
+    redirect_to @link.linkable
+  end
+
+  def edit
+    redirect_to @link.linkable, :action => :edit
+  end
 
   def destroy
     @link.destroy
     redirect_to department_links_url(@department)
   end
+
+
+  def sort
+    @links = @department.links.nested_set.select('id, name, parent_id').load
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -30,11 +43,11 @@ class LinksController < ApplicationController
       params.require(:link).permit(:name, :lft, :rgt, :depth, :department_id)
     end
 
-    def load_department      
+    def load_department
       if params[:department_id]
         @department = Department.friendly.find(params[:department_id])
       else
-        @department = @linkable.link.department
+        @department = @link.department
       end
     end
 end

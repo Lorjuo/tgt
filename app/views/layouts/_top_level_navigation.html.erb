@@ -1,17 +1,18 @@
-<%#= cache navigation_element do %>
+<% debugger %>
+<%#= cache link do %>
   <%= content_tag :li, :class => "dropdown" do %>
-    <%#= link_to navigation_element.url do %>
-    <%= link_to navigation_element.url,
+    <%#= link_to link.url do %>
+    <%= link_to link.url,
       :class => "dropdown-toggle",
-      :data => (navigation_element.leaf?) ? {} : {:toggle => "dropdown"} do %>
-      <%= navigation_element.name %>
-      <%= tag :span, :class => "caret" unless navigation_element.leaf? %>
+      :data => (link.leaf?) ? {} : {:toggle => "dropdown"} do %>
+      <%= link.name %>
+      <%= tag :span, :class => "caret" unless link.leaf? %>
     <% end %>
-    <% if navigation_element.children.present? %>
-    <%# unless navigation_element.leaf? %>
+    <% if link.children.present? %>
+    <%# unless link.leaf? %>
       <%= content_tag :ul, :class => "dropdown-menu" do %>
         <%# Template Dependency: layouts/sub_level_navigation %>
-        <%= render :partial => "layouts/sub_level_navigation", collection: navigation_element.children, :as => :navigation_element %>
+        <%= render :partial => "layouts/sub_level_navigation", collection: link.children, :as => :link %>
       <% end %>
     <% end %>
   <% end %>

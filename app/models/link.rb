@@ -22,16 +22,6 @@ class Link < ActiveRecord::Base # Parent Class for polymorphic association
   # Associations
   belongs_to :department
 
-  before_create do
-    Rails.logger.info "before create link"
-  end
-  before_save do
-    Rails.logger.info "before save link"
-  end
-  after_save do
-    Rails.logger.info "after save link"
-  end
-
   # Associations
   belongs_to :linkable, polymorphic: true, :dependent => :destroy
 
@@ -42,5 +32,7 @@ class Link < ActiveRecord::Base # Parent Class for polymorphic association
   #   self.touch
   #   parent.invoke_touch unless parent.nil?
   # end
+  
+  delegate :url, :to => :linkable 
 
 end

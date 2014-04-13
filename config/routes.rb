@@ -35,12 +35,6 @@ TgtRefurbished::Application.routes.draw do
 
 
 
-  # Pages
-
-  resources :pages
-
-
-
   # Images
 
   resources :images do
@@ -81,6 +75,13 @@ TgtRefurbished::Application.routes.draw do
   # NavigationElements
 
   resources :navigation_elements, :only => [] do
+    collection do
+      # required for Sortable GUI server side actions
+      post :rebuild
+    end
+  end
+  
+  resources :links, :only => [] do
     collection do
       # required for Sortable GUI server side actions
       post :rebuild
@@ -127,12 +128,16 @@ TgtRefurbished::Application.routes.draw do
     end
 
 
-    resources :links,:only => [:index, :destroy]
+    resources :links, :only => [:index, :show, :edit, :destroy] do
+      get :sort, :on => :collection
+    end
     scope :module => "linkable" do
       resources :extern_links
       resources :media_links do
         get :change_controller, :on => :collection
       end
+      resources :pages
+      resources :placeholders
     end
   end
 
