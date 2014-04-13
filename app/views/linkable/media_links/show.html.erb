@@ -8,7 +8,7 @@
     <%= t "general.list" %>
   <% end %>
   <% if can? :update, @linkable %>
-    <%= link_to edit_extern_link_path(@linkable), :class => 'btn btn-primary' do %>
+    <%= link_to [:edit, @linkable], :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-pencil"></span>
       <%= t "general.edit" %>
     <% end %>
@@ -16,7 +16,10 @@
 <%# end %>
 
 <dl class="dl-horizontal">
-  <dt><%= ExternLink.human_attribute_name("url") %>:</dt>
-  <dd><%= @linkable.url %></dd>
+  <dt><%= MediaLink.human_attribute_name("controller_id") %>:</dt>
+  <dd><%= @linkable.controller_id %></dd>
+
+  <dt><%= MediaLink.human_attribute_name("instance_id") %>:</dt>
+  <dd><%= @linkable.instance_id %></dd>
 
 </dl>

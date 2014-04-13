@@ -130,10 +130,10 @@ TgtRefurbished::Application.routes.draw do
     resources :links,:only => [:index, :destroy]
     scope :module => "linkable" do
       resources :extern_links
-    end
       resources :media_links do
         get :change_controller, :on => :collection
       end
+    end
   end
 
 

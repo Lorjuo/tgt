@@ -3,7 +3,7 @@ module Linkable
 
   included do
     before_action :load_model
-    before_action :load_linkable, only: [:show, :edit, :update, :destroy]
+    before_action :load_linkable, only: [:show, :edit, :update, :destroy] #, except: [:index, :new, :create] 
     before_action :load_department
   end
 

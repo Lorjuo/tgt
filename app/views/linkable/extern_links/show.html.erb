@@ -1,0 +1,22 @@
+<% content_for :title do %>
+  <%= t ".title", :name => @linkable.link.name %>
+<% end %>
+
+<%# content_for :buttons do %>
+  <%= link_to department_links_path(@department), :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    <%= t "general.list" %>
+  <% end %>
+  <% if can? :update, @linkable %>
+    <%= link_to [:edit, @linkable], :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+      <%= t "general.edit" %>
+    <% end %>
+  <% end %>
+<%# end %>
+
+<dl class="dl-horizontal">
+  <dt><%= ExternLink.human_attribute_name("url") %>:</dt>
+  <dd><%= @linkable.url %></dd>
+
+</dl>
