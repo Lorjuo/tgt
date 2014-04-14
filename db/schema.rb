@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140414080512) do
+ActiveRecord::Schema.define(version: 20140414081632) do
 
   create_table "announcements", force: true do |t|
     t.string   "name"
@@ -167,6 +167,7 @@ ActiveRecord::Schema.define(version: 20140414080512) do
     t.string   "linkable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "active",        default: true
   end
 
   add_index "links", ["linkable_id", "linkable_type"], name: "index_links_on_linkable_id_and_linkable_type", using: :btree
@@ -200,7 +201,7 @@ ActiveRecord::Schema.define(version: 20140414080512) do
   end
 
   create_table "pages", force: true do |t|
-    t.text     "content"
+    t.string   "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

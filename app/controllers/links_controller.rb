@@ -18,7 +18,7 @@ class LinksController < ApplicationController
   end
 
   def edit
-    redirect_to @link.linkable, :action => :edit
+    redirect_to [:edit, @link.linkable]
   end
 
   def destroy

@@ -1,4 +1,5 @@
 <%= f.input :name %>
+<%= f.input :active %>
 <%= f.input :parent_id,
         :as => :select,
         collection: nested_set_options(Link.department(@department.id).roots, linkable.link) {|i| "#{'-' * i.level} #{i.name}" } %>

@@ -3,6 +3,9 @@ class Link < ActiveRecord::Base # Parent Class for polymorphic association
   #include Rails.application.routes.url_helpers
   #include ActionController::PolymorphicRoutes
 
+  # Scopes
+  # default_scope { active } # Does not work for some reasons
+  scope :active, -> { where(:active => true) } # TODO: make this functionality working
   scope :department, -> (id) { where(:department_id => id)}
   #scope :top_level, -> { where(:department_id => nil)}
   #scope :top_level, -> { where(:department_id => Department.where(:name => "generic").first.id)}
@@ -33,6 +36,6 @@ class Link < ActiveRecord::Base # Parent Class for polymorphic association
   #   parent.invoke_touch unless parent.nil?
   # end
   
-  delegate :url, :to => :linkable 
+  delegate :url, :to => :linkable
 
 end
