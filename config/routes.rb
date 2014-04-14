@@ -43,6 +43,16 @@ TgtRefurbished::Application.routes.draw do
   end
 
 
+  # Links
+  
+  resources :links, :only => [] do
+    collection do
+      # required for Sortable GUI server side actions
+      post :rebuild
+    end
+  end
+
+
 
   # Locations
   
@@ -72,24 +82,6 @@ TgtRefurbished::Application.routes.draw do
 
 
 
-  # NavigationElements
-
-  resources :navigation_elements, :only => [] do
-    collection do
-      # required for Sortable GUI server side actions
-      post :rebuild
-    end
-  end
-  
-  resources :links, :only => [] do
-    collection do
-      # required for Sortable GUI server side actions
-      post :rebuild
-    end
-  end
-
-
-
   # Departments
 
   resources :departments, :only =>:index
@@ -100,7 +92,6 @@ TgtRefurbished::Application.routes.draw do
       get :galleries
       get :trainers
       get :messages
-      get :sort_navigation_elements
       get :documents
       # required for Sortable GUI server side actions
       post :rebuild
@@ -117,15 +108,6 @@ TgtRefurbished::Application.routes.draw do
     end
     resources :messages
     resources :training_groups#, :only => [:new, :create]
-    resources :navigation_elements do
-      collection do
-        # get :sort
-
-        # required for Sortable GUI server side actions
-        # post :rebuild
-        get :change_controller
-      end
-    end
 
 
     resources :links, :only => [:index, :show, :edit, :destroy] do

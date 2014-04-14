@@ -27,7 +27,7 @@
             https://gist.github.com/aaronjensen/6062912
           cache_key_for_products:
             http://guides.rubyonrails.org/caching_with_rails.html#fragment-caching
-            http://blog.berylliumwork.com/2013/08/cache-collection-in-rails.html
+            http://blog.berylliumwork.com/2013/08/cache-collectpion-in-rails.html
           http://www.sitepoint.com/caching-cache-digest/
         %>
 
@@ -50,7 +50,7 @@
             <ul class="dropdown-menu">
               <% generic_department = Department.where(:name=>"generic").first %>
               <%= content_tag :li do %>
-                <%= link_to t("general.navigation"), department_navigation_elements_path(generic_department) %>
+                <%= link_to t("general.navigation"), department_links_path(generic_department) %>
               <% end if current_user.can?(:edit, generic_department) %>
               <%= content_tag :li do %>
                 <%= link_to Message.model_name.human(:count => :lots), messages_path %>

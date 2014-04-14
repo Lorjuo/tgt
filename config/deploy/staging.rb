@@ -1,5 +1,5 @@
 set :stage, :staging
-set :branch, ENV["REVISION"] || "master"
+set :branch, ENV["REVISION"] || "develop"
 
 # Simple Role Syntax - Either use this or extended server syntax
 # ==================

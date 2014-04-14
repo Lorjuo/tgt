@@ -80,7 +80,7 @@
 //
 //# Navigation
 //= require navigation
-//= require navigation_elements
+//= require links
 //
 //# Nested Forms
 //= require cocoon

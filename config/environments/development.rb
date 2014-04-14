@@ -26,4 +26,8 @@ TgtRefurbished::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true # default: true
+
+  # CUSTOMIZATION
+  
+  config.cache_store = :null_store # Disable Fragment Caching in development environment
 end

@@ -24,10 +24,9 @@
             <%= fa_icon "key" %>
             Verwaltung<% end %><%# Prevent whitespaces here %>
           <ul>
-            <li><%= link_to Link.model_name.human(:count => :lots), department_links_path(@department) %></li>
-            <li><%= link_to t("general.navigation"), department_navigation_elements_path(@department) %>
+            <li><%= link_to t("general.navigation"), department_links_path(@department) %>
               <ul>
-                <li><%= link_to "Anordnung", sort_navigation_elements_department_path(@department) %>
+                <li><%= link_to "Anordnung", sort_department_links_path(@department) %>
               </ul>
             </li>
             <li><%= link_to Document.model_name.human(:count => :lots), department_documents_path(@department) %>

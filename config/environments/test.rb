@@ -36,7 +36,7 @@ TgtRefurbished::Application.configure do
 
   # Customized
   
-  config.cache_store = :null_store # Disable Fragment Caching in test environmen
+  config.cache_store = :null_store # Disable Fragment Caching in test environment
 
   # Load initializers before models get cached
   config.before_eager_load do
