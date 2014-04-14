@@ -1,5 +1,5 @@
 <%= f.input :name %>
 <%= f.input :parent_id,
         :as => :select,
-        collection: nested_set_options(Link.department(@department.id).all, linkable.link) {|i| "#{'-' * i.level} #{i.name}" } %>
+        collection: nested_set_options(Link.department(@department.id).roots, linkable.link) {|i| "#{'-' * i.level} #{i.name}" } %>
 <%= f.input :department_id, :as => :hidden %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140413195132) do
+ActiveRecord::Schema.define(version: 20140414080512) do
 
   create_table "announcements", force: true do |t|
     t.string   "name"
@@ -197,20 +197,6 @@ ActiveRecord::Schema.define(version: 20140413195132) do
     t.datetime "updated_at"
     t.text     "abstract"
     t.date     "custom_date"
-  end
-
-  create_table "navigation_elements", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "parent_id"
-    t.integer  "lft"
-    t.integer  "rgt"
-    t.integer  "depth"
-    t.integer  "department_id"
-    t.string   "controller_id"
-    t.string   "action_id"
-    t.integer  "instance_id"
   end
 
   create_table "pages", force: true do |t|
