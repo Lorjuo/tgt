@@ -24,17 +24,7 @@ $border-radius-small: 0;
 $border-radius-base: 0;
 $border-radius-large: 0;
 
-/*$navbar-default-bg: #0000A0;
-$navbar-default-color: #FFFFFF;
-$navbar-default-link-color: #FFFFFF;
-$navbar-default-link-active-bg: #FFFFFF;
-$navbar-default-link-active-color: #000055;
-
-$navbar-default-brand-color: #FFFFFF;*/
-
-/*.navbar {
-  box-shadow: 2px 2px 3px 0px #333;
-}*/
+$btn-primary-bg: #105090;
 
 .navbar.navbar-inverse {
   background: none;
@@ -60,6 +50,7 @@ body { padding-top: 60px !important; }
 @import "thumbnails";
 @import "list_groups";
 @import "tinymce_overrides";
+@import "pretty_buttons";
 
 
 /* https://github.com/thomas-mcdonald/bootstrap-sass/blob/master/vendor/assets/stylesheets/bootstrap/_mixins.scss */
@@ -554,6 +545,28 @@ label.checkbox {
         bottom: 0;
         padding-top: 30px;
         padding-bottom: 30px;
+      }
+    }
+  }
+}
+
+.controls {
+  overflow: hidden;
+  .button {
+    background-image: linear-gradient(to bottom, #000090 0%, #003070 100%);
+    float: left;
+    margin: 5px 10px 5px 0px;
+    font-size: 0.9em;
+    a {
+      color: white;
+      display: block;
+      padding: 4px 12px;
+    }
+    &:hover {
+      background-image: none;
+      /*background-color: #C0C0C0;*/
+      a {
+        color: #000090;
       }
     }
   }

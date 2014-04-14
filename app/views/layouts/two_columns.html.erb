@@ -3,12 +3,14 @@
   <div class="row">
     <div class="col-sm-8">
 
-      <% if content_for?(:title) %>
+      <% if content_for?(:buttons) %>
         <div class="window box">
-          <div class="pull-right button-group">
-            <%= yield(:buttons) %>
+          <div class="box-header">
+            <div class="pull-right">
+              <%= yield(:buttons) %>
+            </div>
+            <h2><%= yield(:title) %></h2>
           </div>
-          <h2><%= yield(:title) %></h2>
         </div>
       <% end %>
 

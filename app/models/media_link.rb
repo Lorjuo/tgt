@@ -6,6 +6,9 @@ class MediaLink < ActiveRecord::Base
 
   accepts_nested_attributes_for :link, :allow_destroy => true
 
+  # Validations
+  validates :controller_id, :presence => true
+
   # after_initialize do
   #   self.link ||= self.build_link
   # end

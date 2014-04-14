@@ -2,7 +2,7 @@
   <%= t ".title", :name => @linkable.link.name %>
 <% end %>
 
-<%# content_for :buttons do %>
+<% content_for :buttons do %>
   <%= link_to department_links_path(@department), :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
     <%= t "general.list" %>
@@ -13,7 +13,7 @@
       <%= t "general.edit" %>
     <% end %>
   <% end %>
-<%# end %>
+<% end %>
 
 <dl class="dl-horizontal">
   <dt><%= MediaLink.human_attribute_name("controller_id") %>:</dt>

@@ -1,6 +1,6 @@
-<% content_for :title do %>
-  <%= t ".title", :title => @message.title %>
-<% end %>
+<%# content_for :title do %>
+  <%#= t ".title", :title => @message.title %>
+<%# end %>
 
 <% content_for :head do %>
   <meta property='og:type' content='article'/>
@@ -19,34 +19,39 @@
   <meta itemprop='description' content='<%= description %>'>
 <% end %>
 
-<div class="window box thin">
-  <div class="message">
-    <div class="messageHeader">
-      <div class="pull-right button-group">
-        <%= link_to department_messages_path(@message.department), :class => 'btn btn-default' do %>
-          <span class="glyphicon glyphicon-list-alt"></span>
-          Back
-        <% end %>
-        <% if can? :update, @message %>
-          <%= link_to edit_message_path(@message), :class => 'btn btn-primary' do %>
-          <span class="glyphicon glyphicon-pencil"></span>
-            Edit
+<div class="window">
+  <!-- <div class="box small-spacing" style="height: 150px; overflow: hidden">
+    <img src="http://ubuntudev:3000/uploads/gallery/2/image/17/fea7a7f4-c0ec-447f-8fc4-22c4907d07c4.JPG" style="margin-top: 0px;" />
+  </div> -->
+  <div class="box thin">
+    <div class="message">
+      <div class="messageHeader">
+        <div class="pull-right">
+          <% if can? :edit, @message %>
+            <%= link_to department_messages_path(@message.department), :class => 'btn btn-default btn-sm' do %>
+              <span class="glyphicon glyphicon-list"></span>
+              <%= t "general.list" %>
+            <% end %>
+            <%= link_to edit_message_path(@message), :class => 'btn btn-primary btn-sm' do %>
+              <span class="glyphicon glyphicon-pencil"></span>
+              <%= t "general.edit" %>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
+        <h1><%= @message.title %></h1>
       </div>
-      <h1><%= @message.title %></h1>
-    </div>
-    <div class="messageContent">
-      <%= raw @message.content %>
-    </div>
-    <div class="messageFooter">
-      <div class="date">
-        <%= localize( @message.custom_date.to_date, :format => :long ) %>
+      <div class="messageContent">
+        <%= raw @message.content %>
       </div>
-      <div class="share">
-        <%= render :partial => "shared/social_media_share" %>
+      <div class="messageFooter">
+        <div class="date">
+          <%= localize( @message.custom_date.to_date, :format => :long ) %>
+        </div>
+        <div class="share">
+          <%= render :partial => "shared/social_media_share" %>
+        </div>
       </div>
+      <%= render :partial => "shared/references_to", :locals => { references: @message.references } %>
     </div>
-    <%= render :partial => "shared/references_to", :locals => { references: @message.references } %>
   </div>
 </div>

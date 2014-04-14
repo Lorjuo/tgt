@@ -2,7 +2,7 @@
   <%= t('general.edit_model', :model => ExternLink.model_name.human ) %>
 <% end %>
 
-<%# content_for :buttons do %>
+<% content_for :buttons do %>
    <%= link_to department_links_path(@department), :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
     <%= t "general.list" %>
@@ -11,6 +11,6 @@
     <span class="glyphicon glyphicon-info-sign"></span>
     <%= t "general.show" %>
   <% end %>
-<%# end %>
+<% end %>
 
 <%= render 'form' %>

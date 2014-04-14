@@ -1,14 +1,16 @@
 %div.window.box
-  / - if can? :create, Link
-  /   = link_to new_department_link_path(@department), :class => 'btn btn-primary' do
-  /     %span.glyphicon.glyphicon-plus
-  /     New Link
-  = link_to department_links_path(@department), :class => 'btn btn-primary' do
-    %span.glyphicon.glyphicon-th-list
-    Index
-  %h1 Manage Links
+  %div.box-header
+    %div.pull-right
+      / - if can? :create, Link
+      /   = link_to new_department_link_path(@department), :class => 'btn btn-primary' do
+      /     %span.glyphicon.glyphicon-plus
+      /     New Link
+      = link_to department_links_path(@department), :class => 'btn btn-primary' do
+        %span.glyphicon.glyphicon-th-list
+        Index
+    %h1 Manage Links
 
-%div.window.box.thin
+%div.window.box
   %ol.sortable_tree{ data: { max_levels: 5, rebuild_url: rebuild_links_url } }
     / = sortable_tree @links
     = build_server_tree @links, :title => :name, :type => :sortable

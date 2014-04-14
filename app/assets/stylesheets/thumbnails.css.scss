@@ -31,15 +31,25 @@ div.thumbnail {
   }
   .mediaText {
     padding: 5px;
+    p {
+      margin-bottom: 0;
+    }
   }
 }
 
 /* mediaWrapper inside MediaBox
 needs more contrast from background*/
-.mediaBox .mediaWrapper .mediaText {
-  background-color: #E9E9E9;
-  padding: 4px 8px 4px 8px;
-  font-size: 0.8em;
+.mediaBox .mediaWrapper {
+  border: 0;
+  .mediaObject {
+    border: 0;
+  }
+  .mediaText {
+    background-color: #E9E9E9;
+    padding: 4px 8px 4px 8px;
+    /*font-size: 0.8em;*/
+    color: black;
+  }
 }
 
 

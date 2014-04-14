@@ -22,6 +22,10 @@
  ☐ Add schedule for departments
  ☐ Add documents objects
  ☐ Refactor navigation
+
+Problems:
+ ☐ Problem when trying to access: /departments/leichtathletik/messages because of friendly id
+
  Heroku:
  ☐ config.assets.initialize_on_precompile = false
  ☐ Heroku Assets do not work

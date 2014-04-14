@@ -3,7 +3,7 @@ class LinksController < ApplicationController
 
   load_and_authorize_resource
 
-  layout 'one_column'
+  layout "one_column"
   
   before_action :set_link, only: [:show, :edit, :update, :destroy]
 
