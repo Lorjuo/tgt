@@ -153,6 +153,7 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    devise-i18n-views (0.2.8)
     el_finder (1.1.11)
       image_size (>= 1.0.0)
     email_validator (1.4.0)
@@ -357,6 +358,7 @@ DEPENDENCIES
   datetimepicker-rails!
   debugger
   devise
+  devise-i18n-views
   el_finder
   email_validator
   factory_girl_rails

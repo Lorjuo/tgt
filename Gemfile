@@ -136,6 +136,7 @@ gem 'unicorn'
 # Security
 gem 'cancancan'
 gem 'devise'
+gem 'devise-i18n-views'
 gem 'rolify', github: "EppO/rolify" #, '~> 3.3.0.rc4' # https://github.com/EppO/rolify/pull/129
 
 # SSH
