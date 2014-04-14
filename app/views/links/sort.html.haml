@@ -1,6 +1,6 @@
 %div.window.box
   / - if can? :create, Link
-  /   = link_to new_department_navigation_element_path(@department), :class => 'btn btn-primary' do
+  /   = link_to new_department_link_path(@department), :class => 'btn btn-primary' do
   /     %span.glyphicon.glyphicon-plus
   /     New Link
   = link_to department_links_path(@department), :class => 'btn btn-primary' do

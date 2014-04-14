@@ -25,7 +25,7 @@ class Ability
       # TODO
       can :training_groups, :department
 
-      can :rebuild, NavigationElement
+      can :rebuild, Link
 
       can [:create, :read, :update, :destroy], Event
 
@@ -45,7 +45,7 @@ class Ability
 
 
     # Department dependent
-    can [:create, :read, :update, :sort_navigation_elements], Department do |department|
+    can [:create, :read, :update], Department do |department|
       user.departments.include? department
     end
 

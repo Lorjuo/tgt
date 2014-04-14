@@ -105,7 +105,7 @@ en:
         one: Department
         other: Departments
       document:
-        one: Docume
+        one: Document
         other: Documents
       event:
         one: Event
@@ -116,15 +116,15 @@ en:
       image:
         one: Image
         other: Images
+      link:
+        one: Link
+        other: Links
       location:
         one: Location
         other: Locations
       message:
         one: Message
         other: Messages
-      navigation_element:
-        one: Navigationselement
-        other: Navigationselements
       page:
         one: Page
         other: Pages
@@ -152,14 +152,7 @@ en:
       event:
         term: Date
 
-      location:
-        schedule: Occupancy Plan
-
-      message:
-        title: Headline
-        content: Text
-
-      navigation:
+      link:
         action_id: Action
         controller_id: Controller
         instance_id: Instance
@@ -167,6 +160,13 @@ en:
 
         object: Object
         url: Url
+
+      location:
+        schedule: Occupancy Plan
+
+      message:
+        title: Headline
+        content: Text
 
       trainer:
         name: Full Name
@@ -247,12 +247,6 @@ en:
       title: '%{title}'
     form:
       abstract_hint: 'Leaving this field blank, abstract will be automatically generated'
-
-  navigation_elements:
-    index:
-      title: Navigation
-    show:
-      title: 'Navigation element "%{name}"'
 
   pages:
     index:
