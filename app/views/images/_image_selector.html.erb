@@ -5,7 +5,7 @@
 
   <div class="col-lg-9 col-xs-12" style="display: table">
 
-    <%= content_tag :div, :style =>"display: table-cell; vertical-align: middle" do %>
+    <%= content_tag :div, :style =>"display: table-cell; vertical-align: middle; width: 74px" do %>
       <%= link_to(image_tag(image.file_url(:thumb), :size => "64x48"), image.file_url, :class => "fancybox") %>
     <% end if image.file.present? %>
 
