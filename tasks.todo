@@ -1,27 +1,25 @@
  ☐ improve right management for departments
  ☐ Refactor Documents and other assets
- ☐ i18n orders
- ☐ create department news
  ☐ improve gallery design
  ☐ create intern forum
  ☐ maybe change user trainer relationship to many to one
 
- ☐ Production Environment
  ✔ Bug in update an model with attached image without selecting a new image (trainer, message, training group, location) -> Solved by adding :image_attributes => [:file, :id] to permit @done (13-11-05 10:58)
  ✔ Display image beside image upload field @done (13-11-11 14:26)
  ✔ Style image upload field @done (13-11-11 14:26)
  ✔ Add Trainers in views @done (13-11-30 14:51)
  ☐ Check what happens with upload temp folders
- ☐ Check if upload and image resize do work in production
+ ✔ Check if upload and image resize do work in production @done (14-04-15 22:27)
  ✔ Label method for ancient groups in i18n @done (13-11-30 14:51)
  ✔ Turbolinks Bug @done (13-11-15 14:30)
  ✔ IE Bug @done (13-11-15 14:30)
  ☐ Tinymce browser backwards bug
  ☐ Create references between media types
- ☐ Add multi select and edit for galleries
+ ✔ Add multi select and edit for galleries @done (14-04-15 22:28)
  ☐ Add schedule for departments
- ☐ Add documents objects
+ ✔ Add documents objects @done (14-04-15 22:28)
  ☐ Refactor navigation
+ ☐ Jquery backwards bug - especially announcement slider
 
 Problems:
  ☐ Problem when trying to access: /departments/leichtathletik/messages because of friendly id

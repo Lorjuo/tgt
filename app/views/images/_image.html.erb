@@ -27,15 +27,15 @@
       <div class="mediaText">
         <!-- <p><%= image.name %></p> -->
         <%= check_box_tag "image_ids[]", image.id %>
-        <%= link_to edit_image_path(image) do %>
+        <%= link_to edit_image_path(image), :class => 'btn btn-default btn-xs'  do %>
           <span class="glyphicon glyphicon-edit"></span>
           <%= t "general.edit" %>
         <% end %>
-        <%= link_to set_preview_image_gallery_path(image.attachable, :image_id => image), :method => :post do %>
+        <%= link_to set_preview_image_gallery_path(image.attachable, :image_id => image), :method => :post, :class => 'btn btn-default btn-xs' do %>
           <span class="glyphicon glyphicon-star"></span>
           <%= t(".set_as_preview") %>
         <% end if false %>
-        <%= link_to image, data: { confirm: t("general.are_you_sure")}, :method => :delete do %>
+        <%= link_to image, data: { confirm: t("general.are_you_sure")}, :method => :delete, :class => 'btn btn-primary btn-xs' do %>
           <span class="glyphicon glyphicon-trash"></span>
           <%= t "general.destroy" %>
         <% end if can?(:destroy, image) %>
