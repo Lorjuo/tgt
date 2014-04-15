@@ -133,6 +133,10 @@ ul.references {
   padding: 6px 12px 6px 12px;
   /*overflow: auto;*/ /* needed to prevent floating boxes to expand out of this box (mediaBoxs inside ps) */
   /* Shadow effects */
+
+  .box-header {
+    margin-bottom: 20px;
+  }
 }
 
 .plain {

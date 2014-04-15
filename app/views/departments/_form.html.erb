@@ -18,14 +18,14 @@
         :input_html => { :class => "chosen input-xxlarge"} %>
       <%= f.input :color, :input_html => { :class => "colorpicker", :data => {:"color-format" => "hex"}} %>
       <%= f.input :description, as: :text, input_html: { class: 'tinymce' } unless @department.new_record?  %>
-      <%= f.association :users,
+      <%#= f.association :users,
         :collection => User.order('first_name' => :asc).order('last_name' => :asc),
         :label_method => :name,
         :value_method => :id,
         :include_blank => true,
         :input_html => { :class => "chosen", :data => {:include_blank => true} },
-        :hint => t(".user_hint") %>
-      <%= f.association :flyers,
+        :hint => t(".users_hint") %>
+      <%#= f.association :flyers,
         :collection => Document.where(:department_id => @department.id).order('name' => :asc),
         :label_method => :name,
         :value_method => :id,

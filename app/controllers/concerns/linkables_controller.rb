@@ -1,4 +1,4 @@
-module Linkable
+module LinkablesController
   extend ActiveSupport::Concern
 
   included do
@@ -7,6 +7,9 @@ module Linkable
     before_action :load_department
 
     layout "one_column"
+    
+    load_and_authorize_resource # param_method: :resource_params
+    skip_authorize_resource :only => :new
   end
 
   def show
@@ -16,6 +19,7 @@ module Linkable
     @linkable = @model.new
     @link = @linkable.build_link
     @link.department_id = @department.id
+    authorize! :create, @linkable
   end
 
   def edit

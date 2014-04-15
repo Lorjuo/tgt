@@ -1,8 +1,10 @@
 class MessagesController < ApplicationController
-  load_and_authorize_resource
+  #load_and_authorize_resource
 
   before_action :set_message, only: [:show, :edit, :update, :destroy]
   before_action :load_parent_resource
+
+  load_and_authorize_resource :message, :through => :department, :shallow => true
 
   layout :resolve_layout
 

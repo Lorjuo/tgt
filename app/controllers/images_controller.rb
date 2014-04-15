@@ -32,8 +32,10 @@ class ImagesController < ApplicationController
     # TODO: Reimplement strong parameters
     #@image = Image.new(image_params)
     
-    p_attr = params[:image]
-    p_attr[:file] = params[:image][:file].first if params[:image][:file].class == Array
+    #p_attr = params[:image]
+    #p_attr[:file] = params[:image][:file].first if params[:image][:file].class == Array # was probably needed because of IE bug with multiple concurrent uploads # Now it's working anyway
+    
+    p_attr = image_params
 
     @image = @parent.images.build(p_attr)
 
@@ -60,7 +62,6 @@ class ImagesController < ApplicationController
   # PATCH/PUT /images/1.json
   def update
     respond_to do |format|
-      debugger
       if @image.update(image_params)
         format.html { redirect_to @image, notice: 'Image was successfully updated.' }
         format.json { head :no_content }

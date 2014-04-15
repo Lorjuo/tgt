@@ -79,4 +79,6 @@ describe "User" do
       end
     end
   end
+
+  # TODO: Test links and subclasses
 end

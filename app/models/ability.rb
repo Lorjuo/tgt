@@ -49,9 +49,12 @@ class Ability
       user.departments.include? department
     end
 
+    can [:create, :read, :update, :destroy, :sort], [Link, ExternLink, MediaLink, Placeholder, Page] do |link|
+      user.departments.include? link.department
+    end
+
     can [:create, :read, :update, :destroy], TrainingGroup do |training_group|
       user.departments.include? training_group.department
-      false
     end
 
     can [:create, :read, :update, :destroy], TrainingUnit do |training_unit|
@@ -63,6 +66,12 @@ class Ability
       user.departments.include? message.department
     end
 
+    can [:create, :read, :update, :destroy], Gallery do |gallery|
+      user.departments.include? gallery.department
+    end
+
+    can [:create, :read, :update, :destroy], Image
+
     can [:create, :read, :update, :destroy], Trainer do |trainer|
       # Multiple joins:
       # http://stackoverflow.com/questions/11417287/advanced-query-in-rails-with-multiple-joins
@@ -73,6 +82,10 @@ class Ability
       # http://stackoverflow.com/questions/8026300/check-for-multiple-items-in-array-using-include-ruby-beginner
       user.departments.map(&:id).any? { |x| department_ids.include?(x) }
     end
+
+
+    # Trainer dependent
+
 
     can [:update], Trainer do |trainer|
       user.trainer == trainer

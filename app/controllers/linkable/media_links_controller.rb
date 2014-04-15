@@ -1,8 +1,7 @@
 module Linkable
   class MediaLinksController < BaseController
-    load_and_authorize_resource # param_method: :resource_params
 
-    include ::Linkable
+    include ::LinkablesController
     
     before_action :load_controllers, :only => [:new, :edit]
     before_action :dynamic_load_dependent_variables, only: [:new, :create, :edit, :update]

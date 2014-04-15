@@ -1,7 +1,9 @@
 class TrainersController < ApplicationController
   before_action :set_trainer, only: [:show, :edit, :update, :destroy]
 
-  load_and_authorize_resource :find_by => :slug
+  #load_and_authorize_resource :find_by => :slug
+
+  load_and_authorize_resource :training_group, :through => :department, :shallow => true, :find_by => :slug
 
   layout "two_columns"
 

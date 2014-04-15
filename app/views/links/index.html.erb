@@ -1,5 +1,5 @@
 <% content_for :title do %>
-  <%= t ".title" %>
+  <%= t ".title", :name => @department.name %>
 <% end %>
 
 <div class="window box">
@@ -26,25 +26,19 @@
         <%= t('.manage') %>
       <% end if can? :sort, Link %>
     </div>
-    <h2><%= t ".title" %></h2>
+    <h2><%= t ".title", :name => @department.name %></h2>
   </div>
 
-  <table class="table table-bordered table-striped">
+  <table class="table table-bordered table-striped datatable searchable">
     <thead>
       <tr>
-        <th><%= Link.human_attribute_name("name") %></th>
+        <th data-class="expand"><%= Link.human_attribute_name("name") %></th>
+        <th><%= Link.human_attribute_name("parent") %></th>
         <th><%= Link.human_attribute_name("active") %></th>
         <th><%= Link.human_attribute_name("linkable_type") %></th>
-        <th><%= Link.human_attribute_name("lft") %></th>
-        <th><%= Link.human_attribute_name("rgt") %></th>
-        <th><%= Link.human_attribute_name("depth") %></th>
-        <th><%= Link.human_attribute_name("department_id") %></th>
-        <th></th>
-        <% if can? :update, Link %>
-        <th></th>
-        <% end %>
-        <% if can? :destroy, Link %>
-        <th></th>
+        <th data-hide="xxs,xs,sm"><%= Link.human_attribute_name("url") %></th>
+        <% if user_signed_in? %>
+          <th class="no-sort"><%= t "general.actions" %></th>
         <% end %>
       </tr>
     </thead>
@@ -52,24 +46,22 @@
     <tbody>
   <% @links.each do |link| %>
       <tr>
-        <td><%= link.name %></td>
-        <td><%= link.active %></td>
-        <td><%= link.linkable_type %></td>
-        <td><%= link.lft %></td>
-        <td><%= link.rgt %></td>
-        <td><%= link.depth %></td>
-        <td><%= link.department_id %></td>
-        <td><%= link_to t('general.show'), link.linkable %></td>
-        <% if can? :update, link %>
-        <td><%= link_to t('general.edit'), polymorphic_path(link.linkable, :action => :edit) %></td>
-        <% end %>
-        <% if can? :destroy, link %>
-        <td>
-          <%= link_to link, method: :delete, data: { confirm: t('general.are_you_sure') } do %>
-            <span class="glyphicon glyphicon-trash"></span>
-            <%= t('general.destroy') %>
-          <% end %>
-        </td>
+        <td><%= link_to link.name, link %></td>
+        <td><%= link_to link.parent.name, link.parent unless link.root? %></td>
+        <td><%= t link.active.to_s %></td>
+        <td><%= link.linkable.class.model_name.human %></td>
+        <td><%= link_to link.url %></td>
+        <% if user_signed_in? %>
+          <td>
+            <%= link_to polymorphic_path(link.linkable, :action => :edit), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
+              <%= tag :span, :class => "glyphicon glyphicon-edit" %>
+            <% end %>
+            <% if can? :destroy, link %>
+              <%= link_to link, :title => t("general.destroy"), data: { confirm: t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete do %>
+                <%= tag :span, :class => "glyphicon glyphicon-trash" %>
+              <% end %>
+            <% end %>
+          </td>
         <% end %>
       </tr>
   <% end %>

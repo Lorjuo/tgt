@@ -1,8 +1,7 @@
 module Linkable
   class ExternLinksController < BaseController
-    load_and_authorize_resource # param_method: :resource_params
 
-    include ::Linkable
+    include ::LinkablesController
 
     private
 

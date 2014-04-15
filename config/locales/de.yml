@@ -1,5 +1,5 @@
 de:
-  "false": "no"
+  "false": "nein"
   "true": "ja"
 
   general:
@@ -117,18 +117,12 @@ de:
       image:
         one: Bild
         other: Bilder
-      link:
-        one: Verknüpfung
-        other: Verknüpfungen
       location:
         one: Sportstätte
         other: Sportstätten
       message:
         one: Nachricht
         other: Nachrichten
-      page:
-        one: Seite
-        other: Seiten
       trainer:
         one: Trainer
         other: Trainer
@@ -141,6 +135,23 @@ de:
       user:
         one: Benutzer
         other: Benutzer
+
+      # Link
+      link:
+        one: Verknüpfung
+        other: Verknüpfungen
+      extern_link:
+        one: Externer Link
+        other: Externe Links
+      media_link:
+        one: Media Link
+        other: Media Link
+      page:
+        one: Seite
+        other: Seiten
+      placeholder:
+        one: Dummy
+        other: Dummy
 
     attributes:
       announcement:
@@ -161,6 +172,8 @@ de:
 
         object: Objekt
         url: Url
+        linkable_type: Art der Verknüpfung
+        parent: Elternelement
 
       location:
         schedule: Belegungsplan
@@ -249,12 +262,6 @@ de:
     form:
       abstract_hint: 'Kurzfassung wird automatisch generiert, wenn dieses Feld leer gelassen wird'
 
-  pages:
-    index:
-      title: Seitenübersicht
-    show:
-      title: '%{name}'
-
   static_pages:
     home:
       news_archive: Nachrichten Archiv
@@ -301,6 +308,24 @@ de:
       departments_hint: 'Abteilungen, welche von diesem Nutzer verwaltet werden können'
       password_hint: 'Feld lediglich erforderlich, wenn Passwort geändert werden soll'
       trainer_hint: 'Zugehöriges Trainerprofil, welches durch diesen Nutzer verwaltet wird'
+
+  # Links
+  links:
+    index:
+      title: 'Navigation %{name}'
+  linkable:
+    extern_links:
+      show:
+        title: 'Externer Link "%{name}"'
+    media_links:
+      show:
+        title: 'Media Verknüpfung "%{name}"'
+    pages:
+      show:
+        title: 'Seite "%{name}"'
+    placeholders:
+      show:
+        title: 'Dummy Link "%{name}"'
 
   layouts:
 

@@ -116,18 +116,12 @@ en:
       image:
         one: Image
         other: Images
-      link:
-        one: Link
-        other: Links
       location:
         one: Location
         other: Locations
       message:
         one: Message
         other: Messages
-      page:
-        one: Page
-        other: Pages
       trainer:
         one: Trainer
         other: Trainers
@@ -140,6 +134,23 @@ en:
       user:
         one: User
         other: Users
+
+      # Link
+      link:
+        one: Link
+        other: Links
+      extern_link:
+        one: External link
+        other: External links
+      media_link:
+        one: Media link
+        other: Media link
+      page:
+        one: page
+        other: pages
+      placeholder:
+        one: Dummy
+        other: Dummy
 
     attributes:
       announcement:
@@ -160,6 +171,8 @@ en:
 
         object: Object
         url: Url
+        linkable_type: Type of link
+        parent: Parental element
 
       location:
         schedule: Occupancy Plan

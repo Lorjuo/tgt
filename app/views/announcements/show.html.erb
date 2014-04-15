@@ -27,7 +27,7 @@
     <dd><%= @announcement.link %></dd>
 
     <dt><%= Announcement.human_attribute_name(:active) %></dt>
-    <dd><%= @announcement.active %></dd>
+    <dd><%= t @announcement.active.to_s %></dd>
 
     <dt><%= Announcement.human_attribute_name(:visible_from) %></dt>
     <dd><%= l @announcement.visible_from unless @announcement.visible_from.nil? %></dd>

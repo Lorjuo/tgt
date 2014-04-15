@@ -1,4 +1,5 @@
 class Placeholder < ActiveRecord::Base
+  include Linkable
 
   # Associations
   has_one :link, :as => :linkable, :dependent => :destroy

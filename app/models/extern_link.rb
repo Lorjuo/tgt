@@ -1,5 +1,6 @@
 class ExternLink < ActiveRecord::Base
   include UrlHelper
+  include Linkable
 
   # Associations
   has_one :link, :as => :linkable, :dependent => :destroy

@@ -1,5 +1,6 @@
 class MediaLink < ActiveRecord::Base
   include Rails.application.routes.url_helpers
+  include Linkable
 
   # Associations
   has_one :link, :as => :linkable, :dependent => :destroy
