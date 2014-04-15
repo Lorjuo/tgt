@@ -322,7 +322,7 @@ de:
         title: 'Media Verknüpfung "%{name}"'
     pages:
       show:
-        title: 'Seite "%{name}"'
+        title: '%{name}'
     placeholders:
       show:
         title: 'Dummy Link "%{name}"'

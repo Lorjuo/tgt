@@ -52,3 +52,12 @@
 .btn-danger {
   @include pretty-buttons($btn-danger-color, $btn-danger-bg, $btn-danger-border);
 }
+
+.pagination{
+  li a {
+    @include pretty-buttons($btn-default-color, $btn-default-bg, $btn-default-border);
+  }
+  li.active a {
+    @include pretty-buttons($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+  }
+}

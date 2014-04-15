@@ -49,9 +49,6 @@
 //# Google Maps # TODO: Maybe remove this
 //#Gmaps4RailsDisabled:
 // require gmaps/google
-//
-//# Grid # TODO: Maybe remove this
-//= require jquery.equalheights
 // 
 //# File Upload
 //= require fileupload
@@ -112,6 +109,9 @@
 //= require messages
 //= require schedule
 //= require training_groups
+//
+//# Grid # Has to be some of the last scripts to include, because especially chosen can change the page adjustments
+//= require jquery.equalheights
 //
 //# Has to be the last (https://github.com/kossnocorp/jquery.turbolinks)
 //= require turbolinks

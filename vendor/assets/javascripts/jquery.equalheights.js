@@ -1,13 +1,13 @@
 /*
-* Simple jQuery Equal Heights
-*
-* Copyright (c) 2012 Matt Banks
-* Dual licensed under the MIT and GPL licenses.
-* Uses the same license as jQuery, see:
-* http://docs.jquery.com/License
-*
-* @version 1.3
-*/
+ * Simple jQuery Equal Heights
+ *
+ * Copyright (c) 2012 Matt Banks
+ * Dual licensed under the MIT and GPL licenses.
+ * Uses the same license as jQuery, see:
+ * http://docs.jquery.com/License
+ *
+ * @version 1.3
+ */
 // (function($) {
 
 //   $.fn.equalHeights = function() {
@@ -27,119 +27,176 @@
 
 /*global jQuery */
 /*!
-* equalHeightColumns.js 1.1
-*
-* Copyright 2013, Paul Sprangers http://paulsprangers.com
-* Released under the WTFPL license
-* http://www.wtfpl.net
-*
-* Date: Thu Aug 8 12:18:00 2013 +0100
-*/
+ * equalHeightColumns.js 1.1
+ *
+ * Copyright 2013, Paul Sprangers http://paulsprangers.com
+ * Released under the WTFPL license
+ * http://www.wtfpl.net
+ *
+ * Date: Thu Aug 8 12:18:00 2013 +0100
+ */
 
-(function( $ ){
+// (function($) {
 
-    $.fn.equalHeightColumns = function( options ) {
+//     $.fn.equalHeightColumns = function(options) {
 
-            defaults = {
-                minWidth: -1, // Won't resize unless window is wider than this value
-                maxWidth: 99999, // Won't resize unless window is narrower than this value
-                setHeightOn: 'min-height' // The CSS attribute on which the equal height is set. Usually height or min-height
-            };
+//         defaults = {
+//             minWidth: -1, // Won't resize unless window is wider than this value
+//             maxWidth: 99999, // Won't resize unless window is narrower than this value
+//             setHeightOn: 'min-height' // The CSS attribute on which the equal height is set. Usually height or min-height
+//         };
 
-            var $this = $(this); // store the object
-            options = $.extend( {}, defaults, options ); // merge options
-            
-            // Recalculate the distance to the top of the element to keep it centered
-            var resizeHeight = function () {
+//         var $this = $(this); // store the object
+//         options = $.extend({}, defaults, options); // merge options
 
-                // Get window width
-                var windowWidth = $(window).width();
+//         // Recalculate the distance to the top of the element to keep it centered
+//         var resizeHeight = function() {
 
-                // Check to see if the current browser width falls within the set minWidth and maxWidth
-                if( options.minWidth < windowWidth && options.maxWidth > windowWidth ){
-                    var height = 0;
-                    var highest = 0;
+//             // Get window width
+//             var windowWidth = $(window).width();
 
-                    // Reset heights
-                    $this.css( options.setHeightOn, 0 );
+//             // Check to see if the current browser width falls within the set minWidth and maxWidth
+//             if (options.minWidth < windowWidth && options.maxWidth > windowWidth) {
+//                 var height = 0;
+//                 var highest = 0;
 
-                    // Figure out the highest element
-                    $this.each( function(){
+//                 // Reset heights
+//                 $this.css(options.setHeightOn, 0);
 
-                        height = $(this).height();
+//                 // Figure out the highest element
+//                 $this.each(function() {
 
-                        if( height > highest ){
-                            highest = height;
-                        }
+//                     height = $(this).height();
 
-                    } );
+//                     if (height > highest) {
+//                         highest = height;
+//                     }
 
-                    // Set that height on the element
-                    $this.css( options.setHeightOn, highest );
-                    bla = test;
+//                 });
 
-                }
-                else{
-                    // Add check so this doesn't have to happen everytime
-                    $this.css( options.setHeightOn, 0 );
-                }
-            };
+//                 // Set that height on the element
+//                 $this.css(options.setHeightOn, highest);
+//                 bla = test;
 
-            // Call once to set initially
-            resizeHeight();
+//             } else {
+//                 // Add check so this doesn't have to happen everytime
+//                 $this.css(options.setHeightOn, 0);
+//             }
+//         };
 
-            // Call on resize. Opera debounces their resize by default.
-            $(window).resize(resizeHeight);
-            
-            // Also check if any images are present and recalculate when they load
-            // there might be an optimization opportunity here
-            $this.find('img').load( resizeHeight );
-            
-            // If afterLoading is defined, add a load event to the selector
-            if ( typeof options.afterLoading !== 'undefined' ) {
-                    $this.find(options.afterLoading).load( resizeHeight );
-                        }
-                        
-                        // If afterTimeout is defined use it a the timeout value
-                        if ( typeof options.afterTimeout !== 'undefined' ) {
-                    setTimeout(function(){
-                 resizeHeight();
-                 
-                 // check afterLoading again, to make sure that dynamically added nodes are present
-                 if ( typeof options.afterLoading !== 'undefined' ) {
-                         $this.find(options.afterLoading).load( resizeHeight );
-                                        }
-                    }, options.afterTimeout);
-                        }
+//         // Call once to set initially
+//         resizeHeight();
 
-    };
+//         // Call on resize. Opera debounces their resize by default.
+//         $(window).resize(resizeHeight);
 
-})( jQuery );
+//         // Also check if any images are present and recalculate when they load
+//         // there might be an optimization opportunity here
+//         $this.find('img').load(resizeHeight);
+
+//         // If afterLoading is defined, add a load event to the selector
+//         if (typeof options.afterLoading !== 'undefined') {
+//             $this.find(options.afterLoading).load(resizeHeight);
+//         }
+
+//         // If afterTimeout is defined use it a the timeout value
+//         if (typeof options.afterTimeout !== 'undefined') {
+//             setTimeout(function() {
+//                 resizeHeight();
+
+//                 // check afterLoading again, to make sure that dynamically added nodes are present
+//                 if (typeof options.afterLoading !== 'undefined') {
+//                     $this.find(options.afterLoading).load(resizeHeight);
+//                 }
+//             }, options.afterTimeout);
+//         }
+
+//     };
+
+// })(jQuery);
 
 //see: https://github.com/PaulSpr/jQuery-Equal-Height-Columns/blob/master/jquery.equalheightcolumns.js
 //see: http://stackoverflow.com/questions/13029090/jquery-equal-height-responsive-div-rows
 
 $.fn.extend({
-    equalHeights: function(){
-        var top=0;
-        var row=[];
-        var classname=('equalHeights'+Math.random()).replace('.','');
-        $(this).each(function(){
-            var thistop=$(this).offset().top;
-            if (thistop>top) {
-                $('.'+classname).removeClass(classname); 
-                top=thistop;
+    equalHeights: function() {
+        var top = 0;
+        var row = [];
+        var classname = ('equalHeights' + Math.random()).replace('.', '');
+        $(this).each(function() {
+            var thistop = $(this).offset().top;
+            if (thistop > top) {
+                $('.' + classname).removeClass(classname);
+                top = thistop;
             }
             $(this).addClass(classname);
             $(this).height('auto');
-            var h=(Math.max.apply(null, $('.'+classname).map(function(){ return $(this).outerHeight(); }).get()));
-            $('.'+classname).height(h);
-        }).removeClass(classname); 
-    }      
+            var h = (Math.max.apply(null, $('.' + classname).map(function() {
+                return $(this).outerHeight();
+            }).get()));
+            $('.' + classname).height(h);
+        }).removeClass(classname);
+    }
 });
 
-$(function(){
-  $(window).resize(function(){
-    $('.eqme div.window').equalHeights();
-  }).trigger('resize');
+$(function() {
+    $(window).resize(function() {
+        $('.eqme div.window').equalHeights();
+    }).trigger('resize');
 });
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//see: https://github.com/PaulSpr/jQuery-Equal-Height-Columns/blob/master/jquery.equalheightcolumns.js
+
+// $.fn.eqHeights = function(options) {
+
+//     var defaults = {
+//         child: false
+//     };
+//     var options = $.extend(defaults, options);
+
+//     var el = $(this);
+//     if (el.length > 0 && !el.data('eqHeights')) {
+//         $(window).bind('resize.eqHeights', function() {
+//             el.eqHeights();
+//         });
+//         el.data('eqHeights', true);
+//     }
+
+//     if (options.child && options.child.length > 0) {
+//         var elmtns = $(options.child, this);
+//     } else {
+//         var elmtns = $(this).children();
+//     }
+
+//     var prevTop = 0;
+//     var max_height = 0;
+//     var elements = [];
+//     elmtns.height('auto').each(function() {
+
+//         var thisTop = this.offsetTop;
+
+//         if (prevTop > 0 && prevTop != thisTop) {
+//             $(elements).height(max_height);
+//             max_height = $(this).height();
+//             elements = [];
+//         }
+//         max_height = Math.max(max_height, $(this).height());
+
+//         prevTop = this.offsetTop;
+//         elements.push(this);
+//     });
+
+//     $(elements).height(max_height);
+// };
+// // Usage:
+// // $('.equalheight').eqHeights();
+// // $('.equalheight-frame').eqHeights({child:'.frame'});
+
+// $(function() {
+//     $(window).resize(function() {
+//         $('.eqme').eqHeights({
+//             child: 'div.window'
+//         });
+//     }).trigger('resize');
+// });

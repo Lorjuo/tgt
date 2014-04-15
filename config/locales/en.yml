@@ -261,12 +261,6 @@ en:
     form:
       abstract_hint: 'Leaving this field blank, abstract will be automatically generated'
 
-  pages:
-    index:
-      title: Listing pages
-    show:
-      title: '%{name}'
-
   static_pages:
     home: 
       news_archive: News Archive
@@ -313,6 +307,24 @@ en:
       departments_hint: 'These departments can be managed by current user'
       password_hint: 'This field is only needed when password should be changed'
       trainer_hint: 'Assigned Trainer profile, that can be managed by this user'
+
+  # Links
+  links:
+    index:
+      title: 'Navigation %{name}'
+  linkable:
+    extern_links:
+      show:
+        title: 'External link "%{name}"'
+    media_links:
+      show:
+        title: 'Media link "%{name}"'
+    pages:
+      show:
+        title: '%{name}'
+    placeholders:
+      show:
+        title: 'Dummy link "%{name}"'
 
   layouts:
 

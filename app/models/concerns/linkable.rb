@@ -6,5 +6,6 @@ module Linkable
     delegate :department, :to => :link
     delegate :name, :to => :link
     delegate :parent, :to => :link
+    delegate :active, :to => :link
   end
 end

@@ -15,11 +15,18 @@
   <% end %>
 <% end %>
 
-<dl class="dl-horizontal">
-  <dt><%= MediaLink.human_attribute_name("controller_id") %>:</dt>
-  <dd><%= @linkable.controller_id %></dd>
+<div class="window box">
+  <dl class="dl-horizontal">
+    <dt><%= Link.human_attribute_name("parent") %>:</dt>
+    <dd><%= link_to @linkable.parent.name, @linkable.parent unless @linkable.link.root? %></dd>
+    <dt><%= Link.human_attribute_name("active") %>:</dt>
+    <dd><%= t @linkable.active.to_s %></dd>
+    <hr />
+    <dt><%= MediaLink.human_attribute_name("controller_id") %>:</dt>
+    <dd><%= @linkable.controller_id %></dd>
 
-  <dt><%= MediaLink.human_attribute_name("instance_id") %>:</dt>
-  <dd><%= @linkable.instance_id %></dd>
+    <dt><%= MediaLink.human_attribute_name("instance_id") %>:</dt>
+    <dd><%= @linkable.instance_id %></dd>
 
-</dl>
+  </dl>
+</div>
