@@ -22,6 +22,9 @@
 
         <dt>Email:</dt>
         <dd><%= current_user.email %></dd>
+        <!-- <dd><%= mail_to @user.email, encode: "hex", :class => "email" do %>
+          <span class="glyphicon glyphicon-envelope"></span> Email
+        <% end %></dd> -->
 
         <dt>Registriert seit:</dt>
         <dd><%= current_user.created_at %></dd>
@@ -37,7 +40,7 @@
         <dt>Rollen:</dt>
         <% Role.all.each do |role| %>
           <dd>
-            <%= fa_icon( current_user.has_role?(role) ? "check-square-o" : "square-o") %>
+            <%= fa_icon( current_user.has_role?(role.name) ? "check-square-o" : "square-o") %>
             <%= role.name %>
           </dd>
         <% end %>

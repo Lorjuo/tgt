@@ -1,0 +1,16 @@
+# https://github.com/ryanb/cancan/wiki/Translating-your-app
+de:
+  actions:
+    read: "anzeigen"
+    show: "anzeigen"
+    index: "anzeigen"
+    new: "erstellen"
+    create: "erstellen"
+    edit: "bearbeiten"
+    update: "bearbeiten"
+    destroy: "löschen"
+
+  unauthorized:
+    manage:
+      #all: "Sie Verfügen nicht über die Berechtigung um folgende Aktion durchzuführen: %{subject} %{action}."
+      all: "Sie Verfügen nicht über die nötigen Berechtigungen um diese Aktion durchzuführen"

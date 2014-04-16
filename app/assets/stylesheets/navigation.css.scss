@@ -115,7 +115,7 @@ $caretSize: 5px;
 
   & > li {
     float: left;
-    z-index: 20; /* has to be lower than 100 because .mce-fullscreen already defines this */
+    z-index: 220; /* has to be lower than 100 because .mce-fullscreen already defines this */
   }
 
   & > li > a {
@@ -125,7 +125,7 @@ $caretSize: 5px;
 
   li ul {
     position: absolute;
-    z-index: 10; /* has to be lower than 100 because .mce-fullscreen already defines this */
+    z-index: 210; /* has to be lower than 100 because .mce-fullscreen already defines this */
   }
   &.left li ul {left: -9999px;}
   &.right li ul {right: 9999px;}
@@ -134,7 +134,7 @@ $caretSize: 5px;
   li li a {
     display: block;
     position: relative;
-    z-index:10; /* has to be lower than 100 because .mce-fullscreen already defines this */
+    z-index: 210; /* has to be lower than 100 because .mce-fullscreen already defines this */
   }
 
   li li ul {
@@ -143,7 +143,7 @@ $caretSize: 5px;
 
   /* Third Level */
   li li li a {
-    z-index:20; /* has to be lower than 100 because .mce-fullscreen already defines this */
+    z-index: 220; /* has to be lower than 100 because .mce-fullscreen already defines this */
   }
 
 

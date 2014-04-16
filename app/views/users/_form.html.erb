@@ -23,7 +23,7 @@
       <div class="col-md-6">
         <div class="thin">
           <%= f.association :roles, :as => :check_boxes,
-            :item_wrapper_class => 'col-sm-6' %>
+            :item_wrapper_class => 'col-sm-6' if current_user.has_role 'admin' %>
           <%= f.association :departments,
             :as => :check_boxes,
             :collection => Department.specific.order('name' => :asc),

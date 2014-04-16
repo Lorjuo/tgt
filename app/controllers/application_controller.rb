@@ -22,19 +22,22 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # Redirect to a specific page on successful sign in
+  #https://github.com/plataformatec/devise/wiki/How-To:-redirect-to-a-specific-page-on-successful-sign-in
+  # # Redirect to a specific page on successful sign in
   def after_sign_in_path_for(resource)
-    if params[:user][:referring_page].present?
+    #if params[:user][:referring_page].present?
+    if params.try(:[], :user).try(:[], :referring_page).present?
       params[:user][:referring_page]
     else
       root_path
     end
   end
 
+  #https://github.com/plataformatec/devise/wiki/How-To:-redirect-to-a-specific-page-on-successful-sign-in
   # Redirect to a specific page on successful sign in
-  def after_sign_in_path_for(resource)
-    params[:user][:referring_page] || super
-  end
+  # def after_sign_in_path_for(resource)
+  #   params[:user][:referring_page] || super
+  # end
 
   # def after_sign_out_path_for(resource_or_scope)
   #   params[:referring_page] || super

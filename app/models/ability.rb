@@ -33,10 +33,12 @@ class Ability
 
       #TODO: Set abilities for images, documents and uploaders
       #Maybe. http://stackoverflow.com/questions/8170475/cancan-abilities-for-inherited-resources-with-nesting-in-controller
+    else
+      # User with no special rights
+      cannot :read, User
     end
 
     # Everyone
-    can :read, :all
     can :manage, :static_page
 
     can [:schedule, :interactive_map], Location
