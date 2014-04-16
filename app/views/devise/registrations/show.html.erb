@@ -1,0 +1,63 @@
+<div class="window box">
+  <div class="box-header">
+    <div class="pull-right">
+      <%= link_to edit_user_registration_path, :class => 'btn btn-default btn-sm' do %>
+        <span class="glyphicon glyphicon-info-sign"></span>
+        <%= t('.edit_account') %>
+      <% end %>
+    </div>
+    <h1>Benutzerprofil</h1>
+    <%= current_user.name %>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col-md-8">
+      <h3>
+        <span class="glyphicon glyphicon-info-sign"></span>
+        <%= t ".info" %>
+      </h3>
+      <dl class="dl-horizontal">
+        <dt><%= User.human_attribute_name(:name) %>:</dt>
+        <dd><%= current_user.name %></dd>
+
+        <dt>Email:</dt>
+        <dd><%= current_user.email %></dd>
+
+        <dt>Registriert seit:</dt>
+        <dd><%= current_user.created_at %></dd>
+        <dd><%= current_user.created_at %></dd>
+      </dl>
+    </div>
+    <div class="col-md-4">
+      <h3>
+        <%= fa_icon "unlock-alt" %> 
+        <%= t ".rights" %>
+      </h3>
+      <dl class="dl-horizontal">
+        <dt>Rollen:</dt>
+        <% Role.all.each do |role| %>
+          <dd>
+            <%= fa_icon( current_user.has_role?(role) ? "check-square-o" : "square-o") %>
+            <%= role.name %>
+          </dd>
+        <% end %>
+
+        <dt>Abteilungen:</dt>
+        <% current_user.departments.each do |department| %>
+          <dd>
+            <%= fa_icon "check-square-o" %>
+            <%= department.name %>
+          </dd>
+        <% end %>
+
+        <dt>Trainerprofil:</dt>
+        <dd>
+          <%= link_to current_user.trainer do %>
+            <%= fa_icon "user" %>
+            <%= department.name %>
+          <% end unless current_user.trainer.nil? %>
+        </dd>
+      </dl>
+      </dl>
+  </div>
+</div>

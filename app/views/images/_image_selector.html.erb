@@ -3,7 +3,8 @@
 <div class="form-group file optional training_group_image_file">
   <label class="file optional col-lg-3 control-label" for="training_group_image_attributes_file"><%= Image.model_name.human %></label>
 
-  <div class="col-lg-9 col-xs-12" style="display: table">
+  <div class="col-lg-9 co
+  +l-xs-12" style="display: table">
 
     <%= content_tag :div, :style =>"display: table-cell; vertical-align: middle; width: 74px" do %>
       <%= link_to(image_tag(image.file_url(:thumb), :size => "64x48"), image.file_url, :class => "fancybox") %>

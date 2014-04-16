@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
 
   before_filter :_miniprofiler, :set_locale #, :_cancan_sanitizer
 
+  before_filter :configure_permitted_parameters, if: :devise_controller?
+
   # Not in use because nearly every page is readable
   # before_filter :authenticate_user! 
 
@@ -72,16 +74,6 @@ class ApplicationController < ActionController::Base
     # logger.debug "* Locale set to '#{I18n.locale}'"
   end
 
-  # Apply strong_parameters filtering before CanCan authorization
-  # See https://github.com/ryanb/cancan/issues/571#issuecomment-10753675
-  # updated: http://stackoverflow.com/questions/19273182/activemodelforbiddenattributeserror-cancan-rails-4-model-with-scoped-con/19504322#19504322
-  # def _cancan_sanitizer
-  # #before_filter do
-  #   resource = controller_path.singularize.gsub('/', '_').to_sym
-  #   method = "#{resource}_params"
-  #   params[resource] &&= send(method) if respond_to?(method, true)
-  # end
-
   private
 
   def custom_check_authorization?
@@ -90,5 +82,11 @@ class ApplicationController < ActionController::Base
     end
 
     return true
+  end
+
+  # http://stackoverflow.com/questions/16852377/custom-user-fields-in-devise-3-under-rails-4
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) << :first_name
+    devise_parameter_sanitizer.for(:sign_up) << :last_name
   end
 end
