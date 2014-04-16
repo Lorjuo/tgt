@@ -107,6 +107,7 @@
         </li>
 
         <!--<li><a href="#about"><%= t ".about" %></a></li>-->
+        <% if Rails.env.development? %>
         <li>
           <a href="#">
             <span class="visible-xs">XS</span>
@@ -115,6 +116,7 @@
             <span class="visible-lg">LG</span>
           </a>
         </li>
+        <% end %>
       </ul>
     </div>
   </div>

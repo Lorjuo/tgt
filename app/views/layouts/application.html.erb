@@ -46,7 +46,7 @@
     <%= render :partial => "layouts/header" %>
       
     <div class="pageContent">
-      <% if @department.present? %>
+      <% if @department.present? && !@department.new_record? %>
         <%= render :partial => "layouts/department_navigation" %>
       <% end %>
 

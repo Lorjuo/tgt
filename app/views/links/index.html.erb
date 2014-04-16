@@ -5,23 +5,23 @@
 <div class="window box">
   <div class="box-header">
     <div class="pull-right">
-      <%= link_to new_department_extern_link_path(@department), :class => 'btn btn-default' do %>
+      <%= link_to new_department_extern_link_path(@department), :class => 'btn btn-default btn-sm' do %>
         <span class="glyphicon glyphicon-plus"></span>
         <%= t('general.create_model', :model => ExternLink.model_name.human ) %>
       <% end if can? :create, ExternLink %>
-      <%= link_to new_department_media_link_path(@department), :class => 'btn btn-default' do %>
+      <%= link_to new_department_media_link_path(@department), :class => 'btn btn-default btn-sm' do %>
         <span class="glyphicon glyphicon-plus"></span>
         <%= t('general.create_model', :model => MediaLink.model_name.human ) %>
       <% end if can? :create, MediaLink %>
-      <%= link_to new_department_page_path(@department), :class => 'btn btn-default' do %>
+      <%= link_to new_department_page_path(@department), :class => 'btn btn-default btn-sm' do %>
         <span class="glyphicon glyphicon-plus"></span>
         <%= t('general.create_model', :model => Page.model_name.human ) %>
       <% end if can? :create, Page %>
-      <%= link_to new_department_placeholder_path(@department), :class => 'btn btn-default' do %>
+      <%= link_to new_department_placeholder_path(@department), :class => 'btn btn-default btn-sm' do %>
         <span class="glyphicon glyphicon-plus"></span>
         <%= t('general.create_model', :model => Placeholder.model_name.human ) %>
       <% end if can? :create, Placeholder %>
-      <%= link_to sort_department_links_path(@department), :class => 'btn btn-primary' do %>
+      <%= link_to sort_department_links_path(@department), :class => 'btn btn-primary btn-sm' do %>
         <span class="glyphicon glyphicon-th-list"></span>
         <%= t('.manage') %>
       <% end if can? :sort, Link %>
