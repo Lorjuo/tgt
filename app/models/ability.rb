@@ -22,12 +22,7 @@ class Ability
       can [:create, :read, :update, :destroy], Image
       can [:create, :read, :update, :destroy], Document
 
-      # TODO
-      can :training_groups, :department
-
       can :rebuild, Link
-
-      can [:create, :read, :update, :destroy], Event
 
       can [:create, :read, :update, :destroy], Announcement
 
@@ -70,6 +65,10 @@ class Ability
 
     can [:create, :read, :update, :destroy], Gallery do |gallery|
       user.departments.include? gallery.department
+    end
+
+    can [:create, :read, :update, :destroy], Event do |event|
+      user.departments.include? event.department
     end
 
     can [:create, :read, :update, :destroy], Image

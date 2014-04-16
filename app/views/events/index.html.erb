@@ -3,7 +3,7 @@
 <% end %>
 
 <% content_for :buttons do %>
-  <%= link_to new_event_path, :class => 'btn btn-primary' do %>
+  <%= link_to new_department_event_path(@department), :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
     <%= t('general.create_model', :model => Event.model_name.human ) %>
   <% end if can? :create, Event %>

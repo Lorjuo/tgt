@@ -19,7 +19,7 @@ TgtRefurbished::Application.routes.draw do
 
   # Events
 
-  resources :events
+  #resources :events, :only =>:index
 
 
 
@@ -40,6 +40,7 @@ TgtRefurbished::Application.routes.draw do
   resources :images do
     get :edit_multiple, on: :collection
     post :update_multiple, on: :collection
+    get :crop, on: :member
   end
 
 
@@ -93,6 +94,7 @@ TgtRefurbished::Application.routes.draw do
       get :trainers
       get :messages
       get :documents
+      get :events
       # required for Sortable GUI server side actions
       post :rebuild
     end
@@ -106,6 +108,7 @@ TgtRefurbished::Application.routes.draw do
       end
       resources :images
     end
+    resources :events
     resources :messages
     resources :training_groups#, :only => [:new, :create]
 

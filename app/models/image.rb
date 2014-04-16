@@ -5,6 +5,8 @@ class Image < ActiveRecord::Base
   # https://coderwall.com/p/g4lkbq
   # http://stackoverflow.com/questions/849897/can-rails-migrations-be-used-to-convert-data
   # http://makandracards.com/makandra/15575-how-to-write-complex-migrations-in-rails
+  
+  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
 
   # Associations
   belongs_to :attachable, polymorphic: true

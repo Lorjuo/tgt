@@ -111,6 +111,15 @@ class DepartmentsController < ApplicationController
     end
   end
 
+  def events
+    @events = @department.events.chronological
+
+    respond_to do |format|
+      format.html { render :template => "events/index" }
+      format.json { render json: @events }
+    end
+  end
+
   def documents
     @documents = @department.documents
     render :template => "documents/index"

@@ -1,7 +1,7 @@
 class ImagesController < ApplicationController
   load_and_authorize_resource
 
-  before_action :set_image, only: [:show, :edit, :update, :destroy]
+  before_action :set_image, only: [:show, :edit, :crop, :update, :destroy]
   before_action :load_parent, :only => [:new, :create]
 
   layout "two_columns"
@@ -24,6 +24,9 @@ class ImagesController < ApplicationController
 
   # GET /images/1/edit
   def edit
+  end
+
+  def crop
   end
 
   # POST /images

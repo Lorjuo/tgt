@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :load_parent_resource, :through => :department, :shallow => true # cancan
 
   load_and_authorize_resource
 
@@ -18,7 +19,7 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @event = Event.new
+    @event = @department.events.new
   end
 
   # GET /events/1/edit
@@ -28,7 +29,7 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(event_params)
+    @event = @department.events.new(event_params)
 
     respond_to do |format|
       if @event.save
@@ -70,9 +71,17 @@ class EventsController < ApplicationController
     def set_event
       @event = Event.find(params[:id])
     end
+    
+    def load_parent_resource
+      if params[:department_id]
+        @department = Department.friendly.find(params[:department_id])
+      elsif @event.present?
+        @department = @event.department
+      end
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:name, :term, :description)
+      params.require(:event).permit(:name, :term, :description, :department_id)
     end
 end

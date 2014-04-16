@@ -1,5 +1,8 @@
 class Event < ActiveRecord::Base
 
+  # Associations
+  belongs_to :department
+
   # Validators
   validates_date :term
   validates :name, :presence => true
