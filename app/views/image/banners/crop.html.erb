@@ -3,6 +3,7 @@
 
 <div class="window box">
   <%= form_for @image do |f| %>
+    <%= f.text_field :name %>
     <%= f.cropbox :file %>
     <%#= f.cropbox :file , version: :medium %>
     <%#= f.cropbox :file, width: 550, height: 600 %>  
@@ -13,7 +14,7 @@
     <%= f.submit 'Crop' %>
   <% end %>
 
-  <%= simple_form_for([@parent, @image], :defaults => { :input_html => { :class => 'input-xlarge' } }) do |f| %>
+  <%= simple_form_for(@image, :defaults => { :input_html => { :class => 'input-xlarge' } }) do |f| %>
     <%= f.error_notification %>
 
     <%= image_tag @image.file_url, id: "cropbox" %>

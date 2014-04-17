@@ -8,8 +8,10 @@
       <%= render 'images/image_selector', f:f, image:@image %>
     </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, :class => "btn btn-primary" %>
+    <div class="form-group">
+      <div class="col-lg-offset-3 col-lg-9">
+        <%= f.button :submit, :class => "btn btn-primary" %>
+      </div>
     </div>
   <% end %>
 </div>

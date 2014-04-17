@@ -6,7 +6,7 @@ class Document < ActiveRecord::Base
   has_many :references, :as => :reference_to, :dependent => :destroy # polymorphic
 
   # Uploader
-  mount_uploader :file, DocumentUploader, :mount_on => :file
+  mount_uploader :file, ::Document::BaseUploader, :mount_on => :file
 
   before_create :default_name
   before_update :default_name
@@ -22,7 +22,7 @@ class Document < ActiveRecord::Base
     end
   end
 
-  def self.document_list
+  def self.document_list # Currently not in use - was introduced because of tinymce
     all.map{ |doc| [doc.name, doc.file.url] }
   end
 end

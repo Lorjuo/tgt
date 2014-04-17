@@ -1,15 +1,5 @@
 # encoding: utf-8
-class ImageUploader < BaseImageUploader
-  process :set_content_type
-
-  def store_dir
-    #parent_id = model.tmp_parent_id ? model.tmp_parent_id : model.attachable.id
-    "uploads/"\
-    "#{model.attachable.class.to_s.underscore}/"\
-    "#{model.attachable.id.to_s}/"\
-    "#{model.class.to_s.underscore}/"\
-    "#{model.id.to_s}"
-  end
+class Image::PhotoUploader < Image::BaseUploader
 
   # see: http://carrierwave.rubyforge.org/rdoc/classes/CarrierWave/MiniMagick.html
   # resize_to_limit does not work. But commandline operation works

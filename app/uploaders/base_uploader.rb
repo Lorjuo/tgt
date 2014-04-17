@@ -2,10 +2,7 @@
 require 'carrierwave/processing/mime_types'
 class BaseUploader < CarrierWave::Uploader::Base
   include CarrierWave::MimeTypes
-
-  # remove original file:
-  # https://github.com/jnicklas/carrierwave/issues/584
-  # 
+ 
   # TODO: delete empty dirs:
   # https://github.com/jnicklas/carrierwave/wiki/How-to%3A-Make-a-fast-lookup-able-storage-directory-structure
 
@@ -29,29 +26,23 @@ class BaseUploader < CarrierWave::Uploader::Base
   end
 
   def filename
-    @name ||= "#{secure_token}.#{file.extension}" if original_filename.present? # TODO: unless insted of if?
+    @name ||= "#{secure_token}.#{file.extension}" if original_filename.present? # "unless" insted of "if"? - but seems to work
   end
 
-  def original_file
+  def original_file # Accessor for original filename
     original_filename
   end
 
   # https://github.com/carrierwaveuploader/carrierwave#providing-a-default-url
+  # Maybe move this to image uploader
   def default_url
     ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
     #ActionController::Base.helpers.asset_path("fallback/" + "default.gif")
   end
 
-  # partitions ID to be like: 0000/0000/0123
-  # to keep no more than 10,000 entries per directory
-  # EXT3 max: 32,000 dirs
-  # EXT4 max: 64,000 dirs
-  def partition(modelid)
-    ("%08d" % modelid).scan(/\d{4}/).join("/")
-    # ("%012d" % modelid).scan(/\d{4}/).join("/")
-  end
-
   protected
+
+  # Create unique filename
   def secure_token
     var = :"@#{mounted_as}_secure_token"
     model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)

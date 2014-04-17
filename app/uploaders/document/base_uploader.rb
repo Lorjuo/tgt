@@ -1,15 +1,25 @@
 # encoding: utf-8
-class DocumentUploader < BaseUploader
+class Document::BaseUploader < BaseUploader
   include CarrierWave::MiniMagick
   #include CarrierWave::RMagick
 
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{partition(model.id)}"
+    # "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{partition(model.id)}"
+    "uploads/#{model.class.to_s.underscore}/#{model.id}"
     # "uploads/"\
     # "#{model.attachable.class.to_s.underscore}/"\
     # "#{model.attachable.id.to_s}/"\
     # "#{model.class.to_s.underscore}/"\
     # "#{model.id.to_s}"
+  end
+
+  # partitions ID to be like: 0000/0000/0123
+  # to keep no more than 10,000 entries per directory
+  # EXT3 max: 32,000 dirs
+  # EXT4 max: 64,000 dirs
+  def partition(modelid)
+    ("%08d" % modelid).scan(/\d{4}/).join("/")
+    # ("%012d" % modelid).scan(/\d{4}/).join("/")
   end
 
   # process :convert => 'jpg', :if => :image?

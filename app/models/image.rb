@@ -32,14 +32,12 @@ class Image < ActiveRecord::Base
   # 
   # HTML 5 Image uploader with Jcrop (Preview on client side)
   # http://www.script-tutorials.com/html5-image-uploader-with-jcrop/
-  
-  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
 
   # Associations
   belongs_to :attachable, polymorphic: true
 
   # Uploader
-  mount_uploader :file, ImageUploader, :mount_on => :file
+  mount_uploader :file, ::Image::PhotoUploader, :mount_on => :file
   crop_uploaded :file
 
   before_create :default_name

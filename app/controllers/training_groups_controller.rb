@@ -61,6 +61,7 @@ class TrainingGroupsController < ApplicationController
   def update
     respond_to do |format|
       if @training_group.update(training_group_params)
+        @training_group.save
         format.html { redirect_to @training_group, notice: 'Training group was successfully updated.' }
         format.json { head :no_content }
       else

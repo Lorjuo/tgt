@@ -40,7 +40,12 @@ TgtRefurbished::Application.routes.draw do
   resources :images do
     get :edit_multiple, on: :collection
     post :update_multiple, on: :collection
-    get :crop, on: :member
+  end
+  namespace :image do
+  #scope :module => "image" do
+    resources :banners do
+      get :crop, on: :member
+    end
   end
 
 

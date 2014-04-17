@@ -6,51 +6,23 @@ class ImagesController < ApplicationController
 
   layout "two_columns"
 
-  # GET /images
-  # GET /images.json
   def index
     @images = Image.all
   end
 
-  # GET /images/1
-  # GET /images/1.json
   def show
   end
 
-  # GET /images/new
   def new
     @image = Image.new
   end
 
-  # GET /images/1/edit
   def edit
   end
 
-  def crop
-  end
-
-  # POST /images
-  # POST /images.json
   def create
-    # TODO: Reimplement strong parameters
-    #@image = Image.new(image_params)
-    
-    #p_attr = params[:image]
-    #p_attr[:file] = params[:image][:file].first if params[:image][:file].class == Array # was probably needed because of IE bug with multiple concurrent uploads # Now it's working anyway
-    
-    p_attr = image_params
+    @image = @parent.images.build(image_params)
 
-    @image = @parent.images.build(p_attr)
-
-    # respond_to do |format|
-    #   if @image.save
-    #     format.html { redirect_to @image, notice: 'Image was successfully created.' }
-    #     format.json { render action: 'show', status: :created, location: @image }
-    #   else
-    #     format.html { render action: 'new' }
-    #     format.json { render json: @image.errors, status: :unprocessable_entity }
-    #   end
-    # end
     respond_to do |format|
       if @image.valid? && @image.save
         format.html { redirect_to @image, notice: "Image was successfully created." }
@@ -61,8 +33,6 @@ class ImagesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /images/1
-  # PATCH/PUT /images/1.json
   def update
     respond_to do |format|
       if @image.update(image_params)
@@ -75,8 +45,6 @@ class ImagesController < ApplicationController
     end
   end
 
-  # DELETE /images/1
-  # DELETE /images/1.json
   def destroy
     @image = Image.find(params[:id])
     @image.destroy
@@ -123,7 +91,7 @@ class ImagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def image_params
-      params.require(:image).permit(:name, :file, :attachable_id, :attachable_type, :file_crop_x, :file_crop_y, :file_crop_w, :file_crop_h)
+      params.require(:image).permit(:name, :file, :attachable_id, :attachable_type) # maybe add type
     end
 
     def load_parent
