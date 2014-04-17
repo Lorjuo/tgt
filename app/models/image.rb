@@ -7,7 +7,7 @@ class Image < ActiveRecord::Base
   # http://makandracards.com/makandra/15575-how-to-write-complex-migrations-in-rails
   # 
   # Image STI and polymorphic associations
-  # http://rails-bestpractices.com/posts/45-use-sti-and-polymorphic-model-for-multiple-
+  # http://rails-bestpractices.com/posts/45-use-sti-and-polymorphic-model-for-multiple-uploads
   # For Paperclip:
   # http://www.jotlab.com/2012/uploading-with-rails-3-1-carrierwave-mediainfo-single-table-inheritance-and-polymorphism
   # 
