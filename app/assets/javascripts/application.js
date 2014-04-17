@@ -54,7 +54,8 @@
 //= require fileupload
 //= require jquery-fileupload
 //# require jquery-fileupload/basic
-// require jquery.Jcrop
+//= require jquery
+// require jquery.jcrop
 //
 //# File Upload Button
 //= require fileupload_button

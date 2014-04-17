@@ -1,7 +1,18 @@
-<%= stylesheet_link_tag 'jquery.Jcrop' %>
-<%= javascript_include_tag 'jquery.Jcrop', 'crop' %>
+<%= stylesheet_link_tag 'jquery.jcrop' %>
+<%= javascript_include_tag 'jquery.jcrop', 'images' %>
 
 <div class="window box">
+  <%= form_for @image do |f| %>
+    <%= f.cropbox :file %>
+    <%#= f.cropbox :file , version: :medium %>
+    <%#= f.cropbox :file, width: 550, height: 600 %>  
+    <%#= f.previewbox :file %>
+    <%#= f.peviewbox :file , version: :medium %>
+    <%= f.previewbox :file, width: 400, height: 100 %>
+
+    <%= f.submit 'Crop' %>
+  <% end %>
+
   <%= simple_form_for([@parent, @image], :defaults => { :input_html => { :class => 'input-xlarge' } }) do |f| %>
     <%= f.error_notification %>
 
@@ -31,5 +42,11 @@
     <div class="form-actions">
       <%= f.button :submit, :class => "btn btn-primary" %>
     </div>
-  <% end %>
+  <% end if false %>
 </div>
+
+<style>
+  #image_file_previewbox_wrapper img {
+    max-width: none;
+  }
+</style>

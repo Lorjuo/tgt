@@ -40,13 +40,14 @@ class Image < ActiveRecord::Base
 
   # Uploader
   mount_uploader :file, ImageUploader, :mount_on => :file
+  crop_uploaded :file
 
   before_create :default_name
   before_update :default_name
 
   after_destroy :clear_directory
 
-  attr_accessor :tmp_parent_id
+  #attr_accessor :tmp_parent_id
 
   def default_name
     # file.filename replaced by file.original_file
