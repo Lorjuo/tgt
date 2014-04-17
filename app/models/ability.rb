@@ -5,6 +5,9 @@ class Ability
     alias_action :create, :read, :update, :destroy, :to => :crud
 
     user ||= User.new # guest user (not logged in)
+
+    # Everyone
+    can :read, :all
     if user.has_role?('admin')
       can :manage, :all
     elsif user.has_role?('editor')
@@ -29,11 +32,10 @@ class Ability
       #TODO: Set abilities for images, documents and uploaders
       #Maybe. http://stackoverflow.com/questions/8170475/cancan-abilities-for-inherited-resources-with-nesting-in-controller
     else
-      # User with no special rights
+      # User with no special rights - has to be after "can :read, :all"
       cannot :read, User
     end
 
-    # Everyone
     can :manage, :static_page
 
     can [:schedule, :interactive_map], Location

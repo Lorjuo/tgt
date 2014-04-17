@@ -334,6 +334,7 @@ en:
       contact: Contact
       administration: Administration
       account: User account
+      show_account: Userprofile
       edit_account: Edit account
       sign_up: Register
       login: Login

@@ -133,7 +133,7 @@ TgtRefurbished::Application.routes.draw do
   
   devise_for :users, path: "auth", :controllers => { :registrations => "authentication/registrations" }
   devise_scope :user do
-    get "auth/show", :to => "authentication/registrations#show", :as => "user_registration_path"
+    get "auth/show", :to => "authentication/registrations#show", :as => "show_user_registration"
   end
 
 
