@@ -48,6 +48,10 @@ class Image::BannersController < ApplicationController
   def update
     respond_to do |format|
       if @image.update(resource_params)
+        @image.save # IMPORTANT - need to explicitly save the image after update
+        # to force to update activerecord to point to the newgenerated files and
+        # to force carrierwave to delete the old ones
+        # https://github.com/carrierwaveuploader/carrierwave/wiki/How-to%3A-Create-random-and-unique-filenames-for-all-versioned-files
         format.html { redirect_to @image, notice: 'Banner was successfully updated.' }
         format.json { head :no_content }
       else

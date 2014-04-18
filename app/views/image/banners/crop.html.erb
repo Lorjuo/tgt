@@ -3,8 +3,12 @@
 
 <div class="window box">
   <%= form_for @image do |f| %>
-    <%= f.text_field :name %>
+    <%#= f.text_field :name %>
+    <% %w[x y w h].each do |attribute| %>
+      <input id="image::banner_file_crop_<%= attribute %>" />
+    <% end %>
     <%= f.cropbox :file %>
+
     <%#= f.cropbox :file , version: :medium %>
     <%#= f.cropbox :file, width: 550, height: 600 %>  
     <%#= f.previewbox :file %>
@@ -47,7 +51,7 @@
 </div>
 
 <style>
-  #image_file_previewbox_wrapper img {
+  #image\:\:banner_file_previewbox_wrapper img {
     max-width: none;
   }
 </style>

@@ -4,6 +4,7 @@ namespace :carrierwave do
     Image.all.each do |model|
       model.file.recreate_versions!
       model.save!
+      # http://stackoverflow.com/questions/7195650/rails-carrierwave-recreate-versions-does-not-change-old-images
       puts "Recreated image \##{model.id}"
     end
   end
