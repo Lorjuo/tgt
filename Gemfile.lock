@@ -82,6 +82,9 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    annotate (2.6.3)
+      activerecord (>= 2.3.0)
+      rake (>= 0.8.7)
     ansi (1.4.3)
     arel (5.0.0)
     atomic (1.1.16)
@@ -98,6 +101,9 @@ GEM
     bootstrap-will_paginate (0.0.10)
       will_paginate
     builder (3.2.2)
+    bullet (4.8.0)
+      activesupport
+      uniform_notifier (>= 1.4.0)
     cancancan (1.7.1)
     capistrano (3.1.0)
       i18n
@@ -331,6 +337,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    uniform_notifier (1.4.0)
     warden (1.2.3)
       rack (>= 1.0)
     wicked (1.0.2)
@@ -343,12 +350,14 @@ PLATFORMS
 DEPENDENCIES
   actionview-encoded_mail_to
   active_record_query_trace
+  annotate
   awesome_nested_set!
   better_errors
   binding_of_caller
   bootstrap-colorpicker-rails
   bootstrap-sass
   bootstrap-will_paginate
+  bullet
   cancancan
   capistrano (~> 3.1)
   capistrano-rails (~> 1.1.0)

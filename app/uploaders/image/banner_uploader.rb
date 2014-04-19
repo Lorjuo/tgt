@@ -1,5 +1,5 @@
 # encoding: utf-8
-class Image::BannerUploader < Image::BaseUploader
+class Image::BannerUploader < Image::BaseImageUploader
 
   version :cropped do
     # To crop this version based on `jumbo` version, pass width = 600 and height = 600

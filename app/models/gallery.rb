@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: galleries
+#
+#  id               :integer          not null, primary key
+#  name             :string(255)
+#  created_at       :datetime
+#  updated_at       :datetime
+#  preview_image_id :integer
+#  department_id    :integer
+#  custom_date      :date
+#
+
 class Gallery < ActiveRecord::Base
 
   # Associations

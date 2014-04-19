@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: carnival_orders
+#
+#  order_id   :integer          not null, primary key
+#  person_id  :integer
+#  notice     :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class Carnival::Order < ActiveRecord::Base
 
   # Associations

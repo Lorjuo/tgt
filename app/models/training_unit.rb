@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: training_units
+#
+#  id                 :integer          not null, primary key
+#  week_day           :integer
+#  time_begin         :time
+#  time_end           :time
+#  location_summer_id :integer
+#  location_winter_id :integer
+#  created_at         :datetime
+#  updated_at         :datetime
+#  training_group_id  :integer
+#
+
 class TrainingUnit < ActiveRecord::Base
   scope :associations, -> {includes(:training_group, :weekday, :location_summer, :location_winter)}
 

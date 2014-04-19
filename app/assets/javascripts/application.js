@@ -118,3 +118,9 @@
 //# Has to be the last (https://github.com/kossnocorp/jquery.turbolinks)
 //= require turbolinks
 //# TODO: Check if including administration-bundle.js after this line has negative effects
+
+document.addEventListener("page:restore", function() {
+    app.init();
+});
+Turbolinks.pagesCached(0);
+// http://stackoverflow.com/questions/17029399/clicking-back-in-the-browser-disables-my-javascript-code-if-im-using-turbolin

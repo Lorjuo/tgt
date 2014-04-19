@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: messages
+#
+#  id            :integer          not null, primary key
+#  title         :string(255)
+#  content       :text
+#  department_id :string(255)
+#  created_at    :datetime
+#  updated_at    :datetime
+#  abstract      :text
+#  custom_date   :date
+#
+
 class Message < ActiveRecord::Base
 
   # Virtual temporal attributes for search

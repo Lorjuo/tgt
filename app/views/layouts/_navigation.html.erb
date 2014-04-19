@@ -84,7 +84,7 @@
           <ul class="dropdown-menu">
             <% if user_signed_in? %>
               <li>
-              <%= link_to(t('.show_account'), user_registration_path) %>
+              <%= link_to(t('.show_account'), show_user_registration_path) %>
               </li>
               <li>
               <%= link_to(t('.logout'), destroy_user_session_path(:referring_page => request.fullpath), :method=>'delete') %>        

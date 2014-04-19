@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: announcements
+#
+#  id           :integer          not null, primary key
+#  name         :string(255)
+#  caption      :text
+#  link         :string(255)
+#  active       :boolean          default(TRUE)
+#  created_at   :datetime
+#  updated_at   :datetime
+#  visible_from :date
+#  visible_to   :date
+#
+
 class Announcement < ActiveRecord::Base
 
   include UrlHelper

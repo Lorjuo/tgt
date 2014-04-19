@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: links
+#
+#  id            :integer          not null, primary key
+#  name          :string(255)
+#  parent_id     :integer
+#  lft           :integer
+#  rgt           :integer
+#  depth         :integer
+#  department_id :integer
+#  linkable_id   :integer
+#  linkable_type :string(255)
+#  created_at    :datetime
+#  updated_at    :datetime
+#  active        :boolean          default(TRUE)
+#
+
 class Link < ActiveRecord::Base # Parent Class for polymorphic association
   include TheSortableTree::Scopes
   #include Rails.application.routes.url_helpers

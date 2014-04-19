@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: extern_links
+#
+#  id         :integer          not null, primary key
+#  url        :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class ExternLink < ActiveRecord::Base
   include UrlHelper
   include Linkable

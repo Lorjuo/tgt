@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: pages
+#
+#  id         :integer          not null, primary key
+#  content    :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class Page < ActiveRecord::Base
   include Rails.application.routes.url_helpers
   include Linkable

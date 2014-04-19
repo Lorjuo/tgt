@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: departments
+#
+#  id                 :integer          not null, primary key
+#  name               :string(255)
+#  training_group_ids :string(255)
+#  created_at         :datetime
+#  updated_at         :datetime
+#  slug               :string(255)
+#  description        :text
+#  color              :string(255)
+#
+
 class Department < ActiveRecord::Base
   extend FriendlyId
 

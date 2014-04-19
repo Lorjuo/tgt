@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: media_links
+#
+#  id            :integer          not null, primary key
+#  controller_id :string(255)
+#  instance_id   :integer
+#  created_at    :datetime
+#  updated_at    :datetime
+#
+
 class MediaLink < ActiveRecord::Base
   include Rails.application.routes.url_helpers
   include Linkable

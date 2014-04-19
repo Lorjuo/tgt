@@ -1,5 +1,5 @@
 # encoding: utf-8
-class Image::PhotoUploader < Image::BaseUploader
+class Image::PhotoUploader < Image::BaseImageUploader
 
   # see: http://carrierwave.rubyforge.org/rdoc/classes/CarrierWave/MiniMagick.html
   # resize_to_limit does not work. But commandline operation works

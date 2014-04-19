@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: carnival_categories
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  price      :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class Carnival::Category < ActiveRecord::Base
 
   # Associations

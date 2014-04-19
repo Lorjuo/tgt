@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: carnival_reservations
+#
+#  id          :integer          not null, primary key
+#  order_id    :integer
+#  session_id  :integer
+#  category_id :integer
+#  amount      :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 class Carnival::Reservation < ActiveRecord::Base
 
   # Associations

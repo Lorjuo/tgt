@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: carnival_sessions
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  term       :datetime
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class Carnival::Session < ActiveRecord::Base
 
   # Associations

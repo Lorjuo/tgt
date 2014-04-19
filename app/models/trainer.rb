@@ -1,3 +1,23 @@
+# == Schema Information
+#
+# Table name: trainers
+#
+#  id          :integer          not null, primary key
+#  first_name  :string(255)
+#  last_name   :string(255)
+#  birthday    :date
+#  residence   :string(255)
+#  phone       :string(255)
+#  email       :string(255)
+#  profession  :text
+#  education   :text
+#  disciplines :text
+#  activities  :text
+#  created_at  :datetime
+#  updated_at  :datetime
+#  slug        :string(255)
+#
+
 class Trainer < ActiveRecord::Base
   extend FriendlyId
   

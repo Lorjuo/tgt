@@ -1,11 +1,11 @@
 # encoding: utf-8
-class Document::BaseUploader < BaseUploader
+class Document::BaseDocumentUploader < BaseUploader
   include CarrierWave::MiniMagick
   #include CarrierWave::RMagick
 
   def store_dir
-    # "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{partition(model.id)}"
-    "uploads/#{model.class.to_s.underscore}/#{model.id}"
+    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{partition(model.id)}"
+    # "uploads/#{model.class.to_s.underscore}/#{model.id}"
     # "uploads/"\
     # "#{model.attachable.class.to_s.underscore}/"\
     # "#{model.attachable.id.to_s}/"\

@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: locations
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#  address     :string(255)
+#  latitude    :float
+#  longitude   :float
+#  gmaps       :boolean
+#  description :text
+#
+
 class Location < ActiveRecord::Base
 
   geocoded_by :address

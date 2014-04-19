@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: training_groups
+#
+#  id            :integer          not null, primary key
+#  name          :string(255)
+#  description   :text
+#  department_id :integer
+#  age_begin     :integer
+#  age_end       :integer
+#  created_at    :datetime
+#  updated_at    :datetime
+#  ancient       :boolean
+#
+
 class TrainingGroup < ActiveRecord::Base
   #scope :associations, includes(:department, :trainers, :training_units)
   

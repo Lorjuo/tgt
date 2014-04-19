@@ -218,6 +218,11 @@ group :development do
   gem 'capistrano3-unicorn'
 
   gem 'hirb'
+
+  gem "bullet"
+
+  # Annotations
+  gem 'annotate'
   
   # Debugger
   gem 'debugger'
