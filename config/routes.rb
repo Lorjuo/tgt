@@ -42,9 +42,16 @@ TgtRefurbished::Application.routes.draw do
     post :update_multiple, on: :collection
   end
   namespace :image do
-  #scope :module => "image" do
+  #scope :image => "image" do
     resources :banners do
       get :crop, on: :member
+    end
+    resources :images
+  end
+
+  concern :imageable do
+    scope :module => "image" do
+      resources :images, :only => [:new, :create]
     end
   end
 
@@ -108,10 +115,14 @@ TgtRefurbished::Application.routes.draw do
     
     resources :documents
     resources :galleries, :shallow => true do
+      concerns :imageable
+      # scope :module => "image" do
+      #   resources :images
+      # end
       member do
         post :set_preview_image
       end
-      resources :images
+      #resources :images
     end
     resources :events
     resources :messages

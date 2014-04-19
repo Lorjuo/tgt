@@ -1,5 +1,15 @@
-<div class="window box">
+<% content_for :title do %>
+  <%= t ".title" %>
+<% end %>
 
+<% content_for :buttons do %>
+  <%= link_to new_resource_url, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    <%= t('general.create_model', :model => Image.model_name.human ) %>
+  <% end %>
+<% end %>
+
+<div class="window box">
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
@@ -17,7 +27,7 @@
   </thead>
 
   <tbody>
-<% @images.each do |image| %>
+<% collection.each do |image| %>
     <tr>
       <td>
         <%#= link_to(image_tag(image.file_url(:thumb)), image.file_url) if image.file.thumb.present? %>

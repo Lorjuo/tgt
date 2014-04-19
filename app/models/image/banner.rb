@@ -12,7 +12,7 @@
 #  type            :string(255)
 #
 
-class Image::Banner < Image::Base
+class Image::Banner < Image::Image
 
   # Uploader
   mount_uploader :file, ::Image::BannerUploader, :mount_on => :file

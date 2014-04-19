@@ -1,0 +1,23 @@
+<%= stylesheet_link_tag 'jquery.jcrop' %>
+<%= javascript_include_tag 'jquery.jcrop', 'images' %>
+
+<div class="window box">
+  <%= simple_form_for resource do |f| %>
+
+    <%# For debugging: %>
+    <% %w[x y w h].each do |attribute| %>
+      <input id="image::banner_file_crop_<%= attribute %>" />
+    <% end if false %>
+
+    <%= f.cropbox :file %>
+    <%= f.previewbox :file, width: 400, height: 100 %>
+
+    <%= f.submit 'Crop' %>
+  <% end %>
+</div>
+
+<style>
+  #image\:\:banner_file_previewbox_wrapper img {
+    max-width: none;
+  }
+</style>
