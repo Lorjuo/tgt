@@ -30,11 +30,6 @@
         </div>
       </div>-->
 
-      <%= f.simple_fields_for :image do |image_form| %>
-        <%#= image_form.input :file, :as => :file %>
-        <%= render 'images/image_selector', f:image_form, image:@message.image %>
-      <% end %>
-
       <fieldset>
         <legend><%= t "general.references" %></legend>
         <%= f.association :galleries,

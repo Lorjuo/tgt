@@ -58,7 +58,7 @@
     <tbody>
   <% @messages.each do |message| %>
       <tr>
-        <td><%= link_to(image_tag(message.image.file_url(:thumb), size: "64x48"), message.image.file_url, :class => "fancybox") if message.image.present? %></td>
+        <td><%= link_to(image_tag(message.thumb.file_url(:thumb), size: "64x48"), message.thumb.file_url, :class => "fancybox") if message.thumb.present? %></td>
         <td><%= link_to message.title, message %></td>
         <td>
           <%= message.display_abstract %>

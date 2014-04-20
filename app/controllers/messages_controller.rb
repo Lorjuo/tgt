@@ -28,44 +28,59 @@ class MessagesController < ApplicationController
 
 
   def edit
-    @message.build_image unless @message.image.present?
+  end
+
+  def images
+    @message.build_thumb unless @message.thumb.present?
+    @message.build_banner unless @message.banner.present?
   end
 
 
   def create
     @message = @department.messages.new(message_params)
 
-    respond_to do |format|
-      if @message.save
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @message }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
-      end
+    if @message.save
+      redirect_to @message, notice: 'Message was successfully created.'
+    else
+      render action: 'new'
     end
   end
 
 
   def update
-    respond_to do |format|
-      if @message.update(message_params)
-        format.html { redirect_to @message, notice: 'Message was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
-      end
+    if @message.update(message_params)
+      return if process_images
+      redirect_to @message, notice: 'Message was successfully updated.'
+    else
+      render action: 'edit'
     end
+    # @resource = @parent.images.build(permitted_params)
+    # if @resource.save
+    #   if params[:image][:file].present?
+    #     render :crop # Maybe replace this line with redirect_to to avoid sending form twice on F5
+    #   else
+    #     redirect_to @resource, notice: 'Banner was successfully created.'
+    #   end
+    # else
+    #   render action: 'new'
+    # end
+  end
+
+  def process_images
+    if message_params[:thumb_attributes].present?
+      redirect_to [@message, :action => :edit_images], notice: 'Thumb was successfully created.'
+      return true
+    elsif message_params[:banner_attributes].present?
+      redirect_to [@message.banner, :action => :crop], notice: 'Banner was successfully uploaded.'
+      return true
+    end
+    return false
   end
 
 
   def destroy
     @message.destroy
-    respond_to do |format|
-      format.html { redirect_to messages_url }
-      format.json { head :no_content }
-    end
+    redirect_to messages_url
   end
 
 
@@ -85,7 +100,10 @@ class MessagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def message_params
-      params.require(:message).permit(:title, :content, :abstract, :department_id, :image_attributes => [:file, :id],
+      image_attributes = [:file, :id]
+      params.require(:message).permit(:title, :content, :abstract, :department_id,
+        :thumb_attributes => image_attributes,
+        :banner_attributes => image_attributes,
         :gallery_ids => [], :document_ids => [])
       # :file needed when upload a new image
       # :id needed when fileupload is empty

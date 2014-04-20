@@ -1,74 +1,41 @@
+# http://stackoverflow.com/questions/19781163/refactoring-a-large-routes-rb-file-in-rails-4
+class ActionDispatch::Routing::Mapper
+  def draw(routes_name)
+    instance_eval(File.read(Rails.root.join("config/routes/#{routes_name}.rb")))
+  end
+end
+
+
 TgtRefurbished::Application.routes.draw do
 
+  # Includes
 
-
-  # Carnival
-
-  #get "carnival/orders/steps", to: "carnival/order_steps#personal_information", via: "post"
-  get '/carnival/orders/steps(.:format)', :to => "carnival/order_steps#create", via: "post"
-  namespace :carnival do
-    resources :reservations
-    resources :orders, :only => [] do
-      resources :steps, controller: 'order_steps'#, :only => []
-    end
-    resources :categories
-    resources :sessions
-  end
-
-
-
-  # Events
-
-  #resources :events, :only =>:index
-
+  draw :devise
+  draw :carnival
+  draw :elfinder
+  draw :images
+  draw :departments
 
 
   # Announcements
-  
   resources :announcements
 
 
-
   # Messages
-
-  resources :messages, :only =>:index
-
-
-
-  # Images
-
-  resources :images do
-    get :edit_multiple, on: :collection
-    post :update_multiple, on: :collection
-  end
-  namespace :image do
-  #scope :image => "image" do
-    resources :banners do
-      get :crop, on: :member
-    end
-    resources :images
-  end
-
-  concern :imageable do
-    scope :module => "image" do
-      resources :images, :only => [:new, :create]
+  resources :messages, :only => :index do
+    member do
+      get :images
     end
   end
 
 
   # Links
-  
   resources :links, :only => [] do
-    collection do
-      # required for Sortable GUI server side actions
-      post :rebuild
-    end
+    post :rebuild, :on => :collection # required for Sortable GUI server side actions
   end
 
 
-
   # Locations
-  
   resources :locations do
     # Gmaps4RailsDisabled:
     # collection do
@@ -80,98 +47,21 @@ TgtRefurbished::Application.routes.draw do
   end
 
 
-
   # TrainingUnits
-  
   resources :training_units
 
 
-
   # TrainingGroups
-
   resources :training_groups, :only => :index do
     get :search, on: :collection
   end
 
 
-
-  # Departments
-
-  resources :departments, :only =>:index
-  resources :departments, :shallow => true, :except =>:index do #, :path => ""
-  #resources :departments, :shallow => true do
-    member do
-      get :training_groups
-      get :galleries
-      get :trainers
-      get :messages
-      get :documents
-      get :events
-      # required for Sortable GUI server side actions
-      post :rebuild
-    end
-
-    # Nested Resources
-    
-    resources :documents
-    resources :galleries, :shallow => true do
-      concerns :imageable
-      # scope :module => "image" do
-      #   resources :images
-      # end
-      member do
-        post :set_preview_image
-      end
-      #resources :images
-    end
-    resources :events
-    resources :messages
-    resources :training_groups#, :only => [:new, :create]
-
-
-    resources :links, :only => [:index, :show, :edit, :destroy] do
-      get :sort, :on => :collection
-    end
-    scope :module => "linkable" do
-      resources :extern_links
-      resources :media_links do
-        get :change_controller, :on => :collection
-      end
-      resources :pages
-      resources :placeholders
-    end
-  end
-
-
-
-
-  # Devise
-  
-  devise_for :users, path: "auth", :controllers => { :registrations => "authentication/registrations" }
-  devise_scope :user do
-    get "auth/show", :to => "authentication/registrations#show", :as => "show_user_registration"
-  end
-
-
-
-  # Documents
-  # 
-  #resources :documents, :only =>:index
-
-
-
-
   # Users
-  
-  # Set scope admin to differentiate between devise and custom user administration
-  #scope "/admin" do
-    resources :users
-  #end
-
+  resources :users
 
 
   # Static Pages
-  
   resources :static_pages, :only => [] do
     collection do
       get :home
@@ -181,80 +71,10 @@ TgtRefurbished::Application.routes.draw do
   end
 
 
-
-  # Elfinder
-
-  resources :elfinder, :only => [] do
-    get 'backend', :on => :collection
-    post 'backend', :on => :collection
-    get 'frontend', :on => :collection
-    get 'frontend_wrapper', :on => :collection
-  end
-  
-
-
   # Trainers
-  
   resources :trainers
-  # resources :trainers, :only =>:index
-  # resources :trainers, :shallow => true, :except =>:index
   
   
-  
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  # Root
   root :to => "static_pages#home"
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-  
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
 end

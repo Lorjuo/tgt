@@ -3,7 +3,7 @@
 <% end %>
 
 <% content_for :buttons do %>
-  <%= link_to new_resource_url, :class => 'btn btn-primary' do %>
+  <%= link_to polymorphic_url(@resource_class, :action => :new), :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
     <%= t('general.create_model', :model => Image.model_name.human ) %>
   <% end %>
@@ -27,7 +27,7 @@
   </thead>
 
   <tbody>
-<% collection.each do |image| %>
+<% @collection.each do |image| %>
     <tr>
       <td>
         <%#= link_to(image_tag(image.file_url(:thumb)), image.file_url) if image.file.thumb.present? %>

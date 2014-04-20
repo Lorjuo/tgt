@@ -24,6 +24,7 @@ class Image < ActiveRecord::Base
   # http://rails-bestpractices.com/posts/45-use-sti-and-polymorphic-model-for-multiple-uploads
   # For Paperclip:
   # http://www.jotlab.com/2012/uploading-with-rails-3-1-carrierwave-mediainfo-single-table-inheritance-and-polymorphism
+  # http://www.tigraine.at/2012/06/25/explicit-path-helpers-with-sti-in-rails
   # 
   # Jquery Fileuploader jcrop integration via callback
   # https://github.com/blueimp/jQuery-File-Upload/issues/1314

@@ -11,6 +11,10 @@
     <span class="glyphicon glyphicon-info-sign"></span>
     <%= t "general.show" %>
   <% end %>
+  <%= link_to [@message, :action => :images], :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-picture"></span>
+    <%= t "general.images" %>
+  <% end %>
 <% end %>
 
 <%= render 'form' %>

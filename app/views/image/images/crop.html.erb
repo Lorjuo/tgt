@@ -2,7 +2,7 @@
 <%= javascript_include_tag 'jquery.jcrop', 'images' %>
 
 <div class="window box">
-  <%= simple_form_for resource do |f| %>
+  <%= simple_form_for @resource, :as => :image do |f| %>
 
     <%# For debugging: %>
     <% %w[x y w h].each do |attribute| %>

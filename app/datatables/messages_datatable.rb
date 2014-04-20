@@ -26,7 +26,7 @@ private
 
     messages.map do |message|
       array = [
-        message.image.present? ? link_to(image_tag(message.image.file_url(:thumb), size: "64x48"), message.image.file_url, :class => "fancybox") : "",
+        message.thumb.present? ? link_to(image_tag(message.thumb.file_url(:thumb), size: "64x48"), message.thumb.file_url, :class => "fancybox") : "",
         link_to(message.title, message),
         message.display_abstract + '...',
         link_to_pill(message.department.name, message.department, :class => "no-wrap"),

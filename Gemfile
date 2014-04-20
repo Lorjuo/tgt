@@ -64,7 +64,7 @@ gem 'mysql2'
   gem 'populator'
 
 # DRY
-gem 'inherited_resources'
+# gem 'inherited_resources'
 
 # File Upload
 gem 'carrierwave'
