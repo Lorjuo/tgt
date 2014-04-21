@@ -88,6 +88,13 @@ img {
   max-width: 100%;
 }
 
+a {
+  color: #2a6496;
+  &:hover {
+    color: #0000A0;
+  }
+}
+
 a.decent {
   color: $text-color;
   outline: 0;

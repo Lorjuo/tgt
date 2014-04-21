@@ -2,8 +2,8 @@
 
   resources :departments, :only =>:index
   resources :departments, :shallow => true, :except =>:index do #, :path => ""
-  #resources :departments, :shallow => true do
     member do
+      get :images
       get :training_groups
       get :galleries
       get :trainers

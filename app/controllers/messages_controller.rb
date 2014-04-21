@@ -54,27 +54,6 @@ class MessagesController < ApplicationController
     else
       render action: 'edit'
     end
-    # @resource = @parent.images.build(permitted_params)
-    # if @resource.save
-    #   if params[:image][:file].present?
-    #     render :crop # Maybe replace this line with redirect_to to avoid sending form twice on F5
-    #   else
-    #     redirect_to @resource, notice: 'Banner was successfully created.'
-    #   end
-    # else
-    #   render action: 'new'
-    # end
-  end
-
-  def process_images
-    if message_params[:thumb_attributes].present?
-      redirect_to [@message, :action => :edit_images], notice: 'Thumb was successfully created.'
-      return true
-    elsif message_params[:banner_attributes].present?
-      redirect_to [@message.banner, :action => :crop], notice: 'Banner was successfully uploaded.'
-      return true
-    end
-    return false
   end
 
 
@@ -116,5 +95,16 @@ class MessagesController < ApplicationController
       else
         "two_columns"
       end
+    end
+
+    def process_images
+      if message_params[:thumb_attributes].present?
+        redirect_to [@message, :action => :edit_images], notice: 'Thumb was successfully created.'
+        return true
+      elsif message_params[:banner_attributes].present?
+        redirect_to [@message.banner, :action => :crop], notice: 'Banner was successfully uploaded.'
+        return true
+      end
+      return false
     end
 end

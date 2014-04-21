@@ -30,10 +30,13 @@ class Department < ActiveRecord::Base
   #has_many :trainers, :through => :training_groups, :order => [ :first_name, :last_name ], :uniq => true
   #new syntax:
   has_many :trainers, -> { order('trainers.first_name, trainers.last_name').uniq }, :through => :training_groups
+  has_one :banner, :as => :attachable, :class_name => 'Image::Banner', :dependent => :destroy
 
   has_many :links#; has_many :media_links; has_many :extern_links
 
   has_and_belongs_to_many :users#, through: :department_editor
+  
+  accepts_nested_attributes_for :banner, allow_destroy: true
 
   # Validations
   validates :name, :presence => true

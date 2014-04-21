@@ -21,8 +21,8 @@
 
 <div class="window">
   <% if @message.banner.present? %>
-    <div class="box small-spacing" style="height: 150px; overflow: hidden">
-      <% image = image_tag(@message.banner.file_url(:cropped), :class => "media-object") %>
+    <div class="box small-spacing" style="overflow: hidden">
+      <% image = image_tag(@message.banner.file_url(:cropped)) %>
       <%= link_to(image, @message.banner.file_url, :class => "fancybox pull-left") %>
     </div>
   <% end %>

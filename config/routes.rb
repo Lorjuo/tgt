@@ -8,14 +8,6 @@ end
 
 TgtRefurbished::Application.routes.draw do
 
-  # Includes
-
-  draw :devise
-  draw :carnival
-  draw :elfinder
-  draw :images
-  draw :departments
-
 
   # Announcements
   resources :announcements
@@ -23,9 +15,7 @@ TgtRefurbished::Application.routes.draw do
 
   # Messages
   resources :messages, :only => :index do
-    member do
-      get :images
-    end
+    get :images, :on => :member
   end
 
 
@@ -73,7 +63,16 @@ TgtRefurbished::Application.routes.draw do
 
   # Trainers
   resources :trainers
-  
+
+
+  # Includes
+  # Has to be after the other includes, because it overrides some special routes
+
+  draw :devise
+  draw :carnival
+  draw :elfinder
+  draw :images
+  draw :departments
   
   # Root
   root :to => "static_pages#home"

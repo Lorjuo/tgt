@@ -217,7 +217,7 @@ de:
     index:
       title: Abteilungsübersicht
     show:
-      title: 'Abteilung "%{name}"'
+      title: 'Abteilung %{name}'
     form:
       users_hint: 'Benutzer, welche diese Abteilung administrieren können'
 
