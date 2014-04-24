@@ -8,7 +8,7 @@ gem 'rails', '~> 4.1'
 #gem 'sqlite3'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails', '~> 4.0.2'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -235,6 +235,11 @@ group :development do
   # Error Handling
   gem 'better_errors'
   gem 'binding_of_caller'
+
+  # Source maps
+  # http://blog.vhyza.eu/blog/2013/09/22/debugging-rails-4-coffeescript-and-sass-source-files-in-google-chrome/
+  #gem 'coffee-rails-source-maps'
+  #gem 'sass-rails-source-maps'
 end
 
 

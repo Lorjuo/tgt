@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   check_authorization :if => :custom_check_authorization?
 
-  before_filter :_miniprofiler, :set_locale #, :_cancan_sanitizer
+  before_filter :_miniprofiler, :set_locale, :set_theme #, :_cancan_sanitizer
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
@@ -75,6 +75,14 @@ class ApplicationController < ActionController::Base
     end
     I18n.locale = locale
     # logger.debug "* Locale set to '#{I18n.locale}'"
+  end
+
+  def set_theme
+    if params.has_key?('theme')
+      session[:theme] = params[:theme]
+    elsif !session[:theme].present?
+      session[:theme] = 'tagesschau'
+    end
   end
 
   private

@@ -1,0 +1,30 @@
+/* Colors */
+$blue-darker:            lighten(#001, 10%) !default;
+$blue-dark:              lighten(#001, 20%) !default;
+$blue:                   lighten(#001, 30%) !default;
+$blue-light:             lighten(#001, 60%) !default;
+$blue-lighter:           lighten(#001, 90%) !default;
+
+ul.references {
+  @extend .list-unstyled;
+  border-top: 1px solid $blue-darker;
+  margin: 20px 0px;
+  li {
+    border-bottom: 1px solid $blue-darker;
+    a {
+      display: block;
+      padding: 3px 0px;
+      &:hover {
+        /*background-image: linear-gradient(to top, white, #F2F2F2);*/
+        background-color: #E0E0F0;
+      }
+    }
+    .reference-title {
+      /*font-weight: bold;*/
+    }
+    .reference-type {
+      font-weight: bold;
+      /*color: $blue;*/
+    }
+  }
+}

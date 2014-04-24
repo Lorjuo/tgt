@@ -1,0 +1,68 @@
+// TODO: refactor this
+// There are still some spacing issues
+
+div.mediaBox {
+
+  /* set .medium as default */
+
+  &.small {
+    @extend .col-md-3;
+    @extend .col-sm-4;
+    @extend .col-xs-6;
+  }
+
+  &.medium {
+    @extend .col-md-4;
+    @extend .col-sm-6;
+    @extend .col-xs-12;
+  }
+
+  &.large {
+    @extend .col-md-6;
+    @extend .col-sm-6;
+    @extend .col-xs-12;
+  }
+
+  &.full {
+    @extend .col-md-12;
+    //@extend .col-sm-12;
+    //@extend .col-xs-12;
+  }
+
+  &, &.small, &.medium, &.large, &.full {
+    //padding: 0;
+    margin-bottom: 12px;
+  }
+
+  &.right {
+    /*@media (min-width: $screen-sm-min) {*/
+      padding-left: $grid-gutter-width;
+      padding-right: 0;
+    /*}*/
+    float: right;
+    clear: right;
+  }
+
+  &.left {
+    /*@media (min-width: $screen-sm-min) {*/
+      padding-left: 0;
+      padding-right: $grid-gutter-width;
+    /*}*/
+    float: left;
+    clear: left;
+  }
+
+  /* Set full width on small displays */
+  &.medium {
+    @media (max-width: $screen-xs-max) {
+      padding: 0;
+    }
+  }
+
+  &.large {
+    @media (max-width: $screen-xs-max) {
+      padding: 0;
+    }
+  }
+}
+

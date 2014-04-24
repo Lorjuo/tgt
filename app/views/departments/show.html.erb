@@ -22,7 +22,7 @@
   <% if @department.banner.present? %>
     <div class="box small-spacing" style="overflow: hidden">
       <div class="mediaObject">
-        <% image = image_tag(@department.banner.file_url(:cropped)) %>
+        <% image = image_tag(@department.banner.file_url(:cropped), :class => "img-responsive") %>
         <%= link_to(image, @department.banner.file_url, :class => "fancybox pull-left") %>
         <!-- <div class="mediaOverlay top-left">
           <div style="opacity: 0.7; margin: 10px; background-color: white; padding: 10px">
@@ -31,9 +31,9 @@
         </div> -->
       </div>
     </div>
-  <% end %>
+  <% end if false%>
 
-  <div class="plain thin">
+  <div class="box">
 
     <div class="departmentHeader">
       <div class="pull-right">
@@ -48,7 +48,7 @@
           <% end %>
         <% end %>
       </div>
-      <h1><%= t ".title", :name => @department.name %></h1>
+      <h2><%= t ".title", :name => @department.name %></h2>
       <p>&nbsp;</p>
       <% if @department.description.present? %>
         <%= raw @department.description %>
@@ -56,16 +56,20 @@
     </div>
       <p>&nbsp;</p>
   </div>
+</div>
+
+<div class="window">
   <%= render :partial => 'pagelet' %>
 </div>
 
 <% content_for :sidebar do %>
-  <div class="window">
-    <div class="box">
-      <!-- <h4 style="display: inline-block">
+
+  <div class="">
+    <!-- <div class="box">
+      <h4 style="display: inline-block">
         <%= Message.model_name.human(:count => :lots) %>
-      </h4> -->
-    </div>
+      </h4>
+    </div> -->
     <%= render :partial => 'messages/message_excerpt', :collection => @messages, :as => :message, :locals => { :size => :small } %>
   </div>
 <% end %>

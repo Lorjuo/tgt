@@ -1,0 +1,23 @@
+.message {
+
+  .messageContent {
+    min-height: 180px;
+    margin-bottom: 40px;
+  }
+
+  .messageFooter {
+    @include clearfix();
+    vertical-align: middle;
+    line-height: 42px;
+
+    .date {
+      float: left;
+      vertical-align: middle;
+    }
+    .share {
+      float: right;
+      vertical-align: middle;
+      margin-left: 10px;
+    }
+  }
+}

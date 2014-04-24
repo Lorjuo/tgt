@@ -1,0 +1,35 @@
+/* Social Media */
+ul.social_links{
+  display: block;
+  padding: 0; margin: 0;
+  li {
+    display: block;
+    vertical-align: middle;
+    float: left;
+
+    &.caption {
+    }
+
+    a {
+      font-size: 21px;
+      text-decoration: none;
+      margin-left: 3px;
+    }
+
+    &.google-plus a {
+      color: #b43123;
+    }
+
+    &.twitter a {
+      color: #49c8f5;
+    }
+
+    &.facebook a {
+      color: #3c5a98;
+    }
+
+    &.linkedin a {
+      color: #006699;
+    }
+  }
+}

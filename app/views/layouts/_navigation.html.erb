@@ -103,6 +103,12 @@
             <%= content_tag :li do %>
               <%= link_to "Deutsch", locale: :de %>
             <% end unless I18n.locale == :de %>
+            <%= content_tag :li do %>
+              <%= link_to "Tagesschau", theme: :tagesschau %>
+            <% end unless session[:theme] == 'tagesschau' %>
+            <%= content_tag :li do %>
+              <%= link_to "Professional", theme: :professional %>
+            <% end unless session[:theme] == 'professional' %>
           </ul>
         </li>
 

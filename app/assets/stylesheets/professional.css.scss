@@ -1,0 +1,10 @@
+//@import "bootstrap/_variables"; // Causes some issues that application variables do not get loaded
+
+@import "application/variables";
+@import "themes/professional/variables";
+
+@import "bootstrap";
+body { padding-top: 60px !important; }
+
+@import "application/base";
+@import "themes/professional/base";

@@ -1,0 +1,144 @@
+/* Thumbnails */
+
+/*.thumbnail {
+  margin-bottom: 20px;
+}*/
+
+/* http://stackoverflow.com/questions/12206117/making-a-thumbnail-image-a-link-in-bootstrap-un-centers-it */
+/*.thumbnail img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+}
+
+div.thumbnail {
+  @include border-top-radius(0px); 
+  @include border-bottom-radius(0px);
+
+  &:hover {
+    background-color: #EEEEEE;
+  }
+}*/
+
+
+/* mediaWrapper */
+.mediaWrapper {
+  margin-bottom: 20px;
+  border: 1px solid #CCCCCC;
+  .mediaObject {
+    border-bottom: 1px solid #CCCCCC;
+  }
+  .mediaText {
+    padding: 5px;
+    p {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* mediaWrapper inside MediaBox
+needs more contrast from background*/
+.mediaBox .mediaWrapper {
+  border: 0;
+  .mediaObject {
+    border: 0;
+  }
+  .mediaText {
+    background-color: #E9E9E9;
+    padding: 4px 8px 4px 8px;
+    /*font-size: 0.8em;*/
+    color: black;
+  }
+}
+
+
+/* For overlay buttons */
+.mediaObject /*.image*/ {
+  position: relative;
+}
+
+.mediaOverlay {
+  position: absolute;
+
+  &.top {
+    top: 0;
+  }
+
+  &.top-right {
+    top: 0;
+    right: 0;
+  }
+
+  &.top-left {
+    left: 0;
+  }
+
+  &.bottom {
+    width: 100%;
+    left: 0;
+    bottom: 0;
+  }
+
+  &.bottom-right {
+    right: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}
+
+
+/* Overlay Title */
+.overlayTitle {
+  background-color: rgba(0,0,0,0.5);
+  text-align: center;
+  padding: 2px;
+  color: white;
+  font-size: 0.7em;
+  font-weight: bold;
+}
+
+.mediaWrapper:hover {
+  .overlayTitle {
+    text-shadow: -1px 1px 8px #ffc, 1px -1px 8px #fff;
+  }
+}
+
+
+/* Overlay Toolbar */
+.toolbar {
+  font-size: 24px;
+  padding: 5px;
+
+  a span {
+    &.active {
+      color: orange;
+    }
+  }
+
+  a:hover span {
+    &.glyphicon-star {
+      color: yellow;
+    }
+  }
+}
+
+
+/* MediaText Content */
+.mediaText {
+  .content, .age {
+    color: #999999;
+    display: block;
+    font-size: 0.7em;
+  }
+
+  .title {
+    color: #3060A0;
+    font-weight: bold;
+    display: block;
+    font-size: 0.8em;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}

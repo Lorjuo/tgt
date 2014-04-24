@@ -1,0 +1,68 @@
+
+.window {
+  margin-bottom: 10px;
+}
+
+.box {
+  padding: 6px 12px 6px 12px;
+  /*overflow: auto;*/ /* needed to prevent floating boxes to expand out of this box (mediaBoxs inside ps) */
+
+  .box-header {
+    margin-bottom: 20px;
+  }
+}
+
+.plain {
+  background-color: #FFFFFF;
+  padding: 6px 12px 6px 12px;
+}
+
+.thin {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.no-spacing {
+  padding: 0px;
+}
+
+.small-spacing {
+  padding: 4px;
+}
+
+.medium-spacing {
+  padding: 6px;
+}
+
+.pageContent {
+}
+
+/* Header */
+#header {
+  margin-bottom: 10px;
+
+  #logo {
+    height: 72px; width: 58px;
+    background-image: asset-url('logo/blue-trans.png');
+    background-size: 58px 72px;
+    background-repeat:no-repeat;
+    display: block;
+  }
+
+  #title {
+    vertical-align: top;
+    h4 {
+      @media (max-width: $screen-xs-max) {
+        font-size: 1em;
+      }
+    }
+  }
+
+  .left {
+    @media (max-width: $screen-xs-max) {
+      margin-bottom: 10px;
+    }
+  }      
+
+  .middle {}
+}

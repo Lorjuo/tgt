@@ -1,0 +1,40 @@
+.window {
+}
+
+.box {
+  border-bottom: 1px solid #C0C0C0;
+  /*overflow: auto;*/ /* needed to prevent floating boxes to expand out of this box (mediaBoxs inside ps) */
+
+  .box-header {
+  }
+}
+
+.box, .thin, .small-spacing, .medium-spacing {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.plain {}
+
+.pageContent {}
+
+
+/* Header */
+#header {
+
+  #logo {
+    background-image: asset-url('logo/blue-trans.png');
+  }
+
+  #title {
+    vertical-align: top;
+    border-left: 1px solid #C0C0C0;
+    padding-left: 10px;
+    h4 {}
+  }
+
+  .left {
+  }      
+
+  .middle {}
+}

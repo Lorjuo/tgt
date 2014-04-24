@@ -6,7 +6,7 @@
         <%= image_tag(image.file_url(:_260x180)) %>
       <% end if image.file._260x180.present? %>
       <% if can?(:edit, image.attachable) %>
-        <div class="mediaOverlay toolbar">
+        <div class="mediaOverlay top-right toolbar">
           <%= link_to set_preview_image_gallery_path(image.attachable, :image_id => image), :method => :post, :title => t(".set_as_preview"), :data => {:toggle => "tooltip"} do %>
             <%= tag :span, :class => (image.attachable.preview_image_id == image.id) ? "glyphicon glyphicon-star active" : "glyphicon glyphicon-star" %>
           <% end %>

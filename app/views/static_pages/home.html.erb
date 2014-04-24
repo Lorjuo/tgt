@@ -6,7 +6,7 @@
   <h3><%= t ".training_offer" %></h3>
   <p><%= raw t(".training_offer_sentence", :link => link_to(t("general.here"), search_training_groups_path)) %></p>
 </div>
-<div class="window">
+<div class="">
   <% cache([:excerpts_large, cache_key_for(@messages)], skip_digest: true) do %>
     <%= render :partial => 'messages/message_excerpt', :collection => @messages, :as => :message, :locals => { :size => :large } %>
   <% end %>

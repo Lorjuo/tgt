@@ -1,0 +1,44 @@
+.media.message-excerpt {
+
+  .media-heading {
+    display: table;
+    width: 100%;
+
+    .title, .date {
+      display: table-cell;
+      font-size: 1em;
+    }
+
+    .title {
+      font-weight: bold;
+      .department { font-weight: normal; white-space: nowrap;
+        &:hover { text-decoration: underline; }
+      }
+    }
+
+    .date {
+      text-align: right;
+      min-width: 120px;
+    }
+  }
+
+  .content {
+    display: block;
+  }
+
+  &.small {
+    .media-heading {
+      .title {
+        .department { display: none; }
+      }
+      .date { display: none; }
+    }
+    .content {
+      font-size: 0.9em;
+      .more { display: none; }
+    }
+  }
+  &.large {
+    .media-heading { margin: 10px 0px; }
+  }
+}

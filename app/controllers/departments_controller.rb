@@ -14,7 +14,7 @@ class DepartmentsController < ApplicationController
 
 
   def show
-    @messages = Message.department(@department.id).limit(3)
+    @messages = Message.department(@department.id).chronological.limit(3)
   end
 
 
