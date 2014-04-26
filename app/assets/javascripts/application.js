@@ -75,7 +75,8 @@
 //= require preview_cycle
 //= require cycle2_loader
 //= require jquery.cycle2
-// require jquery.cycle2.caption2.js # At the moment this is not needed because it does not work with turbolinks
+// require jquery.cycle2.caption2.js
+//# At the moment this is not needed because it does not work with turbolinks
 //
 //# Navigation
 //= require navigation
@@ -108,6 +109,7 @@
 // require_directory .
 // 
 //# Specific Pages
+//= require home
 //= require messages
 //= require schedule
 //= require training_groups

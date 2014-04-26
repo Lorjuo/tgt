@@ -13,7 +13,7 @@
   </div>
   <%= yield(:sidebar) %>
   <div class="window">
-    <%#= render :partial => 'layouts/announcements' %>
+    <%= render :partial => 'layouts/announcements' %>
   </div>
   <div class="window box">
     <h4>
@@ -49,7 +49,7 @@
       <div><b><%= l( month, :format => :year_month ) %></b></div>
       <ul>
         <% for event in event_months[month] %>
-          <li><b><%= event.term.day.ordinalize %></b> <%= link_to event.name, event %></li>
+          <li><b><%= l( month, :format => :month_day ) %><%#= event.term.day.ordinalize %></b> <%= link_to event.name, event %></li>
         <% end %>
       </ul>
     <% end %>

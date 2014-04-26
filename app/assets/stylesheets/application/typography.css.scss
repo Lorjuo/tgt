@@ -38,3 +38,10 @@ a.decent {
 .italic {
   font-style:italic;
 }
+
+.caps {
+  &:first-letter{
+    font-size: 1.05em;
+  }
+  font-variant: small-caps;
+}

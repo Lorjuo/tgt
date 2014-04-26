@@ -48,23 +48,9 @@
     <div class="pageContent">
       <% if @department.present? && !@department.new_record? %>
         <%= render :partial => "layouts/department_navigation" %>
-        <div style="margin-left: -80px; margin-right: -80px; margin-bottom: 20px" class="window">
-          <div class="mediaObject">
-            <%= image_tag "6c260e8272-long.jpg", :class => "img-responsive", :style => "width: 100%" %>
-            <!-- <div class="mediaOverlay bottom-right" style="margin-right: 80px">
-              <div style="opacity: 1; background-color: #000066; color: white; padding: 10px; margin-bottom: 20px" class="col-sm-3"> -->
-            <div class="mediaOverlay" style="left: 0; right: 0; bottom: 0">
-              <div class="container" style="margin:auto"><div class="row"><div class="col-xs-4 col-xs-offset-8 hidden-xs">
-              <div style="opacity: 1; background-color: #000066; color: white; padding: 10px; margin-bottom: 20px">
-                <h5 style="font-family: Share, Arial, sans-serif; font-weight: bold">Leichtathletik</h5>
-                <p style="font-size: 0.8em">Mit 5 Gruppen zu je 2 Terminen bietet die Abteilung Leichtathletik attraktive angebote für rund 200 Athleten</p>
-              </div>
-            </div>
-            </div>
-            </div>
-            </div>
-          </div>
-        </div>
+        <%= render_cell :banner, :show %>
+      <% elsif true %>
+        <%= render_cell :home_cycle, :show %>
       <% end %>
 
       <% if Rails.env.production? #&& user_signed_in? %>

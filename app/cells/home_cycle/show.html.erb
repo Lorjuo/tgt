@@ -1,0 +1,92 @@
+<!-- <div class="row tabs dsw">
+  <div class="col-xs-3">
+    <div class="tab" id="verein">
+      <a href="#">Verein</a>
+    </div>
+  </div>
+  <div class="col-xs-3">
+    <div class="tab" id="sport">
+      <a href="#">Sport</a>
+    </div>
+  </div>
+  <div class="col-xs-3">
+    <div class="tab" id="karneval">
+      <a href="#">Karneval</a>
+    </div>
+  </div>
+  <div class="col-xs-3">
+    <div class="tab" id="ohlebach">
+      <a href="#">Ohlebach</a>
+    </div>
+  </div>
+</div> -->
+
+<div class="window homeCycle">
+  <div class="mediaObject">
+    <div class="cycle-slideshow outer-slideshow" id="slideshow"
+      data-cycle-fx="scrollVert"
+      data-cycle-slides="> div.category"
+      data-cycle-speed=1000
+      data-cycle-prev="#prev"
+      data-cycle-next="#next"
+      data-cycle-caption-template="<h2>{{cycleTitle}}</h2><p>{{cycleText}}</p>"
+      data-cycle-caption=".cycle-caption"
+      data-cycle-caption-plugin="caption2"
+      data-cycle-paused="true"
+      >
+
+      <div class="category" id="category1" data-cycle-title="Sport" data-cycle-text="Die Turngemeinde Traisa bietet ein buntes Sportangebot von Volleyball über Turnen zu Leichtathletik">
+        <div class="cycle-slideshow inner-slideshow"
+            data-cycle-fx="scrollHorz"
+            data-cycle-timeout=4000
+            data-cycle-paused="false"
+            >
+          <%= image_tag "sport1.jpg", :class => "img-responsive", :style => "width: 100%" %>
+          <%= image_tag "sport2.jpg", :class => "img-responsive", :style => "width: 100%" %>
+          <%= image_tag "sport3.jpg", :class => "img-responsive", :style => "width: 100%" %>
+        </div>
+      </div>
+
+      <div class="category" id="category2" data-cycle-title="Karneval" data-cycle-text="Spring">
+        <div class="cycle-slideshow inner-slideshow"
+            data-cycle-timeout=4000
+            data-cycle-paused="false"
+            >
+          <%= image_tag "karneval1.jpg", :class => "img-responsive", :style => "width: 100%" %>
+          <%= image_tag "karneval2.jpg", :class => "img-responsive", :style => "width: 100%" %>
+          <%= image_tag "karneval3.jpg", :class => "img-responsive", :style => "width: 100%" %>
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="mediaOverlay tabBar">
+      <div class="container">
+        <div class="tabs">
+          <div class="tab" id="verein">
+            <a href="#">Verein</a>
+          </div>
+          <div class="tab" id="sport">
+            <a href="#">Sport</a>
+          </div>
+          <div class="tab" id="karneval">
+            <a href="#">Karneval</a>
+          </div>
+          <div class="tab" id="ohlebach">
+            <a href="#">Ohlebach-Theater</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mediaOverlay info">
+      <div class="container">
+        <div class="row"><div class="col-xs-4 col-xs-offset-8 hidden-xs">
+          <div class="box obtrusive">
+            <div class="cycle-caption"></div>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</div>

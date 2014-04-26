@@ -1,0 +1,25 @@
+.banner {
+  @extend .window;
+  @media (min-width: $screen-sm-min) {
+    margin-left: -80px;
+    margin-right: -80px;
+  }
+  margin-bottom: 20px;
+
+  .mediaOverlay.info {
+    left: 0; right: 0; bottom: 0;
+    .container {
+      margin: auto;
+      .box {
+        padding: 10px;
+        margin-bottom: 20px;
+        h5 {
+          font-weight: bold;
+        }
+        p {
+          font-size: 0.8em;
+        }
+      }
+    }
+  }
+}

@@ -35,7 +35,7 @@ class GalleriesController < ApplicationController
   end
 
   def set_preview_image
-    @gallery.preview_image = Image.find(params['image_id'])
+    @gallery.preview_image = Image::Image.find(params['image_id'])
     if @gallery.save
       redirect_to @gallery, notice: 'Preview image successfully set.'
     else

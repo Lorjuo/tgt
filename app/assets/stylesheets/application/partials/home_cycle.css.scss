@@ -1,0 +1,83 @@
+.homeCycle {
+  @media (min-width: $screen-sm-min) {
+    margin-left: -80px;
+    margin-right: -80px;
+  }
+  margin-bottom: 20px;
+  margin-top: 20px;
+
+  .mediaOverlay.tabBar {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 300;
+    background: linear-gradient(to right,
+      rgba(255,255,255,0) 0%,
+      rgba(255,255,255,0.8) 10%,
+      rgba(255,255,255,0.8) 90%,
+      rgba(255,255,255,0));
+    .container {
+      margin: auto;
+      .tabs {
+        display: table;
+        width: 100%;
+        border-collapse: collapse;
+        .tab {
+          display: table-cell;
+          width: 25%;
+          &:not(:first-child){
+            border-left: 1px solid #AAAAAA;
+          }
+          a {
+            border-top: 4px solid #555555;
+            padding: 5px 10px;
+            display: block;
+            font-size: 1.2em;
+            font-weight: bold;
+            @extend .decent;
+            &:hover {
+              border-color: #000066;
+              background-color: #CCCCCC;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .mediaOverlay.info {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 200;
+    .container {
+      margin: auto;
+      .box {
+        margin-bottom: 60px;
+      }
+    }
+  }
+}
+
+.tabs.dsw {
+  /*float: none;*/
+  background-color: white;
+  .tab {
+    @extend .box;
+    padding: 0;
+    border: 1px solid #AAAAAA;
+    margin: 0 -6px;
+    a {
+      border-top: 4px solid #555555;
+      padding: 3px 10px;
+      display: block;
+      font-size: 1.2em;
+      font-weight: bold;
+      @extend .decent;
+      &:hover {
+        border-color: #000066;
+        background-color: #AAAAAA;
+      }
+    }
+  }
+}

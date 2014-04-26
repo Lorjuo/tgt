@@ -47,9 +47,11 @@
 @import "typography";
 
 // Partials
-@import "partials/cycle";
+@import "partials/announcement_cycle";
+@import "partials/banner";
 @import "partials/datatables";
 @import "partials/events";
+@import "partials/home_cycle";
 @import "partials/media_box";
 @import "partials/messages";
 @import "partials/message_excerpt";
@@ -64,3 +66,11 @@ tinymce_overrides
 .collapse
 bootstrap overrides
 */
+
+ol.tree {
+  list-style: square;
+  margin: 0;
+  ol {
+    list-style: circle;
+  }
+}

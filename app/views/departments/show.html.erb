@@ -72,5 +72,8 @@
     </div> -->
     <%= render :partial => 'messages/message_excerpt', :collection => @messages, :as => :message, :locals => { :size => :small } %>
   </div>
+  <div class="window box">
+    <%#= render_cell :navigation, :show, :department => @department %>
+  </div>
 <% end %>
 
