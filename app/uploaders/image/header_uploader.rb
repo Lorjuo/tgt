@@ -1,6 +1,8 @@
 # encoding: utf-8
 class Image::HeaderUploader < Image::BaseImageUploader
 
+  process resize_to_fit: [800, 600]
+  
   version :cropped do
     # To crop this version based on `jumbo` version, pass width = 600 and height = 600
     # Specify both width and height values otherwise they would be ignored

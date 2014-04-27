@@ -6,7 +6,7 @@ module LinkablesController
     before_action :load_linkable, only: [:show, :edit, :update, :destroy] #, except: [:index, :new, :create] 
     before_action :load_department
 
-    layout "one_column"
+    layout "two_columns"
     
     load_and_authorize_resource # param_method: :resource_params
     skip_authorize_resource :only => :new

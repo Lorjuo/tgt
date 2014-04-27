@@ -32,9 +32,6 @@
   <![endif]-->
 
   <%= stylesheet_link_tag session[:theme], media: "all", "data-turbolinks-track" => true %>
-  <style type="text/css">
-    <%= render_cell(:stylesheet, :show, :primary_color => '#005000', :secondary_color => '#BBBBBB') %>
-  </style>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= favicon_link_tag '/favicon.ico' %>
   <%= csrf_meta_tags %>
@@ -42,6 +39,10 @@
   <%# http://stackoverflow.com/questions/14258273/can-i-use-javascript-include-tag-with-content-forhead-in-show-html-erb %>
 </head>
 <body>
+  <style type="text/css">
+    <%# Needs to be inside body - otherwise it will be cached by turbolinks %>
+    <%= render_cell(:stylesheet, :show, :color => @current_theme.color) if @current_theme.present? %>
+  </style>
   <%= render 'layouts/navigation' %>
 
   <div class="container">
@@ -51,7 +52,7 @@
     <div class="pageContent">
       <% if @department.present? && !@department.new_record? %>
         <%= render :partial => "layouts/department_navigation" %>
-        <%= render_cell :banner, :show %>
+        <%= render_cell :banner, :show, :theme => @current_theme if @current_theme.present? %>
       <% elsif true %>
         <%= render_cell :home_cycle, :show %>
       <% end %>

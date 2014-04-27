@@ -9,6 +9,12 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
+  # http://stackoverflow.com/questions/9281224/filter-to-execute-before-render-but-after-controller
+  def render *args
+    locate_request
+    super
+  end
+
   # Not in use because nearly every page is readable
   # before_filter :authenticate_user! 
 
@@ -101,7 +107,25 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :last_name
   end
 
+  def locate_request
+    @current_link = find_link
+    if @current_link.present?
+      @current_theme = @current_link.get_theme
+    elsif @department.present?
+      @current_theme = @department.get_theme
+    end
+  end
+
   def find_link
     false # TODO: change this
+    # find link
+    # :linkable -> link
+    # :controller -> media-link oder department oder false
+    
+    # get theme
+    # link == false ==> return false
+    # ansonsten parents aufsteigen bis eventuell abteilung
+    
+    # mittels link buttons anzeigen
   end
 end

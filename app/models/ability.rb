@@ -73,6 +73,7 @@ class Ability
       user.departments.include? event.department
     end
 
+    can [:manage], Theme # TODO: maybe restrict this (on department)
     can [:create, :read, :update, :destroy, :crop], Image # TODO: restrict this to users that are logged in and have the needed permissions
 
     can [:create, :read, :update, :destroy], Trainer do |trainer|

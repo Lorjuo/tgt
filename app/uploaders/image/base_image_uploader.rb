@@ -7,7 +7,6 @@ class Image::BaseImageUploader < BaseUploader
   
   process quality: 80 #https://github.com/petedoyle/imagemagick-quality-tests
 
-  process resize_to_fit: [800, 600]
   process :strip_exif_metadata
   process :set_content_type
 

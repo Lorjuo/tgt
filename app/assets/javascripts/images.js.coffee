@@ -5,9 +5,13 @@ jQuery ->
 class CarrierWaveCropper
   constructor: (identifier) ->
     @identifier = identifier
+
+    width = $('#dimensions').data('width')
+    height = $('#dimensions').data('height')
     $(@identifier_id('_file_cropbox')).Jcrop
-      aspectRatio: 4 # Aspect Ratio width/height of resulting image
-      setSelect: [0, 0, 100, 400] # Initial selection
+
+      aspectRatio: width/height # Aspect Ratio width/height of resulting image
+      setSelect: [0, 0, width, height] # Initial selection
       onSelect: @update
       onChange: @update
 

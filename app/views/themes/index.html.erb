@@ -1,0 +1,51 @@
+<% content_for :title do %>
+  <%= t ".title" %>
+<% end %>
+
+<% content_for :buttons do %>
+  <%= link_to new_theme_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    <%= t('general.create_model', :model => Theme.model_name.human ) %>
+  <% end if can? :create, Theme %>
+<% end %>
+
+<div class="window box">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th><%= Theme.human_attribute_name("name") %></th>
+        <th><%= Theme.human_attribute_name("description") %></th>
+        <th><%= Theme.human_attribute_name("color") %></th>
+        <th></th>
+        <% if can? :update, Theme %>
+        <th></th>
+        <% end %>
+        <% if can? :destroy, Theme %>
+        <th></th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+  <% @themes.each do |theme| %>
+      <tr>
+        <td><%= theme.name %></td>
+        <td><%= theme.description %></td>
+        <td><%= theme.color %></td>
+        <td><%= link_to t('general.show'), theme %></td>
+        <% if can? :update, theme %>
+        <td><%= link_to t('general.edit'), edit_theme_path(theme) %></td>
+        <% end %>
+        <% if can? :destroy, theme %>
+        <td>
+          <%= link_to theme, method: :delete, data: { confirm: t('general.are_you_sure') } do %>
+            <span class="glyphicon glyphicon-trash"></span>
+            <%= t('general.destroy') %>
+          <% end %>
+        </td>
+        <% end %>
+      </tr>
+  <% end %>
+    </tbody>
+  </table>
+</div>

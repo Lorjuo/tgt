@@ -67,6 +67,9 @@
               <%= content_tag :li do %>
                 <%= link_to(Department.model_name.human(:count => :lots), departments_path) %>
               <% end if current_user.can?(:edit, :departments) %>
+              <%= content_tag :li do %>
+                <%= link_to(Theme.model_name.human(:count => :lots), themes_path) %>
+              <% end if current_user.can?(:edit, :themes) %>
             </ul>
           </li>
         <% end %>

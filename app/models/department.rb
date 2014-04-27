@@ -38,6 +38,8 @@ class Department < ActiveRecord::Base
   
   accepts_nested_attributes_for :banner, allow_destroy: true
 
+  belongs_to :theme
+
   # Validations
   validates :name, :presence => true
 
@@ -104,6 +106,10 @@ class Department < ActiveRecord::Base
     if File.directory?(dir)
       FileUtils.remove_dir(dir, :force => true)
     end
+  end
+
+  def get_theme
+    self.theme
   end
 
   #def trainers

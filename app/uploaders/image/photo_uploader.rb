@@ -1,6 +1,8 @@
 # encoding: utf-8
 class Image::PhotoUploader < Image::BaseImageUploader
 
+  process resize_to_fit: [800, 600]
+  
   # see: http://carrierwave.rubyforge.org/rdoc/classes/CarrierWave/MiniMagick.html
   # resize_to_limit does not work. But commandline operation works
   # Problem seems to only affect windows version

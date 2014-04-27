@@ -1,6 +1,7 @@
 class BannerCell < Cell::Rails
 
-  def show
+  def show(opts)
+    @theme = opts[:theme]
     render
   end
 

@@ -122,7 +122,7 @@ class DepartmentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def department_params
       image_attributes = [:file, :id]
-      params.require(:department).permit(:name, :description, :color,
+      params.require(:department).permit(:name, :description, :color, :theme_id,
         :banner_attributes => image_attributes,
         :training_group_ids => [],
         :user_ids => [])
@@ -140,7 +140,7 @@ class DepartmentsController < ApplicationController
 
 
     def process_images
-      if department_params[:banner_attributes].present?
+      if department_params[:banner_attributes].try(:[], :file).present?
         redirect_to [@department.banner, :action => :crop], notice: 'Banner was successfully uploaded.'
         return true
       end

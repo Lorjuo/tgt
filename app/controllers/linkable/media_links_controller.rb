@@ -16,7 +16,7 @@ module Linkable
     private
 
       def resource_params
-        params.require(:media_link).permit(:controller_id, :instance_id, :link_attributes => [:id, :name, :active, :parent_id, :department_id]) # Missing id column in permit statement can cause deadloops!!!
+        params.require(:media_link).permit(:controller_id, :instance_id, :link_attributes => [:id, :name, :active, :parent_id, :theme_id, :department_id]) # Missing id column in permit statement can cause deadloops!!!
       end
 
 

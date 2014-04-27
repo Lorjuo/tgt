@@ -16,6 +16,8 @@
         :value_method => :id,
         :include_blank => false,
         :input_html => { :class => "chosen input-xxlarge"} %>
+      <%= f.association :theme %>
+      <%# TODO: Remove column color - depends on schedule %>
       <%= f.input :color, :input_html => { :class => "colorpicker", :data => {:"color-format" => "hex"}} %>
       <%= f.input :description, as: :text, input_html: { class: 'tinymce' } unless @department.new_record?  %>
       <%#= f.association :users,

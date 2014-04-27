@@ -32,11 +32,6 @@ class LinksController < ApplicationController
   end
 
 
-  def theme
-    @link.build_banner
-  end
-
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_link

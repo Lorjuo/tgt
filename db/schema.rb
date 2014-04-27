@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140417123718) do
+ActiveRecord::Schema.define(version: 20140427150216) do
 
   create_table "announcements", force: true do |t|
     t.string   "name"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20140417123718) do
     t.string   "slug"
     t.text     "description"
     t.string   "color"
+    t.integer  "theme_id"
   end
 
   add_index "departments", ["slug"], name: "index_departments_on_slug", unique: true, using: :btree
@@ -170,6 +171,7 @@ ActiveRecord::Schema.define(version: 20140417123718) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "active",        default: true
+    t.integer  "theme_id"
   end
 
   add_index "links", ["linkable_id", "linkable_type"], name: "index_links_on_linkable_id_and_linkable_type", using: :btree
@@ -203,7 +205,7 @@ ActiveRecord::Schema.define(version: 20140417123718) do
   end
 
   create_table "pages", force: true do |t|
-    t.string   "content"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -235,6 +237,14 @@ ActiveRecord::Schema.define(version: 20140417123718) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
+
+  create_table "themes", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "color"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "trainers", force: true do |t|
     t.string   "first_name"
