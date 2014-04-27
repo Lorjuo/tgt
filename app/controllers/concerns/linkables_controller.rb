@@ -47,6 +47,10 @@ module LinkablesController
   #   @linkable.destroy
   #   redirect_to extern_links_url
   # end
+  
+  def find_link
+    @linkable.link
+  end
 
   protected
 
