@@ -20,10 +20,10 @@
 <% end %>
 
 <div class="window">
-  <% if @message.banner.present? %>
+  <% if @message.header.present? %>
     <div class="box small-spacing" style="overflow: hidden">
-      <% image = image_tag(@message.banner.file_url(:cropped), :class => "img-responsive") %>
-      <%= link_to(image, @message.banner.file_url, :class => "fancybox") %>
+      <% image = image_tag(@message.header.file_url(:cropped), :class => "img-responsive") %>
+      <%= link_to(image, @message.header.file_url, :class => "fancybox") %>
     </div>
   <% end %>
   <div class="box thin">

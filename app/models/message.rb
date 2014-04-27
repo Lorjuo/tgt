@@ -20,7 +20,7 @@ class Message < ActiveRecord::Base
   # Associations
   belongs_to :department
   has_one :thumb, :as => :attachable, :class_name => 'Image::Image', :dependent => :destroy
-  has_one :banner, :as => :attachable, :class_name => 'Image::Banner', :dependent => :destroy
+  has_one :header, :as => :attachable, :class_name => 'Image::Header', :dependent => :destroy
   # Multiple Associations to same polymorphic model:
   # http://stackoverflow.com/questions/2494452/rails-polymorphic-association-with-multiple-associations-on-the-same-model
 
@@ -30,7 +30,7 @@ class Message < ActiveRecord::Base
   has_many :documents, :through => :references, :source => :reference_to, :source_type => 'Document'
 
   accepts_nested_attributes_for :thumb, allow_destroy: true
-  accepts_nested_attributes_for :banner, allow_destroy: true
+  accepts_nested_attributes_for :header, allow_destroy: true
 
   #Scopes
   scope :department, -> (id) { where(:department_id => id)}

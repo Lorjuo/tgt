@@ -43,9 +43,9 @@
     <%= f.error_notification %>
 
     <div class="form-inputs">
-      <%= f.simple_fields_for :banner do |image_form| %>
+      <%= f.simple_fields_for :header do |image_form| %>
         <%#= image_form.input :file, :as => :file %>
-        <%= render 'images/image_selector', f:image_form, image:@message.banner %>
+        <%= render 'images/image_selector', f:image_form, image:@message.header %>
       <% end %>
     </div>
 

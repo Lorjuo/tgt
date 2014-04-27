@@ -6,7 +6,7 @@
 
     <%# For debugging: %>
     <% %w[x y w h].each do |attribute| %>
-      <input id="image::banner_file_crop_<%= attribute %>" />
+      <input id="image_file_crop_<%= attribute %>" />
     <% end if false %>
 
     <%= f.cropbox :file %>

@@ -32,7 +32,7 @@ class MessagesController < ApplicationController
 
   def images
     @message.build_thumb unless @message.thumb.present?
-    @message.build_banner unless @message.banner.present?
+    @message.build_header unless @message.header.present?
   end
 
 
@@ -82,7 +82,7 @@ class MessagesController < ApplicationController
       image_attributes = [:file, :id]
       params.require(:message).permit(:title, :content, :abstract, :department_id,
         :thumb_attributes => image_attributes,
-        :banner_attributes => image_attributes,
+        :header_attributes => image_attributes,
         :gallery_ids => [], :document_ids => [])
       # :file needed when upload a new image
       # :id needed when fileupload is empty
@@ -101,8 +101,8 @@ class MessagesController < ApplicationController
       if message_params[:thumb_attributes].present?
         redirect_to [@message, :action => :edit_images], notice: 'Thumb was successfully created.'
         return true
-      elsif message_params[:banner_attributes].present?
-        redirect_to [@message.banner, :action => :crop], notice: 'Banner was successfully uploaded.'
+      elsif message_params[:header_attributes].present?
+        redirect_to [@message.header, :action => :crop], notice: 'Header was successfully uploaded.'
         return true
       end
       return false

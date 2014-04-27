@@ -25,6 +25,10 @@ module LinkablesController
   def edit
   end
 
+  def images
+    @linkable.link.build_banner
+  end
+
   def create
     @linkable = @model.new(resource_params)
 

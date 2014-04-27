@@ -1,6 +1,7 @@
 class StylesheetCell < Cell::Base # Change back to Cell::Rails
 
   # http://spin.atomicobject.com/2013/12/21/dynamically-generate-css/
+  # TODO: cache this
   def show(opts)
     scss = render_to_string("show", locals: {
       primary_color: opts[:primary_color],

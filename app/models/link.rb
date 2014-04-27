@@ -42,9 +42,11 @@ class Link < ActiveRecord::Base # Parent Class for polymorphic association
   
   # Associations
   belongs_to :department
+  has_one :banner, :as => :attachable, :class_name => 'Image::Banner', :dependent => :destroy
 
-  # Associations
   belongs_to :linkable, polymorphic: true, :dependent => :destroy
+
+  accepts_nested_attributes_for :banner, allow_destroy: true
 
   # Validation  
   validates :name, presence: true

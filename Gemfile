@@ -74,7 +74,7 @@ gem 'carrierwave'
 gem 'jquery-fileupload-rails'
 gem 'el_finder'
 #gem 'jcrop-rails-v2' # carrierwave-crop already contains jcrop
-gem 'carrierwave-crop'
+gem 'carrierwave-crop', github: 'kirtithorat/carrierwave-crop'
 # Alternatives:
 # http://www.roxyfileman.com/
 # http://cflove.org/2013/10/coldfusion-file-manager-for-tinymce-4.cfm

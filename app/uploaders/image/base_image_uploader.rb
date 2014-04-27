@@ -42,4 +42,10 @@ class Image::BaseImageUploader < BaseUploader
     end
   end
 
+  # Versions
+  # Thumb version needed for image selector
+  version :thumb do
+    process resize_to_fill: [64, 48]
+  end
+
 end

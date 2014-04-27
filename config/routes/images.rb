@@ -6,6 +6,9 @@
   end
   namespace :image do
     #scope :module => "image" do
+    resources :headers do
+      get :crop, on: :member
+    end
     resources :banners do
       get :crop, on: :member
     end
