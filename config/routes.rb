@@ -22,6 +22,7 @@ TgtRefurbished::Application.routes.draw do
   # Links
   resources :links, :only => [] do
     post :rebuild, :on => :collection # required for Sortable GUI server side actions
+    get :theme, :on => :member # Maybe move to linkable - usure
   end
 
 

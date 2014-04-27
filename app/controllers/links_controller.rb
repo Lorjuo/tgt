@@ -5,7 +5,7 @@ class LinksController < ApplicationController
 
   layout "one_column"
   
-  before_action :set_link, only: [:show, :edit, :update, :destroy]
+  before_action :set_link, only: [:show, :edit, :theme, :update, :destroy]
 
   before_action :load_department, except: [:rebuild]
 
@@ -32,6 +32,11 @@ class LinksController < ApplicationController
   end
 
 
+  def theme
+    @link.build_banner
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_link
@@ -40,7 +45,9 @@ class LinksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def link_params
-      params.require(:link).permit(:name, :lft, :rgt, :depth, :department_id)
+      image_attributes = [:file, :id]
+      params.require(:link).permit(:name, :lft, :rgt, :depth, :department_id, :description, :color,
+        :banner_attributes => image_attributes)
     end
 
     def load_department
