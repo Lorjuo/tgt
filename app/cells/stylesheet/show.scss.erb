@@ -6,9 +6,11 @@ $primary-color-darker: darken( $primary-color, 20% );
  
 .box.obtrusive {
   //background-color: $primary-color;
+  transition: background .1s linear; // not supported yet http://stackoverflow.com/questions/6542212/use-css3-transitions-with-gradient-backgrounds
   background: linear-gradient(to bottom, $primary-color-light, $primary-color-dark);
 
   &:hover {
+    transition: background .1s linear;
     background: linear-gradient(to bottom, $primary-color-dark, $primary-color-light);
   }
 }

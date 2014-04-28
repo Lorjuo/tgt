@@ -47,8 +47,8 @@ class Image::BaseImageUploader < BaseUploader
   # http://stackoverflow.com/questions/18519160/exif-image-rotation-issue-using-carrierwave-and-rmagick-to-upload-to-s3
   # http://stackoverflow.com/questions/9558653/rails-paperclip-and-upside-down-oriented-images
   def fix_exif_rotation
-    manipulate! do |image|
-      image.tap(&:auto_orient)
+    manipulate! do |img|
+      img.tap(&:auto_orient)
       img = yield(img) if block_given?
       img
     end

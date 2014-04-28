@@ -99,7 +99,7 @@ class MessagesController < ApplicationController
 
     def process_images
       if message_params[:thumb_attributes].present?
-        redirect_to [@message, :action => :edit_images], notice: 'Thumb was successfully created.'
+        redirect_to [@message, :action => :images], notice: 'Thumb was successfully created.'
         return true # stop exection
       elsif message_params[:header_attributes].present?
         redirect_to [@message.header, :action => :crop], notice: 'Header was successfully uploaded.'
