@@ -2,6 +2,16 @@
   <%= t ".title" %>
 <% end %>
 
+<div class="row">
+  <% Department.all.each do |department| %>
+    <div class="col-md-3">
+      <div class="window box obtrusive">
+        <h4><%= link_to department.name, department %></h4>
+      </div>
+    </div>
+  <% end %>
+</div>
+
 <div class="row eqme">
   <div class="col-md-8">
     <div class="window">

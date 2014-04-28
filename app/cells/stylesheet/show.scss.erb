@@ -1,3 +1,14 @@
 $primary-color: <%= color %>;
+$primary-color-light: lighten( $primary-color, 5% );
+$primary-color-lighter: lighten( $primary-color, 20% );
+$primary-color-dark: darken( $primary-color, 5% );
+$primary-color-darker: darken( $primary-color, 20% );
  
-.box.obtrusive { background-color: $primary-color; }
+.box.obtrusive {
+  //background-color: $primary-color;
+  background: linear-gradient(to bottom, $primary-color-light, $primary-color-dark);
+
+  &:hover {
+    background: linear-gradient(to bottom, $primary-color-dark, $primary-color-light);
+  }
+}
