@@ -29,6 +29,8 @@ module Linkable
             [ controller.name, controller.name.underscore.sub!('_controller', '') ]
           end
         ].sort
+
+        # Media Link only:
         # @controllers = [ 'galleries', 'messages', 'documents', 'events', 'training_groups' ]#.map{|type| type.camelize}
       end
 

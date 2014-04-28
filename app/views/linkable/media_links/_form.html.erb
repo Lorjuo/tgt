@@ -11,6 +11,7 @@
         <%= render :partial => 'links/linkable_fields', :object => @linkable, :as => "linkable", :locals => { :f => ff } %>
       <% end %>
 
+      <%# Media Link only: %>
       <%#= f.input(:controller_id, :collection => @controllers, :include_blank => true,
           :label_method => lambda { |obj| obj.classify.constantize.model_name.human }, :class => 'form-control') %>
 
