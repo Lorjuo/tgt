@@ -49,7 +49,7 @@ module LinkablesController
   # end
   
   def find_link
-    @linkable.link
+    @linkable.link if @linkable.present?
   end
 
   protected
