@@ -1,5 +1,5 @@
 <%# content_for :title do %>
-  <%#= t ".title", :title => @message.title %>
+  <%#= t ".title", :title => @message.name %>
 <%# end %>
 
 <% content_for :head do %>
@@ -41,7 +41,7 @@
             <% end %>
           <% end %>
         </div>
-        <h1><%= @message.title %></h1>
+        <h1><%= @message.name %></h1>
       </div>
       <div class="messageContent">
         <%= raw @message.content %>

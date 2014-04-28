@@ -3,7 +3,7 @@ module Linkable
 
     include ::LinkablesController
     
-    before_action :load_controllers, :only => [:new, :edit]
+    before_action :load_controllers, :only => [:new, :create, :edit, :update]
     before_action :dynamic_load_dependent_variables, only: [:new, :create, :edit, :update]
 
 
@@ -21,7 +21,15 @@ module Linkable
 
 
       def load_controllers
-        @controllers = [ 'galleries', 'messages', 'documents', 'events', 'training_groups' ]#.map{|type| type.camelize}
+        Rails.application.eager_load!
+        @controllers = Hash[
+          ApplicationController.descendants.select { |controller|
+            !['Devise::SessionController','ElfinderController','NavigationElementsController','UsersController', 'MessagesDatatable'].include?(controller.name)
+          }.map do |controller|
+            [ controller.name, controller.name.underscore.sub!('_controller', '') ]
+          end
+        ].sort
+        # @controllers = [ 'galleries', 'messages', 'documents', 'events', 'training_groups' ]#.map{|type| type.camelize}
       end
 
 
@@ -66,7 +74,10 @@ module Linkable
         instance = Object.const_get(controller.name.sub!('Controller', '').singularize)
         #scopes do not seem to work here
         #@instances = instance.department(params[:department]).map{ |a|
-        @instances = instance.where(:department_id => params[:department_id]).map{ |a|
+        if instance.respond_to?(:department_id)
+          instance = instance.where(:department_id => params[:department_id])
+        end
+        @instances = instance.all.map{ |a|
           [a.respond_to?('name') ? a.name : a.id, a.id]
         }.insert(0, "Select a Instance")
       end

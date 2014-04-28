@@ -32,7 +32,7 @@ module MessagesImporter
         department = Department.where(name: row.get("department")).first
         department_id = department.present? ? department.id : Department.where(:name => "generic").first.id
 
-        message = Message.new(title: row.get("title"), 
+        message = Message.new(name: row.get("title"), 
                         content: row.get("content"), 
                         department_id: department_id, 
                         created_at: row.get("date"), 

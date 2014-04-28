@@ -12,7 +12,7 @@
 
   <div class="navigation-collapse">
     <ul class="navigation right">
-      <% links = Link.department(@department.id).roots %>
+      <% links = Link.department(@department.id).roots.active %>
       <% cache(['department_navigation', cache_key_for(links)], skip_digest: true) do %>
         <%= render :partial => "layouts/simple_navigation", collection: links, :as => :link %>
       <% end %>

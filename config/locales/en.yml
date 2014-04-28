@@ -178,6 +178,7 @@ en:
         schedule: Occupancy Plan
 
       message:
+        name: Headline
         title: Headline
         content: Text
 

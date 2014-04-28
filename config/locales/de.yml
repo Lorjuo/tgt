@@ -179,6 +179,7 @@ de:
         schedule: Belegungsplan
 
       message:
+        name: Überschrift
         title: Überschrift
         content: Text
 

@@ -1,9 +1,10 @@
 <%#= cache link do %>
   <%= content_tag :li do %>
     <%= link_to link.name, link.url %>
-    <% if link.children.present? %>
+    <% children = link.children.active %>
+    <% if children.present? %>
       <%= content_tag :ul do %>
-        <%= render :partial => "layouts/simple_navigation", collection: link.children, :as => :link %>
+        <%= render :partial => "layouts/simple_navigation", collection: children, :as => :link %>
       <% end %>
     <% end %>
   <% end %>

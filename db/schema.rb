@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140428081445) do
+ActiveRecord::Schema.define(version: 20140428082400) do
 
   create_table "announcements", force: true do |t|
     t.string   "name"
@@ -196,7 +196,7 @@ ActiveRecord::Schema.define(version: 20140428081445) do
   end
 
   create_table "messages", force: true do |t|
-    t.string   "title"
+    t.string   "name"
     t.text     "content"
     t.string   "department_id"
     t.datetime "created_at"

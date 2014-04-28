@@ -31,7 +31,7 @@
           http://www.sitepoint.com/caching-cache-digest/
         %>
 
-        <% links = Link.top_level.roots %>
+        <% links = Link.top_level.roots.active %>
         <% cache(['navigation', cache_key_for(links)], skip_digest: true) do %>
           <%# Template Dependency: layouts/top_level_navigation %>
           <%= render :partial => "layouts/top_level_navigation", collection: links, :as => :link, :locals => {:simple => false} %>

@@ -11,8 +11,13 @@
         <%= render :partial => 'links/linkable_fields', :object => @linkable, :as => "linkable", :locals => { :f => ff } %>
       <% end %>
 
-      <%= f.input(:controller_id, :collection => @controllers, :include_blank => true,
+      <%#= f.input(:controller_id, :collection => @controllers, :include_blank => true,
           :label_method => lambda { |obj| obj.classify.constantize.model_name.human }, :class => 'form-control') %>
+
+      <%= f.input :controller_id do %>
+        <%# NOTE: remove class form-control when simple forms updates to bootstrap 3 %>
+        <%= f.select("controller_id", @controllers, {:include_blank => true}, :class => 'form-control') %>
+      <% end %>
 
       <div id="controllerDependentForm">
         <%= render :partial => 'controller_dependent' %>
