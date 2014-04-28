@@ -7,7 +7,8 @@ class GalleriesController < ApplicationController
   # authorize_resource
   authorize_resource :gallery, :through => :department, :shallow => true
 
-  layout 'one_column'
+  #layout 'one_column'
+  layout 'two_columns'
 
   # GET /galleries
   # GET /galleries.json

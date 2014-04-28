@@ -1,9 +1,8 @@
 <div class="col-md-3 col-sm-4 col-xs-6">
-  <div class="thumbnail mediaWrapper checkboxWrapper">
-    <%# link_to(image_tag(image.file_url(:_260x180)), image) if image.file._260x180.present? %>
+  <div class="mediaWrapper checkboxWrapper">
     <div class="mediaObject">
       <%= link_to(image.file_url, :class => 'fancybox', size: "260x180", :rel => 'group', :caption => image.name) do %>
-        <%= image_tag(image.file_url(:_260x180)) %>
+        <%= image_tag(image.file_url(:_260x180), :class => "img-responsive") %>
       <% end if image.file._260x180.present? %>
       <% if can?(:edit, image.attachable) %>
         <div class="mediaOverlay top-right toolbar">
@@ -23,7 +22,7 @@
     -->
 
     <%# holder_tag '260x180' %>
-    <% if can?(:edit, image) %>
+    <% if can?(:edit, @gallery) %>
       <div class="mediaText">
         <!-- <p><%= image.name %></p> -->
         <%= check_box_tag "image_ids[]", image.id %>
@@ -38,36 +37,8 @@
         <%= link_to image, data: { confirm: t("general.are_you_sure")}, :method => :delete, :class => 'btn btn-primary btn-xs' do %>
           <span class="glyphicon glyphicon-trash"></span>
           <%= t "general.destroy" %>
-        <% end if can?(:destroy, image) %>
+        <% end %>
       </div>
     <% end %>
-    
-    <!-- Does not work, because where is no input-group-xs, but a btn-group-xs
-    <!--<div class="mediaText">
-      <div style="text-align: center;" class="input-group input-group-sm">
-        <span class="input-group-btn">
-        <%= link_to edit_image_path(image), class: 'btn btn-sm btn-default' do %>
-          <span class="glyphicon glyphicon-edit"></span>
-          <%= t "general.edit" %>
-        <% end if can?(:edit, image) %>
-        </span>
-        <span class="input-group-btn">
-        <%= link_to set_preview_image_gallery_path(image.attachable, :image_id => image), :method => :post, class: 'btn btn-sm btn-default' do %>
-          <span class="glyphicon glyphicon-star"></span>
-          <%= t(".set_as_preview") %>
-        <% end if can?(:edit, image.attachable) && false %>
-        </span>
-        <span class="input-group-btn">
-        <%= link_to image, data: { confirm: t("general.are_you_sure")}, :method => :delete, class: 'btn btn-sm btn-default' do %>
-          <span class="glyphicon glyphicon-trash"></span>
-          <%= t "general.destroy" %>
-        <% end if can?(:destroy, image) %>
-        </span>
-        <span class="input-group-addon input-group-addon-sm">
-        <%= check_box_tag "image_ids[]", image.id %>
-        </span>
-
-      </div>
-    </div>-->
   </div>
 </div>

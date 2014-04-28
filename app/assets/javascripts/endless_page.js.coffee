@@ -29,10 +29,10 @@ onEndless = ->
     #$('.loader').show()
     $('.pagination').text("Fetching more items...")
     $.getScript url, ->
-      $(window).on 'scroll', onEndless
+      $(window).on 'scroll', onEndless # Set callback
+      $(window).scroll() # Exectue immediately
   else
     $(window).on 'scroll', onEndless
 
-$(window).on 'scroll', onEndless
-  
-$(window).scroll()
+$(window).on 'scroll', onEndless # Set callback
+$(window).scroll() # Exectue immediately

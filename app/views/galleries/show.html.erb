@@ -2,20 +2,24 @@
   <%= t ".title", :name => @gallery.name %>
 <% end %>
 
-<% content_for :buttons do %>
-  <%= link_to department_galleries_path(@gallery.department), :class => 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    <%= t "general.list" %>
-  <% end %>
-  <% if can? :update, @gallery %>
-    <%= link_to edit_gallery_path(@gallery), :class => 'btn btn-primary' do %>
-      <span class="glyphicon glyphicon-pencil"></span>
-      <%= t "general.edit" %>
-    <% end %>
-  <% end %>
-<% end %>
-
 <div class="window box">
+  <div>
+    <div class="pull-right">
+      <%= link_to department_galleries_path(@gallery.department), :class => 'btn btn-default btn-sm' do %>
+        <span class="glyphicon glyphicon-list-alt"></span>
+        <%= t "general.list" %>
+      <% end %>
+      <% if can? :update, @gallery %>
+        <%= link_to edit_gallery_path(@gallery), :class => 'btn btn-primary btn-sm' do %>
+          <span class="glyphicon glyphicon-pencil"></span>
+          <%= t "general.edit" %>
+        <% end %>
+      <% end %>
+    </div>
+    <h3><%= t ".title", :name => @gallery.name %></h3>
+  </div>
+  <hr />
+
   <% if can?(:update, @gallery) %>
     <%= form_for [@gallery, @image], :html => { :class => "fileupload", :multipart => true } do |f| %><%# Did not use simple_form_for because of spacing difficulties %>
       <div class="form-group">
