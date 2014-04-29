@@ -112,8 +112,4 @@ class Department < ActiveRecord::Base
     self.theme
   end
 
-  #def trainers
-  #  Trainer.department(self.id)
-  #end
-
 end
