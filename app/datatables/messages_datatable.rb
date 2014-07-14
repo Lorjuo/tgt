@@ -27,7 +27,7 @@ private
     messages.map do |message|
       array = [
         message.thumb.present? ? link_to(image_tag(message.thumb.file_url(:thumb), size: "64x48"), message.thumb.file_url, :class => "fancybox") : "",
-        link_to(message.title, message),
+        link_to(message.name, message),
         message.display_abstract + '...',
         link_to_pill(message.department.name, message.department, :class => "no-wrap"),
         localize( message.custom_date.to_date, :format => :default )#,
@@ -73,12 +73,12 @@ private
     end
 
     if params[:sSearch].present?
-      messages = messages.where("title like :search or content like :search or departments.name like :search", search: "%#{params[:sSearch]}%")
+      messages = messages.where("name like :search or content like :search or departments.name like :search", search: "%#{params[:sSearch]}%")
     end
 
     if params[:sSearch_2].present?
       params[:sSearch_2].split(/ /).each do |term|
-        messages = messages.where("title like :search or content like :search", search: "%#{term}%")
+        messages = messages.where("name like :search or content like :search", search: "%#{term}%")
       end
     end
 

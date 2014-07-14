@@ -92,7 +92,7 @@ gem 'cocoon'
 # Does not work with turbolinks
 # http://stackoverflow.com/questions/13807686/gmaps4rails-and-turbolinks-not-loading-without-full-page-refresh
 gem 'geocoder'
-gem 'underscore-rails'
+gem 'underscore-rails' # needed also for datatables
 
 # HTML Abstraction
 gem "haml-rails"
