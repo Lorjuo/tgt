@@ -26,7 +26,7 @@ class Image::ImagesController < ApplicationController
     @resource = @parent.images.build(permitted_params)
     if @resource.save
       if params[:image][:file].present?
-        render :crop # Maybe replace this line with redirect_to to avoid sending form twice on F5
+        #render :crop # Maybe replace this line with redirect_to to avoid sending form twice on F5
       else
         redirect_to @resource, notice: 'Banner was successfully created.'
       end
