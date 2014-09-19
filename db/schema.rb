@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140428090001) do
+ActiveRecord::Schema.define(version: 20140919121757) do
 
   create_table "announcements", force: true do |t|
     t.string   "name"
@@ -203,6 +203,9 @@ ActiveRecord::Schema.define(version: 20140428090001) do
     t.datetime "updated_at"
     t.text     "abstract"
     t.date     "custom_date"
+    t.date     "visible_from"
+    t.date     "visible_to"
+    t.boolean  "published"
   end
 
   create_table "pages", force: true do |t|

@@ -84,6 +84,7 @@ en:
     last_name: Surname
     link: Link
     path: Path
+    published: Published
     role: Role
     roles: Roles
     thumbnail: Thumbnail
@@ -93,6 +94,8 @@ en:
     training_groups: Training groups
     training_units: Training units
     visible: Visible
+    visible_from: Visible from
+    visible_to: Visible to
     week_day: Day
     week_days: Days
 

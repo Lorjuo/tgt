@@ -32,9 +32,14 @@ class Message < ActiveRecord::Base
   accepts_nested_attributes_for :thumb, allow_destroy: true
   accepts_nested_attributes_for :header, allow_destroy: true
 
-  #Scopes
+  # Scopes
   scope :department, -> (id) { where(:department_id => id)}
   scope :chronological, -> { order("created_at" => :desc) }
+  scope :published, -> { where(:published => true) }
+  scope :visible, -> {
+    where("visible_from IS NULL OR visible_from <= ?", Date.today)
+    .where("visible_to IS NULL OR visible_to >= ?", Date.today)
+  }
 
   after_initialize :default_values
   # http://stackoverflow.com/questions/9090204/rails-migration-set-current-date-as-default-value
@@ -53,4 +58,27 @@ class Message < ActiveRecord::Base
         length: options[:text_length], omission: '', :separator => ' ')
     end
   end
+
+  def display_visible
+    valid_begin = visible_from.present?
+    valid_end = visible_to.present?
+
+    if valid_begin && valid_end
+      "#{visible_from} #{visible_to}"
+
+    elsif valid_begin
+      I18n.t("general.date_formats.begin")+" "+I18n.l(visible_from, :format => :default )
+
+    elsif valid_end
+      I18n.t("general.date_formats.end")+" "+I18n.l(visible_to, :format => :default )
+      
+    else
+      I18n.t "general.always"
+    end
+  end
+
+  # Validations
+  validates :name, :presence => true
+  validates_date :visible_from, :allow_blank => true
+  validates_date :visible_to, :allow_blank => true, :after => :visible_from
 end

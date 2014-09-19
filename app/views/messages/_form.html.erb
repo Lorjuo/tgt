@@ -29,6 +29,9 @@
           <%= f.input_field :content, class: 'tinymce' %>
         </div>
       </div>-->
+      <%= f.input :published %>
+      <%= f.input :visible_from, :as => :date_picker %>
+      <%= f.input :visible_to, :as => :date_picker %>
 
       <fieldset>
         <legend><%= t "general.references" %></legend>

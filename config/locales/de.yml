@@ -85,6 +85,7 @@ de:
     last_name: Nachname
     link: Link
     path: Pfad
+    published: Veröffentlicht
     role: Rolle
     roles: Rollen
     thumbnail: Thumbnail
@@ -94,6 +95,8 @@ de:
     training_groups: Trainingsgruppen
     training_units: Trainingseinheiten
     visible: Sichtbar
+    visible_from: Sichtbar vom
+    visible_to: Sichtbar bis
     week_day: Wochentag
     week_days: Wochentage
 
