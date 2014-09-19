@@ -1,5 +1,5 @@
 # encoding: utf-8
-class Image::BannerUploader < Image::BaseImageUploader
+class Image::BannerUploader < ImageUploader
 
   process resize_to_fit: [1600, 1200]
 

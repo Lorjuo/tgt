@@ -23,7 +23,7 @@ class MessagesController < ApplicationController
 
   def new
     @message = @department.messages.new
-    @message.build_image
+    #@message.build_image
   end
 
 

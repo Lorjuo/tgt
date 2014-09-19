@@ -1,5 +1,5 @@
 # encoding: utf-8
-class Image::BaseImageUploader < BaseUploader
+class ImageUploader < BaseUploader
   #include CarrierWave::RMagick
   include CarrierWave::MiniMagick
 

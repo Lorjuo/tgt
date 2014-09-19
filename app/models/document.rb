@@ -20,7 +20,7 @@ class Document < ActiveRecord::Base
   has_many :references, :as => :reference_to, :dependent => :destroy # polymorphic
 
   # Uploader
-  mount_uploader :file, Document::BaseDocumentUploader, :mount_on => :file
+  mount_uploader :file, DocumentUploader, :mount_on => :file
 
   before_create :default_name
   before_update :default_name

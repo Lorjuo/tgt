@@ -17,7 +17,7 @@
 
   concern :imageable do
     #scope :module => "image" do
-    namespace :image do
+    #namespace :image do
       resources :images#, :only => [:new, :create]
-    end
+    #end
   end

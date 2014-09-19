@@ -12,7 +12,10 @@
 #  type            :string(255)
 #
 
-class Image::Header < Image::Image
+class Image::Header < Image
+  
+  # Associations
+  belongs_to :attachable, polymorphic: true
 
   # Uploader
   mount_uploader :file, ::Image::HeaderUploader, :mount_on => :file
@@ -20,7 +23,7 @@ class Image::Header < Image::Image
 end
 
 # http://stackoverflow.com/questions/1251352/ruby-inherit-code-that-works-with-class-variables/1251422#1251422
-Image::Banner.width = 800
-Image::Banner.height = 200
-Image::Banner.preview_width = 600
-Image::Banner.preview_height = 150
+Image::Header.width = 800
+Image::Header.height = 200
+Image::Header.preview_width = 600
+Image::Header.preview_height = 150

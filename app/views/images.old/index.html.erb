@@ -1,0 +1,57 @@
+<% content_for :title do %>
+  <%= t ".title" %>
+<% end %>
+
+<% content_for :buttons do %>
+  <%= link_to polymorphic_path([@parent, Image], :action => 'new'), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    <%= t('general.create_model', :model => Image.model_name.human ) %>
+  <% end if can? :create, Image %>
+<% end %>
+
+<div class="window box">
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th><%= Image.human_attribute_name(:name) %></th>
+      <!--<th>File</th>-->
+      <th></th>
+      <% if can? :update, Image %>
+      <th></th>
+      <% end %>
+      <% if can? :destroy, Image %>
+      <th></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+<% @images.each do |image| %>
+    <tr>
+      <td>
+        <%= link_to(image_tag(image.file_url(:thumb)), image.file_url) if image.file.thumb.present? %>
+      </td>
+      <td>
+        <%= image.name %>
+      </td>
+      <!--<td><%= image.file %></td>-->
+      <td><%= link_to t('general.show'), image %></td>
+      <% if can? :update, image %>
+      <td><%= link_to t('general.edit'), edit_image_path(image) %></td>
+      <% end %>
+      <% if can? :destroy, image %>
+      <td>
+        <%= link_to image, method: :delete, data: { confirm: t('general.are_you_sure') } do %>
+          <span class="glyphicon glyphicon-trash"></span>
+          <%= t('general.destroy') %>
+        <% end %>
+      </td>
+      <% end %>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+</div>

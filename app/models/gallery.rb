@@ -15,8 +15,8 @@ class Gallery < ActiveRecord::Base
 
   # Associations
   belongs_to :department
-  has_many :images, :as => :attachable, :class_name => 'Image::Image', dependent: :destroy
-  belongs_to :preview_image, :class_name => 'Image::Image'
+  has_many :images, :as => :attachable, :class_name => 'Image', dependent: :destroy
+  belongs_to :preview_image, :class_name => 'Image'
   
   # References
   has_many :references, :as => :reference_to, :dependent => :destroy # polymorphic

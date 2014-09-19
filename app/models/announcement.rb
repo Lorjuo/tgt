@@ -18,7 +18,7 @@ class Announcement < ActiveRecord::Base
   include UrlHelper
 
   # Associations
-  has_one :image, :as => :attachable, :class_name => 'Image::Image', :dependent => :destroy
+  has_one :image, :as => :attachable, :class_name => 'Image', :dependent => :destroy
 
   accepts_nested_attributes_for :image, allow_destroy: true
 

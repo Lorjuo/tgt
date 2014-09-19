@@ -12,7 +12,10 @@
 #  type            :string(255)
 #
 
-class Image::Banner < Image::Image
+class Image::Banner < Image
+  
+  # Associations
+  belongs_to :attachable, polymorphic: true
 
   # Uploader
   mount_uploader :file, ::Image::BannerUploader, :mount_on => :file

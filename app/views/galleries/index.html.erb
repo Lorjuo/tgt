@@ -50,6 +50,7 @@
   <%#= polymorphic_path(Department.first, :action => :edit, :only_path => true) %>
 
   <div class="row">
+    <%# TODO: add posibility to delete gallery %>
     <%= render(:partial => 'galleries/gallery', :collection => @galleries, :as => 'gallery') %>
   </div>
 </div>

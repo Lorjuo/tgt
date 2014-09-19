@@ -1,13 +1,13 @@
 <% content_for :title do %>
-  <%= t('general.edit_model', :model => Image.model_name.human ) %>
+  <%= t('general.edit_model', :model => @resource_class.model_name.human ) %>
 <% end %>
 
 <% content_for :buttons do %>
-  <%= link_to polymorphic_path([@image.attachable, Image]), :class => 'btn btn-default' do %>
+  <%= link_to @resource_class, :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
     <%= t "general.list" %>
   <% end %>
-  <%= link_to @image, :class => 'btn btn-primary' do %>
+  <%= link_to @resource, :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-info-sign"></span>
     <%= t "general.show" %>
   <% end %>

@@ -22,7 +22,7 @@ class TrainingGroup < ActiveRecord::Base
   belongs_to :department
   has_and_belongs_to_many :trainers
   has_many :training_units
-  has_one :image, :as => :attachable, :class_name => 'Image::Image', :dependent => :destroy
+  has_one :image, :as => :attachable, :class_name => 'Image', :dependent => :destroy
   
   # References
   has_many :references, :as => :reference_from, :dependent => :destroy # polymorphic

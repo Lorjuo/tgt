@@ -3,7 +3,7 @@
 <% end %>
 
 <% content_for :buttons do %>
-  <%= link_to images_path(@image), :class => 'btn btn-default' do %>
+  <%= link_to @resource_class, :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
     <%= t 'general.list' %>
   <% end %>

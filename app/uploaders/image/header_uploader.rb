@@ -1,5 +1,5 @@
 # encoding: utf-8
-class Image::HeaderUploader < Image::BaseImageUploader
+class Image::HeaderUploader < ImageUploader
 
   process resize_to_fit: [800, 600]
   
