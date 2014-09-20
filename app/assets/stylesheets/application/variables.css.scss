@@ -1,3 +1,9 @@
+/* Needs to be at the beginning of include procedure
+at least before @import "bootstrap"; */
+@import "bootstrap-sprockets";
+// http://stackoverflow.com/questions/21962775/bootstrap-3rails-4-certain-glyphicons-not-working
+// https://github.com/twbs/bootstrap-sass/issues/582
+
 /* Base */
 $border-radius-base: 0px;
 

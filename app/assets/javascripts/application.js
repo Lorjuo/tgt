@@ -14,13 +14,15 @@
 //# JQuery
 //= require jquery
 //= require jquery.turbolinks
-//= require jquery.ui.all
+//= require jquery-ui
+//# http://stackoverflow.com/questions/17053650/ruby-on-rails-couldnt-find-file-jquery-ui
+//# require jquery.ui.all
 //= require jquery_ujs
 //
 //= require holder
 //
 //# Bootstrap
-//= require bootstrap
+//= require bootstrap-sprockets
 //# Bootstrap Javascript
 // require bootstrap/scrollspy
 // require bootstrap/modal
@@ -97,8 +99,11 @@
 //
 //# Table
 //= require dataTables/jquery.dataTables
-//= require dataTables/jquery.dataTables.bootstrap3
-//= require dataTables/jquery.dataTables.responsive
+//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+//= require dataTables/extras/dataTables.responsive
+//# require dataTables/jquery.dataTables
+//# require dataTables/jquery.dataTables.bootstrap3
+//# require dataTables/jquery.dataTables.responsive
 //= require datatables
 //
 //# Underscore js

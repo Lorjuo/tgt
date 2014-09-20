@@ -8,7 +8,7 @@ gem 'rails', '~> 4.1'
 #gem 'sqlite3'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.2'
+gem 'sass-rails', '~> 4.0.3' #, '~> 4.0.2'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -115,7 +115,8 @@ gem 'fancybox2-rails', '~> 0.2'
   # Chosen check smartphone compatibility. Especially message and training group search
   gem 'chosen-rails'
   # For Rails 4 project, it is required to add compass-rails gem explicitly.
-  gem 'compass-rails', github: 'Compass/compass-rails'
+  #gem 'compass-rails', github: 'Compass/compass-rails'
+  gem 'compass-rails', '~> 1.1.7'
 
   # gem 'chosen-sass-bootstrap-rails'
 

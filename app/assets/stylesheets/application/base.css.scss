@@ -2,8 +2,11 @@
 
 // Datatable
 @import "dataTables/jquery.dataTables";
-@import "dataTables/jquery.dataTables.bootstrap3";
-@import "dataTables/jquery.dataTables.responsive";
+@import "dataTables/bootstrap/3/jquery.dataTables.bootstrap";
+@import "dataTables/extras/dataTables.responsive";
+//@import "dataTables/jquery.dataTables";
+//@import "dataTables/jquery.dataTables.bootstrap3";
+//@import "dataTables/jquery.dataTables.responsive";
 
 // Form
 /* Chosen */
@@ -24,7 +27,8 @@
 @import "fancybox";
 
 // JQuery
-@import "jquery.ui.all";
+@import "jquery-ui"; // http://stackoverflow.com/questions/17053650/ruby-on-rails-couldnt-find-file-jquery-ui
+//@import "jquery.ui.all";
 
 // Sortable Tree
 @import "sortable_tree";

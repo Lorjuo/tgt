@@ -41,7 +41,8 @@ module TinyMCE::Rails
       # "}"
 
       # Add Path to css files
-      json += ",\"content_css\" : \""+path_to_stylesheet('application')+","+path_to_stylesheet('wysiwyg')+"\""
+      json += ",\"content_css\" : \""+path_to_stylesheet(session[:theme])+","+path_to_stylesheet('wysiwyg')+"\""
+      #json += ",\"content_css\" : \""+path_to_stylesheet('application')+","+path_to_stylesheet('wysiwyg')+"\""
       json += "}"
       "tinyMCE.init($.extend({},tinymceDefaults,#{json}));".html_safe
       #"tinyMCE.init(#{json});".html_safe
