@@ -1,3 +1,12 @@
+// http://css-tricks.com/examples/ShapesOfCSS/
+.triangle-topleft {
+  width: 0;
+  height: 0;
+  right: 6px;
+  border-top: 20px solid red;
+  border-left: 20px solid transparent;
+}
+
 .media.message-excerpt {
 
   .media-heading {

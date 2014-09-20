@@ -1,5 +1,5 @@
 /* DataTables */
-
+/*
 div.dataTables_length label {
   white-space: nowrap;
 }
@@ -29,4 +29,37 @@ div.dataTables_length label {
   tr.odd td, tr.even td.sorting_1 {
     background-color: #F9F9F9;
   }
+}*/
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  &, &:hover{
+    padding: 0;
+    border: 0;
+  }
+}
+
+
+// https://github.com/Comanche/datatables-responsive/blob/master/files/1.10/css/datatables.responsive.css
+table.has-columns-hidden > tbody > tr > td > span.responsiveExpander {
+    background: image-url('dataTables/plus.png') no-repeat 5px center;
+    padding-left: 32px;
+    cursor: pointer;
+}
+
+table.has-columns-hidden > tbody > tr.detail-show > td span.responsiveExpander {
+    background: image-url('dataTables/minus.png') no-repeat 5px center;
+}
+
+table.has-columns-hidden > tbody > tr.row-detail > td {
+    background: #eee;
+}
+
+table.has-columns-hidden > tbody > tr.row-detail > td > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+table.has-columns-hidden > tbody > tr.row-detail > td > ul > li > span.columnTitle {
+    font-weight: bold;
 }

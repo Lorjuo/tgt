@@ -22,9 +22,14 @@ window.filter_select = filter_select
 
 # Define default hash options for datatables
 window.datatablesDefaults =
-  sPaginationType: "bootstrap"
+  sPaginationType: "full_numbers" # bootstrap
   # Setup for responsive datatables helper.
+  
+  pagingType: 'full_numbers'
   bAutoWidth: false
+  autoWidth: false
+  bJQueryUI: true
+
   bStateSave: false
   sDom: "<r>t<'row'>"
   iDisplayLength: 9999
@@ -44,7 +49,6 @@ window.datatablesPageable =
 window.datatablesSearchable =
   sDom: "<'row'<'col-md-6'l><'col-md-6 filterDiv'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>"
   iDisplayLength: 10
-
 
 # Callbacks for responsive Layout
 # https://github.com/Comanche/datatables-responsive/blob/master/example/js/dom-bootstrap-multiple-table.js

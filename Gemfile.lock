@@ -28,14 +28,6 @@ GIT
       rails (>= 3.2)
 
 GIT
-  remote: git://github.com/rweng/jquery-datatables-rails.git
-  revision: 37349993fb40fae4fa079729a25dc99d5ef3c416
-  specs:
-    jquery-datatables-rails (2.2.3)
-      jquery-rails
-      sass-rails
-
-GIT
   remote: git://github.com/spohlenz/tinymce-rails.git
   revision: da19989c52b2368d76abdfab42012b509ea175e2
   branch: tinymce-4
@@ -207,6 +199,9 @@ GEM
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
+    jquery-datatables-rails (2.2.3)
+      jquery-rails
+      sass-rails
     jquery-fileupload-rails (0.4.1)
       actionpack (>= 3.1)
       railties (>= 3.1)
@@ -379,7 +374,7 @@ DEPENDENCIES
   hirb
   holder_rails
   jbuilder (~> 1.2)
-  jquery-datatables-rails!
+  jquery-datatables-rails
   jquery-fileupload-rails
   jquery-rails
   jquery-turbolinks

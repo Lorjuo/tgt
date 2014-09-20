@@ -187,7 +187,6 @@ de:
         content: Text
 
       trainer:
-        name: Vollständiger Name
         birthday: Geburstag
         residence: Wohnort
         phone: Telefon

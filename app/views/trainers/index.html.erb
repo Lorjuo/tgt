@@ -10,7 +10,7 @@
 <% end %>
 
 <div class="window box">
-  <table class="table table-bordered table-striped datatable defaults">
+  <table class="table table-bordered table-striped datatable defaults secondCol">
     <thead>
       <tr>
         <th class="no-sort"></th>
@@ -26,7 +26,7 @@
     <tbody>
   <% @trainers.each do |trainer| %>
       <tr>
-        <td><%= link_to(image_tag(trainer.image.file_url(:thumb)), trainer.image.file_url, :class => "fancybox") if trainer.image.present? %></td>
+        <td data-order="<%= trainer.name %>"><%= link_to(image_tag(trainer.image.file_url(:thumb)), trainer.image.file_url, :class => "fancybox") if trainer.image.present? %></td>
         <td><%= link_to trainer.name, trainer %></td>
         <td>
           <% trainer.training_groups.each do |training_group| %>

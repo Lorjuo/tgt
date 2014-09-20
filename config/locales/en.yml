@@ -186,7 +186,6 @@ en:
         content: Text
 
       trainer:
-        name: Full Name
         birthday: Birthday
         residence: Residence
         phone: Phone

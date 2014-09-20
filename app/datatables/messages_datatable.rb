@@ -103,7 +103,7 @@ private
   end
 
   def sort_column
-    columns = ['', 'messages.title', '', 'departments.name', 'messages.custom_date']
+    columns = ['', 'messages.name', '', 'departments.name', 'messages.custom_date']
     columns[params[:iSortCol_0].to_i]
   end
 

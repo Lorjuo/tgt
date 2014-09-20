@@ -156,7 +156,7 @@ gem 'net-ssh', '~> 2.7.0'
 gem 'truncate_html'
 
 # Table
-gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
+gem 'jquery-datatables-rails'#, git: 'git://github.com/rweng/jquery-datatables-rails.git'
 gem 'lodash-rails'
 # Alternative: https://github.com/berk/will_filter/wiki/Customizing-Table-View
 
