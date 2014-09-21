@@ -28,6 +28,15 @@ GIT
       rails (>= 3.2)
 
 GIT
+  remote: git://github.com/plataformatec/simple_form.git
+  revision: 29f8f768f1702c6d032854b870d14eadb81cea88
+  branch: master
+  specs:
+    simple_form (3.1.0.rc2)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
+
+GIT
   remote: git://github.com/spohlenz/tinymce-rails.git
   revision: da19989c52b2368d76abdfab42012b509ea175e2
   branch: tinymce-4
@@ -276,9 +285,6 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    simple_form (3.0.2)
-      actionpack (~> 4.0)
-      activemodel (~> 4.0)
     sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -395,7 +401,7 @@ DEPENDENCIES
   rolify!
   sass-rails (~> 4.0.3)
   sdoc
-  simple_form
+  simple_form (~> 3.1.0.rc1)!
   the_sortable_tree
   thin
   thread_safe (= 0.2.0)

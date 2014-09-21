@@ -83,7 +83,8 @@ gem 'carrierwave-crop', github: 'kirtithorat/carrierwave-crop'
 # http://codecanyon.net/item/tinymce-4-image-manager/4744204
 
 # Forms
-gem 'simple_form'
+gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form', branch: 'master'
+# https://github.com/rafaelfranca/simple_form-bootstrap/blob/master/app/views/examples/_horizontal_form_sf.html.erb
 # gem 'nested_form'
 gem 'cocoon'
 
