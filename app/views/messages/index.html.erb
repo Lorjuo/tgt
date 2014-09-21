@@ -50,7 +50,7 @@
         <th data-hide="xxs,xs"><%= Message.human_attribute_name(:date) %></th>
         <%# if can? :update, Message %>
         <% if user_signed_in? %>
-          <th class="no-sort"><%= t "general.actions" %></th>
+          <th class="no-sort" data-hide="xxs,xs,sm,md,lg,xl"><%= t "general.actions" %></th>
         <% end %>
       </tr>
     </thead>

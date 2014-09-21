@@ -79,6 +79,7 @@ window.breakpointDefinition =
   sm: 992
   md: 1200
   lg: 1900
+  xl: 5000
 
 
 # Attach onload actions

@@ -50,13 +50,18 @@
             <%= fa_icon "check-square-o" %>
             <%= department.name %>
           </dd>
+        <% end.empty? and begin # http://stackoverflow.com/questions/16860310/ruby-best-practice-if-not-empty-each-do-else-in-one-operator %>
+          <dd>--</dd>
         <% end %>
 
         <dt>Trainerprofil:</dt>
         <dd>
           <%= link_to current_user.trainer do %>
             <%= fa_icon "user" %>
-            <%= department.name %>
+            <%= link_to current_user.trainer.name, current_user.trainer %>
+            <%#= current_user.trainer.departments.each do |department| %>
+              <%#= link_to department.name, department %>
+            <%# end %>
           <% end unless current_user.trainer.nil? %>
         </dd>
       </dl>

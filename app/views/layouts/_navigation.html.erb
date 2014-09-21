@@ -54,22 +54,22 @@
               <% end if current_user.can?(:edit, generic_department) %>
               <%= content_tag :li do %>
                 <%= link_to Message.model_name.human(:count => :lots), messages_path %>
-              <% end if current_user.can?(:edit, :messages) %>
+              <% end if current_user.can?(:edit, Message) #:messages %>
               <%= content_tag :li do %>
                 <%= link_to Link.model_name.human(:count => :lots), department_links_path(generic_department) %>
-              <% end if current_user.can?(:edit, :link) %>
+              <% end if current_user.can?(:edit, Link) #:links %>
               <%= content_tag :li do %>
                 <%= link_to(Announcement.model_name.human(:count => :lots), announcements_path) %>
-              <% end if current_user.can?(:edit, :announcements) %>
+              <% end if current_user.can?(:edit, Announcement) #:announcements %>
               <%= content_tag :li do %>
                 <%= link_to(User.model_name.human(:count => :lots), users_path) %>
-              <% end if current_user.can?(:edit, :users) %>
+              <% end if current_user.can?(:edit, User) #:users %>
               <%= content_tag :li do %>
                 <%= link_to(Department.model_name.human(:count => :lots), departments_path) %>
-              <% end if current_user.can?(:edit, :departments) %>
+              <% end if current_user.can?(:edit, Department) #:departments %>
               <%= content_tag :li do %>
                 <%= link_to(Theme.model_name.human(:count => :lots), themes_path) %>
-              <% end if current_user.can?(:edit, :themes) %>
+              <% end if current_user.can?(:edit, Theme) #:themes %>
             </ul>
           </li>
         <% end %>
