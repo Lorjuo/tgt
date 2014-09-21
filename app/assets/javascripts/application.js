@@ -29,6 +29,7 @@
 //= require bootstrap/dropdown
 //# Loaders
 //= require tooltip_loader
+//= require bootstrap_alert
 //
 //# Clipboard # TODO: Check if this is needed
 //#ZeroClipBoardDisabled:

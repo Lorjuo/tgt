@@ -13,7 +13,7 @@ end
 
 %>
 
-<div class="triangle-topleft mediaOverlay" title="published" data-toggle="tooltip"></div>
+<!-- <div class="publication-marker topright mediaOverlay <%= message.published? ? 'published' : 'unpublished' %>" title="<%= message.published? ? t('general.published') : t('general.unpublished') %>" data-toggle="tooltip"></div> -->
 <div class="window box">
   <div class="media message-excerpt <%= size %>">
     <% if message.thumb.present? %>
@@ -31,7 +31,13 @@ end
           <% end %>
         </div>
         <% unless size == :small %>
-          <div class="date"><%= localize( message.custom_date.to_date, :format => :long ) %></div>
+          <div class="date">
+            <%#= localize( message.custom_date.to_date, :format => :long ) %>
+            <%= content_tag(:div, 
+              (localize( message.custom_date.to_date, :format => :default )+
+          (user_signed_in? ? ' '+publication_indicator(message) : '')).html_safe, style: "white-space: nowrap"
+            ) %>
+          </div>
         <% end %>
       </div>
       <%= link_to message, :class => "content decent" do %>

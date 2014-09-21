@@ -39,6 +39,11 @@
               <span class="glyphicon glyphicon-pencil"></span>
               <%= t "general.edit" %>
             <% end %>
+            <% if @message.published? %>
+              <%= link_to fa_icon("flag", text: t("general.unpublish")), publish_message_path(@message, :value => false), class: 'publish btn btn-primary btn-sm', method: :put, remote: true, data: { toggle_text: fa_icon("flag", text: t("general.publish")).to_json, toggle_href: publish_message_path(@message, :value => true), id: @message.id } %>
+            <% else %>
+              <%= link_to fa_icon("flag", text: t("general.publish")), publish_message_path(@message, :value => true), class: 'publish btn btn-primary btn-sm', method: :put, remote: true, data: { toggle_text: fa_icon("flag", text: t("general.unpublish")).to_json, toggle_href: publish_message_path(@message, :value => false), id: @message.id } %>
+            <% end %>
           <% end %>
         </div>
         <h1><%= @message.name %></h1>

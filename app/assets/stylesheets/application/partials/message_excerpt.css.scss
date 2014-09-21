@@ -1,12 +1,28 @@
 // http://css-tricks.com/examples/ShapesOfCSS/
 // http://coursesweb.net/css/polygons-css_cs
 // http://stackoverflow.com/questions/7073484/how-does-this-css-triangle-shape-work
-.triangle-topleft {
+/*.publication-marker {
   width: 0;
   height: 0;
-  right: 6px;
-  border-top: 20px solid red;
+  &.topleft {
+    right: 6px;
+  }
+  &.published{
+  border-top: 20px solid green;
+  }
+  &.unpublished{
+    border-top: 20px solid red;
+  }
   border-left: 20px solid transparent;
+}*/
+
+.publication-marker {
+  &.published {
+    color: green;
+  }
+  &.unpublished {
+    color: red;
+  }
 }
 
 .media.message-excerpt {

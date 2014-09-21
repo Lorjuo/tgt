@@ -18,6 +18,7 @@ TgtRefurbished::Application.routes.draw do
   # Messages
   resources :messages, :only => :index do
     get :images, :on => :member
+    put :publish, :on => :member
   end
 
 

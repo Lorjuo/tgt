@@ -71,6 +71,10 @@ class DepartmentsController < ApplicationController
   def messages
     @messages = @department.messages
 
+    unless user_signed_in?
+      @messages = @messages.published
+    end
+
     render :template => "messages/index"
   end 
 

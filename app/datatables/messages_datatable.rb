@@ -1,6 +1,6 @@
 class MessagesDatatable < ApplicationController # Inherit from ApplicationController to enable paths and urls
 
-  delegate :params, :h, :link_to, :link_to_pill, :tag, :content_tag, :image_tag, :strip_tags, :truncate, to: :@view
+  delegate :params, :h, :link_to, :link_to_pill, :tag, :content_tag, :image_tag, :strip_tags, :fa_icon, :truncate, :user_signed_in?, :publication_indicator, to: :@view
 
   def initialize(view, current_user, department_id)
     @view = view
@@ -26,11 +26,17 @@ private
 
     messages.map do |message|
       array = [
-        message.thumb.present? ? link_to(image_tag(message.thumb.file_url(:thumb), size: "64x48"), message.thumb.file_url, :class => "fancybox") : "",
+        #'<div class="publication-marker topright mediaOverlay '+(message.published? ? 'published' : 'unpublished')+'" title="'+( message.published? ? t('general.published') : t('general.unpublished'))+'" data-toggle="tooltip"></div>'+
+        (message.thumb.present? ? link_to(image_tag(message.thumb.file_url(:thumb), size: "64x48"), message.thumb.file_url, :class => "fancybox") : ""),
         link_to(message.name, message),
         message.display_abstract + '...',
         link_to_pill(message.department.name, message.department, :class => "no-wrap"),
-        localize( message.custom_date.to_date, :format => :default )#,
+        content_tag(:div, 
+          (localize( message.custom_date.to_date, :format => :default )+
+          (user_signed_in? ? ' '+publication_indicator(message) : '')).html_safe,
+          style: "white-space: nowrap"
+        )#,
+        #content_tag( :div, 'Hello World!', :class=>nil)
 
         #link_to(I18n.t('general.show'), message),
         #@user && @user.can?(:update, message) ? link_to( I18n.t('general.edit'), Rails.application.routes.url_helpers.edit_message_path(message)) : "",
@@ -38,7 +44,7 @@ private
       ]
 
       edit_link = link_to edit_icon, @url_helper.edit_message_path(message), :title => t("general.edit"), :data => {:toggle => "tooltip"}
-      destroy_link = link_to destroy_icon, message, :title => t("general.destrpy"), data: { confirm: I18n.t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete
+      destroy_link = link_to destroy_icon, message, :title => t("general.destroy"), data: { confirm: I18n.t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete
 
       #if @user && @user.can?( :update, Message )
       if @user
@@ -65,8 +71,14 @@ private
 
   def fetch_messages
 
+    if user_signed_in?
+      message = Message.all
+    else
+      message = Message.published
+    end
+
     #messages = Message.joins(:department)
-    messages = Message.joins("LEFT OUTER JOIN departments ON messages.department_id = departments.id")
+    messages = message.joins("LEFT OUTER JOIN departments ON messages.department_id = departments.id")
 
     if @department_id.present?
       messages = messages.where("departments.slug = :search", search: "#{@department_id}")

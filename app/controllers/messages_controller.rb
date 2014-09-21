@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
   #load_and_authorize_resource
 
-  before_action :set_message, only: [:show, :edit, :update, :destroy]
+  before_action :set_message, only: [:show, :edit, :update, :publish, :destroy]
   before_action :load_parent_resource
 
   load_and_authorize_resource :message, :through => :department, :shallow => true
@@ -53,6 +53,22 @@ class MessagesController < ApplicationController
       redirect_to @message, notice: 'Message was successfully updated.'
     else
       render action: 'edit'
+    end
+  end
+
+  # Message toggle published via ajax
+  # http://stackoverflow.com/questions/24221367/like-button-ajax-in-ruby-on-rails
+  # Alternatives:
+  # http://www.topdan.com/ruby-on-rails/ajax-toggle-buttons.html
+  # http://stackoverflow.com/questions/14154298/toggle-buttons-without-refreshing-using-ajax
+  # https://www.railstutorial.org/book/following_users
+  def publish
+    @message.update_attribute(:published, params[:value])
+
+    if request.xhr? # Request is an ajax request
+      render json: { id: params[:id] }
+    else # Request is a normal http request
+      redirect_to @message
     end
   end
 

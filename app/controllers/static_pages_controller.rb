@@ -4,7 +4,11 @@ class StaticPagesController < ApplicationController
   layout :resolve_layout
 
   def home
-    @messages = Message.chronological.limit(5)
+    @messages = Message.chronological.limit(6)
+
+    unless user_signed_in?
+      @messages = @messages.published
+    end
   end
 
   def page_layout

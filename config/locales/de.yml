@@ -2,6 +2,10 @@ de:
   "false": "nein"
   "true": "ja"
 
+  flash:
+    message_published: Nachricht wurde erforderlich veröffentlicht
+    message_unpublished: Nachricht wurde erforderlich zurückgezogen
+
   general:
     actions: Aktionen
     add_files: Dateien hinzufügen...
@@ -23,6 +27,10 @@ de:
     more: mehr
     navigation: Navigation
     never: niemals
+    publish: Veröffentlichen
+    published: veröffentlicht
+    unpublish: Zurückziehen
+    unpublished: nicht veröffentlicht
     reference: Verknüpfung
     references: Verknüpfungen
     search: Suche

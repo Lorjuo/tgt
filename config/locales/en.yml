@@ -2,6 +2,10 @@ en:
   "false": "no"
   "true": "yes"
 
+  flash:
+    message_published: Message has successfully been published
+    message_unpublished: Message has successfully been withdrawn
+
   general:
     actions: Actions
     add_files: Add Files...
@@ -26,6 +30,10 @@ en:
     more: more
     navigation: Navigation
     never: never
+    publish: publish
+    published: published
+    unpublish: withdraw
+    unpublished: unpublished
     reference: Reference
     references: References
     search: Search
