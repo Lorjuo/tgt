@@ -65,7 +65,7 @@ class Ability
       # try syntax needed because there are sometimes no dependencies in tests
     end
 
-    can [:create, :read, :update, :destroy], Message do |message|
+    can [:create, :read, :update, :destroy, :images], Message do |message|
       user.departments.include? message.department
     end
 

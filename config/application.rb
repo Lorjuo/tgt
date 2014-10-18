@@ -69,6 +69,8 @@ module TgtRefurbished
       elfinder/proxy/elFinderSupportVer1.js
       wysiwyg.css
       *-bundle.js
+      tagesschau.css
+      professional.css
     )
     # http://blog.seancarpenter.net/2012/11/05/page-specific-javascript-with-the-asset-pipeline/
     # http://brandonhilkert.com/blog/page-specific-javascript-in-rails/

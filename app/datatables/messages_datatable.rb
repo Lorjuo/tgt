@@ -85,12 +85,12 @@ private
     end
 
     if params[:sSearch].present?
-      messages = messages.where("name like :search or content like :search or departments.name like :search", search: "%#{params[:sSearch]}%")
+      messages = messages.where("messages.name like :search or messages.content like :search or departments.name like :search", search: "%#{params[:sSearch]}%")
     end
 
     if params[:sSearch_2].present?
       params[:sSearch_2].split(/ /).each do |term|
-        messages = messages.where("name like :search or content like :search", search: "%#{term}%")
+        messages = messages.where("messages.name like :search or messages.content like :search", search: "%#{term}%")
       end
     end
 

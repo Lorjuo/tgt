@@ -1,9 +1,9 @@
- ☐ change image upload paths
- ☐ add publishing functionality
+ ☐ Problem using filemanager in wysiwyg with julien user
+ ✔ change image upload paths @done (14-09-24 10:07)
+ ✔ add publishing functionality @done (14-09-24 10:08)
  ☐ improve right management for departments
  ☐ Refactor Documents and other assets
  ☐ improve gallery design
- ☐ create intern forum
  ☐ maybe change user trainer relationship to many to one
 
  ✔ Bug in update an model with attached image without selecting a new image (trainer, message, training group, location) -> Solved by adding :image_attributes => [:file, :id] to permit @done (13-11-05 10:58)
@@ -24,7 +24,7 @@
  ☐ Jquery backwards bug - especially announcement slider
 
 Problems:
- ☐ Problem when trying to access: /departments/leichtathletik/messages because of friendly id
+ ✔ Problem when trying to access: /departments/leichtathletik/messages because of friendly id @done (14-09-24 10:10)
 
  Heroku:
  ☐ config.assets.initialize_on_precompile = false
