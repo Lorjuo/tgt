@@ -68,6 +68,12 @@ TgtRefurbished::Application.routes.draw do
   resources :trainers
 
 
+  # Datatables
+  # # https://github.com/rweng/jquery-datatables-rails/issues/41
+  # https://gist.github.com/ricardodovalle/7244900
+  get 'datatable_i18n', to: 'datatables#datatable_i18n'
+
+
   # Includes
   # Has to be after the other includes, because it overrides some special routes
 
