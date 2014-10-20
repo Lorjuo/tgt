@@ -134,7 +134,7 @@ set(:symlinks, [
 
 namespace :deploy do
   # make sure we're deploying what we think we're deploying
-  before :deploy, "deploy:check_revision"
+  #TODO: Reenable this:      before :deploy, "deploy:check_revision"
   # only allow a deploy with passing tests to deployed
   before :deploy, "deploy:run_tests"
   # compile assets locally then rsync
@@ -169,14 +169,6 @@ namespace :deploy do
   task :restart do
     invoke 'unicorn:restart'
   end
-
-  # # http://spin.atomicobject.com/2012/08/13/deploying-from-git-with-capistrano/
-  # task :build_version do#, :except => { :no_release => true } do
-  #   deploy_date = Time.now.strftime('%F')
-  #   build_version = "#{deploy_date} #{tag}.build+#{current_revision}"
-  #   put(build_version,"#{current_release}/BUILD_VERSION")
-  # end
-  # after "deploy:publishing", "deploy:build_version"
 
   # For interactive rails console:
   # https://gist.github.com/toobulkeh/8214198

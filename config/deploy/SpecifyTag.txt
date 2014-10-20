@@ -1,0 +1,32 @@
+http://stackoverflow.com/questions/18003232/how-do-i-deploy-the-master-branch-if-no-tag-is-specified-using-capistrano
+
+https://github.com/technicalpickles/capistrano-gitflow
+
+https://groups.google.com/forum/#!topic/capistrano/Yue0jpPdI8I
+
+http://capistranorb.com/documentation/getting-started/preparing-your-application/
+ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
+
+http://blog.factor.io/post/78024294006/deploy-from-a-git-tag-with-capistrano-3
+ask :branch, proc{`git tag`.split("\n").last}
+
+http://git-scm.com/book/en/Git-Basics-Tagging
+
+
+#puts fetch(:branch)
+#set :branch, fetch(:tag, "develop")
+ask :branch, proc{`git tag`.split("\n").last}
+# set :branch, fetch(:tag) || ENV["REVISION"] || "develop"
+# set :branch, tag if exists?(:tag) #http://spin.atomicobject.com/2012/08/13/deploying-from-git-with-capistrano/
+
+# set :branch do
+#   default_tag = `git tag`.split("\n").last
+#   tag = Capistrano::CLI.ui.ask "Tag to deploy (make sure to push the tag first): [#{default_tag}] "
+#   tag = default_tag if tag.empty?
+#   tag
+# end
+
+# Get current version
+http://building.wanelo.com/2014/03/31/capistrano-you-have-changed.html
+http://stackoverflow.com/questions/19758811/capistrano-3-how-to-store-git-revision-into-a-file
+# http://spin.atomicobject.com/2012/08/13/deploying-from-git-with-capistrano/

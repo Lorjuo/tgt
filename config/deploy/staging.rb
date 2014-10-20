@@ -1,6 +1,6 @@
 set :stage, :staging
-set :branch, fetch(:tag) || ENV["REVISION"] || "develop"
-# set :branch, tag if exists?(:tag) #http://spin.atomicobject.com/2012/08/13/deploying-from-git-with-capistrano/
+ask :branch, proc{`git tag`.split("\n").last}
+# set :branch, ENV["REVISION"] || "develop"
 
 # Simple Role Syntax - Either use this or extended server syntax
 # ==================

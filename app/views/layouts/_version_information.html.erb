@@ -1,0 +1,15 @@
+<% unless Rails.env.development? %>
+  <%
+    file = File.open("../../revisions.log", "rb")
+    contents = file.read
+    latest_revision = contents.split("\n")[-1]
+  %>
+  <div class="window box">
+    <dl>
+      <dt>Environment</dt>
+      <dd><%= Rails.env %></dd>
+      <dt>Version</dt>
+      <dd><%= latest_revision %></dd>
+    </dl>
+  </div>
+<% end %>
