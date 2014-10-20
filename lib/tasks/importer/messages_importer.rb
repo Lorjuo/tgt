@@ -34,7 +34,8 @@ module MessagesImporter
 
         message = Message.new(name: row.get("title"), 
                         content: row.get("content"), 
-                        department_id: department_id, 
+                        department_id: department_id,
+                        custom_date: row.get("date"),
                         created_at: row.get("date"), 
                         updated_at: row.get("date"))
         begin
