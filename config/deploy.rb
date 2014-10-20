@@ -7,6 +7,9 @@
 # ssh-add -L
 # 
 # cap staging deploy
+# Enter version like '0.1.1' or branch like 'develop'
+# 
+# # Following commands do not work
 # cap staging deploy -S tag=3.2.1
 # cap -s branch=my_branch deploy
 # cap -s tag=my_tag deploy

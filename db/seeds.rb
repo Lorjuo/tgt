@@ -26,8 +26,9 @@ generic_department = Department.create(:name => "generic")
 # # Reset autoincrement counter
 # ActiveRecord::Base.connection.execute("ALTER TABLE departments AUTO_INCREMENT = 1")
 
-NavigationElement.create(:name => 'Sport', :parent_id => nil, :controller_id => nil, :action_id => nil, :instance_id => nil, :department_id => generic_department.id)
-NavigationElement.create(:name => 'Kultur', :parent_id => nil, :controller_id => nil, :action_id => nil, :instance_id => nil, :department_id => generic_department.id)
+#TODO: reenable these
+#NavigationElement.create(:name => 'Sport', :parent_id => nil, :controller_id => nil, :action_id => nil, :instance_id => nil, :department_id => generic_department.id)
+#NavigationElement.create(:name => 'Kultur', :parent_id => nil, :controller_id => nil, :action_id => nil, :instance_id => nil, :department_id => generic_department.id)
 
 dir = File.join(Rails.public_path, 'files')+"/announcements"
 unless File.directory?(dir)
