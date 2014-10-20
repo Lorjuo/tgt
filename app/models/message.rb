@@ -55,7 +55,7 @@ class Message < ActiveRecord::Base
     else
       ActionController::Base.helpers.truncate(
         ActionController::Base.helpers.strip_tags(self.content),
-        length: options[:text_length], omission: '', :separator => ' ')
+        length: options[:text_length], escape: false, omission: '', :separator => ' ')
     end
   end
 

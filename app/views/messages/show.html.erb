@@ -13,7 +13,7 @@
   <meta property='og:url' content='<%= message_url(@message) %>' />
   <meta name='twitter:url' content='<%= message_url(@message) %>' />
 
-  <% description = truncate(strip_tags(@message.content), length: 180, omission: '...', :separator => ' ') %>
+  <% description = truncate(strip_tags(@message.content), escape: false, length: 180, omission: '...', :separator => ' ') %>
   <meta property='og:description' content='<%= description %>' />
   <meta name='twitter:description' content='<%= description %>' />
   <meta itemprop='description' content='<%= description %>'>
