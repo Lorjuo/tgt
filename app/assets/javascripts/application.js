@@ -92,6 +92,9 @@
 //# Pagination
 //= require endless_page
 //
+//# Seat Reservation
+//= require seatReservation
+//
 //# Select
 //= require select
 //# Sortable Tree

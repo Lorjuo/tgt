@@ -19,7 +19,7 @@ class Location < ActiveRecord::Base
   after_validation :geocode, :if => :geocode?
 
   # Associations
-  has_one :image, :as => :attachable, :class_name => 'Image::Image', :dependent => :destroy
+  has_one :image, :as => :attachable, :class_name => 'Image', :dependent => :destroy
   has_many :training_units_summer, class_name: "TrainingUnit", foreign_key: "location_summer_id"
   has_many :training_units_winter, class_name: "TrainingUnit", foreign_key: "location_winter_id"
 

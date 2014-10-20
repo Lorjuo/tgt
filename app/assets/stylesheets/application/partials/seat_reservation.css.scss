@@ -1,0 +1,83 @@
+.seatReservation {
+  .seatRow {
+    display: block;
+    .seat {
+      display: inline-block;
+      width: 25px;
+      height: 25px;
+
+      background-image: asset-url("carnival/seat.png");
+      background-size: 100% auto;
+
+      &.empty {
+        background-image: asset-url("carnival/seat_disabled.png");
+      }
+
+      &.occupied .indicator, &:hover .indicator, &.selected .indicator {
+        border-radius: 50%;
+        width: 11px;
+        height: 11px;
+        margin: 7px;
+        display: block;
+      }
+      &.selected .indicator {
+        //background-color: #BB0000;
+        background-color: #000000;
+      }
+      &:hover .indicator {
+        //background-color: #FF0000;
+        background-color: #400080;
+      }
+      &.occupied .indicator {
+        background-color: #939393;
+      }
+
+      &.category:not(.occupied) {
+        cursor: pointer;
+      }
+
+      &.categoryA {
+        background-image: asset-url("carnival/seat_categoryA.png");
+      }
+
+      &.categoryB {
+        background-image: asset-url("carnival/seat_categoryB.png");
+      }
+    }
+  }
+}
+/*.seatReservation {
+
+  li {
+    @extend .fa;
+    //@extend .fa-lg;
+    @extend .fa-stack;
+    border: 1px solid black;
+
+    .border {
+      @extend .fa-stack-1x;
+      @extend .fa-square-o;
+    }
+
+    &.occupied .indicator {
+      @extend .fa-stack-1x;
+      @extend .fa-times;
+    }
+
+    &.selected .indicator {
+      @extend .fa-stack-1x;
+      @extend .fa-circle;
+    }
+
+
+    &.occupied {
+      //color: red;
+    }
+    &.selected {
+      //color: blue;
+      @extend .fa;
+      @extend .fa-circle;
+      @extend .fa-border;
+    }
+  }
+}*/

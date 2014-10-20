@@ -1,5 +1,6 @@
   # Carnival
 
+  #Start on /carnival/orders/steps
   #get "carnival/orders/steps", to: "carnival/order_steps#personal_information", via: "post"
   get '/carnival/orders/steps(.:format)', :to => "carnival/order_steps#create", via: "post"
   namespace :carnival do
