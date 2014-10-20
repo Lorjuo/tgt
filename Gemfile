@@ -53,10 +53,13 @@ gem 'bootstrap-sass'
   #gem 'bootstrap-generators' # Only needed for first installation? - Afterwards it leads to conflicts
 
 # Date
-gem 'validates_timeliness',
-  :git => 'git://github.com/yabawock/validates_timeliness.git',
-  :ref => '7f02909'  # Temporary fix to disable deprecation warnings
-  # https://github.com/adzap/validates_timeliness/issues/113
+# Following gem is no longer maintained:
+# gem 'validates_timeliness',
+#   :git => 'git://github.com/yabawock/validates_timeliness.git',
+#   :ref => '7f02909'  # Temporary fix to disable deprecation warnings
+#   # https://github.com/adzap/validates_timeliness/issues/113
+# replaced with:
+gem 'jc-validates_timeliness'
 
 # Database
 gem 'mysql2'
@@ -188,14 +191,14 @@ gem 'tinymce-rails-langs'
 gem 'thread_safe', '0.2.0'
 
 group :test do
+  gem 'minitest'
   # gem 'minitest-spec-rails'
   #gem 'minitest-rails' # Disabled because of compatibility issues
   #gem 'minitest-rails-capybara' # Disabled because of compatibility issues
-  gem 'minitest-colorize'
+  #gem 'minitest-colorize'
   gem 'minitest-focus'
   # gem 'minitest-matchers' # NOTE: DO NOT USE THIS - BUT NECESSARY FOR ABILITY TESTING
   gem 'minitest-spec-context'
-  gem 'turn'
 end
 
 group :doc do
@@ -215,8 +218,8 @@ group :development do
   # gem 'capistrano', group: :development
   gem 'capistrano', '~> 3.1'
 
-  # rails specific capistrano funcitons
-  gem 'capistrano-rails', '~> 1.1.0'
+  # rails specific capistrano functions
+  gem 'capistrano-rails', '~> 1.1'
 
   gem 'capistrano-rbenv', '~> 2.0'
 

@@ -1,5 +1,4 @@
 require 'minitest/spec'
-require 'minitest/autorun'
 
 describe Array do
   it "can be created with no arguments" do

@@ -1,3 +1,21 @@
+# NOTE: execute following commands before each deploy
+# http://capistranorb.com/documentation/getting-started/authentication-and-authorisation/
+# https://github.com/capistrano/capistrano/wiki/Using-SSH-Keys
+# eval $(ssh-agent)
+# ssh-add -L
+# ssh-add
+# ssh-add -L
+# 
+# cap staging deploy
+# cap staging deploy -S tag=3.2.1
+# cap -s branch=my_branch deploy
+# cap -s tag=my_tag deploy
+# http://spin.atomicobject.com/2012/08/13/deploying-from-git-with-capistrano/
+
+
+# http://robmclarty.com/blog/how-to-deploy-a-rails-4-app-with-git-and-capistrano
+
+
 # TODO: Problem: unicorn still working on old release
 # http://stackoverflow.com/questions/13578687/unicorn-continues-to-use-old-code-following-deploy-restart
 # Still does not really restart after using https://github.com/tablexi/capistrano3-unicorn
@@ -152,13 +170,13 @@ namespace :deploy do
     invoke 'unicorn:restart'
   end
 
-  # http://spin.atomicobject.com/2012/08/13/deploying-from-git-with-capistrano/
-  task :build_version do#, :except => { :no_release => true } do
-    deploy_date = Time.now.strftime('%F')
-    build_version = "#{deploy_date} #{tag}.build+#{current_revision}"
-    put(build_version,"#{current_release}/BUILD_VERSION")
-  end
-  after "deploy:publishing", "deploy:build_version"
+  # # http://spin.atomicobject.com/2012/08/13/deploying-from-git-with-capistrano/
+  # task :build_version do#, :except => { :no_release => true } do
+  #   deploy_date = Time.now.strftime('%F')
+  #   build_version = "#{deploy_date} #{tag}.build+#{current_revision}"
+  #   put(build_version,"#{current_release}/BUILD_VERSION")
+  # end
+  # after "deploy:publishing", "deploy:build_version"
 
   # For interactive rails console:
   # https://gist.github.com/toobulkeh/8214198

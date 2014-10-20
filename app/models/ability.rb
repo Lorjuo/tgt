@@ -49,7 +49,7 @@ class Ability
 
     # Department dependent
     can [:create, :read, :update], Department do |department|
-      user.departments.include? department
+      ergebnis = user.departments.include? department
     end
 
     can [:create, :read, :update, :destroy, :sort], [Link, ExternLink, MediaLink, Placeholder, Page] do |link|
