@@ -30,7 +30,7 @@ generic_department = Department.create(:name => "generic")
 #NavigationElement.create(:name => 'Sport', :parent_id => nil, :controller_id => nil, :action_id => nil, :instance_id => nil, :department_id => generic_department.id)
 #NavigationElement.create(:name => 'Kultur', :parent_id => nil, :controller_id => nil, :action_id => nil, :instance_id => nil, :department_id => generic_department.id)
 
-dir = File.join(Rails.public_path, 'files')+"/announcements"
-unless File.directory?(dir)
-  FileUtils.mkdir_p(dir)
-end
+# dir = File.join(Rails.public_path, 'files')+"/announcements"
+# unless File.directory?(dir)
+#   FileUtils.mkdir_p(dir)
+# end
