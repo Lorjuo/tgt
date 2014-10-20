@@ -1,6 +1,6 @@
 set :stage, :production
-set :branch, ENV["REVISION"] || "master"
-set :branch, tag if exists?(:tag) #http://spin.atomicobject.com/2012/08/13/deploying-from-git-with-capistrano/
+set :branch, fetch(:tag) || ENV["REVISION"] || "master"
+# set :branch, tag if exists?(:tag) #http://spin.atomicobject.com/2012/08/13/deploying-from-git-with-capistrano/
 
 # Simple Role Syntax - Either use this or extended server syntax
 # ==================
