@@ -37,7 +37,8 @@ module MessagesImporter
                         department_id: department_id,
                         custom_date: row.get("date"),
                         created_at: row.get("date"), 
-                        updated_at: row.get("date"))
+                        updated_at: row.get("date"),
+                        published: true)
         begin
           message.save!
         rescue Exception => e
