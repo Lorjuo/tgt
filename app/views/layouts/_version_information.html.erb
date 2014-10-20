@@ -1,4 +1,5 @@
-<% unless Rails.env.development? %>
+<%# if Rails.env in ['production', 'staging'] %>
+<% if File.file?("../../revisions.log") %>
   <%
     file = File.open("../../revisions.log", "rb")
     contents = file.read

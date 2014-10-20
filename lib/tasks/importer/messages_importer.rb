@@ -23,7 +23,7 @@ module MessagesImporter
       # puts "-import \"#{row.get("title")}\""
 
       # Check if message exists already
-      message = Message.where(title: row.get("title"), content: row.get("content"))
+      message = Message.where(name: row.get("title"), content: row.get("content"))
 
       # Reload message / Avoid caching problems
       message.reload
