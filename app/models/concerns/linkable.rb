@@ -7,5 +7,10 @@ module Linkable
     delegate :name, :to => :link
     delegate :parent, :to => :link
     delegate :active, :to => :link
+
+    # Fix for touch invocation chain
+    after_save do
+      self.link.touch
+    end
   end
 end
