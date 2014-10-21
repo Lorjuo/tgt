@@ -37,8 +37,8 @@ class Link < ActiveRecord::Base # Parent Class for polymorphic association
   # Invoke touch on parent, to update timestamp for fragment caching
   # declaring this in the association is not possible:
   # see: https://github.com/collectiveidea/awesome_nested_set/blob/master/lib/awesome_nested_set/awesome_nested_set.rb, line 66
-  #before_save :invoke_touch
-  #before_destroy :invoke_touch
+  before_save :invoke_touch
+  before_destroy :invoke_touch
   
   # Associations
   belongs_to :department
@@ -50,10 +50,10 @@ class Link < ActiveRecord::Base # Parent Class for polymorphic association
   # Validation  
   validates :name, presence: true
 
-  # def invoke_touch
-  #   self.touch
-  #   parent.invoke_touch unless parent.nil?
-  # end
+  def invoke_touch
+    self.touch
+    parent.invoke_touch unless parent.nil?
+  end
   
   delegate :url, :to => :linkable
 

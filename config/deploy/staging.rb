@@ -2,6 +2,7 @@ set :stage, :staging
 #ask :branch, proc{`git tag`.split("\n").last}
 puts 'Latest Tags:'
 tags = `git tag`.split("\n").last(5)
+tags.each {|tag| puts tag}
 ask :branch, proc{'develop'}
 # set :branch, ENV["REVISION"] || "develop"
 
