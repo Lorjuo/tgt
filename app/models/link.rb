@@ -30,30 +30,35 @@ class Link < ActiveRecord::Base # Parent Class for polymorphic association
   scope :top_level, -> { joins(:department).where('departments.name' => 'generic')}
 
   # Columns in the categories table: lft, rgt and parent_id
-  acts_as_nested_set  :scope => :department_id#,
+  acts_as_nested_set  :scope => :department_id,
+                      touch: true
                       #:after_add      => :invoke_touch, # these callbacks seem not to be triggered
                       #:after_remove   => :invoke_touch
   
   # Invoke touch on parent, to update timestamp for fragment caching
   # declaring this in the association is not possible:
   # see: https://github.com/collectiveidea/awesome_nested_set/blob/master/lib/awesome_nested_set/awesome_nested_set.rb, line 66
-  before_save :invoke_touch
-  before_destroy :invoke_touch
+  #before_save :invoke_touch
+  #before_destroy :invoke_touch
+  #after_save :invoke_touch
+  #after_destroy :invoke_touch
   
   # Associations
   belongs_to :department
 
   belongs_to :theme
 
-  belongs_to :linkable, polymorphic: true, :dependent => :destroy
+  belongs_to :linkable, polymorphic: true, :dependent => :delete
+  # NOTE: :dependent => :destroy leads to an endless loop
+  # https://github.com/rails/rails/issues/13609
 
   # Validation  
   validates :name, presence: true
 
-  def invoke_touch
-    self.touch
-    parent.invoke_touch unless parent.nil?
-  end
+  # def invoke_touch
+  #   self.touch
+  #   parent.invoke_touch unless parent.nil?
+  # end
   
   delegate :url, :to => :linkable
 
@@ -65,6 +70,6 @@ class Link < ActiveRecord::Base # Parent Class for polymorphic association
     else
       self.department.get_theme
     end
-  end 
+  end
 
 end

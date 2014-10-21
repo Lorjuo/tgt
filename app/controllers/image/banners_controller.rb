@@ -1,4 +1,4 @@
-class Image::BannersController < Image::ImagesController
+class Image::BannersController < ImagesController
 
   # Associations
 

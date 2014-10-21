@@ -11,14 +11,6 @@ GIT
     datetimepicker-rails (0.0.8)
 
 GIT
-  remote: git://github.com/huoxito/awesome_nested_set.git
-  revision: fc4f75e345a8c55fa42f9b4101ed38cb49992be1
-  branch: rails4
-  specs:
-    awesome_nested_set (2.1.6)
-      activerecord (>= 4.0.0.beta)
-
-GIT
   remote: git://github.com/kirtithorat/carrierwave-crop.git
   revision: 22e183b21125ec2ceefb7ee4d551f04fd934a8fa
   specs:
@@ -81,6 +73,8 @@ GEM
       rake (>= 0.8.7)
     arel (5.0.1.20140414130214)
     atomic (1.1.16)
+    awesome_nested_set (3.0.1)
+      activerecord (>= 4.0.0, < 5)
     bcrypt (3.1.7)
     better_errors (2.0.0)
       coderay (>= 1.0.0)
@@ -336,7 +330,7 @@ DEPENDENCIES
   actionview-encoded_mail_to
   active_record_query_trace
   annotate
-  awesome_nested_set!
+  awesome_nested_set
   better_errors
   binding_of_caller
   bootstrap-colorpicker-rails

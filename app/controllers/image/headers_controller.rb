@@ -1,4 +1,4 @@
-class Image::HeadersController < Image::ImagesController
+class Image::HeadersController < ImagesController
 
   # Associations
 
