@@ -1,5 +1,8 @@
 set :stage, :staging
-ask :branch, proc{`git tag`.split("\n").last}
+#ask :branch, proc{`git tag`.split("\n").last}
+puts 'Latest Tags:'
+tags = `git tag`.split("\n").last(5)
+ask :branch, proc{'develop'}
 # set :branch, ENV["REVISION"] || "develop"
 
 # Simple Role Syntax - Either use this or extended server syntax
