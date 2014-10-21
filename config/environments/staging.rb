@@ -80,6 +80,6 @@ TgtRefurbished::Application.configure do
 
   # CUSTOMIZATION
   if File.file?("../../revisions.log") # check if we are really on production server
-    config.action_controller.asset_host = "http://tgt-static.ddns.net" # See more at: http://www.speedawarenessmonth.com/speeding-up-asset-delivery-from-your-rails-app/#
+    config.action_controller.asset_host = "http://tgt-static.ddns.net:8080" # See more at: http://www.speedawarenessmonth.com/speeding-up-asset-delivery-from-your-rails-app/#
   end
 end
