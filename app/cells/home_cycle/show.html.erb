@@ -39,10 +39,14 @@
         <div class="cycle-slideshow inner-slideshow verein"
           data-cycle-timeout=4000
           data-cycle-speed=1000
-          data-cycle-paused="false">
+          data-cycle-paused="false"
+          >
+          <!-- lazy loading seems not to work in nested slides on first slideshow http://jquery.malsup.com/cycle2/demo/progressive.php -->
           <%= image_tag "home_cycle/verein1.jpg", :class => "img-responsive", :style => "width: 100%" %>
-          <%= image_tag "home_cycle/verein2.jpg", :class => "img-responsive", :style => "width: 100%" %>
-          <%= image_tag "home_cycle/verein3.jpg", :class => "img-responsive", :style => "width: 100%" %>
+          <!-- <script id="images_verein" type="text/cycle"> -->
+            <%= image_tag "home_cycle/verein2.jpg", :class => "img-responsive", :style => "width: 100%" %>
+            <%= image_tag "home_cycle/verein3.jpg", :class => "img-responsive", :style => "width: 100%" %>
+          <!-- </script> -->
         </div>
       </div>
 
@@ -50,10 +54,14 @@
         <div class="cycle-slideshow inner-slideshow sport"
           data-cycle-timeout=4000
           data-cycle-speed=1000
-          data-cycle-paused="false">
+          data-cycle-paused="false"
+          data-cycle-loader=true
+          data-cycle-progressive="#images_sport">
           <%= image_tag "home_cycle/sport1.jpg", :class => "img-responsive", :style => "width: 100%" %>
-          <%= image_tag "home_cycle/sport2.jpg", :class => "img-responsive", :style => "width: 100%" %>
-          <%= image_tag "home_cycle/sport3.jpg", :class => "img-responsive", :style => "width: 100%" %>
+          <script id="images_sport" type="text/cycle">
+            <%= image_tag "home_cycle/sport2.jpg", :class => "img-responsive", :style => "width: 100%" %>
+            <%= image_tag "home_cycle/sport3.jpg", :class => "img-responsive", :style => "width: 100%" %>
+          </script>
         </div>
       </div>
 
@@ -61,10 +69,14 @@
         <div class="cycle-slideshow inner-slideshow karneval"
           data-cycle-timeout=4000
           data-cycle-speed=1000
-          data-cycle-paused="false">
+          data-cycle-paused="false"
+          data-cycle-loader=true
+          data-cycle-progressive="#images_karneval">
           <%= image_tag "home_cycle/karneval1.jpg", :class => "img-responsive", :style => "width: 100%" %>
-          <%= image_tag "home_cycle/karneval2.jpg", :class => "img-responsive", :style => "width: 100%" %>
-          <%= image_tag "home_cycle/karneval3.jpg", :class => "img-responsive", :style => "width: 100%" %>
+          <script id="images_karneval" type="text/cycle">
+            <%= image_tag "home_cycle/karneval2.jpg", :class => "img-responsive", :style => "width: 100%" %>
+            <%= image_tag "home_cycle/karneval3.jpg", :class => "img-responsive", :style => "width: 100%" %>
+          </script>
         </div>
       </div>
 
@@ -72,10 +84,14 @@
         <div class="cycle-slideshow inner-slideshow ohlebach"
           data-cycle-timeout=4000
           data-cycle-speed=1000
-          data-cycle-paused="false">
+          data-cycle-paused="false"
+          data-cycle-loader=true
+          data-cycle-progressive="#images_ohlebach">
           <%= image_tag "home_cycle/ohlebach1.jpg", :class => "img-responsive", :style => "width: 100%" %>
-          <%= image_tag "home_cycle/ohlebach2.jpg", :class => "img-responsive", :style => "width: 100%" %>
-          <%= image_tag "home_cycle/ohlebach3.jpg", :class => "img-responsive", :style => "width: 100%" %>
+          <script id="images_ohlebach" type="text/cycle">
+            <%= image_tag "home_cycle/ohlebach2.jpg", :class => "img-responsive", :style => "width: 100%" %>
+            <%= image_tag "home_cycle/ohlebach3.jpg", :class => "img-responsive", :style => "width: 100%" %>
+          </script>
         </div>
       </div>
     </div>

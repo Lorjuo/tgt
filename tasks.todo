@@ -5,6 +5,7 @@
  ☐ Refactor Documents and other assets
  ☐ improve gallery design
  ☐ maybe change user trainer relationship to many to one
+   ☐ maybe separate jquery datatable from other assets because of its size
 
  ✔ Bug in update an model with attached image without selecting a new image (trainer, message, training group, location) -> Solved by adding :image_attributes => [:file, :id] to permit @done (13-11-05 10:58)
  ✔ Display image beside image upload field @done (13-11-11 14:26)
