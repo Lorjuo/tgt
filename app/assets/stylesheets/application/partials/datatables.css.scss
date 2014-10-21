@@ -31,10 +31,26 @@ div.dataTables_length label {
   }
 }*/
 
-.dataTables_wrapper .dataTables_paginate .paginate_button {
+/*.fg-button.ui-button.ui-state-default{
+  display: inline-block;
+}*/
+
+/*.dataTables_wrapper .dataTables_paginate .paginate_button {
   &, &:hover{
     padding: 0;
     border: 0;
+  }
+}*/
+
+.dataTables_paginate {
+  .pagination {
+    li.ui-state-default {
+      display: inline-block;
+      border: none;
+      margin-left: 3px;
+      margin-right: 0;
+      a {}
+    }
   }
 }
 
