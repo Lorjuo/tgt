@@ -1,4 +1,5 @@
 class Image::BannersController < ImagesController
+  Rails.logger.error "BANNERS CONTROLLER"
 
   # Associations
 
