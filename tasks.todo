@@ -24,6 +24,10 @@
  ☐ Refactor navigation
  ☐ Jquery backwards bug - especially announcement slider
 
+Image:
+  Endless scroll on mobile devices does not work
+  Swipe on mobile devices
+
 Problems:
  ✔ Problem when trying to access: /departments/leichtathletik/messages because of friendly id @done (14-09-24 10:10)
 
