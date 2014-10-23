@@ -1,3 +1,8 @@
+.no-mobile {
+  @media (max-width: $screen-xs-max) {
+    display: none;
+  }
+}
 
 .window {
   margin-bottom: 10px;

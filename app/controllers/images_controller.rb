@@ -2,7 +2,7 @@
 # http://stackoverflow.com/questions/5246767/sti-one-controller
 
 class ImagesController < ApplicationController
-  Rails.logger.error "IMAGES CONTROLLER"
+  # Rails.logger.error "IMAGES CONTROLLER"
 
   # Callbacks
   before_action :load_resource_class
@@ -19,7 +19,6 @@ class ImagesController < ApplicationController
     # TODO: redefine relation classes
     #@collection = @parent.images
     @collection = @resource_class.all#.load # TODO: EAGER LOAD PROBLEM
-    debugger
   end
 
   def new

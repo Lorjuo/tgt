@@ -1,0 +1,22 @@
+/* https://github.com/fancyapps/fancyBox */
+
+.fancybox-nav span {
+    visibility: visible;
+}
+
+.fancybox-nav {
+    width: 80px;
+}
+
+/*.fancybox-prev {
+    left: -80px;
+}
+
+.fancybox-next {
+    right: -80px;
+}*/
+/*In that case, you might want to increase space around box:*/
+
+/*$(".fancybox").fancybox({
+    margin : [20, 60, 20, 60]
+});*/

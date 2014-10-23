@@ -123,6 +123,9 @@
 //= require schedule
 //= require training_groups
 //
+//# Swype
+//= require jquery.touchSwipe.js
+//
 //# Grid # Has to be some of the last scripts to include, because especially chosen can change the page adjustments
 //= require jquery.equalheights
 //
