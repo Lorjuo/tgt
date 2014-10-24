@@ -54,7 +54,7 @@
         <%= render :partial => "layouts/department_navigation" %>
         <%= render_cell :banner, :show, :theme => @current_theme if @current_theme.present? %>
       <% elsif true %>
-        <%= render_cell :home_cycle, :show %>
+        <%= render_cell :home_cycle, :show, {:mobile => mobile_device?} %>
       <% end %>
 
       <% if Rails.env.production? #&& user_signed_in? %>

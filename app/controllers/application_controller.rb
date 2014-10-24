@@ -6,8 +6,8 @@ class ApplicationController < ActionController::Base
   check_authorization :if => :custom_check_authorization?
 
   before_filter :_miniprofiler, :set_locale, :set_theme #, :_cancan_sanitizer
-
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_filter :prepare_for_mobile
 
   # http://stackoverflow.com/questions/9281224/filter-to-execute-before-render-but-after-controller
   def render *args
@@ -128,5 +128,19 @@ class ApplicationController < ActionController::Base
     # ansonsten parents aufsteigen bis eventuell abteilung
     
     # mittels link buttons anzeigen
+  end
+
+  def mobile_device?
+    if session[:mobile_param]
+      session[:mobile_param] == "1"
+    else
+      (request.user_agent =~ /(iPhone|iPod|Android|webOS|Mobile)/) && (request.user_agent !~ /iPad/)
+    end
+  end
+  helper_method :mobile_device?
+
+  def prepare_for_mobile
+    session[:mobile_param] = params[:mobile] if params[:mobile]
+    request.format = :mobile if (mobile_device? && request.format == :html) # Needed to prevent :json requests to look for :mobile templates etc.
   end
 end

@@ -21,6 +21,7 @@ class TrainingGroupsController < ApplicationController
   end
   
   def search
+    debugger
     respond_to do |format|
       format.html
       format.json { render json: TrainingGroupsDatatable.new(view_context, current_user, params[:department_id]) }
