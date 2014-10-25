@@ -14,6 +14,7 @@
 #  created_at    :datetime
 #  updated_at    :datetime
 #  active        :boolean          default(TRUE)
+#  theme_id      :integer
 #
 
 class Link < ActiveRecord::Base # Parent Class for polymorphic association

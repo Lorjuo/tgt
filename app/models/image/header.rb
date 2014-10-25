@@ -12,6 +12,7 @@
 #  type            :string(255)
 #
 
+
 class Image::Header < Image
   
   # Associations
@@ -20,6 +21,11 @@ class Image::Header < Image
   # Uploader
   mount_uploader :file, ::Image::HeaderUploader, :mount_on => :file
   crop_uploaded :file
+
+  # http://stackoverflow.com/questions/1251352/ruby-inherit-code-that-works-with-class-variables/1251422#1251422
+  class << self
+    attr_accessor :width, :height, :preview_width, :preview_height
+  end
 end
 
 # http://stackoverflow.com/questions/1251352/ruby-inherit-code-that-works-with-class-variables/1251422#1251422

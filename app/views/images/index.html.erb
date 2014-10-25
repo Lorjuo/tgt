@@ -3,7 +3,7 @@
 <% end %>
 
 <% content_for :buttons do %>
-  <%= link_to polymorphic_url(@resource_class, :action => :new), :class => 'btn btn-primary' do %>
+  <%= link_to polymorphic_url(@type_class, :action => :new), :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
     <%= t('general.create_model', :model => Image.model_name.human ) %>
   <% end %>
@@ -16,6 +16,7 @@
       <th></th>
       <th><%= Image.human_attribute_name(:name) %></th>
       <th>Class</th>
+      <th>Attachable</th>
       <!--<th>File</th>-->
       <th></th>
       <% if can? :update, Image %>
@@ -28,7 +29,7 @@
   </thead>
 
   <tbody>
-<% @collection.each do |image| %>
+<% @images.each do |image| %>
     <tr>
       <td>
         <%= link_to(image_tag(image.file_url(:thumb)), image.file_url) if image.file.thumb.present? %>
@@ -38,6 +39,9 @@
       </td>
       <td>
         <%= image.class.name %>
+      </td>
+      <td>
+        <%= link_to image.attachable.name, image.attachable %>
       </td>
       <!--<td><%= image.file %></td>-->
       <td><%= link_to t('general.show'), image %></td>

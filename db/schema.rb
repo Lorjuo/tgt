@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140919121757) do
+ActiveRecord::Schema.define(version: 20141025134717) do
 
   create_table "announcements", force: true do |t|
     t.string   "name"
@@ -181,8 +181,8 @@ ActiveRecord::Schema.define(version: 20140919121757) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "address"
-    t.float    "latitude"
-    t.float    "longitude"
+    t.float    "latitude",    limit: 24
+    t.float    "longitude",   limit: 24
     t.boolean  "gmaps"
     t.text     "description"
   end

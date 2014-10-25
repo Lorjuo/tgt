@@ -10,6 +10,9 @@
 #  updated_at    :datetime
 #  abstract      :text
 #  custom_date   :date
+#  visible_from  :date
+#  visible_to    :date
+#  published     :boolean
 #
 
 class Message < ActiveRecord::Base

@@ -5,7 +5,7 @@ module MiniMagick
       command = command_builder.command
 
       # CUSTOMIZATION BEGIN
-      Rails.logger.debug "MiniMagick Command: #{command}"
+      # Rails.logger.debug "MiniMagick Command: #{command}"
       # puts caller if command =~ /mogrify/
       # CUSTOMIZATION END
 

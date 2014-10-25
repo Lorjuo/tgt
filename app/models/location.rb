@@ -7,8 +7,8 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #  address     :string(255)
-#  latitude    :float
-#  longitude   :float
+#  latitude    :float(24)
+#  longitude   :float(24)
 #  gmaps       :boolean
 #  description :text
 #

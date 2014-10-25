@@ -11,6 +11,9 @@ class Image::PhotoUploader < ImageUploader
     #process resize_to_fit: [64, 64]
     process resize_to_fill: [64, 48]
   end
+  # version :_80x60 do
+  #   process resize_to_fill: [80, 60]
+  # end
   # version :small do
   #   process resize_to_fit: [100, 100]
   # end

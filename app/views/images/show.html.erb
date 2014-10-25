@@ -1,27 +1,27 @@
 <% content_for :title do %>
-  <%= t ".title", :name => @resource.name %>
+  <%= t ".title", :name => @image.name %>
 <% end %>
 
 <% content_for :buttons do %>
-  <%= link_to @resource_class, :class => 'btn btn-default' do %>
+  <%= link_to @type_class, :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
     <%= t "general.list" %>
   <% end %>
-  <%= link_to polymorphic_url(@resource, :action => :edit), :class => 'btn btn-primary' do %>
+  <%= link_to polymorphic_url(@image, :action => :edit), :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-pencil"></span>
     <%= t "general.edit" %>
   <% end %>
 <% end %>
 
 <div class="window box">
-  <p><%= link_to(image_tag(@resource.file_url(:thumb)), @resource.file_url) if @resource.file.thumb.present? %></p>
+  <p><%= link_to(image_tag(@image.file_url(:thumb)), @image.file_url) if @image.file.thumb.present? %></p>
 
   <dl class="dl-horizontal">
     <dt><%= Image.human_attribute_name(:name) %>:</dt>
-    <dd><%= @resource.name %></dd>
+    <dd><%= @image.name %></dd>
 
     <dt><%= Image.human_attribute_name(:path) %>:</dt>
-    <dd><%= @resource.file %></dd>
+    <dd><%= @image.file %></dd>
 
   </dl>
 </div>

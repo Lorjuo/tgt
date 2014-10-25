@@ -4,20 +4,14 @@
     get :edit_multiple, on: :collection
     post :update_multiple, on: :collection
   end
-  namespace :image do
-    #scope :module => "image" do
-    resources :headers do
-      get :crop, on: :member
-    end
-    resources :banners do
-      get :crop, on: :member
-    end
-    resources :images
+
+  # namespace :image do # Works but the path is long
+  scope as: 'image' do # Works with short paths
+    resources :banners, controller: 'images', type: 'Image::Banner'#, except: %i(new edit)
+    resources :headers, controller: 'images', type: 'Image::Header'#, except: %i(new edit) 
+    resources :posters, controller: 'images', type: 'Image::Poster'#, except: %i(new edit)
   end
 
   concern :imageable do
-    #scope :module => "image" do
-    #namespace :image do
-      resources :images#, :only => [:new, :create]
-    #end
+    resources :images
   end
