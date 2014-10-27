@@ -171,6 +171,10 @@ window.tinymceDefaults = {
         split: false,
         expand: false,
         deep: true
-    }] //,
+    }],
     //style_formats_merge: true // For merging new and default styles
+    //verify_html : false,
+    //extended_valid_elements : "div*",
+    //extended_valid_elements : "div[*]",
+    extended_valid_elements : "span[class]"
 }

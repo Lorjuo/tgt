@@ -46,9 +46,10 @@ class Message < ActiveRecord::Base
 
   after_initialize :default_values
   # http://stackoverflow.com/questions/9090204/rails-migration-set-current-date-as-default-value
+  # http://stackoverflow.com/questions/328525/how-can-i-set-default-values-in-activerecord
   def default_values
     # self.custom_date does not work with tests
-    custom_date ||= Date.today.to_s if new_record?
+    self.custom_date ||= Date.today.to_s if new_record?
   end
 
   def display_abstract( options={} )

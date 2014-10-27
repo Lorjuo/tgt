@@ -1,4 +1,9 @@
-[{
+[
+    {
+        "title": "Download Button",
+        "description": "Button für Downloads",
+        "url": "/static_pages/download_button"
+    }, {
         "title": "MediaBox (klein, links)",
         "description": "Box für Medien und Zusatzinformationen",
         "url": "/static_pages/media_box?size=small&align=left"

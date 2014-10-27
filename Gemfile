@@ -76,14 +76,14 @@ gem 'mysql2'
 gem 'carrierwave'
 gem 'jquery-fileupload-rails'
 gem 'el_finder'
-#gem 'jcrop-rails-v2' # carrierwave-crop already contains jcrop
-gem 'carrierwave-crop', github: 'kirtithorat/carrierwave-crop'
 # Alternatives:
 # http://www.roxyfileman.com/
 # http://cflove.org/2013/10/coldfusion-file-manager-for-tinymce-4.cfm
 # http://www.quivive-file-manager.com
 # http://www.responsivefilemanager.com
 # http://codecanyon.net/item/tinymce-4-image-manager/4744204
+#gem 'jcrop-rails-v2' # carrierwave-crop already contains jcrop
+gem 'carrierwave-crop', github: 'kirtithorat/carrierwave-crop'
 
 # Forms
 gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form', branch: 'master'

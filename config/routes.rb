@@ -60,6 +60,7 @@ TgtRefurbished::Application.routes.draw do
       get :home
       get :page_layout
       get :media_box
+      get :download_button
     end
   end
 
