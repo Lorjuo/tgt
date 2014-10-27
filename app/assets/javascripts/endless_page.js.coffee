@@ -31,6 +31,7 @@ onEndless = ->
     $.getScript url, ->
       $(window).on 'scroll', onEndless # Set callback
       $(window).scroll() # Exectue immediately
+      init_tooltips() # Reinit tooltips
   else
     $(window).on 'scroll', onEndless
 

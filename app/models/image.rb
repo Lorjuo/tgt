@@ -30,7 +30,7 @@ class Image < Asset
 
   # http://stackoverflow.com/questions/1251352/ruby-inherit-code-that-works-with-class-variables/1251422#1251422
   class << self
-    attr_accessor :width, :height, :preview_width, :preview_height
+    attr_accessor :width, :height, :preview_width, :preview_height, :croppable
   end
 
   # We will need a way to know which types
@@ -39,3 +39,4 @@ class Image < Asset
     %w(Image::Banner Image::Header Image::Poster)
   end
 end
+Image.croppable = false

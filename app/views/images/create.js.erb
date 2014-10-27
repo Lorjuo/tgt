@@ -1,5 +1,5 @@
-<% if @resource.new_record? %>
+<% if @image.new_record? %>
   alert("Failed to upload image: <%= j @image.errors.full_messages.join(', ').html_safe %>");
 <% else %>
-  $("#images").append("<%= j render(:partial => 'image', :object =>@resource, :as => 'image') %>");
+  $("#images").append("<%= j render(:partial => 'image', :object =>@image, :as => 'image') %>");
 <% end %>

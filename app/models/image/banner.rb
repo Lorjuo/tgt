@@ -22,9 +22,9 @@ class Image::Banner < Image
   crop_uploaded :file
 
   # http://stackoverflow.com/questions/1251352/ruby-inherit-code-that-works-with-class-variables/1251422#1251422
-  class << self
-    attr_accessor :width, :height, :preview_width, :preview_height
-  end
+  # class << self
+  #   attr_accessor :width, :height, :preview_width, :preview_height
+  # end
 end
 
 # http://stackoverflow.com/questions/1251352/ruby-inherit-code-that-works-with-class-variables/1251422#1251422
@@ -32,3 +32,4 @@ Image::Banner.width = 1088
 Image::Banner.height = 148
 Image::Banner.preview_width = 544
 Image::Banner.preview_height = 74
+Image::Banner.croppable = true

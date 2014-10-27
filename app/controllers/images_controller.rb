@@ -37,10 +37,13 @@ class ImagesController < ApplicationController
     #@image = Image::Image.new(permitted_params)
     @image = @parent.images.build(permitted_params)
     if @image.save
-      if params[:image][:file].present?
+      if params[:image][:file].present? && @type_class.croppable
         render :crop # Maybe replace this line with redirect_to to avoid sending form twice on F5
       else
-        redirect_to @image, notice: 'Image was successfully created.'
+        respond_to do |format|
+          format.html { redirect_to @image, notice: "Image was successfully created." }
+          format.js
+        end
       end
     else
       render action: 'new'
@@ -56,7 +59,7 @@ class ImagesController < ApplicationController
       
       # if @image..respond_to?('crop_image') # Image needs to be cropped
       # end
-      if params[:image][:file].present?
+      if params[:image][:file].present? && @type_class.croppable
         render :crop # Maybe replace this line with redirect_to to avoid sending form twice on F5
       else
         redirect_to @image.attachable, notice: 'Image was successfully updated.'

@@ -83,7 +83,7 @@ gem 'el_finder'
 # http://www.responsivefilemanager.com
 # http://codecanyon.net/item/tinymce-4-image-manager/4744204
 #gem 'jcrop-rails-v2' # carrierwave-crop already contains jcrop
-gem 'carrierwave-crop', github: 'kirtithorat/carrierwave-crop'
+gem 'carrierwave-crop'
 
 # Forms
 gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form', branch: 'master'
@@ -147,7 +147,7 @@ gem 'unicorn'
 gem 'cancancan'
 gem 'devise'
 gem 'devise-i18n-views'
-gem 'rolify', github: "EppO/rolify" #, '~> 3.3.0.rc4' # https://github.com/EppO/rolify/pull/129
+gem 'rolify'
 
 # SSH
 #gem 'net-ssh', '~> 2.8.1', :git => "https://github.com/net-ssh/net-ssh"
@@ -182,7 +182,7 @@ gem 'wicked'
 
 # WYSIWYG
 #gem 'tinymce-rails'
-gem 'tinymce-rails', :git => 'git://github.com/spohlenz/tinymce-rails.git', :branch => 'tinymce-4'
+gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
 # gem 'tinymce-rails-imageupload'
 #gem 'ckeditor', github: 'galetahub/ckeditor'
