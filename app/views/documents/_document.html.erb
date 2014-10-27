@@ -9,7 +9,16 @@
       <%= link_to document, :class => "title" do %>
         <%= document.name %>
       <% end %>
-      <span class="content"><%= number_to_human_size(document.file.size, precision: 2) %></span>
+      <span class="content"><%= number_to_human_size(document.file.size, precision: 2) %>
+        <div class="pull-right">
+          <%= link_to edit_document_path(document), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
+            <span class="glyphicon glyphicon-edit"></span>
+          <% end %>
+          <%= link_to document, data: { confirm: t("general.are_you_sure"), :toggle => "tooltip"}, :method => :delete, :title => t("general.destroy") do %>
+            <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
+        </div>
+      </span>
     </div>
   </div>
 </div>

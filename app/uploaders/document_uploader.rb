@@ -65,15 +65,16 @@ class DocumentUploader < BaseUploader
       end
     end
 
-    version :_80x80 do
-      process resize_to_fill: [80, 80, 'Center', 'png'] do |img|
-        img.format('png')
-        img
-      end
-    end
+    # version :_80x80 do # For carousel
+    #   process resize_to_fill: [80, 80, 'Center', 'png'] do |img|
+    #     img.format('png')
+    #     img
+    #   end
+    # end
+
 
     version :_240x240 do
-      process resize_to_fit: [240, 240, 'png']
+      process resize_to_fill: [240, 240, 'North', 'png']
       # Yield Blocks do not work: http://stackoverflow.com/questions/19646083/carrierwave-how-to-pass-block-to-resize-and-pad
       # process resize_to_fit: [240, 240] do |img|
       #   img.format('png')
@@ -269,7 +270,7 @@ class DocumentUploader < BaseUploader
     system(imagemagick_command)
     File.unlink current_path
     File.rename png_path, current_path
-    Rails.logger.warn imagemagick_command #+ `time #{imagemagick_command}`
+    Rails.logger.debug imagemagick_command #+ `time #{imagemagick_command}`
     #::MiniMagick::Image.open(current_path)
   end
 

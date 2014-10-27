@@ -3,12 +3,12 @@
 <div class="form-group file optional training_group_image_file">
   <label class="file optional col-lg-3 control-label" for="training_group_image_attributes_file"><%= Image.model_name.human %></label>
 
-  <div class="col-lg-9 co
-  +l-xs-12" style="display: table">
+  <div class="col-lg-9 col-xs-12" style="display: table">
 
     <%= content_tag :div, :style =>"display: table-cell; vertical-align: middle; width: 74px" do %>
       <%= link_to(image_tag(image.file_url(:thumb), :size => "64x48"), image.file_url, :class => "fancybox") %>
-    <% end if image.file.present? %>
+      <%# http://stackoverflow.com/questions/23578438/how-to-check-if-image-version-exists-on-s3-with-carrierwave-and-fog %>
+    <% end if image.file.present? && image.file.version_exists?(:thumb) %>
 
     <%= content_tag :div, :style =>"display: table-cell; vertical-align: middle" do %>
       <div class="input-group">

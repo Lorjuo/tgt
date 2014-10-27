@@ -50,7 +50,7 @@
           <%= link_to set_preview_image_gallery_path(image.attachable, :image_id => image), :method => :post, :title => t(".set_as_preview"), :data => {:toggle => "tooltip"} do %>
             <span class="glyphicon glyphicon-star"></span>
           <% end %>
-          <%= link_to image, data: { confirm: t("general.are_you_sure")}, :method => :delete, :title => t("general.destroy"), :data => {:toggle => "tooltip"} do %>
+          <%= link_to image, data: { confirm: t("general.are_you_sure"), :toggle => "tooltip"}, :method => :delete, :title => t("general.destroy") do %>
             <span class="glyphicon glyphicon-trash"></span>
           <% end %>
           <div class="pull-right">

@@ -15,14 +15,16 @@
   <% end %>
 <% end %>
 
-<dl class="dl-horizontal">
-  <dt><%= Theme.human_attribute_name("name") %>:</dt>
-  <dd><%= @theme.name %></dd>
+<div class="window box">
+  <dl class="dl-horizontal">
+    <dt><%= Theme.human_attribute_name("name") %>:</dt>
+    <dd><%= @theme.name %></dd>
 
-  <dt><%= Theme.human_attribute_name("description") %>:</dt>
-  <dd><%= @theme.description %></dd>
+    <dt><%= Theme.human_attribute_name("description") %>:</dt>
+    <dd><%= @theme.description %></dd>
 
-  <dt><%= Theme.human_attribute_name("color") %>:</dt>
-  <dd><%= @theme.color %></dd>
+    <dt><%= Theme.human_attribute_name("color") %>:</dt>
+    <dd><%= @theme.color %></dd>
 
-</dl>
+  </dl>
+</div>

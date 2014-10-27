@@ -24,7 +24,7 @@
  ☐ Refactor navigation
  ☐ Jquery backwards bug - especially announcement slider
  ✔ Message excerpt -> float text around image @done (14-10-27 11:56)
- ☐ Add delete buttons for document
+ ✔ Add delete buttons for document @done (14-10-27 15:01)
 
 Image:
  ✔ Endless scroll on mobile devices does not work @done (14-10-27 11:56)
