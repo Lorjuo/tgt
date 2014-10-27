@@ -49,38 +49,38 @@ class DocumentUploader < BaseUploader
     # process :extract_first_page
     # process :create_thumb
     # process :cover
-    # process :convert => 'jpg'
+    # process :convert => 'png'
     # process resize_to_fill: [64, 48]
     process :mogrify => [{
       :resolution => '800x800'
     }]
     def full_filename (for_file = model.source.file)
-      super.chomp(File.extname(super)) + '.jpg'
+      super.chomp(File.extname(super)) + '.png'
     end
 
     version :thumb do
-      process resize_to_fill: [64, 48, 'Center', 'jpg'] do |img|
-        img.format('jpg')
+      process resize_to_fill: [64, 48, 'Center', 'png'] do |img|
+        img.format('png')
         img
       end
     end
 
     version :_80x80 do
-      process resize_to_fill: [80, 80, 'Center', 'jpg'] do |img|
-        img.format('jpg')
+      process resize_to_fill: [80, 80, 'Center', 'png'] do |img|
+        img.format('png')
         img
       end
     end
 
     version :_240x240 do
-      process resize_to_fit: [240, 240, 'jpg']
+      process resize_to_fit: [240, 240, 'png']
       # Yield Blocks do not work: http://stackoverflow.com/questions/19646083/carrierwave-how-to-pass-block-to-resize-and-pad
       # process resize_to_fit: [240, 240] do |img|
-      #   img.format('jpg')
+      #   img.format('png')
       #   img
       # end
       # process :resize_and_pad => [1200, 1200, 'white'] { |img| do_everything_else.call img }
-      # process :resize_to_fit => [240, 240] { |img| img.format('jpg'); img }
+      # process :resize_to_fit => [240, 240] { |img| img.format('png'); img }
     end
 
   end
@@ -253,7 +253,7 @@ class DocumentUploader < BaseUploader
     #   img
     # end
     dirname = File.dirname(current_path)
-    jpg_path = "#{File.join(dirname, File.basename(current_path, File.extname(current_path)))}.jpg"
+    png_path = "#{File.join(dirname, File.basename(current_path, File.extname(current_path)))}.png"
 
     # Maybe strip command at beginning to strip existing profiles
 
@@ -264,11 +264,11 @@ class DocumentUploader < BaseUploader
     " -profile #{Rails.root}/lib/color_profiles/USWebCoatedSWOP.icc"\
     " -profile #{Rails.root}/lib/color_profiles/sRGB_v4_ICC_preference_displayclass.icc"\
     " -colorspace sRGB"\
-    " -format jpg -resize 800x800\\> -distort resize 800x800\\< -quality 80"\
+    " -format png -resize 800x800\\> -distort resize 800x800\\< -quality 80"\
     " #{current_path}\\[0\\]"
     system(imagemagick_command)
     File.unlink current_path
-    File.rename jpg_path, current_path
+    File.rename png_path, current_path
     Rails.logger.warn imagemagick_command #+ `time #{imagemagick_command}`
     #::MiniMagick::Image.open(current_path)
   end

@@ -3,7 +3,7 @@
  ✔ add publishing functionality @done (14-09-24 10:08)
  ☐ improve right management for departments
  ☐ Refactor Documents and other assets
- ☐ improve gallery design
+ ✔ improve gallery design @done (14-10-27 11:56)
  ☐ maybe change user trainer relationship to many to one
    ☐ maybe separate jquery datatable from other assets because of its size
 
@@ -17,18 +17,18 @@
  ✔ Turbolinks Bug @done (13-11-15 14:30)
  ✔ IE Bug @done (13-11-15 14:30)
  ☐ Tinymce browser backwards bug
- ☐ Create references between media types
+ ✔ Create references between media types @done (14-10-27 11:56)
  ✔ Add multi select and edit for galleries @done (14-04-15 22:28)
  ☐ Add schedule for departments
  ✔ Add documents objects @done (14-04-15 22:28)
  ☐ Refactor navigation
  ☐ Jquery backwards bug - especially announcement slider
-   Message excerpt -> float text around image
+ ✔ Message excerpt -> float text around image @done (14-10-27 11:56)
+ ☐ Add delete buttons for document
 
 Image:
-  Endless scroll on mobile devices does not work
-  Swipe on mobile devices
-  Image Cropping on attachements -> change location in views
+ ✔ Endless scroll on mobile devices does not work @done (14-10-27 11:56)
+ ✔ Swipe on mobile devices @done (14-10-27 11:55)
 
 Problems:
  ✔ Problem when trying to access: /departments/leichtathletik/messages because of friendly id @done (14-09-24 10:10)
