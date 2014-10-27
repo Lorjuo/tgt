@@ -74,7 +74,9 @@ gem 'mysql2'
 
 # File Upload
 gem 'carrierwave'
-gem 'jquery-fileupload-rails'
+gem 'jquery-fileupload-rails', github: 'tors/jquery-fileupload-rails', branch: 'master' # github link needed, because some assets are missing
+# Alternative:
+# https://github.com/semaperepelitsa/jquery.fileupload-rails
 gem 'el_finder'
 # Alternatives:
 # http://www.roxyfileman.com/

@@ -38,6 +38,6 @@ class Gallery < ActiveRecord::Base
   end
 
   def get_preview_image
-    self.preview_image || self.images.first
+    (self.preview_image || self.images.first) unless self.images.empty?
   end
 end

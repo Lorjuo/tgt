@@ -25,6 +25,7 @@
  ☐ Jquery backwards bug - especially announcement slider
  ✔ Message excerpt -> float text around image @done (14-10-27 11:56)
  ✔ Add delete buttons for document @done (14-10-27 15:01)
+ ☐ Client side image resizing: https://github.com/blueimp/jQuery-File-Upload/wiki/Client-side-Image-Resizing
 
 Image:
  ✔ Endless scroll on mobile devices does not work @done (14-10-27 11:56)
@@ -32,6 +33,7 @@ Image:
  ☐ Switch to png?
  ☐ Keep filenames on upload?
  ☐ New image format for trainers?
+ ☐ Reenable delete multiple images
 
 Problems:
  ✔ Problem when trying to access: /departments/leichtathletik/messages because of friendly id @done (14-09-24 10:10)

@@ -1,25 +1,27 @@
-<div class="col-md-3 col-sm-4 col-xs-6">
-  <div class="mediaWrapper">
-    
-    <%# TODO: Centering of image slides on responsive design does not actually work %>
-    <%= link_to( gallery, :title => gallery.name ) do  %>
-      <div class="mediaObject previewCycle">
-        <%= image_tag(gallery.get_preview_image.file_url(:_260x180), :class => "img-responsive") %>
+<% unless gallery.images.empty? %>
+  <div class="col-md-3 col-sm-4 col-xs-6">
+    <div class="mediaWrapper">
+      
+      <%# TODO: Centering of image slides on responsive design does not actually work %>
+      <%= link_to( gallery, :title => gallery.name ) do  %>
+        <div class="mediaObject previewCycle">
+          <%= image_tag(gallery.get_preview_image.file_url(:_260x180), :class => "img-responsive") %>
 
-        <% preview_images = Image.where('attachable_id = ? AND attachable_type = ?', gallery.id, 'gallery').order("RAND()").limit(4).where.not(id: gallery.get_preview_image.id) %>
-        <% preview_images.each do |preview_image| %>
-          <%= image_tag(preview_image.file_url(:_260x180), :class => "img-responsive") %>
-        <% end %>
-        <%# .order("RANDOM()") %>
-        <%# http://stackoverflow.com/questions/5342270/rails-3-get-random-record %>
+          <% preview_images = Image.where('attachable_id = ? AND attachable_type = ?', gallery.id, 'gallery').order("RAND()").limit(4).where.not(id: gallery.get_preview_image.id) %>
+          <% preview_images.each do |preview_image| %>
+            <%= image_tag(preview_image.file_url(:_260x180), :class => "img-responsive") %>
+          <% end %>
+          <%# .order("RANDOM()") %>
+          <%# http://stackoverflow.com/questions/5342270/rails-3-get-random-record %>
+        </div>
+      <% end %>
+
+      <%#= image_tag(gallery.get_preview_image.file_url(:_260x180), size: "260x180", :class => "img-responsive") %>
+      <div class="mediaText">
+        <% count_images = Image.where('attachable_id = ? AND attachable_type = ?', gallery.id, 'gallery').count() %>
+        <%= link_to gallery.name, gallery, :class => "title" %>
+        <span class="content"><%= count_images.to_s + " " + Image.model_name.human(:count => count_images) %></span>
       </div>
-    <% end %>
-
-    <%#= image_tag(gallery.get_preview_image.file_url(:_260x180), size: "260x180", :class => "img-responsive") %>
-    <div class="mediaText">
-      <% count_images = Image.where('attachable_id = ? AND attachable_type = ?', gallery.id, 'gallery').count() %>
-      <%= link_to gallery.name, gallery, :class => "title" %>
-      <span class="content"><%= count_images.to_s + " " + Image.model_name.human(:count => count_images) %></span>
     </div>
   </div>
-</div>
+<% end %>
