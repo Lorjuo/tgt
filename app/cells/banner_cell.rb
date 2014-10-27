@@ -2,7 +2,9 @@ class BannerCell < Cell::Rails
 
   def show(opts)
     @theme = opts[:theme]
-    render
+    if @theme.banner.present?
+      render
+    end
   end
 
 end
