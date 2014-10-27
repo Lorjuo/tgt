@@ -15,21 +15,15 @@ end
 
 <!-- <div class="publication-marker topright mediaOverlay <%= message.published? ? 'published' : 'unpublished' %>" title="<%= message.published? ? t('general.published') : t('general.unpublished') %>" data-toggle="tooltip"></div> -->
 <div class="window box">
-  <div class="media message-excerpt <%= size %>">
+  <div class="message-excerpt <%= size %>">
     <% if message.thumb.present? %>
       <% image = image_tag(message.thumb.file_url(thumb_type), :class => "media-object", size: image_size) %>
       <%= link_to(image, message.thumb.file_url,
-        :class => ['fancybox', size == :small ? 'pull-right' : 'pull-left'],
+        :class => ['fancybox', 'media'], #TODO - match this with stylesheet
         :rel => 'messages', :caption => message.name) %>
     <% end %>
-    <%= content_tag :div, :class => "media-body" do %>
-      <div class="media-heading">
-        <div class="title">
-          <%= link_to_decent message.name, message %>
-          <% unless size == :small %>
-            <span class="department">(<%= link_to message.department.name, message.department, :class => "decent" %>)</span>
-          <% end %>
-        </div>
+    <%= content_tag :div, :class => "body" do %>
+      <div class="heading">
         <% unless size == :small %>
           <div class="date">
             <%#= localize( message.custom_date.to_date, :format => :long ) %>
@@ -39,6 +33,12 @@ end
             ) %>
           </div>
         <% end %>
+        <div class="title">
+          <%= link_to_decent message.name, message %>
+          <% unless size == :small %>
+            <span class="department">(<%= link_to message.department.name, message.department, :class => "decent" %>)</span>
+          <% end %>
+        </div>
       </div>
       <%= link_to message, :class => "content decent" do %>
         <%= message.display_abstract(:text_length => text_length) + '...' %>

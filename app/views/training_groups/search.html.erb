@@ -12,44 +12,38 @@
   <% end %>
 </div>
 
-<div class="row eqme">
-  <div class="col-md-8">
-    <div class="window">
-      <div class="box" style="height: 100%">
-        <h3>
-          <span class="glyphicon glyphicon-search"></span>
-          <%= t "general.search" %>
-        </h3>
+<div class="window box highlighted">
+  <div class="row">
+    <div class="col-md-8">
+      <h3>
+        <span class="glyphicon glyphicon-search"></span>
+        <%= t "general.search" %>
+      </h3>
 
-        <%= simple_form_for TrainingGroup.new, :html => { :class => "ajax_form" }  do |f| %>
-          <p><%= raw t ".sentence_age", :input => (f.input_field :age, :class => "input-sm", :style => "display: inline; width: 3em", :maxlength => "2") %></p>
+      <%= simple_form_for TrainingGroup.new, :html => { :class => "ajax_form" }  do |f| %>
+        <p><%= raw t ".sentence_age", :input => (f.input_field :age, :class => "input-sm", :style => "display: inline; width: 3em", :maxlength => "2") %></p>
 
-          <p><%= raw t ".sentence_departments", :input => (f.input_field :departments,
-            #:as => :check_boxes,
-            :collection => Department.specific.order(:name => :asc),
-            :label_method => :name,
-            :value_method => :id,
-            :include_blank => false,
-            :class => "chosen input-sm", :multiple => true, :style => "display: inline; width: 16em") %></p>
+        <p><%= raw t ".sentence_departments", :input => (f.input_field :departments,
+          #:as => :check_boxes,
+          :collection => Department.specific.order(:name => :asc),
+          :label_method => :name,
+          :value_method => :id,
+          :include_blank => false,
+          :class => "chosen input-sm", :multiple => true, :style => "display: inline; width: 16em") %></p>
 
-          <p><%= raw t ".sentence_week_days", :input => (f.input_field :week_days,
-            #:as => :check_boxes,
-            :collection => I18n.t(:"date.day_names").zip((0..6).to_a),
-            :class => "chosen input-sm", :multiple => true, :style => "display: inline; width: 16em") %></p>
-        <% end %>
+        <p><%= raw t ".sentence_week_days", :input => (f.input_field :week_days,
+          #:as => :check_boxes,
+          :collection => I18n.t(:"date.day_names").zip((0..6).to_a),
+          :class => "chosen input-sm", :multiple => true, :style => "display: inline; width: 16em") %></p>
+      <% end %>
 
-      </div>
     </div>
-  </div>
-  <div class="col-md-4">
-    <div class="window">
-      <div class="box" style="height: 100%">
-        <h3>
-          <span class="glyphicon glyphicon-download-alt"></span>
-          <%= t ".flyer" %>
-        </h3>
-          <p><%= raw t(".flyer_sentence", :link => link_to(t("general.here").capitalize, "#")) %></p>
-      </div>
+    <div class="col-md-4">
+      <h3>
+        <span class="glyphicon glyphicon-download-alt"></span>
+        <%= t ".flyer" %>
+      </h3>
+        <p><%= raw t(".flyer_sentence", :link => link_to(t("general.here").capitalize, "#")) %></p>
     </div>
   </div>
 </div>

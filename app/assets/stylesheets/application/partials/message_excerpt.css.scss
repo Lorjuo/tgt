@@ -21,44 +21,63 @@
   &.published {
     color: green;
   }
-  //&.unpublished {
-  //  color: red;
-  //}
 }
 
-.media.message-excerpt {
+.message-excerpt {
 
-  .media-heading {
-    display: table;
-    width: 100%;
+  .media-object {
+    float: left;
+    margin-right: 10px;
+  }
+  .body {
 
-    .title, .date {
-      display: table-cell;
-      font-size: 1em;
-    }
+    .heading {
 
-    .title {
-      font-weight: bold;
-      .department { font-weight: normal; white-space: nowrap;
-        &:hover { text-decoration: underline; }
+      .title, .date {
+        font-size: 1em;
+      }
+
+      .title {
+        font-weight: bold;
+        .department {
+          font-weight: normal;
+          white-space: nowrap;
+          &:hover { text-decoration: underline; }
+        }
+      }
+
+      .date {
+        text-align: right;
+        min-width: 100px;
+        @media (max-width: $screen-xs-max) {
+          display: none;
+        }
+        float: right;
+        margin-left: 10px;
       }
     }
 
-    .date {
-      text-align: right;
-      min-width: 100px;
-      @media (max-width: $screen-xs-max) {
-        display: none;
-      }
+    .content {
     }
   }
 
-  .content {
-    display: block;
+  &.large {
+    .media + .body {
+      @media (min-width: $screen-sm-min) {
+        margin-left: 140px;
+      }
+    }
   }
 
   &.small {
-    .media-heading {
+    .media-object {
+      float: right;
+      margin-left: 10px;
+    }
+    .media + .body {
+      margin-right: 74px;
+    }
+    .heading {
       .title {
         .department { display: none; }
       }
@@ -70,6 +89,6 @@
     }
   }
   &.large {
-    .media-heading { margin: 10px 0px; }
+    .heading { margin: 10px 0px; }
   }
 }
