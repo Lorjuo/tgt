@@ -70,7 +70,7 @@ class TrainersController < ApplicationController
       #debugger
       #params[:trainer][:image_attributes][:attachable_id] = @trainer.id
       #@trainer.image.tmp_parent_id = @trainer.id
-      if @trainer.update_attributes(params[:trainer])
+      if @trainer.update_attributes(trainer_params)
       #if @trainer.update(trainer_params)
         format.html { redirect_to @trainer, notice: 'Trainer was successfully updated.' }
         format.json { head :no_content }
