@@ -17,12 +17,13 @@
 }*/
 
 .publication-marker {
+  color: red;
   &.published {
     color: green;
   }
-  &.unpublished {
-    color: red;
-  }
+  //&.unpublished {
+  //  color: red;
+  //}
 }
 
 .media.message-excerpt {
@@ -45,7 +46,10 @@
 
     .date {
       text-align: right;
-      min-width: 120px;
+      min-width: 100px;
+      @media (max-width: $screen-xs-max) {
+        display: none;
+      }
     }
   }
 

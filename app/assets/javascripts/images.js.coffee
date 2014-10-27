@@ -30,6 +30,10 @@ class CarrierWaveCropper
     $(@identifier_id('_file_crop_y')).val(coords.y)
     $(@identifier_id('_file_crop_w')).val(coords.w)
     $(@identifier_id('_file_crop_h')).val(coords.h)
+    $(@identifier_id('_indicator_crop_x')).val(coords.x.toFixed(2) )
+    $(@identifier_id('_indicator_crop_y')).val(coords.y.toFixed(2) )
+    $(@identifier_id('_indicator_crop_w')).val(coords.w.toFixed(2) )
+    $(@identifier_id('_indicator_crop_h')).val(coords.h.toFixed(2) )
     @updatePreview(coords)
 
   updatePreview: (coords) =>

@@ -90,6 +90,7 @@ class DepartmentsController < ApplicationController
 
     respond_to do |format|
       format.html { render :template => "training_groups/index" }
+      format.mobile { render :template => "training_groups/index" }
       format.json { render json: @training_groups }
     end
   end
@@ -99,6 +100,7 @@ class DepartmentsController < ApplicationController
 
     respond_to do |format|
       format.html { render :template => "galleries/index" }
+      format.mobile { render :template => "galleries/index" }
       format.json { render json: @galleries }
     end
   end
@@ -108,6 +110,7 @@ class DepartmentsController < ApplicationController
 
     respond_to do |format|
       format.html { render :template => "events/index" }
+      format.mobile { render :template => "events/index" }
       format.json { render json: @events }
     end
   end

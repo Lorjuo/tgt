@@ -38,9 +38,9 @@ class ImagesController < ApplicationController
     @image = @parent.images.build(permitted_params)
     if @image.save
       if params[:image][:file].present?
-        #render :crop # Maybe replace this line with redirect_to to avoid sending form twice on F5
+        render :crop # Maybe replace this line with redirect_to to avoid sending form twice on F5
       else
-        redirect_to @image, notice: 'Banner was successfully created.'
+        redirect_to @image, notice: 'Image was successfully created.'
       end
     else
       render action: 'new'
@@ -53,7 +53,14 @@ class ImagesController < ApplicationController
       # to force to update activerecord to point to the newgenerated files and
       # to force carrierwave to delete the old ones
       # redirect_to @image, notice: 'Image was successfully updated.'
-      redirect_to @image.attachable, notice: 'Image was successfully updated.'
+      
+      # if @image..respond_to?('crop_image') # Image needs to be cropped
+      # end
+      if params[:image][:file].present?
+        render :crop # Maybe replace this line with redirect_to to avoid sending form twice on F5
+      else
+        redirect_to @image.attachable, notice: 'Image was successfully updated.'
+      end
     else
       render action: 'edit'
     end
@@ -132,7 +139,10 @@ class ImagesController < ApplicationController
     end
 
     def permitted_params
-      params.require(:image).permit(:name, :file, :attachable_id, :attachable_type)
+      # http://stackoverflow.com/questions/17687506/how-to-make-an-optional-strong-parameters-key-yet-still-filter-params-nested-in
+      # http://stackoverflow.com/questions/6838563/is-the-proper-rails-inflection-of-underscore-underscoreize
+      #params.require(@type.parameterize(sep = '_')).permit(:name, :file, :attachable_id, :attachable_type) if params[@type.parameterize(sep = '_')]
+      params.require(:image).permit(:name, :file, :attachable_id, :attachable_type, :file_crop_x, :file_crop_y, :file_crop_w, :file_crop_h ) if params[:image]
     end
 
 end

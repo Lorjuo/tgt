@@ -8,7 +8,7 @@
         <div class="mediaOverlay top-right toolbar">
           <%= link_to set_preview_image_gallery_path(image.attachable, :image_id => image), :method => :post, :title => t(".set_as_preview"), :data => {:toggle => "tooltip"} do %>
             <%= tag :span, :class => (image.attachable.preview_image_id == image.id) ? "glyphicon glyphicon-star active" : "glyphicon glyphicon-star" %>
-          <% end %>
+          <% end if false%>
         </div>
       <% end %>
     </div>
@@ -25,6 +25,8 @@
     <% if can?(:edit, @gallery) %>
       <div class="mediaText">
         <!-- <p><%= image.name %></p> -->
+
+        <% if false %>
         <%= check_box_tag "image_ids[]", image.id %>
         <%= link_to edit_image_path(image), :class => 'btn btn-default btn-xs'  do %>
           <span class="glyphicon glyphicon-edit"></span>
@@ -38,6 +40,23 @@
           <span class="glyphicon glyphicon-trash"></span>
           <%= t "general.destroy" %>
         <% end %>
+        <% end %>
+
+        <div class="title">
+          Bild: 
+          <%= link_to edit_image_path(image), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
+            <span class="glyphicon glyphicon-edit"></span>
+          <% end %>
+          <%= link_to set_preview_image_gallery_path(image.attachable, :image_id => image), :method => :post, :title => t(".set_as_preview"), :data => {:toggle => "tooltip"} do %>
+            <span class="glyphicon glyphicon-star"></span>
+          <% end %>
+          <%= link_to image, data: { confirm: t("general.are_you_sure")}, :method => :delete, :title => t("general.destroy"), :data => {:toggle => "tooltip"} do %>
+            <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
+          <div class="pull-right">
+            <%= check_box_tag "image_ids[]", image.id %>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>

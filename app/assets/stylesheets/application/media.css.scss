@@ -140,5 +140,9 @@ needs more contrast from background*/
     font-size: 0.8em;
     white-space: nowrap;
     overflow: hidden;
+
+    input[type="radio"], input[type="checkbox"] {
+      margin-top: 0;
+    }
   }
 }

@@ -45,7 +45,11 @@ module ElFinder
     def self.resize(pathname, options = {})
       return nil unless File.exist?(pathname)
       # CUSTOM
-      system( ::Shellwords.join(['mogrify', '-resize', "#{options[:width]}x#{options[:height]}"+(options[:to_limit] ? '>' : ''), pathname.to_s]) ) 
+      # TODO: remove exif without losing profile information?:
+      # http://stackoverflow.com/questions/13646028/how-to-remove-exif-from-a-jpg-without-losing-image-quality/17516878#17516878
+      # http://stackoverflow.com/questions/2654281/how-to-remove-exif-data-without-recompressing-the-jpeg
+      #system( ::Shellwords.join(['mogrify', '-resize', "#{options[:width]}x#{options[:height]}"+(options[:to_limit] ? '>' : ''), pathname.to_s]) ) 
+      system( ::Shellwords.join(['mogrify', '-strip', '-resize', "#{options[:width]}x#{options[:height]}"+(options[:to_limit] ? '>' : ''), pathname.to_s]) ) 
       # CUSTOM END
     end # of self.resize
 

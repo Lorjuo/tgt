@@ -1,23 +1,62 @@
 <%= stylesheet_link_tag 'jquery.jcrop' %>
 <%= javascript_include_tag 'jquery.jcrop', 'images' %>
 
+<% content_for :title do %>
+  <%#= t('general.create_model', :model => Message.model_name.human ) %>
+  Bild zuschneiden
+<% end %>
+
+<% content_for :buttons do %>
+  <%= link_to [:edit, @image], :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-edit"></span>
+    <%= t 'general.back' %>
+  <% end %>
+<% end %>
+
 <div class="window box">
-  <%= simple_form_for @resource, :as => :image do |f| %>
+  <%= simple_form_for @image, :as => :image do |f| %>
+    <%= f.error_notification %>
 
-    <%# For debugging: %>
-    <% %w[x y w h].each do |attribute| %>
-      <input id="image_file_crop_<%= attribute %>" />
-    <% end if false %>
+    <%= content_tag :div, "", id: "dimensions", data: {width: @image.class.width, height: @image.class.height}, :style => "display: none" %>
 
-    <%= content_tag :div, "", id: "dimensions", data: {width: @resource.class.width, height: @resource.class.height}, :style => "display: none" %>
-    <div id="cropbox">
-      <%= f.cropbox :file %>
+    <div class="form-group">
+      <label for="cropbox" class="string optional col-lg-3 control-label">Original</label>
+      <div class="col-lg-6">
+        <div id="cropbox">
+          <%= f.cropbox :file %>
+        </div>
+      </div>
     </div>
-    <div id="previewbox">
-      <%= f.previewbox :file, width: @resource.class.preview_width, height: @resource.class.preview_height %>
+    <div class="form-group">
+      <label for="coordinates" class="string optional col-lg-3 control-label">Koordinaten</label>
+      <div class="col-lg-9">
+        <div id="coordinates">
+          <% model_name = @image.class.name.downcase.split("::").last %>
+          <% %w[x y w h].each do |attribute| %>
+            <!-- <input id="image_file_crop_<%= attribute %>" /> -->
+            <label class="string optional col-xs-1 control-label" style="width: 32px"><%= attribute+': ' %></label>
+            <div class="col-xs-2">
+              <input id="<%= model_name %>_indicator_crop_<%= attribute %>" class="form-control form-control" disabled="disabled" />
+            </div>
+          <% end if true %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="previewbox" class="string optional col-lg-3 control-label">Zugeschnitten</label>
+      <div class="col-lg-9">
+        <div id="previewbox">
+          <%= f.previewbox :file, width: @image.class.preview_width, height: @image.class.preview_height %>
+        </div>
+      </div>
     </div>
 
-    <%= f.submit 'Crop' %>
+    <div class="form-group">
+      <div class="col-lg-offset-3 col-lg-9">
+        <%#= f.button :submit, :class => "btn btn-primary btn-sm" %>
+        <%= f.submit 'Zuschneiden', :class => "btn btn-primary btn-sm" %>
+      </div>
+    </div>
   <% end %>
 </div>
 

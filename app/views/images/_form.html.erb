@@ -1,5 +1,6 @@
 <div class="window box">
-  <%= simple_form_for( [@parent, @image], :as => :image ) do |f| %>
+  <%= simple_form_for( @image, :as => :image ) do |f| %>
+  <%#= simple_form_for( [@parent, @image], :as => :image ) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">

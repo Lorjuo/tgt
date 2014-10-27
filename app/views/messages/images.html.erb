@@ -19,14 +19,12 @@
 
 <div class="window box">
   <h3>Thumbnail</h3>
-  <%= simple_form_for(@message) do |f| %>
+  <%= simple_form_for((@message.thumb || @message.build_thumb), :as => :image) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">
-      <%= f.simple_fields_for :thumb do |image_form| %>
-        <%#= image_form.input :file, :as => :file %>
-        <%= render 'images/image_selector', f:image_form, image:@message.thumb %>
-      <% end %>
+      <%#= image_form.input :file, :as => :file %>
+      <%= render 'images/image_selector', f:f, image:@message.thumb %>
     </div>
 
     <div class="form-group">
@@ -39,7 +37,7 @@
   <hr />
 
   <h3>Header</h3>
-  <%= simple_form_for(@message.header || @message.build_header) do |f| %>
+  <%= simple_form_for((@message.header || @message.build_header), :as => :image) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">

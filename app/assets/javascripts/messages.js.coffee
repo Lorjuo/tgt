@@ -33,16 +33,19 @@ $ ->
   $(document).on 'ajax:success', 'a.publish', (status,data,xhr)->
 
     # toggle links
-    $("a.publish[data-id=#{data.id}]").each ->
-      $a = $(this)
-      href = $a.attr 'href'
-      text = $a.html()
-      $a.html(JSON.parse($a.data('toggle-text'))).attr 'href', $a.data('toggle-href')
-      $a.data('toggle-text', JSON.stringify(text)).data 'toggle-href', href
+    #$("a.publish[data-id=#{data.id}]").each ->
+      #$a = $(this)
 
-      # Maybe use this for i18n:
-      # http://blog.10to1.be/rails/2011/03/22/localizing-javascript-in-your-rails-app/
-      if (href.indexOf("true") >= 0)
-        bootstrap_alert.success "Message has successfully been published"
-      else
-        bootstrap_alert.success "Message has successfully been withdrawn"
+    $a = $("a.publish[data-id=#{data.id}]").last() # Only use last element, because turbolinks keeps some elements in cache
+    href = $a.attr 'href'
+    text = $a.html()
+    $a.html(JSON.parse($a.data('toggle-text'))).attr 'href', $a.data('toggle-href')
+    $a.data('toggle-text', JSON.stringify(text)).data 'toggle-href', href
+
+    # Maybe use this for i18n:
+    # http://blog.10to1.be/rails/2011/03/22/localizing-javascript-in-your-rails-app/
+    # TODO: add publication marker in here - needs to get internationalized
+    if (href.indexOf("true") >= 0)
+      bootstrap_alert.success "Message has successfully been published"
+    else
+      bootstrap_alert.success "Message has successfully been withdrawn"
