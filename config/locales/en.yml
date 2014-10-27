@@ -222,6 +222,8 @@ en:
       title: Listing announcements
     show:
       title: 'Announcement "%{name}"'
+    form:
+      link_hint: 'E.g.: "/department/leichtathletik", "www.google.de"'
 
   departments:
     index:

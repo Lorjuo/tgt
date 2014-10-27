@@ -24,7 +24,7 @@
     <dd><%= @announcement.caption %></dd>
 
     <dt><%= Announcement.human_attribute_name(:link) %></dt>
-    <dd><%= @announcement.link %></dd>
+    <dd><%= link_to @announcement.get_link, @announcement.link if @announcement.link.present? %></dd>
 
     <dt><%= Announcement.human_attribute_name(:active) %></dt>
     <dd><%= t @announcement.active.to_s %></dd>

@@ -31,7 +31,11 @@ class Announcement < ActiveRecord::Base
 
   def get_link
     if self.link.present?
-      url_with_protocol(self.link)
+      if self.link.start_with?('/')
+        self.link
+      else
+        url_with_protocol(self.link)
+      end
     else
       self.image.file_url
     end

@@ -50,7 +50,7 @@
         <td><%= link_to link.parent.name, link.parent unless link.root? %></td>
         <td><%= t link.active.to_s %></td>
         <td><%= link.linkable.class.model_name.human %></td>
-        <td><%= link_to link.url %></td>
+        <td><%= link_to link.url, link.url %></td>
         <% if user_signed_in? %>
           <td>
             <%= link_to polymorphic_path(link.linkable, :action => :edit), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>

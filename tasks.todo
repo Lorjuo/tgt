@@ -29,6 +29,9 @@
 Image:
  ✔ Endless scroll on mobile devices does not work @done (14-10-27 11:56)
  ✔ Swipe on mobile devices @done (14-10-27 11:55)
+ ☐ Switch to png?
+ ☐ Keep filenames on upload?
+ ☐ New image format for trainers?
 
 Problems:
  ✔ Problem when trying to access: /departments/leichtathletik/messages because of friendly id @done (14-09-24 10:10)

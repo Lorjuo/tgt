@@ -13,7 +13,7 @@
       <%= f.simple_fields_for :image do |image_form| %>
         <%= render 'images/image_selector', f:image_form, image:@announcement.image %>
       <% end %>
-      <%= f.input :link %>
+      <%= f.input :link, :placeholder => t(".link_hint") %>
       <%= f.input :active %>
       <%= f.input :visible_from, :as => :date_picker %>
       <%= f.input :visible_to, :as => :date_picker %>

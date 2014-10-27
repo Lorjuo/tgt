@@ -223,6 +223,8 @@ de:
       title: Ankündigungsübersicht
     show:
       title: 'Ankündigung "%{name}"'
+    form:
+      link_hint: 'Bsp.: "/department/leichtathletik", "www.google.de"'
 
   departments:
     index:

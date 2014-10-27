@@ -17,7 +17,7 @@
 
 <div class="window box">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-sm-8">
       <h3>
         <span class="glyphicon glyphicon-info-sign"></span>
         <%= t ".info" %>
@@ -56,7 +56,7 @@
 
       </dl>
     </div>
-    <div class="col-md-4">
+    <div class="col-sm-4">
       <%= link_to(image_tag(@trainer.image.file_url, :class => "img-responsive"), @trainer.image.file_url, :class => "fancybox") if @trainer.image.present? %>
     </div>
   </div>

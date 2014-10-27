@@ -2,6 +2,19 @@
   <meta property="og:type" content="website"/>
 <% end %>
 
+
+<% if Rails.env.production? #&& user_signed_in? %>
+  <div class="alert alert-warning alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <strong>Produktivumgebung!</strong> Bitte nutzen Sie die <a href="http://tgt.ddns.net:8080/">Testumgebung</a> um Features auszuprobieren
+  </div>
+<% elsif Rails.env.staging? #&& user_signed_in? %>
+  <div class="alert alert-success alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <strong>Testumgebung</strong> Viel Spaß beim herumspielen - <a href="http://tgt.ddns.net:80/">zur Produktivumgebung</a>
+  </div>
+<% end %>
+
 <div class="window box">
   <h3><%= t ".training_offer" %></h3>
   <p><%= raw t(".training_offer_sentence", :link => link_to(t("general.here"), search_training_groups_path)) %></p>
