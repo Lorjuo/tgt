@@ -72,10 +72,14 @@ class ImagesController < ApplicationController
   # TODO: Extend this for polymorphic image resources
   def edit_multiple
 
-    if params[:commit] == 'Destroy'
+    # Handle destroy_multiple in this action
+    # if params[:commit] == 'Destroy' # Does not work, because commit would display the button text, that is not unique because of i18n
+    if params.has_key?('destroy_multiple_button')
       @images = Image.find(params[:image_ids])
       @images.each { |image| Image.destroy(image.id) }
-      redirect_to images_path
+      @attachable = @images.first.attachable
+      redirect_to_attachable
+      return
     end
 
     @images = Image.find(params[:image_ids])
@@ -84,9 +88,10 @@ class ImagesController < ApplicationController
   # TODO: Extend this for polymorphic image resources - same as edit_multiple
   def update_multiple
     @images = Image.update(params[:images].keys, params[:images].values)
+    @attachable = @images.first.attachable
     @images.reject! { |p| p.errors.empty? }
     if @images.empty?
-      redirect_to images_url
+      redirect_to @attachable, notice: 'Images successfully updated.'
     else
       render "edit_multiple"
     end
@@ -108,15 +113,13 @@ class ImagesController < ApplicationController
       #format.html { redirect_to images_url }
       #http://apidock.com/rails/ActionController/Base/url_for
       format.html {
-        if @attachable.present?
-          redirect_to @attachable
-        else
-          redirect_to url_for @type_class
-        end
+        redirect_to_attachable
       }
       format.json { head :no_content }
     end
   end
+
+  #destroy_multiple handled by edit_multiple action
 
   def crop
   end
@@ -146,6 +149,14 @@ class ImagesController < ApplicationController
       # http://stackoverflow.com/questions/6838563/is-the-proper-rails-inflection-of-underscore-underscoreize
       #params.require(@type.parameterize(sep = '_')).permit(:name, :file, :attachable_id, :attachable_type) if params[@type.parameterize(sep = '_')]
       params.require(:image).permit(:name, :file, :attachable_id, :attachable_type, :file_crop_x, :file_crop_y, :file_crop_w, :file_crop_h ) if params[:image]
+    end
+
+    def redirect_to_attachable
+      if @attachable.present?
+        redirect_to @attachable
+      else
+        redirect_to url_for @type_class
+      end
     end
 
 end

@@ -37,7 +37,7 @@
   
   <%# TODO: fix destroy_multiple functionality %>
   <%= form_tag edit_multiple_images_path, method: :get do %>
-    <%= render(:partial => 'galleries/buttons_multi_edit', :locals => {:gallery => @gallery}) %>
+    <%= render(:partial => 'galleries/edit_multiple_buttons', :locals => {:gallery => @gallery}) %>
 
   <script id="template-upload" type="text/x-tmpl">
   <div class="upload">
@@ -52,7 +52,7 @@
     <div id="images" class="row">
       <%= render(:partial => 'images/image', :collection => @images, :as => 'image') %>
     </div>
-    <%= render(:partial => 'galleries/buttons_multi_edit', :locals => {:gallery => @gallery}) %>
+    <%= render(:partial => 'galleries/edit_multiple_buttons', :locals => {:gallery => @gallery}) %>
   <% end %>
 
   <div class="row">
