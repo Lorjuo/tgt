@@ -5,4 +5,8 @@ module ImagesHelper
     defined?(image.file) ? image.file.url(size) : Image::PhotoUploader.new.send(size).default_url
   end
 
+  def fallback_url(size)
+    Image::PhotoUploader.new.send(size).default_url
+  end
+
 end

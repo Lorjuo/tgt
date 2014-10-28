@@ -20,7 +20,8 @@
       <%= t ".galleries" %>
     </h4>
     <div class="row">
-      <% galleries = Gallery.chronological.limit(6) %>
+      <%# Select galleries with at least one child/image: http://stackoverflow.com/questions/9922833/rails-how-to-get-objects-with-at-least-one-child %>
+      <% galleries = Gallery.joins(:images).uniq.chronological.limit(6) %>
       <% cache(['widget', cache_key_for(galleries)], skip_digest: true) do %>
         <% galleries.each do |gallery| %>
           <% if image = gallery.get_preview_image %>
