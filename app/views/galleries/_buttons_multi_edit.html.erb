@@ -1,0 +1,16 @@
+<% if can? :update, gallery %>
+  <div class="form-group">
+    <%= button_tag :type => "submit", :class => "btn btn-default btn-sm" do %>
+      <span class="glyphicon glyphicon-edit"></span>
+      <%= t("general.edit_selected") %>
+    <% end %>
+    <%= button_tag :type => "submit", :class => "btn btn-default btn-sm", data: { confirm: t("general.are_you_sure")} do %>
+      <span class="glyphicon glyphicon-trash"></span>
+      <%= t("general.destroy_selected") %>
+    <% end %>
+    <%= button_tag :class => "btn btn-default btn-sm select-all" do %>
+      <span class="glyphicon glyphicon-ok"></span>
+      <%= t("general.select_all") %>
+    <% end %>
+  </div>
+<% end %>

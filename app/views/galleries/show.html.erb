@@ -34,6 +34,10 @@
       </div>
     <% end %>
   <% end %>
+  
+  <%# TODO: fix destroy_multiple functionality %>
+  <%= form_tag edit_multiple_images_path, method: :get do %>
+    <%= render(:partial => 'galleries/buttons_multi_edit', :locals => {:gallery => @gallery}) %>
 
   <script id="template-upload" type="text/x-tmpl">
   <div class="upload">
@@ -45,29 +49,12 @@
     // template content
   </script>
 
-  <%# TODO: fix destroy_multiple functionality %>
-  <%= form_tag edit_multiple_images_path, method: :get do %>
     <div id="images" class="row">
       <%= render(:partial => 'images/image', :collection => @images, :as => 'image') %>
     </div>
-    <% if can? :update, @gallery %>
-      <hr />
-      <div class="form-group">
-        <%= button_tag :type => "submit", :class => "btn btn-default btn-sm" do %>
-          <span class="glyphicon glyphicon-edit"></span>
-          <%= t("general.edit_selected") %>
-        <% end %>
-        <%= button_tag :type => "submit", :class => "btn btn-default btn-sm", data: { confirm: t("general.are_you_sure")} do %>
-          <span class="glyphicon glyphicon-trash"></span>
-          <%= t("general.destroy_selected") %>
-        <% end %>
-        <%= button_tag :class => "btn btn-default btn-sm select-all" do %>
-          <span class="glyphicon glyphicon-ok"></span>
-          <%= t("general.select_all") %>
-        <% end %>
-      </div>
-    <% end %>
+    <%= render(:partial => 'galleries/buttons_multi_edit', :locals => {:gallery => @gallery}) %>
   <% end %>
+
   <div class="row">
     <%= will_paginate @images %>
   </div>
