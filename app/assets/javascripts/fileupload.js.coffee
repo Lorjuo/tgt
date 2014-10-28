@@ -17,9 +17,10 @@ jQuery ->
       # IframeTransport will be automatically used if normal way fails
       forceIframeTransport: false
 
-      # Only allow sequential file uploads to preserver original upload order
+      # Only allow sequential file uploads to preserve original upload order
       # https://github.com/blueimp/jQuery-File-Upload/issues/2249
-      sequentialUploads: true
+      sequentialUploads: false #true
+      # Sequential uploads work, when ordering by filename
 
       # http://stackoverflow.com/questions/19096946/how-to-resize-images-client-side-using-jquery-file-upload
       # http://stackoverflow.com/questions/22753646/using-jquery-fileupload-with-coffeescript-resizing-image-when-using-add-callba

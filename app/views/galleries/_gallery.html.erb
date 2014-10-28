@@ -4,7 +4,7 @@
     <%# TODO: Centering of image slides on responsive design does not actually work %>
     <%= link_to( gallery, :title => gallery.name ) do  %>
       <div class="mediaObject previewCycle">
-        <% if gallery.images.any? %><%# any?, present?, exists? %>
+        <% if gallery.images.exists? %><%# any?, present?, exists? # exists seems to be the correct method %>
           <%= image_tag(gallery.get_preview_image.file_url(:_260x180), :class => "img-responsive") %>
 
           <% preview_images = Image.where('attachable_id = ? AND attachable_type = ?', gallery.id, 'gallery').order("RAND()").limit(4).where.not(id: gallery.get_preview_image.id) %>

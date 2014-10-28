@@ -52,7 +52,7 @@
     <div id="images" class="row">
       <%= render(:partial => 'images/image', :collection => @images, :as => 'image') %>
     </div>
-    <%= render(:partial => 'galleries/edit_multiple_buttons', :locals => {:gallery => @gallery}) %>
+    <%= render(:partial => 'galleries/edit_multiple_buttons', :locals => {:gallery => @gallery}) if @gallery.images.exists? %>
   <% end %>
 
   <div class="row">

@@ -19,7 +19,7 @@ class GalleriesController < ApplicationController
   # GET /galleries/1
   # GET /galleries/1.json
   def show
-    @images = Image.where('attachable_id = ? AND attachable_type = ?', @gallery.id, 'gallery').paginate(:page => params[:page])
+    @images = Image.where('attachable_id = ? AND attachable_type = ?', @gallery.id, 'gallery').order(:name).paginate(:page => params[:page])
 
     # Move this lines to admin show method
     @image = @gallery.images.build
