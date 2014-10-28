@@ -6,7 +6,7 @@
   <%= link_to new_department_training_group_path(@department), :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
     <%= t('general.create_model', :model => TrainingGroup.model_name.human ) %>
-  <% end if can? :create, TrainingGroup %>
+  <% end if can? :create, @department.training_groups.build %>
 <% end %>
 
 <div class="window box">

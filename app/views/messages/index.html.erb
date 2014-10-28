@@ -6,7 +6,7 @@
   <%= link_to new_department_message_path(@department), :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
     <%= t('general.create_model', :model => Message.model_name.human ) %>
-  <% end if can?(:create, Message) && @department.present? %>
+  <% end if @department.present? && can?(:create, @department.messages.build) %>
 <% end %>
 
 <div class="window box">

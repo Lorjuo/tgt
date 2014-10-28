@@ -6,7 +6,7 @@
   <%= link_to new_department_gallery_path(@department), :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
     <%= t('general.create_model', :model => Gallery.model_name.human ) %>
-  <% end if can? :create, Gallery %>
+  <% end if can? :create, @department.galleries.build %>
 <% end %>
 
 <div class="window box">
