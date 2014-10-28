@@ -31,8 +31,6 @@ class MessagesController < ApplicationController
   end
 
   def images
-    @message.build_thumb unless @message.thumb.present?
-    @message.build_header unless @message.header.present?
   end
 
 

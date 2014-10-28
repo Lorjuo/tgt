@@ -24,7 +24,7 @@
 }
 
 .message-excerpt {
-
+  overflow: hidden; /* Needed to prevent image from exceeding message dimensions */
   .media-object {
     float: left;
     margin-right: 10px;

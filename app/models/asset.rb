@@ -20,7 +20,7 @@ class Asset < ActiveRecord::Base
   # Methods
   def default_name
     # file.filename replaced by file.original_file
-    if(self.name.blank?)
+    if(self.name.blank? && self.file.present?)
       self.name = File.basename(file.original_file, '.*').titleize if file
     end
   end

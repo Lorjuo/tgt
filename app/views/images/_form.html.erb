@@ -2,6 +2,7 @@
   <%= simple_form_for( @image, :as => :image ) do |f| %>
   <%#= simple_form_for( [@parent, @image], :as => :image ) do |f| %>
     <%= f.error_notification %>
+    <%= @image.errors.full_messages.first if @image.errors.any? %>
 
     <div class="form-inputs">
       <%= f.input :name %>
