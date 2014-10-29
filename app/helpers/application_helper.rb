@@ -49,4 +49,10 @@ module ApplicationHelper
     now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
   end
 
+  # http://www.dzone.com/snippets/get-inverse-hex-color-ruby
+  def invert_color(color)
+    color.gsub!(/^#/, '')
+    sprintf("%X", color.hex ^ 0xFFFFFF)
+  end
+
 end

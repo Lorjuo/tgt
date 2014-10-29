@@ -1,4 +1,5 @@
 jQuery ->
+  # http://stackoverflow.com/questions/16307493/best-ruby-on-rails-architecture-for-image-heavy-app
   
   # Attach jquery fileupload behaviour to each form with class="fileupload"
   $('.fileupload').each ->
@@ -20,7 +21,7 @@ jQuery ->
       # Only allow sequential file uploads to preserve original upload order
       # https://github.com/blueimp/jQuery-File-Upload/issues/2249
       sequentialUploads: false #true
-      # Sequential uploads work, when ordering by filename
+      # Simultaneous uploads work, when ordering by filename
 
       # http://stackoverflow.com/questions/19096946/how-to-resize-images-client-side-using-jquery-file-upload
       # http://stackoverflow.com/questions/22753646/using-jquery-fileupload-with-coffeescript-resizing-image-when-using-add-callba

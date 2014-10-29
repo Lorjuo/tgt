@@ -12,11 +12,13 @@ en:
     always: always
     ancient: Ancient
     are_you_sure: Are you sure?
+    back: Back
     browse: Browse
     cancel: Cancel
     caption: Caption
     create: Create
     create_model: "Create %{model}"
+    crop: Crop
     current: Current
     date: Date
     destroy: Delete
@@ -27,9 +29,12 @@ en:
     editing: Editing
     here: here
     list: List
+    map: Map
     more: more
     navigation: Navigation
     never: never
+    picture: Picture
+    photo: Photo
     publish: publish
     published: published
     unpublish: withdraw
@@ -40,6 +45,7 @@ en:
     search_term: Search Term
     send_email: Send email
     select_all: Select all
+    share: share
     show: Show
     time: Time
     time_from: from
@@ -71,8 +77,12 @@ en:
     active: Active
     address: Address
     age: Age
+    attachable: Attached to
+    banner: Banner
+    class: Class
     color: Color
     content: Content
+    created_at: Created at
     custom_date: Date
     # date: Date # Reserved Keyword
     department: Department
@@ -83,6 +93,7 @@ en:
     email: E-Mail
     gallery: Photogallery
     galleries: Photogalleries
+    header: Header
     name: Name
     file: File
     first_name: Givenname
@@ -95,6 +106,8 @@ en:
     published: Published
     role: Role
     roles: Roles
+    size: Size
+    theme: Theme
     thumbnail: Thumbnail
     thumbnails: Thumbnails
     time: Time
@@ -133,6 +146,9 @@ en:
       message:
         one: Message
         other: Messages
+      theme:
+        one: Theme
+        other: Themes
       trainer:
         one: Trainer
         other: Trainers
@@ -252,8 +268,17 @@ en:
       title: 'Photogallery "%{name}"'
 
   images:
+    crop:
+      coordinates: Coordinates
+      original: Original
+      title: 'Crop Image'
+      preview: Preview
+    index:
+      title: Listing Images
     image:
       set_as_preview: Set as preview picture
+    show:
+      title: 'Image "%{name}"'
 
   locations:
     index:
@@ -265,6 +290,8 @@ en:
     interactive_map: Interactive Map
 
   messages:
+    images:
+      title: Images (message)
     index:
       title: Listing messages
       sentence_department: "Only show news assigned to this department %{input}"
@@ -280,6 +307,12 @@ en:
       news_archive_sentence: '%{link} you can access our News Archive'
       training_offer: Sports Programme
       training_offer_sentence: 'Our sports courses can be accessed %{link}'
+
+  themes:
+    index:
+      title: Listing themes
+    show:
+      title: 'Theme "%{name}"'
 
   trainers:
     index:
@@ -324,6 +357,7 @@ en:
   # Links
   links:
     index:
+      manage: Arrangement
       title: 'Navigation %{name}'
   linkable:
     extern_links:
@@ -360,3 +394,11 @@ en:
   will_paginate:
     previous_label: previous
     next_label: next
+
+  devise:
+    registrations:
+      show:
+        edit_account: Edit Account
+        rights: Authorization
+      edit:
+        show_account: Show Account

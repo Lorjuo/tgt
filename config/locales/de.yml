@@ -11,10 +11,12 @@ de:
     add_files: Dateien hinzufügen...
     always: immer
     are_you_sure: Sind Sie sich sicher?
+    back: Zurück
     browse: Durchsuchen
     cancel: Abbrechen
     create: Erstellen
     create_model: "%{model} hinzufügen"
+    crop: Zuschneiden
     date: Datum
     destroy: Löschen
     destroy_selected: Ausgewählte löschen
@@ -24,9 +26,12 @@ de:
     editing: Bearbeite
     here: hier
     list: Übersicht
+    map: Karte
     more: mehr
     navigation: Navigation
     never: niemals
+    picture: Bild
+    photo: Foto
     publish: Veröffentlichen
     published: veröffentlicht
     unpublish: Zurückziehen
@@ -71,9 +76,13 @@ de:
     active: Aktiv
     address: Adresse
     age: Alter
+    attachable: Angehängt an
+    banner: Banner
     caption: Beschriftung
+    class: Klasse
     color: Farbe
     content: Inhalt
+    created_at: Erstellungsdatum
     custom_date: Datum
     # date: Datum # Reserved Keyword
     department: Abteilung
@@ -89,6 +98,7 @@ de:
     first_name: Vorname
     flyer: Flyer
     flyers: Flyer
+    header: Header
     image: Bild
     last_name: Nachname
     link: Link
@@ -96,8 +106,11 @@ de:
     published: Veröffentlicht
     role: Rolle
     roles: Rollen
-    thumbnail: Thumbnail
-    thumbnails: Thumbnails
+    share: teilen
+    size: Größe
+    theme: Stil
+    thumbnail: Vorschaubild
+    thumbnails: Vorschaubilder
     time: Uhrzeit
     trainers: Trainer
     training_groups: Trainingsgruppen
@@ -134,6 +147,9 @@ de:
       message:
         one: Nachricht
         other: Nachrichten
+      theme:
+        one: Stil
+        other: Stile
       trainer:
         one: Trainer
         other: Trainer
@@ -253,8 +269,17 @@ de:
       title: 'Fotogalerie "%{name}"'
 
   images:
+    crop:
+      coordinates: Koordinaten
+      original: Original
+      title: 'Bild zuschneiden'
+      preview: Vorschau
+    index:
+      title: Bilderübersicht
     image:
       set_as_preview: Als Vorschaubild setzen
+    show:
+      title: 'Bild "%{name}"'
 
   locations:
     index:
@@ -266,6 +291,8 @@ de:
     interactive_map: Interaktive Karte
 
   messages:
+    images:
+      title: 'Bilder (Nachricht)'
     index:
       title: Nachrichtenübersicht
       sentence_department: "Durchsuche nur Nachrichten dieser Abteilung %{input}"
@@ -281,6 +308,12 @@ de:
       news_archive_sentence: '%{link} gelangen Sie zu unserem Nachrichten Archiv'
       training_offer: Sportangebot
       training_offer_sentence: 'Zu unserem Sportangebot gelangen Sie %{link}'
+
+  themes:
+    index:
+      title: Stilübersicht
+    show:
+      title: 'Stil "%{name}"'
 
   trainers:
     index:
@@ -316,7 +349,7 @@ de:
     index:
       title: Benutzerübersicht
     show:
-      title: 'Benutzer %{name}'
+      title: 'Benutzer "%{name}"'
     form:
       departments_hint: 'Abteilungen, welche von diesem Nutzer verwaltet werden können'
       password_hint: 'Feld lediglich erforderlich, wenn Passwort geändert werden soll'
@@ -325,6 +358,7 @@ de:
   # Links
   links:
     index:
+      manage: Anordnung
       title: 'Navigation %{name}'
   linkable:
     extern_links:
@@ -361,3 +395,11 @@ de:
   will_paginate:
     previous_label: zurück
     next_label: weiter
+
+  devise:
+    registrations:
+      show:
+        edit_account: Account bearbeiten
+        rights: Berechtigungen
+      edit:
+        show_account: Account anzeigen

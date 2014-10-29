@@ -18,8 +18,8 @@
     <thead>
       <tr>
         <th><%= Location.human_attribute_name(:name) %></th>
-        <th><%= Location.human_attribute_name(:address) %>:</th>
-        <th><%= Location.human_attribute_name(:schedule) %>:</th>
+        <th><%= Location.human_attribute_name(:address) %></th>
+        <th><%= Location.human_attribute_name(:schedule) %></th>
         <% if user_signed_in? %>
           <th class="no-sort"><%= t "general.actions" %></th>
         <% end %>

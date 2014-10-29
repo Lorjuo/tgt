@@ -1,5 +1,6 @@
 <% content_for :title do %>
-  <%= t('.images', :model => Message.model_name.human ) %>
+  <%#= t('.title', :model => Message.model_name.human ) %>
+  <%= t ".title", :title => @message.name %>
 <% end %>
 
 <% content_for :buttons do %>
@@ -18,7 +19,7 @@
 <% end %>
 
 <div class="window box">
-  <h3>Thumbnail</h3>
+  <h3><%= Message.human_attribute_name(:thumbnail) %></h3>
   <%= simple_form_for((@message.thumb || @message.create_thumb(:name => '', :file => '')), :as => :image) do |f| %>
     <%= f.error_notification %>
 
@@ -36,7 +37,7 @@
 
   <hr />
 
-  <h3>Header</h3>
+  <h3><%= Message.human_attribute_name(:header) %></h3>
   <%= simple_form_for((@message.header || @message.create_header), :as => :image) do |f| %>
     <%= f.error_notification %>
 

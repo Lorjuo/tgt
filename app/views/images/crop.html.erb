@@ -3,7 +3,7 @@
 
 <% content_for :title do %>
   <%#= t('general.create_model', :model => Message.model_name.human ) %>
-  Bild zuschneiden
+  <%= t('.title') %>
 <% end %>
 
 <% content_for :buttons do %>
@@ -20,7 +20,7 @@
     <%= content_tag :div, "", id: "dimensions", data: {width: @image.class.width, height: @image.class.height}, :style => "display: none" %>
 
     <div class="form-group">
-      <label for="cropbox" class="string optional col-lg-3 control-label">Original</label>
+      <label for="cropbox" class="string optional col-lg-3 control-label"><%= t('.original') %></label>
       <div class="col-lg-6">
         <div id="cropbox">
           <%= f.cropbox :file %>
@@ -28,7 +28,7 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="coordinates" class="string optional col-lg-3 control-label">Koordinaten</label>
+      <label for="coordinates" class="string optional col-lg-3 control-label"><%= t('.coordinates') %></label>
       <div class="col-lg-9">
         <div id="coordinates">
           <% model_name = @image.class.name.downcase.split("::").last %>
@@ -43,7 +43,7 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="previewbox" class="string optional col-lg-3 control-label">Zugeschnitten</label>
+      <label for="previewbox" class="string optional col-lg-3 control-label"><%= t('.preview') %></label>
       <div class="col-lg-9">
         <div id="previewbox">
           <%= f.previewbox :file, width: @image.class.preview_width, height: @image.class.preview_height %>
@@ -54,7 +54,7 @@
     <div class="form-group">
       <div class="col-lg-offset-3 col-lg-9">
         <%#= f.button :submit, :class => "btn btn-primary btn-sm" %>
-        <%= f.submit 'Zuschneiden', :class => "btn btn-primary btn-sm" %>
+        <%= f.submit t('general.crop'), :class => "btn btn-primary btn-sm" %>
       </div>
     </div>
   <% end %>

@@ -11,7 +11,7 @@
  ✔ Display image beside image upload field @done (13-11-11 14:26)
  ✔ Style image upload field @done (13-11-11 14:26)
  ✔ Add Trainers in views @done (13-11-30 14:51)
- ☐ Check what happens with upload temp folders
+ ☐ Check what happens with upload temp folders - differences between development and production/staging
  ✔ Check if upload and image resize do work in production @done (14-04-15 22:27)
  ✔ Label method for ancient groups in i18n @done (13-11-30 14:51)
  ✔ Turbolinks Bug @done (13-11-15 14:30)
@@ -26,6 +26,7 @@
  ✔ Message excerpt -> float text around image @done (14-10-27 11:56)
  ✔ Add delete buttons for document @done (14-10-27 15:01)
  ✔ Client side image resizing: https://github.com/blueimp/jQuery-File-Upload/wiki/Client-side-Image-Resizing @done (14-10-28 13:40)
+   Destroy training unit, when traing group gets destroyed
 
 Image:
  ✔ Endless scroll on mobile devices does not work @done (14-10-27 11:56)
@@ -34,6 +35,9 @@ Image:
  ☐ Keep filenames on upload?
  ☐ New image format for trainers?
  ✔ Reenable delete multiple images @done (14-10-28 13:40)
+ ☐ Add buttons to delete and crop attached images
+ ☐ Garbage collection for attached images
+ ☐ Refactor image uploader
 
 Problems:
  ✔ Problem when trying to access: /departments/leichtathletik/messages because of friendly id @done (14-09-24 10:10)

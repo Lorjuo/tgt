@@ -43,7 +43,7 @@
       <div class="col-md-4">
         <h3>
           <span class="glyphicon glyphicon-picture"></span>
-          <%= t ".picture" %>
+          <%= t "general.photo" %>
         </h3>
         <%= link_to(image_tag(@location.image.file_url, :class => "img-responsive"), @location.image.file_url, :class => "fancybox") if @location.image.present? %>
       </div>
@@ -75,7 +75,7 @@
       <div class="col-md-4">
         <h3>
           <span class="glyphicon glyphicon-map-marker"></span>
-          <%= t ".map" %>
+          <%= t "general.map" %>
         </h3>
         <% zoom = 14 %>
         <%#= link_to "http://maps.google.com/?ie=UTF8&hq=&&ll=#{@location.latitude},#{@location.longitude}&z=#{zoom}" do %>
