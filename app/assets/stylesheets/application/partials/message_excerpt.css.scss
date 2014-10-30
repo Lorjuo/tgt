@@ -25,10 +25,6 @@
 
 .message-excerpt {
   overflow: hidden; /* Needed to prevent image from exceeding message dimensions */
-  .media-object {
-    float: left;
-    margin-right: 10px;
-  }
   .body {
 
     .heading {
@@ -62,6 +58,10 @@
   }
 
   &.large {
+    .media-object {
+      float: left;
+      margin-right: 10px;
+    }
     .media + .body {
       @media (min-width: $screen-sm-min) {
         margin-left: 140px;

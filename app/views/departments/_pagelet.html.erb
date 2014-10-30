@@ -32,7 +32,12 @@
         <%= render training_groups %>
       <% end %>
     </div></div>
+    <%= link_to [:training_groups, @department], :class => 'btn btn-link btn-block' do %>
+      <i class="fa fa-arrow-circle-o-right"></i>
+      Gruppenübersicht
+    <% end %>
   </div>
+
   <div class="tab-pane fade" id="trainers">
     <div class=""><div class="row">
       <% trainers = @department.trainers.includes(:image).alphabetical %>
@@ -40,21 +45,43 @@
         <%= render trainers %>
       <% end %>
     </div></div>
+    <%= link_to [:trainers, @department], :class => 'btn btn-link btn-block' do %>
+      <i class="fa fa-arrow-circle-o-right"></i>
+      Trainerübersicht
+    <% end %>
   </div>
-  <div class="tab-pane fade" id="messages">
+
+  <div class="tab-pane fade" id="messages" style="margin: 0px -12px">
     <% messages = @department.messages.includes(:thumb).chronological.limit(4) %>
     <% cache([:excerpts_large, cache_key_for(messages)], skip_digest: true) do %>
       <%= render :partial => 'messages/message_excerpt', :collection => messages, :as => :message, :locals => { :size => :large } %>
     <% end %>
+    <%= link_to [:messages, @department], :class => 'btn btn-link btn-block' do %>
+      <i class="fa fa-arrow-circle-o-right"></i>
+      <%= t 'general.more' %>
+      <%= Message.model_name.human(:count => :lots) %>
+    <% end %>
   </div>
+
   <div class="tab-pane fade" id="galleries">
     <div class=""><div class="row">
       <%= render(:partial => 'galleries/gallery', :collection => @department.galleries.chronological, :as => 'gallery') %>
     </div></div>
+    <%= link_to [:galleries, @department], :class => 'btn btn-link btn-block' do %>
+      <i class="fa fa-arrow-circle-o-right"></i>
+      <%= t 'general.more' %>
+      <%= Gallery.model_name.human(:count => :lots) %>
+    <% end %>
   </div>
+
   <div class="tab-pane fade" id="documents">
     <div class=""><div class="row">
       <%= render(:partial => 'documents/document', :collection => @department.documents.chronological, :as => 'document') %>
     </div></div>
+    <%= link_to [:documents, @department], :class => 'btn btn-link btn-block' do %>
+      <i class="fa fa-arrow-circle-o-right"></i>
+      <%= t 'general.more' %>
+      <%= Document.model_name.human(:count => :lots) %>
+    <% end %>
   </div>
 </div>

@@ -96,7 +96,9 @@ class DepartmentsController < ApplicationController
   end
 
   def galleries
-    @galleries = @department.galleries.chronological
+    #@galleries = @department.galleries.chronological
+
+    @galleries = @department.galleries.chronological.order(:name).paginate(:page => params[:page])
 
     respond_to do |format|
       format.html { render :template => "galleries/index" }

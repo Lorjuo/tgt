@@ -70,10 +70,18 @@
         <%= Message.model_name.human(:count => :lots) %>
       </h4>
     </div> -->
-    <%= render :partial => 'messages/message_excerpt', :collection => @messages, :as => :message, :locals => { :size => :small } %>
+    <%#= render :partial => 'messages/message_excerpt', :collection => @messages, :as => :message, :locals => { :size => :small } %>
+
+    <% cache([:excerpts_small, cache_key_for(@messages)], skip_digest: true) do %>
+      <% @messages.each do |message| %>
+        <div class="window">
+          <%= render :partial => 'messages/message_excerpt', :locals => { :message => message, :size => :small } %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
-  <div class="window box">
+  <!--<div class="window box">
     <%#= render_cell :navigation, :show, :department => @department %>
-  </div>
+  </div>-->
 <% end %>
 

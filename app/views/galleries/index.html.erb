@@ -2,14 +2,17 @@
   <%= t ".title" %>
 <% end %>
 
-<% content_for :buttons do %>
-  <%= link_to new_department_gallery_path(@department), :class => 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-plus"></span>
-    <%= t('general.create_model', :model => Gallery.model_name.human ) %>
-  <% end if can? :create, @department.galleries.build %>
-<% end %>
-
 <div class="window box">
+  <div>
+    <div class="pull-right">
+      <%= link_to new_department_gallery_path(@department), :class => 'btn btn-primary' do %>
+        <span class="glyphicon glyphicon-plus"></span>
+        <%= t('general.create_model', :model => Gallery.model_name.human ) %>
+      <% end if can? :create, @department.galleries.build %>
+    </div>
+    <h3><%= t ".title" %></h3>
+  </div>
+  <hr />
   <% if false %>
   <table class="table table-bordered table-striped">
     <thead>
@@ -49,8 +52,42 @@
 
   <%#= polymorphic_path(Department.first, :action => :edit, :only_path => true) %>
 
+  <% if true %>
+    <div class="row">
+      <%# TODO: add posibility to delete gallery %>
+      <%= render(:partial => 'galleries/gallery', :collection => @galleries, :as => 'gallery') %>
+    </div>
+    <div class="row">
+      <%= will_paginate @galleries %>
+    </div>
+  <% end %>
+
+
+  <% if false %>
   <div class="row">
-    <%# TODO: add posibility to delete gallery %>
-    <%= render(:partial => 'galleries/gallery', :collection => @galleries, :as => 'gallery') %>
+    <%
+      galleries = Gallery.chronological
+      gallery_months = galleries.group_by { |gallery| gallery.custom_date.beginning_of_month }
+    %>
+
+    <div class="col-md-9">
+      <% gallery_months.keys.sort.each do |month| %>
+        <div id="<%= month %>"><strong><%= l( month, :format => :year_month ) %></strong></div>
+        <div class="row">
+          <%= render(:partial => 'galleries/gallery', :collection => gallery_months[month], :as => 'gallery') %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-3">
+      <div data-spy="affix" data-offset-top="60" data-offset-bottom="200">
+        <ul class="nav">
+          <% gallery_months.keys.sort.each do |month| %>
+            <li><a href="#<%= month %>"><%= l( month, :format => :year_month ) %></a></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
   </div>
+  <% end %>
 </div>

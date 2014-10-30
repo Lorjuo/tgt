@@ -23,7 +23,8 @@
     <div class="mediaText">
       <% count_images = Image.where('attachable_id = ? AND attachable_type = ?', gallery.id, 'gallery').count() %>
       <%= link_to gallery.name, gallery, :class => "title" %>
-      <span class="content"><%= count_images.to_s + " " + Image.model_name.human(:count => count_images) %></span>
+      <span class="content"><%= count_images.to_s + " " + Image.model_name.human(:count => count_images) %>
+        <span class="pull-right"><%= localize( gallery.custom_date.to_date, :format => :default ) %></span></span>
     </div>
   </div>
 </div>

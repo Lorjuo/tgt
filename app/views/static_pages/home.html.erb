@@ -21,7 +21,11 @@
 </div>
 <div class="">
   <% cache([:excerpts_large, cache_key_for(@messages)], skip_digest: true) do %>
-    <%= render :partial => 'messages/message_excerpt', :collection => @messages, :as => :message, :locals => { :size => :large } %>
+    <% @messages.each do |message| %>
+      <div class="window">
+        <%= render :partial => 'messages/message_excerpt', :locals => { :message => message, :size => :large } %>
+      </div>
+    <% end %>
   <% end %>
 </div>
 <div class="window box">

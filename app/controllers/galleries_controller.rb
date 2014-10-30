@@ -13,7 +13,7 @@ class GalleriesController < ApplicationController
   # GET /galleries
   # GET /galleries.json
   def index
-    @galleries = Gallery.all
+    @galleries = Gallery.chronological.order(:name).paginate(:page => params[:page])
   end
 
   # GET /galleries/1

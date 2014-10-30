@@ -27,8 +27,11 @@ class Gallery < ActiveRecord::Base
   # Validation
   validates :name, :presence => true
 
-  #Scopes
+  # Scopes
   scope :chronological, -> { order(:custom_date => :desc) }
+
+  # will_paginate
+  self.per_page = 8
 
   after_initialize :default_values
   # http://stackoverflow.com/questions/9090204/rails-migration-set-current-date-as-default-value

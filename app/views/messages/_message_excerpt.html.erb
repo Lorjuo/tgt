@@ -14,7 +14,7 @@ end
 %>
 
 <!-- <div class="publication-marker topright mediaOverlay <%= message.published? ? 'published' : 'unpublished' %>" title="<%= message.published? ? t('general.published') : t('general.unpublished') %>" data-toggle="tooltip"></div> -->
-<div class="window box">
+<div class="box">
   <div class="message-excerpt <%= size %>">
     <% if message.thumb.present? %>
       <% image = image_tag(message.thumb.file_url(thumb_type), :class => "media-object", size: image_size) %>

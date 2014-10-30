@@ -24,9 +24,11 @@ class Image < Asset
   # Specify database tablename
   self.table_name = 'images'
 
-
   # Uploader
   mount_uploader :file, ::Image::PhotoUploader, :mount_on => :file
+
+  # will_paginate
+  self.per_page = 12
 
   # http://stackoverflow.com/questions/1251352/ruby-inherit-code-that-works-with-class-variables/1251422#1251422
   class << self
