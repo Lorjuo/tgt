@@ -9,7 +9,9 @@
   http://codepen.io/BrandFever/pen/lyfAv
   http://jquery.malsup.com/cycle2/demo/progress.php
 -->
-<% announcements = Announcement.active.visible.includes(:image).load %>
+<%# announcements = Announcement.active.visible.includes(:image).load %>
+<%# Using joins instead of includes to prevent displaying announcements without images %>
+<% announcements = Announcement.active.visible.joins(:image).load %>
 
 <% cache(cache_key_for(announcements), skip_digest: true) do %>
   <div class="box small-spacing">

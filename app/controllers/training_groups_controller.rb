@@ -51,6 +51,7 @@ class TrainingGroupsController < ApplicationController
         format.html { redirect_to @training_group, notice: 'Training group was successfully created.' }
         format.json { render action: 'show', status: :created, location: @training_group }
       else
+        @training_group.build_image unless @training_group.image.present? # TODO: remove this QUICK_FIX#1 ?
         format.html { render action: 'new' }
         format.json { render json: @training_group.errors, status: :unprocessable_entity }
       end
@@ -65,6 +66,7 @@ class TrainingGroupsController < ApplicationController
         format.html { redirect_to @training_group, notice: 'Training group was successfully updated.' }
         format.json { head :no_content }
       else
+        @training_group.build_image unless @training_group.image.present? # TODO: remove this QUICK_FIX#1 ?
         format.html { render action: 'edit' }
         format.json { render json: @training_group.errors, status: :unprocessable_entity }
       end

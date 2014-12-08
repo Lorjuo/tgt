@@ -56,6 +56,7 @@ class LocationsController < ApplicationController
         format.html { redirect_to @location, notice: 'Location was successfully created.' }
         format.json { render action: 'show', status: :created, location: @location }
       else
+        @location.build_image unless @location.image.present? # TODO: remove this QUICK_FIX#1 ?
         format.html { render action: 'new' }
         format.json { render json: @location.errors, status: :unprocessable_entity }
       end
@@ -69,6 +70,7 @@ class LocationsController < ApplicationController
         format.html { redirect_to @location, notice: 'Location was successfully updated.' }
         format.json { head :no_content }
       else
+        @location.build_image unless @location.image.present? # TODO: remove this QUICK_FIX#1 ?
         format.html { render action: 'edit' }
         format.json { render json: @location.errors, status: :unprocessable_entity }
       end

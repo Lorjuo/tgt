@@ -61,6 +61,7 @@ class Announcement < ActiveRecord::Base
 
   # Validations
   validates :name, :presence => true
+  validates :image, :presence => true
   validates_date :visible_from, :allow_blank => true
   validates_date :visible_to, :allow_blank => true, :after => :visible_from
 end

@@ -27,6 +27,11 @@
  ✔ Add delete buttons for document @done (14-10-27 15:01)
  ✔ Client side image resizing: https://github.com/blueimp/jQuery-File-Upload/wiki/Client-side-Image-Resizing @done (14-10-28 13:40)
    Destroy training unit, when traing group gets destroyed
+ ☐ Check images and other assets with try syntax (especially announcements)
+ ☐ Check that image is present when creating announcements
+ ✔ Problem when trainer and announcement creation fails: File upload field no longer visible -> Fixed by QUICK_FIX#1 @done (14-12-08 20:33)
+   ☐ -> Message, Themes, Departments remaining
+ ☐ When validation fails, image upload field does not keep the already selected image
 
 Image:
  ✔ Endless scroll on mobile devices does not work @done (14-10-27 11:56)

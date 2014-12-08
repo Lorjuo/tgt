@@ -37,6 +37,7 @@ class AnnouncementsController < ApplicationController
         format.html { redirect_to @announcement, notice: 'Announcement was successfully created.' }
         format.json { render action: 'show', status: :created, location: @announcement }
       else
+        @announcement.build_image unless @announcement.image.present? # TODO: remove this QUICK_FIX#1 ?
         format.html { render action: 'new' }
         format.json { render json: @announcement.errors, status: :unprocessable_entity }
       end
@@ -51,6 +52,7 @@ class AnnouncementsController < ApplicationController
         format.html { redirect_to @announcement, notice: 'Announcement was successfully updated.' }
         format.json { head :no_content }
       else
+        @announcement.build_image unless @announcement.image.present? # TODO: remove this QUICK_FIX#1 ?
         format.html { render action: 'edit' }
         format.json { render json: @announcement.errors, status: :unprocessable_entity }
       end

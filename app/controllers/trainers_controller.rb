@@ -39,6 +39,7 @@ class TrainersController < ApplicationController
         format.html { redirect_to @trainer, notice: 'Trainer was successfully created.' }
         format.json { render action: 'show', status: :created, location: @trainer }
       else
+        @trainer.build_image unless @trainer.image.present? # TODO: remove this QUICK_FIX#1 ?
         format.html { render action: 'new' }
         format.json { render json: @trainer.errors, status: :unprocessable_entity }
       end
@@ -75,6 +76,7 @@ class TrainersController < ApplicationController
         format.html { redirect_to @trainer, notice: 'Trainer was successfully updated.' }
         format.json { head :no_content }
       else
+        @trainer.build_image unless @trainer.image.present? # TODO: remove this QUICK_FIX#1 ?
         format.html { render action: 'edit' }
         format.json { render json: @trainer.errors, status: :unprocessable_entity }
       end

@@ -33,7 +33,7 @@ class Trainer < ActiveRecord::Base
   scope :alphabetical, -> { order(:first_name => :asc, :last_name => :asc)}
 
   # Validations
-  # validates :email, :presence => true, :email => true
+  validates_presence_of :first_name, :last_name
 
   # Virtual attributes
   def name
