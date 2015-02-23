@@ -38,8 +38,8 @@ class Importer
     # call sub-importer modules
     #import_users
     #import_projects
-    #import_areas
-    import_departments
+    import_areas
+    #import_departments
     import_messages
   end
  

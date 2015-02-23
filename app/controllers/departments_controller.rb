@@ -131,7 +131,7 @@ class DepartmentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def department_params
       image_attributes = [:file, :id]
-      params.require(:department).permit(:name, :description, :color, :theme_id,
+      params.require(:department).permit(:name, :description, :color, :theme_id, :area_id,
         :banner_attributes => image_attributes,
         :training_group_ids => [],
         :user_ids => [])

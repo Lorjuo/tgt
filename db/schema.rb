@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141025134717) do
+ActiveRecord::Schema.define(version: 20150223054657) do
 
   create_table "announcements", force: true do |t|
     t.string   "name"
@@ -22,6 +22,12 @@ ActiveRecord::Schema.define(version: 20141025134717) do
     t.datetime "updated_at"
     t.date     "visible_from"
     t.date     "visible_to"
+  end
+
+  create_table "areas", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "carnival_categories", force: true do |t|
@@ -80,6 +86,7 @@ ActiveRecord::Schema.define(version: 20141025134717) do
     t.text     "description"
     t.string   "color"
     t.integer  "theme_id"
+    t.integer  "area_id"
   end
 
   add_index "departments", ["slug"], name: "index_departments_on_slug", unique: true, using: :btree

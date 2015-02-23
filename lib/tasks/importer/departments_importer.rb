@@ -2,14 +2,14 @@ module DepartmentsImporter
   # see for caching: http://stackoverflow.com/questions/6934415/prevent-rails-from-caching-results-of-activerecord-query
 
   # import departments
-  def import_departments#(old_area_id, new_area)
+  def import_departments(old_area_id, new_area)
     puts "Importing departments..."
     use_old_database
 
     # TODO: Add remaining columns
     departments = ActiveRecord::Base.connection.execute(
-      #{}"SELECT id, name FROM department WHERE area = #{old_area_id}"
-      "SELECT id, name FROM department"
+      {}"SELECT id, name FROM department WHERE area = #{old_area_id}"
+      #{}"SELECT id, name FROM department"
       )
 
     use_new_database
@@ -27,7 +27,7 @@ module DepartmentsImporter
 
       if department.empty?
         department = Department.new(name: row.get("name"))
-        #department.area_id = new_area.id
+        department.area_id = new_area.id
         begin
           department.save!
         rescue Exception => e

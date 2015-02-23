@@ -40,6 +40,7 @@ class Department < ActiveRecord::Base
   accepts_nested_attributes_for :banner, allow_destroy: true
 
   belongs_to :theme
+  belongs_to :area
 
   # Validations
   validates :name, :presence => true
