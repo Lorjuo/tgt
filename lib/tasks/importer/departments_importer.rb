@@ -8,8 +8,8 @@ module DepartmentsImporter
 
     # TODO: Add remaining columns
     departments = ActiveRecord::Base.connection.execute(
-      {}"SELECT id, name FROM department WHERE area = #{old_area_id}"
-      #{}"SELECT id, name FROM department"
+      "SELECT id, name FROM department WHERE area = #{old_area_id}"
+      #"SELECT id, name FROM department"
       )
 
     use_new_database
