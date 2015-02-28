@@ -6,10 +6,10 @@ GIT
 
 GIT
   remote: git://github.com/plataformatec/simple_form.git
-  revision: 29f8f768f1702c6d032854b870d14eadb81cea88
+  revision: 749c926140ee383e8249f15d1846f5287c5a4c46
   branch: master
   specs:
-    simple_form (3.1.0.rc2)
+    simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
 
@@ -21,6 +21,14 @@ GIT
     jquery-fileupload-rails (0.4.1)
       actionpack (>= 3.1)
       railties (>= 3.1)
+
+PATH
+  remote: ../popup_jquery_uploader/
+  specs:
+    popup_jquery_uploader (0.0.1)
+      carrierwave
+      rails (>= 4.0.0)
+      simple_form (~> 3.1)
 
 GEM
   remote: https://rubygems.org/
@@ -367,6 +375,7 @@ DEPENDENCIES
   mysql2
   net-ssh (~> 2.7.0)
   populator
+  popup_jquery_uploader!
   quiet_assets
   rack-mini-profiler
   rails (~> 4.1)
@@ -375,7 +384,7 @@ DEPENDENCIES
   rolify
   sass-rails (~> 4.0.3)
   sdoc
-  simple_form (~> 3.1.0.rc1)!
+  simple_form (~> 3.1)!
   the_sortable_tree
   thin
   thread_safe (= 0.2.0)

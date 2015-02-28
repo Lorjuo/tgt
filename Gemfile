@@ -88,7 +88,7 @@ gem 'el_finder'
 gem 'carrierwave-crop'
 
 # Forms
-gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form', branch: 'master'
+gem 'simple_form', '~> 3.1', github: 'plataformatec/simple_form', branch: 'master'
 # https://github.com/rafaelfranca/simple_form-bootstrap/blob/master/app/views/examples/_horizontal_form_sf.html.erb
 # gem 'nested_form'
 gem 'cocoon'
@@ -116,6 +116,8 @@ gem 'fancybox2-rails', '~> 0.2'
   # Datepicker
   gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :git => 'git://github.com/Lorjuo/datetimepicker-rails.git'
   #gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :path => File.join('..', 'datetimepicker-rails')
+  
+  gem "popup_jquery_uploader", :path => "../popup_jquery_uploader/"
   
   # Token Inputs
   # Chosen check smartphone compatibility. Especially message and training group search
