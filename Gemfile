@@ -117,7 +117,7 @@ gem 'fancybox2-rails', '~> 0.2'
   gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :git => 'git://github.com/Lorjuo/datetimepicker-rails.git'
   #gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :path => File.join('..', 'datetimepicker-rails')
   
-  gem "popup_jquery_uploader", :path => "../popup_jquery_uploader/"
+  gem "jquery_popup_uploader", :path => "../jquery_popup_uploader/"
   
   # Token Inputs
   # Chosen check smartphone compatibility. Especially message and training group search

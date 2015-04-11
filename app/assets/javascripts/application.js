@@ -87,6 +87,7 @@
 //# Chosen
 //= require chosen-jquery
 //= require chosen_loader
+//= require jquery_popup_uploader
 //
 //# Images
 //= require fancybox_loader

@@ -82,6 +82,8 @@ jQuery ->
                 # data.context = $('.preview:last');
                 # data.context.find('.abort').click(abortUpload);
                 # CUSTOM visualization
+                # 
+                # seems to use this template enginge: http://ejohn.org/blog/javascript-micro-templating/
                 data.context = $($.parseHTML(tmpl("template-upload", file)))
                 $('.fileupload').append(data.context)
                 xhr = data.submit();
@@ -89,7 +91,7 @@ jQuery ->
                 #data.submit()
               )
           else
-            alert("one of your files is over 200MB")
+            alert("one of your files is over 25MB")
       
       progress: (e, data) ->
         if data.context

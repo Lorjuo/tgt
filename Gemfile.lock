@@ -23,9 +23,9 @@ GIT
       railties (>= 3.1)
 
 PATH
-  remote: ../popup_jquery_uploader/
+  remote: ../jquery_popup_uploader/
   specs:
-    popup_jquery_uploader (0.0.1)
+    jquery_popup_uploader (0.0.1)
       carrierwave
       rails (>= 4.0.0)
       simple_form (~> 3.1)
@@ -367,6 +367,7 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   jquery-ui-rails
+  jquery_popup_uploader!
   lodash-rails
   mini_magick
   minitest
@@ -375,7 +376,6 @@ DEPENDENCIES
   mysql2
   net-ssh (~> 2.7.0)
   populator
-  popup_jquery_uploader!
   quiet_assets
   rack-mini-profiler
   rails (~> 4.1)

@@ -11,9 +11,9 @@ $(document).ready(function() {
         var input = $(this).parents('.input-group').find(':text'),
             log = numFiles > 1 ? numFiles + ' files selected' : label;
 
-        if (input.length) {
-            input.val(log);
-        } else {
+        if (input.length) { // if output element is available
+            input.val(log); // notify user by input element
+        } else { // else notify user by alert box
             if (log) alert(log);
         }
     });
