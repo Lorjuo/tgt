@@ -1,4 +1,4 @@
-<%= render :partial => 'jquery_popup_uploader/upload_template' %>
+<%= render :partial => 'jquery_popup_uploader/utilities' %>
 
 <div class="window box">
   <%= simple_form_for(@trainer, :defaults => { :input_html => { :class => 'input-xlarge' } }) do |f| %>
@@ -41,6 +41,7 @@
         <%= render 'images/image_selector', f:image_form, image:@trainer.image %>
         <%#= image_form.input :file, as: :image_preview, input_html: {preview_version: :thumb}, :use_default_url => false %>
       <% end %>
+      <%= f.input :image, as: :image_popup_upload, input_html: {}, preview_version: :thumb, preview_size: '180x180', :use_default_url => true, :mount_on => :file %>
       <%= f.input :image, as: :image_popup_upload, input_html: {}, preview_version: :thumb, preview_size: '180x180', :use_default_url => true, :mount_on => :file %>
     </div>
 

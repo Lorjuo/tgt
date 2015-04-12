@@ -34,8 +34,14 @@ class ImagesController < ApplicationController
   end
 
   def create
-    #@image = Image::Image.new(permitted_params)
-    @image = @parent.images.build(permitted_params)
+
+    if(@parent.present?) # Check if parent resource is available
+      @image = @parent.images.build(permitted_params)
+    else
+      @image = Image::Image.new(permitted_params)
+    end
+
+
     if @image.save
       if params[:image][:file].present? && @type_class.croppable
         render :crop # Maybe replace this line with redirect_to to avoid sending form twice on F5
@@ -141,7 +147,11 @@ class ImagesController < ApplicationController
 
     def load_parent
       resource, id = request.path.split('/')[1, 2]
-      @parent = resource.singularize.classify.constantize.find(id)
+
+      # TODO: special treatment if no parent resource is available:
+      if id.present?
+        @parent = resource.singularize.classify.constantize.find(id)
+      end
     end
 
     def permitted_params
