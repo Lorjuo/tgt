@@ -14,9 +14,10 @@ class ImageUploader < BaseUploader
 
   def store_dir
     #parent_id = model.tmp_parent_id ? model.tmp_parent_id : model.attachable.id
+    #"uploads/"\
+    #"#{model.attachable.class.to_s.underscore}/"\
+    #"#{model.attachable.id.to_s}/"\
     "uploads/"\
-    "#{model.attachable.class.to_s.underscore}/"\
-    "#{model.attachable.id.to_s}/"\
     "#{model.class.to_s.demodulize.underscore}/"\
     "#{model.id.to_s}"
     # demodulize: strip namespace

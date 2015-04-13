@@ -41,7 +41,6 @@ class ImagesController < ApplicationController
       @image = Image::Image.new(permitted_params)
     end
 
-
     if @image.save
       if params[:image][:file].present? && @type_class.croppable
         render :crop # Maybe replace this line with redirect_to to avoid sending form twice on F5

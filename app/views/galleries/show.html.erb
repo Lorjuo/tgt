@@ -50,7 +50,7 @@
   </script>
 
     <div id="images" class="row">
-      <%= render(:partial => 'images/image', :collection => @images, :as => 'image') %>
+      <%= render(:partial => 'galleries/image', :collection => @images, :as => 'image') %>
     </div>
     <%= render(:partial => 'galleries/edit_multiple_buttons', :locals => {:gallery => @gallery}) if @gallery.images.exists? %>
   <% end %>

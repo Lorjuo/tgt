@@ -263,6 +263,8 @@ de:
       title: '%{name}'
 
   galleries:
+    image:
+      set_as_preview: Als Vorschaubild setzen
     index:
       title: Übersicht aller Fotogalerien
     show:
@@ -276,8 +278,6 @@ de:
       preview: Vorschau
     index:
       title: Bilderübersicht
-    image:
-      set_as_preview: Als Vorschaubild setzen
     show:
       title: 'Bild "%{name}"'
 

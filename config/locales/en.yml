@@ -262,6 +262,8 @@ en:
       title: '%{name}'
 
   galleries:
+    image:
+      set_as_preview: Set as preview picture
     index:
       title: Listing Photogalleries
     show:
@@ -275,8 +277,6 @@ en:
       preview: Preview
     index:
       title: Listing Images
-    image:
-      set_as_preview: Set as preview picture
     show:
       title: 'Image "%{name}"'
 
