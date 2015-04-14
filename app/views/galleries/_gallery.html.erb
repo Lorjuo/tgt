@@ -4,12 +4,13 @@
     <%# TODO: Centering of image slides on responsive design does not actually work %>
     <%= link_to( gallery, :title => gallery.name ) do  %>
       <div class="mediaObject previewCycle">
-        <% if gallery.images.exists? %><%# any?, present?, exists? # exists seems to be the correct method %>
-          <%= image_tag(gallery.get_preview_image.file_url(:_260x180), :class => "img-responsive") %>
+        <% if gallery.photos.exists? %><%# any?, present?, exists? # exists seems to be the correct method %>
+          <%= image_tag(gallery.get_preview_photo.file_url(:_260x180), :class => "img-responsive") %>
 
-          <% preview_images = Image.where('attachable_id = ? AND attachable_type = ?', gallery.id, 'gallery').order("RAND()").limit(4).where.not(id: gallery.get_preview_image.id) %>
-          <% preview_images.each do |preview_image| %>
-            <%= image_tag(preview_image.file_url(:_260x180), :class => "img-responsive") %>
+          <%# preview_photos = Image.where('attachable_id = ? AND attachable_type = ?', gallery.id, 'gallery').order("RAND()").limit(4).where.not(id: gallery.get_preview_photo.id) %>
+          <% preview_photos = GalleryPhoto.where(attachable_id: gallery.id).order("RAND()").limit(4).where.not(id: gallery.get_preview_photo.id) %>
+          <% preview_photos.each do |preview_photo| %>
+            <%= image_tag(preview_photo.file_url(:_260x180), :class => "img-responsive") %>
           <% end %>
           <%# .order("RANDOM()") %>
           <%# http://stackoverflow.com/questions/5342270/rails-3-get-random-record %>
@@ -19,11 +20,11 @@
       </div>
     <% end %>
 
-    <%#= image_tag(gallery.get_preview_image.file_url(:_260x180), size: "260x180", :class => "img-responsive") %>
+    <%#= image_tag(gallery.get_preview_photo.file_url(:_260x180), size: "260x180", :class => "img-responsive") %>
     <div class="mediaText">
-      <% count_images = Image.where('attachable_id = ? AND attachable_type = ?', gallery.id, 'gallery').count() %>
+      <% count_photos = GalleryPhoto.where(attachable_id: gallery.id).count() %>
       <%= link_to gallery.name, gallery, :class => "title" %>
-      <span class="content"><%= count_images.to_s + " " + Image.model_name.human(:count => count_images) %>
+      <span class="content"><%= count_photos.to_s + " " + Image.model_name.human(:count => count_photos) %>
         <span class="pull-right"><%= localize( gallery.custom_date.to_date, :format => :default ) %></span></span>
     </div>
   </div>

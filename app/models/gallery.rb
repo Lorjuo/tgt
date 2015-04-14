@@ -6,7 +6,7 @@
 #  name             :string(255)
 #  created_at       :datetime
 #  updated_at       :datetime
-#  preview_image_id :integer
+#  preview_photo_id :integer
 #  department_id    :integer
 #  custom_date      :date
 #
@@ -15,14 +15,14 @@ class Gallery < ActiveRecord::Base
 
   # Associations
   belongs_to :department
-  has_many :images, :as => :attachable, :class_name => 'Image', dependent: :destroy
-  belongs_to :preview_image, :class_name => 'Image'
+  has_many :photos, :as => :attachable, :class_name => 'Image::GalleryPhoto', dependent: :destroy
+  belongs_to :preview_photo, :class_name => 'Image::GalleryPhoto'
   
   # References
   has_many :references, :as => :reference_to, :dependent => :destroy # polymorphic
   has_many :messages, :through => :references, :source => :reference_from, :source_type => 'Message'
 
-  accepts_nested_attributes_for :images, allow_destroy: true
+  accepts_nested_attributes_for :photos, allow_destroy: true
 
   # Validation
   validates :name, :presence => true
@@ -40,7 +40,7 @@ class Gallery < ActiveRecord::Base
     self.custom_date ||= Date.today.to_s if new_record?
   end
 
-  def get_preview_image
-    (self.preview_image || self.images.first) unless self.images.empty?
+  def get_preview_photo
+    (self.preview_photo || self.photos.first) unless self.photos.empty?
   end
 end

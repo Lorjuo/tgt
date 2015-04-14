@@ -6,6 +6,11 @@ class ActionDispatch::Routing::Mapper
 end
 
 
+# for scope, namespace, ... see:
+# http://stackoverflow.com/questions/16757021/namespaced-apis-and-resource-routes
+# http://api.rubyonrails.org/classes/ActionDispatch/Routing/Mapper/Scoping.html
+# http://api.rubyonrails.org/classes/ActionDispatch/Routing/Mapper/Scoping.html#method-i-namespace
+# http://notahat.com/2014/02/05/scoping-rails-routes.html
 TgtRefurbished::Application.routes.draw do
 
 

@@ -30,7 +30,7 @@
           <span class="glyphicon glyphicon-picture"></span>
           <%= t ".picture" %>
         </h3>
-        <%= link_to(image_tag(@training_group.image.file_url(:_260x180), :class => "img-responsive"), @training_group.image.file_url, :class => "fancybox") if @training_group.image.present? %>
+        <%= link_to(image_tag(@training_group.photo.file_url(:_260x180), :class => "img-responsive"), @training_group.photo.file_url, :class => "fancybox") if @training_group.photo.present? %>
       </div>
     </div>
   </div>

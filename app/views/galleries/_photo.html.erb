@@ -1,0 +1,63 @@
+<div class="col-md-3 col-sm-4 col-xs-6">
+  <div class="mediaWrapper checkboxWrapper">
+    <div class="mediaObject">
+      <%= link_to(photo.file_url, :class => 'fancybox', size: "260x180", :rel => 'group', :caption => photo.name) do %>
+        <%= image_tag(photo.file_url(:_260x180), :class => "img-responsive") %>
+      <% end if photo.file._260x180.present? %>
+      <% if can?(:edit, photo.attachable) %>
+        <div class="mediaOverlay top-right toolbar">
+          <%= link_to set_preview_photo_gallery_path(photo.attachable, :photo_id => photo), :method => :post, :title => t(".set_as_preview"), :data => {:toggle => "tooltip"} do %>
+            <%= tag :span, :class => (photo.attachable.preview_photo_id == photo.id) ? "glyphicon glyphicon-star active" : "glyphicon glyphicon-star" %>
+          <% end if false%>
+        </div>
+      <% end %>
+    </div>
+
+    <!--
+      Overlay image buttons
+      http://web.enavu.com/tutorials/making-imageOverlay-caption-using-css/
+      http://stackoverflow.com/questions/12443857/how-to-make-an-overlay-over-a-bootstrap-thumbnail
+      https://groups.google.com/forum/#!topic/twitter-bootstrap-stackoverflow/kG8wjX08bBw
+      http://stackoverflow.com/questions/18631530/text-overlay-on-image -> seems to work
+    -->
+
+    <%# holder_tag '260x180' %>
+    <% if can?(:edit, @gallery) %>
+      <div class="mediaText">
+        <!-- <p><%= photo.name %></p> -->
+
+        <% if false %>
+        <%= check_box_tag "photo_ids[]", photo.id %>
+        <%= link_to edit_photo_path(photo), :class => 'btn btn-default btn-xs'  do %>
+          <span class="glyphicon glyphicon-edit"></span>
+          <%= t "general.edit" %>
+        <% end %>
+        <%= link_to set_preview_photo_gallery_path(photo.attachable, :photo_id => photo), :method => :post, :class => 'btn btn-default btn-xs' do %>
+          <span class="glyphicon glyphicon-star"></span>
+          <%= t(".set_as_preview") %>
+        <% end if false %>
+        <%= link_to photo, data: { confirm: t("general.are_you_sure")}, :method => :delete, :class => 'btn btn-primary btn-xs' do %>
+          <span class="glyphicon glyphicon-trash"></span>
+          <%= t "general.destroy" %>
+        <% end %>
+        <% end %>
+
+        <div class="title">
+          Bild: 
+          <%= link_to edit_photo_path(photo), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
+            <span class="glyphicon glyphicon-edit"></span>
+          <% end %>
+          <%= link_to set_preview_photo_gallery_path(photo.attachable, :photo_id => photo), :method => :post, :title => t(".set_as_preview"), :data => {:toggle => "tooltip"} do %>
+            <span class="glyphicon glyphicon-star"></span>
+          <% end %>
+          <%= link_to photo, data: { confirm: t("general.are_you_sure"), :toggle => "tooltip"}, :method => :delete, :title => t("general.destroy") do %>
+            <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
+          <div class="pull-right">
+            <%= check_box_tag "photo_ids[]", photo.id %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -18,12 +18,18 @@
     
     resources :documents
     resources :galleries, :shallow => true do
-      concerns :imageable
+      #scope 'image', module: 'image', as: 'image' do
+      #scope :module => 'image' do # Works with short paths
+      #scope :image do # Works with short paths
+      #namespace :image do # Works with short paths
+        resources :gallery_photos, :module => 'image', path: 'photos'
+      #end
+      # concerns :imageable
       # scope :module => "image" do
       #   resources :images
       # end
       member do
-        post :set_preview_image
+        post :set_preview_photo
       end
       #resources :images
     end

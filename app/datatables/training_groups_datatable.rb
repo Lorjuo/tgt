@@ -65,7 +65,7 @@ private
 
     training_groups = TrainingGroup.joins("LEFT OUTER JOIN departments ON training_groups.department_id = departments.id")
     training_groups = training_groups.includes(:training_units) # Cannot include this table, because search conditions prevent showing all units
-    training_groups = training_groups.includes(:image)
+    training_groups = training_groups.includes(:photos)
 
     if @department_id.present?
       training_groups = training_groups.where("departments.slug = :search", search: "#{@department_id}")

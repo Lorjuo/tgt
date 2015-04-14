@@ -57,7 +57,7 @@
       </dl>
     </div>
     <div class="col-sm-4">
-      <%= link_to(image_tag(@trainer.image.file_url, :class => "img-responsive"), @trainer.image.file_url, :class => "fancybox") if @trainer.image.present? %>
+      <%= link_to(image_tag(@trainer.photo.file_url, :class => "img-responsive"), @trainer.photo.file_url, :class => "fancybox") if @trainer.photo.present? %>
     </div>
   </div>
 </div>

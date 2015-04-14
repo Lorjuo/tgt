@@ -23,10 +23,10 @@ class Trainer < ActiveRecord::Base
   
   # Associations
   has_and_belongs_to_many :training_groups
-  has_one :image, :as => :attachable, :class_name => 'Image', :dependent => :destroy
+  has_one :photo, :as => :attachable, :class_name => 'Image::Photo', :dependent => :destroy
   has_one :user
 
-  accepts_nested_attributes_for :image, allow_destroy: true
+  accepts_nested_attributes_for :photo, allow_destroy: true
 
   # Scopes
   scope :department, -> (id) { joins(:training_groups).where('training_groups.department_id = ?', id).uniq}

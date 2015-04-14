@@ -1,5 +1,6 @@
 <%= render :partial => 'shared/elfinder_loader', :locals => { :path => "" } %>
 <%= tinymce %>
+<%= render :partial => 'jquery_popup_uploader/utilities' %>
 <% content_for(:head) do %>
   <%= javascript_include_tag "administration-bundle", "data-turbolinks-track" => true %>
 <% end %>
@@ -34,6 +35,8 @@
       <% end %>
       <%= f.input :visible_from, :as => :date_picker %>
       <%= f.input :visible_to, :as => :date_picker %>
+
+      <%= f.input :header, as: :image_popup_upload, input_html: {}, preview_version: :thumb, preview_size: '180x180', :use_default_url => true, :mount_on => :file %>
 
       <fieldset>
         <legend><%= t "general.references" %></legend>

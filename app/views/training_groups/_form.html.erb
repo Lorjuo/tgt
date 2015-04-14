@@ -30,8 +30,8 @@
           <%= f.input :description, as: :text, input_html: { class: 'tinymce' } %>
           <%= f.input :ancient %>
           
-          <%= f.simple_fields_for :image do |image_form| %>
-            <%= render 'images/image_selector', f:image_form, image:@training_group.image %>
+          <%= f.simple_fields_for :photo do |image_form| %>
+            <%= render 'images/image_selector', f:image_form, image:@training_group.photo %>
           <% end %>
 
           <fieldset>

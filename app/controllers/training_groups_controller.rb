@@ -34,12 +34,12 @@ class TrainingGroupsController < ApplicationController
 
   def new
     @training_group = @department.training_groups.new
-    @training_group.build_image
+    @training_group.build_photo
   end
 
 
   def edit
-    @training_group.build_image unless @training_group.image.present?
+    @training_group.build_photo unless @training_group.photo.present?
   end
 
 
@@ -51,7 +51,7 @@ class TrainingGroupsController < ApplicationController
         format.html { redirect_to @training_group, notice: 'Training group was successfully created.' }
         format.json { render action: 'show', status: :created, location: @training_group }
       else
-        @training_group.build_image unless @training_group.image.present? # TODO: remove this QUICK_FIX#1 ?
+        @training_group.build_photo unless @training_group.photo.present? # TODO: remove this QUICK_FIX#1 ?
         format.html { render action: 'new' }
         format.json { render json: @training_group.errors, status: :unprocessable_entity }
       end
@@ -66,7 +66,7 @@ class TrainingGroupsController < ApplicationController
         format.html { redirect_to @training_group, notice: 'Training group was successfully updated.' }
         format.json { head :no_content }
       else
-        @training_group.build_image unless @training_group.image.present? # TODO: remove this QUICK_FIX#1 ?
+        @training_group.build_photo unless @training_group.photo.present? # TODO: remove this QUICK_FIX#1 ?
         format.html { render action: 'edit' }
         format.json { render json: @training_group.errors, status: :unprocessable_entity }
       end
@@ -100,7 +100,7 @@ class TrainingGroupsController < ApplicationController
     def training_group_params
       params.require(:training_group).permit(:name, :description, :department_id, :age_begin, :age_end, :ancient, :trainer_ids => [],
         :training_units_attributes => [:id, :week_day, :time_begin, :time_end, :location_summer_id, :location_winter_id, :training_group_id, :_destroy],
-        :image_attributes => [:file, :id],
+        :photo_attributes => [:file, :id],
         :gallery_ids => [], :document_ids => [])
       # http://stackoverflow.com/questions/18436741/rails-4-strong-parameters-nested-objects#answer-18437539
       # https://github.com/nathanvda/cocoon

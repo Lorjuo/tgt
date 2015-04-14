@@ -10,7 +10,9 @@
 #  attachable_id   :integer
 #  attachable_type :string(255)
 #  type            :string(255)
-#
+
+
+# ABSTRACT MODEL - OBJECTS SHOULD ONLY BE INSTANCIATED FROM CHILD CLASSES
 
 class Image < Asset
 
@@ -22,13 +24,10 @@ class Image < Asset
 
 
   # Specify database tablename
-  self.table_name = 'images'
+  self.table_name = 'images' # neccessary for STI -> affects child classes
 
   # Uploader
-  mount_uploader :file, ::Image::PhotoUploader, :mount_on => :file
-
-  # will_paginate
-  self.per_page = 12
+  #mount_uploader :file, ::Image::PhotoUploader, :mount_on => :file
 
   # http://stackoverflow.com/questions/1251352/ruby-inherit-code-that-works-with-class-variables/1251422#1251422
   class << self
@@ -38,7 +37,7 @@ class Image < Asset
   # We will need a way to know which types
   # will subclass the Image model
   def self.races
-    %w(Image::Banner Image::Header Image::Poster)
+    %w(Image::Banner Image::Header Image::Poster Image::Photo Image::GalleryPhoto)
   end
 end
 Image.croppable = false

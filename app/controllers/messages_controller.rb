@@ -24,10 +24,12 @@ class MessagesController < ApplicationController
   def new
     @message = @department.messages.new
     #@message.build_image
+    @message.build_header
   end
 
 
   def edit
+    @message.build_header unless @message.header.present?
   end
 
   def images

@@ -21,12 +21,12 @@ class TrainersController < ApplicationController
   # GET /trainers/new
   def new
     @trainer = Trainer.new
-    @trainer.build_image
+    @trainer.build_photo
   end
 
   # GET /trainers/1/edit
   def edit
-    @trainer.build_image unless @trainer.image.present?
+    @trainer.build_photo unless @trainer.photo.present?
   end
 
   # POST /trainers
@@ -39,7 +39,7 @@ class TrainersController < ApplicationController
         format.html { redirect_to @trainer, notice: 'Trainer was successfully created.' }
         format.json { render action: 'show', status: :created, location: @trainer }
       else
-        @trainer.build_image unless @trainer.image.present? # TODO: remove this QUICK_FIX#1 ?
+        @trainer.build_photo unless @trainer.photo.present? # TODO: remove this QUICK_FIX#1 ?
         format.html { render action: 'new' }
         format.json { render json: @trainer.errors, status: :unprocessable_entity }
       end
@@ -49,34 +49,34 @@ class TrainersController < ApplicationController
   # PATCH/PUT /trainers/1
   # PATCH/PUT /trainers/1.json
   def update
-    # p_attr = params[:image]
-    # p_attr[:file] = params[:image][:file].first if params[:image][:file].class == Array
+    # p_attr = params[:photo]
+    # p_attr[:file] = params[:photo][:file].first if params[:photo][:file].class == Array
 
-    # @image = @parent.images.build(p_attr)
+    # @photo = @parent.photos.build(p_attr)
 
     # respond_to do |format|
-    #   if @image.valid? && @image.save
-    #     format.html { redirect_to @image, notice: "Image was successfully created." }
+    #   if @photo.valid? && @photo.save
+    #     format.html { redirect_to @photo, notice: "photo was successfully created." }
     #     format.js
     #   else
-    #     format.html { redirect_to @image, error: @image.errors }
+    #     format.html { redirect_to @photo, error: @photo.errors }
     #   end
     # end
 
     respond_to do |format|
       # TODO: reimplement strong parameters
       #if @trainer.update(trainer_params)
-      #@trainer.build_image unless @trainer.image.present?
-      #if @trainer.update_attributes(params[:trainer].except(:image_attributes)) && @trainer.image.update_attributes(params[:trainer][:image_attributes])
+      #@trainer.build_photo unless @trainer.photo.present?
+      #if @trainer.update_attributes(params[:trainer].except(:photo_attributes)) && @trainer.photo.update_attributes(params[:trainer][:photo_attributes])
       #debugger
-      #params[:trainer][:image_attributes][:attachable_id] = @trainer.id
-      #@trainer.image.tmp_parent_id = @trainer.id
+      #params[:trainer][:photo_attributes][:attachable_id] = @trainer.id
+      #@trainer.photo.tmp_parent_id = @trainer.id
       if @trainer.update_attributes(trainer_params)
       #if @trainer.update(trainer_params)
         format.html { redirect_to @trainer, notice: 'Trainer was successfully updated.' }
         format.json { head :no_content }
       else
-        @trainer.build_image unless @trainer.image.present? # TODO: remove this QUICK_FIX#1 ?
+        @trainer.build_photo unless @trainer.photo.present? # TODO: remove this QUICK_FIX#1 ?
         format.html { render action: 'edit' }
         format.json { render json: @trainer.errors, status: :unprocessable_entity }
       end
@@ -102,6 +102,6 @@ class TrainersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def trainer_params
       params.require(:trainer).permit(:first_name, :last_name, :birthday, :residence, :phone, :email, :profession, :education, :disciplines, :activities,
-        :training_group_ids => [], :image_attributes => [:file, :id] )
+        :training_group_ids => [], :photo_attributes => [:file, :id] )
     end
 end

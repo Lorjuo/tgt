@@ -34,6 +34,7 @@ class ImagesController < ApplicationController
   end
 
   def create
+    # local variable "type" affected by routes.rb
 
     if(@parent.present?) # Check if parent resource is available
       @image = @parent.images.build(permitted_params)
@@ -54,6 +55,10 @@ class ImagesController < ApplicationController
       render action: 'new'
     end
   end
+
+  # def create
+  #   if(@parent.present?) # check if parent resource is available
+  #     @image = @parent
 
   def update
     if @image.update(permitted_params)
