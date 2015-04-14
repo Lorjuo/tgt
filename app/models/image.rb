@@ -39,5 +39,18 @@ class Image < Asset
   def self.races
     %w(Image::Banner Image::Header Image::Poster Image::Photo Image::GalleryPhoto)
   end
+
+  # ATTENTION - THIS IS REALLY IMPORTANT:
+  # 
+  # This prevents urls created from instances of subclasses to have scoped paths or urls when using url helpers
+  # this affects the module "Image" althoug it is defined inside the class "Image"
+  # This also causes the form parameters to exclude the module name
+  # 
+  # https://github.com/rails/rails/issues/10705
+  # http://stackoverflow.com/questions/11127426/rails-3-polymorphic-path-how-to-change-the-default-route-key
+  # http://stackoverflow.com/a/13261518/871495
+  def self.use_relative_model_naming?
+    true
+  end
 end
 Image.croppable = false

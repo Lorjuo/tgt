@@ -22,7 +22,8 @@
       #scope :module => 'image' do # Works with short paths
       #scope :image do # Works with short paths
       #namespace :image do # Works with short paths
-        resources :gallery_photos, :module => 'image', path: 'photos'
+        resources :gallery_photos, :module => 'image', path: 'photos', as: 'photos'
+        #resources :photos, :controller=>"gallery_photos", :module => 'image', path: 'photos'
       #end
       # concerns :imageable
       # scope :module => "image" do
