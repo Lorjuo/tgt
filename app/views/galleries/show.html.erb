@@ -49,8 +49,8 @@
     // template content
   </script>
 
-    <div id="photos" class="row">
-      <%= render(:partial => 'galleries/photo', :collection => @photos, :as => 'photo') %>
+    <div id="images" class="row">
+      <%= render(:partial => 'galleries/image', :collection => @photos, :as => 'image') %>
     </div>
     <%= render(:partial => 'galleries/edit_multiple_buttons', :locals => {:gallery => @gallery}) if @gallery.photos.exists? %>
   <% end %>
