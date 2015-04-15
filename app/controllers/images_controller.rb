@@ -37,7 +37,7 @@ class ImagesController < ApplicationController
     # local variable "type" affected by routes.rb
 
     if(@parent.present?) # Check if parent resource is available
-      @image = @parent.images.build(permitted_params)
+      @image = @parent.photos.build(permitted_params)
     else
       @image = Image::Image.new(permitted_params)
     end

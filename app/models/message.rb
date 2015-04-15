@@ -22,7 +22,7 @@ class Message < ActiveRecord::Base
 
   # Associations
   belongs_to :department
-  has_one :thumb, :as => :attachable, :class_name => 'Image', :dependent => :destroy
+  has_one :thumb, :as => :attachable, :class_name => 'Image::Photo', :dependent => :destroy
   has_one :header, :as => :attachable, :class_name => 'Image::Header', :dependent => :destroy
   # Multiple Associations to same polymorphic model:
   # http://stackoverflow.com/questions/2494452/rails-polymorphic-association-with-multiple-associations-on-the-same-model

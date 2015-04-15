@@ -22,7 +22,8 @@
       #scope :module => 'image' do # Works with short paths
       #scope :image do # Works with short paths
       #namespace :image do # Works with short paths
-        resources :gallery_photos, :module => 'image', path: 'photos', as: 'photos'
+        resources :gallery_photos, :module => 'image', path: 'photos'#, as: 'photos'
+        # renaming of route without renaming model does not work because url helper only looks for model names
         #resources :photos, :controller=>"gallery_photos", :module => 'image', path: 'photos'
       #end
       # concerns :imageable

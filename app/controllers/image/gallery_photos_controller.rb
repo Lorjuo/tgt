@@ -10,6 +10,6 @@ class Image::GalleryPhotosController < ImagesController
   private
 
     def permitted_params
-      params.require(:image).permit(:name, :file, :attachable_id, :attachable_type)
+      params.require(:photo).permit(:name, :file, :attachable_id, :attachable_type)
     end
 end

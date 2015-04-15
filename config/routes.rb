@@ -11,6 +11,8 @@ end
 # http://api.rubyonrails.org/classes/ActionDispatch/Routing/Mapper/Scoping.html
 # http://api.rubyonrails.org/classes/ActionDispatch/Routing/Mapper/Scoping.html#method-i-namespace
 # http://notahat.com/2014/02/05/scoping-rails-routes.html
+# 
+# look also at: image.rb
 TgtRefurbished::Application.routes.draw do
 
 
