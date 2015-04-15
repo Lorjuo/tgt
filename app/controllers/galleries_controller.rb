@@ -19,11 +19,11 @@ class GalleriesController < ApplicationController
   # GET /galleries/1
   # GET /galleries/1.json
   def show
-    @photos = Image::GalleryPhoto.where('attachable_id = ?', @gallery.id).order(:name).paginate(:page => params[:page])
+    @images = Image::GalleryImage.where('attachable_id = ?', @gallery.id).order(:name).paginate(:page => params[:page])
 
     # Move this lines to admin show method
-    @photo = @gallery.photos.build
-    #@photos = Photo.where('attachable_id = ? AND attachable_type = ?', @gallery.id, 'gallery')
+    @image = @gallery.images.build
+    #@images = Image.where('attachable_id = ? AND attachable_type = ?', @gallery.id, 'gallery')
   end
 
   # GET /galleries/new
@@ -35,8 +35,8 @@ class GalleriesController < ApplicationController
   def edit
   end
 
-  def set_preview_photo
-    @gallery.preview_photo = Image::GalleryPhoto.find(params['photo_id'])
+  def set_preview_image
+    @gallery.preview_image = Image::GalleryImage.find(params['image_id'])
     if @gallery.save
       redirect_to @gallery, notice: 'Preview image successfully set.'
     else

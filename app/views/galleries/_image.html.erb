@@ -1,12 +1,12 @@
 <div class="col-md-3 col-sm-4 col-xs-6">
   <div class="mediaWrapper checkboxWrapper">
     <div class="mediaObject">
-      <%= link_to(photo.file_url, :class => 'fancybox', size: "260x180", :rel => 'group', :caption => photo.name) do %>
-        <%= image_tag(photo.file_url(:_260x180), :class => "img-responsive") %>
-      <% end if photo.file._260x180.present? %>
-      <% if can?(:edit, photo.attachable) %>
+      <%= link_to(image.file_url, :class => 'fancybox', size: "260x180", :rel => 'group', :caption => image.name) do %>
+        <%= image_tag(image.file_url(:_260x180), :class => "img-responsive") %>
+      <% end if image.file._260x180.present? %>
+      <% if can?(:edit, image.attachable) %>
         <div class="mediaOverlay top-right toolbar">
-          <%= link_to set_preview_photo_gallery_path(photo.attachable, :photo_id => photo), :method => :post, :title => t(".set_as_preview"), :data => {:toggle => "tooltip"} do %>
+          <%= link_to set_preview_image_gallery_path(image.attachable, :photo_id => photo), :method => :post, :title => t(".set_as_preview"), :data => {:toggle => "tooltip"} do %>
             <%= tag :span, :class => (photo.attachable.preview_photo_id == photo.id) ? "glyphicon glyphicon-star active" : "glyphicon glyphicon-star" %>
           <% end if false%>
         </div>
@@ -24,19 +24,19 @@
     <%# holder_tag '260x180' %>
     <% if can?(:edit, @gallery) %>
       <div class="mediaText">
-        <!-- <p><%= photo.name %></p> -->
+        <!-- <p><%= image.name %></p> -->
 
         <% if false %>
-        <%= check_box_tag "photo_ids[]", photo.id %>
-        <%= link_to edit_photo_path(photo), :class => 'btn btn-default btn-xs'  do %>
+        <%= check_box_tag "image_ids[]", image.id %>
+        <%= link_to edit_gallery_image_path(image), :class => 'btn btn-default btn-xs'  do %>
           <span class="glyphicon glyphicon-edit"></span>
           <%= t "general.edit" %>
         <% end %>
-        <%= link_to set_preview_photo_gallery_path(photo.attachable, :photo_id => photo), :method => :post, :class => 'btn btn-default btn-xs' do %>
+        <%= link_to set_preview_image_gallery_path(image.attachable, :image_id => image), :method => :post, :class => 'btn btn-default btn-xs' do %>
           <span class="glyphicon glyphicon-star"></span>
           <%= t(".set_as_preview") %>
         <% end if false %>
-        <%= link_to photo, data: { confirm: t("general.are_you_sure")}, :method => :delete, :class => 'btn btn-primary btn-xs' do %>
+        <%= link_to image, data: { confirm: t("general.are_you_sure")}, :method => :delete, :class => 'btn btn-primary btn-xs' do %>
           <span class="glyphicon glyphicon-trash"></span>
           <%= t "general.destroy" %>
         <% end %>
@@ -44,17 +44,17 @@
 
         <div class="title">
           Bild: 
-          <%= link_to edit_photo_path(photo), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
+          <%= link_to edit_gallery_image_path(image), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
             <span class="glyphicon glyphicon-edit"></span>
           <% end %>
-          <%= link_to set_preview_photo_gallery_path(photo.attachable, :photo_id => photo), :method => :post, :title => t(".set_as_preview"), :data => {:toggle => "tooltip"} do %>
+          <%= link_to set_preview_image_gallery_path(image.attachable, :image_id => image), :method => :post, :title => t(".set_as_preview"), :data => {:toggle => "tooltip"} do %>
             <span class="glyphicon glyphicon-star"></span>
           <% end %>
-          <%= link_to photo, data: { confirm: t("general.are_you_sure"), :toggle => "tooltip"}, :method => :delete, :title => t("general.destroy") do %>
+          <%= link_to image, data: { confirm: t("general.are_you_sure"), :toggle => "tooltip"}, :method => :delete, :title => t("general.destroy") do %>
             <span class="glyphicon glyphicon-trash"></span>
           <% end %>
           <div class="pull-right">
-            <%= check_box_tag "photo_ids[]", photo.id %>
+            <%= check_box_tag "image_ids[]", image.id %>
           </div>
         </div>
       </div>

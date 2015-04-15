@@ -1,4 +1,4 @@
-class Image::GalleryPhoto < Image
+class Image::GalleryImage < Image
   
   # Associations
   belongs_to :attachable, polymorphic: true

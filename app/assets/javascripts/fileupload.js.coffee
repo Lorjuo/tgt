@@ -48,6 +48,9 @@ jQuery ->
       imageMaxWidth: 800
       imageMaxHeight: 800
       disableImageResize: false
+      imageOrientation: true
+
+      #https://github.com/tors/jquery-fileupload-rails/blob/master/app/assets/javascripts/jquery-fileupload/jquery.fileupload-image.js
       process:[
         {
           action: 'load',
@@ -55,11 +58,15 @@ jQuery ->
           maxFileSize: 25000000 # 25MB
         },
         {
+          action: 'loadImageMetaData'
+        },
+        {
           action: 'resize',
           maxWidth: 800,
           maxHeight: 800#,
           #minWidth: 480,
-          #minHeight: 360
+          #minHeight: 360,
+          orientation: true
         },
         {
           action: 'save'
@@ -67,6 +74,10 @@ jQuery ->
       ]
 
       add: (e, data) ->
+        # not quite sure if this is needed to perform process queing
+        # http://stackoverflow.com/questions/21675593/cant-get-image-resizing-to-work-with-jquery-file-upload
+        $.blueimp.fileupload.prototype.options.add.call(this, e, data);
+
         #unique_token = token();
         if (data.files && data.files[0])
           file = data.files[0]

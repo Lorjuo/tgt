@@ -1,4 +1,4 @@
-class Image::GalleryPhotosController < ImagesController
+class Image::GalleryImagesController < ImagesController
   # Rails.logger.error "BANNERS CONTROLLER"
 
   # Associations
@@ -11,7 +11,7 @@ class Image::GalleryPhotosController < ImagesController
   # Actions
   
   def create
-    @image = @gallery.photos.build(permitted_params)
+    @image = @gallery.images.build(permitted_params)
 
     if @image.save
       respond_to do |format|
@@ -33,6 +33,6 @@ class Image::GalleryPhotosController < ImagesController
     end
 
     def permitted_params
-      params.require(:photo).permit(:name, :file, :attachable_id, :attachable_type)
+      params.require(:image).permit(:name, :file, :attachable_id, :attachable_type)
     end
 end

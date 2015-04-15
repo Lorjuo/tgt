@@ -17,9 +17,9 @@
 
 <div class="window box">
 
-  <%= form_tag edit_multiple_photos_path, method: :get do %>
-    <div id="photos" class="row">
-      <%= render(:partial => 'galleries/photo', :collection => @photos, :as => 'photo') %>
+  <%= form_tag edit_multiple_images_path, method: :get do %>
+    <div id="images" class="row">
+      <%= render(:partial => 'galleries/image', :collection => @images, :as => 'image') %>
     </div>
     <% if can? :update, @gallery %>
       <div class="form-group">
@@ -40,14 +40,14 @@
   <% end %>
   <div class="clear"></div>
 
-  <% if can?(:update, photo) %>
-    <%= simple_form_for [@gallery, @photo], :html => { :class => "fileupload", :multipart => true } do |f| %>
-      <%# f.input_field :file, :as => :file, name: "photo[file]",  :multiple => true, :class => "btn btn-file" %>
+  <% if can?(:update, image) %>
+    <%= simple_form_for [@gallery, @image], :html => { :class => "fileupload", :multipart => true } do |f| %>
+      <%# f.input_field :file, :as => :file, name: "image[file]",  :multiple => true, :class => "btn btn-file" %>
 
       <div class="btn btn-default btn-file btn-primary fileinput-button">
         <span class="glyphicon glyphicon-plus"></span>
         <span><%= t "general.add_files" %></span>
-        <%= f.file_field :file, name: "photo[file]", :multiple => true, :class => "btn btn-file fileinput-button" %>
+        <%= f.file_field :file, name: "image[file]", :multiple => true, :class => "btn btn-file fileinput-button" %>
         <!-- Style Upload: http://stackoverflow.com/questions/14509449/styling-file-upload-button-for-simple-form-for-with-bootstrap-in-rails-3 -->
       </div>
     <% end %>

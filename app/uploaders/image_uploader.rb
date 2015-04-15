@@ -3,12 +3,12 @@ class ImageUploader < BaseUploader
   #include CarrierWave::RMagick
   include CarrierWave::MiniMagick
 
+  #http://makandracards.com/makandra/12323-carrierwave-auto-rotate-tagged-jpegs
+  process :fix_exif_rotation # this should go before all other "process" steps
   after :store, :unlink_original
   
   process quality: 80 #https://github.com/petedoyle/imagemagick-quality-tests
 
-  #http://makandracards.com/makandra/12323-carrierwave-auto-rotate-tagged-jpegs
-  process :fix_exif_rotation # this should go before all other "process" steps
   process :strip_exif_metadata
   process :set_content_type
 
@@ -31,7 +31,7 @@ class ImageUploader < BaseUploader
   # https://github.com/jnicklas/carrierwave/issues/584
   # http://stackoverflow.com/questions/9557911/how-to-delete-the-original-files-and-keep-only-the-versions
   def unlink_original(file)
-    File.delete if version_name.blank?
+    #File.delete if version_name.blank?
   end
 
   # http://stackoverflow.com/questions/4753408/how-to-remove-exif-camera-data-from-image-with-carrierwave
@@ -47,6 +47,7 @@ class ImageUploader < BaseUploader
   # http://makandracards.com/makandra/12323-carrierwave-auto-rotate-tagged-jpegs
   # http://stackoverflow.com/questions/18519160/exif-image-rotation-issue-using-carrierwave-and-rmagick-to-upload-to-s3
   # http://stackoverflow.com/questions/9558653/rails-paperclip-and-upside-down-oriented-images
+  # https://gist.github.com/tanraya/7438337
   def fix_exif_rotation
     manipulate! do |img|
       img.tap(&:auto_orient)
