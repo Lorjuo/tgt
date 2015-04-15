@@ -31,7 +31,7 @@ class ImageUploader < BaseUploader
   # https://github.com/jnicklas/carrierwave/issues/584
   # http://stackoverflow.com/questions/9557911/how-to-delete-the-original-files-and-keep-only-the-versions
   def unlink_original(file)
-    #File.delete if version_name.blank?
+    File.delete if version_name.blank?
   end
 
   # http://stackoverflow.com/questions/4753408/how-to-remove-exif-camera-data-from-image-with-carrierwave

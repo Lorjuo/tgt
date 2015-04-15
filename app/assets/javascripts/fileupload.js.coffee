@@ -44,37 +44,49 @@ jQuery ->
       #     data.submit(); 
       #   )
 
+      # This settings seem to have no effect at the moment, because they get overridden by processQueue
       loadImageMaxFileSize: 25000000 # 25MB
       imageMaxWidth: 800
       imageMaxHeight: 800
       disableImageResize: false
+      disableImageMetaDataLoad: false
       imageOrientation: true
+      imageCrop: true
 
+      # BEST SOURCE:
+      # https://github.com/blueimp/jQuery-File-Upload/wiki/Options#file-processing-options
+      # see also the following file for the processing actions: jquery.fileupload-image.js
       #https://github.com/tors/jquery-fileupload-rails/blob/master/app/assets/javascripts/jquery-fileupload/jquery.fileupload-image.js
-      process:[
-        {
-          action: 'load',
-          fileTypes: /^image\/(gif|jpeg|png)$/,
-          maxFileSize: 25000000 # 25MB
-        },
+      processQueue: [
         {
           action: 'loadImageMetaData'
+          # disableImageHead: '@',
+          # disableExif: '@',
+          # disableExifThumbnail: '@',
+          # disableExifSub: '@',
+          # disableExifGps: '@',
+          # disabled: '@disableImageMetaDataLoad'
         },
         {
-          action: 'resize',
-          maxWidth: 800,
-          maxHeight: 800#,
-          #minWidth: 480,
-          #minHeight: 360,
+          action : 'loadImage',
+          fileTypes : /^image\/(gif|jpeg|png)$/,
+          maxFileSize: 25000000 # 25MB
+        }, {
+          action : 'resizeImage',
+          minWidth: 800,
+          minHeight: 800,
+          #crop : true
           orientation: true
-        },
-        {
-          action: 'save'
+        }, {
+          action : 'saveImage'
         }
+        #{
+        #  action : "setImage"
+        #}
       ]
 
       add: (e, data) ->
-        # not quite sure if this is needed to perform process queing
+        # not quite sure if this is needed to perform process queueing
         # http://stackoverflow.com/questions/21675593/cant-get-image-resizing-to-work-with-jquery-file-upload
         $.blueimp.fileupload.prototype.options.add.call(this, e, data);
 
