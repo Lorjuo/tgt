@@ -4,7 +4,7 @@ class Image::GalleryImage < Image
   belongs_to :attachable, polymorphic: true
 
   # Uploader
-  mount_uploader :file, ::Image::PhotoUploader, :mount_on => :file
+  mount_uploader :file, ::Image::GalleryUploader, :mount_on => :file
   crop_uploaded :file
 
   # will_paginate

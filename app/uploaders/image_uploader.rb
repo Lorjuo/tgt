@@ -14,12 +14,26 @@ class ImageUploader < BaseUploader
 
   def store_dir
     #parent_id = model.tmp_parent_id ? model.tmp_parent_id : model.attachable.id
-    #"uploads/"\
-    #"#{model.attachable.class.to_s.underscore}/"\
-    #"#{model.attachable.id.to_s}/"\
-    "uploads/"\
-    "#{model.class.to_s.demodulize.underscore}/"\
-    "#{model.id.to_s}"
+
+    # versions seems to depend on the "store_dir" function in current uploader class or its parents
+    # therefore it should be defined in a base class instead of a sub class when versions are defined in both
+    if(model.class.name.demodulize.underscore == 'gallery_image')
+      "uploads/"\
+      "#{model.attachable.class.to_s.underscore}/"\
+      "#{model.attachable.id.to_s}/"\
+      "#{model.id.to_s}"
+    else
+      "uploads/"\
+      "#{model.class.to_s.demodulize.underscore}/"\
+      "#{model.id.to_s}"
+    end
+
+    # "uploads/"\
+    # "#{model.attachable.class.to_s.underscore}/"\
+    # "#{model.attachable.id.to_s}/"\
+    # "#{model.class.to_s.demodulize.underscore}/"\
+    # "#{model.id.to_s}"
+
     # demodulize: strip namespace
   end
 
@@ -32,6 +46,7 @@ class ImageUploader < BaseUploader
   # http://stackoverflow.com/questions/9557911/how-to-delete-the-original-files-and-keep-only-the-versions
   def unlink_original(file)
     File.delete if version_name.blank?
+    # (store_dir+'/'+original_file)
   end
 
   # http://stackoverflow.com/questions/4753408/how-to-remove-exif-camera-data-from-image-with-carrierwave

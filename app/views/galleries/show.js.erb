@@ -1,6 +1,6 @@
-$('#images').append('<%= j render(@image) %>');
-<% if @image.next_page %>
-  $('.pagination').replaceWith('<%= j will_paginate(@image) %>');
+$('#images').append('<%= j render(:partial => 'galleries/image', :collection => @images, :as => :image) %>');
+<% if @images.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate(@images) %>');
 <% else %>
   $('.pagination').remove();
   <%# Show more images button: http://railscasts.com/episodes/114-endless-page-revised?view=comments#comment_155938 %>
