@@ -1,6 +1,7 @@
 jQuery ->
   new CarrierWaveCropper('banner')
   new CarrierWaveCropper('header')
+  new CarrierWaveCropper('galleryimage')
 
 class CarrierWaveCropper
   constructor: (identifier) ->

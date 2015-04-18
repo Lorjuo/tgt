@@ -33,7 +33,8 @@
           <%= t "general.edit" %>
         <% end %>
         <%= link_to set_preview_image_gallery_path(image.attachable, :image_id => image), :method => :post, :class => 'btn btn-default btn-xs' do %>
-          <span class="glyphicon glyphicon-star"></span>
+          <!--<span class="glyphicon glyphicon-star"></span>-->
+          <%= tag :span, :class => (@gallery.preview_image_id == image.id) ? "glyphicon glyphicon-star active" : "glyphicon glyphicon-star" %>
           <%= t(".set_as_preview") %>
         <% end if false %>
         <%= link_to image, data: { confirm: t("general.are_you_sure")}, :method => :delete, :class => 'btn btn-primary btn-xs' do %>
@@ -47,8 +48,9 @@
           <%= link_to edit_gallery_image_path(image), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
             <span class="glyphicon glyphicon-edit"></span>
           <% end %>
-          <%= link_to set_preview_image_gallery_path(image.attachable, :image_id => image), :method => :post, :title => t(".set_as_preview"), :data => {:toggle => "tooltip"} do %>
-            <span class="glyphicon glyphicon-star"></span>
+          <%= link_to set_preview_image_gallery_path(image.attachable, :image_id => image), :method => :post, :title => t(".set_as_preview"), :class => 'preview-image-indicator', :data => {:toggle => "tooltip"} do %>
+            <!-- <span class="glyphicon glyphicon-star"></span> -->
+            <%= tag :span, :class => (@gallery.preview_image_id == image.id) ? "glyphicon glyphicon-star active" : "glyphicon glyphicon-star" %>
           <% end %>
           <%= link_to image, data: { confirm: t("general.are_you_sure"), :toggle => "tooltip"}, :method => :delete, :title => t("general.destroy") do %>
             <span class="glyphicon glyphicon-trash"></span>

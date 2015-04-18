@@ -41,9 +41,12 @@ STI and polymorphic:
 http://rails-bestpractices.com/posts/45-use-sti-and-polymorphic-model-for-multiple-uploads
 
 Circular Dependency:
+"Circular dependency detected while autoloading constant GalleryImage"
+"Cannot autoload constant ..."
 Typing errors
 Restart server
 Max one mudule layer to work with cancan
+namespace/module of used class not explicitly defined: GalleryImage instead of Image::GalleryImage
 
 Nested Forms
 http://matthewrobertson.org/blog/2012/09/20/decoupling-rails-forms-from-the-database/

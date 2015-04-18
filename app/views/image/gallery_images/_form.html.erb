@@ -1,0 +1,20 @@
+<div class="window box">
+  <%= simple_form_for( @image, :as => :image ) do |f| %>
+  <%#= simple_form_for( [@parent, @image], :as => :image ) do |f| %>
+    <%= f.error_notification %>
+    <%= @image.errors.full_messages.first if @image.errors.any? %>
+
+    <div class="form-inputs">
+      <%= f.input :name %>
+      <%#= f.input :file, :as => :file %>
+      <%#= render 'images/image_selector', f:f, image:@image %>
+      <%= render :partial => 'crop', :locals => {:image => @image, :f => f} %>
+    </div>
+
+    <div class="form-group">
+      <div class="col-lg-offset-3 col-lg-9">
+        <%= f.button :submit, :class => "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>

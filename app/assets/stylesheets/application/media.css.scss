@@ -110,17 +110,17 @@ needs more contrast from background*/
 .toolbar {
   font-size: 24px;
   padding: 5px;
+}
 
-  a span {
-    &.active {
-      color: orange;
-    }
+a.preview-image-indicator {
+  span.glyphicon-star.active {
+    color: orange;
   }
+}
 
-  a:hover span {
-    &.glyphicon-star {
-      color: yellow;
-    }
+a.preview-image-indicator:hover {
+  span.glyphicon-star {
+    color: yellow;
   }
 }
 

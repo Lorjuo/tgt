@@ -5,16 +5,20 @@
 <div class="window box">
 
   <h3>
-    <span class="glyphicon glyphicon-calendar"></span>
+    <span class="glyphicon glyphicon-picture"></span>
     <%= Image.model_name.human(:count => :lots) %>
   </h3>
 
   <%#= simple_form_for([@parent, @image], :defaults => { :input_html => { :class => 'input-xlarge' } }) do |f| %>
-  <%= simple_form_for :image, :url => update_multiple_images_path, method: :post, :html => {:multipart => true} do |form| %>
+  <%= simple_form_for :image, :url => update_multiple_gallery_images_path, method: :post, :html => {:multipart => true} do |form| %>
     <div class="row">
       <% @images.each do |image| %>
-        <fieldset class="col-md-6 nested-fields">
-          <div class="wrapper">
+        <fieldset class="col-md-6 nested-fields nested-box">
+          <div class="nested-box-header">
+            <span class="glyphicon glyphicon-picture"></span>
+            <%= Image.model_name.human %>
+          </div>
+          <div class="nested-box-body">
             <!--<label><%= image.name %></label>-->
             <%= simple_fields_for "images[]", image do |f| %>
             <%#= simple_fields_for image do |f| %>

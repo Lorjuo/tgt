@@ -11,7 +11,8 @@
     resources :headers, controller: 'images', type: 'Image::Header', concerns: [:croppable]#, except: %i(new edit) 
     resources :posters, controller: 'images', type: 'Image::Poster', concerns: [:croppable]#, except: %i(new edit)
     resources :photos, controller: 'images', type: 'Image::Poster', concerns: [:croppable]#, except: %i(new edit)
-    resources :gallery_images, controller: 'images', type: 'Image::GalleryImage' do #, concerns: [:croppable]#, except: %i(new edit)
+    #resources :gallery_images, controller: 'images', type: 'Image::GalleryImage' do #, concerns: [:croppable]#, except: %i(new edit)
+    resources :gallery_images, module: 'image', concerns: [:croppable] do
       get :edit_multiple, on: :collection
       post :update_multiple, on: :collection
     end

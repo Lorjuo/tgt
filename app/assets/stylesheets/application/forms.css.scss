@@ -3,9 +3,40 @@
     margin-right: 0;
 }
 
-form .nested-fields {
+form .nested-box {
   margin-top: 20px;
   margin-bottom: 20px;
+  /*background-color: #D4D4D4;*/
+  padding: 2px;
+  .nested-box-header {
+    background-image: linear-gradient(rgb(253, 253, 253), rgb(221, 221, 221));
+    border: 1px solid rgb(158, 158, 158);
+    padding: 6px;
+  }
+  .nested-box-body {
+    border: 1px solid rgb(158, 158, 158);
+    border-top: 0px;
+    padding: 6px;
+    padding-top: 16px;
+    background-color: white;
+  }
+}
+form.edit_training_group .nested-box .nested-box-body {
+    select, input, .btn {
+      padding: 4px;
+      line-height: 14px;
+      height: 26px;
+    }
+    input {
+      width: 51px;
+    }
+    .input-group-addon {
+      padding: 0 6px ;
+      margin-left: -6px
+    }
+    label.required abbr {
+      display: none;
+    }
 }
 
 /* Colorpicker */
@@ -15,7 +46,3 @@ form .nested-fields {
 /*.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
   margin-left: 0 !important;
 }*/
-.nested-fields {
-  background-color: #D4D4D4;
-  padding: 2px;
-}

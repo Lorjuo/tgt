@@ -1,6 +1,3 @@
-<%= stylesheet_link_tag 'jquery.jcrop' %>
-<%= javascript_include_tag 'jquery.jcrop', 'images' %>
-
 <% content_for :title do %>
   <%#= t('general.create_model', :model => Message.model_name.human ) %>
   <%= t('.title') %>
@@ -17,51 +14,13 @@
   <%= simple_form_for @image, :as => :image do |f| %>
     <%= f.error_notification %>
 
-    <%= content_tag :div, "", id: "dimensions", data: {width: @image.class.width, height: @image.class.height}, :style => "display: none" %>
-
-    <div class="form-group">
-      <label for="cropbox" class="string optional col-lg-3 control-label"><%= t('.original') %></label>
-      <div class="col-lg-6">
-        <div id="cropbox">
-          <%= f.cropbox :file %>
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="coordinates" class="string optional col-lg-3 control-label"><%= t('.coordinates') %></label>
-      <div class="col-lg-9">
-        <div id="coordinates">
-          <% model_name = @image.class.name.downcase.split("::").last %>
-          <% %w[x y w h].each do |attribute| %>
-            <!-- <input id="image_file_crop_<%= attribute %>" /> -->
-            <label class="string optional col-xs-1 control-label" style="width: 32px"><%= attribute+': ' %></label>
-            <div class="col-xs-2">
-              <input id="<%= model_name %>_indicator_crop_<%= attribute %>" class="form-control form-control" disabled="disabled" />
-            </div>
-          <% end if true %>
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="previewbox" class="string optional col-lg-3 control-label"><%= t('.preview') %></label>
-      <div class="col-lg-9">
-        <div id="previewbox">
-          <%= f.previewbox :file, width: @image.class.preview_width, height: @image.class.preview_height %>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="col-lg-offset-3 col-lg-9">
-        <%#= f.button :submit, :class => "btn btn-primary btn-sm" %>
-        <%= f.submit t('general.crop'), :class => "btn btn-primary btn-sm" %>
-      </div>
-    </div>
+    <%= render :partial => 'crop', :locals => {:image => @image, :f => f} %>
   <% end %>
-</div>
 
-<style>
-  #cropbox > div >img {
-    max-width: 100%;
-  }
-</style>
+  <div class="form-group">
+    <div class="col-lg-offset-3 col-lg-9">
+      <%#= f.button :submit, :class => "btn btn-primary btn-sm" %>
+      <%= f.submit t('general.crop'), :class => "btn btn-primary btn-sm" %>
+    </div>
+  </div>
+</div>

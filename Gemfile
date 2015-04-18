@@ -242,7 +242,7 @@ group :development do
   
   #gem "rails-i18n-debug"
   # better:
-  #gem 'i18n-debug'
+  gem 'i18n-debug'
   
   gem 'thin'
 
