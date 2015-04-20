@@ -238,11 +238,11 @@ group :development do
   
   # Debugger
   gem 'debugger'
-  # gem 'byebug'
+  # gem 'byebug' # was very slow
   
   #gem "rails-i18n-debug"
   # better:
-  gem 'i18n-debug'
+  #gem 'i18n-debug'
   
   gem 'thin'
 

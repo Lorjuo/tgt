@@ -88,5 +88,7 @@ module TgtRefurbished
     #ActiveRecordQueryTrace.enabled = true
     #ActiveRecordQueryTrace.level = :full
     #ActiveRecordQueryTrace.lines = 0
+    
+    require "#{Rails.root}/lib/carrierwave/crop/helpers.rb"
   end
 end

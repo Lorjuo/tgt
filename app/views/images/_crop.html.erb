@@ -1,40 +1,45 @@
 <%# http://stackoverflow.com/a/7881490/871495 %>
 <%= content_for :head do %>
   <%= stylesheet_link_tag 'jquery.jcrop' %>
-  <%= javascript_include_tag 'jquery.jcrop', 'images' %>
+  <%= javascript_include_tag 'jquery.jcrop', 'crop' %>
 <% end %>
 
 <%# Field that is needed to pass dimension information to javascript %>
-<%= content_tag :div, "", id: "dimensions", data: {width: image.class.width, height: image.class.height}, :style => "display: none" %>
+<%= content_tag :div, "", class: "dimensions", data: {width: image.class.width, height: image.class.height}, :style => "display: none" %>
 
-<div class="form-group">
-  <label for="cropbox" class="string optional col-lg-3 control-label"><%= t('.original') %></label>
-  <div class="col-lg-6">
-    <div id="cropbox">
-      <%= f.cropbox :file %>
+<div class="crop-widget">
+  <div class="form-group">
+    <label class="string optional col-lg-3 control-label"><%= t('.original') %></label>
+    <div class="col-lg-6">
+      <div class="cropbox-input-group">
+        <%# TODO: parametrize this %>
+        <%#= f.cropbox :file, version: :full, width: 800, height: 600 %>
+        <%= f.cropbox :file, width: 400, height: 300 %>
+      </div>
     </div>
   </div>
-</div>
-<div class="form-group">
-  <label for="coordinates" class="string optional col-lg-3 control-label"><%= t('.coordinates') %></label>
-  <div class="col-lg-9">
-    <div id="coordinates">
-      <% model_name = image.class.name.downcase.split("::").last %>
-      <% %w[x y w h].each do |attribute| %>
-        <!-- <input id="image_file_crop_<%= attribute %>" /> -->
-        <label class="string optional col-xs-1 control-label" style="width: 32px"><%= attribute+': ' %></label>
-        <div class="col-xs-2">
-          <input id="<%= model_name %>_indicator_crop_<%= attribute %>" class="form-control form-control" disabled="disabled" />
-        </div>
-      <% end if true %>
+  <div class="form-group">
+    <label for="coordinates" class="string optional col-lg-3 control-label"><%= t('.coordinates') %></label>
+    <div class="col-lg-9">
+      <div class="coordinates">
+        <% model_name = image.class.name.downcase.split("::").last %>
+        <% %w[x y w h].each do |attribute| %>
+          <!-- <input id="image_file_crop_<%= attribute %>" /> -->
+          <label class="string optional col-xs-1 control-label" style="width: 32px"><%= attribute+': ' %></label>
+          <div class="col-xs-2">
+            <!--<input id="<%= model_name %>_indicator_crop_<%= attribute %>" class="form-control form-control" disabled="disabled" />-->
+            <input class="indicator_crop_<%= attribute %> form-control form-control" disabled="disabled" />
+          </div>
+        <% end if true %>
+      </div>
     </div>
   </div>
-</div>
-<div class="form-group">
-  <label for="previewbox" class="string optional col-lg-3 control-label"><%= t('.preview') %></label>
-  <div class="col-lg-9">
-    <div id="previewbox">
-      <%= f.previewbox :file, width: image.class.preview_width, height: image.class.preview_height %>
+  <div class="form-group">
+    <label class="string optional col-lg-3 control-label"><%= t('.preview') %></label>
+    <div class="col-lg-9">
+      <div class="previewbox-input-group">
+        <%= f.previewbox :file, width: image.class.preview_width, height: image.class.preview_height %>
+      </div>
     </div>
   </div>
 </div>

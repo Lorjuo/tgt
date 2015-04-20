@@ -79,13 +79,13 @@
 //= require jquery-fileupload/jquery.fileupload
 //= require jquery-fileupload/jquery.fileupload-process
 //= require jquery-fileupload/jquery.fileupload-image
-//= require jquery-fileupload/jquery.fileupload-audio
-//= require jquery-fileupload/jquery.fileupload-video
+//# require jquery-fileupload/jquery.fileupload-audio
+//# require jquery-fileupload/jquery.fileupload-video
 //= require jquery-fileupload/jquery.fileupload-validate
 //= require jquery-fileupload/jquery.fileupload-ui
 //= require jquery-fileupload/locale
-//= require jquery-fileupload/jquery.fileupload-angular
-//= require jquery-fileupload/jquery.fileupload-jquery-ui
+//# require jquery-fileupload/jquery.fileupload-angular
+//# require jquery-fileupload/jquery.fileupload-jquery-ui
 //= require jquery-fileupload/cors/jquery.postmessage-transport
 //= require jquery-fileupload/cors/jquery.xdr-transport
 //

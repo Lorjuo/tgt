@@ -29,36 +29,30 @@ class ImagesController < ApplicationController
     @images = @type_class.all
   end
 
+
   def new
     @image = @type_class.new
   end
 
+
   def create
     # local variable "type" affected by routes.rb
 
-    if(@parent.present?) # Check if parent resource is available
-      @image = @parent.photos.build(permitted_params)
-    else
-      @image = Image::Image.new(permitted_params)
-    end
+    @image = @type_class.new(permitted_params)
 
     if @image.save
-      if params[:image][:file].present? && @type_class.croppable
-        render :crop # Maybe replace this line with redirect_to to avoid sending form twice on F5
-      else
-        respond_to do |format|
-          format.html { redirect_to @image, notice: "Image was successfully created." }
-          format.js
-        end
+      respond_to do |format|
+        format.html { redirect_to @image, notice: "Image was successfully created." }
+        format.js
       end
     else
-      render action: 'new'
+      respond_to do |format|
+        format.html{ render action: 'new' }
+        format.js {render "alert(Serverside error: '#{@image.errors.full_messages.to_sentence}');"}
+      end
     end
   end
 
-  # def create
-  #   if(@parent.present?) # check if parent resource is available
-  #     @image = @parent
 
   def update
     if @image.update(permitted_params)
@@ -79,40 +73,6 @@ class ImagesController < ApplicationController
     end
   end
 
-  # TODO: Extend this for polymorphic image resources
-  def edit_multiple
-
-    # Handle destroy_multiple in this action
-    # if params[:commit] == 'Destroy' # Does not work, because commit would display the button text, that is not unique because of i18n
-    if params.has_key?('destroy_multiple_button')
-      @images = Image.find(params[:image_ids])
-      @images.each { |image| Image.destroy(image.id) }
-      @attachable = @images.first.attachable
-      redirect_to_attachable
-      return
-    end
-
-    @images = Image.find(params[:image_ids])
-  end
-
-  # TODO: Extend this for polymorphic image resources - same as edit_multiple
-  def update_multiple
-    @images = Image.update(params[:images].keys, params[:images].values)
-    @attachable = @images.first.attachable
-    @images.reject! { |p| p.errors.empty? }
-    if @images.empty?
-      redirect_to @attachable, notice: 'Images successfully updated.'
-    else
-      render "edit_multiple"
-    end
-    # @images = []
-    # params[:images].each do |id, param|
-    #   @image = Image.find(id)
-    #   @image.update!(param)
-    #   @images.push @image
-    # end
-    # render "edit_multiple"
-  end
 
   def destroy
     @image = @type_class.find(params[:id])
@@ -129,10 +89,10 @@ class ImagesController < ApplicationController
     end
   end
 
-  #destroy_multiple handled by edit_multiple action
 
   def crop
   end
+
 
   private
 

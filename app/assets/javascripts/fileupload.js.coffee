@@ -46,8 +46,8 @@ jQuery ->
 
       # This settings seem to have no effect at the moment, because they get overridden by processQueue
       loadImageMaxFileSize: 25000000 # 25MB
-      imageMaxWidth: 800
-      imageMaxHeight: 800
+      imageMaxWidth: 1920
+      imageMaxHeight: 1920
       disableImageResize: false
       disableImageMetaDataLoad: false
       imageOrientation: true
@@ -73,8 +73,8 @@ jQuery ->
           maxFileSize: 25000000 # 25MB
         }, {
           action : 'resizeImage',
-          minWidth: 800,
-          minHeight: 800,
+          maxWidth: 1920,
+          maxHeight: 1920,
           #crop : true
           orientation: true
         }, {

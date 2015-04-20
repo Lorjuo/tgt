@@ -1,39 +1,29 @@
 # encoding: utf-8
 class Image::PhotoUploader < ImageUploader
 
-  process resize_to_fit: [800, 600]
+  process resize_to_limit: [1920, 1920]
   
   # see: http://carrierwave.rubyforge.org/rdoc/classes/CarrierWave/MiniMagick.html
   # resize_to_limit does not work. But commandline operation works
   # Problem seems to only affect windows version
+  
+  version :full do
+    process resize_to_limit: [960, 960]
+  end
 
-  version :thumb do
-    #process resize_to_fit: [64, 64]
-    process resize_to_fill: [64, 48]
-  end
-  # version :_80x60 do
-  #   process resize_to_fill: [80, 60]
-  # end
-  # version :small do
-  #   process resize_to_fit: [100, 100]
-  # end
-  # version :medium do
-  #   process resize_to_fit: [240, 240]
-  # end
-  # version :main do
-  #   process resize_to_fit: [300, 300]
-  # end
-  # version :large do
-  #   process resize_to_fit: [400, 400]
-  # end
-  # version :full do
-  #   process resize_to_fit: [600, 600]
-  # end
-  version :_260x180 do
-    process resize_to_fill: [260, 180]
-  end
-  version :_200x300 do
-    process resize_to_fill: [300, 200]
+  version :cropped do
+    process crop: [:file, 960, 960] # only crops if parameters crop_x, crop_y, ... are present
+    # process crop: [:file, 600, 600] # Resizes the original image to 600x600 limits and then performs cropping
+    # performs processing based on full version
+
+    #260x180
+    version :_240x180 do
+      process resize_to_fill: [240, 180, 'Center']
+    end
+
+    version :thumb do
+      process resize_to_fill: [64, 48, 'Center']
+    end
   end
   
 end

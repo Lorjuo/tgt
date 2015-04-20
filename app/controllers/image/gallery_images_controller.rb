@@ -24,13 +24,15 @@ class Image::GalleryImagesController < ImagesController
     else
       respond_to do |format|
         format.html{ render action: 'new' }
-        format.js {render "alert(Serverside error: '#{@reservation.errors.full_messages.to_sentence}');"}
+        format.js {render "alert(Serverside error: '#{@image.errors.full_messages.to_sentence}');"}
       end
     end
   end
 
+
   def edit
   end
+
 
   def update
     if @image.update(permitted_params)
@@ -44,8 +46,8 @@ class Image::GalleryImagesController < ImagesController
     end
   end
   
-  def edit_multiple
 
+  def edit_multiple
     # Handle destroy_multiple in this action
     # if params[:commit] == 'Destroy' # Does not work, because commit would display the button text, that is not unique because of i18n
     if params.has_key?('destroy_multiple_button')
@@ -59,6 +61,7 @@ class Image::GalleryImagesController < ImagesController
     @images = Image::GalleryImage.find(params[:image_ids])
   end
 
+
   def update_multiple
     @images = Image::GalleryImage.update(params[:images].keys, params[:images].values)
     @gallery = @images.first.attachable
@@ -69,6 +72,7 @@ class Image::GalleryImagesController < ImagesController
       render "edit_multiple"
     end
   end
+
 
   private
 

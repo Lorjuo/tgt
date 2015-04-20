@@ -19,7 +19,7 @@ class Image::Photo < Image
   belongs_to :attachable, polymorphic: true
 
   # Uploader
-  mount_uploader :file, ::Image::HeaderUploader, :mount_on => :file
+  mount_uploader :file, ::Image::PhotoUploader, :mount_on => :file
   crop_uploaded :file
 end
 

@@ -29,6 +29,7 @@ class BaseUploader < CarrierWave::Uploader::Base
     @name ||= "#{secure_token}.#{file.extension}" if original_filename.present? # "unless" insted of "if"? - but seems to work
   end
 
+  # TODO: this function does not really work in asset.rb -> insted original_filename is directly accessible
   def original_file # Accessor for probably protected value original_filename
     original_filename
   end
