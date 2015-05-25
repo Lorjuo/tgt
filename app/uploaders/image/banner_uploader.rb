@@ -2,6 +2,7 @@
 class Image::BannerUploader < ImageUploader
 
   process resize_to_fit: [1600, 1200]
+  process :store_dimensions
 
   version :cropped do
     # To crop this version based on `jumbo` version, pass width = 600 and height = 600

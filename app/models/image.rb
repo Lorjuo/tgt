@@ -29,9 +29,13 @@ class Image < Asset
   # Uploader
   #mount_uploader :file, ::Image::PhotoUploader, :mount_on => :file
 
+  def aspect_ratio
+    return self.width.to_f / self.height
+  end
+
   # http://stackoverflow.com/questions/1251352/ruby-inherit-code-that-works-with-class-variables/1251422#1251422
   class << self
-    attr_accessor :width, :height, :preview_width, :preview_height, :croppable
+    attr_accessor :thumb_width, :thumb_height, :crop_width, :crop_height, :preview_width, :preview_height, :croppable
   end
 
   # We will need a way to know which types

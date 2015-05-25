@@ -24,8 +24,10 @@ class Image::Photo < Image
 end
 
 # http://stackoverflow.com/questions/1251352/ruby-inherit-code-that-works-with-class-variables/1251422#1251422
-Image::Photo.width = 800
-Image::Photo.height = 200
-Image::Photo.preview_width = 600
-Image::Photo.preview_height = 150
+Image::Photo.thumb_width = 240
+Image::Photo.thumb_height = 180
+Image::Photo.crop_width = 400
+Image::Photo.crop_height = 600
+Image::Photo.preview_width = 400
+Image::Photo.preview_height = 300
 Image::Photo.croppable = true

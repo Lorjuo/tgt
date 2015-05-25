@@ -2,6 +2,7 @@
 class Image::HeaderUploader < ImageUploader
 
   process resize_to_fit: [800, 600]
+  process :store_dimensions
   
   version :cropped do
     # To crop this version based on `jumbo` version, pass width = 600 and height = 600

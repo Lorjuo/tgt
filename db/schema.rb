@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150415094842) do
+ActiveRecord::Schema.define(version: 20150420104845) do
 
   create_table "announcements", force: true do |t|
     t.string   "name"
@@ -162,6 +162,8 @@ ActiveRecord::Schema.define(version: 20150415094842) do
     t.integer  "attachable_id"
     t.string   "attachable_type"
     t.string   "type"
+    t.integer  "width"
+    t.integer  "height"
   end
 
   add_index "images", ["attachable_id", "attachable_type"], name: "index_images_on_attachable_id_and_attachable_type", using: :btree

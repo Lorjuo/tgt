@@ -1,22 +1,24 @@
 $.widget 'tgt.cropWidget',
-  options:
-    thumbWidth: 544
-    thumbHeight: 74
+  #options:
+    #thumbWidth: 240
+    #thumbHeight: 180
 
   _create: ->
     @cropbox = @element.find('.cropbox')
     @previewbox = @element.find('.previewbox')
     @previewbox_wrapper = @element.find('.previewbox_wrapper')
 
-    @cropNatWidth = @cropbox.get(0).naturalWidth
-    @cropNatHeight = @cropbox.get(0).naturalHeight
-    #@prevNatWidth = @previewbox.get(0).naturalWidth
-    #@prevNatHeight = @previewbox.get(0).naturalHeight
+    @thumbWidth = @element.find('.image-info').data('thumb-width')
+    @thumbHeight = @element.find('.image-info').data('thumb-height')
+
+    @cropNatWidth = @cropbox.last().get(0).naturalWidth
+    @cropNatHeight = @cropbox.last().get(0).naturalHeight
 
     self = this
     $(@cropbox).Jcrop
-      aspectRatio: @options.thumbWidth/@options.thumbHeight # Aspect Ratio width/height of resulting image
-      setSelect: [0, 0, @options.thumbWidth, @options.thumbHeight] # Initial selection
+      aspectRatio: @thumbWidth/@thumbHeight # Aspect Ratio width/height of resulting image
+      setSelect: [0, 0, @thumbWidth, @thumbHeight] # Initial selection
+      # TODO: maybe initialize selection with values stored in crop_x/y/w/h hidden fields
       #onSelect: @_updateHandler
       #onChange: @_updateHandler
       #onSelect: self._updateHandler
@@ -55,51 +57,16 @@ $.widget 'tgt.cropWidget',
     coords.w /= @cropNatWidth
     coords.h /= @cropNatHeight
 
-    # Cropbox may be scaled to fit in the form
-    # Therefore the coordinates need to be scaled to fit in the box
-    #horizontalScaling = @cropNatWidth / @thumbWidth
-    #verticalScaling = @cropNatHeight / @thumbHeight
-    # Get(0) needed to get unterlaying DOM object instead of wrapped jquery object
-
-    # coords.x *= horizontalScaling
-    # coords.y *= verticalScaling
-    # coords.x2 *= horizontalScaling
-    # coords.y2 *= verticalScaling
-    # coords.w *= horizontalScaling
-    # coords.h *= verticalScaling
-
-    @element.find('.indicator_crop_x').val((coords.x*100).toFixed(4)+'%' )
-    @element.find('.indicator_crop_y').val((coords.y*100).toFixed(4)+'%' )
-    @element.find('.indicator_crop_w').val((coords.w*100).toFixed(4)+'%' )
-    @element.find('.indicator_crop_h').val((coords.h*100).toFixed(4)+'%' )
+    # Set visual output elements
+    @element.find('.indicator_crop_x').val((coords.x*100).toFixed(1)+'%' )
+    @element.find('.indicator_crop_y').val((coords.y*100).toFixed(1)+'%' )
+    @element.find('.indicator_crop_w').val((coords.w*100).toFixed(1)+'%' )
+    @element.find('.indicator_crop_h').val((coords.h*100).toFixed(1)+'%' )
 
     @_updatePreviewHandler(coords)
 
+  # Update preview image
   _updatePreviewHandler: (coords) ->
-    # horizontalScaling = @thumbWidth / @previewbox_wrapper.width()
-    # verticalScaling = @thumbHeight / @previewbox_wrapper.height()
-
-    # coords.x *= horizontalScaling / 100
-    # coords.y *= verticalScaling / 100
-    # coords.x2 *= horizontalScaling / 100
-    # coords.y2 *= verticalScaling / 100
-    # coords.w *= horizontalScaling / 100
-    # coords.h *= verticalScaling / 100
-    
-    # coords.x *= @previewbox.width()
-    # coords.y *= @previewbox.height()
-    # coords.x2 *= @previewbox.width()
-    # coords.y2 *= @previewbox.height()
-    # coords.w *= @previewbox.width()
-    # coords.h *= @previewbox.height()
-
-    # @previewbox.css
-    #   width: Math.round(coords.w) + 'px'
-    #   height: Math.round(coords.h) + 'px'
-    #   marginLeft: '-' + Math.round(coords.x) + 'px'
-    #   marginTop: '-' + Math.round(coords.y) + 'px'
-    #   
-    #if parseInt(coords.w) > 0
     width = @previewbox_wrapper.width() / coords.w
     height = @previewbox_wrapper.height() / coords.h
 
@@ -108,41 +75,3 @@ $.widget 'tgt.cropWidget',
       height: Math.round(height) + 'px'
       marginLeft: '-' + Math.round(coords.x * width) + 'px'
       marginTop: '-' + Math.round(coords.y * height) + 'px'
-
-
-
-$ ->
-  $('.crop-widget')
-    .cropWidget({ 'aspect-ratio': 16/9 });
-
-# $.widget 'custom.progressbar',
-#   options: value: 0
-#   _create: ->
-#     @options.value = @_constrain(@options.value)
-#     @element.addClass 'progressbar'
-#     @refresh()
-#     return
-#   _setOption: (key, value) ->
-#     if key == 'value'
-#       value = @_constrain(value)
-#     @_super key, value
-#     return
-#   _setOptions: (options) ->
-#     @_super options
-#     @refresh()
-#     return
-#   refresh: ->
-#     progress = @options.value + '%'
-#     @element.text progress
-#     if @options.value == 100
-#       @_trigger 'complete', null, value: 100
-#     return
-#   _constrain: (value) ->
-#     if value > 100
-#       value = 100
-#     if value < 0
-#       value = 0
-#     value
-#   _destroy: ->
-#     @element.removeClass('progressbar').text ''
-#     return

@@ -40,7 +40,7 @@ class Image::GalleryImagesController < ImagesController
       # to force to update activerecord to point to the newgenerated files and
       # to force carrierwave to delete the old ones
       
-      redirect_to @gallery.attachable, notice: 'Image was successfully updated.'
+      redirect_to @image.attachable, notice: 'Image was successfully updated.'
     else
       render action: 'edit'
     end
@@ -90,6 +90,6 @@ class Image::GalleryImagesController < ImagesController
     end
 
     def permitted_params
-      params.require(:image).permit(:name, :file, :attachable_id, :attachable_type)
+      params.require(:image).permit(:name, :file, :attachable_id, :attachable_type, :file_crop_x, :file_crop_y, :file_crop_w, :file_crop_h ) if params[:image]
     end
 end

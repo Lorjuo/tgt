@@ -77,4 +77,13 @@ class ImageUploader < BaseUploader
     process resize_to_fill: [64, 48]
   end
 
+  # Store image dimensions
+  # http://stackoverflow.com/questions/12022653/ruby-on-rails-carrierwave-get-the-image-dimension-width-and-height
+  # https://github.com/carrierwaveuploader/carrierwave/wiki/How-to%3A-Get-image-dimensions
+  def store_dimensions
+    if file && model
+      model.width, model.height = `identify -format "%wx%h" #{file.path}`.split(/x/)
+    end
+  end
+
 end

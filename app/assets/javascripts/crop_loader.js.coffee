@@ -1,0 +1,3 @@
+$ ->
+  $('.crop-widget')
+    .cropWidget({});

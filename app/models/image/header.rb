@@ -29,8 +29,10 @@ class Image::Header < Image
 end
 
 # http://stackoverflow.com/questions/1251352/ruby-inherit-code-that-works-with-class-variables/1251422#1251422
-Image::Header.width = 800
-Image::Header.height = 200
+Image::Header.thumb_width = 600
+Image::Header.thumb_height = 150
+Image::Header.crop_width = 600
+Image::Header.crop_height = 600
 Image::Header.preview_width = 600
 Image::Header.preview_height = 150
 Image::Header.croppable = true

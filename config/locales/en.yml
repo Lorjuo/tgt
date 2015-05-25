@@ -16,6 +16,7 @@ en:
     browse: Browse
     cancel: Cancel
     caption: Caption
+    close: Close
     create: Create
     create_model: "Create %{model}"
     crop: Crop
@@ -41,6 +42,7 @@ en:
     unpublished: unpublished
     reference: Reference
     references: References
+    save_changes: Save changes
     search: Search
     search_term: Search Term
     send_email: Send email

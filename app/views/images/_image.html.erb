@@ -2,7 +2,7 @@
   <div class="mediaWrapper checkboxWrapper">
     <div class="mediaObject">
       <%= link_to(image.file_url, :class => 'fancybox', size: "260x180", :rel => 'group', :caption => image.name) do %>
-        <%= image_tag(image.file.cropped._260x180.url, :class => "img-responsive") %>
+        <%= image_tag(image.file.cropped._240x180.url, :class => "img-responsive") %>
       <% end %>
       <div class="mediaOverlay top-right toolbar">
       </div>

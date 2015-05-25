@@ -1,7 +1,14 @@
 <% if @image.new_record? %>
   alert("Failed to upload image: <%= j @image.errors.full_messages.join(', ').html_safe %>");
-<% elsif @image.attachable_type == "Gallery" %>
-  $("#images").append("<%= j render(:partial => 'galleries/image', :object =>@image, :as => 'image') %>");
 <% else %>
-  $("#template_area").html("<%= j render(:partial => 'image', :object =>@image, :as => 'image') %>");
+  //$("#template_area").html("<%= j render(:partial => 'image', :object =>@image, :as => 'image') %>");
+
+  $("#template_area").html("<%= j render(:partial => 'crop', :object =>@image, :as => 'image') %>");
+  //$('.crop-widget').cropWidget({});
+  $(".crop-widget img.cropbox").on('load', function(){
+    //alert("images loaded");
+    // http://stackoverflow.com/questions/12155927/jquery-ajax-wait-for-images-to-load-before-firing-function
+    // http://stackoverflow.com/questions/8033845/wait-while-jquery-html-is-fully-loaded
+    $('.crop-widget').cropWidget({});
+  });
 <% end %>

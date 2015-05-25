@@ -28,8 +28,10 @@ class Image::Banner < Image
 end
 
 # http://stackoverflow.com/questions/1251352/ruby-inherit-code-that-works-with-class-variables/1251422#1251422
-Image::Banner.width = 1088
-Image::Banner.height = 148
+Image::Banner.thumb_width = 544
+Image::Banner.thumb_height = 74
+Image::Banner.crop_width = 600
+Image::Banner.crop_height = 600
 Image::Banner.preview_width = 544
 Image::Banner.preview_height = 74
 Image::Banner.croppable = true

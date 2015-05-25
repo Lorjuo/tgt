@@ -11,8 +11,10 @@ class Image::GalleryImage < Image
   self.per_page = 12
 end
 
-Image::GalleryImage.width = 1088
-Image::GalleryImage.height = 148
-Image::GalleryImage.preview_width = 544
-Image::GalleryImage.preview_height = 74
+Image::GalleryImage.thumb_width = 240
+Image::GalleryImage.thumb_height = 180
+Image::GalleryImage.crop_width = 400
+Image::GalleryImage.crop_height = 400
+Image::GalleryImage.preview_width = 400
+Image::GalleryImage.preview_height = 300
 Image::GalleryImage.croppable = true

@@ -25,6 +25,14 @@ class ImagesController < ApplicationController
   # layout
   layout 'one_column'
 
+  # Helpers
+  #include CarrierWave::Crop::Helpers
+  #helper_method :method_name
+  #helper_method :method_name
+  #include CarrierWave::Crop::Tags
+  #helper :tags
+  #helper_method :my_field
+
   def index
     @images = @type_class.all
   end
@@ -43,7 +51,7 @@ class ImagesController < ApplicationController
     if @image.save
       respond_to do |format|
         format.html { redirect_to @image, notice: "Image was successfully created." }
-        format.js
+        format.js #{render :partial => 'crop', :locals => {:image => @image}}
       end
     else
       respond_to do |format|

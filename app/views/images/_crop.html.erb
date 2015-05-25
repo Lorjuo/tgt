@@ -1,20 +1,22 @@
 <%# http://stackoverflow.com/a/7881490/871495 %>
-<%= content_for :head do %>
-  <%= stylesheet_link_tag 'jquery.jcrop' %>
-  <%= javascript_include_tag 'jquery.jcrop', 'crop' %>
-<% end %>
-
-<%# Field that is needed to pass dimension information to javascript %>
-<%= content_tag :div, "", class: "dimensions", data: {width: image.class.width, height: image.class.height}, :style => "display: none" %>
+<%# does not work with turbolinks
+therefore it needs to be included directly in place or in administration.js %>
+<%#= content_for :head do %>
+  <%#= stylesheet_link_tag 'jquery.jcrop' %>
+  <%#= javascript_include_tag 'jquery.jcrop', 'crop', 'crop_loader' %>
+<%# end %>
 
 <div class="crop-widget">
+  <%# Field that is needed to pass dimension information to javascript %>
+  <%= content_tag :div, "", class: "image-info", data: {'image-id' => image.id, 'thumb-width' => image.class.thumb_width, 'thumb-height' => image.class.thumb_height}, :style => "display: none" %>
   <div class="form-group">
     <label class="string optional col-lg-3 control-label"><%= t('.original') %></label>
     <div class="col-lg-6">
       <div class="cropbox-input-group">
         <%# TODO: parametrize this %>
         <%#= f.cropbox :file, version: :full, width: 800, height: 600 %>
-        <%= f.cropbox :file, width: 400, height: 300 %>
+        <%#= f.cropbox :file, max_width: image.class.crop_width, max_height: image.class.crop_width %>
+        <%= cropbox image, :file, max_width: image.class.crop_width, max_height: image.class.crop_height, :version => :full %>
       </div>
     </div>
   </div>
@@ -38,7 +40,9 @@
     <label class="string optional col-lg-3 control-label"><%= t('.preview') %></label>
     <div class="col-lg-9">
       <div class="previewbox-input-group">
-        <%= f.previewbox :file, width: image.class.preview_width, height: image.class.preview_height %>
+        <%#= f.previewbox :file, width: image.class.preview_width, height: image.class.preview_height %>
+        <%= previewbox image, :file, width: image.class.preview_width, height: image.class.preview_height, :version => :full %>
+        <%#= f.previewbox :file, width: 272, height: 37 %>
       </div>
     </div>
   </div>
