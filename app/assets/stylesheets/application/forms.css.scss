@@ -46,3 +46,15 @@ form.edit_training_group .nested-box .nested-box-body {
 /*.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
   margin-left: 0 !important;
 }*/
+
+/* Radio/Checkbox Indentation issue
+https://github.com/twbs/bootstrap/issues/13548 */
+.radio,
+.checkbox {
+    padding-left: 20px;
+}
+.radio label,
+.checkbox label {
+    display: inline;
+    padding: 0;
+}

@@ -7,7 +7,7 @@ when :small
   text_length = 120
 when :large
   image_size = '130x90'
-  thumb_type = :_260x180
+  thumb_type = :_240x180
   text_length = 320
 end
 
@@ -17,7 +17,7 @@ end
 <div class="box">
   <div class="message-excerpt <%= size %>">
     <% if message.thumb.present? %>
-      <% image = image_tag(message.thumb.file_url(thumb_type), :class => "media-object", size: image_size) %>
+      <% image = image_tag(message.thumb.file_url('cropped', thumb_type), :class => "media-object", size: image_size) %>
       <%= link_to(image, message.thumb.file_url,
         :class => ['fancybox', 'media'], #TODO - match this with stylesheet
         :rel => 'messages', :caption => message.name) %>

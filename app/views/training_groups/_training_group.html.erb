@@ -2,7 +2,7 @@
   <div class="mediaWrapper">
     <div class="mediaObject">
       <%= link_to( training_group, :title => training_group.name ) do %>
-        <%= image_tag(image_url(training_group.photo, :_260x180), :class => "img-responsive") %>
+        <%= image_tag(image_url(training_group.photo, :cropped, :_240x180), :class => "img-responsive") %>
         <!--<div class="mediaOverlay bottom overlayTitle">Gruppe ansehen</div>-->
       <% end %>
     </div>

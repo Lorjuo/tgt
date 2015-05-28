@@ -1,7 +1,7 @@
 <% if @image.new_record? %>
   alert("Failed to upload image: <%= j @image.errors.full_messages.join(', ').html_safe %>");
 <% else %>
-  //$("#template_area").html("<%= j render(:partial => 'image', :object =>@image, :as => 'image') %>");
+  //$("#template_area").html("<%#= j render(:partial => 'image', :object =>@image, :as => 'image') %>");
 
   $("#template_area").html("<%= j render(:partial => 'crop', :object =>@image, :as => 'image') %>");
   //$('.crop-widget').cropWidget({});
