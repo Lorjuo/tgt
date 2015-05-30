@@ -2,6 +2,7 @@
 
   concern :croppable do
     get :crop, on: :member
+    get :update_crop, on: :member
   end
 
   # namespace :image do # Works but the path is long

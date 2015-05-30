@@ -237,7 +237,8 @@ group :development do
   gem 'annotate'
   
   # Debugger
-  gem 'debugger'
+  gem 'pry-byebug'
+  # gem 'debugger'
   # gem 'byebug' # was very slow
   
   #gem "rails-i18n-debug"

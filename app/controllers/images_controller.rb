@@ -62,7 +62,7 @@ class ImagesController < ApplicationController
   end
 
 
-  def update
+  def update # At the moment not in use
     if @image.update(permitted_params)
       @image.save # IMPORTANT - need to explicitly save the image after update
       # to force to update activerecord to point to the newgenerated files and
@@ -78,6 +78,19 @@ class ImagesController < ApplicationController
       end
     else
       render action: 'edit'
+    end
+  end
+
+  def update_crop
+    debugger
+    if @image.update(permitted_params)
+      @image.save # IMPORTANT - need to explicitly save the image after update
+      # to force to update activerecord to point to the newgenerated files and
+      # to force carrierwave to delete the old ones
+      @preview_version = params[:preview_version]
+      respond_to do |format|
+        format.json
+      end
     end
   end
 

@@ -69,7 +69,7 @@ module CarrierWave
             hidden_elements << hidden_field_tag(:"#{attachment}_#{attribute}", '', class: "#{attribute}")
           end
 
-          box = content_tag(:div, hidden_elements, style: "display:none")
+          box = content_tag(:div, hidden_elements.html_safe(), style: "display:none")
 
           if opts[:version]
             img = object.send(attachment).url(opts[:version])
