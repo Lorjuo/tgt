@@ -42,6 +42,12 @@ div.dataTables_length label {
   }
 }*/
 
+.table.dataTable td {
+  /*word-wrap: break-word;
+  overflow: hidden;
+  white-space: pre-wrap;*/
+}
+
 .dataTables_paginate {
   .pagination {
     li.ui-state-default {

@@ -1,4 +1,7 @@
 class MessagesController < ApplicationController
+  
+  include ImageAssociationsHelper
+
   #load_and_authorize_resource
 
   before_action :set_message, only: [:show, :edit, :update, :publish, :destroy]
@@ -25,6 +28,7 @@ class MessagesController < ApplicationController
     @message = @department.messages.new
     #@message.build_image
     @message.build_header
+    @message.build_thumb
   end
 
 
@@ -48,8 +52,10 @@ class MessagesController < ApplicationController
 
 
   def update
-    if @message.update(message_params)
-      return if process_images
+    if @message.update(message_params.except(:header_id).except(:thumb_id))
+      update_image_associations(message_params[:header_id], Image::Header, 'Message', @message.id)
+      update_image_associations(message_params[:thumb_id], Image::Photo, 'Message', @message.id)
+      
       redirect_to @message, notice: 'Message was successfully updated.'
     else
       render action: 'edit'
@@ -97,8 +103,9 @@ class MessagesController < ApplicationController
     def message_params
       image_attributes = [:file, :id]
       params.require(:message).permit(:name, :content, :abstract, :department_id, :published,
-        :thumb_attributes => image_attributes,
-        :header_attributes => image_attributes,
+        #:thumb_attributes => image_attributes,
+        #:header_attributes => image_attributes,
+        :custom_date, :visible_from, :visible_to, :header_id, :thumb_id,
         :gallery_ids => [], :document_ids => [])
       # :file needed when upload a new image
       # :id needed when fileupload is empty
@@ -111,16 +118,5 @@ class MessagesController < ApplicationController
       else
         "two_columns"
       end
-    end
-
-    def process_images
-      if message_params[:thumb_attributes].present?
-        redirect_to [@message, :action => :images], notice: 'Thumb was successfully created.'
-        return true # stop exection
-      elsif message_params[:header_attributes].present?
-        redirect_to [@message.header, :action => :crop], notice: 'Header was successfully uploaded.'
-        return true # stop exection
-      end
-      return false
     end
 end

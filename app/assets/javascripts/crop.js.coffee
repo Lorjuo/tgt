@@ -44,10 +44,10 @@ $.widget 'tgt.cropWidget',
   #_updateHandler: (coords) =>
   _updateHandler: (coords) ->
 
-    @element.find('.crop_x').val(coords.x)
-    @element.find('.crop_y').val(coords.y)
-    @element.find('.crop_w').val(coords.w)
-    @element.find('.crop_h').val(coords.h)
+    #@element.find('.crop_x').val(coords.x)
+    #@element.find('.crop_y').val(coords.y)
+    #@element.find('.crop_w').val(coords.w)
+    #@element.find('.crop_h').val(coords.h)
 
     # convert to relative (percentage) values
     coords.x /= @cropNatWidth
@@ -56,6 +56,13 @@ $.widget 'tgt.cropWidget',
     coords.y2 /= @cropNatHeight
     coords.w /= @cropNatWidth
     coords.h /= @cropNatHeight
+
+    # use relative coordinates, because this script has no knowledge of the real image dimensions
+    # (this script knows only about the cropping version dimensions)
+    @element.find('.crop_x').val(coords.x)
+    @element.find('.crop_y').val(coords.y)
+    @element.find('.crop_w').val(coords.w)
+    @element.find('.crop_h').val(coords.h)
 
     # Set visual output elements
     @element.find('.indicator_crop_x').val((coords.x*100).toFixed(1)+'%' )

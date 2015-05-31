@@ -42,6 +42,9 @@ gem 'cells'
 # Clipboard
 #ZeroClipBoardDisabled: gem 'zeroclipboard-rails'
 
+# Cronjobs
+gem 'whenever', :require => false
+
 # Colorpicker
 gem 'bootstrap-colorpicker-rails'
 
@@ -237,8 +240,8 @@ group :development do
   gem 'annotate'
   
   # Debugger
-  gem 'pry-byebug'
-  # gem 'debugger'
+  #gem 'pry-byebug'
+  gem 'debugger'
   # gem 'byebug' # was very slow
   
   #gem "rails-i18n-debug"

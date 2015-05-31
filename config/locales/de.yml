@@ -35,10 +35,9 @@ de:
     photo: Foto
     publish: Veröffentlichen
     published: veröffentlicht
-    unpublish: Zurückziehen
-    unpublished: nicht veröffentlicht
     reference: Verknüpfung
     references: Verknüpfungen
+    replace: Ersetzen
     save_changes: Änderungen Übernehmen
     search: Suche
     search_term: Suchbegriff
@@ -48,6 +47,8 @@ de:
     time: Uhrzeit
     time_from: von
     time_to: bis
+    unpublish: Zurückziehen
+    unpublished: nicht veröffentlicht
     update: Update
 
     small: Klein

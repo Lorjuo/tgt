@@ -45,12 +45,14 @@
       <tr>
         <th class="no-sort"></th>
         <th data-class="expand"><%= Message.human_attribute_name(:title) %></th>
-        <th class="no-sort" data-hide="xxs,xs"><%= Message.human_attribute_name(:content) %></th>
+        <%# using width parameter because of overflow issues in chrome %>
+        <th class="no-sort" data-hide="xxs,xs" style="width: 400px"><%= Message.human_attribute_name(:content) %></th>
         <th data-hide="xxs,xs"><%= Message.human_attribute_name(:department) %></th>
         <th data-hide="xxs,xs"><%= Message.human_attribute_name(:date) %></th>
         <%# if can? :update, Message %>
         <% if user_signed_in? %>
-          <th class="no-sort" data-hide="xxs,xs,sm,md,lg,xl"><%= t "general.actions" %></th>
+          <th class="no-sort" data-hide="xxs,xs"><%= t "general.actions" %></th>
+          <%# xxs,xs,sm,md,lg,xl %>
         <% end %>
       </tr>
     </thead>

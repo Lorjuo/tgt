@@ -12,11 +12,10 @@
 # http://samurails.com/tutorial/single-table-inheritance-with-rails-4-part-3/
 
 class ImagesController < ApplicationController
-  # Rails.logger.error "IMAGES CONTROLLER"
 
   # Callbacks
   before_action :set_type
-  before_action :load_image, only: [:show, :edit, :crop, :update, :destroy]
+  before_action :load_image, only: [:show, :edit, :crop, :update, :update_crop, :destroy]
   before_action :load_parent, :only => [:new, :create] #:index
 
   # Authentication
@@ -82,18 +81,25 @@ class ImagesController < ApplicationController
   end
 
   def update_crop
-    debugger
-    if @image.update(permitted_params)
+    attributes = {
+      :file_crop_x => permitted_params[:file_crop_x].to_f * @image.width,
+      :file_crop_y => permitted_params[:file_crop_y].to_f * @image.height,
+      :file_crop_w => permitted_params[:file_crop_w].to_f * @image.width,
+      :file_crop_h => permitted_params[:file_crop_h].to_f * @image.height
+    }
+    if @image.update_attributes(attributes)
+    #if @image.update(permitted_params)
       @image.save # IMPORTANT - need to explicitly save the image after update
       # to force to update activerecord to point to the newgenerated files and
       # to force carrierwave to delete the old ones
       @preview_version = params[:preview_version]
       respond_to do |format|
-        format.json
+        format.json #update_crop.json.jbuilder
       end
+    else
+      render json: @image, status: :unprocessable_entity
     end
   end
-
 
   def destroy
     @image = @type_class.find(params[:id])

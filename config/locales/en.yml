@@ -38,10 +38,9 @@ en:
     photo: Photo
     publish: publish
     published: published
-    unpublish: withdraw
-    unpublished: unpublished
     reference: Reference
     references: References
+    replace: Ersetzen
     save_changes: Save changes
     search: Search
     search_term: Search Term
@@ -52,6 +51,8 @@ en:
     time: Time
     time_from: from
     time_to: to
+    unpublish: withdraw
+    unpublished: unpublished
     update: Update
 
     small: Small

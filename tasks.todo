@@ -31,18 +31,21 @@
  ☐ Check that image is present when creating announcements
  ✔ Problem when trainer and announcement creation fails: File upload field no longer visible -> Fixed by QUICK_FIX#1 @done (14-12-08 20:33)
    ☐ -> Message, Themes, Departments remaining
- ☐ When validation fails, image upload field does not keep the already selected image
+ ☐ Enable Wheneverize on server - Change environment
 
 Image:
  ✔ Endless scroll on mobile devices does not work @done (14-10-27 11:56)
  ✔ Swipe on mobile devices @done (14-10-27 11:55)
  ☐ Switch to png?
- ☐ Keep filenames on upload?
- ☐ New image format for trainers?
+ ✔ Keep filenames on upload? @done (15-05-31 16:29)
+ ✔ New image format for trainers? @done (15-05-31 16:29)
  ✔ Reenable delete multiple images @done (14-10-28 13:40)
- ☐ Add buttons to delete and crop attached images
- ☐ Garbage collection for attached images
+ ✔ Add buttons to delete and crop attached images @done (15-05-31 16:29)
+ ✔ Garbage collection for attached images @done (15-05-31 10:41)
  ☐ Refactor image uploader
+ ☐ When validation fails, image upload field does not keep the already selected image
+ ☐ Add Crop attributes as image colums -> needed for recreation of versions
+ ☐ Reduce Versions
 
 Problems:
  ✔ Problem when trying to access: /departments/leichtathletik/messages because of friendly id @done (14-09-24 10:10)

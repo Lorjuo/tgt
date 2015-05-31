@@ -17,7 +17,7 @@ namespace :tgt do
  
     importer = Importer.new newDatabaseName, oldDatabaseName
 
-    # Disable Logger
+    # Disable Logger - Disable SQL logging
     old_logger = ActiveRecord::Base.logger
     ActiveRecord::Base.logger = nil
 
@@ -57,5 +57,18 @@ namespace :tgt do
     copy_assets /alpha.png/
     copy_assets /hue.png/
     copy_assets /saturation.png/
- end
+  end
+
+  desc 'Remove all images that are not associated to any attachable'
+  # These may be images created with jquery popup uploader but not attached to an object
+  task :remove_unused_images => :environment do
+    puts "RAKE_TASK: remove_unused_images"
+    Image.where({:attachable_id => nil})
+    .where("created_at < :hour", {:hour => 1.hour.ago}).each do |img|
+      puts "Deleting image #{img.name} in #{img.file.store_dir}"
+      img.destroy
+      # http://stackoverflow.com/a/4177714/871495
+    end
+    puts "#{Time.now} - Success!"
+  end
 end

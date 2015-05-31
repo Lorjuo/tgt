@@ -28,6 +28,8 @@ TgtRefurbished::Application.configure do
   config.assets.debug = true # default: true
 
   # CUSTOMIZATION
+    
+  BetterErrors.editor = :sublime
   
   config.cache_store = :null_store # Disable Fragment Caching in development environment
 end
