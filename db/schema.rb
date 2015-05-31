@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150420104845) do
+ActiveRecord::Schema.define(version: 20150531144640) do
 
   create_table "announcements", force: true do |t|
     t.string   "name"
@@ -164,6 +164,10 @@ ActiveRecord::Schema.define(version: 20150420104845) do
     t.string   "type"
     t.integer  "width"
     t.integer  "height"
+    t.float    "file_crop_x",     limit: 24
+    t.float    "file_crop_y",     limit: 24
+    t.float    "file_crop_w",     limit: 24
+    t.float    "file_crop_h",     limit: 24
   end
 
   add_index "images", ["attachable_id", "attachable_type"], name: "index_images_on_attachable_id_and_attachable_type", using: :btree

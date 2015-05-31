@@ -8,7 +8,8 @@
   <!-- http://blog.calebnance.com/jquery/using-twitter-bootstap-trigger-popover-on-hover-instead-of-click.html -->
   <%#= link_to training_unit.training_group.name, training_unit.training_group %>
 <%
-  color = training_unit.training_group.department.color || "\#000000"
+  color = training_unit.training_group.department.color
+  color = "\#000000" if color.empty?
   color_object = RGB::Color.from_rgb_hex(color)
   lighted_color_object = color_object.lighten_percent(90)
   lighted_color = lighted_color_object.to_rgb_hex

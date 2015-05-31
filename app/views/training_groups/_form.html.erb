@@ -52,29 +52,37 @@
               :include_blank => false,
               :input_html => { :class => "chosen"} %>
           </fieldset>
-
-          <div class="form-group">
-            <div class="col-lg-offset-3 col-lg-9">
-              <%= f.button :submit, :class => "btn btn-primary" %>
-            </div>
-          </div>
         </div>
       </div>
 
       <div class="col-md-12">
-        <h3>
-          <!--<span class="glyphicon glyphicon-calendar"></span>-->
-          <%= TrainingUnit.model_name.human(:count => :lots) %>
-        </h3>
-        <div id="insertionNode" class="row">
-          <%= f.simple_fields_for :training_units do |unit_form| %>
-            <%= render 'training_unit_fields', f:unit_form %>
-          <% end %>
-        </div>
-        <%= link_to_add_association( content_tag( :span, "", :class => "glyphicon glyphicon-plus" ) + " "\
-        + t("training_groups.form.add_training_unit"), f, :training_units, :class => "btn btn-default" ) %>
+        <fieldset>
+          <legend>
+            <!--<span class="glyphicon glyphicon-calendar"></span>-->
+            <div>
+              <%= TrainingUnit.model_name.human(:count => :lots) %>
+              <%= link_to_add_association( content_tag( :i, "", :class => "fa fa-plus-circle" ) + " "\
+          + t("training_groups.form.add_training_unit"), f, :training_units, :class => "btn btn-link" ) %>
+            </div>
+          </legend>
+          <div id="insertionNode" class="row">
+            <%= f.simple_fields_for :training_units do |unit_form| %>
+              <%= render 'training_unit_fields', f:unit_form %>
+            <% end %>
+          </div>
+        </fieldset>
+      </div>
+      <hr />
+    </div>
+    <hr />
+
+    <div style="text-align: right">
+    <%= f.button :submit, :class => "btn btn-primary" %></div>
+    <br />
+    <!--<div class="form-group">
+      <div class="col-lg-offset-3 col-lg-9">
         <%= f.button :submit, :class => "btn btn-primary" %>
       </div>
-    </div>
+    </div>-->
   <% end %>
 </div>

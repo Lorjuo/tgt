@@ -2,9 +2,12 @@
   <div class="nested-box-header">
     <span class="glyphicon glyphicon-calendar"></span>
     <%= TrainingUnit.model_name.human %>
+    <%= link_to_remove_association(
+  content_tag( :i, "", :class => "fa fa-minus-circle" ) + " "\
+  + t("general.destroy"), f, :class => "btn btn-link btn-sm" ) %>
   </div>
   <div class="nested-box-body">
-    <%= f.input :week_day, collection: I18n.t(:"date.day_names").zip((0..6).to_a) %>
+    <%= f.input :week_day, collection: I18n.t(:"date.day_names").zip((0..6).to_a), :input_html => { :class => "input-sm"} %>
     <%#= f.input :time_begin, :input_html => { :class => "input-small"} %>
     <%#= f.input :time_end, :input_html => { :class => "input-small"} %>
     <%#= f.input :time_begin, :as => :time_picker %>
@@ -16,14 +19,15 @@
       </label>
       <div class="col-lg-9">
         <div class="row">
-          <div class="col-md-5">
-            <%= f.input_field :time_begin, :as => :time_picker %>
+          <div class="col-md-6">
+            <%= f.input_field :time_begin, :as => :time_picker, :class => "input-sm" %>
           </div>
-          <div class="col-md-2" style="padding-top: 7px; text-align: center">
+          <div class="col-md-6 col-md-offset-3" style="font-size: 1.4em; clear:both">-</div>
+          <!--<div class="col-md-2" style="padding-top: 7px; text-align: center">
             <%= t "general.time_to" %>
-          </div>
-          <div class="col-md-5">
-            <%= f.input_field :time_end, :as => :time_picker %>
+          </div>-->
+          <div class="col-md-6">
+            <%= f.input_field :time_end, :as => :time_picker, :class => "input-sm" %>
           </div>
         </div>
       </div>
@@ -31,12 +35,13 @@
 
     <%#= f.input :daytime, :as => :datetime_picker %>
     <%# TODO: Add input type for time %>
-    <%= f.association :location_summer %>
-    <%= f.association :location_winter %>
-
-    <hr />
+    <%= f.association :location_summer, :input_html => { :class => "input-sm"} %>
+    <%= f.association :location_winter, :input_html => { :class => "input-sm"} %>
 
     <%= f.hidden_field :_destroy %>
+
+    <% if false %>
+    <hr />
     <%# f.link_to_remove "Remove this TrainingUnit" %>
     <div class="form-group">
       <div class="col-lg-offset-3 col-lg-9">
@@ -45,5 +50,6 @@
       + t("training_groups.form.remove_training_unit"), f, :class => "btn btn-default" ) %>
       </div>
     </div>
+    <% end %>
   </div>
 </div>

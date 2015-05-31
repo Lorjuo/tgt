@@ -88,8 +88,5 @@ module TgtRefurbished
     #ActiveRecordQueryTrace.enabled = true
     #ActiveRecordQueryTrace.level = :full
     #ActiveRecordQueryTrace.lines = 0
-    
-    require "#{Rails.root}/lib/carrierwave/crop/form_builder.rb"
-    require "#{Rails.root}/lib/carrierwave/crop/form_tag_helper.rb"
   end
 end

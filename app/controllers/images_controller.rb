@@ -44,7 +44,6 @@ class ImagesController < ApplicationController
 
   def create
     # local variable "type" affected by routes.rb
-
     @image = @type_class.new(permitted_params)
 
     if @image.save
@@ -81,13 +80,23 @@ class ImagesController < ApplicationController
   end
 
   def update_crop
+    #debugger
     attributes = {
-      :file_crop_x => permitted_params[:file_crop_x].to_f * @image.width,
-      :file_crop_y => permitted_params[:file_crop_y].to_f * @image.height,
-      :file_crop_w => permitted_params[:file_crop_w].to_f * @image.width,
-      :file_crop_h => permitted_params[:file_crop_h].to_f * @image.height
+      'file_crop_x' => permitted_params['file_crop_x'].to_f * @image.width,
+      'file_crop_y' => permitted_params['file_crop_y'].to_f * @image.height,
+      'file_crop_w' => permitted_params['file_crop_w'].to_f * @image.width,
+      'file_crop_h' => permitted_params['file_crop_h'].to_f * @image.height
     }
+    # 
+    # pars = permitted_params
+    # pars[:file_crop_x] = pars[:file_crop_x].to_f * @image.width
+    # pars[:file_crop_y] = pars[:file_crop_y].to_f * @image.height
+    # pars[:file_crop_w] = pars[:file_crop_w].to_f * @image.width
+    # pars[:file_crop_h] = pars[:file_crop_h].to_f * @image.height
+
+    #debugger
     if @image.update_attributes(attributes)
+    #debugger
     #if @image.update(permitted_params)
       @image.save # IMPORTANT - need to explicitly save the image after update
       # to force to update activerecord to point to the newgenerated files and

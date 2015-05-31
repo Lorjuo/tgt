@@ -42,10 +42,12 @@ Image:
  ✔ Reenable delete multiple images @done (14-10-28 13:40)
  ✔ Add buttons to delete and crop attached images @done (15-05-31 16:29)
  ✔ Garbage collection for attached images @done (15-05-31 10:41)
- ☐ Refactor image uploader
- ☐ When validation fails, image upload field does not keep the already selected image
- ☐ Add Crop attributes as image colums -> needed for recreation of versions
+ ✔ Refactor image uploader @done (15-05-31 18:58)
+ ✔ When validation fails, image upload field does not keep the already selected image @done (15-05-31 18:58) -> only affected old image uploader
+ ✔ Add Crop attributes as image colums -> needed for recreation of versions @done (15-05-31 18:58)
  ☐ Reduce Versions
+ ☐ Maybe add image priority argument - ATM all images are ordered by id to enable asynchronous uploads
+ ✔ Reenable recreate versions @done (15-05-31 18:58)
 
 Problems:
  ✔ Problem when trying to access: /departments/leichtathletik/messages because of friendly id @done (14-09-24 10:10)
