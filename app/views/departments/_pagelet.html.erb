@@ -36,6 +36,10 @@
       <i class="fa fa-arrow-circle-o-right"></i>
       Gruppenübersicht
     <% end %>
+    <%= link_to new_department_training_group_path(@department), :class => 'btn btn-primary btn-block' do %>
+      <i class="fa fa-plus-circle"></i>
+      <%= t('general.create_model', :model => TrainingGroup.model_name.human ) %>
+    <% end if can? :create, @department.training_groups.build %>
   </div>
 
   <div class="tab-pane fade" id="trainers">
@@ -49,6 +53,10 @@
       <i class="fa fa-arrow-circle-o-right"></i>
       Trainerübersicht
     <% end %>
+    <%= link_to new_trainer_path, :class => 'btn btn-primary btn-block' do %>
+      <i class="fa fa-plus-circle"></i>
+      <%= t('general.create_model', :model => Trainer.model_name.human ) %>
+    <% end if can? :create, Trainer %>
   </div>
 
   <div class="tab-pane fade" id="messages" style="margin: 0px -12px">
@@ -56,11 +64,17 @@
     <% cache([:excerpts_large, cache_key_for(messages)], skip_digest: true) do %>
       <%= render :partial => 'messages/message_excerpt', :collection => messages, :as => :message, :locals => { :size => :large } %>
     <% end %>
-    <%= link_to [:messages, @department], :class => 'btn btn-link btn-block' do %>
-      <i class="fa fa-arrow-circle-o-right"></i>
-      <%= t 'general.more' %>
-      <%= Message.model_name.human(:count => :lots) %>
-    <% end %>
+    <div style="margin: 0px 12px">
+      <%= link_to [:messages, @department], :class => 'btn btn-link btn-block' do %>
+        <i class="fa fa-arrow-circle-o-right"></i>
+        <%= t 'general.more' %>
+        <%= Message.model_name.human(:count => :lots) %>
+      <% end %>
+      <%= link_to new_department_message_path(@department), :class => 'btn btn-primary btn-block' do %>
+        <i class="fa fa-plus-circle"></i>
+        <%= t('general.create_model', :model => Message.model_name.human ) %>
+      <% end if can?(:create, @department.messages.build) %>
+    </div>
   </div>
 
   <div class="tab-pane fade" id="galleries">
@@ -72,6 +86,10 @@
       <%= t 'general.more' %>
       <%= Gallery.model_name.human(:count => :lots) %>
     <% end %>
+    <%= link_to new_department_gallery_path(@department), :class => 'btn btn-primary btn-block' do %>
+        <i class="fa fa-plus-circle"></i>
+      <%= t('general.create_model', :model => Gallery.model_name.human ) %>
+    <% end if can? :create, @department.galleries.build %>
   </div>
 
   <div class="tab-pane fade" id="documents">
@@ -83,5 +101,9 @@
       <%= t 'general.more' %>
       <%= Document.model_name.human(:count => :lots) %>
     <% end %>
+    <%= link_to new_department_document_path(@department), :class => 'btn btn-primary btn-block' do %>
+        <i class="fa fa-plus-circle"></i>
+      <%= t('general.create_model', :model => Document.model_name.human ) %>
+    <% end if can?(:create, @department.documents.build) %>
   </div>
 </div>

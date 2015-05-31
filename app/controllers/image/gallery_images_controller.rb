@@ -48,6 +48,11 @@ class Image::GalleryImagesController < ImagesController
   
 
   def edit_multiple
+    if !params.has_key?(:image_ids)
+      redirect_to :back, notice: 'No images selected'
+      return
+    end
+
     # Handle destroy_multiple in this action
     # if params[:commit] == 'Destroy' # Does not work, because commit would display the button text, that is not unique because of i18n
     if params.has_key?('destroy_multiple_button')
