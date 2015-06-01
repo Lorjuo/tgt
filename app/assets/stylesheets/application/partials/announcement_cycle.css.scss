@@ -1,5 +1,6 @@
 .cycle-slideshow {
   width: 100%;
+  /* data-cycle-auto-height probably does not work with turbolinks */
   /*height: 360px;*/ /* No longer needed because of data-cycle-auto-height */
   /* CSS Aspect ratio:
     http://ansciath.tumblr.com/post/7347495869/css-aspect-ratio

@@ -12,6 +12,7 @@
       <%= f.input :caption, as: :text, :input_html => {:rows => 2} %>
       <%= f.simple_fields_for :image do |image_form| %>
         <%= render 'images/image_selector', f:image_form, image:@announcement.image %>
+        <div class="col-md-9 col-md-offset-3"><%= f.error :image %></div>
       <% end %>
       <%= f.input :link, :placeholder => t(".link_hint") %>
       <%= f.input :active %>

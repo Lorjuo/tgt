@@ -169,8 +169,8 @@
 //= require turbolink_fixes
 //# TODO: Check if including administration-bundle.js after this line has negative effects
 
-document.addEventListener("page:restore", function() {
-    app.init();
-});
+// document.addEventListener("page:restore", function() {
+//     app.init();
+// });
 //Turbolinks.pagesCached(0);
 // http://stackoverflow.com/questions/17029399/clicking-back-in-the-browser-disables-my-javascript-code-if-im-using-turbolin
