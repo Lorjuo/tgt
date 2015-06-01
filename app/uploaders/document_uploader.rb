@@ -59,7 +59,7 @@ class DocumentUploader < BaseUploader
     end
 
     version :thumb do
-      process resize_to_fill: [64, 48, 'Center', 'png'] do |img|
+      process resize_to_fill: [60, 40, 'Center', 'png'] do |img|
         img.format('png')
         img
       end

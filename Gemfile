@@ -120,7 +120,8 @@ gem 'fancybox2-rails', '~> 0.2'
   gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :git => 'git://github.com/Lorjuo/datetimepicker-rails.git'
   #gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :path => File.join('..', 'datetimepicker-rails')
   
-  gem "jquery_popup_uploader", :path => "../jquery_popup_uploader/"
+  #gem "jquery_popup_uploader", :path => "../jquery_popup_uploader/" # http://stackoverflow.com/questions/12618927/local-gem-not-working-when-deploying-with-capistrano
+  gem "jquery_popup_uploader", :git => "git://github.com/Lorjuo/jquery_popup_uploader.git"
   
   # Token Inputs
   # Chosen check smartphone compatibility. Especially message and training group search
