@@ -27,7 +27,7 @@ private
     
     training_groups.map do |training_group|
       array = [
-        training_group.photo.present? ? link_to(image_tag(training_group.photo.file_url(:thumb)), training_group.image.file_url, :class => "fancybox") : "",
+        training_group.photo.present? ? link_to(image_tag(training_group.photo.file_url(:cropped, :thumb)), training_group.photo.file_url, :class => "fancybox") : "",
         link_to(training_group.name, training_group),
         #truncate(strip_tags(training_group.description), length: 320, omission: '...'),
         #training_group.training_units(&:time_begin).join(' '),

@@ -1,4 +1,7 @@
 class TrainersController < ApplicationController
+  
+  include ImageAssociationsHelper
+
   before_action :set_trainer, only: [:show, :edit, :update, :destroy]
 
   load_and_authorize_resource :find_by => :slug # Was disabled - don't know why
@@ -21,25 +24,26 @@ class TrainersController < ApplicationController
   # GET /trainers/new
   def new
     @trainer = Trainer.new
-    @trainer.build_photo
+    build_associations
   end
 
   # GET /trainers/1/edit
   def edit
-    @trainer.build_photo unless @trainer.photo.present?
+    build_associations
   end
 
   # POST /trainers
   # POST /trainers.json
   def create
-    @trainer = Trainer.new(trainer_params)
+    @trainer = Trainer.new(trainer_params.except(:photo_id))
 
     respond_to do |format|
       if @trainer.save
+        update_image_associations(trainer_params[:photo_id], Image::Photo, 'Trainer', @trainer.id)
         format.html { redirect_to @trainer, notice: 'Trainer was successfully created.' }
         format.json { render action: 'show', status: :created, location: @trainer }
       else
-        @trainer.build_photo unless @trainer.photo.present? # TODO: remove this QUICK_FIX#1 ?
+        build_associations
         format.html { render action: 'new' }
         format.json { render json: @trainer.errors, status: :unprocessable_entity }
       end
@@ -71,12 +75,13 @@ class TrainersController < ApplicationController
       #debugger
       #params[:trainer][:photo_attributes][:attachable_id] = @trainer.id
       #@trainer.photo.tmp_parent_id = @trainer.id
-      if @trainer.update_attributes(trainer_params)
+      if @trainer.update_attributes(trainer_params.except(:photo_id))
       #if @trainer.update(trainer_params)
+        update_image_associations(trainer_params[:photo_id], Image::Photo, 'Trainer', @trainer.id)
         format.html { redirect_to @trainer, notice: 'Trainer was successfully updated.' }
         format.json { head :no_content }
       else
-        @trainer.build_photo unless @trainer.photo.present? # TODO: remove this QUICK_FIX#1 ?
+        build_associations
         format.html { render action: 'edit' }
         format.json { render json: @trainer.errors, status: :unprocessable_entity }
       end
@@ -99,9 +104,16 @@ class TrainersController < ApplicationController
       @trainer = Trainer.friendly.find(params[:id])
     end
 
+    def build_associations
+      @trainer.build_photo unless @trainer.photo.present? # TODO: remove this QUICK_FIX#1 ?
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def trainer_params
       params.require(:trainer).permit(:first_name, :last_name, :birthday, :residence, :phone, :email, :profession, :education, :disciplines, :activities,
-        :training_group_ids => [], :photo_attributes => [:file, :id] )
+        :photo_id,
+        :training_group_ids => []
+        )
+        #:photo_attributes => [:file, :id]
     end
 end

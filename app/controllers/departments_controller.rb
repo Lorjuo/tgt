@@ -1,6 +1,8 @@
 class DepartmentsController < ApplicationController
   include TheSortableTreeController::Rebuild
   
+  include ImageAssociationsHelper
+  
   before_action :set_department, only: [:show, :edit, :update, :destroy, :sort, :training_groups]
 
   load_and_authorize_resource :find_by => :slug
@@ -20,10 +22,12 @@ class DepartmentsController < ApplicationController
 
   def new
     @department = Department.new
+    build_associations
   end
 
 
   def edit
+    build_associations
   end
 
   def images
@@ -32,21 +36,25 @@ class DepartmentsController < ApplicationController
 
 
   def create
-    @department = Department.new(department_params)
+    @department = Department.new(department_params.except(:banner_id))
 
     if @department.save
+      update_image_associations(department_params[:banner_id], Image::Banner, 'Department', @department.id)
       redirect_to @department, notice: 'Department was successfully created.'
     else
+      build_associations
       render action: 'new'
     end
   end
 
 
   def update
-    if @department.update(department_params)
-      return if process_images
+    if @department.update(department_params.except(:banner_id))
+      #return if process_images
+      update_image_associations(department_params[:banner_id], Image::Banner, 'Department', @department.id)
       redirect_to @department, notice: 'Department was successfully updated.'
     else
+      build_associations
       render action: 'edit'
     end
   end
@@ -132,9 +140,14 @@ class DepartmentsController < ApplicationController
     def department_params
       image_attributes = [:file, :id]
       params.require(:department).permit(:name, :description, :color, :theme_id, :area_id,
-        :banner_attributes => image_attributes,
-        :training_group_ids => [],
+        #:banner_attributes => image_attributes,
+        #:training_group_ids => [],
+        :banner_id,
         :user_ids => [])
+    end
+
+    def build_associations
+      @department.build_banner unless @department.banner.present? # TODO: remove this QUICK_FIX#1 ?
     end
 
     def resolve_layout
@@ -148,11 +161,11 @@ class DepartmentsController < ApplicationController
     end
 
 
-    def process_images
-      if department_params[:banner_attributes].try(:[], :file).present?
-        redirect_to [@department.banner, :action => :crop], notice: 'Banner was successfully uploaded.'
-        return true
-      end
-      return false
-    end
+    # def process_images
+    #   if department_params[:banner_attributes].try(:[], :file).present?
+    #     redirect_to [@department.banner, :action => :crop], notice: 'Banner was successfully uploaded.'
+    #     return true
+    #   end
+    #   return false
+    # end
 end

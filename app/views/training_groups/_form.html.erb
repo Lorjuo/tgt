@@ -1,3 +1,5 @@
+<%= render :partial => 'jquery_popup_uploader/utilities' %>
+
 <div class="window box">
   <%= render :partial => 'shared/elfinder_loader', :locals => { :path => "/departments/#{@training_group.department.id}" } %>
   <%= tinymce %>
@@ -32,7 +34,9 @@
           
           <%= f.simple_fields_for :photo do |image_form| %>
             <%= render 'images/image_selector', f:image_form, image:@training_group.photo %>
-          <% end %>
+          <% end if false %>
+
+          <%= f.input :photo, as: :image_popup_upload, input_html: {}, preview_version: nil, preview_size: '300x200', :use_default_url => true, :mount_on => :file %>
 
           <fieldset>
             <legend><%= t "general.references" %></legend>

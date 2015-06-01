@@ -27,13 +27,12 @@ class MessagesController < ApplicationController
   def new
     @message = @department.messages.new
     #@message.build_image
-    @message.build_header
-    @message.build_thumb
+    build_associations
   end
 
 
   def edit
-    @message.build_header unless @message.header.present?
+    build_associations
   end
 
   def images
@@ -41,11 +40,14 @@ class MessagesController < ApplicationController
 
 
   def create
-    @message = @department.messages.new(message_params)
+    @message = @department.messages.new(message_params.except(:header_id).except(:thumb_id))
 
     if @message.save
+      update_image_associations(message_params[:header_id], Image::Header, 'Message', @message.id)
+      update_image_associations(message_params[:thumb_id], Image::Photo, 'Message', @message.id)
       redirect_to @message, notice: 'Message was successfully created.'
     else
+      build_associations
       render action: 'new'
     end
   end
@@ -58,6 +60,7 @@ class MessagesController < ApplicationController
       
       redirect_to @message, notice: 'Message was successfully updated.'
     else
+      build_associations
       render action: 'edit'
     end
   end
@@ -109,6 +112,11 @@ class MessagesController < ApplicationController
         :gallery_ids => [], :document_ids => [])
       # :file needed when upload a new image
       # :id needed when fileupload is empty
+    end
+
+    def build_associations
+      @message.build_header unless @message.header.present?
+      @message.build_thumb unless @message.thumb.present?
     end
 
     def resolve_layout

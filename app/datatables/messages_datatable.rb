@@ -27,7 +27,7 @@ private
     messages.map do |message|
       array = [
         #'<div class="publication-marker topright mediaOverlay '+(message.published? ? 'published' : 'unpublished')+'" title="'+( message.published? ? t('general.published') : t('general.unpublished'))+'" data-toggle="tooltip"></div>'+
-        (message.thumb.present? ? link_to(image_tag(message.thumb.file_url(:thumb), size: "64x48"), message.thumb.file_url, :class => "fancybox") : ""),
+        (message.thumb.present? ? link_to(image_tag(message.thumb.file_url(:cropped, :thumb), size: "60x40"), message.thumb.file_url, :class => "fancybox") : ""),
         link_to(message.name, message),
         message.display_abstract + '...',
         link_to_pill(message.department.name, message.department, :class => "no-wrap"),

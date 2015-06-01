@@ -2,7 +2,7 @@
   <div class="mediaWrapper">
     <div class="mediaObject">
       <%= link_to( trainer, :title => trainer.name ) do %>
-        <%= image_tag(image_url(trainer.photo, :cropped, :_240x180), :class => "img-responsive") %>
+        <%= image_tag(image_url(trainer.photo, :cropped), :class => "img-responsive") %>
       <% end %>
     </div>
     <div class="mediaText">

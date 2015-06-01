@@ -61,6 +61,7 @@
     .media-object {
       float: left;
       margin-right: 10px;
+      box-shadow: 2px 2px 3px 0px #333;
     }
     .media + .body {
       @media (min-width: $screen-sm-min) {
@@ -73,6 +74,7 @@
     .media-object {
       float: right;
       margin-left: 10px;
+      box-shadow: 2px 2px 3px 0px #333;
     }
     .media + .body {
       margin-right: 74px;

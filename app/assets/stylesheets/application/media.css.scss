@@ -25,7 +25,9 @@ div.thumbnail {
 /* mediaWrapper */
 .mediaWrapper {
   margin-bottom: 20px;
-  border: 1px solid #CCCCCC;
+  /*border: 1px solid #CCCCCC;*/
+  /* either border or shadow */
+  box-shadow: 2px 2px 3px 0px #333;
   .mediaObject {
     border-bottom: 1px solid #CCCCCC;
   }

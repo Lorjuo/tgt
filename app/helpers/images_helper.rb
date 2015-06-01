@@ -10,17 +10,23 @@ module ImagesHelper
     #http://stackoverflow.com/questions/4967735/ruby-method-with-maximum-number-of-parameters
     #http://www.rubydoc.info/github/jnicklas/carrierwave/master/CarrierWave/Uploader/Versions:url
     
+    # WHERE file_url accepts nil as second parameter -> but does not seem to work correctly
+    
     image, version, subversion = *args
     versions = *args[1..-1]
 
     if defined?(image.file)
-      image.file.url(versions)
+      if subversion.present?
+        image.file.send(version).send(subversion).url
+      else
+        image.file.send(version).url
+      end
     else
       #http://awaxman11.github.io/blog/2013/08/05/what-is-the-difference-between-a-block/
-      if args.length == 2
-        Image::PhotoUploader.new.send(versions).default_url
-      else
+      if subversion.present?
         Image::PhotoUploader.new.send(version).send(subversion).default_url
+      else
+        Image::PhotoUploader.new.send(version).default_url
       end
     end
   end

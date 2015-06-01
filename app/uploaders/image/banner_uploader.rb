@@ -1,7 +1,7 @@
 # encoding: utf-8
 class Image::BannerUploader < ImageUploader
 
-  process resize_to_fit: [1600, 1200]
+  process resize_to_fit: [1920, 1600]
   process :store_dimensions
 
   version :cropped do

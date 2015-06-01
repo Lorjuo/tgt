@@ -1,5 +1,5 @@
 <tr>
-  <td data-order="<%= training_group.name %>"><%= link_to(image_tag(training_group.photo.file_url(:thumb), size: "64x48"), training_group.photo.file_url, :class => "fancybox") if training_group.photo.present? %></td>
+  <td data-order="<%= training_group.name %>"><%= link_to(image_tag(training_group.photo.file_url(:cropped, :thumb), size: "60x40"), training_group.photo.file_url, :class => "fancybox") if training_group.photo.present? %></td>
   <td><%= link_to training_group.name, training_group %></td>
   <td>
     <%= truncate(strip_tags(training_group.description), escape: false, length: 100, omission: '...') %>

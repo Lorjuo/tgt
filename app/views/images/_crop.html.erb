@@ -16,7 +16,7 @@ therefore it needs to be included directly in place or in administration.js %>
         <%# TODO: parametrize this %>
         <%#= f.cropbox :file, version: :full, width: 800, height: 600 %>
         <%#= f.cropbox :file, max_width: image.class.crop_width, max_height: image.class.crop_width %>
-        <%= cropbox image, :file, max_width: image.class.crop_width, max_height: image.class.crop_height, :version => :full %>
+        <%= cropbox image, :file, max_width: image.class.crop_width, max_height: image.class.crop_height %><%# with parameter :version => :full another version could be used as basis for cropping %>
       </div>
     </div>
   </div>
@@ -41,7 +41,7 @@ therefore it needs to be included directly in place or in administration.js %>
     <div class="col-lg-9">
       <div class="previewbox-input-group">
         <%#= f.previewbox :file, width: image.class.preview_width, height: image.class.preview_height %>
-        <%= previewbox image, :file, width: image.class.preview_width, height: image.class.preview_height, :version => :full %>
+        <%= previewbox image, :file, width: image.class.preview_width, height: image.class.preview_height %><%# with parameter :version => :full another version could be used as basis for cropping %>
         <%#= f.previewbox :file, width: 272, height: 37 %>
       </div>
     </div>

@@ -22,6 +22,24 @@ namespace :carrierwave do
     }
   end
 
+  task :remove_unused_files => :environment do
+    desc "Remove unused files all images"
+    Image.all.each do |model|
+      id = model.id
+      #model.file.path
+      filename = File.basename(model.file_identifier)
+      store_dir = model.file.store_dir
+      #model.destroy!
+      puts "Analyzing image #{filename} \##{id} in #{store_dir}"
+      files = Dir.glob("#{Rails.root}/public/#{store_dir}/*").map { |f| File.basename(f) }
+      files = files.select{|l| !l.include?(filename)}
+      files.each do |f|
+        puts "Deleting: #{f}"
+        File.delete("#{Rails.root}/public/#{store_dir}/#{f}")
+      end
+    end
+  end
+
   task :destroy => :environment do
     desc "Destroys all images"
     Image.all.each do |model|

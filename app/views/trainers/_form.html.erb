@@ -41,8 +41,7 @@
         <%= render 'images/image_selector', f:image_form, image:@trainer.photo %>
         <%#= image_form.input :file, as: :image_preview, input_html: {preview_version: :thumb}, :use_default_url => false %>
       <% end %>
-      <%= f.input :photo, as: :image_popup_upload, input_html: {}, preview_version: :thumb, preview_size: '180x180', :use_default_url => true, :mount_on => :file %>
-      <%= f.input :photo, as: :image_popup_upload, input_html: {}, preview_version: :thumb, preview_size: '180x180', :use_default_url => true, :mount_on => :file %>
+      <%= f.input :photo, as: :image_popup_upload, input_html: {}, preview_version: nil, preview_size: '300x200', :use_default_url => true, :mount_on => :file %>
     </div>
 
     <div class="form-group">

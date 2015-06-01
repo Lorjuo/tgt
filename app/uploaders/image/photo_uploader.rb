@@ -8,22 +8,22 @@ class Image::PhotoUploader < ImageUploader
   # resize_to_limit does not work. But commandline operation works
   # Problem seems to only affect windows version
   
-  version :full do
-    process resize_to_limit: [960, 960]
-  end
+  # version :full do
+  #   process resize_to_limit: [960, 960]
+  # end
 
   version :cropped do
-    process crop: [:file, 960, 960] # only crops if parameters crop_x, crop_y, ... are present
+    process crop: :file # only crops if parameters crop_x, crop_y, ... are present
     # process crop: [:file, 600, 600] # Resizes the original image to 600x600 limits and then performs cropping
     # performs processing based on full version
 
     #260x180
-    version :_240x180 do
-      process resize_to_fill: [240, 180, 'Center']
-    end
+    # version :_240x180 do
+    #   process resize_to_fill: [240, 180, 'Center']
+    # end
 
     version :thumb do
-      process resize_to_fill: [64, 48, 'Center']
+      process resize_to_fill: [60, 40, 'Center']
     end
   end
   

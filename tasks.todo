@@ -43,6 +43,7 @@ Image:
  ✔ Add Crop attributes as image colums -> needed for recreation of versions @done (15-05-31 18:58)
  ☐ Reduce Versions
  ✔ Reenable recreate versions @done (15-05-31 18:58)
+   
 
 Problems:
  ✔ Problem when trying to access: /departments/leichtathletik/messages because of friendly id @done (14-09-24 10:10)

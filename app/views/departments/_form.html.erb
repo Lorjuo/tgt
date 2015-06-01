@@ -1,3 +1,5 @@
+<%= render :partial => 'jquery_popup_uploader/utilities' %>
+
 <div class="window box">
   <%= render :partial => 'shared/elfinder_loader', :locals => { :path => "/departments/#{@department.id}" } unless @department.new_record? %>
   <%= tinymce %>
@@ -21,6 +23,7 @@
       <%# TODO: Remove column color - depends on schedule %>
       <%= f.input :color, :input_html => { :class => "colorpicker", :data => {:"color-format" => "hex"}} %>
       <%= f.input :description, as: :text, input_html: { class: 'tinymce' } unless @department.new_record?  %>
+      <%= f.input :banner, as: :image_popup_upload, input_html: {}, preview_version: nil, preview_size: '400x67', :use_default_url => true, :mount_on => :file %>
       <%#= f.association :users,
         :collection => User.order('first_name' => :asc).order('last_name' => :asc),
         :label_method => :name,

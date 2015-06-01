@@ -73,9 +73,9 @@ class ImageUploader < BaseUploader
 
   # Versions
   # Thumb version needed for image selector
-  version :thumb do
-    process resize_to_fill: [64, 48]
-  end
+  #version :thumb do
+  #  process resize_to_fill: [64, 48]
+  #end
 
   # Store image dimensions
   # http://stackoverflow.com/questions/12022653/ruby-on-rails-carrierwave-get-the-image-dimension-width-and-height
