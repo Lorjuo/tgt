@@ -18,7 +18,7 @@ class Ability
 
       # WYSIWYG
 
-      can :manage, :elfinder
+      #can :manage, :elfinder
 
       # ATTACHABLES
       
@@ -41,6 +41,10 @@ class Ability
     end
 
     can :manage, :static_page
+
+    # WYSIWYG
+
+    can :manage, :elfinder
 
     can [:schedule, :interactive_map], Location
     can [:training_groups, :trainers, :messages, :schedule, :galleries, :documents, :events], Department

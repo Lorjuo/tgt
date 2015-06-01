@@ -2,6 +2,7 @@ require 'el_finder/action'
 
 class ElfinderController < ApplicationController
   load_and_authorize_resource :class => false
+  #skip_authorization_check
 
   def frontend_wrapper
     # Prevent miniprofiler from appending javascript to json output
