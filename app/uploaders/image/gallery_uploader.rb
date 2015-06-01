@@ -16,14 +16,12 @@ class Image::GalleryUploader < Image::ImageUploader
   process resize_to_fit: [800, 600]
   process :store_dimensions
 
-  version :thumb do
-    process resize_to_fill: [64, 48]
-  end
-  version :_260x180 do
-    process resize_to_fill: [260, 180]
-  end
-  version :_300x200 do
+  version :preview do
     process resize_to_fill: [300, 200]
+  end
+
+  version :thumb do
+    process resize_to_fill: [60, 40]
   end
   
 end

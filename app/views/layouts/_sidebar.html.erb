@@ -41,7 +41,7 @@
               <div class="mediaWrapper">
                 <%#= link_to(image.file_url, :class => 'fancybox', :rel => 'galleries', :caption => gallery.name) do %>
                 <%= link_to gallery, :title => gallery.name, :data => {:toggle => "tooltip"}, :style => "display: block" do %>
-                  <%= image_tag image.file_url(:_260x180), :class => "img-responsive" %>
+                  <%= image_tag image.file_url(:preview), :class => "img-responsive" %>
                 <% end %>
               </div>
             </div>

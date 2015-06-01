@@ -22,10 +22,10 @@
 <% content_for :sidebar do %>
   <% if @linkable.references.present? %>
     <div class="window box">
-      <h3>
+      <h5>
         <span class="glyphicon glyphicon-link"></span>
         <%= t "general.references" %>
-      </h3>
+      </h5>
       <%= render :partial => "shared/references_to", :locals => { references: @linkable.references } %>
     </div>
   <% end %>

@@ -14,6 +14,7 @@ class Image::PhotoUploader < ImageUploader
 
   version :cropped do
     process crop: :file # only crops if parameters crop_x, crop_y, ... are present
+    process resize_to_limit: [300, 200]
     # process crop: [:file, 600, 600] # Resizes the original image to 600x600 limits and then performs cropping
     # performs processing based on full version
 
