@@ -50,3 +50,7 @@ namespace/module of used class not explicitly defined: GalleryImage instead of I
 
 Nested Forms
 http://matthewrobertson.org/blog/2012/09/20/decoupling-rails-forms-from-the-database/
+
+Sorted Tree / Awesome nested set:
+#https://github.com/collectiveidea/awesome_nested_set#conversion-from-other-trees
+Recreation: Category.rebuild!

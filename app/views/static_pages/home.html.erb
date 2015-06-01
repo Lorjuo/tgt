@@ -2,6 +2,11 @@
   <meta property="og:type" content="website"/>
 <% end %>
 
+<% content_for :sidebar do %>
+  <div class="window">
+    <%= render :partial => 'layouts/announcements' %>
+  </div>
+<% end %>
 
 <% if Rails.env.production? #&& user_signed_in? %>
   <div class="alert alert-warning alert-dismissable">

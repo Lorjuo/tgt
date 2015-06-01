@@ -31,7 +31,9 @@
  ☐ Check that image is present when creating announcements
  ✔ Problem when trainer and announcement creation fails: File upload field no longer visible -> Fixed by QUICK_FIX#1 @done (14-12-08 20:33)
    ☐ -> Message, Themes, Departments remaining
- ☐ Enable Wheneverize on server - Change environment
+ ✔ Enable Wheneverize on server - Change environment @done (15-06-01 12:11)
+ ✔ rebuild does not work @done (15-06-01 12:11)
+ ✔ Sortable Tree does not work any longer -> solved with rebuild! @done (15-06-01 12:11)
 
 Image:
  ✔ Endless scroll on mobile devices does not work @done (14-10-27 11:56)

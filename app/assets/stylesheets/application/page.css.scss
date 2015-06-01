@@ -15,6 +15,9 @@
   .box-header {
     margin-bottom: 20px;
   }
+  &.min-height {
+    min-height: 20em;
+  }
 }
 
 .plain {
