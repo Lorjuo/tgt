@@ -27,7 +27,7 @@ private
     
     training_groups.map do |training_group|
       array = [
-        training_group.image.present? ? link_to(image_tag(training_group.image.file_url(:thumb)), training_group.image.file_url, :class => "fancybox") : "",
+        training_group.photo.present? ? link_to(image_tag(training_group.photo.file_url(:thumb)), training_group.image.file_url, :class => "fancybox") : "",
         link_to(training_group.name, training_group),
         #truncate(strip_tags(training_group.description), length: 320, omission: '...'),
         #training_group.training_units(&:time_begin).join(' '),
@@ -65,7 +65,7 @@ private
 
     training_groups = TrainingGroup.joins("LEFT OUTER JOIN departments ON training_groups.department_id = departments.id")
     training_groups = training_groups.includes(:training_units) # Cannot include this table, because search conditions prevent showing all units
-    training_groups = training_groups.includes(:photos)
+    training_groups = training_groups.includes(:photo)
 
     if @department_id.present?
       training_groups = training_groups.where("departments.slug = :search", search: "#{@department_id}")

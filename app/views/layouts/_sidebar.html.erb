@@ -5,16 +5,32 @@
       Ortslauf
     </h4>
   </div>
+
   <div class="window box obtrusive">
     <h4>
       <%= fa_icon 'chevron-circle-right' %>
       Hallensportfest
     </h4>
   </div>
+
+  <div class="window transparent box sponsors">
+    <div class="sponsor-headline">unterstützt durch:</div>
+    <div class="sponsor-images row">
+      <%= link_to 'http://www.sparkasse-darmstadt.de', class: "col-xs-6" do %>
+        <%= image_tag "sponsors/sparkasse.svg", :class => "img-responsive" %>
+      <% end %>
+      <%= link_to 'http://www.merck.de', class: "col-xs-6" do %>
+        <%= image_tag "sponsors/merck.svg", :class => "img-responsive" %>
+      <% end %>
+    </div>
+  </div>
+
   <%= yield(:sidebar) %>
+
   <div class="window">
     <%= render :partial => 'layouts/announcements' %>
   </div>
+
   <div class="window box">
     <h4>
       <%= t ".galleries" %>
@@ -38,6 +54,7 @@
       <% end %>
     </div>
   </div>
+
   <div class="window box events">
     <h4>
       <%= t ".events" %>
