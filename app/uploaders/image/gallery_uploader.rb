@@ -22,7 +22,7 @@ class Image::GalleryUploader < Image::ImageUploader
   version :_260x180 do
     process resize_to_fill: [260, 180]
   end
-  version :_200x300 do
+  version :_300x200 do
     process resize_to_fill: [300, 200]
   end
   

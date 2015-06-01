@@ -23,9 +23,9 @@
  ✔ Client side image resizing: https://github.com/blueimp/jQuery-File-Upload/wiki/Client-side-Image-Resizing @done (14-10-28 13:40)
    Destroy training unit, when traing group gets destroyed
  ☐ Check images and other assets with try syntax (especially announcements)
- ☐ Check that image is present when creating announcements
+ ✔ Check that image is present when creating announcements @done (15-06-01 14:23)
  ✔ Problem when trainer and announcement creation fails: File upload field no longer visible -> Fixed by QUICK_FIX#1 @done (14-12-08 20:33)
-   ☐ -> Message, Themes, Departments remaining
+   ✔ -> Message, Themes, Departments remaining @done (15-06-01 14:23)
  ✔ Enable Wheneverize on server - Change environment @done (15-06-01 12:11)
  ✔ rebuild does not work @done (15-06-01 12:11)
  ✔ Sortable Tree does not work any longer -> solved with rebuild! @done (15-06-01 12:11)
@@ -33,7 +33,6 @@
 Image:
  ✔ Endless scroll on mobile devices does not work @done (14-10-27 11:56)
  ✔ Swipe on mobile devices @done (14-10-27 11:55)
- ☐ Switch to png?
  ✔ Keep filenames on upload? @done (15-05-31 16:29)
  ✔ New image format for trainers? @done (15-05-31 16:29)
  ✔ Reenable delete multiple images @done (14-10-28 13:40)
@@ -43,7 +42,6 @@ Image:
  ✔ When validation fails, image upload field does not keep the already selected image @done (15-05-31 18:58) -> only affected old image uploader
  ✔ Add Crop attributes as image colums -> needed for recreation of versions @done (15-05-31 18:58)
  ☐ Reduce Versions
- ☐ Maybe add image priority argument - ATM all images are ordered by id to enable asynchronous uploads
  ✔ Reenable recreate versions @done (15-05-31 18:58)
 
 Problems:
@@ -58,3 +56,5 @@ Later / Optional:
  ☐ maybe separate jquery datatable from other assets because of its size
  ☐ Add schedule for departments
  ☐ Refactor navigation - use links instead of inheritance
+ ☐ Switch images to png?
+ ☐ Maybe add image priority argument - ATM all images are ordered by id to enable asynchronous uploads
