@@ -1,9 +1,9 @@
 <div class="col-md-3 col-sm-4 col-xs-6">
   <div class="mediaWrapper checkboxWrapper">
     <div class="mediaObject">
-      <%= link_to(image.file_url, :class => 'fancybox', size: "260x180", :rel => 'group', :caption => image.name) do %>
-        <%= image_tag(image.file_url(:_260x180), :class => "img-responsive") %>
-      <% end if image.file._260x180.present? %>
+      <%= link_to(image.file_url, :class => 'fancybox', size: "300x200", :rel => 'group', :caption => image.name) do %>
+        <%= image_tag(image.file_url(:preview), :class => "img-responsive") %>
+      <% end if image.file.preview.present? %>
       <% if can?(:edit, image.attachable) %>
         <div class="mediaOverlay top-right toolbar">
           <%= link_to set_preview_image_gallery_path(image.attachable, :photo_id => photo), :method => :post, :title => t(".set_as_preview"), :data => {:toggle => "tooltip"} do %>
