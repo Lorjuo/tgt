@@ -47,6 +47,7 @@
 <body>
   <style type="text/css">
     <%# Needs to be inside body - otherwise it will be cached by turbolinks %>
+    <% @current_theme ||= Theme.new %>
     <%= render_cell(:stylesheet, :show, :color => @current_theme.color) if @current_theme.present? %>
   </style>
   <%= render 'layouts/navigation' %>

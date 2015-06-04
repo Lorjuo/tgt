@@ -6,9 +6,7 @@
   <div class="row">
     <% Department.where(:area_id => 1).each do |department| %>
       <div class="col-md-3">
-        <div class="window box obtrusive">
-          <h5><%= link_to department.name, department %></h5>
-        </div>
+          <%= link_to department.name, department, class: 'window box obtrusive quick-link' %>
       </div>
     <% end %>
   </div>

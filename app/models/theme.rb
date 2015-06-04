@@ -20,4 +20,12 @@ class Theme < ActiveRecord::Base
   # Validations
   validates :name, :presence => true
   validates :color, :presence => true
+
+  after_initialize :default_values
+  # http://stackoverflow.com/questions/9090204/rails-migration-set-current-date-as-default-value
+  # http://stackoverflow.com/questions/328525/how-can-i-set-default-values-in-activerecord
+  def default_values
+    # self.custom_date does not work with tests
+    self.color ||= '#000066' if new_record?
+  end
 end
