@@ -11,6 +11,7 @@
 #  description        :text
 #  color              :string(255)
 #  theme_id           :integer
+#  area_id            :integer
 #
 
 class Department < ActiveRecord::Base

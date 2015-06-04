@@ -1,0 +1,49 @@
+<% content_for :title do %>
+  <%= t ".title" %>
+<% end %>
+
+<% content_for :buttons do %>
+  <%= link_to new_quick_link_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    <%= t('general.create_model', :model => QuickLink.model_name.human ) %>
+  <% end if can? :create, QuickLink %>
+<% end %>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th><%= QuickLink.human_attribute_name("name") %></th>
+      <th><%= QuickLink.human_attribute_name("url") %></th>
+      <th><%= QuickLink.human_attribute_name("department_id") %></th>
+      <th></th>
+      <% if can? :update, QuickLink %>
+      <th></th>
+      <% end %>
+      <% if can? :destroy, QuickLink %>
+      <th></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+<% @quick_links.each do |quick_link| %>
+    <tr>
+      <td><%= quick_link.name %></td>
+      <td><%= quick_link.url %></td>
+      <td><%= quick_link.department_id %></td>
+      <td><%= link_to t('general.show'), quick_link %></td>
+      <% if can? :update, quick_link %>
+      <td><%= link_to t('general.edit'), edit_quick_link_path(quick_link) %></td>
+      <% end %>
+      <% if can? :destroy, quick_link %>
+      <td>
+        <%= link_to quick_link, method: :delete, data: { confirm: t('general.are_you_sure') } do %>
+          <span class="glyphicon glyphicon-trash"></span>
+          <%= t('general.destroy') %>
+        <% end %>
+      </td>
+      <% end %>
+    </tr>
+<% end %>
+  </tbody>
+</table>

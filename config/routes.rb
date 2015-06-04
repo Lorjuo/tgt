@@ -16,6 +16,7 @@ end
 TgtRefurbished::Application.routes.draw do
 
 
+  resources :quick_links
   resources :themes
 
   # Announcements

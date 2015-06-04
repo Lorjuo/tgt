@@ -1,0 +1,28 @@
+<% content_for :title do %>
+  <%= t ".title", :name => @quick_link.name %>
+<% end %>
+
+<% content_for :buttons do %>
+  <%= link_to quick_links_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    <%= t "general.list" %>
+  <% end %>
+  <% if can? :update, @quick_link %>
+    <%= link_to edit_quick_link_path(@quick_link), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+      <%= t "general.edit" %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<dl class="dl-horizontal">
+  <dt><%= QuickLink.human_attribute_name("name") %>:</dt>
+  <dd><%= @quick_link.name %></dd>
+
+  <dt><%= QuickLink.human_attribute_name("url") %>:</dt>
+  <dd><%= @quick_link.url %></dd>
+
+  <dt><%= QuickLink.human_attribute_name("department_id") %>:</dt>
+  <dd><%= @quick_link.department_id %></dd>
+
+</dl>
