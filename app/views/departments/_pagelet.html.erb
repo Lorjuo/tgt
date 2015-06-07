@@ -60,7 +60,7 @@
   </div>
 
   <div class="tab-pane fade" id="messages" style="margin: 0px -12px">
-    <% messages = @department.messages.includes(:thumb).chronological.limit(4) %>
+    <% messages = @department.messages.published.includes(:thumb).chronological.limit(4) %>
     <% cache([:excerpts_large, cache_key_for(messages)], skip_digest: true) do %>
       <%= render :partial => 'messages/message_excerpt', :collection => messages, :as => :message, :locals => { :size => :large } %>
     <% end %>

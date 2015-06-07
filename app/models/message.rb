@@ -35,6 +35,8 @@ class Message < ActiveRecord::Base
   accepts_nested_attributes_for :thumb, allow_destroy: true
   accepts_nested_attributes_for :header, allow_destroy: true
 
+  attr_accessor :header_id, :thumb_id
+
   # Scopes
   scope :department, -> (id) { where(:department_id => id)}
   scope :chronological, -> { order("created_at" => :desc) }

@@ -1,7 +1,7 @@
 module ImageAssociationsHelper
 
   def update_image_associations(img_id, img_class = Image::Header, attachabe_type = 'Message', attachable_id)
-    if img_id
+    if img_id.present?
       img = img_class.find(img_id)
       #img.update_attributes(:attachable_type => attachabe_type, :attachable_id => attachable_id)
       # Update columns prevents from recreation of image versions
