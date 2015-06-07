@@ -67,3 +67,4 @@ Later / Optional:
  ☐ Switch images to png?
  ☐ Maybe add image priority argument - ATM all images are ordered by id to enable asynchronous uploads
  ☐ Append references to events
+ ☐ Suche nach Trainingsgruppen mit Stichworten

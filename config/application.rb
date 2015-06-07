@@ -71,6 +71,8 @@ module TgtRefurbished
       *-bundle.js
       tagesschau.css
       professional.css
+      administration-bundle.css
+      administration-bundle.js
 
       jquery.jcrop.css
       jquery.jcrop.js

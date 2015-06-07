@@ -24,8 +24,8 @@ module AreasImporter
       area.reload
 
       if area.empty?
-        area = Area.new(name: row.get("name"), 
-                        position: row.get("id"))
+        area = Area.new(name: row.get("name")) 
+                        #position: row.get("id"))
         begin
           area.save!
         rescue Exception => e

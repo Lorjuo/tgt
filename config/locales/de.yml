@@ -343,7 +343,7 @@ de:
       flyer: Flyer
       flyer_sentence: "%{link} hier können Sie sich unser aktuelles Trainingsangebot herunterladen"
       sentence_age: "Ich bin %{input} Jahre alt"
-      sentence_departments: "Ich möchte in folgenden Abteilungen aktiv sein %{input}"
+      sentence_departments: "Ich möchte in folgenden Bereichen aktiv sein %{input}"
       sentence_week_days: "Ich habe an folgenden Wochentagen Zeit %{input}"
 
     show:
