@@ -11,7 +11,7 @@
 
       <%= f.simple_fields_for :image do |image_form| %>
         <%#= image_form.input :file, :as => :file %>
-        <%= render 'images/image_selector', f:image_form, image:@location.image %>
+        <%= render 'images/image_selector', f:image_form, image:@location.image, label: Image.model_name.human %>
       <% end %>
     </div>
 

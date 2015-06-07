@@ -38,9 +38,9 @@
 
       <%= f.simple_fields_for :photo do |image_form| %>
         <%#= image_form.input :file, :as => :file %>
-        <%= render 'images/image_selector', f:image_form, image:@trainer.photo %>
+        <%= render 'images/image_selector', f:image_form, image:@trainer.photo, label: Image.model_name.human %>
         <%#= image_form.input :file, as: :image_preview, input_html: {preview_version: :thumb}, :use_default_url => false %>
-      <% end %>
+      <% end if false %>
       <%= f.input :photo, as: :image_popup_upload, input_html: {}, preview_version: nil, preview_size: '300x200', :use_default_url => true, :mount_on => :file %>
     </div>
 

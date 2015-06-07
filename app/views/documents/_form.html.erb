@@ -5,7 +5,7 @@
     <div class="form-inputs">
       <%= f.input :name %>
       <%#= f.input :file %>
-      <%= render 'images/image_selector', f:f, image:@document %>
+      <%= render 'images/image_selector', f:f, image:@document, label: Document.model_name.human %>
       <%#= f.association :department,
         :as => :select,
         :collection => Department.order(:name => :asc),

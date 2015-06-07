@@ -29,6 +29,12 @@
  ✔ Enable Wheneverize on server - Change environment @done (15-06-01 12:11)
  ✔ rebuild does not work @done (15-06-01 12:11)
  ✔ Sortable Tree does not work any longer -> solved with rebuild! @done (15-06-01 12:11)
+ ✔ Check location images @done (15-06-07 11:57)
+ ✔ Check trainer images @done (15-06-07 12:00)
+ ☐ Refactor themes
+ ☐ Adapt theme for department navigation
+ ✔ Restrict preview cycle to home page @done (15-06-07 12:01)
+ ☐ Disable some actions (training_group / trainer / gallery / documents / events? / messages?) for some departments
 
 Image:
  ✔ Endless scroll on mobile devices does not work @done (14-10-27 11:56)
@@ -41,7 +47,7 @@ Image:
  ✔ Refactor image uploader @done (15-05-31 18:58)
  ✔ When validation fails, image upload field does not keep the already selected image @done (15-05-31 18:58) -> only affected old image uploader
  ✔ Add Crop attributes as image colums -> needed for recreation of versions @done (15-05-31 18:58)
- ☐ Reduce Versions
+ ✔ Reduce Versions @done (15-06-07 12:01)
  ✔ Reenable recreate versions @done (15-05-31 18:58)
    
 
@@ -59,3 +65,4 @@ Later / Optional:
  ☐ Refactor navigation - use links instead of inheritance
  ☐ Switch images to png?
  ☐ Maybe add image priority argument - ATM all images are ordered by id to enable asynchronous uploads
+ ☐ Append references to events

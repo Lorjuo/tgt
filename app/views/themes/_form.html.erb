@@ -11,7 +11,7 @@
       <%= f.input :color, :input_html => { :class => "colorpicker", :data => {:"color-format" => "hex"}} %>
       <%= f.simple_fields_for :banner do |image_form| %>
         <%#= image_form.input :file, :as => :file %>
-        <%= render 'images/image_selector', f:image_form, image:@theme.banner %>
+        <%= render 'images/image_selector', f:image_form, image:@theme.banner, label: Image.model_name.human %>
       <% end %>
     </div>
 

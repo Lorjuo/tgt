@@ -24,7 +24,7 @@
             <%#= simple_fields_for image do |f| %>
               <%= f.input :name %>
               <%#= f.file_field :file %>
-              <%= render 'images/image_selector', f:f, image:image %>
+              <%= render 'images/image_selector', f:f, image:image, label: Image.model_name.human %>
             <% end %>
           </div>
         </fieldset>

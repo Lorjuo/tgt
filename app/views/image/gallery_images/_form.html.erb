@@ -7,7 +7,7 @@
     <div class="form-inputs">
       <%= f.input :name %>
       <%#= f.input :file, :as => :file %>
-      <%#= render 'images/image_selector', f:f, image:@image %>
+      <%#= render 'images/image_selector', f:f, image:@image, label: Image.model_name.human %>
       <%#= render :partial => 'crop', :locals => {:image => @image, :f => f} %>
     </div>
 
