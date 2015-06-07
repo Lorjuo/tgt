@@ -3,25 +3,21 @@
 <% end %>
 
 <% content_for :buttons do %>
-  <%= link_to new_department_event_path(@department), :class => 'btn btn-primary' do %>
+  <%= link_to new_event_path, :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
     <%= t('general.create_model', :model => Event.model_name.human ) %>
-  <% end if can? :create, @department.events.build %>
+  <% end if can? :create, Event %>
 <% end %>
 
 <div class="window box">
-  <table class="table table-bordered table-striped">
+  <table class="table table-bordered table-striped datatable searchable">
     <thead>
       <tr>
-        <th><%= Event.human_attribute_name("name") %></th>
-        <th><%= Event.human_attribute_name("term") %></th>
-        <th><%= Event.human_attribute_name("description") %></th>
-        <th></th>
-        <% if can? :update, Event %>
-        <th></th>
-        <% end %>
-        <% if can? :destroy, Event %>
-        <th></th>
+        <th data-class="expand"><%= Event.human_attribute_name("name") %></th>
+        <th data-hide="xxs,xs,sm"><%= Event.human_attribute_name("term") %></th>
+        <th data-hide="xxs,xs,sm"><%= Event.human_attribute_name("description") %></th>
+        <% if user_signed_in? %>
+          <th class="no-sort"><%= t "general.actions" %></th>
         <% end %>
       </tr>
     </thead>
@@ -29,20 +25,21 @@
     <tbody>
   <% @events.each do |event| %>
       <tr>
-        <td><%= event.name %></td>
+        <td><%= link_to event.name, event %></td>
         <td><%= I18n.localize(event.term) %></td>
         <td><%= event.description %></td>
-        <td><%= link_to t('general.show'), event %></td>
-        <% if can? :update, event %>
-        <td><%= link_to t('general.edit'), edit_event_path(event) %></td>
-        <% end %>
-        <% if can? :destroy, event %>
-        <td>
-          <%= link_to event, method: :delete, data: { confirm: t('general.are_you_sure') } do %>
-            <span class="glyphicon glyphicon-trash"></span>
-            <%= t('general.destroy') %>
-          <% end %>
-        </td>
+        <%# if can? :update, event %>
+        <% if user_signed_in? %>
+          <td>
+            <%= link_to edit_event_path(event), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
+              <%= tag :span, :class => "glyphicon glyphicon-edit" %>
+            <% end %>
+            <% if can? :destroy, event %>
+              <%= link_to event, :title => t("general.destroy"), data: { confirm: t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete do %>
+                <%= tag :span, :class => "glyphicon glyphicon-trash" %>
+              <% end %>
+            <% end %>
+          </td>
         <% end %>
       </tr>
   <% end %>

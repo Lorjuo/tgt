@@ -31,7 +31,7 @@ class Announcement < ActiveRecord::Base
 
   def get_link
     if self.link.present?
-      if self.link.start_with?('/')
+      if self.link.start_with?('/', '#')
         self.link
       else
         url_with_protocol(self.link)

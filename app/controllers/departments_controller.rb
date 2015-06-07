@@ -125,6 +125,16 @@ class DepartmentsController < ApplicationController
     end
   end
 
+  def quick_links
+    @quick_links = @department.quick_links.alphabetical
+
+    respond_to do |format|
+      format.html { render :template => "quick_links/index" }
+      format.mobile { render :template => "quick_links/index" }
+      format.json { render json: @quick_links }
+    end
+  end
+
   def documents
     @documents = @department.documents
     render :template => "documents/index"

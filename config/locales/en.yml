@@ -248,7 +248,7 @@ en:
     index:
       title: Listing departments
     show:
-      title: 'Department %{name}'
+      title: "%{name}" #'Department %{name}'
     form:
       users_hint: 'Users that can manage this department'
 

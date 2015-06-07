@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150531144640) do
+ActiveRecord::Schema.define(version: 20150604185532) do
 
   create_table "announcements", force: true do |t|
     t.string   "name"
@@ -230,6 +230,15 @@ ActiveRecord::Schema.define(version: 20150531144640) do
   create_table "placeholders", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "quick_links", force: true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.integer  "department_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "active",        default: true
   end
 
   create_table "references", force: true do |t|

@@ -9,41 +9,40 @@
   <% end if can? :create, QuickLink %>
 <% end %>
 
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th><%= QuickLink.human_attribute_name("name") %></th>
-      <th><%= QuickLink.human_attribute_name("url") %></th>
-      <th><%= QuickLink.human_attribute_name("department_id") %></th>
-      <th></th>
-      <% if can? :update, QuickLink %>
-      <th></th>
-      <% end %>
-      <% if can? :destroy, QuickLink %>
-      <th></th>
-      <% end %>
-    </tr>
-  </thead>
-
-  <tbody>
-<% @quick_links.each do |quick_link| %>
-    <tr>
-      <td><%= quick_link.name %></td>
-      <td><%= quick_link.url %></td>
-      <td><%= quick_link.department_id %></td>
-      <td><%= link_to t('general.show'), quick_link %></td>
-      <% if can? :update, quick_link %>
-      <td><%= link_to t('general.edit'), edit_quick_link_path(quick_link) %></td>
-      <% end %>
-      <% if can? :destroy, quick_link %>
-      <td>
-        <%= link_to quick_link, method: :delete, data: { confirm: t('general.are_you_sure') } do %>
-          <span class="glyphicon glyphicon-trash"></span>
-          <%= t('general.destroy') %>
+<div class="window box">
+  <table class="table table-bordered table-striped datatable searchable">
+    <thead>
+      <tr>
+        <th data-class="expand"><%= QuickLink.human_attribute_name("name") %></th>
+        <th data-hide="xxs,xs,sm"><%= QuickLink.human_attribute_name("url") %></th>
+        <th data-hide="xxs,xs,sm"><%= QuickLink.human_attribute_name("active") %></th>
+        <% if user_signed_in? %>
+          <th class="no-sort"><%= t "general.actions" %></th>
         <% end %>
-      </td>
-      <% end %>
-    </tr>
-<% end %>
-  </tbody>
-</table>
+      </tr>
+    </thead>
+
+    <tbody>
+  <% @quick_links.each do |quick_link| %>
+      <tr>
+        <td><%= link_to quick_link.name, quick_link %></td>
+        <td><%= quick_link.url %></td>
+        <td><%= t quick_link.active.to_s %></td>
+        <%# if can? :update, quick_link %>
+        <% if user_signed_in? %>
+          <td>
+            <%= link_to edit_quick_link_path(quick_link), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
+              <%= tag :span, :class => "glyphicon glyphicon-edit" %>
+            <% end %>
+            <% if can? :destroy, quick_link %>
+              <%= link_to quick_link, :title => t("general.destroy"), data: { confirm: t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete do %>
+                <%= tag :span, :class => "glyphicon glyphicon-trash" %>
+              <% end %>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+  <% end %>
+    </tbody>
+  </table>
+</div>

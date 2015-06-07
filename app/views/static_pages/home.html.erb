@@ -33,7 +33,12 @@
     <% end %>
   <% end %>
 </div>
-<div class="window box">
+
+<% if false %><div class="window box">
   <h3><%= t ".news_archive" %></h3>
   <p><%= raw t(".news_archive_sentence", :link => link_to(t("general.here").capitalize, messages_path)) %></p>
-</div>
+</div><% end %>
+
+<%= link_to messages_path, class: 'window box obtrusive quick-link' do %>
+  <%= fa_icon 'chevron-circle-right' %> <%= t(".news_archive") %> <%#= t(".news_archive_sentence", :link => t("general.here")) %>
+<% end %>

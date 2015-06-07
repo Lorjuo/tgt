@@ -25,6 +25,7 @@ class Department < ActiveRecord::Base
   has_many :documents
   # has_and_belongs_to_many :flyers, :join_table => 'departments_flyers', :class_name => Document
   has_many :events
+  has_many :quick_links
   has_many :galleries
   has_many :messages
   has_many :training_groups

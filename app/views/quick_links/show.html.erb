@@ -3,7 +3,7 @@
 <% end %>
 
 <% content_for :buttons do %>
-  <%= link_to quick_links_path, :class => 'btn btn-default' do %>
+  <%= link_to department_quick_links_path(@department), :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
     <%= t "general.list" %>
   <% end %>
@@ -15,14 +15,13 @@
   <% end %>
 <% end %>
 
-<dl class="dl-horizontal">
-  <dt><%= QuickLink.human_attribute_name("name") %>:</dt>
-  <dd><%= @quick_link.name %></dd>
+<div class="window box">
+  <dl class="dl-horizontal">
+    <dt><%= Event.human_attribute_name("name") %>:</dt>
+    <dd><%= @quick_link.name %></dd>
 
-  <dt><%= QuickLink.human_attribute_name("url") %>:</dt>
-  <dd><%= @quick_link.url %></dd>
+    <dt><%= Event.human_attribute_name("url") %>:</dt>
+    <dd><%= @quick_link.get_url %></dd>
 
-  <dt><%= QuickLink.human_attribute_name("department_id") %>:</dt>
-  <dd><%= @quick_link.department_id %></dd>
-
-</dl>
+  </dl>
+</div>

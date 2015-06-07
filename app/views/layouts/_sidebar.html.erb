@@ -1,15 +1,11 @@
 <div id="sidebar" class="<%= (params[:action] != 'home') ? 'no-mobile' : '' %>">
-  <div class="window box obtrusive">
-    <h4>
-      <%= fa_icon 'chevron-circle-right' %>
-      Ortslauf
-    </h4>
-  </div>
 
-  <a href="#" class="quick-link window box obtrusive">
-      <%= fa_icon 'chevron-circle-right' %>
-      Hallensportfest
-  </a>
+
+  <% QuickLink.alphabetical.each do |quick_link| %>
+    <%= link_to quick_link.get_url, class: 'window box obtrusive quick-link' do %>
+      <%= fa_icon 'chevron-circle-right' %> <%= quick_link.name %>
+    <% end %>
+  <% end %>
 
   <div class="window transparent box sponsors">
     <div class="sponsor-headline">unterstützt durch:</div>

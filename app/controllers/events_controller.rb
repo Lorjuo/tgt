@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :load_event, only: [:show, :edit, :update, :destroy]
   before_action :load_parent_resource, :through => :department, :shallow => true # cancan
 
   load_and_authorize_resource
@@ -68,7 +68,7 @@ class EventsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_event
+    def load_event
       @event = Event.find(params[:id])
     end
     

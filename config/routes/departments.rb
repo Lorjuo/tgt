@@ -10,6 +10,7 @@
       get :messages
       get :documents
       get :events
+      get :quick_links
       # required for Sortable GUI server side actions
       post :rebuild
     end
@@ -36,6 +37,7 @@
       #resources :images
     end
     resources :events
+    resources :quick_links
     resources :messages
     resources :training_groups#, :only => [:new, :create]
 

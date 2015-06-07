@@ -1,5 +1,10 @@
 class QuickLinksController < ApplicationController
-  before_action :set_quick_link, only: [:show, :edit, :update, :destroy]
+  before_action :load_quick_link, only: [:show, :edit, :update, :destroy]
+  before_action :load_parent_resource, :through => :department, :shallow => true # cancan
+
+  load_and_authorize_resource
+
+  layout "two_columns"
 
   # GET /quick_links
   # GET /quick_links.json
@@ -14,7 +19,7 @@ class QuickLinksController < ApplicationController
 
   # GET /quick_links/new
   def new
-    @quick_link = QuickLink.new
+    @quick_link = @department.quick_links.new
   end
 
   # GET /quick_links/1/edit
@@ -24,11 +29,11 @@ class QuickLinksController < ApplicationController
   # POST /quick_links
   # POST /quick_links.json
   def create
-    @quick_link = QuickLink.new(quick_link_params)
+    @quick_link = @department.quick_links.new(quick_link_params)
 
     respond_to do |format|
       if @quick_link.save
-        format.html { redirect_to @quick_link, notice: 'Quick link was successfully created.' }
+        format.html { redirect_to @quick_link, notice: 'QuickLink was successfully created.' }
         format.json { render action: 'show', status: :created, location: @quick_link }
       else
         format.html { render action: 'new' }
@@ -42,7 +47,7 @@ class QuickLinksController < ApplicationController
   def update
     respond_to do |format|
       if @quick_link.update(quick_link_params)
-        format.html { redirect_to @quick_link, notice: 'Quick link was successfully updated.' }
+        format.html { redirect_to @quick_link, notice: 'QuickLink was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -63,8 +68,16 @@ class QuickLinksController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_quick_link
+    def load_quick_link
       @quick_link = QuickLink.find(params[:id])
+    end
+    
+    def load_parent_resource
+      if params[:department_id]
+        @department = Department.friendly.find(params[:department_id])
+      elsif @quick_link.present?
+        @department = @quick_link.department
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
