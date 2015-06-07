@@ -3,29 +3,29 @@
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs">
-    <li class="active"><a href="#trainingGroups" data-toggle="tab" class="title">
+    <% if @department.feature_training_groups %><li class="active"><a href="#trainingGroups" data-toggle="tab" class="title">
       <%= fa_icon "users" %>
       <%= TrainingGroup.model_name.human(:count => :lots) %>
-    </a></li>
-    <li><a href="#trainers" data-toggle="tab" class="title">
+    </a></li><% end %>
+    <% if @department.feature_trainers %><li><a href="#trainers" data-toggle="tab" class="title">
       <%= Trainer.model_name.human(:count => :lots) %>
-    </a></li>
-    <li><a href="#messages" data-toggle="tab" class="title">
+    </a></li><% end %>
+    <% if @department.feature_messages %><li><a href="#messages" data-toggle="tab" class="title">
       <%= fa_icon "message" %>
       <%= Message.model_name.human(:count => :lots) %>
-    </a></li>
-    <li><a href="#galleries" data-toggle="tab" class="title">
+    </a></li><% end %>
+    <% if @department.feature_galleries %><li><a href="#galleries" data-toggle="tab" class="title">
       <%= Gallery.model_name.human(:count => :lots) %>
-    </a></li>
-    <li><a href="#documents" data-toggle="tab" class="title">
+    </a></li><% end %>
+    <% if @department.feature_documents %><li><a href="#documents" data-toggle="tab" class="title">
       <%= Department.human_attribute_name(:documents) %>
-    </a></li>
+    </a></li><% end %>
   </ul>
 </div>
 
 <!-- Tab panes -->
 <div class="tab-content box" style="padding-top: 20px">
-  <div class="tab-pane fade active in" id="trainingGroups">
+  <% if @department.feature_training_groups %><div class="tab-pane fade active in" id="trainingGroups">
     <div class=""><div class="row">
       <% training_groups = @department.training_groups.current.includes(:photo).chronological %>
       <% cache([:media, cache_key_for(training_groups)], skip_digest: true) do %>
@@ -40,9 +40,9 @@
       <i class="fa fa-plus-circle"></i>
       <%= t('general.create_model', :model => TrainingGroup.model_name.human ) %>
     <% end if can? :create, @department.training_groups.build %>
-  </div>
+  </div><% end %>
 
-  <div class="tab-pane fade" id="trainers">
+  <% if @department.feature_trainers %><div class="tab-pane fade" id="trainers">
     <div class=""><div class="row">
       <% trainers = @department.trainers.includes(:photo).alphabetical %>
       <% cache([:media, cache_key_for(trainers)], skip_digest: true) do %>
@@ -57,9 +57,9 @@
       <i class="fa fa-plus-circle"></i>
       <%= t('general.create_model', :model => Trainer.model_name.human ) %>
     <% end if can? :create, Trainer %>
-  </div>
+  </div><% end %>
 
-  <div class="tab-pane fade" id="messages" style="margin: 0px -12px">
+  <% if @department.feature_messages %><div class="tab-pane fade" id="messages" style="margin: 0px -12px">
     <% messages = @department.messages.published.includes(:thumb).chronological.limit(4) %>
     <% cache([:excerpts_large, cache_key_for(messages)], skip_digest: true) do %>
       <%= render :partial => 'messages/message_excerpt', :collection => messages, :as => :message, :locals => { :size => :large } %>
@@ -75,9 +75,9 @@
         <%= t('general.create_model', :model => Message.model_name.human ) %>
       <% end if can?(:create, @department.messages.build) %>
     </div>
-  </div>
+  </div><% end %>
 
-  <div class="tab-pane fade" id="galleries">
+  <% if @department.feature_galleries %><div class="tab-pane fade" id="galleries">
     <div class=""><div class="row">
       <%= render(:partial => 'galleries/gallery', :collection => @department.galleries.chronological, :as => 'gallery') %>
     </div></div>
@@ -90,9 +90,9 @@
         <i class="fa fa-plus-circle"></i>
       <%= t('general.create_model', :model => Gallery.model_name.human ) %>
     <% end if can? :create, @department.galleries.build %>
-  </div>
+  </div><% end %>
 
-  <div class="tab-pane fade" id="documents">
+  <% if @department.feature_documents %><div class="tab-pane fade" id="documents">
     <div class=""><div class="row">
       <%= render(:partial => 'documents/document', :collection => @department.documents.chronological, :as => 'document') %>
     </div></div>
@@ -105,5 +105,5 @@
         <i class="fa fa-plus-circle"></i>
       <%= t('general.create_model', :model => Document.model_name.human ) %>
     <% end if can?(:create, @department.documents.build) %>
-  </div>
+  </div><% end %>
 </div>

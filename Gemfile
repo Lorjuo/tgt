@@ -91,6 +91,7 @@ gem 'el_finder'
 gem 'carrierwave-crop'
 
 # Forms
+# http://almassapargali.com/2015/01/15/build-bootstrap-forms-with-simple_form-in-ruby-on-rails.html
 gem 'simple_form', '~> 3.1', github: 'plataformatec/simple_form', branch: 'master'
 # https://github.com/rafaelfranca/simple_form-bootstrap/blob/master/app/views/examples/_horizontal_form_sf.html.erb
 # gem 'nested_form'

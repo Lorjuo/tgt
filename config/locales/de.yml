@@ -190,6 +190,12 @@ de:
 
       department:
         users: Zugewiesene Benutzer
+        feature_training_groups: Trainingsgruppen
+        feature_trainers: Trainer
+        feature_messages: Nachrichten
+        feature_galleries: Fotogalerien
+        feature_documents: Dokumente
+        feature_events: Veranstaltungen
 
       event:
         term: Datum

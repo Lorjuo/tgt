@@ -64,6 +64,7 @@
 
 <% content_for :sidebar do %>
 
+<% if @department.feature_messages %>
   <div class="">
     <!-- <div class="box">
       <h4 style="display: inline-block">
@@ -83,5 +84,6 @@
   <!--<div class="window box">
     <%#= render_cell :navigation, :show, :department => @department %>
   </div>-->
+<% end %>
 <% end %>
 

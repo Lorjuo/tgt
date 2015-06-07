@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150604185532) do
+ActiveRecord::Schema.define(version: 20150607114647) do
 
   create_table "announcements", force: true do |t|
     t.string   "name"
@@ -87,6 +87,12 @@ ActiveRecord::Schema.define(version: 20150604185532) do
     t.string   "color"
     t.integer  "theme_id"
     t.integer  "area_id"
+    t.boolean  "feature_training_groups", default: true
+    t.boolean  "feature_trainers",        default: true
+    t.boolean  "feature_messages",        default: true
+    t.boolean  "feature_galleries",       default: true
+    t.boolean  "feature_documents",       default: true
+    t.boolean  "feature_events",          default: true
   end
 
   add_index "departments", ["slug"], name: "index_departments_on_slug", unique: true, using: :btree

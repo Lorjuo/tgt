@@ -188,7 +188,13 @@ en:
         visible_to: Visible until
 
       department:
-        users: Zugewiesene Benutzer
+        users: Assigned users
+        feature_training_groups: Training groups
+        feature_trainers: Trainers
+        feature_messages: Messages
+        feature_galleries: Photogalleries
+        feature_documents: Documents
+        feature_events: Events
 
       event:
         term: Date

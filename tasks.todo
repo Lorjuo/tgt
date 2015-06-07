@@ -34,7 +34,7 @@
  ☐ Refactor themes
  ☐ Adapt theme for department navigation
  ✔ Restrict preview cycle to home page @done (15-06-07 12:01)
- ☐ Disable some actions (training_group / trainer / gallery / documents / events? / messages?) for some departments
+ ✔ Disable some actions (training_group / trainer / gallery / documents / events? / messages?) for some departments -> feature / behaviour / property @done (15-06-07 21:00)
  ✔ Check messages publication on sidebar and pagelet @done (15-06-07 13:02)
 
 Image:

@@ -37,6 +37,23 @@
         :value_method => :id,
         :include_blank => true,
         :input_html => { :class => "chosen", :data => {:include_blank => true} }%>
+        <fieldset>
+          <legend>
+            Features
+          </legend>
+          <div class="row">
+            <% [:feature_training_groups, :feature_trainers, :feature_messages, :feature_galleries, :feature_documents, :feature_events].each do |feature| %>
+              <div class="col-md-9 col-md-offset-3">
+                <%= f.input feature, wrapper: :checkbox %>
+                <%#= f.input_field feature, style: 'float: left' %>
+                <%#= f.label feature, style: 'float: left' %>
+              </div>
+            <% end if false %>
+          </div>
+          <% [:feature_training_groups, :feature_trainers, :feature_messages, :feature_galleries, :feature_documents, :feature_events].each do |feature| %>
+            <%= f.input feature %>
+          <% end %>
+        </fieldset>
     </div>
 
     <div class="form-group">
