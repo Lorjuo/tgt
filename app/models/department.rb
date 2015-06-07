@@ -41,6 +41,8 @@ class Department < ActiveRecord::Base
   
   accepts_nested_attributes_for :banner, allow_destroy: true
 
+  attr_accessor :banner_id
+
   belongs_to :theme
   belongs_to :area
 

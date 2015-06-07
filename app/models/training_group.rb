@@ -32,6 +32,8 @@ class TrainingGroup < ActiveRecord::Base
   accepts_nested_attributes_for :training_units, :reject_if => :all_blank, allow_destroy: true
   accepts_nested_attributes_for :photo, allow_destroy: true
 
+  attr_accessor :photo_id
+
   # Virtual temporal attributes for search
   attr_accessor :departments, :week_days, :age
 

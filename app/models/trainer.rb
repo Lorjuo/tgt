@@ -28,6 +28,8 @@ class Trainer < ActiveRecord::Base
 
   accepts_nested_attributes_for :photo, allow_destroy: true
 
+  attr_accessor :photo_id
+
   # Scopes
   scope :department, -> (id) { joins(:training_groups).where('training_groups.department_id = ?', id).uniq}
   scope :alphabetical, -> { order(:first_name => :asc, :last_name => :asc)}
