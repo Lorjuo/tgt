@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
   # Validation
   validates :email, :presence => true, :email => true
   validates_presence_of [:first_name, :last_name]
+  #validates_presence_of [:password, :password_confirmation], :on => :new
   
   # Virtual attributes
   def name

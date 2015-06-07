@@ -41,8 +41,10 @@
             <%= link_to_pill department.name, department %>
           <% end %>
         </td>
-        <% if can? :update, user %>
-          <td>
+        <% allowed = can?(:update, user) %>
+        <% allowed = allowed && ( current_user.has_role?('admin') || !(user.has_role?('admin') || user.has_role?('editor'))) %>
+        <td>
+          <% if allowed %>
             <%= link_to edit_user_path(user), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
               <%= tag :span, :class => "glyphicon glyphicon-edit" %>
             <% end %>
@@ -51,8 +53,8 @@
                 <%= tag :span, :class => "glyphicon glyphicon-trash" %>
               <% end %>
             <% end %>
-          </td>
-        <% end %>
+          <% end %>
+        </td>
       </tr>
   <% end %>
     </tbody>
