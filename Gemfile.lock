@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: git://github.com/Lorjuo/jquery_popup_uploader.git
-  revision: 6616f963bd0345debaaec99588e6277439d24ace
+  revision: 8b7988c2e66c04018b9ffb900ae2b96ce5860b37
   specs:
     jquery_popup_uploader (0.0.1)
       carrierwave
@@ -207,7 +207,7 @@ GEM
       turbolinks
     jquery-ui-rails (5.0.0)
       railties (>= 3.2.16)
-    json (1.8.2)
+    json (1.8.3)
     kgio (2.9.2)
     lodash-rails (2.4.1)
       railties (>= 3.1)

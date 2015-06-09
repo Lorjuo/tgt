@@ -22,4 +22,12 @@ class Image::HeaderUploader < ImageUploader
     # end
   end
 
+  def default_url
+    if version_name == :cropped
+      ActionController::Base.helpers.asset_path("fallback/cropped__600x150_default.png")
+    else
+      super
+    end
+  end
+
 end

@@ -27,6 +27,14 @@ class Image::Banner < Image
   mount_uploader :file, ::Image::BannerUploader, :mount_on => :file
   crop_uploaded :file
 
+  def default_url
+    if version_name == :cropped
+      ActionController::Base.helpers.asset_path("fallback/cropped__600x100_default.png")
+    else
+      super
+    end
+  end
+
   # http://stackoverflow.com/questions/1251352/ruby-inherit-code-that-works-with-class-variables/1251422#1251422
   # class << self
   #   attr_accessor :width, :height, :preview_width, :preview_height
