@@ -30,8 +30,8 @@ $ ->
   # Filter keywords
   element_keywords = "#training_group_keywords"
   $(element_keywords).bind "input", ->
-    filter_text( tableContainer, element_keywords, 5 )
-  filter_text( tableContainer, element_keywords, 5 ) # also do this on load
+    filter_text( tableContainer, element_keywords, null )
+  filter_text( tableContainer, element_keywords, null ) # also do this on load
 
   $("a.add_fields")
     .data("association-insertion-position", "append")

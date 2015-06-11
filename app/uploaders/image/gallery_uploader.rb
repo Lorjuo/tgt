@@ -1,7 +1,7 @@
 # encoding: utf-8
 # Cannot inherit directly from a class that specifies versions, because these versions will be stored inside the directory declared in parent class via store_dir
 #class Image::GalleryUploader < Image::PhotoUploader
-class Image::GalleryUploader < Image::ImageUploader
+class Image::GalleryUploader < ImageUploader
 
   def store_dir
     "uploads/"\

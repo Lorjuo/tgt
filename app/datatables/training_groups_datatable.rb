@@ -66,13 +66,22 @@ private
     training_groups = TrainingGroup.joins("LEFT OUTER JOIN departments ON training_groups.department_id = departments.id")
     training_groups = training_groups.includes(:training_units) # Cannot include this table, because search conditions prevent showing all units
     training_groups = training_groups.includes(:photo)
+    
 
     if @department_id.present?
       training_groups = training_groups.where("departments.slug = :search", search: "#{@department_id}")
     end
 
     if params[:sSearch].present?
-      training_groups = training_groups.where("training_groups.name like :search or departments.name like :search", search: "%#{params[:sSearch]}%")
+      # training_groups = training_groups.where("training_groups.name like :search or departments.name like :search", search: "%#{params[:sSearch]}%")
+      # For chosen tagging: http://stackoverflow.com/questions/18706735/adding-text-other-than-the-selected-text-options-to-the-select-with-the-chosen-p
+      keywords = params[:sSearch].gsub(',', '').split(' ') # strip all commatas and split by whitespaces
+      keyword_conditions = []
+      keywords.each do |keyword|
+        #keyword_conditions.push("training_groups.name like '%#{keyword}%' or departments.name like '%#{keyword}%' or departments.keywords like '%#{keyword}%'")
+        keyword_conditions.push("training_groups.name like '%#{keyword}%' or departments.name like '%#{keyword}%' or training_groups.description like '%#{keyword}%'")
+      end
+      training_groups = training_groups.where('('+keyword_conditions.join(" or ")+')')
     end
 
     if params[:sSearch_2].present?
@@ -87,15 +96,8 @@ private
       training_groups = training_groups.where(:department_id => params[:sSearch_4].split(/,/))
     end
 
+    # not possible because table only has 4 columns
     if params[:sSearch_5].present?
-      # For chosen tagging: http://stackoverflow.com/questions/18706735/adding-text-other-than-the-selected-text-options-to-the-select-with-the-chosen-p
-      keywords = params[:sSearch_5].gsub(',', '').split(' ') # strip all commatas and split by whitespaces
-      keyword_conditions = []
-      keywords.each do |keyword|
-        #keyword_conditions.push("training_groups.name like '%#{keyword}%' or departments.name like '%#{keyword}%' or departments.keywords like '%#{keyword}%'")
-        keyword_conditions.push("training_groups.name like '%#{keyword}%' or departments.name like '%#{keyword}%'")
-      end
-      training_groups = training_groups.where('('+keyword_conditions.join(" or ")+')')
     end
 
     # TODO: sort by age
