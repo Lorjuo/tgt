@@ -54,19 +54,19 @@ class DocumentUploader < BaseUploader
     process :mogrify => [{
       :resolution => '800x800'
     }]
+    #process :strip_exif_metadata
+    #process :reload
+
     def full_filename (for_file = model.source.file)
       super.chomp(File.extname(super)) + '.jpg'
     end
 
     version :thumb do
-      process resize_to_fill: [60, 40, 'Center', 'jpg'] do |img|
-        img.format('jpg')
-        img
-      end
+      process resize_to_fill: [60, 40, 'Center', 'jpg']
     end
 
     # version :_80x80 do # For carousel
-    #   process resize_to_fill: [80, 80, 'Center', 'png'] do |img|
+    #   process resize_to_fill: [80, 80, 'Center', 'jpg'] do |img|
     #     img.format('png')
     #     img
     #   end
@@ -74,7 +74,7 @@ class DocumentUploader < BaseUploader
 
 
     version :_240x240 do
-      process resize_to_fill: [240, 240, 'North', 'png']
+      process resize_to_fill: [240, 240, 'North', 'jpg']
       # Yield Blocks do not work: http://stackoverflow.com/questions/19646083/carrierwave-how-to-pass-block-to-resize-and-pad
       # process resize_to_fit: [240, 240] do |img|
       #   img.format('png')
@@ -134,6 +134,22 @@ class DocumentUploader < BaseUploader
   #   end
   #   @format = format
   # end
+
+  def thumbnail_pdf
+    manipulate! do |img|
+      img.format("jpg", 1)
+      img.resize("1200x1200")
+      img = yield(img) if block_given?
+      img
+    end
+  end
+
+  def reload
+    manipulate! do |img|
+      img = MiniMagick::Image.open(current_path)
+      img
+    end
+  end
 
   def check
     Rails.logger.debug 'Check'
@@ -254,14 +270,15 @@ class DocumentUploader < BaseUploader
     #   img
     # end
     dirname = File.dirname(current_path)
-    #png_path = "#{File.join(dirname, File.basename(current_path, File.extname(current_path)))}.png"
+    png_path = "#{File.join(dirname, File.basename(current_path, File.extname(current_path)))}.png"
     jpg_path = "#{File.join(dirname, File.basename(current_path, File.extname(current_path)))}.jpg"
 
     # Maybe strip command at beginning to strip existing profiles
 
     # http://www.imagemagick.org/discourse-server/viewtopic.php?t=18514
     # #http://stackoverflow.com/questions/12614801/how-to-execute-imagemagick-to-convert-only-the-first-page-of-the-multipage-pdf-t
-    gs_command = "\gs -sDEVICE=jpeg -dLastPage=1 -dNOPAUSE -dBATCH"\
+    # # -sDEVICE=png16m
+    gs_command = "gs -q -sDEVICE=jpeg -dLastPage=1 -dNOPAUSE -dBATCH"\
     " -sOutputFile=#{jpg_path}"\
     " -r150"\
     " -dJPEGQ=95"\
@@ -283,7 +300,6 @@ class DocumentUploader < BaseUploader
     File.unlink current_path
     File.rename jpg_path, current_path
     Rails.logger.debug im_command #+ `time #{im_command}`
-    #::MiniMagick::Image.open(current_path)
   end
 
 

@@ -41,6 +41,16 @@ class BaseUploader < CarrierWave::Uploader::Base
     #ActionController::Base.helpers.asset_path("fallback/" + "default.gif")
   end
 
+  # http://stackoverflow.com/questions/4753408/how-to-remove-exif-camera-data-from-image-with-carrierwave
+  # Strip EXIF Metadata to get smaller file sizes
+  def strip_exif_metadata
+    manipulate! do |img|
+      img.strip
+      img = yield(img) if block_given?
+      img
+    end
+  end
+
   protected
 
   # Create unique filename

@@ -49,16 +49,6 @@ class ImageUploader < BaseUploader
     # (store_dir+'/'+original_file)
   end
 
-  # http://stackoverflow.com/questions/4753408/how-to-remove-exif-camera-data-from-image-with-carrierwave
-  # Strip EXIF Metadata to get smaller file sizes
-  def strip_exif_metadata
-    manipulate! do |img|
-      img.strip
-      img = yield(img) if block_given?
-      img
-    end
-  end
-
   # http://makandracards.com/makandra/12323-carrierwave-auto-rotate-tagged-jpegs
   # http://stackoverflow.com/questions/18519160/exif-image-rotation-issue-using-carrierwave-and-rmagick-to-upload-to-s3
   # http://stackoverflow.com/questions/9558653/rails-paperclip-and-upside-down-oriented-images
