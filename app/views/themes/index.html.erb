@@ -10,18 +10,15 @@
 <% end %>
 
 <div class="window box">
-  <table class="table table-bordered table-striped">
+  <table class="table table-bordered table-striped datatable searchable">
     <thead>
       <tr>
-        <th><%= Theme.human_attribute_name("name") %></th>
-        <th><%= Theme.human_attribute_name("description") %></th>
-        <th><%= Theme.human_attribute_name("color") %></th>
-        <th></th>
-        <% if can? :update, Theme %>
-        <th></th>
-        <% end %>
-        <% if can? :destroy, Theme %>
-        <th></th>
+        <th class="no-sort"></th>
+        <th data-class="expand"><%= QuickLink.human_attribute_name("name") %></th>
+        <th data-hide="xxs,xs,sm"><%= QuickLink.human_attribute_name("description") %></th>
+        <th data-hide="xxs,xs,sm"><%= QuickLink.human_attribute_name("color") %></th>
+        <% if user_signed_in? %>
+          <th class="no-sort"><%= t "general.actions" %></th>
         <% end %>
       </tr>
     </thead>
@@ -29,20 +26,21 @@
     <tbody>
   <% @themes.each do |theme| %>
       <tr>
-        <td><%= theme.name %></td>
+        <td><%= link_to(image_tag(theme.banner.file_url(:cropped, :_600x100), size: "300x50"), theme.banner.file_url, :class => "fancybox") if theme.banner.present? %></td>
+        <td><%= link_to theme.name, theme %></td>
         <td><%= theme.description %></td>
         <td style="background-color: <%= theme.color %>; color: white; font-weight: bold>"><%= theme.color %></td>
-        <td><%= link_to t('general.show'), theme %></td>
-        <% if can? :update, theme %>
-        <td><%= link_to t('general.edit'), edit_theme_path(theme) %></td>
-        <% end %>
-        <% if can? :destroy, theme %>
-        <td>
-          <%= link_to theme, method: :delete, data: { confirm: t('general.are_you_sure') } do %>
-            <span class="glyphicon glyphicon-trash"></span>
-            <%= t('general.destroy') %>
-          <% end %>
-        </td>
+        <% if user_signed_in? %>
+          <td>
+            <%= link_to edit_theme_path(theme), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
+              <%= tag :span, :class => "glyphicon glyphicon-edit" %>
+            <% end %>
+            <% if can? :destroy, theme %>
+              <%= link_to theme, :title => t("general.destroy"), data: { confirm: t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete do %>
+                <%= tag :span, :class => "glyphicon glyphicon-trash" %>
+              <% end %>
+            <% end %>
+          </td>
         <% end %>
       </tr>
   <% end %>

@@ -17,6 +17,9 @@
 
 <div class="window box">
   <dl class="dl-horizontal">
+    <dt><%= Theme.human_attribute_name("banner") %>:</dt>
+    <dd><%= link_to(image_tag(@theme.banner.file_url(:cropped, :_600x100), size: "300x50"), @theme.banner.file_url, :class => "fancybox") if @theme.banner.present? %></dd>
+
     <dt><%= Theme.human_attribute_name("name") %>:</dt>
     <dd><%= @theme.name %></dd>
 

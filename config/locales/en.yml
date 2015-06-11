@@ -149,6 +149,9 @@ en:
       message:
         one: Message
         other: Messages
+      quick_link:
+        one: Quick-Link
+        other: Quick-Link
       theme:
         one: Theme
         other: Themes
@@ -309,6 +312,12 @@ en:
       title: '%{title}'
     form:
       abstract_hint: 'Leaving this field blank, abstract will be automatically generated'
+
+  quick_links:
+    index:
+      title: Quick-Links
+    show:
+      title: 'Quick-Link "%{name}"'
 
   static_pages:
     home: 

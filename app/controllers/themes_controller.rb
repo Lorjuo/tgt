@@ -1,4 +1,7 @@
 class ThemesController < ApplicationController
+  
+  include ImageAssociationsHelper
+  
   load_and_authorize_resource
   
   layout "one_column"
@@ -14,29 +17,31 @@ class ThemesController < ApplicationController
 
   def new
     @theme = Theme.new
-    @theme.build_banner
+    build_associations
   end
 
   def edit
-    @theme.build_banner unless @theme.banner.present?
+    build_associations
   end
 
   def create
-    @theme = Theme.new(theme_params)
+    @theme = Theme.new(theme_params.except(:banner_id))
 
     if @theme.save
-      return if process_images
+      update_image_associations(theme_params[:banner_id], Image::Banner, 'Theme', @theme.id)
       redirect_to @theme, notice: 'Theme was successfully created.'
     else
+      build_associations
       render action: 'new'
     end
   end
 
   def update
-    if @theme.update(theme_params)
-      return if process_images
+    if @theme.update(theme_params.except(:banner_id))
+      update_image_associations(theme_params[:banner_id], Image::Banner, 'Theme', @theme.id)
       redirect_to @theme, notice: 'Theme was successfully updated.'
     else
+      build_associations
       render action: 'edit'
     end
   end
@@ -52,18 +57,16 @@ class ThemesController < ApplicationController
       @theme = Theme.find(params[:id])
     end
 
-    def process_images
-      if theme_params[:banner_attributes].try(:[], :file).try(:present?)
-        redirect_to [@theme.banner, :action => :crop], notice: 'Banner was successfully uploaded.'
-        return true # stop exection
-      end
-      return false
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def theme_params
       image_attributes = [:file, :id]
       params.require(:theme).permit(:name, :description, :color,
-        :banner_attributes => image_attributes)
+        :banner_id
+        #:banner_attributes => image_attributes
+        )
+    end
+
+    def build_associations
+      @theme.build_banner unless @theme.banner.present?
     end
 end

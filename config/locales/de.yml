@@ -150,6 +150,9 @@ de:
       message:
         one: Nachricht
         other: Nachrichten
+      quick_link:
+        one: Quick-Link
+        other: Quick-Link
       theme:
         one: Stil
         other: Stile
@@ -310,6 +313,12 @@ de:
       title: '%{title}'
     form:
       abstract_hint: 'Kurzfassung wird automatisch generiert, wenn dieses Feld leer gelassen wird'
+
+  quick_links:
+    index:
+      title: Quick-Links
+    show:
+      title: 'Quick-Link "%{name}"'
 
   static_pages:
     home:

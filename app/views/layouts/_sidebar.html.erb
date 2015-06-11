@@ -6,7 +6,7 @@
     <% quick_links = QuickLink %>
   <% end %>
   <% quick_links.alphabetical.each do |quick_link| %>
-    <%= link_to quick_link.get_url, class: 'window box obtrusive quick-link' do %>
+    <%= link_to quick_link.get_url, class: 'window box obtrusive link quick-link' do %>
       <%= fa_icon 'chevron-circle-right' %> <%= quick_link.name %>
     <% end %>
   <% end %>

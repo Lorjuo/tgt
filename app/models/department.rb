@@ -39,9 +39,9 @@ class Department < ActiveRecord::Base
 
   has_and_belongs_to_many :users#, through: :department_editor
   
-  accepts_nested_attributes_for :banner, allow_destroy: true
+  #accepts_nested_attributes_for :banner, allow_destroy: true
 
-  attr_accessor :banner_id
+  #attr_accessor :banner_id
 
   belongs_to :theme
   belongs_to :area

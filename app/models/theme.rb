@@ -15,7 +15,9 @@ class Theme < ActiveRecord::Base
   # Associations
   has_one :banner, :as => :attachable, :class_name => 'Image::Banner', :dependent => :destroy
 
-  accepts_nested_attributes_for :banner, allow_destroy: true
+  #accepts_nested_attributes_for :banner, allow_destroy: true
+
+  attr_accessor :banner_id
 
   # Validations
   validates :name, :presence => true

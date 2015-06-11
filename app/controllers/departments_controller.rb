@@ -1,7 +1,7 @@
 class DepartmentsController < ApplicationController
   include TheSortableTreeController::Rebuild
   
-  include ImageAssociationsHelper
+  #include ImageAssociationsHelper
   
   before_action :set_department, only: [:show, :edit, :update, :destroy, :sort, :training_groups]
 
@@ -36,7 +36,7 @@ class DepartmentsController < ApplicationController
 
 
   def create
-    @department = Department.new(department_params.except(:banner_id))
+    @department = Department.new(department_params)#.except(:banner_id))
 
     if @department.save
       update_image_associations(department_params[:banner_id], Image::Banner, 'Department', @department.id)
@@ -49,7 +49,7 @@ class DepartmentsController < ApplicationController
 
 
   def update
-    if @department.update(department_params.except(:banner_id))
+    if @department.update(department_params)#.except(:banner_id))
       #return if process_images
       update_image_associations(department_params[:banner_id], Image::Banner, 'Department', @department.id)
       redirect_to @department, notice: 'Department was successfully updated.'
@@ -153,12 +153,15 @@ class DepartmentsController < ApplicationController
         :feature_training_groups, :feature_trainers, :feature_messages, :feature_galleries, :feature_documents, :feature_events,
         #:banner_attributes => image_attributes,
         #:training_group_ids => [],
-        :banner_id,
+        #:banner_id,
         :user_ids => [])
     end
 
     def build_associations
-      @department.build_banner unless @department.banner.present? # TODO: remove this QUICK_FIX#1 ?
+      #@department.build_banner unless @department.banner.present? # TODO: remove this QUICK_FIX#1 ?
+
+      #@department.build_theme unless @department.theme.present?
+      #@department.theme.build_banner unless @department.theme.banner.present?
     end
 
     def resolve_layout
