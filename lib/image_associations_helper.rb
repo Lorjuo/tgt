@@ -7,6 +7,10 @@ module ImageAssociationsHelper
       # Update columns prevents from recreation of image versions
       # http://apidock.com/rails/ActiveRecord/Persistence/update_columns
       img.update_columns(:attachable_type => attachabe_type, :attachable_id => attachable_id)
+      # command above does not a save command that can induce a touch on the associated image
+      # therefore a explicit touch is needed to prevent caching issues
+      img.attachable.touch
+      debugger
     end
 
     # Destroy all OTHER images associated with this object
