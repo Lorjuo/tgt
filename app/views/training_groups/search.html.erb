@@ -35,6 +35,9 @@
           #:as => :check_boxes,
           :collection => I18n.t(:"date.day_names").zip((0..6).to_a),
           :class => "chosen input-sm", :multiple => true, :style => "display: inline; width: 16em") %></p>
+
+        <p><%= raw t ".sentence_keywords", :input => (f.input_field :keywords,
+          :class => "input-sm", :style => "display: inline; width: 16em") %></p>
       <% end %>
 
     </div>

@@ -35,7 +35,7 @@ class TrainingGroup < ActiveRecord::Base
   attr_accessor :photo_id
 
   # Virtual temporal attributes for search
-  attr_accessor :departments, :week_days, :age
+  attr_accessor :departments, :week_days, :age, :keywords
 
   # Validation
   validates :name, :presence => true

@@ -27,6 +27,12 @@ $ ->
     filter_select( tableContainer, element_departments, 4 )
   filter_select( tableContainer, element_departments, 4 ) # also do this on load
 
+  # Filter keywords
+  element_keywords = "#training_group_keywords"
+  $(element_keywords).bind "input", ->
+    filter_text( tableContainer, element_keywords, 5 )
+  filter_text( tableContainer, element_keywords, 5 ) # also do this on load
+
   $("a.add_fields")
     .data("association-insertion-position", "append")
     .data "association-insertion-node", "#insertionNode"

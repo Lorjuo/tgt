@@ -13,4 +13,12 @@ class Image::BannerUploader < ImageUploader
     # resize_to_limit(600,150)
   end
 
+  def default_url
+    if version_name == :cropped
+      ActionController::Base.helpers.asset_path("fallback/cropped__600x100_default.png")
+    else
+      super
+    end
+  end
+
 end

@@ -13,7 +13,7 @@
       <div class="col-md-12">
         <div class="form-inputs">
           <%= f.input :name %>
-          <%# f.association :department,
+          <%= f.association :department,
             :as => :select,
             :collection => Department.order(:name => :asc),
             :label_method => :name,

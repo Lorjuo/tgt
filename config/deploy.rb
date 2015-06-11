@@ -173,6 +173,18 @@ namespace :deploy do
     invoke 'unicorn:restart'
   end
 
+  #cap staging deploy:clear_tmp
+  task :clear_tmp do
+    on roles(:all) do
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute :rake, "tmp:clear"
+        end
+      end
+    end
+  end
+  after :finishing, 'deploy:clear_tmp'
+
   # For interactive rails console:
   # https://gist.github.com/toobulkeh/8214198
 end

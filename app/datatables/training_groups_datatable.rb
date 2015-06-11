@@ -87,6 +87,17 @@ private
       training_groups = training_groups.where(:department_id => params[:sSearch_4].split(/,/))
     end
 
+    if params[:sSearch_5].present?
+      # For chosen tagging: http://stackoverflow.com/questions/18706735/adding-text-other-than-the-selected-text-options-to-the-select-with-the-chosen-p
+      keywords = params[:sSearch_5].gsub(',', '').split(' ') # strip all commatas and split by whitespaces
+      keyword_conditions = []
+      keywords.each do |keyword|
+        #keyword_conditions.push("training_groups.name like '%#{keyword}%' or departments.name like '%#{keyword}%' or departments.keywords like '%#{keyword}%'")
+        keyword_conditions.push("training_groups.name like '%#{keyword}%' or departments.name like '%#{keyword}%'")
+      end
+      training_groups = training_groups.where('('+keyword_conditions.join(" or ")+')')
+    end
+
     # TODO: sort by age
     training_groups = training_groups.order("#{sort_column} #{sort_direction}")
     training_groups = training_groups.page(page).per_page(per_page)
