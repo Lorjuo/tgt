@@ -166,20 +166,11 @@ class DepartmentsController < ApplicationController
 
     def resolve_layout
       "two_columns"
-      # case action_name
-      # when "training_groups", "flyers"
-      #   "one_column"
-      # else
-      #   "two_columns"
-      # end
+      case action_name
+      when "training_groups", "flyers"
+        "one_column"
+      else
+        "two_columns"
+      end
     end
-
-
-    # def process_images
-    #   if department_params[:banner_attributes].try(:[], :file).present?
-    #     redirect_to [@department.banner, :action => :crop], notice: 'Banner was successfully uploaded.'
-    #     return true
-    #   end
-    #   return false
-    # end
 end

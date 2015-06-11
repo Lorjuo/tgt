@@ -4,4 +4,12 @@
         :as => :select,
         collection: nested_set_options(Link.department(@department.id).roots, linkable.link) {|i| "#{'-' * i.level} #{i.name}" } %>
 <%= f.association :theme %>
+<div class="form-group select optional">
+  <div class="col-md-9 col-md-offset-3">
+    <%= link_to themes_path, :target => "_blank" do %>
+      <i class="fa fa-arrow-circle-o-right"></i>
+      <%= t('general.edit_model', model: Theme.model_name.human(:count => :lots)) %>
+    <% end %>
+  </div>
+</div>
 <%= f.input :department_id, :as => :hidden %>
