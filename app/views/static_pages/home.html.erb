@@ -25,7 +25,7 @@
   <p><%= raw t(".training_offer_sentence", :link => link_to(t("general.here"), search_training_groups_path)) %></p>
 </div>
 <div class="">
-  <% cache([:excerpts_large, cache_key_for(@messages)], skip_digest: true) do %>
+  <% cache_unless(user_signed_in?, [:excerpts_large, cache_key_for(@messages)], skip_digest: true) do %>
     <% @messages.each do |message| %>
       <div class="window">
         <%= render :partial => 'messages/message_excerpt', :locals => { :message => message, :size => :large } %>

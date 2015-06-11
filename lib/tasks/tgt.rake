@@ -71,4 +71,28 @@ namespace :tgt do
     end
     puts "#{Time.now} - Success!"
   end
+
+  desc 'Regenerate all already defined slugs'
+  # see: https://github.com/norman/friendly_id
+  # rake tgt:regenerate_slugs RAILS_ENV=production 
+  task :regenerate_slugs => :environment do
+    Department.all.each do |entity|
+      entity.slug = nil
+      entity.save!
+      puts "Regenerating slug '#{entity.slug}' for entity '#{entity.name}'"
+    end
+    Trainer.all.each do |entity|
+      entity.slug = nil
+      entity.save!
+      puts "Regenerating slug '#{entity.slug}' for entity '#{entity.name}'"
+    end
+  end
+
+  desc "Recreates directory structure for all departments"
+  # rake tgt:create_directory_structure RAILS_ENV=production 
+  task :create_directory_structure => :environment do
+    Department.all.each do |entity|
+      entity.create_directory_structure
+    end
+  end
 end

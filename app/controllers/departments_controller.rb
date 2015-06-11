@@ -11,7 +11,7 @@ class DepartmentsController < ApplicationController
 
 
   def index
-    @departments = Department.specific.load
+    @departments = Department.specific.alphabetical.load
   end
 
 

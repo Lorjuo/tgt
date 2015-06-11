@@ -51,6 +51,7 @@ class Department < ActiveRecord::Base
 
   # Scopes
   scope :specific, -> { where.not(name: 'generic') }
+  scope :alphabetical, -> { order("name") }
 
   friendly_id :name, use: :slugged
 
@@ -84,9 +85,9 @@ class Department < ActiveRecord::Base
 
     # self.name does not work with tests
     if name == 'generic'
-      department_name = 'Verein'
+      department_name = 'verein'
     else
-      department_name = sanitize_filename(self.name).strip.squish
+      department_name = slug #sanitize_filename(self.name).strip.squish
     end
     puts department_name
 
