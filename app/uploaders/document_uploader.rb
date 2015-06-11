@@ -55,12 +55,12 @@ class DocumentUploader < BaseUploader
       :resolution => '800x800'
     }]
     def full_filename (for_file = model.source.file)
-      super.chomp(File.extname(super)) + '.png'
+      super.chomp(File.extname(super)) + '.jpg'
     end
 
     version :thumb do
-      process resize_to_fill: [60, 40, 'Center', 'png'] do |img|
-        img.format('png')
+      process resize_to_fill: [60, 40, 'Center', 'jpg'] do |img|
+        img.format('jpg')
         img
       end
     end
@@ -254,23 +254,35 @@ class DocumentUploader < BaseUploader
     #   img
     # end
     dirname = File.dirname(current_path)
-    png_path = "#{File.join(dirname, File.basename(current_path, File.extname(current_path)))}.png"
+    #png_path = "#{File.join(dirname, File.basename(current_path, File.extname(current_path)))}.png"
+    jpg_path = "#{File.join(dirname, File.basename(current_path, File.extname(current_path)))}.jpg"
 
     # Maybe strip command at beginning to strip existing profiles
 
     # http://www.imagemagick.org/discourse-server/viewtopic.php?t=18514
-    imagemagick_command = "mogrify"\
-    " -filter lanczos2sharp"\
-    " -antialias"\
-    " -profile #{Rails.root}/lib/color_profiles/USWebCoatedSWOP.icc"\
-    " -profile #{Rails.root}/lib/color_profiles/sRGB_v4_ICC_preference_displayclass.icc"\
-    " -colorspace sRGB"\
-    " -format png -resize 800x800\\> -distort resize 800x800\\< -quality 80"\
-    " #{current_path}\\[0\\]"
-    system(imagemagick_command)
+    # #http://stackoverflow.com/questions/12614801/how-to-execute-imagemagick-to-convert-only-the-first-page-of-the-multipage-pdf-t
+    gs_command = "\gs -sDEVICE=jpeg -dLastPage=1 -dNOPAUSE -dBATCH"\
+    " -sOutputFile=#{jpg_path}"\
+    " -r150"\
+    " -dJPEGQ=95"\
+    " #{current_path}"
+
+    im_command = "mogrify"\
+    " -resize 800x800\\> -distort resize 800x800\\< -quality 80"\
+    " #{current_path}"
+    #" #{current_path}\\[0\\]"
+    #" -profile #{Rails.root}/lib/color_profiles/USWebCoatedSWOP.icc"\
+    #" -profile #{Rails.root}/lib/color_profiles/sRGB_v4_ICC_preference_displayclass.icc"\
+    #" -colorspace sRGB"\
+    #" -filter lanczos2sharp"\
+    #" -antialias"\
+    #" -format png -resize 800x800\\> -distort resize 800x800\\< -quality 80"\
+    im_command = "mogrify -verbose -density 150 -trim -quality 100 -sharpen 0x1.0 #{jpg_path}"
+    system(gs_command)
+    system(im_command)
     File.unlink current_path
-    File.rename png_path, current_path
-    Rails.logger.debug imagemagick_command #+ `time #{imagemagick_command}`
+    File.rename jpg_path, current_path
+    Rails.logger.debug im_command #+ `time #{im_command}`
     #::MiniMagick::Image.open(current_path)
   end
 
