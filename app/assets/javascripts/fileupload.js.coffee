@@ -108,7 +108,7 @@ jQuery ->
                 # 
                 # seems to use this template enginge: http://ejohn.org/blog/javascript-micro-templating/
                 data.context = $($.parseHTML(tmpl("template-upload", file)))
-                $('.fileupload').append(data.context)
+                $('.fileupload').closest('.window').find('.progress-zone').append(data.context)
                 xhr = data.submit();
                 data.context.data('data',{jqXHR: xhr});
                 #data.submit()

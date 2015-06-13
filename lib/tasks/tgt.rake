@@ -100,7 +100,8 @@ namespace :tgt do
   # rake tgt:create_navigation_structure RAILS_ENV=production 
   task :create_navigation_structure => :environment do
     Department.all.each do |entity|
-      entity.create_navigation_structure unless entity.name == 'generic' 
+      entity.create_navigation_structure unless entity.name == 'generic'
+      #Department.all.each{ |entity| MediaLink.create(:controller_id => 'departments', :instance_id => entity.id, :action_id => 'show').create_link(:department_id => 1, :name => entity.name, :parent_id => nil).save! unless  entity.name == 'generic' }
     end
   end
 end

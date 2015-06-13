@@ -80,7 +80,7 @@ class Department < ActiveRecord::Base
     # navigation_elements.create(:name => "Dokumente", :parent_id => nil, :controller_id => 'departments', :action_id => 'documents', :instance_id => id)
     # TODO: Events
     
-    #MediaLink.create(:controller_id => 'departments', :instance_id => id, :action_id => 'show').create_link(:department_id => 1, :name => name, :parent_id => nil).save!
+    MediaLink.create(:controller_id => 'departments', :instance_id => id, :action_id => 'show').create_link(:department_id => 1, :name => name, :parent_id => nil).save!
 
     MediaLink.create(:controller_id => 'departments', :instance_id => id, :action_id => 'messages').create_link(:department_id => id, :name => 'Aktuelles', :parent_id => nil).save!
     MediaLink.create(:controller_id => 'departments', :instance_id => id, :action_id => 'training_groups').create_link(:department_id => id, :name => 'Trainingsgruppen', :parent_id => nil).save!
