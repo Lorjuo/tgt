@@ -63,20 +63,17 @@ module TgtRefurbished
 
     # Precompilation
     config.assets.precompile += %w(
+      *-bundle.js
+      *-bundle.css
+      tagesschau.css
+      professional.css
+
       elfinder/elfinder.min.css
       elfinder/theme.css
       elfinder/elfinder.min.js
       elfinder/proxy/elFinderSupportVer1.js
+      
       wysiwyg.css
-      *-bundle.js
-      tagesschau.css
-      professional.css
-      administration-bundle.css
-      administration-bundle.js
-
-      jquery.jcrop.css
-      jquery.jcrop.js
-      images.js
     )
     # http://blog.seancarpenter.net/2012/11/05/page-specific-javascript-with-the-asset-pipeline/
     # http://brandonhilkert.com/blog/page-specific-javascript-in-rails/

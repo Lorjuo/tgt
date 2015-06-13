@@ -78,6 +78,7 @@
 //# Select
 //= require select
 //
+//
 //# Underscore js
 //=require underscore
 //# at the moment needed for jquery dataTables responsive and gmaps4rails
@@ -89,7 +90,6 @@
 //= require home
 //= require messages
 //= require schedule
-//= require training_groups
 //
 //# Swype
 //= require jquery.touchSwipe.js

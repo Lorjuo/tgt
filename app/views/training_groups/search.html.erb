@@ -2,6 +2,10 @@
   <%= t ".title" %>
 <% end %>
 
+<%= content_for :head do %>
+  <%= javascript_include_tag '_datatables-bundle' %>
+<% end %>
+
 <div class="window box-transparent large-spacing">
   <div class="row">
     <% Department.where(:area_id => 1).each do |department| %>
@@ -37,7 +41,7 @@
           :class => "chosen input-sm", :multiple => true, :style => "display: inline; width: 16em") %></p>
 
         <p><%= raw t ".sentence_keywords", :input => (f.input_field :keywords,
-          :class => "input-sm", :style => "display: inline; width: 16em") %></p>
+          :class => "input-sm", :style => "display: inline; width: 16em", :placeholder => t('general.search_term')) %></p>
       <% end %>
 
     </div>
@@ -67,7 +71,7 @@
       <tr>
         <th class="image no-sort"></th>
         <th class="name" data-class="expand"><%= TrainingGroup.human_attribute_name(:name) %></th>
-        <th class="training_unit" data-hide="xxs,xs"><%= TrainingGroup.human_attribute_name(:training_units) %></th>
+        <th class="training_unit no-sort" data-hide="xxs,xs"><%= TrainingGroup.human_attribute_name(:training_units) %></th>
         <th class="age" data-hide="xxs,xs"><%= TrainingGroup.human_attribute_name(:age) %></th>
         <th class="department" data-hide="sm,xs,xxs"><%= TrainingGroup.human_attribute_name(:department) %></th>
         <%# if can? :update, TrainingGroup %>
