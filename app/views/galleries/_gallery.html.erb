@@ -16,7 +16,7 @@
           <%# http://stackoverflow.com/questions/5342270/rails-3-get-random-record %>
         <% else %>
           <%#= image_tag(fallback_url(:preview), :class => "img-responsive") %>
-          <%= image_tag(Image::GalleryImage.new.send(:preview).default_url, :class => "img-responsive") %>
+          <%= image_tag(Image::GalleryImage.new.file.send(:preview).default_url, :class => "img-responsive") %>
         <% end %>
       </div>
     <% end %>
