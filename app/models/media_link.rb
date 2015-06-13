@@ -36,7 +36,7 @@ class MediaLink < ActiveRecord::Base
     else
       # http://stackoverflow.com/questions/5316290/get-model-class-from-symbol
       klass = controller_id.classify.constantize
-      if instance_id.present?
+      if instance_id.present? && instance_id != 0
         instance = klass.find(instance_id)
 
         if ["show"].include? action_id
