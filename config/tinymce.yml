@@ -58,7 +58,7 @@ default:
   menubar: open edit insert view format table# tools
 
   #toolbar: undo redo | styleselect forecolor backcolor | bold italic | alignleft aligncenter alignright alignjustify |  bullist numlist outdent indent | link image template table hr | code fullscreen 
-  toolbar: undo redo | styleselect removeformat forecolor backcolor | bold italic | alignleft aligncenter alignright alignjustify |  bullist numlist outdent indent | link anchor image template table hr | code fullscreen preview
+  toolbar: undo redo | styleselect removeformat forecolor backcolor | sizeselect bold italic fontselect fontsizeselect | alignleft aligncenter alignright alignjustify |  bullist numlist outdent indent | link anchor image template table hr | code fullscreen preview
   convert_urls: false
   # relative_urls: false
 

@@ -1,9 +1,6 @@
 <%= render :partial => 'shared/elfinder_loader', :locals => { :path => "" } %>
 <%= tinymce %>
 <%= render :partial => 'jquery_popup_uploader/utilities' %>
-<% content_for(:head) do %>
-  <%= javascript_include_tag "administration-bundle", "data-turbolinks-track" => true %>
-<% end %>
 
 <div class="window box">
   <%= simple_form_for(shallow_args(@department, @message), :defaults => { :input_html => { :class => 'input-xlarge' } }) do |f| %>

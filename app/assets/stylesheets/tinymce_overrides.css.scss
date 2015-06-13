@@ -1,7 +1,7 @@
 body { // needed to override default values
 
   div.mce-fullscreen {
-    margin-top: 60px;
+    margin-top: 40px;
     margin-left: auto;
     margin-right: auto;
     left: 0; right: 0;
@@ -31,6 +31,12 @@ body { // needed to override default values
   .mce-listbox span {
     margin-right: 10px;
   }
+  
+  /*.mce-menubar.mce-container.mce-toolbar, 
+  .mce-toolbar-grp.mce-container.mce-panel{
+    max-width: 928px !important;
+    margin: auto;
+  }*/
 }
 
 /*.defaultSkin span.mceIcon, .defaultSkin img.mceIcon {display:block; width:20px; height:20px}

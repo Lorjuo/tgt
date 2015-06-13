@@ -3,9 +3,6 @@
 <div class="window box">
   <%= render :partial => 'shared/elfinder_loader', :locals => { :path => "/departments/#{@training_group.department.id}" } %>
   <%= tinymce %>
-  <% content_for(:head) do %>
-    <%= javascript_include_tag "administration-bundle", "data-turbolinks-track" => true %>
-  <% end %>
   <%= simple_form_for(shallow_args(@department, @training_group)) do |f| %>
     <%= f.error_notification %>
 

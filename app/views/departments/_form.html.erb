@@ -3,9 +3,6 @@
 <div class="window box">
   <%= render :partial => 'shared/elfinder_loader', :locals => { :path => "/departments/#{@department.id}" } unless @department.new_record? %>
   <%= tinymce %>
-  <% content_for(:head) do %>
-    <%= javascript_include_tag "administration-bundle", "data-turbolinks-track" => true %>
-  <% end %>
   <%= simple_form_for(@department, :defaults => { :input_html => { :class => 'input-xlarge' } }) do |f| %>
     <%= f.error_notification %>
 

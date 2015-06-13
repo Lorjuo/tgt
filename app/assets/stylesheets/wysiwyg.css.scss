@@ -7,3 +7,15 @@ body {
 table td, table th {
   min-width: 3em;
 }
+.mce-content-body {
+  max-width: 928px;
+  margin: auto;
+  border: 1px solid #CCC;
+  display: block;
+  box-shadow: 2px 2px 3px 0px #333;
+}
+/*html{
+  background-image: image-url("background.jpg");
+  background-size: auto auto;
+  background-attachment: fixed;
+}*/
