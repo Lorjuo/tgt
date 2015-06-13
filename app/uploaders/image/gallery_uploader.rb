@@ -20,6 +20,10 @@ class Image::GalleryUploader < ImageUploader
     process resize_to_fill: [300, 200]
   end
 
+  version :miniature do
+    process resize_to_fill: [168, 112]
+  end
+
   version :thumb do
     process resize_to_fill: [60, 40]
   end

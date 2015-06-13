@@ -80,6 +80,7 @@ de:
     address: Adresse
     age: Alter
     attachable: Angehängt an
+    area: Bereich
     banner: Banner
     caption: Beschriftung
     class: Klasse
@@ -111,7 +112,7 @@ de:
     roles: Rollen
     share: teilen
     size: Größe
-    theme: Stil
+    theme: Layout
     thumbnail: Vorschaubild
     thumbnails: Vorschaubilder
     time: Uhrzeit
@@ -154,8 +155,8 @@ de:
         one: Quick-Link
         other: Quick-Link
       theme:
-        one: Stil
-        other: Stile
+        one: Layout
+        other: Layouts
       trainer:
         one: Trainer
         other: Trainer
@@ -329,9 +330,9 @@ de:
 
   themes:
     index:
-      title: Stilübersicht
+      title: Layout Übersicht
     show:
-      title: 'Stil "%{name}"'
+      title: 'Layout "%{name}"'
 
   trainers:
     index:

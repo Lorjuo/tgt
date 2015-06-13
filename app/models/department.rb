@@ -63,22 +63,39 @@ class Department < ActiveRecord::Base
     create_directory_structure
 
     # self.name does not work with tests
-    # create_navigation_structure unless name == 'generic' 
+    create_navigation_structure unless name == 'generic' 
   end
 
-  # def create_navigation_structure
-  #   # see navigation_elements_controller
-  #   # and http://rubydoc.info/gems/acts_as_tree/1.5.0/frames
-  #   NavigationElement.create(:name => name, :parent_id => nil, :controller_id => 'departments', :action_id => 'show', :instance_id => id, :department_id => 1)
+  def create_navigation_structure
+    # see navigation_elements_controller
+    # and http://rubydoc.info/gems/acts_as_tree/1.5.0/frames
+    # 
+    # NavigationElement.create(:name => name, :parent_id => nil, :controller_id => 'departments', :action_id => 'show', :instance_id => id, :department_id => 1)
 
-  #   #navigation_elements.new(:name, :parent_id, :controller_id, :action_id, :instance_id, :department_id)
-  #   navigation_elements.create(:name => "Fotos", :parent_id => nil, :controller_id => 'departments', :action_id => 'galleries', :instance_id => id)
-  #   navigation_elements.create(:name => "Trainingsgruppen", :parent_id => nil, :controller_id => 'departments', :action_id => 'training_groups', :instance_id => id)
-  #   navigation_elements.create(:name => "Trainer", :parent_id => nil, :controller_id => 'departments', :action_id => 'trainers', :instance_id => id)
-  #   navigation_elements.create(:name => "News", :parent_id => nil, :controller_id => 'departments', :action_id => 'messages', :instance_id => id)
-  #   # navigation_elements.create(:name => "Document", :parent_id => nil, :controller_id => 'departments', :action_id => 'documents', :instance_id => id)
-  #   # TODO: Events
-  # end
+    # #navigation_elements.new(:name, :parent_id, :controller_id, :action_id, :instance_id, :department_id)
+    # navigation_elements.create(:name => "Fotos", :parent_id => nil, :controller_id => 'departments', :action_id => 'galleries', :instance_id => id)
+    # navigation_elements.create(:name => "Trainingsgruppen", :parent_id => nil, :controller_id => 'departments', :action_id => 'training_groups', :instance_id => id)
+    # navigation_elements.create(:name => "Trainer", :parent_id => nil, :controller_id => 'departments', :action_id => 'trainers', :instance_id => id)
+    # navigation_elements.create(:name => "News", :parent_id => nil, :controller_id => 'departments', :action_id => 'messages', :instance_id => id)
+    # navigation_elements.create(:name => "Dokumente", :parent_id => nil, :controller_id => 'departments', :action_id => 'documents', :instance_id => id)
+    # TODO: Events
+    
+    #MediaLink.create(:controller_id => 'departments', :instance_id => id, :action_id => 'show').create_link(:department_id => 1, :name => name, :parent_id => nil).save!
+
+    MediaLink.create(:controller_id => 'departments', :instance_id => id, :action_id => 'messages').create_link(:department_id => id, :name => 'Aktuelles', :parent_id => nil).save!
+    MediaLink.create(:controller_id => 'departments', :instance_id => id, :action_id => 'training_groups').create_link(:department_id => id, :name => 'Trainingsgruppen', :parent_id => nil).save!
+    MediaLink.create(:controller_id => 'departments', :instance_id => id, :action_id => 'trainers').create_link(:department_id => id, :name => 'Trainer', :parent_id => nil).save!
+    MediaLink.create(:controller_id => 'departments', :instance_id => id, :action_id => 'galleries').create_link(:department_id => id, :name => 'Fotos', :parent_id => nil).save!
+    MediaLink.create(:controller_id => 'departments', :instance_id => id, :action_id => 'documents').create_link(:department_id => id, :name => 'Dokumente', :parent_id => nil).save!
+  end
+
+# controller_id :string(255)
+# #  instance_id   :integer
+# #  action_id     :string(255)
+#     delegate :department, :to => :link
+#     delegate :name, :to => :link
+#     delegate :parent, :to => :link
+#     delegate :active, :to => :link
 
   # Department.all.each{|dep| dep.create_directory_structure}
   def create_directory_structure

@@ -95,4 +95,12 @@ namespace :tgt do
       entity.create_directory_structure
     end
   end
+
+  desc "Recreates navigation structure for all departments"
+  # rake tgt:create_navigation_structure RAILS_ENV=production 
+  task :create_navigation_structure => :environment do
+    Department.all.each do |entity|
+      entity.create_navigation_structure unless entity.name == 'generic' 
+    end
+  end
 end

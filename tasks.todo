@@ -44,6 +44,10 @@
  ✔ fix hover effect on banner @done (15-06-11 16:42)
  ✔ check banner dimensions @done (15-06-11 16:42)
 
+ ☐ generate default navigation
+ ☐ create directory structure
+ ☐ two column "page"
+
 Image:
  ✔ Endless scroll on mobile devices does not work @done (14-10-27 11:56)
  ✔ Swipe on mobile devices @done (14-10-27 11:55)

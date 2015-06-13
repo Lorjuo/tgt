@@ -15,10 +15,10 @@
     <div class="sponsor-headline">unterstützt durch:</div>
     <div class="sponsor-images row">
       <%= link_to 'http://www.sparkasse-darmstadt.de', class: "col-xs-6" do %>
-        <%= image_tag "sponsors/sparkasse.svg", :class => "img-responsive" %>
+        <%= image_tag "sponsors/sparkasse.svg", :class => "img-responsive", :size => '447x186'%>
       <% end %>
       <%= link_to 'http://www.merck.de', class: "col-xs-6" do %>
-        <%= image_tag "sponsors/merck.svg", :class => "img-responsive" %>
+        <%= image_tag "sponsors/merck.svg", :class => "img-responsive", :size => '530x374' %>
       <% end %>
     </div>
   </div>
@@ -39,7 +39,7 @@
               <div class="mediaWrapper">
                 <%#= link_to(image.file_url, :class => 'fancybox', :rel => 'galleries', :caption => gallery.name) do %>
                 <%= link_to gallery, :title => gallery.name, :data => {:toggle => "tooltip"}, :style => "display: block" do %>
-                  <%= image_tag image.file_url(:preview), :class => "img-responsive" %>
+                  <%= image_tag image.file_url(:miniature), :size => '168x112', :class => "img-responsive" %>
                 <% end %>
               </div>
             </div>

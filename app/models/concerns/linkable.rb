@@ -10,7 +10,7 @@ module Linkable
 
     # Fix for touch invocation chain
     after_save do
-      self.link.touch
+      self.link.touch if self.link.present?
     end
   end
 end
