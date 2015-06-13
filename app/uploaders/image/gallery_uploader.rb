@@ -13,7 +13,7 @@ class Image::GalleryUploader < ImageUploader
     # demodulize: strip namespace
   end
 
-  process resize_to_fit: [800, 600]
+  process resize_to_fit: [1200, 900]
   process :store_dimensions
 
   version :preview do
