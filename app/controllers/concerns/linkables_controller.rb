@@ -6,7 +6,7 @@ module LinkablesController
     before_action :load_linkable, only: [:show, :edit, :update, :destroy] #, except: [:index, :new, :create] 
     before_action :load_department
 
-    layout "two_columns"
+  layout :resolve_layout
     
     load_and_authorize_resource # param_method: :resource_params
     skip_authorize_resource :only => :new
@@ -76,5 +76,9 @@ module LinkablesController
       else
         @department = @linkable.link.department
       end
+    end
+
+    def resolve_layout
+      'two_columns'
     end
 end

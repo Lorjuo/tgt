@@ -223,6 +223,9 @@ de:
         title: Überschrift
         content: Text
 
+      pages:
+        sidebar: Sidebar anzeigen?
+
       trainer:
         birthday: Geburstag
         residence: Wohnort

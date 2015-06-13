@@ -9,6 +9,7 @@
       <%= f.fields_for :link, @linkable.link do |ff| %>
         <%= render :partial => 'links/linkable_fields', :object => @linkable, :as => "linkable", :locals => { :f => ff } %>
       <% end %>
+      <%= f.input :sidebar  %>
       <%= f.input :content, as: :text, input_html: { class: 'tinymce' }  %>
 
       <fieldset>

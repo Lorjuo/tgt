@@ -56,7 +56,7 @@ class Department < ActiveRecord::Base
   friendly_id :name, use: :slugged
 
   #after_initialize :init
-  after_create :init
+  #after_create :init
   after_destroy :clean_up
 
   def init

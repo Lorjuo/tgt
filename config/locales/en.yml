@@ -222,6 +222,9 @@ en:
         title: Headline
         content: Text
 
+      pages:
+        sidebar: Display sidebar?
+
       trainer:
         birthday: Birthday
         residence: Residence
