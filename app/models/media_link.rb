@@ -31,12 +31,12 @@ class MediaLink < ActiveRecord::Base
      # TODO bug with controllers without models e.g. StaticPages
     if controller_id.blank?
       "#"
-    elsif instance_id.nil?
+    elsif instance_id.nil? || instance_id == 0
       url_for :controller => controller_id, :action => action_id, :only_path => true
     else
       # http://stackoverflow.com/questions/5316290/get-model-class-from-symbol
       klass = controller_id.classify.constantize
-      if instance_id.present? && instance_id != 0
+      if instance_id.present?
         instance = klass.find(instance_id)
 
         if ["show"].include? action_id
