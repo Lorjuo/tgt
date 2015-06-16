@@ -33,7 +33,7 @@
  ✔ Check trainer images @done (15-06-07 12:00)
  ✔ Refactor themes @done (15-06-11 16:48)
  ☐ Adapt theme for department navigation
- ☐ Check if resize before upload
+ ✔ Check if resize before upload @done (15-06-13 18:25)
  ✔ Message excerpt only caching when user is not logged in - otherwise flag will be cached or not -> solved with cache_only and user_signed_in?,  @done (15-06-11 08:52)
  ✔ Method for recreating slugs @done (15-06-11 09:07)
  ✔ Restrict preview cycle to home page @done (15-06-07 12:01)
@@ -44,9 +44,10 @@
  ✔ fix hover effect on banner @done (15-06-11 16:42)
  ✔ check banner dimensions @done (15-06-11 16:42)
 
- ☐ generate default navigation
- ☐ create directory structure
- ☐ two column "page"
+ ✔ generate default navigation @done (15-06-13 18:25)
+ ✔ create directory structure @done (15-06-13 18:25)
+ ✔ two column "page" @done (15-06-13 18:25)
+ ☐ pages -> add extra column for additional css / js
 
 Image:
  ✔ Endless scroll on mobile devices does not work @done (14-10-27 11:56)
