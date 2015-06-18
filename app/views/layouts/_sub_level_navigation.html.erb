@@ -1,11 +1,11 @@
 <%#= cache link do %>
-  <%= content_tag :li, :class => "dropdown-submenu" do %>
+  <%= content_tag :li, :class => ((link.leaf?) ? '' : "dropdown dropdown-submenu") do %>
     <%#= link_to link.url do %>
     <%= link_to link.url,
-      :class => "dropdown-toggle",
+      :class => ((link.leaf?) ? '' : "dropdown-toggle"),
       :data => (link.leaf?) ? {} : {:toggle => "dropdown"} do %>
       <%= link.name %>
-      <%= tag :span, :class => "caret" unless link.leaf? %>
+      <%#= tag :span, :class => "caret" unless link.leaf? %>
     <% end %>
     <% children = link.children.active %>
     <% if children.present? %>

@@ -1,3 +1,16 @@
+/* BOOTSTRAP NAVIGATION BAR */
+
+$(function() {
+  return $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    $(this).parent().siblings().removeClass('open');
+    return $(this).parent().toggleClass('open');
+  });
+});
+
+/* CUSTOM NAVIGATION BAR */
+
 /* http://andylangton.co.uk/blog/development/get-viewport-size-width-and-height-javascript */
 function viewport() {
   var e = window, a = 'inner';
