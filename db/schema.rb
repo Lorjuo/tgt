@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150613125314) do
+ActiveRecord::Schema.define(version: 20150618123057) do
 
   create_table "announcements", force: true do |t|
     t.string   "name"
@@ -232,7 +232,10 @@ ActiveRecord::Schema.define(version: 20150613125314) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "sidebar",    default: false
+    t.string   "slug"
   end
+
+  add_index "pages", ["slug"], name: "index_pages_on_slug", unique: true, using: :btree
 
   create_table "placeholders", force: true do |t|
     t.datetime "created_at"

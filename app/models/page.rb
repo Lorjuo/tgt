@@ -9,8 +9,11 @@
 #
 
 class Page < ActiveRecord::Base
+  extend FriendlyId
   include Rails.application.routes.url_helpers
   include Linkable
+
+  friendly_id :name, use: :slugged
 
   # Associations
   has_one :link, :as => :linkable, :dependent => :destroy
