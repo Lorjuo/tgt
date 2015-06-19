@@ -1,0 +1,13 @@
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">-->
+<meta id="myViewport" name="viewport" content="width=device-width, initial-scale=1">
+<!--<meta id="myViewport" name="viewport" content="width=1024">-->
+<% unless mobile_device? %>
+  <script>
+    window.onload = function () {
+        if(screen.width <= 1024) {
+            var mvp = document.getElementById('myViewport');
+            mvp.setAttribute('content','width=1024');
+        }
+    }
+  </script>
+<% end %>
