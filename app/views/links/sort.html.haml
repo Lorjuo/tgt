@@ -5,18 +5,22 @@
       /   = link_to new_department_link_path(@department), :class => 'btn btn-primary' do
       /     %span.glyphicon.glyphicon-plus
       /     New Link
-      = link_to department_links_path(@department), :class => 'btn btn-primary' do
+      = link_to department_links_path(@department), :class => 'btn btn-primary btn-sm' do
         %span.glyphicon.glyphicon-th-list
         Index
+      
       = link_to new_department_extern_link_path(@department), :class => 'btn btn-default btn-sm' do
         %i.fa.fa-external-link
         = I18n.t('general.create_model', :model => ExternLink.model_name.human )
+
       = link_to new_department_media_link_path(@department), :class => 'btn btn-default btn-sm' do
         %i.fa.fa-asterisk
         = I18n.t('general.create_model', :model => MediaLink.model_name.human )
+
       = link_to new_department_page_path(@department), :class => 'btn btn-default btn-sm' do
         %i.fa.fa-file-text-o
         = I18n.t('general.create_model', :model => Page.model_name.human )
+
       = link_to new_department_placeholder_path(@department), :class => 'btn btn-default btn-sm' do
         %i.fa.fa-folder-o
         = I18n.t('general.create_model', :model => Placeholder.model_name.human )
