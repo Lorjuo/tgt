@@ -37,5 +37,11 @@
         "title": "MediaBox (volle breite)",
         "description": "Box für Medien und Zusatzinformationen",
         "url": "/static_pages/media_box?size=full"
+    },
+
+    {
+        "title": "RowElement",
+        "description": "Element um mehrere MediaBoxen nebeneinander anzuordnen",
+        "url": "/static_pages/row"
     }
 ]

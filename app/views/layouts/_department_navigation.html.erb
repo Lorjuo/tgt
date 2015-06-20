@@ -24,10 +24,10 @@
             <%= fa_icon "key" %>
             Verwaltung<% end %><%# Prevent whitespaces here %>
           <ul>
-            <li><%= link_to t("general.navigation"), department_links_path(@department) %>
-              <ul>
+            <li><%= link_to t("general.navigation"), sort_department_links_path(@department) %>
+              <!--<ul>
                 <li><%= link_to "Anordnung", sort_department_links_path(@department) %>
-              </ul>
+              </ul>-->
             </li>
             <li><%= link_to Trainer.model_name.human(:count => :lots), trainers_path %>
             <li><%= link_to TrainingGroup.model_name.human(:count => :lots), department_training_groups_path(@department)  %>

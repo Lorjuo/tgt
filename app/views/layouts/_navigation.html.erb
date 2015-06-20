@@ -52,7 +52,7 @@
               <%= content_tag :li do %>
                 <%# link_to Link.model_name.human(:count => :lots) %>
                 <%# link_to t("general.navigation") %>
-                <%= link_to t("general.navigation"), department_links_path(generic_department) %>
+                <%= link_to t("general.navigation"), sort_department_links_path(generic_department) %>
                 <%# if current_user.can?(:edit, Link) #:links %>
               <% end if current_user.can?(:edit, generic_department) %>
               <%= content_tag :li do %>

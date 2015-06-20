@@ -20,9 +20,12 @@ class StaticPagesController < ApplicationController
   def download_button
   end
 
+  def row
+  end
+
   def resolve_layout
     case action_name
-    when "media_box", 'download_button'
+    when "media_box", 'download_button', 'row'
       false #'minimal'
     else
       "two_columns"

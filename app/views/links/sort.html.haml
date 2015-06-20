@@ -8,9 +8,22 @@
       = link_to department_links_path(@department), :class => 'btn btn-primary' do
         %span.glyphicon.glyphicon-th-list
         Index
+      = link_to new_department_extern_link_path(@department), :class => 'btn btn-default btn-sm' do
+        %i.fa.fa-external-link
+        = I18n.t('general.create_model', :model => ExternLink.model_name.human )
+      = link_to new_department_media_link_path(@department), :class => 'btn btn-default btn-sm' do
+        %i.fa.fa-asterisk
+        = I18n.t('general.create_model', :model => MediaLink.model_name.human )
+      = link_to new_department_page_path(@department), :class => 'btn btn-default btn-sm' do
+        %i.fa.fa-file-text-o
+        = I18n.t('general.create_model', :model => Page.model_name.human )
+      = link_to new_department_placeholder_path(@department), :class => 'btn btn-default btn-sm' do
+        %i.fa.fa-folder-o
+        = I18n.t('general.create_model', :model => Placeholder.model_name.human )
     %h1 Manage Links
 
 %div.window.box
   %ol.sortable_tree{ data: { max_levels: 5, rebuild_url: rebuild_links_url } }
     / = sortable_tree @links
-    = build_server_tree @links, :title => :name, :type => :sortable
+    / = build_server_tree @links, :title => :name, :type => :sortable
+    = build_server_tree @links, :title => :get_label, :type => :sortable, :classes => :get_tree_classes

@@ -7,6 +7,13 @@ $(function() {
     $(this).parent().siblings().removeClass('open');
     return $(this).parent().toggleClass('open');
   });
+  /*.on('mouseover', function(event) {
+    //event.preventDefault();
+    //event.stopPropagation();
+    //$(this).parent().siblings().removeClass('open');
+    //return $(this).parent().addClass('open');
+    
+  });*/
 });
 
 /* CUSTOM NAVIGATION BAR */

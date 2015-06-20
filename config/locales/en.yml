@@ -8,6 +8,8 @@ en:
 
   general:
     actions: Actions
+    active: active
+    inactive: inactive
     add_files: Add Files...
     always: always
     ancient: Ancient
@@ -183,8 +185,8 @@ en:
         one: page
         other: pages
       placeholder:
-        one: Dummy
-        other: Dummy
+        one: Folder
+        other: Folders
 
     attributes:
       announcement:
@@ -394,7 +396,7 @@ en:
         title: '%{name}'
     placeholders:
       show:
-        title: 'Dummy link "%{name}"'
+        title: 'Folder "%{name}"'
 
   layouts:
 

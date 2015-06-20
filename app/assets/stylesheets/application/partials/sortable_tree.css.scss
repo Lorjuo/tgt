@@ -1,0 +1,54 @@
+ol.sortable_tree.ui-sortable {
+  li {
+    /*&.active {
+
+    }*/
+    &.inactive {
+      text-decoration: line-through;
+    }
+    > div.item i.handle.ui-sortable-handle {
+      margin-right: 20px;
+    }
+    &.MediaLink > div.item {
+      /* http://stackoverflow.com/a/20782415/871495 */
+      /* fa fa-asterisk */
+      h4 a:before {
+        font-family: FontAwesome;
+        content: "\f069";
+        margin-right: 5px;
+      }
+    }
+    &.ExternLink > div.item {
+      /* fa-external-link */
+      h4 a:before {
+        font-family: FontAwesome;
+        content: "\f08e ";
+        margin-right: 5px;
+      }
+    }
+    &.Placeholder > div.item {
+      /* fa fa-folder-o */
+      h4 a:before {
+        font-family: FontAwesome;
+        content: "\f114";
+        margin-right: 5px;
+      }
+    }
+    &.Page > div.item {
+      /* fa-file-text-o */
+      h4 a:before {
+        font-family: FontAwesome;
+        content: "\f08e ";
+        margin-right: 5px;
+      }
+    }
+
+      /*@extend .btn;
+      @extend .btn-primary;
+      display: block;
+      margin: 10px 0px;*/
+      /*h4 a {
+        color: red;
+      }*/
+  }
+}

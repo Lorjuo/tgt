@@ -73,4 +73,13 @@ class Link < ActiveRecord::Base # Parent Class for polymorphic association
     end
   end
 
+  def get_label
+    active_label = active ? "" : "("+I18n.t('general.inactive')+")"
+    "#{name} #{active_label}"
+  end
+
+  def get_tree_classes
+    linkable_type + " " + (active ? "active" : "inactive")
+  end
+
 end

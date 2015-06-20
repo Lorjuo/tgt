@@ -82,3 +82,4 @@ Later / Optional:
  ☐ Maybe add image priority argument - ATM all images are ordered by id to enable asynchronous uploads
  ☐ Append references to events
  ☐ Add keywords to training groups
+ ☐ Move layout from link to page

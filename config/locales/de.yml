@@ -8,6 +8,8 @@ de:
 
   general:
     actions: Aktionen
+    active: aktiv
+    inactive: inaktiv
     add_files: Dateien hinzufügen...
     always: immer
     are_you_sure: Sind Sie sich sicher?
@@ -184,8 +186,8 @@ de:
         one: Seite
         other: Seiten
       placeholder:
-        one: Dummy
-        other: Dummy
+        one: Verzeichnis
+        other: Verzeichnisse
 
     attributes:
       announcement:
@@ -395,7 +397,7 @@ de:
         title: '%{name}'
     placeholders:
       show:
-        title: 'Dummy Link "%{name}"'
+        title: 'Verzeichnis "%{name}"'
 
   layouts:
 

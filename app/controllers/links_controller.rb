@@ -28,7 +28,7 @@ class LinksController < ApplicationController
 
 
   def sort
-    @links = @department.links.nested_set.select('id, name, parent_id').load
+    @links = @department.links.nested_set.select('id, name, parent_id, active, linkable_type').load
   end
 
 
