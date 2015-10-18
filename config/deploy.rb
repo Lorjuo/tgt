@@ -15,7 +15,7 @@ set :domain, 'VPS'
 set :deploy_to, '/var/www/tgt'
 #set :app_path, lambda { "#{deploy_to}/#{current_path}" }
 set :repository, 'git@github.com:Lorjuo/tgt.git'
-set :branch, 'master'
+set :branch, 'develop'
 set :forward_agent, true
 set :rbenv_path, "/usr/local/rbenv"
 #
