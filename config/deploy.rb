@@ -3,6 +3,7 @@ require 'mina/rails'
 require 'mina/git'
 require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
 # require 'mina/rvm'    # for rvm support. (http://rvm.io)
+require 'mina/puma'
 
 # Basic settings:
 #   domain       - The hostname to SSH to.
@@ -27,7 +28,7 @@ set :term_mode, nil
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
-set :shared_paths, ['config/database.yml', 'config/secrets.yml', 'log']
+set :shared_paths, ['config/database.yml', 'config/secrets.yml', 'log', 'tmp/pids', 'tmp/sockets']
 
 #set :bundle_bin, %{PATH="#{deploy_to}/bin:$PATH" GEM_HOME="#{deploy_to}/gems" RUBYLIB="#{deploy_to}/lib" RAILS_ENV=#{env} #{deploy_to}/bin/bundle}
 
@@ -43,7 +44,6 @@ task :environment do
   # If you're using rbenv, use this to load the rbenv environment.
   # Be sure to commit your .ruby-version or .rbenv-version to your repository.
   invoke :'rbenv:load'
-  queue echo_cmd %{echo $PATH}
 
   # For those using RVM, use this to load an RVM version@gemset.
   # invoke :'rvm:use[ruby-1.9.3-p125@default]'
@@ -62,6 +62,13 @@ task :setup => :environment do
   queue! %[touch "#{deploy_to}/#{shared_path}/config/database.yml"]
   queue! %[touch "#{deploy_to}/#{shared_path}/config/secrets.yml"]
   queue  %[echo "-----> Be sure to edit '#{deploy_to}/#{shared_path}/config/database.yml' and 'secrets.yml'."]
+
+  # Puma needs a place to store its pid file and socket file.
+  queue! %(mkdir -p "#{deploy_to}/#{shared_path}/tmp/sockets")
+  queue! %(chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/tmp/sockets")
+  queue! %(mkdir -p "#{deploy_to}/#{shared_path}/tmp/pids")
+  queue! %(chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/tmp/pids")
+
 
   # queue %[
   #   repo_host=`echo $repo | sed -e 's/.*@//g' -e 's/:.*//g'` &&
@@ -114,28 +121,8 @@ task :deploy => :environment do
     to :launch do
       #queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
       #queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
-      invoke :'puma:restart'
+      invoke :'puma:phased_restart'
     end
-  end
-end
-
-namespace :puma do
-  desc "Start the application"
-  task :start do
-    queue 'echo "-----> Start Puma"'
-    queue "cd #{app_path} && RAILS_ENV=#{stage} && bin/puma.sh start", :pty => false
-  end
-
-  desc "Stop the application"
-  task :stop do
-    queue 'echo "-----> Stop Puma"'
-    queue "cd #{app_path} && RAILS_ENV=#{stage} && bin/puma.sh stop"
-  end
-
-  desc "Restart the application"
-  task :restart do
-    queue 'echo "-----> Restart Puma"'
-    queue "cd #{app_path} && RAILS_ENV=#{stage} && bin/puma.sh restart"
   end
 end
 
