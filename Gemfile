@@ -262,6 +262,8 @@ group :development do
   #gem 'sass-rails-source-maps'
 end
 
+gem 'puma'
+
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
