@@ -12,7 +12,8 @@ require 'mina/puma'
 #   branch       - Branch name to deploy. (needed by mina/git)
 
 set :user, 'deploy'
-set :domain, 'VPS'
+#set :domain, 'VPS'
+set :domain, '213.165.84.244'
 set :deploy_to, '/var/www/tgt'
 #set :app_path, lambda { "#{deploy_to}/#{current_path}" }
 set :repository, 'git@github.com:Lorjuo/tgt.git'

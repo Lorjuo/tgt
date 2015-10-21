@@ -50,6 +50,11 @@
   margin-bottom: 40px;
 }
 
+.no-wrap {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 
 #alert-placeholder {
   position: fixed;

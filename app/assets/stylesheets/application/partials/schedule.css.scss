@@ -55,6 +55,23 @@ table.schedule.false {
   }
 }
 
+.OverflowContainer {
+  overflow: auto;
+}
+
+/* http://stackoverflow.com/questions/18997724/how-to-change-scroll-bar-position-with-css */
+/* http://stackoverflow.com/questions/3934271/horizontal-scrollbar-on-top-and-bottom-of-table */
+.OverflowContainer.Flipped, .OverflowContainer.Flipped .Content
+{
+    transform:rotateX(180deg);
+    -ms-transform:rotateX(180deg); /* IE 9 */
+    -webkit-transform:rotateX(180deg); /* Safari and Chrome */
+}
+
+/* http://stackoverflow.com/questions/2274627/how-can-i-get-horizontal-scrollbars-at-top-and-bottom-of-a-div */
+.doubleScroll { overflow: auto; overflow-y: hidden; }
+.doubleScroll .Content { margin: 0; padding: 1em; white-space: nowrap; }
+
 table.schedule {
   thead tr th.first_column {
     border-left-width: 2px;
@@ -83,11 +100,12 @@ table.schedule {
             padding: 2px 4px 2px 4px;
             /*border-radius: 2px !important;*/
             color: black;
-            display: block;
+            display: inline-block;
             border: 1px solid #A3D38D;
             /*background-color: #DFF0D8 !important;*/
             height: 100%;
             min-height: 100%;
+            width: 100%;
             vertical-align: middle !important;
 
             border-width: 1px 1px 1px 3px;
