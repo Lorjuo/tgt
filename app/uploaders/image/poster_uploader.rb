@@ -11,8 +11,8 @@ class Image::PosterUploader < ImageUploader
     #process resize_to_fit: [64, 64]
     process resize_to_fill: [64, 48]
   end
-  version :_300x300 do
-    process resize_to_fit: [300, 300, 'North']
+  version :_420x420 do
+    process resize_to_fit: [420, 420, 'North']
   end
   
 end

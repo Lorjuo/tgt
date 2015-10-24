@@ -264,9 +264,9 @@ end
 
 gem 'puma'
 
-group :production do
-
   gem 'sprockets-webp'
+
+group :production do
 
 end
 

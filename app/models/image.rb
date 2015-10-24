@@ -22,6 +22,9 @@
 
 class Image < Asset
 
+  #after_save :create_webp_versions
+  after_commit :create_webp_versions
+
   # Associations
   belongs_to :attachable, polymorphic: true, touch: true # touch attachment host object to prevent caching problems when images get recreated
   # Maybe rename this association to imageable, if documents and images keep separated or
@@ -61,6 +64,23 @@ class Image < Asset
   # http://stackoverflow.com/a/13261518/871495
   def self.use_relative_model_naming?
     true
+  end
+
+  def create_webp_versions
+    filename = self.file.filename
+    dirname = self.file.store_dir
+    identifier  = File.basename(filename,".*") # file without extension
+
+    debugger
+    files = Dir.glob("#{Rails.root}/public/#{dirname}/*")
+    files.each do |file|
+      File.delete(file) if !file.include? identifier
+    end
+
+    files = Dir.glob("#{Rails.root}/public/#{dirname}/*.{jpg,gif,png}")
+    files.each do |file|
+      `convert #{file} -quality 50 -define webp:lossless=false #{file}.webp`
+    end
   end
 end
 Image.croppable = false

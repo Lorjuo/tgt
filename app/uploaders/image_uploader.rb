@@ -6,6 +6,7 @@ class ImageUploader < BaseUploader
   #http://makandracards.com/makandra/12323-carrierwave-auto-rotate-tagged-jpegs
   process :fix_exif_rotation # this should go before all other "process" steps
   after :store, :unlink_original
+  #after :store, :create_webp_versions
   
   process quality: 80 #https://github.com/petedoyle/imagemagick-quality-tests
 
@@ -74,6 +75,15 @@ class ImageUploader < BaseUploader
     if file && model
       model.width, model.height = `identify -format "%wx%h" #{file.path}`.split(/x/)
     end
+  end
+
+  def create_webp
+    `convert #{file.path} -quality 50 -define webp:lossless=false #{file.path}.webp`
+  end
+
+  def create_webp_versions
+    debugger
+    store_dir
   end
 
 end
