@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150618123057) do
+ActiveRecord::Schema.define(version: 20151023143459) do
 
   create_table "announcements", force: true do |t|
     t.string   "name"
@@ -93,6 +93,18 @@ ActiveRecord::Schema.define(version: 20150618123057) do
     t.boolean  "feature_galleries",       default: true
     t.boolean  "feature_documents",       default: true
     t.boolean  "feature_events",          default: true
+    t.string   "term_game"
+    t.string   "term_games"
+    t.string   "term_training_group",     default: "Gruppe"
+    t.string   "term_training_groups",    default: "Gruppen"
+    t.string   "term_competition",        default: "Veranstaltung"
+    t.string   "term_competitions",       default: "Veranstaltungen"
+    t.string   "term_trainer",            default: "Betreuer"
+    t.string   "term_trainers",           default: "Betreuer"
+    t.string   "term_athlet",             default: "Teilnehmer"
+    t.string   "term_athlets",            default: "Teilnehmer"
+    t.string   "term_training_unit",      default: "Termin"
+    t.string   "term_training_units",     default: "Termine"
   end
 
   add_index "departments", ["slug"], name: "index_departments_on_slug", unique: true, using: :btree
