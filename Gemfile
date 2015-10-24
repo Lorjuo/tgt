@@ -264,6 +264,12 @@ end
 
 gem 'puma'
 
+group :production do
+
+  gem 'sprockets-webp'
+
+end
+
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'debugger'
 
 # Pick the frameworks you want:
 # http://blog.crowdint.com/2013/06/14/testing-rails-with-minitest.html
@@ -60,6 +61,8 @@ module TgtRefurbished
       g.test_framework :mini_test, :spec => true, :fixture => false
       g.fixture_replacement :factory_girl, :dir => "test/factories"
     end
+
+    Sprockets::WebP.encode_options = { quality: 50, lossless: 0, method: 6, alpha_filtering: 2, alpha_compression: 1, alpha_quality: 50 }
 
     # Precompilation
     config.assets.precompile += %w(
