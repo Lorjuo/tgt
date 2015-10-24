@@ -9,8 +9,10 @@
 <div class="window box-transparent large-spacing">
   <div class="row">
     <% Department.where(:area_id => 1).each do |department| %>
-      <div class="col-md-3">
-          <%= link_to department.name, department, class: 'window box obtrusive quick-link' %>
+      <div class="col-md-3 col-sm-4">
+          <%= link_to department, class: 'window box obtrusive quick-link' do %>
+            <i class="fa fa-arrow-circle-right"></i> <%= department.name %>
+          <% end %>
       </div>
     <% end %>
   </div>

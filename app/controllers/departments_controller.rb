@@ -1,7 +1,7 @@
 class DepartmentsController < ApplicationController
   include TheSortableTreeController::Rebuild
   
-  #include ImageAssociationsHelper
+  include ImageAssociationsHelper
   
   before_action :set_department, only: [:show, :edit, :update, :destroy, :sort, :training_groups]
 
