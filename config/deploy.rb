@@ -4,6 +4,7 @@ require 'mina/git'
 require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
 # require 'mina/rvm'    # for rvm support. (http://rvm.io)
 require 'mina/puma'
+require 'debugger'
 
 # Basic settings:
 #   domain       - The hostname to SSH to.

@@ -1,7 +1,6 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
-require 'debugger'
 
 # Pick the frameworks you want:
 # http://blog.crowdint.com/2013/06/14/testing-rails-with-minitest.html
