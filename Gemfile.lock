@@ -370,7 +370,6 @@ DEPENDENCIES
   factory_girl_rails
   faker
   fancybox2-rails (~> 0.2)
-  ffi
   font-awesome-rails
   friendly_id
   geocoder
