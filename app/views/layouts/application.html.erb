@@ -31,6 +31,8 @@
   <![endif]-->
 
   <%= stylesheet_link_tag session[:theme], media: "all", "data-turbolinks-track" => true %>
+  <%= jquery_include_tag :google %>
+  <%= jquery_ui_include_tag :google %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "_defer-bundle", "data-turbolinks-track" => true, :defer => "defer" %>
   <% if user_signed_in? %>

@@ -20,7 +20,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails'#, '~> 4.0'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -35,6 +35,10 @@ gem 'jbuilder', '~> 1.2'
 gem 'quiet_assets' # Disable some warnings
 # gem "non-stupid-digest-assets" # Because tinymce and elfinder do not work with assets pipeline:
 # http://stackoverflow.com/questions/17797962/rails-4-selective-asset-digest
+
+# CDN
+gem 'jquery-rails-cdn'
+gem 'jquery-ui-rails-cdn'
 
 # Cells
 gem 'cells'

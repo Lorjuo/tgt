@@ -64,7 +64,10 @@ module TgtRefurbished
     Sprockets::WebP.encode_options = { quality: 50, lossless: 0, method: 6, alpha_filtering: 2, alpha_compression: 1, alpha_quality: 50 }
 
     # Precompilation
+    # #jquery2
     config.assets.precompile += %w(
+      jquery.js
+      jquery-ui.js
       *-bundle.js
       *-bundle.css
       tagesschau.css
