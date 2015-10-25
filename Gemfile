@@ -36,7 +36,7 @@ gem 'quiet_assets' # Disable some warnings
 # gem "non-stupid-digest-assets" # Because tinymce and elfinder do not work with assets pipeline:
 # http://stackoverflow.com/questions/17797962/rails-4-selective-asset-digest
 
-# CDN
+# CDN # Add CDNs for jquery
 gem 'jquery-rails-cdn'
 gem 'jquery-ui-rails-cdn'
 
