@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 #ruby "2.0.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.1'
+gem 'rails', '~> 4.2'
 
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
@@ -20,7 +20,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'#, '~> 4.0'
+gem 'jquery-rails', '~> 4.0'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -133,7 +133,7 @@ gem 'fancybox2-rails', '~> 0.2'
   gem 'chosen-rails'
   # For Rails 4 project, it is required to add compass-rails gem explicitly.
   #gem 'compass-rails', github: 'Compass/compass-rails'
-  gem 'compass-rails', '~> 1.1.7'
+  gem 'compass-rails'#, '~> 1.1.7'
 
   # gem 'chosen-sass-bootstrap-rails'
 
@@ -201,7 +201,7 @@ gem 'tinymce-rails-langs'
 #gem 'ckeditor', github: 'galetahub/ckeditor'
 
 # TEMPORAL QUICKFIX http://stackoverflow.com/questions/22510461/could-not-find-thread-safe-0-3-0-in-any-of-the-sources
-gem 'thread_safe', '0.2.0'
+#gem 'thread_safe', '0.2.0'
 
 group :test do
   gem 'minitest'

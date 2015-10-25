@@ -1,1 +1,1 @@
-#Jquery::Rails::Cdn.major_version = 2
+Jquery::Rails::Cdn.major_version = 2
