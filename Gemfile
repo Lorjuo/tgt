@@ -283,7 +283,7 @@ end
 # Heroku
 #gem 'rails_12factor', group: :production
 # IMPORTANT: This gem serves logging on development server and serves static assets
-gem 'rails_12factor', group: [:production, :staging]
+#gem 'rails_12factor', group: [:production, :staging]
 
 # Resources:
 # 
