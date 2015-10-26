@@ -6,6 +6,5 @@
 //# require dataTables/jquery.dataTables.bootstrap3
 //# require dataTables/jquery.dataTables.responsive
 //= require datatables/datatables_loader
-
 //= require datatables/messages_datatable
 //= require datatables/training_groups_datatable

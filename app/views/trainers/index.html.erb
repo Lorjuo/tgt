@@ -9,8 +9,13 @@
   <% end if can? :create, Trainer %>
 <% end %>
 
+
+<%= content_for :head do %>
+  <%= javascript_include_tag '_datatables-bundle' %>
+<% end %>
+
 <div class="window box">
-  <table class="table table-bordered table-striped datatable defaults secondCol">
+  <table class="table table-bordered table-striped datatable defaults responsive">
     <thead>
       <tr>
         <th class="no-sort"></th>

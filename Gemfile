@@ -39,6 +39,7 @@ gem 'quiet_assets' # Disable some warnings
 # CDN # Add CDNs for jquery
 gem 'jquery-rails-cdn'
 gem 'jquery-ui-rails-cdn'
+#gem 'rails-assets-cdn'
 
 # Cells
 gem 'cells'
@@ -173,7 +174,8 @@ gem 'net-ssh', '~> 2.7.0'
 gem 'truncate_html'
 
 # Table
-gem 'jquery-datatables-rails'#, git: 'git://github.com/rweng/jquery-datatables-rails.git'
+# http://stackoverflow.com/a/32429745/871495
+gem 'jquery-datatables-rails', github: "rweng/jquery-datatables-rails", branch: "master"
 gem 'lodash-rails'
 # Alternative: https://github.com/berk/will_filter/wiki/Customizing-Table-View
 

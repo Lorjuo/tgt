@@ -23,6 +23,17 @@ GIT
       activemodel (~> 4.0)
 
 GIT
+  remote: git://github.com/rweng/jquery-datatables-rails.git
+  revision: 9eee0a1975b5a22e50bdc73fcca7db7f8a12c143
+  branch: master
+  specs:
+    jquery-datatables-rails (3.3.0)
+      actionpack (>= 3.1)
+      jquery-rails
+      railties (>= 3.1)
+      sass-rails
+
+GIT
   remote: git://github.com/tors/jquery-fileupload-rails.git
   revision: 13a13d706293d0bba533dd8bed5ed4daa08ae6f2
   branch: master
@@ -210,9 +221,6 @@ GEM
       multi_json (>= 1.2.0)
     jc-validates_timeliness (3.1.1)
       timeliness (~> 0.3.7)
-    jquery-datatables-rails (2.2.3)
-      jquery-rails
-      sass-rails
     jquery-rails (4.0.5)
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
@@ -297,15 +305,15 @@ GEM
     rmagick (2.13.3)
     rolify (3.4.1)
     sass (3.2.19)
-    sass-rails (4.0.3)
+    sass-rails (4.0.5)
       railties (>= 4.0.0, < 5.0)
-      sass (~> 3.2.0)
-      sprockets (~> 2.8, <= 2.11.0)
+      sass (~> 3.2.2)
+      sprockets (~> 2.8, < 3.0)
       sprockets-rails (~> 2.0)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    sprockets (2.11.0)
+    sprockets (2.12.4)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
@@ -408,7 +416,7 @@ DEPENDENCIES
   holder_rails
   jbuilder (~> 1.2)
   jc-validates_timeliness
-  jquery-datatables-rails
+  jquery-datatables-rails!
   jquery-fileupload-rails!
   jquery-rails (~> 4.0)
   jquery-rails-cdn

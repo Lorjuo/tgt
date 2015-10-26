@@ -1,0 +1,12 @@
+development:
+  host: ubuntudev
+
+production:
+  enabled: true
+  hosts:
+    - static1.tgtraisa.net
+    - static2.tgtraisa.net
+    - static3.tgtraisa.net
+    - static4.tgtraisa.net
+  protocol: browser
+  fallback_protocol: http

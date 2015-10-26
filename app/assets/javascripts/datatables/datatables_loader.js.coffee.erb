@@ -49,6 +49,8 @@ window.datatablesDefaults =
     sUrl: "<%= Rails.application.routes.url_helpers.datatable_i18n_path %>"
   }
 
+  order: [] #disable ordering by default: http://stackoverflow.com/a/25510896/871495
+
 window.datatablesPageable =
   sDom: "<r>t<'row'<'col-md-6'i><'col-md-6'p>>"
   iDisplayLength: 10
@@ -59,23 +61,24 @@ window.datatablesSearchable =
 
 # Callbacks for responsive Layout
 # https://github.com/Comanche/datatables-responsive/blob/master/example/js/dom-bootstrap-multiple-table.js
-preDrawCallback = ->
-  if (!this.responsiveHelper)
-    this.responsiveHelper = new ResponsiveDatatablesHelper(this, breakpointDefinition)
+# preDrawCallback = ->
+#   if (!this.responsiveHelper)
+#     this.responsiveHelper = new ResponsiveDatatablesHelper(this, breakpointDefinition)
 
-rowCallback = (nRow, aData, iDisplayIndex, iDisplayIndexFull) ->
-  this.responsiveHelper.createExpandIcon nRow
+# rowCallback = (nRow, aData, iDisplayIndex, iDisplayIndexFull) ->
+#   this.responsiveHelper.createExpandIcon nRow
 
-drawCallback = (oSettings) ->
-  this.responsiveHelper.respond()
-  init_tooltips() # Notice: Maybe move this to rowcallback
+# drawCallback = (oSettings) ->
+#   this.responsiveHelper.respond()
+#   init_tooltips() # Notice: Maybe move this to rowcallback
 
 
 # Set hash for responsive layout
 window.datatablesResponsive =
-  fnPreDrawCallback: preDrawCallback
-  fnRowCallback: rowCallback
-  fnDrawCallback: drawCallback
+  responsive: true
+  # fnPreDrawCallback: preDrawCallback
+  # fnRowCallback: rowCallback
+  # fnDrawCallback: drawCallback
 
 
 # Create Breakpoint definition depending on bootstrap

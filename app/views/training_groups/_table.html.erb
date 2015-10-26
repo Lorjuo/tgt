@@ -1,11 +1,16 @@
 <!-- <table id="training_groups_data_table"
-  class="dataTable table table-bordered table-striped"
+  class="dataTable table table-bordered table-striped responsive"
   data-source="<%=
     @department.present? ?
       department_training_groups_path(@department, format: "json") :
       training_groups_path(format: "json")
   %>"> -->
-<table class="dataTable table table-bordered table-striped datatable defaults">
+
+<%= content_for :head do %>
+  <%= javascript_include_tag '_datatables-bundle' %>
+<% end %>
+
+<table class="secondCol dataTable table table-bordered table-striped datatable defaults responsive">
   <thead>
     <tr>
       <th class="no-sort"></th>

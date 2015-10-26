@@ -15,7 +15,10 @@
 // require zeroclipboard
 //
 //# EqualHeights # TODO: Maybe remove this
-//= require equal_heights_loader
+//# require equal_heights_loader
+//
+//# Grid # Has to be some of the last scripts to include, because especially chosen can change the page adjustments
+//# require jquery.equalheights
 //
 //# Google Maps # TODO: Maybe remove this
 //#Gmaps4RailsDisabled:
@@ -72,6 +75,3 @@
 //
 //# Swype
 //= require jquery.touchSwipe.js
-//
-//# Grid # Has to be some of the last scripts to include, because especially chosen can change the page adjustments
-//#= require jquery.equalheights

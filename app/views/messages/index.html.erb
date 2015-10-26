@@ -39,7 +39,7 @@
     <%= Message.model_name.human(:count => :lots) %>
   </h3>
   <table id="messages_data_table"
-    class="dataTable table table-bordered table-striped"
+    class="dataTable table table-bordered table-striped responsive"
     data-source="<%=
       @department.present? && false ?
         department_messages_path(@department, format: "json") :
