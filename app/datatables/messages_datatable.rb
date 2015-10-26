@@ -98,7 +98,7 @@ private
       messages = messages.where(:department_id => params[:sSearch_3])
     end
 
-    messages = messages.order("#{sort_column} #{sort_direction}")
+    messages = messages.order("#{sort_column} #{sort_direction}") if sort_column.present?
     messages = messages.page(page).per_page(per_page)
 
     

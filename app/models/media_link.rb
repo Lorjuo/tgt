@@ -40,9 +40,9 @@ class MediaLink < ActiveRecord::Base
         instance = klass.find(instance_id)
 
         if ["show"].include? action_id
-          polymorphic_path(instance, :only_path => true)
+          polymorphic_path(instance)
         else
-          polymorphic_path(instance, :action => action_id, :only_path => true)
+          polymorphic_path(instance, :action => action_id)
         end
       end
     end
@@ -55,9 +55,9 @@ class MediaLink < ActiveRecord::Base
     #   instance = klass.find(instance_id)
 
     #   if ["show"].include? action_id
-    #     polymorphic_path(instance, :only_path => true)
+    #     polymorphic_path(instance)
     #   else
-    #     polymorphic_path(instance, :action => action_id, :only_path => true)
+    #     polymorphic_path(instance, :action => action_id)
     #   end
     # end
   end

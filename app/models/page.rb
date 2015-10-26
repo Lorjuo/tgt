@@ -26,6 +26,6 @@ class Page < ActiveRecord::Base
   has_many :documents, :through => :references, :source => :reference_to, :source_type => 'Document'
 
   def url
-    polymorphic_path(self, :only_path => true)
+    polymorphic_path(self)
   end
 end

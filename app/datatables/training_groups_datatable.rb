@@ -101,7 +101,7 @@ private
     end
 
     # TODO: sort by age
-    training_groups = training_groups.order("#{sort_column} #{sort_direction}")
+    training_groups = training_groups.order("#{sort_column} #{sort_direction}") if sort_column.present?
     training_groups = training_groups.page(page).per_page(per_page)
 
     
