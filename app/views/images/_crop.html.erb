@@ -2,8 +2,8 @@
 <%# does not work with turbolinks
 therefore it needs to be included directly in place or in administration.js %>
 <%#= content_for :head do %>
-  <%#= stylesheet_link_tag 'jquery.jcrop' %>
-  <%#= javascript_include_tag 'jquery.jcrop', 'crop', 'crop_loader' %>
+  <%#= stylesheet_link_tag 'jquery.jcrop', "data-turbolinks-track" => true %>
+  <%#= javascript_include_tag 'jquery.jcrop', 'crop', 'crop_loader', "data-turbolinks-track" => true %>
 <%# end %>
 
 <div class="crop-widget">

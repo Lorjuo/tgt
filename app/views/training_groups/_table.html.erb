@@ -7,7 +7,7 @@
   %>"> -->
 
 <%= content_for :head do %>
-  <%= javascript_include_tag '_datatables-bundle' %>
+  <%= javascript_include_tag '_datatables-bundle', "data-turbolinks-track" => true %>
 <% end %>
 
 <table class="secondCol dataTable table table-bordered table-striped datatable defaults responsive">

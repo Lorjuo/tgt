@@ -1,7 +1,7 @@
 <%# http://stackoverflow.com/a/7881490/871495 %>
 <%= content_for :head do %>
-  <%= stylesheet_link_tag 'jquery.jcrop' %>
-  <%= javascript_include_tag 'jquery.jcrop', 'images' %>
+  <%= stylesheet_link_tag 'jquery.jcrop', "data-turbolinks-track" => true %>
+  <%= javascript_include_tag 'jquery.jcrop', 'images', "data-turbolinks-track" => true %>
 <% end %>
 
 <%# Field that is needed to pass dimension information to javascript %>

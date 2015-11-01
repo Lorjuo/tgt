@@ -36,8 +36,8 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%# javascript_include_tag "_defer-bundle", "data-turbolinks-track" => true, :defer => "defer" %>
   <% if user_signed_in? %>
-    <%= stylesheet_link_tag 'administration-bundle' %>
-    <%= javascript_include_tag '_administration-bundle' %>
+    <%= stylesheet_link_tag 'administration-bundle', "data-turbolinks-track" => true %>
+    <%= javascript_include_tag '_administration-bundle', "data-turbolinks-track" => true %>
   <% end %>
 
   <%= favicon_link_tag '/favicon.ico' %>
