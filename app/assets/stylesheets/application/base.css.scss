@@ -1,4 +1,20 @@
+
+
+// Mixins
+@import "mixins/caret";
+@import "mixins/pretty_buttons";
+
+@import "buttons";
+@import "forms";
+@import "media";
+@import "navigation";
+@import "page";
+@import "typography";
+
 // Extern
+
+// bootstrap
+@import "bootstrap_elements";
 
 // Datatable
 @import "dataTables/jquery.dataTables";
@@ -39,17 +55,6 @@
 @import "tinymce_overrides";
 
 
-
-// Mixins
-@import "mixins/caret";
-@import "mixins/pretty_buttons";
-
-@import "buttons";
-@import "forms";
-@import "media";
-@import "navigation";
-@import "page";
-@import "typography";
 
 // Partials
 @import "partials/announcement_cycle";

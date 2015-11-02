@@ -1,0 +1,22 @@
+/* http://stackoverflow.com/a/23174932/871495 */
+/* http://stackoverflow.com/a/20188613/871495 */
+
+.panel-group .panel-heading
+{
+    padding: 0;
+}
+
+.panel-group .panel-heading a
+{
+    display: block;
+    padding: 10px 15px;
+}
+
+.panel.panel-default .panel-heading {
+  @include pretty-buttons($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+}
+
+
+.panel.panel-default .panel-heading .collapsed {
+  @include pretty-buttons($btn-default-color, $btn-default-bg, $btn-default-border);
+}

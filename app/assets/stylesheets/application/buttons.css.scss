@@ -21,10 +21,6 @@
   @include pretty-buttons($btn-danger-color, $btn-danger-bg, $btn-danger-border);
 }
 
-.panel.panel-default .panel-heading {
-  @include pretty-buttons($btn-default-color, $btn-default-bg, $btn-default-border);
-}
-
 .pagination{
   li a {
     @include pretty-buttons($btn-default-color, $btn-default-bg, $btn-default-border);

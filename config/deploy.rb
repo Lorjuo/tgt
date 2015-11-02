@@ -129,7 +129,7 @@ task :deploy => :environment do
       #queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
       #queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
       #debugger
-      #invoke :'puma:phased_restart'
+      invoke :'puma:phased_restart'
     end
     invoke :'deploy:cleanup'
   end
