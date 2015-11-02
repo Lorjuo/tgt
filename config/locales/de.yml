@@ -23,10 +23,12 @@ de:
     date: Datum
     destroy: Löschen
     destroy_selected: Ausgewählte löschen
+    description: Beschreibung
     edit: Bearbeiten
     edit_model: "%{model} bearbeiten"
     edit_selected: Ausgewählte bearbeiten
     editing: Bearbeite
+    general_data: Allgemeine Angaben
     here: hier
     list: Übersicht
     map: Karte

@@ -6,76 +6,143 @@
   <%= simple_form_for(shallow_args(@department, @training_group)) do |f| %>
     <%= f.error_notification %>
 
-    <div class="row">
-      <div class="col-md-12">
-        <div class="form-inputs">
-          <%= f.input :name %>
-          <%= f.association :department,
-            :as => :select,
-            :collection => Department.order(:name => :asc),
-            :label_method => :name,
-            :value_method => :id,
-            :include_blank => false,
-            :input_html => { :class => "chosen"} %>
-          <%= f.association :trainers,
-            :as => :select,
-            :collection => Trainer.order(:first_name => :asc).order(:last_name => :asc),
-            :label_method => :name,
-            :value_method => :id,
-            :include_blank => false,
-            :input_html => { :class => "chosen"} %>
-          <%= f.input :age_begin, as: :integer %>
-          <%= f.input :age_end, as: :integer %>
-          <%= f.input :description, as: :text, input_html: { class: 'tinymce' } %>
-          <%= f.input :ancient %>
-          
-          <%= f.simple_fields_for :photo do |image_form| %>
-            <%= render 'images/image_selector', f:image_form, image:@training_group.photo, label: Image.model_name.human %>
-          <% end if false %>
-
-          <%= f.input :photo, as: :image_popup_upload, input_html: {}, preview_version: nil, preview_size: '300x200', :use_default_url => true, :mount_on => :file %>
-
-          <fieldset>
-            <legend><%= t "general.references" %></legend>
-            <%= f.association :galleries,
-              :as => :select,
-              :collection => Gallery.order(:name => :asc),
-              :label_method => :name,
-              :value_method => :id,
-              :include_blank => false,
-              :input_html => { :class => "chosen"} %>
-            
-            <%= f.association :documents,
-              :as => :select,
-              :collection => Document.order(:name => :asc),
-              :label_method => :name,
-              :value_method => :id,
-              :include_blank => false,
-              :input_html => { :class => "chosen"} %>
-          </fieldset>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingGeneric">
+          <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseGeneric" aria-expanded="true" aria-controls="collapseGeneric">
+              <i class="fa fa-info-circle"></i>
+              <%= t 'general.general_data' %>
+            </a>
+          </h4>
+        </div>
+        <div id="collapseGeneric" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingGeneric">
+          <div class="panel-body">
+            <div class="form-inputs">
+              <%= f.input :name %>
+              <%= f.association :department,
+                :as => :select,
+                :collection => Department.order(:name => :asc),
+                :label_method => :name,
+                :value_method => :id,
+                :include_blank => false,
+                :input_html => { :class => "chosen"} %>
+              <%= f.association :trainers,
+                :as => :select,
+                :collection => Trainer.order(:first_name => :asc).order(:last_name => :asc),
+                :label_method => :name,
+                :value_method => :id,
+                :include_blank => false,
+                :input_html => { :class => "chosen"} %>
+              <%= f.input :age_begin, as: :integer %>
+              <%= f.input :age_end, as: :integer %>
+              <%= f.input :ancient %>
+            </div>
+          </div>
         </div>
       </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingDescription">
+          <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseDescription" aria-expanded="false" aria-controls="collapseDescription">
+              <i class="fa fa-file-text-o"></i>
+              <%= t 'general.description' %>
+            </a>
+          </h4>
+        </div>
+        <div id="collapseDescription" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingDescription">
+          <div class="panel-body">
 
-      <div class="col-md-12">
-        <fieldset>
-          <legend>
-            <!--<span class="glyphicon glyphicon-calendar"></span>-->
-            <div>
-              <%= TrainingUnit.model_name.human(:count => :lots) %>
-              <%= link_to_add_association( content_tag( :i, "", :class => "fa fa-plus-circle" ) + " "\
-          + t("training_groups.form.add_training_unit"), f, :training_units, :class => "btn btn-link" ) %>
-            </div>
-          </legend>
-          <div id="insertionNode" class="row">
-            <%= f.simple_fields_for :training_units do |unit_form| %>
-              <%= render 'training_unit_fields', f:unit_form %>
-            <% end %>
+            <%= f.input :description, as: :text, input_html: { class: 'tinymce' } %>
+
           </div>
-        </fieldset>
+        </div>
       </div>
-      <hr />
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingImage">
+          <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseImage" aria-expanded="false" aria-controls="collapseImage">
+              <i class="fa fa-picture-o"></i>
+              <%= Image.model_name.human(:count => :lots) %>
+            </a>
+          </h4>
+        </div>
+        <div id="collapseImage" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingImage">
+          <div class="panel-body">
+          
+            <%= f.simple_fields_for :photo do |image_form| %>
+              <%= render 'images/image_selector', f:image_form, image:@training_group.photo, label: Image.model_name.human %>
+            <% end if false %>
+
+            <%= f.input :photo, as: :image_popup_upload, input_html: {}, preview_version: nil, preview_size: '300x200', :use_default_url => true, :mount_on => :file %>
+
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingReferences">
+          <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseReferences" aria-expanded="false" aria-controls="collapseReferences">
+              <i class="fa fa-link"></i>
+              <%= t 'general.references' %>
+            </a>
+          </h4>
+        </div>
+        <div id="collapseReferences" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingReferences">
+          <div class="panel-body">
+
+            <fieldset>
+              <legend><%= t "general.references" %></legend>
+              <%= f.association :galleries,
+                :as => :select,
+                :collection => Gallery.order(:name => :asc),
+                :label_method => :name,
+                :value_method => :id,
+                :include_blank => false,
+                :input_html => { :class => "chosen"} %>
+              
+              <%= f.association :documents,
+                :as => :select,
+                :collection => Document.order(:name => :asc),
+                :label_method => :name,
+                :value_method => :id,
+                :include_blank => false,
+                :input_html => { :class => "chosen"} %>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTrainingUnits">
+          <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTrainingUnits" aria-expanded="false" aria-controls="collapseTrainingUnits">
+              <i class="fa fa-calendar"></i>
+              <%= TrainingUnit.model_name.human(:count => :lots) %>
+            </a>
+          </h4>
+        </div>
+        <div id="collapseTrainingUnits" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTrainingUnits">
+          <div class="panel-body">
+
+            <fieldset>
+              <legend>
+                <!--<span class="glyphicon glyphicon-calendar"></span>-->
+                <div>
+                  <%= TrainingUnit.model_name.human(:count => :lots) %>
+                  <%= link_to_add_association( content_tag( :i, "", :class => "fa fa-plus-circle" ) + " "\
+              + t("training_groups.form.add_training_unit"), f, :training_units, :class => "btn btn-link" ) %>
+                </div>
+              </legend>
+              <div id="insertionNode" class="row">
+                <%= f.simple_fields_for :training_units do |unit_form| %>
+                  <%= render 'training_unit_fields', f:unit_form %>
+                <% end %>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
     </div>
-    <hr />
 
     <div style="text-align: right">
     <%= f.button :submit, :class => "btn btn-primary" %></div>

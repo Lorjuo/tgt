@@ -24,12 +24,14 @@ en:
     crop: Crop
     current: Current
     date: Date
+    description: Description
     destroy: Delete
     destroy_selected: Delete selected
     edit: Edit
     edit_model: "Edit %{model}"
     edit_selected: Edit selected
     editing: Editing
+    general_data: General data
     here: here
     list: List
     map: Map

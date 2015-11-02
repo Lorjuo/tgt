@@ -1,3 +1,8 @@
 .chosen-container-multi .chosen-choices li.search-field input[type="text"] {
   height: 25px;
 }
+
+/* http://stackoverflow.com/a/25983940/871495 */
+.chosen-container/*.chosen-container-single*/ {
+    width: 300px !important; /* or any value that fits your needs */
+}

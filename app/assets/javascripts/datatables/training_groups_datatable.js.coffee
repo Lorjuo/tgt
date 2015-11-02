@@ -32,7 +32,3 @@ $ ->
   $(element_keywords).bind "input", ->
     filter_text( tableContainer, element_keywords, null )
   filter_text( tableContainer, element_keywords, null ) # also do this on load
-
-  $("a.add_fields")
-    .data("association-insertion-position", "append")
-    .data "association-insertion-node", "#insertionNode"
