@@ -4,44 +4,76 @@
   <%= simple_form_for(@trainer, :defaults => { :input_html => { :class => 'input-xlarge' } }) do |f| %>
     <%= f.error_notification %>
 
-    <%# Maybe split into columns %>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingGeneric">
+          <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseGeneric" aria-expanded="true" aria-controls="collapseGeneric">
+              <i class="fa fa-info-circle"></i>
+              <%= t 'general.general_data' %>
+            </a>
+          </h4>
+        </div>
+        <div id="collapseGeneric" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingGeneric">
+          <div class="panel-body">
 
-    <div class="form-inputs">
-      <%= f.input :first_name %>
-      <%= f.input :last_name %>
-      <%= f.input :birthday, :as => :date_picker %>
-      <%= f.association :training_groups,
-        :as => :select,
-        :collection => TrainingGroup.order(:name => :asc),
-        :label_method => :name,
-        :value_method => :id,
-        :include_blank => false,
-        :input_html => { :class => "chosen input-xlarge"} %>
-      <%= f.input :residence %>
-      <%= f.input :phone %>
-      <%= f.input :email,
-        :input_html => { :rows => "3"} %>
-      <%= f.input :profession,
-        :input_html => { :rows => "3"} %>
-      <%= f.input :education,
-        :input_html => { :rows => "3"} %>
-      <%= f.input :disciplines,
-        :input_html => { :rows => "3"} %>
-      <%= f.input :activities,
-        :input_html => { :rows => "3"} %>
-      <%#= f.association :user,
-        :collection => User.order('first_name' => :asc).order('last_name' => :asc),
-        :label_method => :name,
-        :value_method => :id,
-        :input_html => { :class => "chosen" },
-        :hint => t(".users_hint") %>
+            <%# Maybe split into columns %>
 
-      <%= f.simple_fields_for :photo do |image_form| %>
-        <%#= image_form.input :file, :as => :file %>
-        <%= render 'images/image_selector', f:image_form, image:@trainer.photo, label: Image.model_name.human %>
-        <%#= image_form.input :file, as: :image_preview, input_html: {preview_version: :thumb}, :use_default_url => false %>
-      <% end if false %>
-      <%= f.input :photo, as: :image_popup_upload, input_html: {}, preview_version: nil, preview_size: '300x200', :use_default_url => true, :mount_on => :file %>
+            <div class="form-inputs">
+              <%= f.input :first_name %>
+              <%= f.input :last_name %>
+              <%= f.input :birthday, :as => :date_picker %>
+              <%= f.association :training_groups,
+                :as => :select,
+                :collection => TrainingGroup.order(:name => :asc),
+                :label_method => :name,
+                :value_method => :id,
+                :include_blank => false,
+                :input_html => { :class => "chosen input-xlarge"} %>
+              <%= f.input :residence %>
+              <%= f.input :phone %>
+              <%= f.input :email,
+                :input_html => { :rows => "3"} %>
+              <%= f.input :profession,
+                :input_html => { :rows => "3"} %>
+              <%= f.input :education,
+                :input_html => { :rows => "3"} %>
+              <%= f.input :disciplines,
+                :input_html => { :rows => "3"} %>
+              <%= f.input :activities,
+                :input_html => { :rows => "3"} %>
+              <%#= f.association :user,
+                :collection => User.order('first_name' => :asc).order('last_name' => :asc),
+                :label_method => :name,
+                :value_method => :id,
+                :input_html => { :class => "chosen" },
+                :hint => t(".users_hint") %>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingImages">
+          <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseImages" aria-expanded="false" aria-controls="collapseImages">
+              <i class="fa fa-picture-o"></i>
+              <%= Image.model_name.human(:count => :lots) %>
+            </a>
+          </h4>
+        </div>
+        <div id="collapseImages" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingImages">
+          <div class="panel-body">
+
+            <%= f.simple_fields_for :photo do |image_form| %>
+              <%#= image_form.input :file, :as => :file %>
+              <%= render 'images/image_selector', f:image_form, image:@trainer.photo, label: Image.model_name.human %>
+              <%#= image_form.input :file, as: :image_preview, input_html: {preview_version: :thumb}, :use_default_url => false %>
+            <% end if false %>
+            <%= f.input :photo, as: :image_popup_upload, input_html: {}, preview_version: nil, preview_size: '300x200', :use_default_url => true, :mount_on => :file %>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="form-group">

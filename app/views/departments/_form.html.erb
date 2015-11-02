@@ -6,66 +6,115 @@
   <%= simple_form_for(@department, :defaults => { :input_html => { :class => 'input-xlarge' } }) do |f| %>
     <%= f.error_notification %>
 
-    <div class="form-inputs">
-      <%= f.input :name %>
-      <%#= f.association :training_groups,
-        :as => :select,
-        :collection => TrainingGroup.order('name' => :asc),
-        :label_method => :name,
-        :value_method => :id,
-        :include_blank => false,
-        :input_html => { :class => "chosen input-xxlarge"} %>
-      <%= f.association :area %>
-      <%= f.association :theme %>
-      <div class="form-group select optional">
-        <div class="col-md-9 col-md-offset-3">
-          <%= link_to themes_path, :target => "_blank" do %>
-            <i class="fa fa-arrow-circle-o-right"></i>
-            <%= t('general.edit_model', model: Theme.model_name.human(:count => :lots)) %>
-          <% end %>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingGeneric">
+          <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseGeneric" aria-expanded="true" aria-controls="collapseGeneric">
+              <i class="fa fa-info-circle"></i>
+              <%= t 'general.general_data' %>
+            </a>
+          </h4>
+        </div>
+        <div id="collapseGeneric" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingGeneric">
+          <div class="panel-body">
+
+            <div class="form-inputs">
+              <%= f.input :name %>
+              <%#= f.association :training_groups,
+                :as => :select,
+                :collection => TrainingGroup.order('name' => :asc),
+                :label_method => :name,
+                :value_method => :id,
+                :include_blank => false,
+                :input_html => { :class => "chosen input-xxlarge"} %>
+              <%= f.association :area %>
+              <%= f.association :theme %>
+              <div class="form-group select optional">
+                <div class="col-md-9 col-md-offset-3">
+                  <%= link_to themes_path, :target => "_blank" do %>
+                    <i class="fa fa-arrow-circle-o-right"></i>
+                    <%= t('general.edit_model', model: Theme.model_name.human(:count => :lots)) %>
+                  <% end %>
+                </div>
+              </div>
+              <%# TODO: Remove column color - depends on schedule %>
+              <%= f.input :color, :input_html => { :class => "colorpicker", :data => {:"color-format" => "hex"}} %>
+
+            </div>
+          </div>
         </div>
       </div>
-      <%# TODO: Remove column color - depends on schedule %>
-      <%= f.input :color, :input_html => { :class => "colorpicker", :data => {:"color-format" => "hex"}} %>
-      <%= f.input :description, as: :text, input_html: { class: 'tinymce' } unless @department.new_record?  %>
-      <%#= f.input :banner, as: :image_popup_upload, input_html: {}, preview_version: nil, preview_size: '400x67', :use_default_url => true, :mount_on => :file %>
-      <%#= f.association :users,
-        :collection => User.order('first_name' => :asc).order('last_name' => :asc),
-        :label_method => :name,
-        :value_method => :id,
-        :include_blank => true,
-        :input_html => { :class => "chosen", :data => {:include_blank => true} },
-        :hint => t(".users_hint") %>
-      <%#= f.association :flyers,
-        :collection => Document.where(:department_id => @department.id).order('name' => :asc),
-        :label_method => :name,
-        :value_method => :id,
-        :include_blank => true,
-        :input_html => { :class => "chosen", :data => {:include_blank => true} }%>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingDescription">
+          <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseDescription" aria-expanded="false" aria-controls="collapseDescription">
+              <i class="fa fa-file-text-o"></i>
+              <%= t 'general.description' %>
+            </a>
+          </h4>
+        </div>
+        <div id="collapseDescription" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingDescription">
+          <div class="panel-body">
 
-        <%= f.simple_fields_for :theme do |ff| %>
-          <%#= ff.input :name, :as => :text %>
-          <%#= ff.input :description, :as => :text %>
-          <%= ff.input :color, :input_html => { :class => "colorpicker", :data => {:"color-format" => "hex"}} %>
-          <%= ff.input :banner, as: :image_popup_upload, input_html: {}, preview_version: nil, preview_size: '400x67', :use_default_url => true, :mount_on => :file %>
-        <% end if false %>
-        <fieldset>
-          <legend>
-            Features
-          </legend>
-          <div class="row">
-            <% [:feature_training_groups, :feature_trainers, :feature_messages, :feature_galleries, :feature_documents, :feature_events].each do |feature| %>
-              <div class="col-md-9 col-md-offset-3">
-                <%= f.input feature, wrapper: :checkbox %>
-                <%#= f.input_field feature, style: 'float: left' %>
-                <%#= f.label feature, style: 'float: left' %>
-              </div>
-            <% end if false %>
+            <%= f.input :description, as: :text, input_html: { class: 'tinymce' } unless @department.new_record?  %>
+            <%#= f.input :banner, as: :image_popup_upload, input_html: {}, preview_version: nil, preview_size: '400x67', :use_default_url => true, :mount_on => :file %>
+            <%#= f.association :users,
+              :collection => User.order('first_name' => :asc).order('last_name' => :asc),
+              :label_method => :name,
+              :value_method => :id,
+              :include_blank => true,
+              :input_html => { :class => "chosen", :data => {:include_blank => true} },
+              :hint => t(".users_hint") %>
+            <%#= f.association :flyers,
+              :collection => Document.where(:department_id => @department.id).order('name' => :asc),
+              :label_method => :name,
+              :value_method => :id,
+              :include_blank => true,
+              :input_html => { :class => "chosen", :data => {:include_blank => true} }%>
+
           </div>
-          <% [:feature_training_groups, :feature_trainers, :feature_messages, :feature_galleries, :feature_documents, :feature_events].each do |feature| %>
-            <%= f.input feature %>
-          <% end %>
-        </fieldset>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingFeatures">
+          <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFeatures" aria-expanded="false" aria-controls="collapseFeatures">
+              <i class="fa fa-list"></i>
+              <%= t 'general.features' %>
+            </a>
+          </h4>
+        </div>
+        <div id="collapseFeatures" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFeatures">
+          <div class="panel-body">
+
+            <%= f.simple_fields_for :theme do |ff| %>
+              <%#= ff.input :name, :as => :text %>
+              <%#= ff.input :description, :as => :text %>
+              <%= ff.input :color, :input_html => { :class => "colorpicker", :data => {:"color-format" => "hex"}} %>
+              <%= ff.input :banner, as: :image_popup_upload, input_html: {}, preview_version: nil, preview_size: '400x67', :use_default_url => true, :mount_on => :file %>
+            <% end if false %>
+            <fieldset>
+              <legend>
+                <%= t 'general.features' %>
+              </legend>
+              <div class="row">
+                <% [:feature_training_groups, :feature_trainers, :feature_messages, :feature_galleries, :feature_documents, :feature_events].each do |feature| %>
+                  <div class="col-md-9 col-md-offset-3">
+                    <%= f.input feature, wrapper: :checkbox %>
+                    <%#= f.input_field feature, style: 'float: left' %>
+                    <%#= f.label feature, style: 'float: left' %>
+                  </div>
+                <% end if false %>
+              </div>
+              <% [:feature_training_groups, :feature_trainers, :feature_messages, :feature_galleries, :feature_documents, :feature_events].each do |feature| %>
+                <%= f.input feature %>
+              <% end %>
+            </fieldset>
+
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="form-group">
