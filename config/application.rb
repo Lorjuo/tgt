@@ -36,7 +36,7 @@ module TgtRefurbished
     # Custom
     
     # http://stackoverflow.com/a/8234485/871495
-    respond_to_mobile_requests :skip_xhr_requests => false, :fall_back => :html
+    #respond_to_mobile_requests :skip_xhr_requests => false, :fall_back => :html
     
     # Autoload Paths
     config.autoload_paths += Dir["#{config.root}/lib/"]
