@@ -5,6 +5,6 @@
 //# require dataTables/jquery.dataTables
 //# require dataTables/jquery.dataTables.bootstrap3
 //# require dataTables/jquery.dataTables.responsive
-//= require datatables/datatables_loader
-//= require datatables/messages_datatable
-//= require datatables/training_groups_datatable
+//<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/bs/jq-2.1.4,dt-1.10.9,r-1.0.7/datatables.min.css"/>
+ 
+//<script type="text/javascript" src="https://cdn.datatables.net/r/bs/jq-2.1.4,dt-1.10.9,r-1.0.7/datatables.min.js"></script>

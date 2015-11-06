@@ -4,7 +4,7 @@
 
 <%= content_for :head do %>
   <%= javascript_include_tag '_datatables-bundle', "data-turbolinks-track" => true %>
-<% end %>
+<% end if false%>
 
 <% content_for :buttons do %>
   <%= link_to new_department_message_path(@department), :class => 'btn btn-primary' do %>

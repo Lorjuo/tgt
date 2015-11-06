@@ -2,6 +2,10 @@
   <%= t ".title", :name => @trainer.name %>
 <% end %>
 
+<%= content_for :head do %>
+  <%= javascript_include_tag '_datatables-bundle', "data-turbolinks-track" => true %>
+<% end if false %>
+
 <% content_for :buttons do %>
   <%= link_to trainers_path, :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>

@@ -34,6 +34,12 @@
 //# Clipboard # TODO: Check if this is needed
 //#ZeroClipBoardDisabled:
 // require zeroclipboard
+// 
+//# Datatables
+//
+//= require datatables/datatables_loader
+//= require datatables/messages_datatable
+//= require datatables/training_groups_datatable
 //
 //# EqualHeights # TODO: Maybe remove this
 //# require equal_heights_loader
