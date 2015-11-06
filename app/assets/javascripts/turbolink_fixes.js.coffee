@@ -12,3 +12,8 @@
 
 # $(document).on 'page:restore', ->
 #   $('.pageContent').fadeIn 'slow'
+
+$(document).on 'page:fetch', ->
+  $('.loader').addClass('animate')#.show()
+$(document).on 'page:change', ->
+  $('.loader').removeClass('animate')#.hide()
