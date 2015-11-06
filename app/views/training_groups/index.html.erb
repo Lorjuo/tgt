@@ -5,17 +5,20 @@
 <% content_for :buttons do %>
   <%= link_to new_department_training_group_path(@department), :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
-    <%= t('general.create_model', :model => TrainingGroup.model_name.human ) %>
+    <%#= t('general.create_model', :model => TrainingGroup.model_name.human ) %>
+    <%= t('general.create_model', :model => @department.term_training_group ) %>
   <% end if can? :create, @department.training_groups.build %>
 <% end %>
 
 <div class="window box">
-  <h3><%= "#{t("general.current")} #{TrainingGroup.model_name.human(:count => :lots)}" %></h3>
+  <h3><%= "#{t("general.current")} #{@department.term_training_groups}" %>
+    <%#= "#{t("general.current")} #{TrainingGroup.model_name.human(:count => :lots)}" %></h3>
   <%= render :partial => "training_groups/table", :locals => {:training_groups => @training_groups.current, ancient: false} %>
 
   <% ancient_groups = @training_groups.ancient %>
   <% if ancient_groups.present? %>
-    <h3><%= "#{t("general.ancient")} #{TrainingGroup.model_name.human(:count => :lots)}" %></h3>
+    <h3><%= "#{t("general.ancient")} #{@department.term_training_groups}" %>
+      <%#= "#{t("general.ancient")} #{TrainingGroup.model_name.human(:count => :lots)}" %></h3>
     <%= render :partial => "training_groups/table", :locals => {:training_groups => ancient_groups, ancient: true } %>
   <% end %>
 </div>

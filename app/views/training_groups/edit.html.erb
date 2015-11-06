@@ -1,5 +1,6 @@
 <% content_for :title do %>
-  <%= t('general.edit_model', :model => TrainingGroup.model_name.human ) %>
+  <%#= t('general.edit_model', :model => TrainingGroup.model_name.human ) %>
+  <%= t('general.edit_model', :model => @department.term_training_group ) %>
 <% end %>
 
 <% content_for :buttons do %>

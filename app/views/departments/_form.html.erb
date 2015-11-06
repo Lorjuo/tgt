@@ -57,7 +57,8 @@
         <div id="collapseDescription" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingDescription">
           <div class="panel-body">
 
-            <%= f.input :description, as: :text, input_html: { class: 'tinymce' } unless @department.new_record?  %>
+            <%#= f.input :description, as: :text, input_html: { class: 'tinymce' } unless @department.new_record?  %>
+            <%= f.input_field :description, as: :text, class: 'tinymce'  unless @department.new_record?  %>
             <%#= f.input :banner, as: :image_popup_upload, input_html: {}, preview_version: nil, preview_size: '400x67', :use_default_url => true, :mount_on => :file %>
             <%#= f.association :users,
               :collection => User.order('first_name' => :asc).order('last_name' => :asc),
@@ -112,6 +113,29 @@
               <% end %>
             </fieldset>
 
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTerms">
+          <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTerms" aria-expanded="false" aria-controls="collapseTerms">
+              <i class="fa fa-language"></i>
+              <%= t 'attributes.terms' %>
+            </a>
+          </h4>
+        </div>
+        <div id="collapseTerms" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTerms">
+          <div class="panel-body">
+
+            <fieldset>
+              <legend>
+                <%= t 'attributes.terms' %>
+              </legend>
+              <% [:term_training_group, :term_training_groups, :term_competition, :term_competitions, :term_trainer, :term_trainers, :term_athlet, :term_athlets, :term_training_unit, :term_training_units].each do |term| %>
+                <%= f.input term %>
+              <% end %>
+            </fieldset>
           </div>
         </div>
       </div>

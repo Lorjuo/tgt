@@ -1,5 +1,6 @@
 <% content_for :title do %>
-  <%= t('general.create_model', :model => Event.model_name.human ) %>
+  <%#= t('general.create_model', :model => Event.model_name.human ) %>
+  <%= t('general.create_model', :model => @department.term_competition ) %>
 <% end %>
 
 <% content_for :buttons do %>

@@ -10,7 +10,7 @@
 
     <div class="form-group">
       <div class="col-lg-offset-3 col-lg-9">
-        <%= f.button :submit, :class => "btn btn-primary" %>
+        <%= f.button :submit, t(@event.new_record? ? "general.create_model" : "general.edit_model", :model => @department.term_competition ), :class => "btn btn-primary" %>
       </div>
     </div>
   <% end %>

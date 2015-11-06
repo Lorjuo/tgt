@@ -1,7 +1,8 @@
 <div class="col-md-6 nested-fields nested-box">
   <div class="nested-box-header">
     <span class="glyphicon glyphicon-calendar"></span>
-    <%= TrainingUnit.model_name.human %>
+    <%#= TrainingUnit.model_name.human %>
+    <%= @department.term_training_unit %>
     <%= link_to_remove_association(
   content_tag( :i, "", :class => "fa fa-minus-circle" ) + " "\
   + t("general.destroy"), f, :class => "btn btn-link btn-sm" ) %>
@@ -45,9 +46,12 @@
     <%# f.link_to_remove "Remove this TrainingUnit" %>
     <div class="form-group">
       <div class="col-lg-offset-3 col-lg-9">
-        <%= link_to_remove_association(
+        <%#= link_to_remove_association(
       content_tag( :span, "", :class => "glyphicon glyphicon-minus" ) + " "\
       + t("training_groups.form.remove_training_unit"), f, :class => "btn btn-default" ) %>
+        <%= link_to_remove_association(
+      content_tag( :span, "", :class => "glyphicon glyphicon-minus" ) + " "\
+      + t("general.remove_model", :model => @department.term_training_unit ), f, :class => "btn btn-default" ) %>
       </div>
     </div>
     <% end %>

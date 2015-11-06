@@ -11,6 +11,7 @@ de:
     active: aktiv
     inactive: inaktiv
     add_files: Dateien hinzufügen...
+    add_model: "%{model} hinzufügen"
     always: immer
     are_you_sure: Sind Sie sich sicher?
     back: Zurück
@@ -42,6 +43,7 @@ de:
     published: veröffentlicht
     reference: Verknüpfung
     references: Verknüpfungen
+    remove_model: "%{model} löschen"
     replace: Ersetzen
     save_changes: Änderungen Übernehmen
     search: Suche
@@ -117,11 +119,15 @@ de:
     roles: Rollen
     share: teilen
     size: Größe
+    term: Begriff
+    terms: Begriffe
     theme: Layout
     thumbnail: Vorschaubild
     thumbnails: Vorschaubilder
     time: Uhrzeit
     trainers: Trainer
+    group: Gruppe
+    groups: Gruppen
     training_groups: Trainingsgruppen
     training_units: Trainingseinheiten
     visible: Sichtbar
@@ -205,6 +211,16 @@ de:
         feature_galleries: Fotogalerien
         feature_documents: Dokumente
         feature_events: Veranstaltungen
+        term_training_group: (Trainings-)Gruppe
+        term_training_groups: (Trainings-)Gruppen
+        term_competition: Veranstaltung
+        term_competitions: Veranstaltungen
+        term_trainer: Betreuer/Trainer
+        term_trainers: Betreuer/Trainer
+        term_athlet: Teilnehmer/Athleten
+        term_athlets: Teilnehmer/Athleten
+        term_training_unit: (Trainings-)Termin
+        term_training_units: (Trainings-)Termine
 
       event:
         term: Datum
@@ -366,7 +382,7 @@ de:
       sentence_keywords: "Suchbegriffe %{input}"
 
     show:
-      title: 'Trainingsgruppe "%{name}"'
+      title: '%{term_training_group} "%{name}"'
       info: Allgemeine Infos
       picture: Gruppenbild
     form:

@@ -17,3 +17,4 @@ $(document).on 'page:fetch', ->
   $('.loader').addClass('animate')#.show()
 $(document).on 'page:change', ->
   $('.loader').removeClass('animate')#.hide()
+# http://www.techdarkside.com/how-to-use-a-spinner-with-turbolinks

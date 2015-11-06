@@ -11,6 +11,7 @@ en:
     active: active
     inactive: inactive
     add_files: Add Files...
+    add_model: "Add %{model}"
     always: always
     ancient: Ancient
     are_you_sure: Are you sure?
@@ -45,6 +46,7 @@ en:
     published: published
     reference: Reference
     references: References
+    remove_model: "Remove %{model}"
     replace: Ersetzen
     save_changes: Save changes
     search: Search
@@ -53,6 +55,8 @@ en:
     select_all: Select all
     share: share
     show: Show
+    term: Term
+    terms: Terms
     time: Time
     time_from: from
     time_to: to
@@ -121,6 +125,8 @@ en:
     thumbnails: Thumbnails
     time: Time
     trainers: Trainers
+    group: Group
+    groups: Groups
     training_groups: Training groups
     training_units: Training units
     visible: Visible
@@ -204,6 +210,16 @@ en:
         feature_galleries: Photogalleries
         feature_documents: Documents
         feature_events: Events
+        term_training_group: (Training-)Group
+        term_training_groups: (Training-)Groups
+        term_competition: Competition
+        term_competitions: Competitions
+        term_trainer: Coach
+        term_trainers: Coachs
+        term_athlet: Participant/Athlet
+        term_athlets: Participants/Athlets
+        term_training_unit: (Training-)Unit
+        term_training_units: (Training-)Units
 
       event:
         term: Date
@@ -365,7 +381,7 @@ en:
       sentence_keywords: "Keywords %{input}"
 
     show:
-      title: 'Training group "%{name}"'
+      title: '%{term_training_group} "%{name}"'
       info: General information
       picture: Picture
     form:

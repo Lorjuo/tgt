@@ -5,10 +5,12 @@
   <ul class="nav nav-tabs">
     <% if @department.feature_training_groups %><li class="active"><a href="#trainingGroups" data-toggle="tab" class="title">
       <%= fa_icon "users" %>
-      <%= TrainingGroup.model_name.human(:count => :lots) %>
+      <%#= TrainingGroup.model_name.human(:count => :lots) %>
+      <%= @department.term_training_groups %>
     </a></li><% end %>
     <% if @department.feature_trainers %><li><a href="#trainers" data-toggle="tab" class="title">
-      <%= Trainer.model_name.human(:count => :lots) %>
+      <%= @department.term_trainers %>
+      <%#= Trainer.model_name.human(:count => :lots) %>
     </a></li><% end %>
     <% if @department.feature_messages %><li><a href="#messages" data-toggle="tab" class="title">
       <%= fa_icon "message" %>
