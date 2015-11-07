@@ -23,12 +23,12 @@ class Event < ActiveRecord::Base
   validates :name, :presence => true
   validates :term, :presence => true
 
-  def get_link
-    if self.link.present?
-      if self.link.start_with?('/', '#')
-        self.link
+  def get_url
+    if self.url.present?
+      if self.url.start_with?('/', '#')
+        self.url
       else
-        url_with_protocol(self.link)
+        url_with_protocol(self.url)
       end
     else
       self.image.file_url
