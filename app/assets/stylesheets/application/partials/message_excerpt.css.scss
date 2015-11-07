@@ -25,37 +25,37 @@
 
 .message-excerpt {
   overflow: hidden; /* Needed to prevent image from exceeding message dimensions */
-  .body {
 
-    .heading {
+  .heading {
 
-      .title, .date {
-        font-size: 1em;
-      }
+    .title, .date {
+      font-size: 1em;
+    }
 
-      .title {
-        font-weight: bold;
-        .department {
-          font-weight: normal;
-          white-space: nowrap;
-          &:hover { text-decoration: underline; }
-        }
-      }
-
-      .date {
-        text-align: right;
-        min-width: 100px;
-        @media (max-width: $screen-xs-max) {
-          display: none;
-        }
-        float: right;
-        margin-left: 10px;
+    .title {
+      font-weight: bold;
+      .department {
+        font-weight: normal;
+        white-space: nowrap;
+        &:hover { text-decoration: underline; }
       }
     }
 
-    .content {
+    .date {
+      text-align: right;
+      min-width: 100px;
+      @media (max-width: $screen-xs-max) {
+        display: none;
+      }
+      float: right;
+      margin-left: 10px;
     }
   }
+
+  /*.body {
+    .content {
+    }
+  }*/
 
   &.large {
     .media-object {

@@ -16,6 +16,23 @@ end
 <!-- <div class="publication-marker topright mediaOverlay <%= message.published? ? 'published' : 'unpublished' %>" title="<%= message.published? ? t('general.published') : t('general.unpublished') %>" data-toggle="tooltip"></div> -->
 <div class="box">
   <div class="message-excerpt <%= size %>">
+    <div class="heading">
+      <% unless size == :small %>
+        <div class="date">
+          <%#= localize( message.custom_date.to_date, :format => :long ) %>
+          <%= content_tag(:div, 
+            (localize( message.custom_date.to_date, :format => :default )+
+        (user_signed_in? ? ' '+publication_indicator(message) : '')).html_safe, style: "white-space: nowrap"
+          ) %>
+        </div>
+      <% end %>
+      <div class="title">
+        <%= link_to_decent message.name, message %>
+        <% unless size == :small %>
+          <span class="department">(<%= link_to message.department.name, message.department, :class => "decent" %>)</span>
+        <% end %>
+      </div>
+    </div>
     <% if message.thumb.present? %>
       <% image = image_tag(message.thumb.file_url('cropped', thumb_type), :class => "media-object", size: image_size) %>
       <%= link_to(image, message.thumb.file_url,
@@ -23,23 +40,6 @@ end
         :rel => 'messages', :caption => message.name) %>
     <% end %>
     <%= content_tag :div, :class => "body" do %>
-      <div class="heading">
-        <% unless size == :small %>
-          <div class="date">
-            <%#= localize( message.custom_date.to_date, :format => :long ) %>
-            <%= content_tag(:div, 
-              (localize( message.custom_date.to_date, :format => :default )+
-          (user_signed_in? ? ' '+publication_indicator(message) : '')).html_safe, style: "white-space: nowrap"
-            ) %>
-          </div>
-        <% end %>
-        <div class="title">
-          <%= link_to_decent message.name, message %>
-          <% unless size == :small %>
-            <span class="department">(<%= link_to message.department.name, message.department, :class => "decent" %>)</span>
-          <% end %>
-        </div>
-      </div>
       <%= link_to message, :class => "content decent" do %>
         <%= message.display_abstract(:text_length => text_length) + '...' %>
         <%= content_tag :span, "#{t 'general.more'}", :class => 'btn-link more' %>
