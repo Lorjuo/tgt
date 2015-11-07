@@ -151,6 +151,7 @@ class DepartmentsController < ApplicationController
       image_attributes = [:file, :id]
       params.require(:department).permit(:name, :description, :color, :theme_id, :area_id,
         :feature_training_groups, :feature_trainers, :feature_messages, :feature_galleries, :feature_documents, :feature_events,
+        :term_training_group, :term_training_groups, :term_competition, :term_competitions, :term_trainer, :term_trainers, :term_athlet, :term_athlets, :term_training_unit, :term_training_units,
         #:banner_attributes => image_attributes,
         #:training_group_ids => [],
         #:banner_id,
