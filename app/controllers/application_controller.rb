@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :_miniprofiler, :set_locale, :set_theme #, :_cancan_sanitizer
   before_filter :configure_permitted_parameters, if: :devise_controller?
-  before_filter :prepare_for_mobile
+  #before_filter :prepare_for_mobile
 
   # http://stackoverflow.com/questions/9281224/filter-to-execute-before-render-but-after-controller
   def render *args

@@ -75,7 +75,36 @@ window.datatablesSearchable =
 
 # Set hash for responsive layout
 window.datatablesResponsive =
-  responsive: true
+  #responsive: true
+  # maybe deprecated:
+  # https://datatables.net/extensions/responsive/examples/display-control/classes.html
+  # https://datatables.net/extensions/responsive/classes
+  responsive: breakpoints: [
+    {
+      name: 'xxs'
+      width: 480
+    }
+    {
+      name: 'xs'
+      width: 768
+    }
+    {
+      name: 'sm'
+      width: 992
+    }
+    {
+      name: 'md'
+      width: 1200
+    }
+    {
+      name: 'lg'
+      width: 1900
+    }
+    {
+      name: 'xl'
+      width: Infinity
+    }
+  ]
   # fnPreDrawCallback: preDrawCallback
   # fnRowCallback: rowCallback
   # fnDrawCallback: drawCallback
@@ -83,13 +112,14 @@ window.datatablesResponsive =
 
 # Create Breakpoint definition depending on bootstrap
 # https://github.com/thomas-mcdonald/bootstrap-sass/blob/master/vendor/assets/stylesheets/bootstrap/_variables.scss
-window.breakpointDefinition =
-  xxs: 480 # Smaller than ...
-  xs: 768
-  sm: 992
-  md: 1200
-  lg: 1900
-  xl: 5000
+# window.breakpointDefinition =
+#   xxs: 480 # Smaller than ...
+#   xs: 768
+#   sm: 992
+#   md: 1200
+#   lg: 1900
+#   xl: 5000
+
 
 
 # Attach onload actions

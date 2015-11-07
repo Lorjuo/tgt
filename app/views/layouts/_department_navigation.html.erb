@@ -31,6 +31,7 @@
             </li>
             <li><%= link_to Trainer.model_name.human(:count => :lots), trainers_path %>
             <li><%= link_to TrainingGroup.model_name.human(:count => :lots), department_training_groups_path(@department)  %>
+            <li><%= link_to Message.model_name.human(:count => :lots), messages_department_path(@department) %>
             <li><%= link_to Event.model_name.human(:count => :lots), department_events_path(@department) %>
             <li><%= link_to QuickLink.model_name.human(:count => :lots), department_quick_links_path(@department) %>
             <li><%= link_to Document.model_name.human(:count => :lots), department_documents_path(@department) %>
