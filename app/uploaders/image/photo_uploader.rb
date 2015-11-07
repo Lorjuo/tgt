@@ -2,6 +2,8 @@
 class Image::PhotoUploader < ImageUploader
 
   process resize_to_limit: [1600,1600]#[1920, 1920]
+  # on change: UPDATE images SET file_crop_h = file_crop_h/1.2 WHERE ID >= 0
+  # mina "rake[carrierwave:recreate]" 
   process :store_dimensions
   
   # see: http://carrierwave.rubyforge.org/rdoc/classes/CarrierWave/MiniMagick.html

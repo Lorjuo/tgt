@@ -298,6 +298,8 @@ de:
       title: Veranstaltungsübersicht
     show:
       title: '%{name}'
+    form:
+      link_hint: 'Bsp.: "/departments/leichtathletik", "www.google.de"'
 
   galleries:
     image:

@@ -16,6 +16,7 @@
       <tr>
         <th data-class="expand"><%= Event.human_attribute_name("name") %></th>
         <th data-hide="xxs,xs,sm"><%= Event.human_attribute_name("term") %></th>
+        <th data-hide="xxs,xs,sm"><%= Event.human_attribute_name("link") %></th>
         <th data-hide="xxs,xs,sm"><%= Event.human_attribute_name("description") %></th>
         <% if user_signed_in? %>
           <th class="no-sort"><%= t "general.actions" %></th>
@@ -28,6 +29,7 @@
       <tr>
         <td><%= link_to event.name, event %></td>
         <td><%= I18n.localize(event.term) %></td>
+        <td><%= link_to event.get_link, event.link if event.link.present? %></td>
         <td><%= event.description %></td>
         <%# if can? :update, event %>
         <% if user_signed_in? %>

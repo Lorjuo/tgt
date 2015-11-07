@@ -13,6 +13,8 @@
 
 class Event < ActiveRecord::Base
 
+  include UrlHelper
+
   # Associations
   belongs_to :department
 
@@ -20,6 +22,18 @@ class Event < ActiveRecord::Base
   validates_date :term
   validates :name, :presence => true
   validates :term, :presence => true
+
+  def get_link
+    if self.link.present?
+      if self.link.start_with?('/', '#')
+        self.link
+      else
+        url_with_protocol(self.link)
+      end
+    else
+      self.image.file_url
+    end
+  end
 
   # Scopes
   scope :chronological, -> { order("term") }

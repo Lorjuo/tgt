@@ -297,6 +297,8 @@ en:
       title: Listing events
     show:
       title: '%{name}'
+    form:
+      link_hint: 'E.g.: "/departments/leichtathletik", "www.google.de"'
 
   galleries:
     image:

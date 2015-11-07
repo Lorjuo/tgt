@@ -23,6 +23,9 @@
     <dt><%= Event.human_attribute_name("term") %>:</dt>
     <dd><%= I18n.localize(@event.term) %></dd>
 
+    <dt><%= Event.human_attribute_name("link") %>:</dt>
+    <dd><%= link_to @event.get_link, @event.link if @event.link.present? %></dd>
+
     <dt><%= Event.human_attribute_name("description") %>:</dt>
     <dd><%= @event.description %></dd>
 
