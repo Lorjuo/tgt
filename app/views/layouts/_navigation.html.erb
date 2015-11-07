@@ -70,6 +70,12 @@
               <%= content_tag :li do %>
                 <%= link_to(Theme.model_name.human(:count => :lots), themes_path) %>
               <% end if current_user.can?(:edit, Theme) #:themes %>
+              <%= content_tag :li do %>
+                <%= link_to(QuickLink.model_name.human(:count => :lots), quick_links_path) %>
+              <% end if current_user.can?(:edit, QuickLink) #:quick_links %>
+              <%= content_tag :li do %>
+                <%= link_to(ShortRoute.model_name.human(:count => :lots), short_routes_path) %>
+              <% end if current_user.can?(:edit, ShortRoute) #:short_routes %>
             </ul>
           </li>
         <% end %>

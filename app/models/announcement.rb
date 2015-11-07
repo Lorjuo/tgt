@@ -5,7 +5,7 @@
 #  id           :integer          not null, primary key
 #  name         :string(255)
 #  caption      :text
-#  link         :string(255)
+#  url         :string(255)
 #  active       :boolean          default(TRUE)
 #  created_at   :datetime
 #  updated_at   :datetime
@@ -29,12 +29,12 @@ class Announcement < ActiveRecord::Base
     .where("visible_to IS NULL OR visible_to >= ?", Date.today)
   }
 
-  def get_link
-    if self.link.present?
-      if self.link.start_with?('/', '#')
-        self.link
+  def get_url
+    if self.url.present?
+      if self.url.start_with?('/', '#')
+        self.url
       else
-        url_with_protocol(self.link)
+        url_with_protocol(self.url)
       end
     else
       self.image.file_url

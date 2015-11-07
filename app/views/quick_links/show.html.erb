@@ -21,7 +21,7 @@
     <dd><%= @quick_link.name %></dd>
 
     <dt><%= Event.human_attribute_name("url") %>:</dt>
-    <dd><%= @quick_link.get_url %></dd>
+    <dd><%= link_to @quick_link.get_url, @quick_link.url if @quick_link.url.present? %></dd>
 
   </dl>
 </div>

@@ -11,7 +11,7 @@
         <%= render 'images/image_selector', f:image_form, image:@announcement.image, :label => Image.model_name.human %>
         <div class="col-md-9 col-md-offset-3"><%= f.error :image %></div>
       <% end %>
-      <%= f.input :link, :placeholder => t(".link_hint") %>
+      <%= f.input :link, :placeholder => t(".url_hint") %>
       <%= f.input :active %>
       <%= f.input :visible_from, :as => :date_picker %>
       <%= f.input :visible_to, :as => :date_picker %>

@@ -62,7 +62,7 @@
       <div><b><%= l( month, :format => :year_month ) %></b></div>
       <ul>
         <% for event in event_months[month] %>
-          <li><b><%= l( month, :format => :month_day ) %><%#= event.term.day.ordinalize %></b> <%= link_to event.name, event %></li>
+          <li><b><%= l( event.term, :format => :month_day ) %><%#= event.term.day.ordinalize %></b> <%= link_to event.name, event %></li>
         <% end %>
       </ul>
     <% end %>

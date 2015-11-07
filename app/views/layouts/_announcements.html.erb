@@ -39,8 +39,8 @@
       </div>
 
       <% announcements.each do |announcement| %>
-        <%= link_to announcement.get_link,
-          class: (announcement.link.present? ? '' : 'fancybox'),
+        <%= link_to announcement.get_url,
+          class: (announcement.url.present? ? '' : 'fancybox'),
           :data => { :caption => simple_format(announcement.caption) } do %>
           <%# http://stackoverflow.com/questions/4253689/parsing-newline-characters-in-textareas-without-allowing-all-html-tags %>
           <%= image_tag announcement.image.file_url(:_420x420), title: announcement.name %>
@@ -68,7 +68,7 @@
   <div class="carousel-inner">
     <% announcements.each do |announcement| %>
       <div class="item">
-        <%= link_to announcement.link do %>
+        <%= link_to announcement.url do %>
           <%#= raw announcement.content %>
           <%= image_tag(announcement.image.file_url, :class => "img-responsive") %>
         <% end %>
@@ -113,7 +113,7 @@
 <% if false %><ul class="box small-spacing list-group">
   <% announcements.each do |announcement| %>
     <li class="list-group-item">
-      <%= link_to announcement.link do %>
+      <%= link_to announcement.url do %>
         <span class="glyphicon glyphicon-chevron-right"></span>
         <%= announcement.name %>
       <% end %>

@@ -1,0 +1,30 @@
+<% content_for :title do %>
+  <%= t ".title", :name => @short_route.name %>
+<% end %>
+
+<% content_for :buttons do %>
+  <%= link_to short_routes_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    <%= t "general.list" %>
+  <% end %>
+  <% if can? :update, @short_route %>
+    <%= link_to edit_short_route_path(@short_route), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+      <%= t "general.edit" %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<div class="window box">
+  <dl class="dl-horizontal">
+    <dt><%= ShortRoute.human_attribute_name("name") %>:</dt>
+    <dd><%= @short_route.name %></dd>
+
+    <dt><%= ShortRoute.human_attribute_name("url") %>:</dt>
+    <dd><%= link_to @short_route.get_url, @short_route.url if @short_route.url.present? %></dd>
+
+    <dt><%= ShortRoute.human_attribute_name("http_status") %>:</dt>
+    <dd><%= @short_route.http_status %></dd>
+
+  </dl>
+</div>

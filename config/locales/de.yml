@@ -102,17 +102,18 @@ de:
     document: Dokument
     documents: Dokumente
     email: E-Mail
-    gallery: Fotogalerie
-    galleries: Fotogalerien
-    name: Name
     file: Datei
     first_name: Vorname
     flyer: Flyer
     flyers: Flyer
+    gallery: Fotogalerie
+    galleries: Fotogalerien
+    http_status: HTTP-Status
     header: Header
     image: Bild
     last_name: Nachname
     link: Link
+    name: Name
     path: Pfad
     published: Veröffentlicht
     role: Rolle
@@ -130,6 +131,8 @@ de:
     groups: Gruppen
     training_groups: Trainingsgruppen
     training_units: Trainingseinheiten
+    url: Link
+    url_hint: 'Bsp.: "/departments/leichtathletik", "www.google.de"'
     visible: Sichtbar
     visible_from: Sichtbar vom
     visible_to: Sichtbar bis
@@ -165,6 +168,9 @@ de:
       quick_link:
         one: Quick-Link
         other: Quick-Link
+      short_route:
+        one: Kurz-Url
+        other: Kurz-Urls
       theme:
         one: Layout
         other: Layouts
@@ -276,8 +282,6 @@ de:
       title: Ankündigungsübersicht
     show:
       title: 'Ankündigung "%{name}"'
-    form:
-      link_hint: 'Bsp.: "/departments/leichtathletik", "www.google.de"'
 
   departments:
     index:
@@ -298,8 +302,6 @@ de:
       title: Veranstaltungsübersicht
     show:
       title: '%{name}'
-    form:
-      link_hint: 'Bsp.: "/departments/leichtathletik", "www.google.de"'
 
   galleries:
     image:
@@ -346,6 +348,12 @@ de:
       title: Quick-Links
     show:
       title: 'Quick-Link "%{name}"'
+
+  short_routes:
+    index:
+      title: Kurz-Url Übersicht
+    show:
+      title: 'Kurz-Url "%{name}"'
 
   static_pages:
     home:

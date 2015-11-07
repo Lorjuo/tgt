@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151107120222) do
+ActiveRecord::Schema.define(version: 20151107154352) do
 
   create_table "announcements", force: :cascade do |t|
     t.string   "name",         limit: 255
     t.text     "caption",      limit: 65535
-    t.string   "link",         limit: 255
+    t.string   "url",          limit: 255
     t.boolean  "active",                     default: true
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -286,6 +286,16 @@ ActiveRecord::Schema.define(version: 20151107120222) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
+
+  create_table "short_routes", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.string   "url",         limit: 255
+    t.integer  "http_status", limit: 4,   default: 301
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "short_routes", ["name"], name: "index_short_routes_on_name", using: :btree
 
   create_table "themes", force: :cascade do |t|
     t.string   "name",        limit: 255

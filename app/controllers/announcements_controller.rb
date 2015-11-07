@@ -77,6 +77,6 @@ class AnnouncementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def announcement_params
-      params.require(:announcement).permit(:name, :caption, :link, :active, :visible_from, :visible_to, :image_attributes => [:file, :id])
+      params.require(:announcement).permit(:name, :caption, :url, :active, :visible_from, :visible_to, :image_attributes => [:file, :id])
     end
 end

@@ -16,6 +16,9 @@ end
 TgtRefurbished::Application.routes.draw do
 
 
+  resources :short_routes
+  match ':name' => 'short_routes#redirect', :via => [:get]
+
   resources :quick_links
   resources :themes
 

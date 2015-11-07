@@ -1,15 +1,16 @@
 <div class="window box">
-  <%= simple_form_for(shallow_args(@department, @quick_link)) do |f| %>
+  <%= simple_form_for(@short_route) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">
       <%= f.input :name %>
       <%= f.input :url, :placeholder => t(".url_hint") %>
+      <%= f.input :http_status %>
     </div>
 
     <div class="form-group">
       <div class="col-lg-offset-3 col-lg-9">
-        <%= f.button :submit, :class => "btn btn-primary" %>
+          <%= f.button :submit, :class => "btn btn-primary" %>
       </div>
     </div>
   <% end %>
