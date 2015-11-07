@@ -54,7 +54,7 @@
       <%= t ".events" %>
     </h4>
     <%
-      events = Event.chronological.upcoming.limit(3)
+      events = Event.chronological.upcoming.limit(5)
       event_months = events.group_by { |event| event.term.beginning_of_month }
     %>
 

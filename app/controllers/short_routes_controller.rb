@@ -66,6 +66,7 @@ class ShortRoutesController < ApplicationController
   end
 
   def redirect
+    debugger
     @short_route = ShortRoute.find_by!(name: params[:name])
     redirect_to @short_route.url, :status => @short_route.http_status
   end

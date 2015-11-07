@@ -15,10 +15,6 @@ end
 # look also at: image.rb
 TgtRefurbished::Application.routes.draw do
 
-
-  resources :short_routes
-  match ':name' => 'short_routes#redirect', :via => [:get]
-
   resources :quick_links
   resources :themes
 
@@ -98,4 +94,10 @@ TgtRefurbished::Application.routes.draw do
   
   # Root
   root :to => "static_pages#home"
+
+  
+
+
+  resources :short_routes
+  match ':name' => 'short_routes#redirect', :via => [:get]
 end
