@@ -276,7 +276,7 @@ en:
     show:
       title: 'Announcement "%{name}"'
     form:
-      link_hint: 'E.g.: "/department/leichtathletik", "www.google.de"'
+      link_hint: 'E.g.: "/departments/leichtathletik", "www.google.de"'
 
   departments:
     index:

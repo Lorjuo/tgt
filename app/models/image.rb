@@ -71,7 +71,7 @@ class Image < Asset
     dirname = self.file.store_dir
     identifier  = File.basename(filename,".*") # file without extension
 
-    debugger
+    #debugger
     files = Dir.glob("#{Rails.root}/public/#{dirname}/*")
     files.each do |file|
       File.delete(file) if !file.include? identifier
