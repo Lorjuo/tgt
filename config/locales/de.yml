@@ -57,6 +57,7 @@ de:
     unpublish: Zurückziehen
     unpublished: nicht veröffentlicht
     update: Update
+    url_hint: 'Bsp.: "/departments/leichtathletik", "www.google.de"'
 
     small: Klein
     medium: Mittel
@@ -132,7 +133,6 @@ de:
     training_groups: Trainingsgruppen
     training_units: Trainingseinheiten
     url: Link
-    url_hint: 'Bsp.: "/departments/leichtathletik", "www.google.de"'
     visible: Sichtbar
     visible_from: Sichtbar vom
     visible_to: Sichtbar bis
