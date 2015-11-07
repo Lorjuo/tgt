@@ -10,7 +10,7 @@ module ImageAssociationsHelper
       # command above does not a save command that can induce a touch on the associated image
       # therefore a explicit touch is needed to prevent caching issues
       img.attachable.touch
-      debugger
+      #debugger
     end
 
     # Destroy all OTHER images associated with this object
