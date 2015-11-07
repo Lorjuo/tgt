@@ -71,13 +71,12 @@ class Image < Asset
     dirname = self.file.store_dir
     identifier  = File.basename(filename,".*") # file without extension
 
-    #debugger
     files = Dir.glob("#{Rails.root}/public/#{dirname}/*")
     files.each do |file|
       File.delete(file) if !file.include? identifier
     end
 
-    files = Dir.glob("#{Rails.root}/public/#{dirname}/*.{jpg,gif,png}")
+    files = Dir.glob("#{Rails.root}/public/#{dirname}/*.{jpg,gif,png,jpeg}", File::FNM_CASEFOLD) #https://lostechies.com/derickbailey/2011/04/14/case-insensitive-dir-glob-in-ruby-really-it-has-to-be-that-cryptic/
     files.each do |file|
       `convert #{file} -quality 50 -define webp:lossless=false #{file}.webp`
     end

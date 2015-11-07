@@ -81,9 +81,9 @@ class ImageUploader < BaseUploader
     `convert #{file.path} -quality 50 -define webp:lossless=false #{file.path}.webp`
   end
 
-  def create_webp_versions
-    debugger
-    store_dir
-  end
+  # def create_webp_versions
+  #   debugger
+  #   store_dir
+  # end
 
 end

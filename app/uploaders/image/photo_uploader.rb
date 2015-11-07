@@ -1,7 +1,7 @@
 # encoding: utf-8
 class Image::PhotoUploader < ImageUploader
 
-  process resize_to_limit: [1920, 1920]
+  process resize_to_limit: [1600,1600]#[1920, 1920]
   process :store_dimensions
   
   # see: http://carrierwave.rubyforge.org/rdoc/classes/CarrierWave/MiniMagick.html
