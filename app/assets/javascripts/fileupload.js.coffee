@@ -21,6 +21,8 @@ jQuery ->
       # Only allow sequential file uploads to preserve original upload order
       # https://github.com/blueimp/jQuery-File-Upload/issues/2249
       sequentialUploads: false #true
+      limitMultiFileUploads: 4
+      limitConcurrentUploads: 4
       # Simultaneous uploads work, when ordering by filename
 
       # http://stackoverflow.com/questions/19096946/how-to-resize-images-client-side-using-jquery-file-upload
