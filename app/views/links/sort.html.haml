@@ -27,7 +27,7 @@
     %h1 Manage Links
 
 %div.window.box
-  %ol.sortable_tree{ data: { max_levels: 5, rebuild_url: rebuild_links_url } }
+  %ol.sortable_tree{ data: { max_levels: 5, rebuild_url: rebuild_links_path } }
     / = sortable_tree @links
     / = build_server_tree @links, :title => :name, :type => :sortable
     = build_server_tree @links, :title => :get_label, :type => :sortable, :classes => :get_tree_classes
