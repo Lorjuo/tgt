@@ -2,8 +2,8 @@
 # Needs to be copied to: /var/www/tgt/shared/config/puma.rb
 
 environment 'production'
-threads 2, 16
-workers 4
+threads 2, 8 # min/max number per thread -> try and error
+workers 2 # should be equal to number of cores -> duplication of memory use - enables phased restart
 
 app_name = "tgt"
 application_path = "/var/www/#{app_name}"
