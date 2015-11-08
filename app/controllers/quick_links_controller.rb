@@ -9,7 +9,7 @@ class QuickLinksController < ApplicationController
   # GET /quick_links
   # GET /quick_links.json
   def index
-    @quick_links = QuickLink.all
+    @quick_links = QuickLink.sorted.all
   end
 
   # GET /quick_links/1
@@ -65,6 +65,14 @@ class QuickLinksController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def sort
+    # https://github.com/ryanb/railscasts-episodes/tree/master/episode-147/revised/faqapp-after/config
+    params[:quick_link].each_with_index do |id, index|
+      QuickLink.where({id: id}).update_all({position: index+1})
+    end
+    render nothing: true
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -82,6 +90,6 @@ class QuickLinksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def quick_link_params
-      params.require(:quick_link).permit(:name, :url, :department_id)
+      params.require(:quick_link).permit(:name, :url, :department_id, :position)
     end
 end

@@ -59,6 +59,9 @@ window.datatablesSearchable =
   sDom: "<'row'<'col-md-6'l><'col-md-6 filterDiv'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>"
   iDisplayLength: 10
 
+window.datatablesNoSort = 
+  bSort: false
+
 # Callbacks for responsive Layout
 # https://github.com/Comanche/datatables-responsive/blob/master/example/js/dom-bootstrap-multiple-table.js
 # preDrawCallback = ->
@@ -125,5 +128,6 @@ window.datatablesResponsive =
 # Attach onload actions
 $ ->
   $('.datatable.defaults').dataTable $.extend( {}, datatablesDefaults, datatablesResponsive )
+  $('.datatable.noSort').dataTable $.extend( {}, datatablesResponsive, datatablesNoSort )
   $('.datatable.pageable').dataTable $.extend( {}, datatablesDefaults, datatablesPageable, datatablesResponsive )
   $('.datatable.searchable').dataTable $.extend( {}, datatablesDefaults, datatablesSearchable, datatablesResponsive )

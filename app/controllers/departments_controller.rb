@@ -126,7 +126,7 @@ class DepartmentsController < ApplicationController
   end
 
   def quick_links
-    @quick_links = @department.quick_links.alphabetical
+    @quick_links = @department.quick_links.sorted
 
     respond_to do |format|
       format.html { render :template => "quick_links/index" }

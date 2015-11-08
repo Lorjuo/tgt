@@ -10,9 +10,10 @@
 <% end %>
 
 <div class="window box">
-  <table class="table table-bordered table-striped datatable searchable">
+  <table class="table table-bordered table-striped dataTable datatable noSort">
     <thead>
       <tr>
+        <th><%= t("general.sorting") %></th>
         <th data-class="expand"><%= QuickLink.human_attribute_name("name") %></th>
         <th data-hide="xxs,xs,sm"><%= QuickLink.human_attribute_name("url") %></th>
         <th data-hide="xxs,xs,sm"><%= QuickLink.human_attribute_name("active") %></th>
@@ -22,9 +23,13 @@
       </tr>
     </thead>
 
-    <tbody>
+    <tbody class="sortableList" data-update-url="<%= sort_quick_links_url %>">
   <% @quick_links.each do |quick_link| %>
-      <tr>
+    <%= content_tag_for :tr, quick_link, class: "item" do %>
+        <td>
+          <i class="handle ui-sortable-handle"></i>
+          <!--<span class="handle">[drag]</span>-->
+        </td>
         <td><%= link_to quick_link.name, quick_link %></td>
         <td><%= quick_link.url %></td>
         <td><%= t quick_link.active.to_s %></td>
@@ -41,7 +46,7 @@
             <% end %>
           </td>
         <% end %>
-      </tr>
+    <% end %>
   <% end %>
     </tbody>
   </table>

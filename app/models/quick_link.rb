@@ -14,6 +14,8 @@
 class QuickLink < ActiveRecord::Base
 
   include UrlHelper
+  
+  acts_as_list scope: :department
 
     # Associations
   belongs_to :department
@@ -23,7 +25,8 @@ class QuickLink < ActiveRecord::Base
   validates :url, :presence => true
 
   # Scopes
-  scope :alphabetical, -> { order("name") }
+  scope :alphabetical, -> { order(:name) }
+  scope :sorted, -> { order(:position) }
 
   def get_url
     if self.url.start_with?('/', '#')

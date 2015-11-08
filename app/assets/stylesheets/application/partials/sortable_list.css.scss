@@ -1,0 +1,19 @@
+/*.sortableList .handle {
+  font-size: 12px;
+  color: #777;
+  cursor: move;
+}*/
+
+.sortableList .handle {
+  display: block;
+  background: transparent image-url("iconza/icons/move.png");
+  background-position: center center;
+
+  width: 16px;
+  height: 16px;
+  margin: 3px 10px 0 0;
+  /*float: left;*/
+  cursor: move;
+
+  &:hover{ background: transparent image-url("iconza/icons/red_move.png"); }
+}

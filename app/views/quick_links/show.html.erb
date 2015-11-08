@@ -17,11 +17,14 @@
 
 <div class="window box">
   <dl class="dl-horizontal">
-    <dt><%= Event.human_attribute_name("name") %>:</dt>
+    <dt><%= QuickLink.human_attribute_name("name") %>:</dt>
     <dd><%= @quick_link.name %></dd>
 
-    <dt><%= Event.human_attribute_name("url") %>:</dt>
+    <dt><%= QuickLink.human_attribute_name("url") %>:</dt>
     <dd><%= link_to @quick_link.get_url, @quick_link.url if @quick_link.url.present? %></dd>
+
+    <dt><%= QuickLink.human_attribute_name(:active) %></dt>
+    <dd><%= t @quick_link.active.to_s %></dd>
 
   </dl>
 </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151107155908) do
+ActiveRecord::Schema.define(version: 20151108213150) do
 
   create_table "announcements", force: :cascade do |t|
     t.string   "name",         limit: 255
@@ -262,6 +262,7 @@ ActiveRecord::Schema.define(version: 20151107155908) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "active",                    default: true
+    t.integer  "position",      limit: 4
   end
 
   create_table "references", force: :cascade do |t|

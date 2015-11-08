@@ -84,6 +84,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    acts_as_list (0.7.2)
+      activerecord (>= 3.0)
     annotate (2.6.5)
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
@@ -374,6 +376,7 @@ PLATFORMS
 DEPENDENCIES
   actionview-encoded_mail_to
   active_record_query_trace
+  acts_as_list
   annotate
   awesome_nested_set
   better_errors

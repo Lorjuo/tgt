@@ -6,7 +6,7 @@
     <% generic_department = Department.where(:name=>"generic").first %>
     <% quick_links = generic_department.quick_links %>
   <% end %>
-  <% quick_links.alphabetical.each do |quick_link| %>
+  <% quick_links.sorted.each do |quick_link| %>
     <%= link_to quick_link.get_url, class: 'window box obtrusive link quick-link' do %>
       <%= fa_icon 'chevron-circle-right' %> <%= quick_link.name %>
     <% end %>
@@ -39,11 +39,11 @@
       <% galleries = Gallery.joins(:images).uniq.chronological.limit(4) %>
       <% cache(['widget', cache_key_for(galleries)], skip_digest: true) do %>
 
-        <%= render(:partial => 'galleries/gallery', :collection => galleries.chronological, :as => 'gallery', :locals => {:box_class => "col-sm-6 col-xs-4", :display_info => true, :num_preview_images => 3}) %>
+        <%= render(:partial => 'galleries/gallery', :collection => galleries.chronological, :as => 'gallery', :locals => {:box_class => "col-sm-6 col-xs-4", :display_info => true, :num_preview_images => 3}) if false %>
         <% galleries.each do |gallery| %>
           <% if image = gallery.get_preview_image %>
-            <!--<div class="col-sm-4 col-xs-6">-->
-            <div class="col-sm-6">
+            <div class="col-sm-6 col-xs-4">
+            <!--<div class="col-sm-6">-->
               <div class="mediaWrapper">
                 <%#= link_to(image.file_url, :class => 'fancybox', :rel => 'galleries', :caption => gallery.name) do %>
                 <%= link_to gallery, :title => gallery.name, :data => {:toggle => "tooltip"}, :style => "display: block" do %>
@@ -52,7 +52,7 @@
               </div>
             </div>
           <% end %>
-        <% end if false %>
+        <% end %>
       <% end %>
     </div>
   </div>

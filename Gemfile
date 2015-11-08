@@ -180,6 +180,7 @@ gem 'lodash-rails'
 # Alternative: https://github.com/berk/will_filter/wiki/Customizing-Table-View
 
 # Tree Structures
+gem 'acts_as_list'
 gem 'awesome_nested_set'#, github: 'huoxito/awesome_nested_set', branch: 'rails4'
 gem 'the_sortable_tree'#, '~> 2.3.0'
 

@@ -47,6 +47,8 @@
 @import "jquery-ui"; // http://stackoverflow.com/questions/17053650/ruby-on-rails-couldnt-find-file-jquery-ui
 //@import "jquery.ui.all";
 
+@import "partials/sortable_list";
+
 // Sortable Tree
 @import "sortable_tree";
 @import "nested_options";

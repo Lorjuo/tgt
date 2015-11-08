@@ -15,7 +15,9 @@ end
 # look also at: image.rb
 TgtRefurbished::Application.routes.draw do
 
-  resources :quick_links
+  resources :quick_links do
+    collection { post :sort }
+  end
   resources :themes
 
   # Announcements
