@@ -3,7 +3,8 @@
   <% if @department.present? %>
     <% quick_links = @department.quick_links %>
   <% else %>
-    <% quick_links = QuickLink %>
+    <% generic_department = Department.where(:name=>"generic").first %>
+    <% quick_links = generic_department.quick_links %>
   <% end %>
   <% quick_links.alphabetical.each do |quick_link| %>
     <%= link_to quick_link.get_url, class: 'window box obtrusive link quick-link' do %>
