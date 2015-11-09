@@ -18,6 +18,7 @@
 //# http://stackoverflow.com/questions/17053650/ruby-on-rails-couldnt-find-file-jquery-ui
 //# require jquery.ui.all
 //#= require jquery_ujs
+//= require jquery.ui.touch-punch
 //
 ////# require holder
 //
