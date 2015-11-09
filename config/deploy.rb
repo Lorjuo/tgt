@@ -141,3 +141,8 @@ end
 #  - http://nadarei.co/mina/tasks
 #  - http://nadarei.co/mina/settings
 #  - http://nadarei.co/mina/helpers
+
+
+task :copy_nondigest_assets do
+  queue "cd #{deploy_to}/current ; bundle exec rake tgt:copy_nondigest_assets"
+end

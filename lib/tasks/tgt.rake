@@ -39,24 +39,24 @@ namespace :tgt do
 
   desc 'Copy ckeditor assets, that cant be used with digest'
   task copy_nondigest_assets: :environment do
-    copy_assets /tinymce/
+    # copy_assets /tinymce/
     #copy_assets /tinymce\/langs/
     copy_assets /elfinder/
 
-    copy_assets /bootstrap\/glyphicons-halflings-regular.woff/
-    copy_assets /bootstrap\/glyphicons-halflings-regular.ttf/
+    # copy_assets /bootstrap\/glyphicons-halflings-regular.woff/
+    # copy_assets /bootstrap\/glyphicons-halflings-regular.ttf/
     
-    copy_assets /blank.gif/
-    copy_assets /fancybox_buttons.png/
-    copy_assets /fancybox_loading.gif/
-    copy_assets /fancybox_loading@2x.gif/
-    copy_assets /fancybox_overlay.png/
-    copy_assets /fancybox_sprite.png/
-    copy_assets /fancybox_sprite@2x.png/
+    # copy_assets /blank.gif/
+    # copy_assets /fancybox_buttons.png/
+    # copy_assets /fancybox_loading.gif/
+    # copy_assets /fancybox_loading@2x.gif/
+    # copy_assets /fancybox_overlay.png/
+    # copy_assets /fancybox_sprite.png/
+    # copy_assets /fancybox_sprite@2x.png/
 
-    copy_assets /alpha.png/
-    copy_assets /hue.png/
-    copy_assets /saturation.png/
+    #copy_assets /alpha.png/
+    #copy_assets /hue.png/
+    #copy_assets /saturation.png/
   end
 
   desc 'Remove all images that are not associated to any attachable'
