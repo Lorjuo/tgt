@@ -23,7 +23,7 @@
       </tr>
     </thead>
 
-    <tbody class="sortableList" data-update-url="<%= sort_quick_links_url %>">
+    <tbody class="sortableList" data-update-url="<%= sort_quick_links_path %>">
   <% @quick_links.each do |quick_link| %>
     <%= content_tag_for :tr, quick_link, class: "item" do %>
         <td>
