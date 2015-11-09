@@ -4,7 +4,8 @@ $ ->
   tableContainer.dataTable $.extend({}, datatablesDefaults, datatablesPageable, datatablesResponsive,
 
     bServerSide: true #für Ajax
-    aaSorting: [[ 1, "asc" ]]
+    #aaSorting: [[ 1, "asc" ]]
+    order: [[ 1, "asc" ]]
     sAjaxSource: $("#training_groups_data_table").data("source")
   )
 
