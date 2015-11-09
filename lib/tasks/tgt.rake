@@ -31,7 +31,7 @@ namespace :tgt do
   def copy_assets(regexp)
     Rails.application.assets.each_logical_path(regexp) do |name, path|
       asset = Rails.root.join('public', 'assets', name)
-      p "Copy #{path} to #{asset}"
+      #p "Copy #{path} to #{asset}"
       FileUtils.mkdir_p(File.dirname(asset))
       FileUtils.cp path, asset
     end

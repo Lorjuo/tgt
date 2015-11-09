@@ -124,7 +124,7 @@ task :deploy => :environment do
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
-    invoke :'copy_nondigest_assets'
+    invoke :'copy_nondigest_assets' #if app_env == 'production'
 
     to :launch do
       #queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
@@ -145,5 +145,7 @@ end
 
 
 task :copy_nondigest_assets do
-  queue "cd #{deploy_to}/current ; bundle exec rake tgt:copy_nondigest_assets"
+  queue! %[
+    cd #{deploy_to}/#{current_path} && bundle exec rake tgt:copy_nondigest_assets RAILS_ENV=#{rails_env}
+  ]
 end
