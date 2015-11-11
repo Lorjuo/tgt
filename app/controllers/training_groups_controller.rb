@@ -2,6 +2,8 @@ class TrainingGroupsController < ApplicationController
   
   include ImageAssociationsHelper
 
+  include EmailHelper
+
   before_action :set_training_group, only: [:show, :edit, :update, :destroy]
   before_action :load_parent_resource
 
@@ -32,6 +34,7 @@ class TrainingGroupsController < ApplicationController
 
 
   def show
+    @training_group.description = save_email(@training_group.description)
   end
 
 

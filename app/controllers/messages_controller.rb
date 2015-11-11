@@ -2,6 +2,8 @@ class MessagesController < ApplicationController
   
   include ImageAssociationsHelper
 
+  include EmailHelper
+
   #load_and_authorize_resource
 
   before_action :set_message, only: [:show, :edit, :update, :publish, :destroy]
@@ -21,6 +23,7 @@ class MessagesController < ApplicationController
 
 
   def show
+    @message.content = save_email(@message.content)
   end
 
 

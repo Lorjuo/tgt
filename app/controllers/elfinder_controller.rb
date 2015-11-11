@@ -26,6 +26,8 @@ class ElfinderController < ApplicationController
     Rack::MiniProfiler.discard_results
     Rack::MiniProfiler.deauthorize_request
     {
+      #see: https://github.com/phallstrom/el_finder/blob/master/lib/el_finder/connector.rb
+      :home => 'MyHome',
       :root => File.join(Rails.public_path, 'files'),#+params[:path],
       :url => '/files', #+params[:path],
       :defaultView => 'list', # icons or list
