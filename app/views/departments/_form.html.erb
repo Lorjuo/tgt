@@ -39,7 +39,7 @@
                 </div>
               </div>
               <%# TODO: Remove column color - depends on schedule %>
-              <%= f.input :color, :input_html => { :class => "colorpicker", :data => {:"color-format" => "hex"}} %>
+              <%= f.input :color, :input_html => { :class => "colorpicker", :data => {:"color-format" => "hex"}, :style => 'background-color: '+(@department.color || "")} %>
 
             </div>
           </div>

@@ -145,7 +145,8 @@ end
 
 
 task :copy_nondigest_assets do
+  ##{current_path}
   queue! %[
-    cd #{deploy_to}/#{current_path} && bundle exec rake tgt:copy_nondigest_assets RAILS_ENV=#{rails_env}
+    cd #{deploy_to}/$build_path && bundle exec rake tgt:copy_nondigest_assets RAILS_ENV=#{rails_env}
   ]
 end

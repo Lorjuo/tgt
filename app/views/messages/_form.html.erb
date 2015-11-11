@@ -6,54 +6,100 @@
   <%= simple_form_for(shallow_args(@department, @message), :defaults => { :input_html => { :class => 'input-xlarge' } }) do |f| %>
     <%= f.error_notification %>
 
-    <div class="form-inputs">
-      <%= f.input :name, :as => :text %>
-      <!--<div class="form-group string optional message_title">
-        <%= f.label :name %>
-        <div class="col-md-9">
-          <%= f.input_field :name %>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingGeneric">
+          <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseGeneric" aria-expanded="true" aria-controls="collapseGeneric">
+              <i class="fa fa-info-circle"></i>
+              <%= t 'general.general_data' %>
+            </a>
+          </h4>
         </div>
-      </div>-->
+        <div id="collapseGeneric" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingGeneric">
+          <div class="panel-body">
 
-      <%#= f.association :department %>
-      <%= f.input :custom_date, :as => :date_picker %>
+            <div class="form-inputs">
+              <%= f.input :name, :as => :text %>
+              <!--<div class="form-group string optional message_title">
+                <%= f.label :name %>
+                <div class="col-md-9">
+                  <%= f.input_field :name %>
+                </div>
+              </div>-->
 
-      <%= f.input :abstract, as: :text, :placeholder => t(".abstract_hint"), input_html: { maxlength: 360 } %>
+              <%#= f.association :department %>
+              <%= f.input :custom_date, :as => :date_picker %>
 
-      <%= f.input :content, as: :text, input_html: { class: 'tinymce' }  %>
-      <!--<div class="form-group string optional message_content">
-        <%= f.label :content %>
-        <div class="col-md-9">
-          <%= f.input_field :content, class: 'tinymce' %>
+              <%= f.input :abstract, as: :text, :placeholder => t(".abstract_hint"), input_html: { maxlength: 360 } %>
+
+              <%= f.input :content, as: :text, input_html: { class: 'tinymce' }  %>
+              <!--<div class="form-group string optional message_content">
+                <%= f.label :content %>
+                <div class="col-md-9">
+                  <%= f.input_field :content, class: 'tinymce' %>
+                </div>
+              </div>-->
+              <% if can? :publish, f.object %>
+                <%= f.input :published %>
+              <% end %>
+              <%= f.input :visible_from, :as => :date_picker %>
+              <%= f.input :visible_to, :as => :date_picker %>
+            </div>
+          </div>
         </div>
-      </div>-->
-      <% if can? :publish, f.object %>
-        <%= f.input :published %>
-      <% end %>
-      <%= f.input :visible_from, :as => :date_picker %>
-      <%= f.input :visible_to, :as => :date_picker %>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingImage">
+          <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseImage" aria-expanded="false" aria-controls="collapseImage">
+              <i class="fa fa-picture-o"></i>
+              <%= Image.model_name.human(:count => :lots) %>
+            </a>
+          </h4>
+        </div>
+        <div id="collapseImage" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingImage">
+          <div class="panel-body">
 
-      <%= f.input :header, as: :image_popup_upload, input_html: {}, preview_version: nil, preview_size: '400x100', :use_default_url => true, :mount_on => :file %>
-      <%= f.input :thumb, as: :image_popup_upload, input_html: {}, preview_version: nil, preview_size: '180x120', :use_default_url => true, :mount_on => :file %>
+            <%= f.input :header, as: :image_popup_upload, input_html: {}, preview_version: nil, preview_size: '400x100', :use_default_url => true, :mount_on => :file %>
+            <%= f.input :thumb, as: :image_popup_upload, input_html: {}, preview_version: nil, preview_size: '180x120', :use_default_url => true, :mount_on => :file %>
 
-      <fieldset>
-        <legend><%= t "general.references" %></legend>
-        <%= f.association :galleries,
-          :as => :select,
-          :collection => Gallery.order(:name => :asc),
-          :label_method => :name,
-          :value_method => :id,
-          :include_blank => false,
-          :input_html => { :class => "chosen"} %>
-        
-        <%= f.association :documents,
-          :as => :select,
-          :collection => Document.order(:name => :asc),
-          :label_method => :name,
-          :value_method => :id,
-          :include_blank => false,
-          :input_html => { :class => "chosen"} %>
-      </fieldset>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingReferences">
+          <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseReferences" aria-expanded="false" aria-controls="collapseReferences">
+              <i class="fa fa-link"></i>
+              <%= t 'general.references' %>
+            </a>
+          </h4>
+        </div>
+        <div id="collapseReferences" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingReferences">
+          <div class="panel-body">
+
+            <fieldset>
+              <legend><%= t "general.references" %></legend>
+              <%= f.association :galleries,
+                :as => :select,
+                :collection => Gallery.order(:name => :asc),
+                :label_method => :name,
+                :value_method => :id,
+                :include_blank => false,
+                :input_html => { :class => "chosen"} %>
+              
+              <%= f.association :documents,
+                :as => :select,
+                :collection => Document.order(:name => :asc),
+                :label_method => :name,
+                :value_method => :id,
+                :include_blank => false,
+                :input_html => { :class => "chosen"} %>
+            </fieldset>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="form-group">
