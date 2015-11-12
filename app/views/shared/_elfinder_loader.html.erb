@@ -1,7 +1,10 @@
 <!-- https://github.com/Studio-42/elFinder/wiki/Integration-with-TinyMCE-4.x -->
 <script>
   function elFinderBrowser (field_name, url, type, win) {
-    var elfinder_url = '/elfinder/frontend'; //'?path='+encodeURIComponent("<%= path %>");    // use an absolute path!
+    var params = '?department_id='+encodeURIComponent("<%= department.id %>");
+    params += '&department_name='+encodeURIComponent("<%= department.name %>");
+    var elfinder_url = '/elfinder/frontend'+params;    // use an absolute path!;
+
     tinymce.activeEditor.windowManager.open({
       file: elfinder_url,
       title: 'Filemanager',

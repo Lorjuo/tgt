@@ -108,7 +108,8 @@ class Department < ActiveRecord::Base
     end
     puts department_name
 
-    root_dir = File.join(Rails.public_path, 'files')+"/#{department_name}/"
+    #root_dir = File.join(Rails.public_path, 'files')+"/#{department_name}/"
+    root_dir = File.join(Rails.public_path, 'files')+"/#{self.id}/"
 
     # mkdir_p: Creates a directory and all its parent directories
 

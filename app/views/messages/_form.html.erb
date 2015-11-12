@@ -1,4 +1,4 @@
-<%= render :partial => 'shared/elfinder_loader', :locals => { :path => "" } %>
+<%= render :partial => 'shared/elfinder_loader', :locals => { :department => @department } %>
 <%= tinymce %>
 <%= render :partial => 'jquery_popup_uploader/utilities' %>
 
@@ -32,20 +32,35 @@
               <%= f.input :custom_date, :as => :date_picker %>
 
               <%= f.input :abstract, as: :text, :placeholder => t(".abstract_hint"), input_html: { maxlength: 360 } %>
-
-              <%= f.input :content, as: :text, input_html: { class: 'tinymce' }  %>
-              <!--<div class="form-group string optional message_content">
-                <%= f.label :content %>
-                <div class="col-md-9">
-                  <%= f.input_field :content, class: 'tinymce' %>
-                </div>
-              </div>-->
               <% if can? :publish, f.object %>
                 <%= f.input :published %>
               <% end %>
               <%= f.input :visible_from, :as => :date_picker %>
               <%= f.input :visible_to, :as => :date_picker %>
             </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingText">
+          <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseText" aria-expanded="false" aria-controls="collapseText">
+              <i class="fa fa-file-text-o"></i>
+              <%= Message.human_attribute_name(:content) %>
+            </a>
+          </h4>
+        </div>
+        <div id="collapseText" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingText">
+          <div class="panel-body">
+
+            <%= f.input_field :content, as: :text, class: 'tinymce'  %>
+            <%#= f.input :content, as: :text, input_html: { class: 'tinymce' }  %>
+            <!--<div class="form-group string optional message_content">
+              <%= f.label :content %>
+              <div class="col-md-9">
+                <%= f.input_field :content, class: 'tinymce' %>
+              </div>
+            </div>-->
           </div>
         </div>
       </div>

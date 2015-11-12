@@ -27,9 +27,9 @@ class ElfinderController < ApplicationController
     Rack::MiniProfiler.deauthorize_request
     {
       #see: https://github.com/phallstrom/el_finder/blob/master/lib/el_finder/connector.rb
-      :home => 'MyHome',
-      :root => File.join(Rails.public_path, 'files'),#+params[:path],
-      :url => '/files', #+params[:path],
+      :home => params[:department_name],
+      :root => File.join(Rails.public_path, 'files', params[:department_id]),#+params[:path],
+      :url => '/files/'+params[:department_id], #+params[:path],
       :defaultView => 'list', # icons or list
       :perms => {
         # http://rubular.com For regular expression testing
@@ -39,7 +39,9 @@ class ElfinderController < ApplicationController
         # /Leichtathletik/Bilder -> false
         # /Leichtathletik/Bilder/test.jpg -> true
 
-        /^[^\/]*$/ => {:read => true, :write => false, :rm => false}, # Absolutely don't know why this works
+
+        # THE NEXT LINE ALLOWS TO EDIT ONLY FILES ON SUB LEVEL WHEN COMBINING IT WITH THE OVER NEXT LINE
+        #/^[^\/]*$/ => {:read => true, :write => false, :rm => false}, # Absolutely don't know why this works
         /.*/ => {:read => true, :write => true, :rm => true}
         #/^[^\/]*(\/[^\/]+){0,0}$/ => {:read => true, :write => false, :rm => false},
         #/^[^\/]*\/{0,1}[^\/]*$/ => {:read => true, :write => false, :rm => false},

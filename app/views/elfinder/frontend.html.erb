@@ -19,10 +19,14 @@
     var rails_csrf = {};
     rails_csrf[$('meta[name=csrf-param]').attr('content')] = $('meta[name=csrf-token]').attr('content');
 
+
+    var params = '?department_id='+encodeURIComponent("<%= params[:department_id] %>");
+    params += '&department_name='+encodeURIComponent("<%= params[:department_name] %>");
+
     var elf = $('#elfinder').elfinder({
       // set your elFinder options here
       lang: 'en',
-      url: '/elfinder/backend',//'?path='+encodeURIComponent("<%= params[:path] %>"),  // connector URL
+      url: '/elfinder/backend'+params,//'?path='+encodeURIComponent("<%= params[:path] %>"),  // connector URL
       getFileCallback: function(file) { // editor callback
 // actually file.url - doesnt work for me, but file does. (elfinder 2.0-rc1)
         FileBrowserDialogue.mySubmit(file); // pass selected file path to TinyMCE 
