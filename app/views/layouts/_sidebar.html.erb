@@ -2,14 +2,11 @@
 
   <%
     if @department.present?
-      department = @department
+      quick_links = @department.quick_links
     else
-      generic_department = Department.where(:name=>"generic").first
-      department = generic_department
+      quick_links = QuickLink.all
     end
-  %> 
-
-  <% quick_links = department.quick_links %>
+  %>
   <% quick_links.sorted.each do |quick_link| %>
     <%= link_to quick_link.get_url, class: 'window box obtrusive link quick-link' do %>
       <%= fa_icon 'chevron-circle-right' %> <%= quick_link.name %>
@@ -40,7 +37,14 @@
     <br />
     <div class="row">
       <%# Select galleries with at least one child/image: http://stackoverflow.com/questions/9922833/rails-how-to-get-objects-with-at-least-one-child %>
-      <% galleries = department.galleries.joins(:images).uniq.chronological.limit(4) %>
+      <%
+        if @department.present?
+          galleries = @department.galleries
+        else
+          galleries = Gallery.all
+        end
+      %>
+      <% galleries = galleries.joins(:images).uniq.chronological.limit(4) %>
       <% cache(['widget', cache_key_for(galleries)], skip_digest: true) do %>
 
         <%= render(:partial => 'galleries/gallery', :collection => galleries.chronological, :as => 'gallery', :locals => {:box_class => "col-sm-6 col-xs-4", :display_info => true, :num_preview_images => 3}) if false %>
@@ -67,7 +71,12 @@
     </h4>
     <br />
     <%
-      events = department.events.chronological.upcoming.limit(5)
+      if @department.present?
+        events = @department.events
+      else
+        events = Event.all
+      end
+      events = events.chronological.upcoming.limit(5)
       event_months = events.group_by { |event| event.term.beginning_of_month }
     %>
 
