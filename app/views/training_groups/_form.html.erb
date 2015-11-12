@@ -1,7 +1,7 @@
 <%= render :partial => 'jquery_popup_uploader/utilities' %>
 
 <div class="window box">
-  <%= render :partial => 'shared/elfinder_loader', :locals => { :path => "/departments/#{@training_group.department.id}" } %>
+  <%= render :partial => 'shared/elfinder_loader', :locals => { :path => "/departments/#{@training_group.department.id}", :department => @department } %>
   <%= tinymce %>
   <%= simple_form_for(shallow_args(@department, @training_group)) do |f| %>
     <%= f.error_notification %>
