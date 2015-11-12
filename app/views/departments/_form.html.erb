@@ -1,7 +1,7 @@
 <%#= render :partial => 'jquery_popup_uploader/utilities' %>
 
 <div class="window box">
-  <%= render :partial => 'shared/elfinder_loader', :locals => { :path => "/departments/#{@department.id}" } unless @department.new_record? %>
+  <%= render :partial => 'shared/elfinder_loader', :locals => { :department => @department } unless @department.new_record? %>
   <%= tinymce %>
   <%= simple_form_for(@department, :defaults => { :input_html => { :class => 'input-xlarge' } }) do |f| %>
     <%= f.error_notification %>
