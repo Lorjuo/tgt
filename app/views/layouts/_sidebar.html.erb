@@ -5,7 +5,7 @@
       quick_links = @department.quick_links
     else
       generic_department = Department.where(:name=>"generic").first
--     quick_links = generic_department.quick_links
+      quick_links = generic_department.quick_links
     end
   %>
   <% quick_links.sorted.each do |quick_link| %>
