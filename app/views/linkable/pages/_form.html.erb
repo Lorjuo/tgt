@@ -5,31 +5,79 @@
   <%= simple_form_for(shallow_args(@department, @linkable)) do |f| %>
     <%= f.error_notification %>
 
-    <div class="form-inputs">
-      <%= f.fields_for :link, @linkable.link do |ff| %>
-        <%= render :partial => 'links/linkable_fields', :object => @linkable, :as => "linkable", :locals => { :f => ff } %>
-      <% end %>
-      <%= f.input :sidebar  %>
-      <%= f.input :content, as: :text, input_html: { class: 'tinymce' }  %>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingGeneric">
+          <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseGeneric" aria-expanded="true" aria-controls="collapseGeneric">
+              <i class="fa fa-info-circle"></i>
+              <%= t 'general.general_data' %>
+            </a>
+          </h4>
+        </div>
+        <div id="collapseGeneric" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingGeneric">
+          <div class="panel-body">
 
-      <fieldset>
-        <legend><%= t "general.references" %></legend>
-        <%= f.association :galleries,
-          :as => :select,
-          :collection => Gallery.order(:name => :asc),
-          :label_method => :name,
-          :value_method => :id,
-          :include_blank => false,
-          :input_html => { :class => "chosen"} %>
-        
-        <%= f.association :documents,
-          :as => :select,
-          :collection => Document.order(:name => :asc),
-          :label_method => :name,
-          :value_method => :id,
-          :include_blank => false,
-          :input_html => { :class => "chosen"} %>
-      </fieldset>
+            <div class="form-inputs">
+              <%= f.fields_for :link, @linkable.link do |ff| %>
+                <%= render :partial => 'links/linkable_fields', :object => @linkable, :as => "linkable", :locals => { :f => ff } %>
+              <% end %>
+              <%= f.input :sidebar  %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingText">
+          <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseText" aria-expanded="false" aria-controls="collapseText">
+              <i class="fa fa-file-text-o"></i>
+              <%= Message.human_attribute_name(:content) %>
+            </a>
+          </h4>
+        </div>
+        <div id="collapseText" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingText">
+          <div class="panel-body">
+            
+            <%= f.input_field :content, as: :text, class: 'tinymce'  %>
+
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingReferences">
+          <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseReferences" aria-expanded="false" aria-controls="collapseReferences">
+              <i class="fa fa-link"></i>
+              <%= t 'general.references' %>
+            </a>
+          </h4>
+        </div>
+        <div id="collapseReferences" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingReferences">
+          <div class="panel-body">
+
+            <fieldset>
+              <legend><%= t "general.references" %></legend>
+              <%= f.association :galleries,
+                :as => :select,
+                :collection => Gallery.order(:name => :asc),
+                :label_method => :name,
+                :value_method => :id,
+                :include_blank => false,
+                :input_html => { :class => "chosen"} %>
+              
+              <%= f.association :documents,
+                :as => :select,
+                :collection => Document.order(:name => :asc),
+                :label_method => :name,
+                :value_method => :id,
+                :include_blank => false,
+                :input_html => { :class => "chosen"} %>
+            </fieldset>
+          </div>
+        </div>
+      </div>
     </div>
     
     <div class="form-group">

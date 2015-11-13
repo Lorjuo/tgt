@@ -25,8 +25,8 @@ module Linkable
       end
 
       def resolve_layout
-        if [:edit, :new].include?(params[:action]) ||
-          (@page.present? && params[:action] == :show && !@page.sidebar)
+        if ["edit", "new"].include?(params[:action]) ||
+          (@page.present? && params[:action] == "show" && !@page.sidebar)
           'one_column'
         else
           'two_columns'
