@@ -41,7 +41,7 @@ relevant pages preview cycle:
             <% position = 0 %>
             <% @home_cycle_slides.each do |home_cycle_slide| %>
               <div class="tab" data-position="<%= position %>">
-                <a href="#"><%= home_cycle_slide.name %></a>
+                <%= link_to home_cycle_slide.name, home_cycle_slide.get_url %>
               </div>
               <% position = position + 1 %>
             <% end %>
