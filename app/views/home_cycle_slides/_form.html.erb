@@ -1,0 +1,20 @@
+<%= render :partial => 'jquery_popup_uploader/utilities' %>
+
+<div class="window box">
+  <%= simple_form_for(@home_cycle_slide) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :name %>
+      <%= f.input :description, as: :text, :input_html => {:rows => 3} %>
+      <%= f.input :url, :placeholder => t("general.url_hint")  %>
+      <%= f.input :image, as: :image_popup_upload, input_html: {}, preview_version: nil, preview_size: '360x120', :use_default_url => true, :mount_on => :file %>
+    </div>
+
+    <div class="form-group">
+      <div class="col-lg-offset-3 col-lg-9">
+          <%= f.button :submit, :class => "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>

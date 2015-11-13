@@ -1,0 +1,33 @@
+<% content_for :title do %>
+  <%= t ".title", :name => @home_cycle_slide.name %>
+<% end %>
+
+<% content_for :buttons do %>
+  <%= link_to home_cycle_slides_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    <%= t "general.list" %>
+  <% end %>
+  <% if can? :update, @home_cycle_slide %>
+    <%= link_to edit_home_cycle_slide_path(@home_cycle_slide), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+      <%= t "general.edit" %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<div class="window box">
+  <dl class="dl-horizontal">
+    <dt><%= HomeCycleSlide.human_attribute_name("name") %>:</dt>
+    <dd><%= @home_cycle_slide.name %></dd>
+
+    <dt><%= HomeCycleSlide.human_attribute_name("description") %>:</dt>
+    <dd><%= @home_cycle_slide.description %></dd>
+
+    <dt><%= HomeCycleSlide.human_attribute_name("url") %>:</dt>
+    <dd><%= link_to @home_cycle_slide.get_url, @home_cycle_slide.url if @home_cycle_slide.url.present? %></dd>
+
+    <dt><%= HomeCycleSlide.human_attribute_name("image") %>:</dt>
+    <dd><%= link_to(image_tag(@home_cycle_slide.image.file_url(:cropped, :_600x200), size: "360x120"), @home_cycle_slide.image.file_url, :class => "fancybox") if @home_cycle_slide.image.present? %></dd>
+
+  </dl>
+</div>

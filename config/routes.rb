@@ -15,6 +15,7 @@ end
 # look also at: image.rb
 TgtRefurbished::Application.routes.draw do
 
+  resources :home_cycle_slides
   resources :quick_links do
     collection { post :sort }
   end

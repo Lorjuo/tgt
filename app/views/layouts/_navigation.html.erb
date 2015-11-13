@@ -76,6 +76,9 @@
               <%= content_tag :li do %>
                 <%= link_to(ShortRoute.model_name.human(:count => :lots), short_routes_path) %>
               <% end if current_user.can?(:edit, ShortRoute) #:short_routes %>
+              <%= content_tag :li do %>
+                <%= link_to(HomeCycleSlide.model_name.human(:count => :lots), home_cycle_slides_path) %>
+              <% end if current_user.can?(:edit, HomeCycleSlide) #:home_cycle_slides %>
             </ul>
           </li>
         <% end %>

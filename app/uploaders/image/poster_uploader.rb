@@ -2,6 +2,7 @@
 class Image::PosterUploader < ImageUploader
 
   process resize_to_fit: [800, 600]
+  process :store_dimensions
   
   # see: http://carrierwave.rubyforge.org/rdoc/classes/CarrierWave/MiniMagick.html
   # resize_to_limit does not work. But commandline operation works

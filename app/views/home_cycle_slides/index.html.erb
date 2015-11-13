@@ -1,0 +1,49 @@
+<% content_for :title do %>
+  <%= t ".title" %>
+<% end %>
+
+<% content_for :buttons do %>
+  <%= link_to new_home_cycle_slide_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    <%= t('general.create_model', :model => HomeCycleSlide.model_name.human ) %>
+  <% end if can? :create, HomeCycleSlide %>
+<% end %>
+
+<div class="window box">
+  <table class="table table-bordered table-striped datatable searchable">
+    <thead>
+      <tr>
+        <th><%= HomeCycleSlide.human_attribute_name("image") %></th>
+        <th><%= HomeCycleSlide.human_attribute_name("name") %></th>
+        <th><%= HomeCycleSlide.human_attribute_name("description") %></th>
+        <th><%= HomeCycleSlide.human_attribute_name("url") %></th>
+        <% if user_signed_in? %>
+          <th class="no-sort"><%= t "general.actions" %></th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+  <% @home_cycle_slides.each do |home_cycle_slide| %>
+      <tr>
+        <td><%= link_to(image_tag(home_cycle_slide.image.file_url(:cropped, :_600x200), size: "240x80"), home_cycle_slide.image.file_url, :class => "fancybox") if home_cycle_slide.image.present? %></td>
+        <td><%= home_cycle_slide.name %></td>
+        <td><%= home_cycle_slide.description %></td>
+        <td><%= home_cycle_slide.url %></td>
+        <% if user_signed_in? %>
+          <td>
+            <%= link_to edit_home_cycle_slide_path(home_cycle_slide), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
+              <%= tag :span, :class => "glyphicon glyphicon-edit" %>
+            <% end %>
+            <% if can? :destroy, home_cycle_slide %>
+              <%= link_to home_cycle_slide, :title => t("general.destroy"), data: { confirm: t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete do %>
+                <%= tag :span, :class => "glyphicon glyphicon-trash" %>
+              <% end %>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+  <% end %>
+    </tbody>
+  </table>
+</div>

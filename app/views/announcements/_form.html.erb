@@ -1,6 +1,6 @@
 <div class="window box">
   <%#= render :partial => 'shared/elfinder_loader', :locals => { :department => Department.where(:name=>"generic").first } %>
-  <%= tinymce %>
+  <%#= tinymce %>
   <%= simple_form_for(@announcement) do |f| %>
     <%= f.error_notification %>
 

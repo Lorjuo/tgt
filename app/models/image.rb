@@ -50,7 +50,7 @@ class Image < Asset
   # We will need a way to know which types
   # will subclass the Image model
   def self.races
-    %w(Image::Banner Image::Header Image::Poster Image::Photo Image::GalleryPhoto)
+    %w(Image::Banner Image::Header Image::Poster Image::Photo Image::GalleryPhoto Image::HomeCycleImage)
   end
 
   # ATTENTION - THIS IS REALLY IMPORTANT:
