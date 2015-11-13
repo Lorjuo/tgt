@@ -24,30 +24,30 @@
     </thead>
 
     <tbody class="sortableList" data-update-url="<%= sort_quick_links_path %>">
-  <% @quick_links.each do |quick_link| %>
-    <%= content_tag_for :tr, quick_link, class: "item" do %>
-        <td>
-          <i class="handle ui-sortable-handle"></i>
-          <!--<span class="handle">[drag]</span>-->
-        </td>
-        <td><%= link_to quick_link.name, quick_link %></td>
-        <td><%= quick_link.url %></td>
-        <td><%= t quick_link.active.to_s %></td>
-        <%# if can? :update, quick_link %>
-        <% if user_signed_in? %>
+      <% @quick_links.each do |quick_link| %>
+        <%= content_tag_for :tr, quick_link, class: "item" do %>
           <td>
-            <%= link_to edit_quick_link_path(quick_link), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
-              <%= tag :span, :class => "glyphicon glyphicon-edit" %>
-            <% end %>
-            <% if can? :destroy, quick_link %>
-              <%= link_to quick_link, :title => t("general.destroy"), data: { confirm: t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete do %>
-                <%= tag :span, :class => "glyphicon glyphicon-trash" %>
-              <% end %>
-            <% end %>
+            <i class="handle ui-sortable-handle"></i>
+            <!--<span class="handle">[drag]</span>-->
           </td>
+          <td><%= link_to quick_link.name, quick_link %></td>
+          <td><%= quick_link.url %></td>
+          <td><%= t quick_link.active.to_s %></td>
+          <%# if can? :update, quick_link %>
+          <% if user_signed_in? %>
+            <td>
+              <%= link_to edit_quick_link_path(quick_link), :title => t("general.edit"), :data => {:toggle => "tooltip"} do %>
+                <%= tag :span, :class => "glyphicon glyphicon-edit" %>
+              <% end %>
+              <% if can? :destroy, quick_link %>
+                <%= link_to quick_link, :title => t("general.destroy"), data: { confirm: t('general.are_you_sure'), :toggle => "tooltip" }, method: :delete do %>
+                  <%= tag :span, :class => "glyphicon glyphicon-trash" %>
+                <% end %>
+              <% end %>
+            </td>
+          <% end %>
         <% end %>
-    <% end %>
-  <% end %>
+      <% end %>
     </tbody>
   </table>
 </div>

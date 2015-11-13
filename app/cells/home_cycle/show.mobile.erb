@@ -1,23 +1,15 @@
 <div class="window homeCycle">
   <div class="mediaObject">
-
-    <%= image_tag "home_cycle/verein1.jpg", :class => "img-responsive", :style => "width: 100%" %>
+    <%= image_tag @home_cycle_slides.first.image.file.url(:cropped), :class => "img-responsive", :style => "width: 100%", size: '1088x363' %>
 
     <div class="mediaOverlay tabBar">
       <div class="container">
         <div class="tabs">
-          <div class="tab" id="verein">
-            <a href="#">Verein</a>
-          </div>
-          <div class="tab" id="sport">
-            <a href="/training_groups/search">Sport</a>
-          </div>
-          <div class="tab" id="karneval">
-            <a href="/departments/karneval">Karneval</a>
-          </div>
-          <div class="tab" id="ohlebach">
-            <a href="/departments/ohlebach-theater">Ohlebach-Theater</a>
-          </div>
+            <% @home_cycle_slides.each do |home_cycle_slide| %>
+              <div class="tab">
+                <a href="#"><%= home_cycle_slide.name %></a>
+              </div>
+            <% end %>
         </div>
       </div>
     </div>

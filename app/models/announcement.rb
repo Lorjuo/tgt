@@ -16,6 +16,8 @@
 class Announcement < ActiveRecord::Base
 
   include UrlHelper
+  
+  acts_as_list# scope: :department
 
   # Associations
   has_one :image, :as => :attachable, :class_name => 'Image::Poster', :dependent => :destroy
@@ -28,6 +30,7 @@ class Announcement < ActiveRecord::Base
     where("visible_from IS NULL OR visible_from <= ?", Date.today)
     .where("visible_to IS NULL OR visible_to >= ?", Date.today)
   }
+  scope :sorted, -> { order(:position) }
 
   def get_url
     if self.url.present?

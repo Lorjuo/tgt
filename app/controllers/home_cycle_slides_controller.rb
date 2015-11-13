@@ -11,7 +11,7 @@ class HomeCycleSlidesController < ApplicationController
   # GET /home_cycle_slides
   # GET /home_cycle_slides.json
   def index
-    @home_cycle_slides = HomeCycleSlide.all
+    @home_cycle_slides = HomeCycleSlide.sorted.all
   end
 
   # GET /home_cycle_slides/1
@@ -72,6 +72,14 @@ class HomeCycleSlidesController < ApplicationController
       format.html { redirect_to home_cycle_slides_url }
       format.json { head :no_content }
     end
+  end
+  
+  def sort
+    # https://github.com/ryanb/railscasts-episodes/tree/master/episode-147/revised/faqapp-after/config
+    params[:home_cycle_slide].each_with_index do |id, index|
+      HomeCycleSlide.where({id: id}).update_all({position: index+1})
+    end
+    render nothing: true
   end
 
   private

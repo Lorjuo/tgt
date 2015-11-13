@@ -1,28 +1,3 @@
-<!-- <div class="row tabs dsw">
-  <div class="col-xs-3">
-    <div class="tab" id="verein">
-      <a href="#">Verein</a>
-    </div>
-  </div>
-  <div class="col-xs-3">
-    <div class="tab" id="sport">
-      <a href="#">Sport</a>
-    </div>
-  </div>
-  <div class="col-xs-3">
-    <div class="tab" id="karneval">
-      <a href="#">Karneval</a>
-    </div>
-  </div>
-  <div class="col-xs-3">
-    <div class="tab" id="ohlebach">
-      <a href="#">Ohlebach</a>
-    </div>
-  </div>
-</div> -->
-
-
-
 <!--
 
 TODO: this is very slow / unify preview cycle and home cycle
@@ -40,14 +15,7 @@ relevant pages preview cycle:
 -cycle2_loader
 
   -->
-
-
-          <%#= image_tag "home_cycle/verein1.jpg", :class => "img-responsive", :style => "width: 100%", size: '1088x363' %>
-          <%#= image_tag "home_cycle/sport1.jpg", :class => "img-responsive", :style => "width: 100%", size: '1088x363' %>
-          <%#= image_tag "home_cycle/karneval1.jpg", :class => "img-responsive", :style => "width: 100%", size: '1088x363' %>
-          <%#= image_tag "home_cycle/ohlebach1.jpg", :class => "img-responsive", :style => "width: 100%", size: '1088x363' %>
-
-<div class="window homeCycle">
+<div class="window" id="homeCycle">
   <div class="mediaObject">
     <div class="cycle-slideshow outer-slideshow" id="slideshow"
       data-cycle-fx="fade"
@@ -61,93 +29,34 @@ relevant pages preview cycle:
       data-cycle-paused="true"
       >
 
-      <div class="category" data-cycle-title="Verein" data-cycle-text="Willkommen auf der Homepage der Turngemeinde Traisa">
-        <div class="cycle-slideshow inner-slideshow verein"
-          data-cycle-timeout=4000
-          data-cycle-speed=1000
-          data-cycle-paused="true"
-          >
-          <!-- lazy loading seems not to work in nested slides on first slideshow http://jquery.malsup.com/cycle2/demo/progressive.php -->
-          <%= image_tag "home_cycle/verein1.jpg", :class => "img-responsive", :style => "width: 100%", size: '1088x363' %>
-          <!-- <script id="images_verein" type="text/cycle"> -->
-            <%#= image_tag "home_cycle/verein2.jpg", :class => "img-responsive", :style => "width: 100%" %>
-            <%#= image_tag "home_cycle/verein3.jpg", :class => "img-responsive", :style => "width: 100%" %>
-          <!-- </script> -->
+      <% @home_cycle_slides.each do |home_cycle_slide| %>
+        <div class="category" data-cycle-title="<%= home_cycle_slide.name %>" data-cycle-text="<%= home_cycle_slide.description %>">
+          <%= image_tag home_cycle_slide.image.file.url(:cropped), :class => "img-responsive", :style => "width: 100%", size: '1088x363' %>
         </div>
-      </div>
+      <% end %>
 
-      <div class="category" data-cycle-title="Sport" data-cycle-text="Die Turngemeinde Traisa bietet vielfältige Angebote im Bereich Einzel- und Mannschafts sowie Gesundheits- und Rehasport">
-        <div class="cycle-slideshow inner-slideshow sport"
-          data-cycle-timeout=4000
-          data-cycle-speed=1000
-          data-cycle-paused="true"
-          data-cycle-loader=true
-          data-cycle-progressive="#images_sport">
-          <%= image_tag "home_cycle/sport1.jpg", :class => "img-responsive", :style => "width: 100%", size: '1088x363' %>
-          <!--<script id="images_sport" type="text/cycle">
-            <%#= image_tag "home_cycle/sport2.jpg", :class => "img-responsive", :style => "width: 100%" %>
-            <%#= image_tag "home_cycle/sport3.jpg", :class => "img-responsive", :style => "width: 100%" %>
-          </script> -->
-        </div>
-      </div>
-
-      <div class="category" data-cycle-title="Karneval" data-cycle-text="Abteilung Karneval begrüßt alle Besucher dieser Seite und wünscht einen angenehmen Aufenthalt.">
-        <div class="cycle-slideshow inner-slideshow karneval"
-          data-cycle-timeout=4000
-          data-cycle-speed=1000
-          data-cycle-paused="true"
-          data-cycle-loader=true
-          data-cycle-progressive="#images_karneval">
-          <%= image_tag "home_cycle/karneval1.jpg", :class => "img-responsive", :style => "width: 100%", size: '1088x363' %>
-          <!--<script id="images_karneval" type="text/cycle">
-            <%#= image_tag "home_cycle/karneval2.jpg", :class => "img-responsive", :style => "width: 100%" %>
-            <%#= image_tag "home_cycle/karneval3.jpg", :class => "img-responsive", :style => "width: 100%" %>
-          </script> -->
-        </div>
-      </div>
-
-      <div class="category" data-cycle-title="Ohlebach-Theater" data-cycle-text="Das Theater in Mühltal! Wir spielen in der Hans-Seely-Halle Traisa">
-        <div class="cycle-slideshow inner-slideshow ohlebach"
-          data-cycle-timeout=4000
-          data-cycle-speed=1000
-          data-cycle-paused="true"
-          data-cycle-loader=true
-          data-cycle-progressive="#images_ohlebach">
-          <%= image_tag "home_cycle/ohlebach1.jpg", :class => "img-responsive", :style => "width: 100%", size: '1088x363' %>
-          <!--<script id="images_ohlebach" type="text/cycle">
-            <%#= image_tag "home_cycle/ohlebach2.jpg", :class => "img-responsive", :style => "width: 100%" %>
-            <%#= image_tag "home_cycle/ohlebach3.jpg", :class => "img-responsive", :style => "width: 100%" %>
-          </script> -->
-        </div>
-      </div>
-    </div>
-
-    <div class="mediaOverlay tabBar">
-      <div class="container">
-        <div class="tabs">
-          <div class="tab" id="verein">
-            <a href="#">Verein</a>
-          </div>
-          <div class="tab" id="sport">
-            <a href="/training_groups/search">Sport</a>
-          </div>
-          <div class="tab" id="karneval">
-            <a href="/departments/karneval">Karneval</a>
-          </div>
-          <div class="tab" id="ohlebach">
-            <a href="/departments/ohlebach-theater">Ohlebach-Theater</a>
+      <div class="mediaOverlay tabBar">
+        <div class="container">
+          <div class="tabs">
+            <% position = 0 %>
+            <% @home_cycle_slides.each do |home_cycle_slide| %>
+              <div class="tab" data-position="<%= position %>">
+                <a href="#"><%= home_cycle_slide.name %></a>
+              </div>
+              <% position = position + 1 %>
+            <% end %>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="mediaOverlay info">
-      <div class="container">
-        <div class="row"><div class="col-xs-4 col-xs-offset-8 hidden-xs">
-          <div class="box obtrusive">
-            <div class="cycle-caption"></div>
-          </div>
-        </div></div>
+      <div class="mediaOverlay info">
+        <div class="container">
+          <div class="row"><div class="col-xs-4 col-xs-offset-8 hidden-xs">
+            <div class="box obtrusive">
+              <div class="cycle-caption"></div>
+            </div>
+          </div></div>
+        </div>
       </div>
     </div>
   </div>

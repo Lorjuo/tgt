@@ -8,7 +8,7 @@ class AnnouncementsController < ApplicationController
   # GET /announcements
   # GET /announcements.json
   def index
-    @announcements = Announcement.all
+    @announcements = Announcement.sorted.all
   end
 
   # GET /announcements/1
@@ -67,6 +67,14 @@ class AnnouncementsController < ApplicationController
       format.html { redirect_to announcements_url }
       format.json { head :no_content }
     end
+  end
+  
+  def sort
+    # https://github.com/ryanb/railscasts-episodes/tree/master/episode-147/revised/faqapp-after/config
+    params[:announcement].each_with_index do |id, index|
+      Announcement.where({id: id}).update_all({position: index+1})
+    end
+    render nothing: true
   end
 
   private

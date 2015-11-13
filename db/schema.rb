@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112220244) do
+ActiveRecord::Schema.define(version: 20151113091612) do
 
   create_table "announcements", force: :cascade do |t|
     t.string   "name",         limit: 255
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20151112220244) do
     t.datetime "updated_at"
     t.date     "visible_from"
     t.date     "visible_to"
+    t.integer  "position",     limit: 4
   end
 
   create_table "areas", force: :cascade do |t|

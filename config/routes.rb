@@ -15,14 +15,18 @@ end
 # look also at: image.rb
 TgtRefurbished::Application.routes.draw do
 
-  resources :home_cycle_slides
+  resources :home_cycle_slides do
+    collection { post :sort }
+  end
   resources :quick_links do
     collection { post :sort }
   end
   resources :themes
 
   # Announcements
-  resources :announcements
+  resources :announcements do
+    collection { post :sort }
+  end
 
 
   # Messages

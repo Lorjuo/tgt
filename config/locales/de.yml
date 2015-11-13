@@ -157,6 +157,9 @@ de:
       gallery:
         one: Fotogalerie
         other: Fotogalerien
+      home_cycle_slide:
+        one: Home-Slide
+        other: Home-Slides
       image:
         one: Bild
         other: Bilder
@@ -311,6 +314,12 @@ de:
       title: Übersicht aller Fotogalerien
     show:
       title: 'Fotogalerie "%{name}"'
+
+  home_cycle_slides:
+    index:
+      title: Home-Slides
+    show:
+      title: 'Home-Slide "%{name}"'
 
   images:
     crop:

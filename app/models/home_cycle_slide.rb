@@ -1,4 +1,6 @@
 class HomeCycleSlide < ActiveRecord::Base
+  
+  acts_as_list# scope: :department
 
   include UrlHelper
 
@@ -23,5 +25,7 @@ class HomeCycleSlide < ActiveRecord::Base
 
   # Validations
   validates :name, :presence => true
+  validates :url, :presence => true
   #validates :image, :presence => true # TODO: does not work - maybe image_id?
+  scope :sorted, -> { order(:position) }
 end

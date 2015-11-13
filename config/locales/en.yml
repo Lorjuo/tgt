@@ -156,6 +156,9 @@ en:
       gallery:
         one: Photogallery
         other: Photogalleries
+      home_cycle_slide:
+        one: Home-Slide
+        other: Home-Slides
       image:
         one: Image
         other: Images
@@ -310,6 +313,12 @@ en:
       title: Listing Photogalleries
     show:
       title: 'Photogallery "%{name}"'
+
+  home_cycle_slides:
+    index:
+      title: Home-Slides
+    show:
+      title: 'Home-Slide "%{name}"'
 
   images:
     crop:
