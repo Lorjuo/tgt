@@ -66,6 +66,7 @@ class ImagesController < ApplicationController
       # to force to update activerecord to point to the newgenerated files and
       # to force carrierwave to delete the old ones
       # redirect_to @image, notice: 'Image was successfully updated.'
+      # TODO: This forces mini-magick processing twice
       
       # if @image..respond_to?('crop_image') # Image needs to be cropped
       # end

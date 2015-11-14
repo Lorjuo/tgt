@@ -2,11 +2,11 @@
 class ImageUploader < BaseUploader
   #include CarrierWave::RMagick
   include CarrierWave::MiniMagick
+  after :store, :unlink_original
+  #after :store, :create_webp_versions
 
   #http://makandracards.com/makandra/12323-carrierwave-auto-rotate-tagged-jpegs
   process :fix_exif_rotation # this should go before all other "process" steps
-  after :store, :unlink_original
-  #after :store, :create_webp_versions
   
   process quality: 80 #https://github.com/petedoyle/imagemagick-quality-tests
 
@@ -85,5 +85,14 @@ class ImageUploader < BaseUploader
   #   debugger
   #   store_dir
   # end
+  
+  def combined
+    manipulate! do |img|
+      img.tap(&:auto_orient)
+      img.strip
+      img = yield(img) if block_given?
+      img
+    end
+  end
 
 end
