@@ -6,7 +6,7 @@ class Image::HomeCycleUploader < ImageUploader
 
   version :cropped do
     process crop: :file
-    process resize_to_limit: [1200, 400]
+    process resize_to_fill: [1200, 400]
 
     version :_600x200 do
       process resize_to_fill: [600, 200, 'Center']

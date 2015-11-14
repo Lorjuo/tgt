@@ -57,6 +57,9 @@ $.widget 'tgt.cropWidget',
     coords.w /= @cropNatWidth
     coords.h /= @cropNatHeight
 
+    # Fix: keep exact aspect ratio:
+    #coords.w = coords.h # relative coordinates
+
     # use relative coordinates, because this script has no knowledge of the real image dimensions
     # (this script knows only about the cropping version dimensions)
     @element.find('.crop_x').val(coords.x)
